@@ -1,0 +1,65 @@
+<!-- {{ handler cgi-bin\Login.dll/Login }} This file (c) 2000 Microsoft Corporation --> 
+<html>
+<head>
+<title>Welcome To MantaWeb!</title>
+<link rel="stylesheet" href="login.css" type="text/css">
+</head>
+<body>
+<table border="0" cellspacing="0" cellpadding="0" width="610">
+  <tr>
+    <td width="115"></td>
+    <td>
+      <img border="0" src="images/banner.gif">
+      <p><font size="2">{{WelcomeMsg}}</font></p>
+      <p><font size="2">
+           <a href="newuser.srf"><font size="2">New User? Sign Up Today!</a>
+         </font>
+      </p>
+      <p><font size="2">Please Login:</font></p>
+	   {{if Failure}}<font size="2" color="#FF0000">Your attempt to login has failed.<br>
+	   If this is your first time, please make sure you have replied to the confirmation email.<br>
+	   Fields marked with * specify incorrect or missing data.<br><br></font>{{endif}}
+    </td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>
+      <form method="post" action="login.srf" name="formLogin">
+        <table border="0" cellspacing="0" cellpadding="0" width="476">
+          <tr>
+            <td width="74"><font size="2">Login:</font></td>
+            <td width="398"><input type="text" name="login" size="20" value="{{ LoginName }}">&nbsp;
+              <font size="2" color="#FF0000">{{if EmptyLogin}}* Please specify a login{{endif}}{{if LoginFailed}}* Login incorrect{{endif}}</font>
+            </td>
+          </tr>
+          <tr>
+            <td width="74"><font size="2">Password:</font></td>
+            <td width="398"><input name="password" size="20" value="{{ if RememberPassword }}{{ Password }}{{ endif }}" type="password">&nbsp;
+              <font size="2" color="#FF0000">{{if EmptyPassword}}* Please specify a password{{endif}}{{if LoginFailed}}* Password incorrect{{endif}}</font>
+            </td>
+          </tr>
+          <tr>
+            <td width="74"></td>
+            <td width="398"><a href="forgotpass.srf"><font size="2">Forgot your password?</font></a></td>
+          </tr>
+          <tr>
+            <td width="74"></td>
+            <td width="398"></td>
+          </tr>
+        </table>
+        <p><input type="checkbox" name="rememberpass" value="ON" {{ if RememberPassword }} checked {{ endif }}><font size="2">Remember My Password</font></p>
+        <p>&nbsp;</p>
+        <p><input type="submit" value="Login To MantaWeb" name="submitButton">&nbsp;&nbsp;&nbsp;
+        <input type="reset" value="Reset" name="resetButton"></p>
+      </form>
+    </td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>
+      <br><br><br><br><br>
+      <font size="1"> ATL Server Sample © 2000 Microsoft Corporation. All rights reserved.
+    </td>
+  </tr>
+</table>
+</body>

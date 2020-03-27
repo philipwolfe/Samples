@@ -1,0 +1,553 @@
+<!-- (C) 2001 Microsoft Corporation  -->
+
+<HTML DIR="LTR">
+	<HEAD>
+		<TITLE>Win32 Console Application</TITLE>
+		<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+		<STYLE TYPE="text/css">@import url(../../../1033/NewStyles.css);</STYLE>
+		
+		<SYMBOL NAME="MAX_SYMBOL_LENGTH" TYPE=num VALUE=64></SYMBOL>
+
+		<SYMBOL NAME="SAFE_PROJECT_NAME" TYPE=text></SYMBOL>
+		<SYMBOL NAME="UPPER_CASE_PROJECT_NAME" TYPE=text></SYMBOL>
+		<SYMBOL NAME="PROJECT_NAME_OEM" TYPE=text></SYMBOL>
+
+		<SYMBOL NAME="RES_PATH" TYPE=text VALUE="res"></SYMBOL>
+		<SYMBOL NAME="HELP_PATH" TYPE=text VALUE="hlp"></SYMBOL>
+
+		<SYMBOL NAME="EMPTY_PROJECT" TYPE=checkbox VALUE=false></SYMBOL>
+		<SYMBOL NAME="SUPPORT_ATL" TYPE=checkbox VALUE=false></SYMBOL>
+		<SYMBOL NAME="SUPPORT_MFC" TYPE=checkbox VALUE=false></SYMBOL>
+
+		<SYMBOL NAME="SOURCE_FILTER" TYPE=text></SYMBOL>
+		<SYMBOL NAME="INCLUDE_FILTER" TYPE=text></SYMBOL>
+		<SYMBOL NAME="RESOURCE_FILTER" TYPE=text></SYMBOL>
+
+		<SYMBOL NAME="DO_KANA" TYPE=checkbox VALUE=false></SYMBOL>
+
+		<SYMBOL NAME="TARGET_INTEL" TYPE=checkbox VALUE=true></SYMBOL>
+		<SYMBOL NAME="TARGET_MIPS" TYPE=checkbox VALUE=false></SYMBOL>
+		<SYMBOL NAME="TARGET_ALPHA" TYPE=checkbox VALUE=false></SYMBOL>
+
+		<SYMBOL NAME="CC" TYPE=text VALUE="cl"></SYMBOL>
+		<SYMBOL NAME="LINKER" TYPE=text VALUE="link"></SYMBOL>
+		<SYMBOL NAME="CPU" TYPE=text></SYMBOL>
+		<SYMBOL NAME="HOST_CPU" TYPE=text></SYMBOL>
+		<SYMBOL NAME="YEAR" TYPE=text></SYMBOL>
+
+		<SYMBOL NAME="APP_TYPE_SUMMARY" TYPE=text VALUE=""></SYMBOL>
+	</HEAD>
+
+	<BODY BGCOLOR="BUTTONFACE" TOPMARGIN="0" LEFTMARGIN="0" RIGHTMARGIN="0" BOTTOMMARGIN="0" ONLOAD="InitDocument(document);" ONKEYDOWN="if (!bValidating) OnKey();">
+	
+	<TABLE CLASS="ONE" BORDER="0" CELLPADDING="0" CELLSPACING="0">
+	<COL WIDTH="100%">
+	<TR VALIGN="TOP">
+	<TD HEIGHT="79">
+	<!--OPEN OF ALL ENCOMPASSING TABLE ROW ONE//-->
+	<TABLE CLASS="TWO" BORDER="0" CELLPADDING="0" CELLSPACING="0">
+	<COL WIDTH="12"><COL><COL WIDTH="12">
+	 <TR>
+	  <TD VALIGN="TOP" HEIGHT="12" WIDTH="12">
+	  &nbsp;
+	  </TD>
+	  
+	  <TD VALIGN="TOP" HEIGHT="12">
+	  &nbsp;
+	  </TD>
+	  
+	  <TD VALIGN="TOP" HEIGHT="12" WIDTH="12">
+	  &nbsp;
+	  </TD>
+	  
+	  <TD CLASS="IMAGE" VALIGN="BOTTOM" WIDTH="110" ROWSPAN="2" ID="IMAGE_TABLE">
+	   <DIV ID="Layer0">
+	    <IMG CLASS="SMALLEST" SRC="..\..\Images\ConsoleApp.bmp" WIDTH="80" HEIGHT="70" ALT="" BORDER="0"></IMG>
+	   </DIV>
+	  </TD>
+
+	  
+	   <TD VALIGN="TOP" HEIGHT="12" WIDTH="6" ROWSPAN="2">
+	  	&nbsp;
+	   </TD>
+	  </TR>
+	 
+	  <TR>
+	   <TD VALIGN="TOP" HEIGHT="65" WIDTH="12">
+	  	&nbsp;
+	   </TD>
+	  
+	   <TD VALIGN="TOP" HEIGHT="65">
+		<H4 CLASS="HEAD" ID="HEAD">Welcome to the Win32 Console Application Wizard</H4>
+		<P CLASS="SUBHEAD" ID="SUBHEAD">This wizard generates a console application project with the properties you specify.</P>
+	   </TD>
+	  
+	   <TD VALIGN="TOP" HEIGHT="65" WIDTH="12">
+	  	&nbsp;
+	   </TD>
+	  </TR>
+
+	  <TR>
+	   <TD VALIGN="TOP" CLASS="RULE" COLSPAN="5" HEIGHT="2">
+		<TABLE BORDER="0" WIDTH="100%" HEIGHT="1" CELLPADDING="0" CELLSPACING="0">
+	  	 <TR VALIGN="TOP">
+	  	  <TD HEIGHT="1" WIDTH="100%" BGCOLOR="BUTTONSHADOW"><IMG SRC="../../Images/spacer.gif" HEIGHT="1" WIDTH="1" ALT=""></TD>
+	  	  <TD HEIGHT="1" WIDTH="1" BGCOLOR="WINDOW"><IMG SRC="../../Images/spacer.gif" HEIGHT="1" WIDTH="1" ALT=""></TD>
+	  	 </TR>
+		</TABLE>
+	   </TD>
+	  </TR>
+	 </TABLE>
+
+	<!--CLOSE OF ALL ENCOMPASSING TABLE ROW ONE//-->
+	</TD>
+	</TR>
+	<TR VALIGN="TOP">
+	<TD HEIGHT="100%">
+	<!--OPEN OF ALL ENCOMPASSING TABLE ROW TWO//-->
+
+	 <TABLE CLASS="ONE" BORDER="0" CELLPADDING="0" CELLSPACING="0">
+	 <COL WIDTH="178"><COL>
+	  <TR>
+	   <TD CLASS="THREE" VALIGN="TOP" HEIGHT="100%" WIDTH="178">
+	   <!--OPEN OF NAVIGATION TABLE//-->
+	
+	    <TABLE CLASS="THREE" BORDER="0" CELLPADDING="0" CELLSPACING="0">
+		<COL WIDTH="12"><COL WIDTH="166"><COL WIDTH="1">
+		 <TR>
+	   	  <TD VALIGN="TOP" COLSPAN="3" HEIGHT="12">
+	  		&nbsp;
+		  </TD>
+		 </TR>
+		 <TR>
+	   	  <TD VALIGN="TOP" HEIGHT="100%" WIDTH="12">
+	  		&nbsp;
+		  </TD>
+	   	  <TD VALIGN="TOP" HEIGHT="100%" WIDTH="165">
+	   	  <!--OPEN OF NAVIGATIONAL LINKS//-->
+
+		  	<DIV CLASS="LINKSELECTED">
+	 	   	 <SPAN CLASS="VERTLINE1">
+			  <IMG SRC="../../Images/spacer.gif" WIDTH="1" HEIGHT="1" ALT="" BORDER="0">
+			 </SPAN>
+			 <SPAN CLASS="HORILINE1">
+			  <TABLE WIDTH="167" HEIGHT="100%" BORDER="0" CELLPADDING="0" CELLSPACING="0">
+			   <TR VALIGN="TOP">
+			    <TD CLASS="DOTTEDLINE" HEIGHT="1">
+				</TD>
+			   </TR>
+			   <TR VALIGN="TOP">
+			    <TD HEIGHT="100%">
+				 <IMG SRC="../../Images/spacer.gif" WIDTH="28" HEIGHT="1" ALT="" BORDER="0">
+			    </TD>
+			   </TR>
+			   <TR VALIGN="TOP">
+			    <TD CLASS="DOTTEDLINE" HEIGHT="1">
+			    </TD>
+			   </TR>
+			  </TABLE>
+			 </SPAN>
+			 <TABLE WIDTH="160" HEIGHT="28" BORDER="0" CELLPADDING="0" CELLSPACING="0" CLASS="LINKTEXTSELECTED">
+			  <TR VALIGN="MIDDLE">
+			   <TD WIDTH="156">
+				<SPAN ID="Default" TITLE="Examine an overview of selections.">Overview</SPAN>
+			   </TD>
+			   <TD WIDTH="4">
+				<IMG SRC="../../Images/spacer.gif" HEIGHT="1" WIDTH="4">
+			   </TD>
+			  </TR>
+			 </TABLE>
+			</DIV>
+	  		
+			<DIV CLASS="LINK">
+			 <TABLE WIDTH="166" HEIGHT="28" BORDER="0" CELLPADDING="0" CELLSPACING="0" CLASS="LINKTEXT">
+			  <TR VALIGN="MIDDLE">
+	  		   <TD WIDTH="162">
+				<SPAN CLASS="ACTIVELINK" ID="AppSettings" TITLE="Specify the settings for your project." onClick="Next(document, 'AppSettings.htm');" TABINDEX="1">Application Settings</SPAN>
+			   </TD>
+	  		   <TD WIDTH="4">
+			  	<IMG SRC="../../Images/spacer.gif" HEIGHT="1" WIDTH="4">
+			   </TD>
+			  </TR>
+			 </TABLE>
+			</DIV>
+	  		
+			<DIV CLASS="LINK">
+			 <TABLE WIDTH="166" HEIGHT="28" BORDER="0" CELLPADDING="0" CELLSPACING="0" CLASS="LINKTEXTINDENT">
+			  <TR VALIGN="MIDDLE">
+	  		   <TD WIDTH="162">
+			   </TD>
+	  		   <TD WIDTH="4">
+			  	<IMG SRC="../../Images/spacer.gif" HEIGHT="1" WIDTH="4">
+			   </TD>
+			  </TR>
+			 </TABLE>
+			</DIV>
+	  		
+			<DIV CLASS="LINK">
+			 <TABLE WIDTH="166" HEIGHT="28" BORDER="0" CELLPADDING="0" CELLSPACING="0" CLASS="LINKTEXTINDENT">
+			  <TR VALIGN="MIDDLE">
+	  		   <TD WIDTH="162">
+			   </TD>
+	  		   <TD WIDTH="4">
+			  	<IMG SRC="../../Images/spacer.gif" HEIGHT="1" WIDTH="4">
+			   </TD>
+			  </TR>
+			 </TABLE>
+			</DIV>
+	  		
+			<DIV CLASS="LINK">
+			 <TABLE WIDTH="166" HEIGHT="28" BORDER="0" CELLPADDING="0" CELLSPACING="0" CLASS="LINKTEXT">
+			  <TR VALIGN="MIDDLE">
+	  		   <TD WIDTH="162">
+			   </TD>
+	  		   <TD WIDTH="4">
+			  	<IMG SRC="../../Images/spacer.gif" HEIGHT="1" WIDTH="4">
+			   </TD>
+			  </TR>
+			 </TABLE>
+			</DIV>
+	  		
+			<DIV CLASS="LINK">
+			 <TABLE WIDTH="166" HEIGHT="28" BORDER="0" CELLPADDING="0" CELLSPACING="0" CLASS="LINKTEXT">
+			  <TR VALIGN="MIDDLE">
+	  		   <TD WIDTH="162">
+			   </TD>
+	  		   <TD WIDTH="4">
+			  	<IMG SRC="../../Images/spacer.gif" HEIGHT="1" WIDTH="4">
+			   </TD>
+			  </TR>
+			 </TABLE>
+			</DIV>
+	  		
+			<DIV CLASS="LINK">
+			 <TABLE WIDTH="166" HEIGHT="28" BORDER="0" CELLPADDING="0" CELLSPACING="0" CLASS="LINKTEXT">
+			  <TR VALIGN="MIDDLE">
+	  		   <TD WIDTH="162">
+			   </TD>
+	  		   <TD WIDTH="4">
+			  	<IMG SRC="../../Images/spacer.gif" HEIGHT="1" WIDTH="4">
+			   </TD>
+			  </TR>
+			 </TABLE>
+			</DIV>
+	  		
+			<DIV CLASS="LINK">
+			 <TABLE WIDTH="166" HEIGHT="28" BORDER="0" CELLPADDING="0" CELLSPACING="0" CLASS="LINKTEXT">
+			  <TR VALIGN="MIDDLE">
+	  		   <TD WIDTH="162">
+			   </TD>
+	  		   <TD WIDTH="4">
+			  	<IMG SRC="../../Images/spacer.gif" HEIGHT="1" WIDTH="4">
+			   </TD>
+			  </TR>
+			 </TABLE>
+			</DIV>
+			
+	   	  <!--CLOSE OF NAVIGATIONAL LINKS//-->
+		  </TD>
+		  <TD WIDTH="1">
+		   <DIV CLASS="VERTLINE">
+			 <IMG SRC="../../Images/spacer.gif" WIDTH="1" HEIGHT="1" ALT="" BORDER="0">
+		   </DIV>
+		  </TD>
+		 </TR>
+		</TABLE>
+			
+	   <!--CLOSE OF NAVIGATION TABLE//-->
+	   </TD>
+
+
+	   <TD VALIGN="TOP" HEIGHT="100%">
+	   <!--OPEN OF CONTENT AND BUTTON TABLE//-->
+	   
+	   	<TABLE CLASS="ONE" BORDER="0" CELLPADDING="0" CELLSPACING="0">
+		<COL WIDTH="100%">
+		 <TR VALIGN="TOP">
+		  <TD HEIGHT="100%">
+	   	  <!--OPEN OF CONTENT//-->
+		  
+		  	<TABLE CLASS="CONTENT" BORDER="0" CELLPADDING="0" CELLSPACING="0">
+			<COL WIDTH="12"><COL WIDTH="398"><COL WIDTH="12">
+ 			 <TR>
+  			  <TD VALIGN="TOP" HEIGHT="12" COLSPAN="3">
+  				&nbsp;
+  			  </TD>
+ 			 </TR>
+ 			 <TR>
+ 			 <TD VALIGN="TOP" WIDTH="12">
+  				&nbsp;
+  			  </TD>
+  			  <TD VALIGN="TOP">
+ 				<TABLE CLASS="CONTENT1" ID="CONTENT1" BORDER="0" CELLPADDING="0" CELLSPACING="0">
+ 	 			 <TR>
+  	  			  <TD VALIGN="TOP">
+  					<SPAN CLASS="ItemText" ID="CURRENT_PROJECT_SETTINGS_TITLE">These are the current project settings:</SPAN>
+					<UL>
+	  	 			 <LI CLASS="LIST">
+		  			  <SPAN CLASS="SideBtnHidden" ID="APP_SETTINGS_SUMMARY" TITLE="">	
+		   				<LABEL FOR="APP_SETTINGS_SUMMARY"></LABEL>
+		  			  </SPAN>
+	  	 			 </LI>
+					 </UL>
+	  				 <SPAN CLASS="ItemText" ID="FinishText">Click <B>Finish</B> from any window to accept the current settings.</SPAN>
+  	  		  	  </TD>
+ 	 		 	 </TR>
+				</TABLE>
+  		  	  </TD>
+  
+  		  	  <TD VALIGN="TOP" WIDTH="12">
+  				&nbsp;
+  		  	  </TD>
+ 		  	 </TR>
+		 	</TABLE>
+			
+	   	  <!--CLOSE OF CONTENT//-->
+		  </TD>
+		 </TR>
+		 <TR VALIGN="BOTTOM">
+		  <TD HEIGHT="48">
+	   	  <!--OPEN OF BUTTON HTML//-->
+		  
+		  	<TABLE CLASS="ONE" HEIGHT="48" BORDER="0" CELLPADDING="0" CELLSPACING="0">
+			<COL WIDTH="261"><COL><COL WIDTH="75"><COL WIDTH="4"><COL WIDTH="75"><COL WIDTH="12">
+			 <TR>
+  			  <TD VALIGN="TOP" CLASS="RULE" COLSPAN="8" HEIGHT="1">
+				<TABLE BORDER="0" WIDTH="100%" HEIGHT="1" CELLPADDING="0" CELLSPACING="0">
+  	 			 <TR VALIGN="TOP">
+  	  			  <TD HEIGHT="1" WIDTH="100%" BGCOLOR="BUTTONSHADOW"><IMG SRC="../../Images/spacer.gif" HEIGHT="1" WIDTH="1" ALT=""></TD>
+  	  			  <TD HEIGHT="1" WIDTH="1" BGCOLOR="WINDOW"><IMG SRC="../../Images/spacer.gif" HEIGHT="1" WIDTH="1" ALT=""></TD>
+  	 			 </TR>
+				</TABLE>
+  			  </TD>
+ 			  </TR>
+ 
+ 			  <TR>
+  			  <TD VALIGN="TOP" HEIGHT="11" COLSPAN="8">
+  				&nbsp;
+  			  </TD>
+ 			 </TR>
+ 
+ 			<TR>
+  			  <TD VALIGN="MIDDLE" HEIGHT="23" WIDTH="12">
+  				&nbsp;
+  			  </TD>
+  			  <TD VALIGN="TOP" HEIGHT="23">
+  				&nbsp;
+  			  </TD>
+  			  <TD VALIGN="MIDDLE" HEIGHT="23" WIDTH="75">
+  				<BUTTON CLASS="BUTTONS" ID="FinishBtn" ACCESSKEY="F" onClick="OnFinish(document);"><U>F</U>inish</BUTTON>
+  			  </TD>
+  			  <TD VALIGN="MIDDLE" HEIGHT="23" WIDTH="4">
+  				&nbsp;
+  			  </TD>
+  			  <TD VALIGN="MIDDLE" HEIGHT="23" WIDTH="75">
+  				<BUTTON CLASS="BUTTONS" ID="CancelBtn" ACCESSKEY="C" onClick="window.external.Finish(document, 'cancel');"><U>C</U>ancel</BUTTON>
+  			  </TD>
+  			  <TD VALIGN="MIDDLE" HEIGHT="23" WIDTH="12">
+  				&nbsp;
+  			  </TD>
+ 			 </TR>
+ 
+ 			 <TR>
+  			  <TD VALIGN="TOP" HEIGHT="12" COLSPAN="8">
+  				&nbsp;
+  			  </TD>
+ 			 </TR>
+			</TABLE>
+			
+	   	  <!--CLOSE OF BUTTON HTML//-->
+		  </TD>
+		 </TR>
+		</TABLE>
+	
+	   <!--CLOSE OF CONTENT AND BUTTON TABLE//-->
+	   </TD>
+	  </TR>
+	 </TABLE>
+	
+	<!--CLOSE OF ALL ENCOMPASSING TABLE ROW TWO//-->
+	</TD>
+	</TR>
+	</TABLE>
+
+</BODY>
+</HTML>
+
+
+
+
+
+
+
+
+<SCRIPT LANGUAGE="JSCRIPT">
+
+
+var tab_array = new Array();
+tab_array[0] = Default;
+tab_array[1] = AppSettings;
+
+
+
+function InitDocument(document)
+
+// When the page is first loaded, the wizard control automatically calls InitDocument.
+// This is where you should handle any necessary tasks that must occur before the page
+// is displayed.
+
+{
+	setDirection();
+
+	if (window.external.FindSymbol("DOCUMENT_FIRST_LOAD"))
+	{
+		var L_WizardDialogTitle_Text = "Win32 Console Application";
+		window.external.AddSymbol("WIZARD_DIALOG_TITLE", L_WizardDialogTitle_Text);
+		var strProjName = window.external.FindSymbol("PROJECT_NAME");
+		var coll = document.all.tags("SYMBOL");
+		var numSymbols = coll.length;
+		for (i = 0; i < numSymbols; i++)
+		{
+			var obj = coll(i);
+			if (typeof(obj.VALUE) == "undefined")
+			{
+				obj.VALUE = getval(obj, strProjName);
+			}
+		}
+		window.external.SetDefaults(document);
+		CreateGuids();
+	}
+	window.external.Load(document);
+	InitControls();
+}
+
+
+function CreateGuids()
+{
+	var strGuid = window.external.CreateGuid();
+
+	var strVal = window.external.FormatGuid(strGuid, 0);
+	window.external.AddSymbol("DISPIID_REGISTRY_FORMAT", strVal);
+	strVal = window.external.FormatGuid(strGuid, 2);
+	window.external.AddSymbol("DISPIID_STATIC_CONST_GUID_FORMAT", strVal);
+
+	strGuid = window.external.CreateGuid();
+
+	strVal = window.external.FormatGuid(strGuid, 0);
+	window.external.AddSymbol("APP_CLSID_REGISTRY_FORMAT", strVal);
+	strVal = window.external.FormatGuid(strGuid, 1);
+	window.external.AddSymbol("APP_CLSID_IMPLEMENT_OLECREATE_FORMAT", strVal);
+	strVal = window.external.FormatGuid(strGuid, 2);
+	window.external.AddSymbol("APP_CLSID_STATIC_CONST_GUID_FORMAT", strVal);
+
+	strGuid = window.external.CreateGuid();
+
+	strVal = window.external.FormatGuid(strGuid, 0);
+	window.external.AddSymbol("LIBID_REGISTRY_FORMAT", strVal);
+	strVal = window.external.FormatGuid(strGuid, 2);
+	window.external.AddSymbol("LIBID_STATIC_CONST_GUID_FORMAT", strVal);
+}
+
+
+
+function InitControls()
+
+// Creates text for the 'Application Summary' based on the control values
+
+{
+
+	if (window.external.FindSymbol("EMPTY_PROJECT"))
+	{
+		APP_SETTINGS_SUMMARY.innerText="Empty project";
+	}
+	else
+	{
+		APP_SETTINGS_SUMMARY.innerText="Simple project";
+
+		if (window.external.FindSymbol("SUPPORT_ATL"))
+			APP_SETTINGS_SUMMARY.innerText += ", support ATL";
+		else
+			APP_SETTINGS_SUMMARY.innerText += ", no ATL";
+
+		if (window.external.FindSymbol("SUPPORT_MFC"))
+			APP_SETTINGS_SUMMARY.innerText += ", support MFC";
+		else
+			APP_SETTINGS_SUMMARY.innerText += ", no MFC";
+	}		
+
+}
+
+
+
+function Next(document, linkto)
+
+// Tell the wizard control which page to load next
+
+{
+	window.external.Next(document, linkto);
+}
+
+
+
+function OnFinish(obj)
+
+// Called when the user clicks the finish button.  OnWizFinish is a function in common.js
+
+{
+	OnWizFinish(obj);
+}
+
+
+
+function getval(obj, strProjName)
+{
+	var SymbolValue = "";
+	switch(obj.NAME)
+	{
+		case "PROJECT_NAME_OEM":
+			SymbolValue = strProjName; 
+			break;
+		case "SAFE_PROJECT_NAME":
+			SymbolValue	= CreateSafeName(strProjName);
+			break;
+		case "UPPER_CASE_PROJECT_NAME":
+			{
+				var strSafeProjName = CreateSafeName(strProjName);
+				SymbolValue = strSafeProjName.toUpperCase();
+			}
+			break;
+		case  "SOURCE_FILTER":
+			SymbolValue = "cpp;c;cxx;rc;def;odl;idl;hpj;bat;asm"; 
+			break;
+		case  "INCLUDE_FILTER":
+			SymbolValue = "h;hpp;hxx;hm;inl;inc"; 
+			break;
+		case  "RESOURCE_FILTER":
+			SymbolValue = "ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"; 
+			break;
+		case  "CPU":
+			SymbolValue = "i386"; 
+			break;
+		case  "HOST_CPU":
+			SymbolValue = "X86"; 
+			break;
+		case  "YEAR":
+			{
+				d = new Date();
+				SymbolValue = d.getFullYear().toString();
+			}
+			break;
+		default:
+			SymbolValue = "";
+			break;
+	}
+	return (SymbolValue);
+}
+
+
+
+</SCRIPT>
+<SCRIPT LANGUAGE="JSCRIPT" SRC="../../../1033/Script.js"></SCRIPT>
+<SCRIPT LANGUAGE="JSCRIPT" SRC="../../../1033/Common.js"></SCRIPT>
+

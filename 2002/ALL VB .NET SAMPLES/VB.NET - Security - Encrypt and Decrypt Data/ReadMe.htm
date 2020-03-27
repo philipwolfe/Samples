@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+		<meta name="ProgId" content="FrontPage.Editor.Document">
+		<meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+		<h1>
+			Security: How to Use Symmetric Algorithms</h1>
+		<p>
+			Symmetric&nbsp;encryption uses a single shared, secret key to encrypt and 
+			decrypt data. Secret key encryption is also called symmetric encryption because 
+			the same key is used for encryption and decryption. Anyone that has the key can 
+			decrypt the data, which makes protection of the key vital.&nbsp; Private-key 
+			encryption is much faster than public-key encryption which makes it ideal for 
+			use on large streams of data. However, in real-world operations, public-key 
+			encryption is used in conjunction with private-key encryption in order to 
+			transmit the private key to the other party.</p>
+		<h2>Featured Highlights</h2>
+		<p>This sample shows you how to use Rijndael or TripleDES to encrypt and decrypt 
+			text files that you can browse for and load into a TextBox. When "Advanced" is 
+			checked the key is not generated and set automatically but is rather derived 
+			from a password that has been "salted" (see the code comments for more on 
+			"salt"). Moreover, the salt and initialization vector (IV) are persisted 
+			unencrypted to a .dat file. In this way you can see how you would securely send 
+			a document to someone:&nbsp;The encrypted document could be sent over an 
+			unsecure wire, and the .dat file and password could be transferred securely 
+			using assymetric (or, public key) encryption. (The latter type of encryption is 
+			the most secure form of encryption, but it takes much longer to process. This 
+			is why it is typically used for small items like a secret key, salt/IV file, 
+			password, etc.).</p>
+		<P>Instead of creating a key.dat file you can write the salt and IV to the 
+			encrypted document as unencrypted leading text. When decrypting, simply read 
+			the salt and IV from the encrypted document as you would from the .dat file. In 
+			this way only the encrypted document and the password are needed.</P>
+		<h2>Requirements</h2>
+		<p>Microsoft Visual Studio.NET Professional or greater.<BR>
+			Windows XP or Windows 2000.</p>
+		<h2>Running the Sample</h2>
+		<p>Simply press <STRONG>F5</STRONG>.
+		</p>
+		<h3>See also</h3>
+		<UL>
+			<LI>
+				<a href="http://www.gotdotnet.com/team/clr/cryptofaq.htm">.NET Framework 
+					Cryptography FAQ</a>
+			<LI>
+				<a href="http://msdn.microsoft.com/msdnmag/issues/02/06/crypto/crypto.asp">Protect 
+					Private Data with the Cryptography Namespaces of the .NET Framework</a></LI></UL>
+	</body>
+</html>

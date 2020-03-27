@@ -1,0 +1,22 @@
+<html>
+<head><title>PooledAsync Sample</title></head>
+<body>
+<h3>About PooledAsync</h3>
+
+<p>Demonstrates how to increase Web application and SOAP service availability and performance with an additional thread pool.</p>
+
+<p>The PooledAsync sample contains two closely related samples demonstrating how to increase Web application and SOAP service availability and performance by incorporating an additional thread pool.</p>
+
+<p>By default, the ATL Server framework provides very high performance by using a thread pool in the ISAPI Extension to handle incoming requests. If any of these requests take a long time to complete, however, the possibility arises that the application or service will become unresponsive to additional requests. This situation may occur when a high percentage of the threads in the primary pool (in the ISAPI Extension) are busy with long-running tasks such as credit card validation, calling another SOAP server, and so on. </p>
+
+<p>The solution demonstrated in this sample is to implement an additional thread pool and use ATL Server's asynchronous features to offload these long-running tasks.</p>
+
+<h4>Building and Running the Sample</h4>
+<ol>
+<li>Open the solution file, PooledAsync.sln, in the Visual Studio development environment. 
+<li>Build the solution. This will also deploy the solution to the local web server. 
+<li>Use a web browser to view <a href="http://localhost/pooledasync/index.htm">http://localhost/pooledasync/index.htm</a>. Use the links on the page to test the different ways that the web application DLL provides for returning data to the client. 
+<li>Open a command prompt in the folder that holds the SOAP client application, PooledAsyncSoapClient.exe, and run the application to test the ways that the web service DLL provides for returning data to the client. </li>
+</ol>
+</body>
+</html>

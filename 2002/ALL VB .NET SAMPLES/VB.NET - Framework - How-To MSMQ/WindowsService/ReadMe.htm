@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft Visual Studio.NET 7.0">
+		<meta name="ProgId" content="VisualStudio.HTML">
+		<meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+		<font face="Verdana, Arial, System">
+			<h1>
+				.NET Framework: MSMQ</h1>
+			<p>
+				This sample&nbsp;shows how to send a MSMQ message from a Windows Forms client 
+				that contains a&nbsp;object instance serialized&nbsp;using XML. The messages 
+				are received and processed by a Windows Service.&nbsp;
+			</p>
+			<h2>Featured Highlights</h2>
+			<p>
+				This sample has three components that work together:
+			</p>
+			<UL>
+				<LI>
+				A Windows Forms Client that sends messages
+				<LI>
+				A Windows Service that processes the&nbsp;messages sent by the client
+				<LI>
+					A Class Library that exposes a public class which is used as the message body 
+					contents.</LI></UL>
+			<P><STRONG>Service</STRONG></P>
+			<P>The Windows Service provided shows how to process messages arriving in a MSMQ 
+				queue efficiently. Using an MSMQ component it waits for messages to arrive. 
+				When one does, it opens the message and converts it to an MSMQOrder type. It 
+				then uses the CLR's built-in thread pool to execute the MSMQOrder instance's 
+				Process method. It then continues to watch for more messages. This service 
+				supports Start, Stop, Pause, Resume, Shutdown, and Power Change events.</P>
+			<h2>Requirements</h2>
+			<p>
+				Requires the Trial or Release version of Visual Studio .NET Professional (or 
+				greater). In addition you will need a machine that has a valid installation of 
+				MSMQ installed.
+			</p>
+			<h2>Running the Sample</h2>
+			<p>
+				Before you can run the sample three things must be done:
+			</p>
+			<OL>
+				<LI>
+				A&nbsp;private queue named&nbsp;Orders must be created.
+				<LI>
+				Compile all three projects (Class Library, Client, then Service)
+				<LI>
+					The Windows Service must be installed.</LI></OL>
+			<P>Creating the queue varies depending upon the version of MSMQ installed. The 
+				application expects for&nbsp;find a private, non-transactional queue named 
+				Orders. Note you can change the queue that is expected by modifying both the 
+				client and service's configuration files.</P>
+			<P>Installing the service requires the use of a command-line tool, InstallUtil.exe, 
+				which comes with the .NET Framework SDK. To install the service do the 
+				following:</P>
+			<OL>
+				<LI>
+				Compile all three projects (Class Library, Client, Windows Service).
+				<LI>
+				Start the Visual Studio .NET command prompt.
+				<LI>
+				Changed to the bin directory of the Windows Service.
+				<LI>
+					Type: <STRONG>installutil WindowsService.exe</STRONG> and press&nbsp;Enter.</LI></OL>
+			<P>The service is configured to require MSMQ. You will need to start the service. 
+				You can do it from a command prompt&nbsp;by typing:</P>
+			<UL>
+				<LI>
+					<STRONG>net start WatchMSMQ</STRONG></LI></UL>
+			<P>Or you&nbsp;can use the Windows Services MMC. To uninstall the service stop it 
+				and type the following at a Visual Studio .NET command prompt:</P>
+			<UL>
+				<LI>
+					&nbsp;<STRONG>installutil -u WindowsService.exe</STRONG></LI></UL>
+			<P>Note that if you decide to move the service to some other directory, you must 
+				copy the Server.dll file with it.</P>
+			<P>Once you have the service installed, run the client and send messages.</P>
+			<h3>Last Update:&nbsp;17 July 2002</h3>
+		</font>
+	</body>
+</html>

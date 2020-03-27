@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+    <title>ReadMe</title>
+</head>
+<body>
+    <h1>
+        Building a Tracing Infrastructure
+    </h1>
+    This sample demonstrates how to create and use Tracing for tracking errors and application
+    performance.<br />
+    <br />
+    You may already be familiar with the Debug class, which lets you keep track of application
+    variables and related information as you are developing and testing your application.
+    Output from Debug.Write statements is displayed in the Output window while debugging.
+    The Trace class is identical, except that, while Debug statements are removed by
+    the compiler when you create a release build of the application, Trace statements
+    remain. This lets you monitor the application even after it has been deployed.
+    <br />
+    <br />
+    You may not be able to simulate all the possible scenarios in which your application
+    will be deployed. So applying tracing to a deployed application lets you monitor
+    errors as well as the application's performance.
+    <br />
+    <br />
+    You will usually deploy the application with tracing turned off. When it appears
+    that it is needed, the application's user can enable tracing by modifying switch
+    settings that you have placed in the application's configuration file, App.config
+    or Web.config. This makes it possible to implement tracing without re-compiling
+    your code.
+    <br />
+    <br />
+    Using Trace, you can record errors and application performance information to such
+    data stores as text files and the Event Log so you can review the data at your convenience.<br />
+    <br />
+    In this sample, the Trace switches in App.config are turned on. See App.config for
+    more details on configuring the switches.<br />
+    <br />
+    <strong>This sample requires the following to be installed:</strong>
+    <ul>
+        <li>Visual Studio 2005</li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Creating Toolbars</title>
+    <meta name="GENERATOR" content="Microsoft Visual Studio.NET 7.0" />
+    <meta name="ProgId" content="VisualStudio.HTML" />
+    <meta name="Originator" content="Microsoft Visual Studio.NET 7.0" />
+</head>
+<body>
+    <h1>
+        Working with InfoPath 2003</h1>
+    <p>
+    </p>
+    <p>
+        With the Microsoft InfoPath 2003 Toolkit for Visual Studio 2005 you can now create InfoPath solutions with managed code.
+    </p>
+    <p>
+        In this sample you will learn how to build a fairly simple Adventure Works products
+        order form. Some of the functionality you will see is due to built-in InfoPath features,
+        and some functionality is via managed code that resides in the FormCode class. The form is built so that the user must first select a product category. These categories are automatically pulled from the AdventureWorks database by the InfoPath
+        form when the form loads. The user may then click the Get Products button, which
+        displays all of the Adventure Works products for the selected category inside of
+        a repeating table that is itself embedded in a scrolling region. This table of products
+        is then consulted to fill out the order form by
+        entering a Product ID and quantity
+        desired. When the user tabs away from the Product ID field, code in the OnAfterChange
+        event handler fills in the rest of the values in that row.</p>
+    <p>
+        <strong>NOTE:</strong> This sample relies on the most recent beta release of the
+        InfoPath 2003 Toolkit for Visual Studio 2005.&nbsp; In this release, you will need
+        to open Visual Studio, then open the solution from the <strong>File | Open | Project/Solution</strong>
+        menu.&nbsp; Double-clicking the solution file will not work.&nbsp; Also, if you
+        are prompted that the project is out of date, click Yes to rebuild.&nbsp; These
+        issues should not be present in the final release of the InfoPath VSTO support package.</p>
+    <p>
+        <b>This sample requires the following to be installed: </b>
+    </p>
+    <ul>
+        <li>Microsoft InfoPath 2003</li>
+        <li>Microsoft InfoPath 2003 Toolkit for Visual Studio 2005</li>
+        <li>Visual Studio 2005</li><li>Adventure Works sample database installed at "C:\Program Files\Microsoft SQL Server\MSSQL.1\MSSQL\Data<wbr></wbr>"
+        </li>
+    </ul>
+    <p>
+        You can download the Adventure Works sample database <a href="http://go.microsoft.com/fwlink/?linkid=31046">
+            here</a>
+    </p>
+</body>
+</html>

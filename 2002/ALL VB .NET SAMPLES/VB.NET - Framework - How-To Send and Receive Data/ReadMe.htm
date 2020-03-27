@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft Visual Studio.NET 7.0">
+		<meta name="ProgId" content="VisualStudio.HTML">
+		<meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+		<font face="Verdana, Arial, System">
+			<h1>
+				.NET Framework: Send &amp; Receive Data via HTTP</h1>
+			<p>
+				This solution demonstrates how to send &amp; receive data using HTTP and 
+				streams using the System.Net classes.
+			</p>
+			<h2>Featured Highlights</h2>
+			<P>There are 4 command buttons, 2 text boxes, and a picture box. Additionally, 
+				there is a virtual directory named VDir1 that receives and returns data. The 
+				first 3 buttons show how to send and receive data from a file. The last button 
+				shows how to send text back and forth to the web application. When using the 
+				fourth button, the text in the editable text box is sent to the web server, and 
+				the returned text is displayed in the read-only text box.</P>
+			<P>The Windows application relies upon 4 ASPX files living in the VDir1 directory.
+				<h2>Requirements</h2>
+			<p>
+				Requires the Trial or Release version of Visual Studio .NET Professional (or 
+				greater).
+			</p>
+			<h2>Running the Sample</h2>
+			<P>The application communicates with a virtual directory served up by IIS. By 
+				default, the directory is&nbsp;located in a&nbsp;sub-directory below the 
+				solution.&nbsp;The virtual directory must be configured using the Internet 
+				Services Manager. Name the virtual directory <STRONG>VDir1</STRONG>, associate 
+				it with the VDir1 directly, and accept all defaults.
+			</P>
+			<P>File I/O is performed in&nbsp;&amp; out of the files using FileStreams. Network 
+				I/O is performed between client &amp; server using Request and Response 
+				streams.</P>
+			<P>There are three data files used in this sammple:</P>
+			<UL>
+				<LI>
+				datafile.txt
+				<LI>
+				mypic.jpg
+				<LI>
+					myxmlfile.xml</LI></UL>
+			<P>All three are expected to be in the VDir1 directory. In addition, a copy of the 
+				file <STRONG>datafile.txt</STRONG> should be in the same location as the main 
+				exe (which by default is the bin directory).&nbsp;</P>
+			<h3>Last Update:&nbsp;7 July 2002</h3>
+		</font>
+	</body>
+</html>

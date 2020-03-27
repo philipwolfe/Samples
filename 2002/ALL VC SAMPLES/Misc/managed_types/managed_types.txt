@@ -1,0 +1,93 @@
+Using managed reference types in C++
+Chris Maunder, The Code Project (www.codeproject.com)
+
+This sample demonstrates using .NET managed reference types in C++. The __gc keyword
+is use to create new reference types, and the __pin keyword used to allow unmanaged
+code access to the managed objects.
+
+
+Introduction
+
+One of the nice things about .NET are the common base classes. These classes are essentially the API of .NET, and are available from all languages equally. Once you know how to use a String in VB.NET you also know how to use it in C# and C++. Once you have struggled up the learning curve for one language you can then go on to use that knowledge in other .NET languages. 
+
+In .NET there are value types and reference types. Value types refer to simple data structures such as int's and enumerations, and are stored on the stack. Reference types are created on the .NET managed heap, which allows the garbage collector to track their lifetime and free instances when they are no longer required. 
+
+Think of a reference type as a pointer - though not in the traditional C/C++ sense of the word. The actual location of a variable on the managed heap will change as the garbage collector recovers unused memory and compacts the heap, so in a short time a traditional pointer to a spot on the heap will be invalid. A .NET reference, on the other hand, will always give you access to your values no matter where it has been moved on the heap. A variable of reference type will always either contain a reference to a value of that type, or null. Assigning the value of a reference variable to another variable copies the reference, not the value stored. Be warned! 
+
+Value types are stored on the stack and are accessed directly. Once the memory containing that value is freed, the value type instance is destroyed. Hence, references to value types are not allowed. If it were allowed it would be possible to have a reference point to an invalid memory location. A value type will always point to a variable of that type, and cannot be null. Assigning a value type to another variable results in a copy of the value being made. 
+
+
+Creating an instance of a reference type
+
+Value types are easy since they are declared on the stack. It would be insane if you had to call new each time you wanted to create an int or double. Reference types are a little more complicated in that they cannot be created on the stack. 
+
+Reference types are created on the .NET managed heap, and so must be created using the overloaded new operator. The new operator for managed types not only creates the object on the managed heap, but also initialises the value of the variable to 0. The value passed back from new will not be a .NET reference, and not pointer in the traditional sense. In the following examples we will concentrate on the String class. You'll use it a lot, and it has some tricks up its sleave. 
+
+To create an instance of a reference type you simply declare a pointer of the variables type and create the object using new. 
+
+String* s = new String("This is a string");
+
+Attempting to declare a managed object on the stack simply won't work: 
+
+String s = "This is a string";  // WILL NOT COMPILE
+
+The String class' constructor contains many different overrides for many different occasions, but does not contain an override for String(). 
+
+Other ways of declaring a String are as follows: 
+
+String* s = new String("This is an ANSI string");
+String* s = "This is an ANSI string";
+String* s = L"This is a UNICODE string";
+String* s = S"This is a .NET string";
+
+ANSI and UNICODE strings should be familiar to you. .NET strings (those prefixed by 'S') are new and offer better performance than standard C++ literal strings. As well as this, all instances of identical string literals actually point to the same string. If s1 and s2 are two String's, then the following code: 
+
+s1 = S"This is a .NET string";
+s2 = S"This is a .NET string";
+if (s1 == s2)
+	printf("s1 == s2\n");
+else
+	printf("s1 != s2\n");
+
+s1 = "This is a C++ literal string";
+s2 = "This is a C++ literal string";
+if (s1 == s2)
+	printf("s1 == s2\n");
+else
+	printf("s1 != s2\n");
+
+would produce 
+
+s1 == s2
+s1 != s2
+
+Note that C++ literal strings can be used where ever .NET strings are used, but .NET strings cannot be used where C++ strings are expected. 
+
+Note also the use of printf in the above snippet. Just because we are using .NET types and methods doesn't mean we lose our standard non-managed libraries. In managed C++ we get the best of both worlds. 
+
+
+Creating your own managed types
+
+Creating your own managed types is achieved using the new __gc keyword. 
+
+__gc class MyClass
+{
+   public: 
+       int ID;
+};
+
+You then use this class as you would any other managed class: 
+
+MyClass* mc = new MyClass;
+mc->ID = 5;
+
+Because mc is a managed type it will be automatically initialised to 0 (ie mc->ID will be set as 0). 
+
+Using managed types in non-managed functions
+
+The final point is that when combining managed and unmanaged code you will invariably come across situations where you need to pass a managed pointer to a function expecting an unmanaged (fixed) pointer. 
+
+To allow this, a new keyword __pin has been introduced that essentially pins down the managed pointer so that the garbage collector will not move it. 
+
+MyClass __pin* pMC = mc;
+printf("The pinned value of mc is %d\n", pMC->ID);

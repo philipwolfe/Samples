@@ -1,0 +1,322 @@
+<?xml version="1.0"?>
+<VisualStudioProject
+	ProjectType="Visual C++"
+	Version="7.00"
+	Name="CDInfo"
+	SccProjectName=""
+	SccAuxPath=""
+	SccLocalPath=""
+	SccProvider="">
+	<Platforms>
+		<Platform
+			Name="Win32"/>
+	</Platforms>
+	<Configurations>
+		<Configuration
+			Name="Unicode Debug|Win32"
+			OutputDirectory=".\DebugU"
+			IntermediateDirectory=".\DebugU"
+			ConfigurationType="2"
+			UseOfMFC="1">
+			<Tool
+				Name="VCBscMakeTool"
+				OutputFile=".\DebugU/CDInfo.bsc"/>
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				PreprocessorDefinitions="_WINDLL,_DEBUG,_UNICODE,WIN32,_WINDOWS,_WINDLL,_MBCS,_USRDLL,_ATL_ATTRIBUTES"
+				ExceptionHandling="TRUE"
+				RuntimeLibrary="1"
+				PrecompiledHeaderFile=".\DebugU/CDInfo.pch"
+				AssemblerListingLocation=".\DebugU/"
+				ObjectFile=".\DebugU/"
+				ProgramDataBaseFileName=".\DebugU/"
+				DebugInformationFormat="4"/>
+			<Tool
+				Name="VCCustomBuildTool"
+				CommandLine="regsvr32 /s /c &quot;$(TargetPath)&quot;
+
+echo regsvr32 exec. time &gt; &quot;$(OutDir)\regsvr32.trg&quot;
+
+"
+				Outputs="$(OutDir)\regsvr32.trg"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="winmm.lib comctl32.lib "
+				OutputFile=".\DebugU/CDInfo.dll"
+				LinkIncremental="2"
+				GenerateDebugInformation="TRUE"
+				ProgramDatabaseFile=".\DebugU/CDInfo.pdb"
+				SubSystem="2"
+				ImportLibrary=".\DebugU/CDInfo.lib"
+				TargetMachine="1"/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="_DEBUG"
+				MkTypLibCompatible="TRUE"
+				TargetEnvironment="1"
+				TypeLibraryName=".\DebugU/CDInfo.tlb"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="_DEBUG"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="Debug|Win32"
+			OutputDirectory=".\Debug"
+			IntermediateDirectory=".\Debug"
+			ConfigurationType="2"
+			UseOfMFC="1">
+			<Tool
+				Name="VCBscMakeTool"
+				OutputFile=".\Debug/CDInfo.bsc"/>
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				PreprocessorDefinitions="_WINDLL,_DEBUG,WIN32,_WINDOWS,_WINDLL,_MBCS,_USRDLL,_ATL_ATTRIBUTES"
+				ExceptionHandling="TRUE"
+				RuntimeLibrary="1"
+				PrecompiledHeaderFile=".\Debug/CDInfo.pch"
+				AssemblerListingLocation=".\Debug/"
+				ObjectFile=".\Debug/"
+				ProgramDataBaseFileName=".\Debug/"
+				BrowseInformation="1"
+				DebugInformationFormat="4"/>
+			<Tool
+				Name="VCCustomBuildTool"
+				CommandLine="regsvr32 /s /c &quot;$(TargetPath)&quot;
+
+echo regsvr32 exec. time &gt; &quot;$(OutDir)\regsvr32.trg&quot;
+
+"
+				Outputs="$(OutDir)\regsvr32.trg"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="winmm.lib comctl32.lib "
+				OutputFile=".\Debug/CDInfo.dll"
+				LinkIncremental="2"
+				GenerateDebugInformation="TRUE"
+				ProgramDatabaseFile=".\Debug/CDInfo.pdb"
+				SubSystem="2"
+				ImportLibrary=".\Debug/CDInfo.lib"
+				TargetMachine="1"/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="_DEBUG"
+				MkTypLibCompatible="TRUE"
+				TargetEnvironment="1"
+				TypeLibraryName=".\Debug/CDInfo.tlb"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="_DEBUG"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="Release|Win32"
+			OutputDirectory=".\Release"
+			IntermediateDirectory=".\Release"
+			ConfigurationType="2"
+			UseOfMFC="1">
+			<Tool
+				Name="VCBscMakeTool"
+				OutputFile=".\Release/CDInfo.bsc"/>
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="1"
+				InlineFunctionExpansion="1"
+				PreprocessorDefinitions="_WINDLL,NDEBUG,WIN32,_WINDOWS,_WINDLL,_MBCS,_USRDLL,_ATL_ATTRIBUTES"
+				StringPooling="TRUE"
+				ExceptionHandling="TRUE"
+				RuntimeLibrary="0"
+				EnableFunctionLevelLinking="TRUE"
+				PrecompiledHeaderFile=".\Release/CDInfo.pch"
+				AssemblerListingLocation=".\Release/"
+				ObjectFile=".\Release/"
+				ProgramDataBaseFileName=".\Release/"/>
+			<Tool
+				Name="VCCustomBuildTool"
+				CommandLine="regsvr32 /s /c &quot;$(TargetPath)&quot;
+
+echo regsvr32 exec. time &gt; &quot;$(OutDir)\regsvr32.trg&quot;
+
+"
+				Outputs="$(OutDir)\regsvr32.trg"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="winmm.lib comctl32.lib "
+				OutputFile=".\Release/CDInfo.dll"
+				LinkIncremental="1"
+				ProgramDatabaseFile=".\Release/CDInfo.pdb"
+				SubSystem="2"
+				ImportLibrary=".\Release/CDInfo.lib"
+				TargetMachine="1"/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="NDEBUG"
+				MkTypLibCompatible="TRUE"
+				TargetEnvironment="1"
+				TypeLibraryName=".\Release/CDInfo.tlb"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="NDEBUG"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="Unicode Release|Win32"
+			OutputDirectory=".\ReleaseU"
+			IntermediateDirectory=".\ReleaseU"
+			ConfigurationType="2"
+			UseOfMFC="1">
+			<Tool
+				Name="VCBscMakeTool"
+				OutputFile=".\ReleaseU/CDInfo.bsc"/>
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="1"
+				InlineFunctionExpansion="1"
+				PreprocessorDefinitions="_WINDLL,NDEBUG,_UNICODE,WIN32,_WINDOWS,_WINDLL,_MBCS,_USRDLL,_ATL_ATTRIBUTES"
+				StringPooling="TRUE"
+				ExceptionHandling="TRUE"
+				RuntimeLibrary="0"
+				EnableFunctionLevelLinking="TRUE"
+				PrecompiledHeaderFile=".\ReleaseU/CDInfo.pch"
+				AssemblerListingLocation=".\ReleaseU/"
+				ObjectFile=".\ReleaseU/"
+				ProgramDataBaseFileName=".\ReleaseU/"/>
+			<Tool
+				Name="VCCustomBuildTool"
+				CommandLine="regsvr32 /s /c &quot;$(TargetPath)&quot;
+
+echo regsvr32 exec. time &gt; &quot;$(OutDir)\regsvr32.trg&quot;
+
+"
+				Outputs="$(OutDir)\regsvr32.trg"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="winmm.lib comctl32.lib "
+				OutputFile=".\ReleaseU/CDInfo.dll"
+				LinkIncremental="1"
+				ProgramDatabaseFile=".\ReleaseU/CDInfo.pdb"
+				SubSystem="2"
+				ImportLibrary=".\ReleaseU/CDInfo.lib"
+				TargetMachine="1"/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="NDEBUG"
+				MkTypLibCompatible="TRUE"
+				TargetEnvironment="1"
+				TypeLibraryName=".\ReleaseU/CDInfo.tlb"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="NDEBUG"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+		</Configuration>
+	</Configurations>
+	<Files>
+		<Filter
+			Name="Source Files"
+			Filter="cpp;c;cxx;rc;def;r;odl;hpj;bat;for;f90">
+			<File
+				RelativePath=".\CCDInfo.cpp">
+			</File>
+			<File
+				RelativePath=".\CDInfo.cpp">
+			</File>
+			<File
+				RelativePath=".\CDInfo.rc">
+			</File>
+			<File
+				RelativePath=".\CDInfo1.cpp">
+			</File>
+			<File
+				RelativePath=".\StdAfx.cpp">
+			</File>
+		</Filter>
+		<Filter
+			Name="Header Files"
+			Filter="h;hpp;hxx;hm;inl;fi;fd">
+			<File
+				RelativePath=".\CCDInfo.h">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\CCDInfo.inl">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\CDInfo1.h">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\CDInfoIface.h">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\StdAfx.h">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"/>
+				</FileConfiguration>
+			</File>
+		</Filter>
+		<Filter
+			Name="Resource Files"
+			Filter="ico;cur;bmp;dlg;rc2;rct;bin;cnt;rtf;gif;jpg;jpeg;jpe">
+			<File
+				RelativePath=".\ToolBtn.bmp">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"/>
+				</FileConfiguration>
+			</File>
+		</Filter>
+	</Files>
+	<Globals>
+	</Globals>
+</VisualStudioProject>

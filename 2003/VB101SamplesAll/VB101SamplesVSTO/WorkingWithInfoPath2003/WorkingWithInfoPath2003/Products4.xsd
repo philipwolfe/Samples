@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<xsd:schema targetNamespace="http://schemas.microsoft.com/office/infopath/2003/dataFormSolution" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:dfs="http://schemas.microsoft.com/office/infopath/2003/dataFormSolution" xmlns:d="http://schemas.microsoft.com/office/infopath/2003/ado/dataFields">
+	<xsd:import schemaLocation="Products5.xsd" namespace="http://schemas.microsoft.com/office/infopath/2003/ado/dataFields"></xsd:import>
+	<xsd:element name="myFields">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="dataFields">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element ref="d:Product" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"></xsd:any>
+			</xsd:sequence>
+			<xsd:anyAttribute namespace="##other" processContents="lax"></xsd:anyAttribute>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

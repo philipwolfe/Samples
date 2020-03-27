@@ -1,0 +1,61 @@
+{{ handler bin\ConfirmUser.dll/Default }}
+<html>
+	<!-- (c) 2000 Microsoft Corporation -->
+	<head>
+		<title>{{Title}}</title>
+		<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+		<link rel="stylesheet" href="normal.css" type="text/css">
+	</head>
+
+	<body>
+		<h1>{{Title}}</h1>
+		<form method="post" action="confirmuser.srf" AUTOCOMPLETE="OFF">
+			<table width="480" border="0" rules="none" frame="void">
+				<tr>
+					<td>user name</td>
+					<td><input type="text" name="user" value="{{UserName}}"></input></td>
+				</tr>
+				<tr>
+					<td>password</td>
+					<td><input type="password" name="password"></input></td>
+				</tr>
+				{{ if ShowUserDetail }}
+				<tr>
+					<td>email</td>
+					<td><input type="text" name="email"></input></td>
+				</tr>
+				{{ endif }}
+			</table>
+			{{Action}}
+			<div align="right">
+				<input type="submit" name="cmdSubmit" value="Submit">
+				<input type="reset" name="cmdCancel" value="Cancel">
+			</div>
+		</form>
+		{{Information}}
+
+		{{ if ShowUserDetail }}
+			<h3>Instructions</h3>
+			<p>
+			Choose a user name and password, and enter a valid email address.
+			If your user name is not available, you will have a chance to try again.
+			If your user name is available, we will send you an email with 
+			instructions for confirming your registration with us. The email will ask you to visit a
+			unique web page and enter your user name and password so that we know your email address is valid.
+			</p>
+			
+			<h3>How It Works</h3>
+			<p>
+			The server looks up the user name that you enter to confirm that it isn't already
+			taken. If it is free, your details are added to our database and marked as unconfirmed. We generate
+			a random GUID at this time and store that in the database along with the other details.
+			We send an email to the address you provided using the CMimeMessage and CSMTPConnection classes.
+			The email contains a URL that includes the GUID that we generated for you. When you navigate
+			to that URL, we generate a login page that allows you to enter your user name and password
+			and also sends us the GUID in a hidden form field. If the user name, password, and GUID all
+			match an unconfirmed user, we mark that user as confirmed. We know that the user has a valid
+			email address and remembers the user name and password that they chose when they signed up.
+			</p>
+		{{endif}}
+	</body>
+</html>

@@ -1,0 +1,166 @@
+// File: vc70.idl
+// Copyright (c) Microsoft Corporation.  All rights reserved.
+//
+// This source code is only intended as a supplement to the
+// Microsoft Classes Reference and related electronic
+// documentation provided with the library.
+// See these sources for detailed information regarding the
+// Microsoft C++ Libraries products.
+
+import "docobj.idl";
+import "C:\Program Files\Microsoft Visual Studio 7\Vc7\include\comcat.idl";
+
+import "../tantypeiface.h";
+[
+	object,
+	uuid(4A6E83B0-B0F4-11d0-B69F-00A0C903487A),
+	helpstring("ITangramModelEvent Interface"),
+	pointer_default(unique)
+] 
+#line 13 "c:\\samples\\attrib\\atltangram\\atlmodel\\atlmodeliface.h"
+interface IATLTangramModelEvent : IUnknown {
+#line 15 "c:\\samples\\attrib\\atltangram\\atlmodel\\atlmodeliface.h"
+	HRESULT  OnModelChange();
+};
+
+[
+	object,
+	uuid(060BAAA2-B076-11D0-B69F-00A0C903487A),
+	helpstring("IATLTangramModel Interface"),
+	pointer_default(unique)
+] 
+#line 27 "c:\\samples\\attrib\\atltangram\\atlmodel\\atlmodeliface.h"
+interface IATLTangramModel : IUnknown {
+#line 29 "c:\\samples\\attrib\\atltangram\\atlmodel\\atlmodeliface.h"
+	HRESULT  GetNumberOfVertices([out] long *pcVertices);
+	HRESULT  GetVertices([in] long cVertices, [out,size_is(cVertices)] TangramPoint2d *points);
+#line 32 "c:\\samples\\attrib\\atltangram\\atlmodel\\atlmodeliface.h"
+	HRESULT  SetVertices([in] long cVertices, [in,size_is(cVertices)] TangramPoint2d *points);
+};
+
+[
+	object,
+	uuid(D5056310-B0F4-11d0-B69F-00A0C903487A),
+	helpstring("IATLTangramTransform Interface"),
+	pointer_default(unique)
+] 
+#line 44 "c:\\samples\\attrib\\atltangram\\atlmodel\\atlmodeliface.h"
+interface IATLTangramTransform : IUnknown {
+#line 46 "c:\\samples\\attrib\\atltangram\\atlmodel\\atlmodeliface.h"
+	HRESULT  Translate([in] double x, [in] double y);
+	HRESULT  GetTranslation([out] TangramPoint2d *point);
+	HRESULT  Rotate([in] double fDegrees);
+	HRESULT  GetRotation([out] double *pRotation);
+};
+
+[
+	object,
+	uuid(8FAD674F-AD34-11D0-B69F-00A0C903487A),
+	helpstring("IAtlTangramCanvas Interface"),
+	pointer_default(unique)
+] 
+#line 8 "c:\\samples\\attrib\\atltangram\\atltangramcanvas\\atltangramcanvasiface.h"
+interface IAtlTangramCanvas : IUnknown {
+#line 10 "c:\\samples\\attrib\\atltangram\\atltangramcanvas\\atltangramcanvasiface.h"
+	HRESULT  Initialize([in] HWND hWnd, [in] long cx, [in] long cy);
+	HRESULT  Paint([in] HDC hdcDest, [in] RECT rectUpdate);
+	HRESULT  Update([in] RECT rectUpdate);
+	HRESULT  GetHDC([out] HDC *pHDC );
+	HRESULT  SetPalette([in] HPALETTE hPal);
+	HRESULT  OnQueryNewPalette([in] HWND hWndReceived);
+};
+
+[
+	object,
+	uuid(D62E8DC8-AEDD-11d0-80C9-00609714FDFE),
+	helpstring("ITangramVisual Interface"),
+	pointer_default(unique)
+] 
+#line 10 "c:\\samples\\attrib\\atltangram\\atlgdiworld\\gdiworldiface.h"
+interface IAtlTangramVisual : IUnknown {
+#line 12 "c:\\samples\\attrib\\atltangram\\atlgdiworld\\gdiworldiface.h"
+	HRESULT  GetModel([in] const IID *iid, [out,iid_is(iid)] IUnknown **ppI );
+#line 14 "c:\\samples\\attrib\\atltangram\\atlgdiworld\\gdiworldiface.h"
+	HRESULT  SetSelected([in] BOOL bSelected);
+};
+
+[
+	object,
+	uuid(582787A4-AED3-11d0-80C9-00609714FDFE),
+	helpstring("ITangramWorld Interface"),
+	pointer_default(unique)
+] 
+#line 22 "c:\\samples\\attrib\\atltangram\\atlgdiworld\\gdiworldiface.h"
+interface IAtlTangramWorld : IUnknown {
+#line 24 "c:\\samples\\attrib\\atltangram\\atlgdiworld\\gdiworldiface.h"
+	HRESULT  Initialize([in] HWND hwnd, [in] double logicalCX, [in] double logicalCY);
+	HRESULT  DeviceToModel([in] POINT ptIN, [out] TangramPoint2d *pptOut);
+	HRESULT  VisualFromPoint([in] POINT pt, [in] const IID *iid, [out,iid_is(iid)] IUnknown **pITangramVisual );
+#line 30 "c:\\samples\\attrib\\atltangram\\atlgdiworld\\gdiworldiface.h"
+	HRESULT  CreateVisualForModel([in] IATLTangramModel *pModel);
+	HRESULT  SelectVisual([in] IAtlTangramVisual *pSelectedVisual, [in] BOOL bSelect);
+	HRESULT  Animate();
+};
+
+[
+	object,
+	uuid(09A63AE0-AED1-11D0-80C9-00609714FDFE),
+	helpstring("IAtlTangramGdiWorld Interface"),
+	pointer_default(unique)
+] 
+#line 40 "c:\\samples\\attrib\\atltangram\\atlgdiworld\\gdiworldiface.h"
+interface IAtlTangramGdiWorld : IAtlTangramWorld {
+#line 42 "c:\\samples\\attrib\\atltangram\\atlgdiworld\\gdiworldiface.h"
+	HRESULT  ModelToDevice([in] TangramPoint2d pptIn, [out] POINT *pptOut);
+	HRESULT  AddUpdateRect([in] RECT rectUpdate);
+};
+
+[
+	object,
+	uuid(09A63AEF-AED1-11D0-80C9-00609714FDFE),
+	helpstring("IAtlTangramGdiVisual Interface"),
+	pointer_default(unique)
+] 
+#line 51 "c:\\samples\\attrib\\atltangram\\atlgdiworld\\gdiworldiface.h"
+interface IAtlTangramGdiVisual : IAtlTangramVisual {
+#line 53 "c:\\samples\\attrib\\atltangram\\atlgdiworld\\gdiworldiface.h"
+	HRESULT  Initialize([in] IATLTangramModel *pModel, [in] IAtlTangramGdiWorld *pWorld);
+	HRESULT  IsPtIn([in] POINT pt);
+	HRESULT  GetBoundingRect([out] RECT *pBoundingRect);
+	HRESULT  DrawOn([in] IAtlTangramCanvas *pCanvas);
+#line 58 "c:\\samples\\attrib\\atltangram\\atlgdiworld\\gdiworldiface.h"
+	[helpstring("method ReleaseConnectionPoint")] HRESULT  ReleaseConnectionPoint();
+};
+
+
+[ version(1.0), uuid(D3E72169-871F-4c98-B986-777F8B7B909B), helpstring("ATLGdiWorld Attrib 1.0 Type Library") ]
+library ATLGdiWorldAttrib
+{
+	importlib("stdole2.tlb");
+	importlib("olepro32.dll");
+
+	[
+		uuid(028B1533-5DF2-4b40-A636-CDFDAD38678E),
+		version(1.0),
+		helpstring("AtlTangramGdiVisualAttrib Class")
+	] 
+#line 23 "c:\\samples\\attrib\\atltangram\\atlgdiworld\\atltangramgdivisual.h"
+	coclass CAtlTangramGdiVisual {
+		[default]	interface IAtlTangramGdiVisual;
+		interface IAtlTangramVisual;
+		interface IATLTangramModelEvent;
+	};
+
+	[
+		uuid(EE10B316-9599-4f96-8320-53077D73D65A),
+		version(1.0),
+		helpstring("AtlTangramGdiWorldAttrib Class")
+	] 
+#line 42 "c:\\samples\\attrib\\atltangram\\atlgdiworld\\atlgdiworldimpl.h"
+	coclass CAtlGdiWorld {
+		[default]	interface IAtlTangramGdiWorld;
+		interface IAtlTangramWorld;
+	};
+
+}
+

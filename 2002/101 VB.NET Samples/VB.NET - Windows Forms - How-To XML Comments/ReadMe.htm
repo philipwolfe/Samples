@@ -1,0 +1,241 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- Copyright 1999-2002 Microsoft Corporation.  All rights reserved. -->
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft Visual Studio.NET 7.0">
+		<meta name="ProgId" content="VisualStudio.HTML">
+		<meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+		<h1>Visual Basic .NET XML Documentation Tool</h1>
+		<P><SPAN>The XML Documentation Tool (XML Documentation Tool.exe) gives Visual Basic 
+				.NET developers the ability to author XML documentation files for their library 
+				projects.&nbsp; This is useful when it is desirable to distribute a built 
+				assembly but impractical to distribute associated source code.&nbsp; Consumers 
+				of their referenced libraries see the XML information in Intellisense in the 
+				Visual Studio code editor and the Object Browser.</SPAN></P>
+		<P><SPAN><strong>Note&nbsp;</strong>The tool can be used for assemblies built in 
+				languages other than Visual Basic .NET, as long as the assemblies are CLS 
+				compliant managed code assemblies, such as C#.</SPAN></P>
+		<P><FONT color="navy"><STRONG>To start the tool</STRONG></FONT>&nbsp;</P>
+		<OL>
+			<LI>
+			Start the XML Documentation Tool by double-clicking XML Documentation Tool.exe 
+			from its downloaded location. The XML Documentation Tool window appears.&nbsp;
+			<LI>
+			To access the assembly you want to examine, on the File menu, click Open. The 
+			Open Files dialog box appears.&nbsp;
+			<LI>
+			Enter the name of the assembly or select Browse to search for the file. If an 
+			XML file is already associated with the assembly, it appears in the XML File 
+			text box.&nbsp;
+			<LI>
+				Click OK to open the assembly. A tree view of the assembly members is displayed 
+				in the left pane.</LI></OL>
+		<P><SPAN><STRONG>Note&nbsp;</STRONG>The four most recently used assemblies are listed 
+				under the <STRONG>File</STRONG> menu.</SPAN></P>
+		<P><FONT color="navy"><STRONG>To expand or collapse the tree view</STRONG></FONT></P>
+		<UL>
+			<LI>
+				Choose Expand All from the View menu to display all of the assembly's members. 
+				Items with associated documentation information appear in bold. Click a member 
+				name to view its summary, remarks, parameters, and property values.
+				<BR>
+				<p>
+					or</p>
+			<LI>
+				Choose Collapse All from the View menu to hide all members.
+			</LI>
+		</UL>
+		<P><FONT color="navy"><STRONG>To edit XML documentation</STRONG></FONT></P>
+		<UL>
+			<LI>
+			Click in the appropriate textbox and either enter new information or edit 
+			existing information.
+			<LI>
+				If you want to copy information from one node to another, select the first node 
+				and drag it atop the node to which you wish to copy the information. You can 
+				use the tool only to edit documentation for public and protected types and 
+				members that are exposed from the assembly file. Private and friend methods or 
+				classes are not exposed, and therefore are not viewable in the tree view<P><span><STRONG>Note</STRONG></span>
+					The windows holding information about the individual members appear in the 
+					upper-right pane.</P>
+			</LI>
+		</UL>
+		<P><FONT color="navy"><STRONG>To search for a specific member</STRONG></FONT></P>
+		<OL>
+			<LI>
+			On the Edit menu, click Find. The XML Documentation Find dialog box opens.
+			<LI>
+			In the Find text box, type the name of the item and click Find Next.
+			<LI>
+				Select the Match Case or Match Whole Word check boxes to refine your search.</LI></OL>
+		<H3>Accessing Your XML file</H3>
+		<P>When you add a reference to a component in another project, Visual Studio 
+			automatically reads the XML file that has the same file name (with an .xml 
+			extension) and that is in the same directory as the .dll file. When you call 
+			methods from that assembly in the code editor, the XML documentation about each 
+			argument is displayed in Intellisense. You can view summary, parameters, and 
+			remarks in the Object Browser.
+		</P>
+		<P><FONT color="navy"><STRONG>To view your information</STRONG></FONT></P>
+		<OL>
+			<LI>
+			Open your project.
+			<LI>
+			On the View menu, click Other Windows, and then Object Browser. The Object 
+			Browser window appears.
+			<LI>
+			Locate the library in the Objects pane.
+			<LI>
+				Click on a member to view the information associated with it. The information 
+				appears in the Description pane.</LI></OL>
+		<H3>Error Information</H3>
+		<P>When there are conflicts between the information in the XML file and the 
+			assembly, the XML Documentation tool lists these conflicts as errors, along 
+			with the path to the node creating the error and a brief description of the 
+			error. The status bar displays the number of errors. Errors occur when the 
+			assembly and its XML documentation file are out of sync. For example, a 
+			developer may have changed the name of a class in one file but not the other, 
+			or a developer may have added a parameter for a method.&nbsp; Error information 
+			appears in the Error Window, which is located in the lower-right pane, and can 
+			be hidden or displayed. To hide and display error information, click <STRONG>Show 
+				Error&nbsp;Window</STRONG> on the <STRONG>View</STRONG> menu.&nbsp; 
+			Double-click an item in the error list to highlight the node in the left pane 
+			and display the contents of the node. Nodes with associated errors are 
+			displayed in red.
+		</P>
+		<P><FONT color="navy"><STRONG>To correct errors</STRONG></FONT></P>
+		<UL>
+			<LI>
+				Clear all&nbsp;the contents of&nbsp;a bad node from the tree view by selecting 
+				the node in the left pane and click&nbsp;<STRONG>Clear Node</STRONG> on the <STRONG>
+					Edit</STRONG>
+			menu.&nbsp;
+			<LI>
+				Correct a single error by&nbsp;right-clicking the label of the field containing 
+				the error&nbsp;and selecting <STRONG>Delete</STRONG>&nbsp;
+			<LI>
+				To delete all nodes that appear only in the XML file, select <STRONG>Delete 
+					XML-Only Nodes</STRONG>.
+				<P><span><STRONG>Note</STRONG></span>&nbsp; Before&nbsp;correcting any errors, you 
+					may want to copy information from one node to another by dragging the node you 
+					want to copy to the second node in the tree view. Information is copied for all 
+					nodes that match.
+				</P>
+			</LI>
+		</UL>
+		<P>The following table lists errors that might appear in the Error Window.
+		</P>
+		<table width="60%" border="1" cellspacing="0" cellpadding="0" style='BORDER-RIGHT:medium none; PADDING-RIGHT:4px; BORDER-TOP:medium none; PADDING-LEFT:4px; PADDING-BOTTOM:4px; BORDER-LEFT:medium none; PADDING-TOP:4px; BORDER-BOTTOM:medium none; BORDER-COLLAPSE:collapse'>
+			<tr>
+				<td valign="top">
+					<p class="Label"><STRONG>Error</STRONG></p>
+				</td>
+				<td valign="top">
+					<p class="Label"><STRONG>Possible Cause</STRONG></p>
+				</td>
+			</tr>
+			<tr>
+				<td valign="top">
+					<p>This node found only in the XML file.</p>
+				</td>
+				<td valign="top">
+					<p>The node appears in the XML file, but not in the assembly. Delete the node to 
+						remove this error.</p>
+				</td>
+			</tr>
+			<tr>
+				<td valign="top">
+					<p>Duplicate &lt;fieldname&gt; field found.</p>
+				</td>
+				<td valign="top">
+					<p>A node contains duplicate fields.<span style='mso-spacerun:yes'></span>In the 
+						editor window, right-click on the field and select <span class="Bold">Delete</span>
+						from the context menu.</p>
+				</td>
+			</tr>
+			<tr>
+				<td valign="top">
+					<p>Unexpected &lt;fieldname&gt; found. Only &lt;type&gt; can have &lt;fieldname&gt; 
+						fields.</p>
+				</td>
+				<td valign="top">
+					<p>A node contains an inappropriate field.<span style='mso-spacerun:yes'></span>In 
+						the editor window, right-click on the field and select <span class="Bold">Delete</span>
+						from the context menu.</p>
+				</td>
+			</tr>
+			<tr>
+				<td valign="top">
+					<p>'Name' item for parameter on node &lt;nodename&gt; is not valid.</p>
+				</td>
+				<td valign="top">
+					<p>The name item for an XML node is not valid.&nbsp;<span style='mso-spacerun:yes'></span>Delete 
+						the node.</p>
+				</td>
+			</tr>
+			<tr>
+				<td valign="top">
+					<p>Parameter &lt;parametername&gt; on node &lt;nodename&gt; is found only in the 
+						XML file.</p>
+				</td>
+				<td valign="top">
+					<p>The parameter appears on the node only in the XML file. Edit the node 
+						information to remove this error.</p>
+				</td>
+			</tr>
+			<tr>
+				<td valign="top">
+					<p>Field &lt;fieldname&gt; is unrecognized; content is ignored. Content: 
+						&lt;message&gt;.</p>
+				</td>
+				<td valign="top">
+					<p>Copy the content of the field to another node if you wish to preserve it and 
+						delete the node.</p>
+				</td>
+			</tr>
+			<tr>
+				<td valign="top">
+					<p>Node name &lt;nodename&gt; is not valid. This node will be removed upon save.</p>
+				</td>
+				<td valign="top">
+					<p>A nodename is not valid. Save the application to remove the node and its 
+						corresponding error.</p>
+				</td>
+			</tr>
+			<tr>
+				<td valign="top">
+					<p>'Name' item for member node is not valid. This node will be removed upon save.</p>
+				</td>
+				<td valign="top">
+					<p>A member name is not valid. Save the application to remove the node and its 
+						corresponding error.</p>
+				</td>
+			</tr>
+			<tr style='mso-yfti-lastrow:yes'>
+				<td valign="top">
+					<p>Bad signature found in member node: &lt;nodename&gt;.</p>
+				</td>
+				<td valign="top">
+					<p>The signature for an XML node is not valid.&nbsp;<span style='mso-spacerun:yes'></span>Delete 
+						the node.</p>
+				</td>
+			</tr>
+		</table>
+		<p>
+			For more information, see the following topics in the Visual Studio .NET help 
+			system:</p>
+		<P>Processing the XML File
+		</P>
+		<P>Viewing Code Structure with Comments
+		</P>
+		<P>Creating Code Reports
+		</P>
+		<P>Browsing Code and Components</P>
+		<H2>Last Update:&nbsp;9 July 2002</H2>
+	</body>
+</html>

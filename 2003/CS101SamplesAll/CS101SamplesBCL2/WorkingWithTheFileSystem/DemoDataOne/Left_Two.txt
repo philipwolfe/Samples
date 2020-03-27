@@ -1,0 +1,16 @@
+Whether the file system has an underlying storage device or not, file
+systems typically have directories which associate file names with
+files, usually by connecting the file name to an index into a file
+allocation table of some sort, such as the FAT in an MS-DOS file
+system, or an inode in a UNIX-like filesystem. Directory structures may
+be flat, or allow hierarchies where directories may contain
+subdirectories. In some file systems, file names are structured, with
+special syntax for filename extensions and version numbers. In others,
+file names are simple strings, and per-file metadata is stored
+elsewhere.
+
+Traditional filesystems offer facilities to create, move and delete
+both files and directories. They lack facilities to create additional
+links to a directory (hard links in Unix), rename parent links (".." in
+Unix-like OS), and create bidirectional links to files.
+

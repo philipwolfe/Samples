@@ -1,0 +1,22 @@
+{{ handler bin\ShowUser.dll/Default }}
+<html>
+	<!-- (c) 2000 Microsoft Corporation -->
+	<head>
+		<title>{{Title}}</title>
+		<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+		<link rel="stylesheet" href="normal.css" type="text/css">
+	</head>
+
+	<body>
+		<h1>{{Title}}</h1>
+		<h3>Instructions</h3>
+		<p>
+		This page shows the server variables that are affected by the user
+		and the security used on the page. Try changing the security settings
+		for this page in Internet Services Manager to see how these values change.
+		</p>
+				
+		{{ShowUser}}
+
+	</body>
+</html>

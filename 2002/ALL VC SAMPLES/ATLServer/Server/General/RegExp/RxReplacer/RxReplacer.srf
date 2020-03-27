@@ -1,0 +1,31 @@
+<HTML>
+	<HEAD>
+		<TITLE>Regex Replacer</TITLE></HEAD>
+	<BODY>
+		{{handler RxReplacer.dll/Default}}
+		<br>
+		<form name="theForm" enctype="multipart/form-data" method="post" action="RxReplacer.srf">
+			Regular Expresion to look for:<input type="text" name="regex" size="50"> ie:&nbsp; 
+			"{hello} {world}"
+			<p>
+				&nbsp;
+			</p>
+			Expresion to substitute it for:<input type="text" name="newexp" size="50">&nbsp; 
+			ie:&nbsp; "$2 $1"&nbsp; (this would substitute "hello world" with 
+			"world&nbsp;hello" in your file)&nbsp;
+			<p>
+				&nbsp;
+			</p>
+			<input type="checkbox" name="global" checked> Global Substitution(vs first 
+			instance) <input type="checkbox" name="usevars">Substitute Variables <input id="Checkbox1" type="checkbox" checked name="casesensitive">Case 
+			Sensitive</p> <select name="contenttype">
+				<option value="text/plain" selected>
+					Return as text</option>
+				<option value="text/html">
+					Return as html</option>
+				<option value="invalidtype">
+					Return as binary</option>
+			</select>&nbsp;File to Modify <input type="file" name="theFile"> </p> <input type="submit" value="Get Modified File">
+		</form>
+		<br>
+		</FORM></BODY></HTML>

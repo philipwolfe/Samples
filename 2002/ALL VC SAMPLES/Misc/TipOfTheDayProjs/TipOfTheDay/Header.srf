@@ -1,0 +1,22 @@
+<!-- 
+	NOTE :doublebrace: refers to the brace mark used to signify Server Response File Tags in comments.
+	This handler is needed here because it is a seperate SRF
+	file and is parsed and processed seperate from the TipOfTheDay.srf.
+	The results of this processed file are inserted into the
+	TipOfTheDay.srf file replacing the :doublebrace: include Header.srf :doublebrace: tokens
+-->
+{{handler TipOfTheDay.dll/Default}}
+
+<!-- This file contains the header for the TipOfTheDay project 
+	and demonstrates how the ATL Server include directive can be 
+	used from the main TipOfTheDay.srf -->
+
+
+<table width="100%" align="center">
+	<tr>
+		<td class="PageHeader">{{DisplayVersion}}</td>
+	</tr>
+</table>
+<BR>
+<BR>
+<BR>

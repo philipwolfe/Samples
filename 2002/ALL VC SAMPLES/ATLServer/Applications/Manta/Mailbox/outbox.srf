@@ -1,0 +1,51 @@
+<!--{{handler cgi-bin\Mailbox.dll/Outbox}} This file (c) 2000 Microsoft Corporation -->
+<html>
+<head>
+<meta http-equiv="Cache-Control" content="no-cache">
+<base target="main_frame">
+<link rel="stylesheet" href="main.css" type="text/css">
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function SendMessages() 
+{
+	if (confirm("Do you want to send all your messages in your Outbox now?"))
+	{
+		navigate("outbox.srf?sendmsgs=1");
+	}
+}
+-->
+</SCRIPT>
+</head>
+<body background="">
+<p><font size="2">There are {{MessageCount}} unsent message(s) in your Outbox.<br>
+To send your messages, click &quot;Send Mail&quot; below.</font></p>
+<form method="POST" action="outbox.srf">
+<table border="1" cellspacing="0" cellpadding="2" bgcolor="#FFFFCC" width="627">
+  <tr>
+    <td align="center" width="5%"><font color="#3A6EA5"><span style="font-variant: small-caps"><b>Mark:</b></span></font></td>
+    <td align="center"><font color="#3A6EA5"><span style="font-variant: small-caps"><b>To:</b></span></font></td>
+    <td align="center"><font color="#3A6EA5"><span style="font-variant: small-caps"><b>Subject:</b></span></font></td>
+    <td align="center" width="15%"><font color="#3A6EA5"><span style="font-variant: small-caps"><b>Date:</b></span></font></td>
+  </tr>
+  <!--{{if MessagesLeft}}-->
+  <!--{{while MessagesLeft}}-->
+  <tr>
+    <td align="center" bgcolor="#FFFFFF"><input type="checkbox" name="id{{MessageID}}" value="ON"></td>
+    <td align="left" bgcolor="#FFFFFF"><font size="2">{{MessageTo}}</font></td>
+    <td align="left" bgcolor="#FFFFFF"><font size="2"><a href="message.srf?message={{MessageID}}&ref=outbox">{{MessageSubject}}</a></font></td>
+    <td align="left" bgcolor="#FFFFFF"><font size="2">{{MessageDate}}</font></td>
+  </tr>
+  <!--{{NextMessage}}{{endwhile}}-->
+  <!--{{else}}-->
+  <tr>
+    <td bgcolor="#FFFFFF" colspan="4"><font size="2">You have no unsent messages in your Outbox.</font></td>
+  </tr>
+  <!--{{endif}}-->
+</table>
+<br><br>
+<input type="button" value="Send Mail" name="sendButton" {{if DisableButtons}}disabled{{endif}} OnClick="SendMessages()">&nbsp;&nbsp;&nbsp;
+<input type="submit" value="Delete Marked Messages" name="deleteButton" {{if DisableButtons}}disabled{{endif}}>
+<input type="hidden" name="deletemsgs" value="1">
+</form>
+</body>
+</html>

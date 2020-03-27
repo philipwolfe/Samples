@@ -1,0 +1,99 @@
+<strong><span style="font-size: 14pt; font-family: Arial">Supporting Localization With the .NET 2.0 BCL
+    <br />
+</span>
+</strong>
+<br />
+<span style="font-family: Arial"><strong>
+
+ 
+
+Introduction:
+<br />
+</strong></span>
+<br />
+<span style="font-family: Arial">
+
+ 
+
+Improvements in localization in the .NET 2.0 BCL allow developers to support multiple languages and locales with substantially less code than in the past.  Resource management has been simplified under the new platform and once in place, additional localization can be accomplished without writing any new code.
+<br />
+<br />
+    <strong>
+
+ 
+
+New features demonstrated:
+<br />
+    </strong></span>
+<br />
+<span style="font-family: Arial">
+
+ 
+
+Perhaps the most important new feature relevant to this example is the addition of strongly typed resources to the .NET 2.0 framework.  A wrapper class is generated for the resource file and that class encapsulates the ResourceManager and accessor methods that allow values to be extracted from the resource file.  The resource file can be referenced as a class with internal static members such that VS.NET Intellisense will provide completion for resource elements and strong typing of resource elements is enforced. The ‘System.ComponentModel.ComponentResourceManager’ is constructed with the strongly typed resource class and the ‘ApplyResources’ method is used to invoke reflection on a particular form component.  ‘ApplyResources’ will take the resource file entry names corresponding to properties of the component and apply the corresponding values to those properties. </span>
+<br />
+<br />
+<span style="font-family: Arial"><strong>
+
+ 
+
+Example code:
+<br />
+<br />
+</strong>
+
+ 
+
+The code consists of a form with various components including a button, a label, a textbox and a radio button.  Two resource files allow the descriptions of the components to be toggled between the English default and the German description.  The contents of the two resource files are:
+<br />
+<br />
+</span><span style="font-family: Courier New">
+button1.Text = Change Language    
+<br />
+label1.Text = Hello, I'm a Label       
+<br />
+radioButton1.Text = RadioButton   
+<br />
+textBox1.Text = Text in a box
+<br />
+<br />
+button1.Text = Ändern Sie Sprache 
+<br />
+label1.Text = Hallo, bin ich ein Aufkleber  
+<br />
+radioButton1.Text = RadiocTaste  
+<br />
+textBox1.Text = Text in einem Kasten
+<br />
+</span>
+<br />
+<span style="font-family: Arial">
+
+            
+
+The ComponentResourceManager is used to load the appropriate resource for the specified CultureInfo. The mechanisim appends the locale to the resource file name to select the proper resource.  Constructing a CultureInfo object with an empty string causes the default Resource1.resx to be used when calls to the ComponentResourceManager are applied, and constructing a CultureInfo with the "de" culture name causes the Resource1.de.resx file to be used.  When ApplyResources is called on a particular component with the current CultureInfo, reflection is used to extract the properties from the resource file and apply it to the component.  From the resource files shown above, you can see how the Text property of button1 can be set. The example hardwires the culture code but typically the CultureInfo would be extracted from system settings.  To extend localization, a new resource file can be created, translation performed, and the component properties set with the new language values on the resource property editor page, all without coding.
+<br />
+<br />
+    <strong>
+
+ 
+
+Running the example:<br />
+    </strong></span>
+<br />
+<span style="font-family: Arial">
+
+ 
+
+The example is available as a VS.NET 2005 windows forms project in both C# and VB.NET.  When the ‘Change Language’ button is clicked, the CultureInfo is toggled back and forth between language display on the form.  Initially, the default English values are displayed and when ‘Change Language’ is clicked the German values will be displayed.  Clicking again toggles the English version.
+<br />
+<br />
+    <strong>
+This sample requires the following to be installed:
+<br />
+    </strong></span>
+<br />
+<span style="font-family: Arial">
+Visual Studio .NET 2005
+<br />
+</span>

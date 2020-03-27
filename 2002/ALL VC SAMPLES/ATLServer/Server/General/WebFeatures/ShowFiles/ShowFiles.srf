@@ -1,0 +1,27 @@
+{{ handler bin\ShowFiles.dll/Default }}
+<html>
+	<!-- (c) 2000 Microsoft Corporation -->
+	<head>
+		<title>{{Title}}</title>
+		<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+		<link rel="stylesheet" href="normal.css" type="text/css">
+	</head>
+
+	<body>
+		<h1>{{Title}}</h1>
+		<table>
+		{{TableHeader}}
+		{{ShowFiles}}
+		</table>
+		
+		<h3>Instructions</h3>
+		<p>
+		Use <a href="form.srf">this form</a> to send a request to this page
+		that contains one or more files. The information about each file will
+		be displayed in a table. The files will be accepted at the start of the
+		request, saved in the temporary folder on the server, and deleted at the
+		end of the request.
+		</p>
+
+	</body>
+</html>

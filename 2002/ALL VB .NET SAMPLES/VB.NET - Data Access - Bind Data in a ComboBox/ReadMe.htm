@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+		<meta name="ProgId" content="FrontPage.Editor.Document">
+		<meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+		<h1>
+			Data Access:  Bind Data to a ComboBox</h1>
+		<P>
+			This sample shows some how to&nbsp;bind data to a combo box 
+			control&nbsp;.&nbsp;
+		</P>
+		<P>
+			<h2>Featured Highlights:</h2>
+		<P>The code demonstrates how to bind data to a combo box from a variety of 
+			different data sources. Data is bound from an array, array list, datatable and 
+			dataview. When the main form loads, the products table from the Northwind 
+			database is retrieved into a dataset using a simple&nbsp;SQL Select 
+			statement.&nbsp;A dataview&nbsp;which provides a sorted view&nbsp;of the 
+			ProductName column is also created at this time.&nbsp;The user can then 
+			populate the combo box control by binding to another array of colors, 
+			an array list of shapes, an advanced array list containing sales divisions 
+			defined with a structure, the products table residing in the dataset, or the 
+			sorted dataview. If the user binds to the dataset, dataview or the advanced 
+			array list of sales divisions, when an entry is selected from the combo box, an 
+			associated value for that entry is also displayed.</P>
+		<h2>Requirements:</h2>
+		<UL>
+			<LI>
+			Trial or Release version of Visual Studio .NET Professional (or greater).
+			<LI>
+				Access to the Northwind database residing in SQL Server or the Microsoft Data 
+				Engine (MSDE).&nbsp; To install MSDE, do the following:
+				<UL>
+					<LI>
+						<DIV align="left">Open the Start menu, then click Programs, the click Microsoft 
+							.NET Framework SDK, and then click Samples and Quickstart Tutorials.
+						</DIV>
+					<LI>
+						<DIV align="left">Click "Step 1: Install the .NET Framework Samples Database".</DIV>
+					<LI>
+						<DIV align="left">Open a command window, and CD to
+							<FRAMEWORKSDK>
+							\Samples\Setup This is typically : C:\Program Files\Microsoft Visual Studio 
+							.NET\FrameworkSDK\Samples\Setup</DIV>
+					<LI>
+						<DIV align="left">Type: osql -E -S (local)\NetSDK -i InstNwnd.sql</DIV>
+					</LI>
+				</UL>
+			</LI>
+		</UL>
+		<H2>Running the Sample</H2>
+		<P>Simply press <b>F5</b>.</P>
+		<OL>
+			<LI>
+			The advanced array list, dataset and dataview binding displays one set of 
+			values, but also associates a corresponding values that are available when an 
+			entry is selected. For example if the user selects the product entry&nbsp;Chai 
+			from products table bound to the combo box,&nbsp;Chai is displayed as the 
+			selected entry, but its associated&nbsp;ProductId&nbsp;is also available 
+			through the selectedValue property. The ValueMember propery of the combo box 
+			allows an alternate value to be made available.
+			<LI>
+				When the datasource property is used to bind data to a combo box, the sorted 
+				property is unavailable to ensure that the data is displayed in sorted order. 
+				The data source itself must be sorted.</LI>
+		</OL>
+		<H3>See Also:</H3>
+		<P><A href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/vbcon/html/vbtskdatabindingcomboboxcheckedlistboxorlistboxcontrol.asp">Data 
+				Binding a Windows Forms ComboBox, ListBox, or CheckedListBox Control</A>,&nbsp;
+			<A href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/vbcon/html/vbconprovidersofdatatowindowsforms.asp">
+				Providers of Data to Windows Forms</A>,&nbsp; <A href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpqstart/html/cpsmpnetsamples-windowsformsdatabinding.asp">
+				ComboBox&nbsp;Binding Sample&nbsp;,</A> <A href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpref/html/frlrfSystemWindowsFormsComboBoxClassTopic.asp">
+				ComboBox Class</A>
+		</P>
+		<UL>
+		</UL>
+	</body>
+</html>

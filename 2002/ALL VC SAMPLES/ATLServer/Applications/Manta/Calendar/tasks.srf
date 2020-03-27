@@ -1,0 +1,134 @@
+<!--{{ handler cgi-bin\Calendar.dll/Tasks }} This file (c) 2000 Microsoft Corporation -->
+<html>
+<head>
+<base target="main_frame">
+<link rel="stylesheet" href="main.css" type="text/css">
+<script language="JavaScript">
+<!--
+function OnDelete()
+{
+	if (confirm("Are you sure you want to delete these tasks?"))
+	{
+		document.forms.deleteform.submit();
+	}
+}
+-->
+</script>
+</head>
+<body>
+<form method="POST" name="deleteform" action="tasks.srf">
+  <table border="1" width="627" bgcolor="#FFFFCC" cellspacing="0" cellpadding="2">
+    <tr>
+      <td width="10%" align="center"><font color="#3A6EA5"><b><span style="font-variant: small-caps">MARK:</span></b></font></td>
+      <td width="5%" align="center">&nbsp;</td>
+      <td align="center"><font color="#3A6EA5"><b><span style="font-variant: small-caps">TASK:</span></b></font></td>
+      <td width="20%" align="center"><font color="#3A6EA5"><b><span style="font-variant: small-caps">DUE
+        DATE:</span></b></font></td>
+    </tr>
+    <!-- {{if TasksLeft}} -->
+    <!-- {{while TasksLeft}} -->
+    <tr>
+      <td width="10%" bgcolor="#FFFFFF" align="center"><font size="2"><input type="checkbox" name="taskid{{TaskID}}" value="ON"></font></td>
+      <td bgcolor="#FFFFFF" align="center" width="5%"><font size="2">{{PriorityImage}}</font></td>
+      <td bgcolor="#FFFFFF"><font size="2"><a href="task.srf?view=1&taskid={{TaskID}}">{{TaskTitle}}</a></font></td>
+      <td width="20%" bgcolor="#FFFFFF" align="center"><font size="2">&nbsp;{{TaskDate}}</font></td>
+    </tr>
+    <!-- {{NextTask}}{{endwhile}} -->
+    <!-- {{else}} -->
+    <tr>
+      <td bgcolor="#FFFFFF" colspan="4"><font size="2">You have no tasks currently set.</font></td>
+    </tr>
+    <!-- {{endif}} -->
+  </table>
+  <p><input type="button" name="deleteButton" value="Delete Marked Tasks" {{DisableButtons}} OnClick="OnDelete()"></p>
+  <input type="hidden" name="deleteform" value="1">
+</form>
+<form method="POST" action="tasks.srf">
+  <table border="1" width="627" bgcolor="#FFFFCC" cellspacing="0" cellpadding="2">
+    <tr>
+      <td width="67" align="right"><font color="#3A6EA5"><b><span style="font-variant: small-caps">TASK:</span></b></font></td>
+      <td width="546" bgcolor="#FFFFFF" colspan="3"><input type="text" name="title" size="86" value="{{TaskTitleInput}}" ></td>
+    </tr>
+    <tr>
+      <td width="67" align="right"><b><span style="font-variant: small-caps"><font color="#3A6EA5">DUE
+        DATE:</font></span></b></td>
+      <td width="254" bgcolor="#FFFFFF">
+        <select size="1" name="duemonth">
+         	<option value="1" {{SelectedMonth(1)}}>January</option>
+    		<option value="2" {{SelectedMonth(2)}}>Febuary</option>
+    		<option value="3" {{SelectedMonth(3)}}>March</option>
+    		<option value="4" {{SelectedMonth(4)}}>April</option>
+    		<option value="5" {{SelectedMonth(5)}}>May</option>
+    		<option value="6" {{SelectedMonth(6)}}>June</option>
+    		<option value="7" {{SelectedMonth(7)}}>July</option>
+    		<option value="8" {{SelectedMonth(8)}}>August</option>
+    		<option value="9" {{SelectedMonth(9)}}>September</option>
+    		<option value="10" {{SelectedMonth(10)}}>October</option>
+    		<option value="11" {{SelectedMonth(11)}}>November</option>
+    		<option value="12" {{SelectedMonth(12)}}>December</option>
+        </select>&nbsp;
+        <select size="1" name="dueday">
+          <option value="1" {{SelectedDay(1)}}>1</option>
+          <option value="2" {{SelectedDay(2)}}>2</option>
+          <option value="3" {{SelectedDay(3)}}>3</option>
+          <option value="4" {{SelectedDay(4)}}>4</option>
+          <option value="5" {{SelectedDay(5)}}>5</option>
+          <option value="6" {{SelectedDay(6)}}>6</option>
+          <option value="7" {{SelectedDay(7)}}>7</option>
+          <option value="8" {{SelectedDay(8)}}>8</option>
+          <option value="9" {{SelectedDay(9)}}>9</option>
+          <option value="10" {{SelectedDay(10)}}>10</option>
+          <option value="11" {{SelectedDay(11)}}>11</option>
+          <option value="12" {{SelectedDay(12)}}>12</option>
+          <option value="13" {{SelectedDay(13)}}>13</option>
+          <option value="14" {{SelectedDay(14)}}>14</option>
+          <option value="15" {{SelectedDay(15)}}>15</option>
+          <option value="16" {{SelectedDay(16)}}>16</option>
+          <option value="17" {{SelectedDay(17)}}>17</option>
+          <option value="18" {{SelectedDay(18)}}>18</option>
+          <option value="19" {{SelectedDay(19)}}>19</option>
+          <option value="20" {{SelectedDay(20)}}>20</option>
+			<option value="21" {{SelectedDay(21)}}>21</option>
+          <option value="22" {{SelectedDay(22)}}>22</option>
+          <option value="23" {{SelectedDay(23)}}>23</option>
+          <option value="24" {{SelectedDay(24)}}>24</option>
+          <option value="25" {{SelectedDay(25)}}>25</option>
+          <option value="26" {{SelectedDay(26)}}>26</option>
+          <option value="27" {{SelectedDay(27)}}>27</option>
+          <option value="28" {{SelectedDay(28)}}>28</option>
+          <option value="29" {{SelectedDay(29)}}>29</option>
+          <option value="30" {{SelectedDay(30)}}>30</option>
+          <option value="31" {{SelectedDay(31)}}>31</option>
+     	 </select>&nbsp; 
+     	 <select size="1" name="dueyear">
+    		<option value="1997" {{SelectedYear(1997)}}>1997</option>
+    		<option value="1998" {{SelectedYear(1998)}}>1998</option>
+    		<option value="1999" {{SelectedYear(1999)}}>1999</option>
+    		<option value="2000" {{SelectedYear(2000)}}>2000</option>
+    		<option value="2001" {{SelectedYear(2001)}}>2001</option>
+    		<option value="2002" {{SelectedYear(2002)}}>2002</option>
+    		<option value="2003" {{SelectedYear(2003)}}>2003</option>
+        </select></td>
+      <td width="71" bgcolor="#FFFFCC">
+        <font color="#3A6EA5"><b><span style="font-variant: small-caps">PRIORITY:</span></b></font></td>
+      <td width="209" bgcolor="#FFFFFF">
+        <select size="1" name="priority">
+          <option value="0" {{SelectedPriority(0)}}>Low</option>
+          <option value="1" {{SelectedPriority(1)}}>Normal</option>
+          <option value="2" {{SelectedPriority(2)}}>High</option>
+        </select></td>
+    </tr>
+    <tr>
+      <td width="67" align="right"><font color="#3A6EA5"><b><span style="font-variant: small-caps">DETAILS:</span></b></font></td>
+      <td width="546" bgcolor="#FFFFFF" colspan="3"><textarea rows="3" name="details" cols="65">{{TaskDetailsInput}}</textarea></td>
+    </tr>
+  </table>
+  {{if Failure}}<br><font size="2" color="#FF0000">You must specify a title before you can add a task.<br>
+    Task title cannot exeed {{MaxStringLen}} characters.<br>
+	Task details can not exceed {{MaxDetailsLen}} characters.</font>{{endif}}
+  <p><input type="submit" value="Add New Task" name="addButton">&nbsp; <input type="reset" value="Reset" name="B2"></p>
+  <input type="hidden" name="addform" value="1">
+</form>
+</body>
+</html>
+

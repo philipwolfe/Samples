@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<?xml:stylesheet href="doc.xsl" type="text/xsl"?> 
+<doc>
+    <assembly>
+        <name>AttributeViewer</name>
+    </assembly>
+    <members>
+        <member name="T:HelpUrlAttribute">
+            <summary>
+            Stores the Help URL for a specific program element.
+            </summary>
+        </member>
+        <member name="M:HelpUrlAttribute.#ctor(System.String)">
+            <summary>
+            The constructor for the Help URL Attribute
+            </summary>
+            <param name="url"> The Url to store </param>
+        </member>
+        <member name="M:HelpUrlAttribute.ToString">
+            <summary>
+            The string representation of this object.
+            </summary>
+        </member>
+        <member name="P:HelpUrlAttribute.Url">
+            <summary>
+            The Url that contains the help for the programming element.
+            </summary>
+        </member>
+        <member name="T:ProgrammingNoteAttribute">
+            <summary>
+            Stores a programming note.
+            </summary>
+            <remarks>
+            Notice how the AttributeUsage attribute can be used to AllowMultiple 
+            attributes to exist on the same programming entity
+            </remarks>
+        </member>
+        <member name="M:ProgrammingNoteAttribute.#ctor(System.String)">
+            <summary>
+            The constructor for the Programming Note Attribute
+            </summary>
+            <param name="note"> The note to store </param>
+        </member>
+        <member name="M:ProgrammingNoteAttribute.ToString">
+            <summary>
+            The string representation of this object.
+            </summary>
+        </member>
+        <member name="P:ProgrammingNoteAttribute.Note">
+            <summary>
+            The Note contents 
+            </summary>
+        </member>
+        <member name="T:AttributeViewer.Viewer">
+            <summary>
+            A simple Win Form that displays any Help and Programming Note 
+            attributes attached to types.
+            </summary>
+        </member>
+        <member name="F:AttributeViewer.Viewer.components">
+            <summary> 
+            Required designer variable
+            </summary>
+        </member>
+        <member name="M:AttributeViewer.Viewer.#ctor">
+            <summary>
+            Constructor for the Viewer form.
+            </summary>
+        </member>
+        <member name="M:AttributeViewer.Viewer.Dispose">
+            <summary>
+            Clean up any resources being used
+            </summary>
+        </member>
+        <member name="M:AttributeViewer.Viewer.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor
+            </summary>
+        </member>
+        <member name="M:AttributeViewer.Viewer.Link_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handle the click on the LinkLabel control
+            </summary>
+            <param name="sender"> The sender of the event</param>
+            <param name="e"> The argument to the event</param>
+        </member>
+        <member name="M:AttributeViewer.Viewer.Navigate(System.String)">
+            <summary>
+            Navigate to the specified Url.
+            </summary>
+            <param name="url"> The url to navigate to</param>
+        </member>
+        <member name="M:AttributeViewer.Viewer.displayPB_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handle the click of the GetInfo button
+            </summary>
+            <param name="sender"> The sender of the event</param>
+            <param name="e"> The argument to the event</param>
+        </member>
+        <member name="M:AttributeViewer.Viewer.ShowDetails(System.String)">
+            <summary>
+            Show the details for the passed type 
+            </summary>
+            <param name="typeName">The name of the type to show details</param>
+        </member>
+        <member name="M:AttributeViewer.Viewer.Main">
+            <summary>
+            Run the Viewer window.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,37 @@
+<!--{{handler cgi-bin\Mailbox.dll/Sentmail}} This file (c) 2000 Microsoft Corporation -->
+<html>
+<head>
+<base target="main_frame">
+<link rel="stylesheet" href="main.css" type="text/css">
+</head>
+<body>
+<p><font size="2">There are {{MessageCount}} sent messages that have been archived.</font> </p>
+<form method="POST" action="sentmail.srf">
+<table border="1" cellspacing="0" cellpadding="2" bgcolor="#FFFFCC" width="627">
+  <tr>
+    <td align="center" width="5%"><font color="#3A6EA5"><span style="font-variant: small-caps"><b>Mark:</b></span></font></td>
+    <td align="center"><font color="#3A6EA5"><span style="font-variant: small-caps"><b>To:</b></span></font></td>
+    <td align="center"><font color="#3A6EA5"><span style="font-variant: small-caps"><b>Subject:</b></span></font></td>
+    <td align="center" width="20%"><font color="#3A6EA5"><span style="font-variant: small-caps"><b>Sent On:</b></span></font></td>
+  </tr>
+  <!--{{if MessagesLeft}}-->
+  <!--{{while MessagesLeft}}-->
+  <tr>
+    <td align="center" bgcolor="#FFFFFF"><input type="checkbox" name="id{{MessageID}}" value="ON"></td>
+    <td align="left" bgcolor="#FFFFFF"><font size="2">{{MessageTo}}</font></td>
+    <td align="left" bgcolor="#FFFFFF"><a href="message.srf?message={{MessageID}}&ref=sentmail"><font size="2">{{MessageSubject}}</font></a></td>
+    <td align="center" bgcolor="#FFFFFF"><font size="2">{{MessageDate}}</font></td>
+  </tr>
+  <!--{{NextMessage}}{{endwhile}}-->
+  <!--{{else}}-->
+  <tr>
+    <td bgcolor="#FFFFFF" colspan="4"><font size="2">You have no archived messages in your Sent Mail folder.</font></td>
+  </tr>
+  <!--{{endif}}-->
+</table>
+<br><br>
+<input type="submit" value="Delete Marked Messages" name="deleteButton" {{if DisableButtons}}disabled{{endif}}>
+<input type="hidden" name="deletemsgs" value="1">
+</form>
+</body>
+</html>

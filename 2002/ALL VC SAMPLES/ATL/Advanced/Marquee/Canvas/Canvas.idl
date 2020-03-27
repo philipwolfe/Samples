@@ -1,0 +1,56 @@
+// Canvas.idl
+//
+// This is a part of the Active Template Library.
+// Copyright (c) Microsoft Corporation.  All rights reserved.
+//
+// This source code is only intended as a supplement to the
+// Active Template Library Reference and related
+// electronic documentation provided with the library.
+// See these sources for detailed information regarding the
+// Active Template Library product.
+
+// Canvas.idl : type library source for Canvas.exe
+
+// This file will be processed by the MIDL compiler to produce the
+// type library (Canvas.tlb).
+
+[ uuid(EACC6FE9-84BE-405D-9E52-3A954E38F9B9), version(1.0) ]
+library Canvas
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	//  Primary dispatch interface for CCanvasDoc
+	
+	[ uuid(84A16C90-D8E4-4BD8-8901-40F6D8E762E6) ]
+	dispinterface ICanvas
+	{
+		properties:
+		[id(1)] long Width;
+		[id(2)] long Height;
+
+		methods:
+		[id(3), helpstring("method DrawLine")] HRESULT DrawLine(
+			[in] int x1, [in] int y1,
+			[in] int x2, [in] int y2,
+			[in] int r, [in] int g, [in] int b);
+		[id(4), helpstring("method FillRect")] HRESULT FillRect(
+			[in] int left, [in] int top, [in] int right, [in] int bottom,
+			[in] int r, [in] int g, [in] int b);
+		[id(5), helpstring("method FrameRect")] HRESULT FrameRect(
+			[in] int left, [in] int top, [in] int right, [in] int bottom,
+			[in] int r, [in] int g, [in] int b);
+		[id(6), helpstring("method Ellipse")] HRESULT Ellipse(
+			[in] int left, [in] int top, [in] int right, [in] int bottom,
+			[in] int rEdge, [in] int gEdge, [in] int bEdge,
+			[in] int rFill, [in] int gFill, [in] int bFill);
+	};
+
+	//  Class information for CCanvasDoc
+	
+	[ uuid(29B8A4CA-2C1E-4281-A8AF-2D1BBC8A761C) ]
+	coclass Canvas
+	{
+		[default] dispinterface ICanvas;
+	};
+};

@@ -1,0 +1,49 @@
+<html>
+	{{handler bin\tutorial.dll/Default}}
+	<head>
+	</head>
+	<body>
+		<table border="2" width="640">
+			<tr>
+				<td align="center">
+					<b>Name</b></td>
+				<td align="center">
+					<b>Description</b></td>
+				<td align="center">
+					<b>Price</b></td>
+				<td align="center">
+					<b>Quantity</b></td>
+				<td align="center">
+					<b>Purchase</b></td>
+			</tr>
+			{{while GetNextProduct}}
+			<tr>
+				<td>
+					{{ProductName}}
+				</td>
+				<td>
+					{{ProductDescription}}
+				</td>
+				<td>
+					<center>
+						{{ProductPrice}}
+					</center>
+				</td>
+				<form action="tutorial.srf" method="post">
+					<td align=center>
+						<input type="text" size="4" name="Quantity" value="{{ProductQuantity}}" align="center">
+						({{ProductQuantity}})
+					</td>
+					<td align="center">
+						<input type="submit" name="AddToCart" value="Set Quantity In Cart" align="center">
+					</td>
+					<input type="hidden" name="ProductId" value="{{ProductId}}">
+				</form>
+			</tr>
+			{{endwhile}}
+		</table>
+		<form action="cart.srf" method="post">
+			<input type="submit" value="Checkout" name="Checkout" align="left">
+		</form>
+	</body>
+</html>

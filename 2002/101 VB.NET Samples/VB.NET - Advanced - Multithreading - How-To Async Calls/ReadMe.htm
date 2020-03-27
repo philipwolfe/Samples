@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft Visual Studio.NET 7.0">
+		<meta name="ProgId" content="VisualStudio.HTML">
+		<meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+		<font face="Verdana, Arial, System">
+			<h1>
+				.NET Framework: Multithreading</h1>
+			<p>
+				This solution demonstrates how to use multiple threads to achieve concurrency 
+				in tasks. This example does not include synchronization, because no data is 
+				being accessed by multiple threads.
+			</p>
+			<h2>Featured Highlights</h2>
+			<p>
+				This application allows the user to fire a series of tasks on other threads. 
+				The top button runs the task on the same thread, effectively blocking the user 
+				from interacting with the main form until the task finishes. The second and 
+				third buttons run the task on other threads, allowing the user to continue 
+				interacting with the main form. The second button runs the task from a thread 
+				in the worker pool. The third button creates a new Win32 thread and runs the 
+				task on it.
+			</p>
+			<h2>Requirements</h2>
+			<p>
+				Requires the Trial or Release version of Visual Studio .NET Professional (or 
+				greater).
+			</p>
+			<h2>Running the Sample</h2>
+			<P>This example does not include synchronization, as it is not needed for this 
+				code. However, when using multiple threads and sharing data, synchronization is 
+				critical. Consult the documentation for more information on synchronizing data 
+				in multithreaded applications.</P>
+			<P>Because multi-threaded code presents complexities when stepping through it, the 
+				DebuggerStepThrough attribute is applied at the multithreaded points. 
+				Attempting to step through the multi-threaded sections may yield inconsistent 
+				results. This example only writes to each window from the thread that is managing it. 
+				When writing to a window from threads other than the thread managing that window, 
+				additional attention is required. Consult the documentation for more details. 
+				An asynchronous delegate is an easy way to run a task on a worker thread, but 
+				is not the only way to do so. Consult the documentation to see other options 
+				for accessing the worker pool threads.&nbsp;
+				<h3>Last Update:&nbsp;7 July 2002</h3>
+		</font>
+	</body>
+</html>

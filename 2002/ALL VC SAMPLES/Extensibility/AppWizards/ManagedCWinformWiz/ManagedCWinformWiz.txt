@@ -1,0 +1,9 @@
+To install the wizard
+1.	Copy all of the sample files to your hard disk.
+2.	Copy the contents of the VCProjects folder to the Vc7\VCProjects folder in the directory where Visual Studio is installed. (for example, c:\Program Files\Microsoft Visual Studio .NET\Vc7\VCProjects\).
+3.	Copy the contents of the VCWizards folder to the Vc7\VCWizards folder in the directory where Visual Studio is installed. (for example, c:\Program Files\Microsoft Visual Studio .NET\Vc7\VCWizards\).
+
+The wizard will be available the next time that you select File, New Project in Visual Studio. See the sample abstract in online help for more information.
+
+When building a wizard generated project, a PDB file, which is needed to debug the application, will not be generated.
+To create one set the c++ compiler property “Debug Information Format” to “Program Database (/Zi)” and the linker property “Generate Debug Info” to “yes (/DEBUG)”. 

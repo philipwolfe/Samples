@@ -1,0 +1,25 @@
+<html>
+<HEAD>
+</HEAD>
+<BODY>
+<h1>Wild Walter's Digital Camera World</h1>
+<p>{{handler DigiCams.dll/Default}} </p>
+<p>&nbsp;</p>
+<table cellspacing=0 cellpadding=0 width="75%" border=2>
+  <thead>
+  <tr>
+    <td><h3>Accessory</h3></td>
+    <td><h3>Description</h3></td>
+    <td><h3>Price</h3></T3></tr>
+  </thead>
+
+{{while GetNextAccessory}}
+<tr>
+	<td>{{GetAccessoryName}}</td>
+	<td>{{GetAccessoryDescription}}</td>
+	<td>{{GetAccessoryPrice}}</td>
+</tr>
+{{endwhile}}
+</table>
+</BODY>
+</html>

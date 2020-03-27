@@ -1,0 +1,27 @@
+<html>
+<head>
+</head>
+<body>
+<title>Wild Walter's Digital Camera World</title>
+<h1>Wild Walter's Digital Camera World</h1>
+<br>
+<h4>Note: prices have no basis in reality...  :-)</h4>
+<!-- {{handler DigiCams.dll/Default}} -->
+<table cellspacing=1 width="75%" border=2>
+  <thead>>
+    <td><h2>Photo</h2></td>
+    <td><h2>Name</h2></td>
+    <td><h2>Description</h2></td>
+    <td><h2>Price</h2></td>
+  </thead>
+{{while GetNextCamera}}
+  <tr>
+    <td><img src={{GetCameraImageUrl}}></td>
+    <td><a target href="accessories.srf?id={{GetCameraID}}"</a>{{GetCameraName}}</td>
+    <td>{{GetCameraDescription}}</td>
+    <td>{{GetCameraPrice}}</td>
+    </tr>
+{{endwhile}}
+</table>
+</body>
+</html>

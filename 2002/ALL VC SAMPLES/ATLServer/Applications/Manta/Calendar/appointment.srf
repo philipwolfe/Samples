@@ -1,0 +1,45 @@
+<!--{{ handler cgi-bin\Calendar.dll/Appointment }} This file (c) 2000 Microsoft Corporation -->
+<html>
+<head>
+<base target="main_frame">
+<link rel="stylesheet" href="main.css" type="text/css">
+<script language="JavaScript">
+<!--
+function OnDelete() 
+{
+	if (confirm("Are you sure you want to delete this appointment?"))
+	{
+		navigate("appointment.srf?delete=1&appid={{ID}}&date={{ShortDate}}");
+	}
+}
+-->
+</script>
+</head>
+<body>
+<table border="1" width="627" bgcolor="#FFFFCC" cellspacing="0" cellpadding="2">
+  <tr>
+    <td width="71" align="right"><font color="#3A6EA5"><b><span style="font-variant: small-caps">Title:</span></b></font></td>
+    <td width="471" bgcolor="#FFFFFF"><font color="#3A6EA5">{{Title}}</font></td>
+  </tr>
+  <tr>
+    <td width="71" align="right"><font color="#3A6EA5"><b><span style="font-variant: small-caps">Time:</span></b></font></td>
+    <td width="471" bgcolor="#FFFFFF"><font color="#3A6EA5">{{Time}}</font></td>
+  </tr>
+  <tr>
+    <td width="71" align="right"><font color="#3A6EA5"><b><span style="font-variant: small-caps">Date:</span></b></font></td>
+    <td width="471" bgcolor="#FFFFFF"><font color="#3A6EA5">{{Date}}</font></td>
+  </tr>
+  <tr>
+    <td width="71" align="right"><font color="#3A6EA5"><b><span style="font-variant: small-caps">Location:</span></b></font></td>
+    <td width="471" bgcolor="#FFFFFF"><font color="#3A6EA5">{{Location}}</font></td>
+  </tr>
+  <tr>
+    <td width="71" align="right"><font color="#3A6EA5"><b><span style="font-variant: small-caps">Details:</span></b></font></td>
+    <td width="471" bgcolor="#FFFFFF"><font color="#3A6EA5"><textarea rows="3" cols="65" OnFocus="this.blur()">{{Details}}</textarea></font></td>
+  </tr>
+</table>
+<br><br>
+<input type="button" value="Delete This Appointment" name="deleteButton" OnClick="OnDelete();">
+</body>
+</html>
+

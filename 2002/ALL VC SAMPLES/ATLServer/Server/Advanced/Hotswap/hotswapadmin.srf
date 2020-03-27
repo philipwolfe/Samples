@@ -1,0 +1,25 @@
+{{handler hotswap.dll/admin}}
+
+<html>
+<body>
+
+Admin page for hot swapping modules on your web site<br>
+
+<form method="POST" action="hotswapadmin.srf">
+<input type="hidden" name="command" value="swap"></input>
+<table border=1>
+<tr><td align="right">Target File</td><td><input type="text" name="replace_file"></input></td></tr>
+<tr><td align="right">Source File</td><td><input type="text" name="with_file"></input></td></tr>
+</table>
+<input type="submit" value="swap files"></input>
+</form>
+
+<p>{{ErrorMessage}}</p>
+{{if IsRunning}}
+The web service is currently running.<br>
+{{else}}
+The web service is <b>not</b> currently running.<br>
+{{endif}}
+
+</body>
+</html>

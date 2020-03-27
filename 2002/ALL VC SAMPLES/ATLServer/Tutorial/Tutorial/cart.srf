@@ -1,0 +1,23 @@
+<html>
+	{{handler bin\tutorial.dll/Cart}}
+	<body>
+		<b>Shopping Cart</b>
+		<p>
+			Your current order is:
+		</p>
+		<table>
+			{{while GetNextPurchase}}
+			<tr>
+				<td>
+					{{ProductPurchaseSummary}}
+				</td>
+			</tr>
+			{{endwhile}}
+		</table>
+		<br>
+		Total = {{Total}}
+		<form action="checkout.srf" method="post" name="Purchase">
+			<input type="submit" name="{{Total}}" value="Proceed">
+		</form>
+	</body>
+</html>

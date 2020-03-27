@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+This file is automatically created and modified by Microsoft Office InfoPath.
+Changes made to the file outside of InfoPath might be lost if the form template is modified in InfoPath.
+-->
+<xsf:xDocumentClass trustSetting="automatic" solutionVersion="1.0.0.274" solutionFormatVersion="1.100.0.0" productVersion="11.0.6565" publishUrl="D:\Subversion\101SamplesPart2\VSTO\VB\WorkingWithInfoPath2003\WorkingWithInfoPath2003\manifest.xsf" name="urn:schemas-microsoft-com:office:infopath:WorkingWithInfoPath2003:-myXSD-2005-10-25T23-50-04" xmlns:my="http://schemas.microsoft.com/office/infopath/2003/myXSD/2005-10-25T23-50-04" xmlns:xsf="http://schemas.microsoft.com/office/infopath/2003/solutionDefinition" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xdUtil="http://schemas.microsoft.com/office/infopath/2003/xslt/Util" xmlns:xdXDocument="http://schemas.microsoft.com/office/infopath/2003/xslt/xDocument" xmlns:xdMath="http://schemas.microsoft.com/office/infopath/2003/xslt/Math" xmlns:xdDate="http://schemas.microsoft.com/office/infopath/2003/xslt/Date" xmlns:xd="http://schemas.microsoft.com/office/infopath/2003" xmlns:d="http://schemas.microsoft.com/office/infopath/2003/ado/dataFields" xmlns:dfs="http://schemas.microsoft.com/office/infopath/2003/dataFormSolution">
+	<xsf:package>
+		<xsf:files>
+			<xsf:file name="myschema.xsd">
+				<xsf:fileProperties>
+					<xsf:property name="namespace" type="string" value="http://schemas.microsoft.com/office/infopath/2003/myXSD/2005-10-25T23-50-04"></xsf:property>
+					<xsf:property name="editability" type="string" value="full"></xsf:property>
+					<xsf:property name="rootElement" type="string" value="AdventureWorksProductsOrder"></xsf:property>
+					<xsf:property name="useOnDemandAlgorithm" type="string" value="yes"></xsf:property>
+				</xsf:fileProperties>
+			</xsf:file>
+			<xsf:file name="template.xml"></xsf:file>
+			<xsf:file name="sampledata.xml">
+				<xsf:fileProperties>
+					<xsf:property name="fileType" type="string" value="sampleData"></xsf:property>
+				</xsf:fileProperties>
+			</xsf:file>
+			<xsf:file name="view1.xsl">
+				<xsf:fileProperties>
+					<xsf:property name="lang" type="string" value="1033"></xsf:property>
+					<xsf:property name="componentId" type="string" value="84"></xsf:property>
+					<xsf:property name="mode" type="string" value="3"></xsf:property>
+					<xsf:property name="xmlToEditName" type="string" value="10"></xsf:property>
+				</xsf:fileProperties>
+			</xsf:file>
+			<xsf:file name="upgrade.xsl"></xsf:file>
+			<xsf:file name="ProductSubcategory2.xsd">
+				<xsf:fileProperties>
+					<xsf:property name="namespace" type="string" value="http://schemas.microsoft.com/office/infopath/2003/dataFormSolution"></xsf:property>
+					<xsf:property name="dataObject" type="string" value="ProductSubcategory"></xsf:property>
+					<xsf:property name="rootElement" type="string" value="myFields"></xsf:property>
+					<xsf:property name="useOnDemandAlgorithm" type="string" value="yes"></xsf:property>
+				</xsf:fileProperties>
+			</xsf:file>
+			<xsf:file name="ProductSubcategory3.xsd">
+				<xsf:fileProperties>
+					<xsf:property name="namespace" type="string" value="http://schemas.microsoft.com/office/infopath/2003/ado/dataFields"></xsf:property>
+					<xsf:property name="dataObject" type="string" value="ProductSubcategory"></xsf:property>
+				</xsf:fileProperties>
+			</xsf:file>
+			<xsf:file name="Products4.xsd">
+				<xsf:fileProperties>
+					<xsf:property name="namespace" type="string" value="http://schemas.microsoft.com/office/infopath/2003/dataFormSolution"></xsf:property>
+					<xsf:property name="dataObject" type="string" value="Products"></xsf:property>
+					<xsf:property name="rootElement" type="string" value="myFields"></xsf:property>
+					<xsf:property name="useOnDemandAlgorithm" type="string" value="yes"></xsf:property>
+				</xsf:fileProperties>
+			</xsf:file>
+			<xsf:file name="Products5.xsd">
+				<xsf:fileProperties>
+					<xsf:property name="namespace" type="string" value="http://schemas.microsoft.com/office/infopath/2003/ado/dataFields"></xsf:property>
+					<xsf:property name="dataObject" type="string" value="Products"></xsf:property>
+				</xsf:fileProperties>
+			</xsf:file>
+			<xsf:file name="WorkingWithInfoPath2003.dll">
+				<xsf:fileProperties>
+					<xsf:property name="fileType" type="string" value="rootAssembly"></xsf:property>
+				</xsf:fileProperties>
+			</xsf:file>
+			<xsf:file name="WorkingWithInfoPath2003.pdb">
+				<xsf:fileProperties>
+					<xsf:property name="fileType" type="string" value="pdb"></xsf:property>
+				</xsf:fileProperties>
+			</xsf:file>
+		</xsf:files>
+	</xsf:package>
+	<xsf:importParameters enabled="yes"></xsf:importParameters>
+	<xsf:documentVersionUpgrade>
+		<xsf:useTransform transform="upgrade.xsl" minVersionToUpgrade="0.0.0.0" maxVersionToUpgrade="1.0.0.270"></xsf:useTransform>
+	</xsf:documentVersionUpgrade>
+	<xsf:views default="View 1">
+		<xsf:view name="View 1" caption="View 1">
+			<xsf:mainpane transform="view1.xsl"></xsf:mainpane>
+			<xsf:editing>
+				<xsf:xmlToEdit name="Product_9" item="/my:AdventureWorksProductsOrder/my:Product" container="/my:AdventureWorksProductsOrder">
+					<xsf:editWith caption="Product" xd:autogeneration="template" component="xCollection">
+						<xsf:fragmentToInsert>
+							<xsf:chooseFragment innerFragment="my:Product">
+								<my:Product>
+									<my:ID xsi:nil="true"></my:ID>
+									<my:Name></my:Name>
+									<my:Qty>1</my:Qty>
+									<my:UnitPrice></my:UnitPrice>
+									<my:ExtPrice></my:ExtPrice>
+								</my:Product>
+							</xsf:chooseFragment>
+						</xsf:fragmentToInsert>
+					</xsf:editWith>
+				</xsf:xmlToEdit>
+			</xsf:editing>
+			<xsf:menuArea name="msoInsertMenu">
+				<xsf:menu caption="&amp;Section">
+					<xsf:button action="xCollection::insert" xmlToEdit="Product_9" caption="Product"></xsf:button>
+				</xsf:menu>
+			</xsf:menuArea>
+			<xsf:menuArea name="msoStructuralEditingContextMenu">
+				<xsf:button action="xCollection::insertBefore" xmlToEdit="Product_9" caption="Insert Product above" showIf="immediate"></xsf:button>
+				<xsf:button action="xCollection::insertAfter" xmlToEdit="Product_9" caption="Insert Product below" showIf="immediate"></xsf:button>
+				<xsf:button action="xCollection::remove" xmlToEdit="Product_9" caption="Remove Product" showIf="immediate"></xsf:button>
+				<xsf:button action="xCollection::insert" xmlToEdit="Product_9" caption="Insert Product" showIf="immediate"></xsf:button>
+			</xsf:menuArea>
+			<xsf:unboundControls>
+				<xsf:button name="getProductsButton"></xsf:button>
+			</xsf:unboundControls>
+		</xsf:view>
+	</xsf:views>
+	<xsf:applicationParameters application="InfoPath Design Mode">
+		<xsf:solutionProperties fullyEditableNamespace="http://schemas.microsoft.com/office/infopath/2003/myXSD/2005-10-25T23-50-04" lastOpenView="view1.xsl" scriptLanguage="managedCode" lastVersionNeedingTransform="1.0.0.270"></xsf:solutionProperties>
+	</xsf:applicationParameters>
+	<xsf:documentSchemas>
+		<xsf:documentSchema rootSchema="yes" location="http://schemas.microsoft.com/office/infopath/2003/myXSD/2005-10-25T23-50-04 myschema.xsd"></xsf:documentSchema>
+	</xsf:documentSchemas>
+	<xsf:fileNew>
+		<xsf:initialXmlDocument caption="WorkingWithInfoPath2003" href="template.xml"></xsf:initialXmlDocument>
+	</xsf:fileNew>
+	<xsf:dataObjects>
+		<xsf:dataObject name="Products" schema="Products4.xsd" initOnLoad="no">
+			<xsf:query>
+				<xsf:adoAdapter connectionString="Provider=SQLOLEDB;Integrated Security=SSPI;Persist Security Info=True;Initial Catalog=C:\PROGRAM FILES\MICROSOFT SQL SERVER\MSSQL.1\MSSQL\DATA\ADVENTUREWORKS_DATA.MDF;Data Source=.\sqlexpress;Use Procedure for Prepare=1;Auto Translate=True;Packet Size=4096;Workstation ID=KULPTABLET;Initial File Name=C:\Program Files\Microsoft SQL Server\MSSQL.1\MSSQL\Data\AdventureWorks_Data.mdf;Use Encryption for Data=False;Tag with column collation when possible=False" commandText="select &quot;ProductID&quot;,&quot;Name&quot;,&quot;ProductNumber&quot;,&quot;MakeFlag&quot;,&quot;FinishedGoodsFlag&quot;,&quot;Color&quot;,&quot;SafetyStockLevel&quot;,&quot;ReorderPoint&quot;,&quot;StandardCost&quot;,&quot;ListPrice&quot;,&quot;Size&quot;,&quot;SizeUnitMeasureCode&quot;,&quot;WeightUnitMeasureCode&quot;,&quot;Weight&quot;,&quot;DaysToManufacture&quot;,&quot;ProductLine&quot;,&quot;Class&quot;,&quot;Style&quot;,&quot;ProductSubcategoryID&quot;,&quot;ProductModelID&quot;,&quot;SellStartDate&quot;,&quot;SellEndDate&quot;,&quot;DiscontinuedDate&quot;,&quot;rowguid&quot;,&quot;ModifiedDate&quot; from &quot;Production&quot;.&quot;Product&quot; as &quot;Product&quot;" queryAllowed="yes" name="Products"></xsf:adoAdapter>
+			</xsf:query>
+		</xsf:dataObject>
+		<xsf:dataObject name="ProductSubcategory" schema="ProductSubcategory2.xsd" initOnLoad="yes">
+			<xsf:query>
+				<xsf:adoAdapter connectionString="Provider=SQLOLEDB.1;Integrated Security=SSPI;Persist Security Info=True;Initial Catalog=C:\PROGRAM FILES\MICROSOFT SQL SERVER\MSSQL.1\MSSQL\DATA\ADVENTUREWORKS_DATA.MDF;Data Source=.\sqlexpress;Use Procedure for Prepare=1;Auto Translate=True;Packet Size=4096;Workstation ID=KULPTABLET;Initial File Name=C:\Program Files\Microsoft SQL Server\MSSQL.1\MSSQL\Data\AdventureWorks_Data.mdf;Use Encryption for Data=False;Tag with column collation when possible=False" commandText="select &quot;ProductSubcategoryID&quot;,&quot;ProductCategoryID&quot;,&quot;Name&quot;,&quot;rowguid&quot;,&quot;ModifiedDate&quot; from &quot;Production&quot;.&quot;ProductSubcategory&quot; as &quot;ProductSubcategory&quot;" queryAllowed="yes" name="ProductSubcategory"></xsf:adoAdapter>
+			</xsf:query>
+		</xsf:dataObject>
+	</xsf:dataObjects>
+	<xsf:calculations>
+		<xsf:calculatedField target="/my:AdventureWorksProductsOrder/my:Product/my:ExtPrice" expression="xdMath:Nz(../my:Qty) * xdMath:Nz(../my:UnitPrice)" refresh="onChange"></xsf:calculatedField>
+		<xsf:calculatedField target="/my:AdventureWorksProductsOrder/my:Total" expression="xdMath:Nz(../my:SubTotal) + xdMath:Nz(../my:Tax)" refresh="onChange"></xsf:calculatedField>
+		<xsf:calculatedField target="/my:AdventureWorksProductsOrder/my:Tax" expression=".0625 * xdMath:Nz(../my:SubTotal)" refresh="onChange"></xsf:calculatedField>
+		<xsf:calculatedField target="/my:AdventureWorksProductsOrder/my:SubTotal" expression="sum(xdMath:Nz(../my:Product/my:ExtPrice))" refresh="onChange"></xsf:calculatedField>
+	</xsf:calculations>
+	<xsf:customValidation></xsf:customValidation>
+</xsf:xDocumentClass>

@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft Visual Studio.NET 7.0">
+		<meta name="ProgId" content="VisualStudio.HTML">
+		<meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+		<h1>Windows Forms: XP Theme Support</h1>
+		Demonstrates how to enables support for XP themes in your application.&nbsp;
+		<h2>Featured Highlights:</h2>
+		<P>To enable XP theme support in your application you have to write very little 
+			code.&nbsp; The main task is to create a manifest file and associate it with 
+			your application.<BR>
+			At this point controls that support XP Themes will appear "themed" in your 
+			application.<BR>
+			<BR>
+			This application displays three tabs that&nbsp;highlight the following:</P>
+		<P>Controls that support Visual Themes without any changes to property settings<BR>
+			&nbsp;&nbsp;&nbsp;&nbsp; Three controls that support visual styles but which 
+			are not demonstrated on this form are H ScrollBar and&nbsp;<BR>
+			&nbsp;&nbsp;&nbsp;&nbsp; V ScrollBar, and the TrackBar control.<BR>
+			Controls that require the flatStyle property to be set to system.<BR>
+			Certain controls that do not support themes or that have limited support are 
+			also demonstrated.</P>
+		<h2>Requirements:</h2>
+		<P>Microsoft Visual Studio.NET Professional or greater.<BR>
+			Windows XP Home or Professional
+		</P>
+		<H2>Running the Sample:</H2>
+		<P>Simply press <STRONG>F5</STRONG>.
+		</P>
+		<P><STRONG>Note:</STRONG> The application contains only static data and controls as 
+			the only purpose of this sample is to demonstrate the use of Themes.</P>
+		<P>If you want to create your own Windows Forms application here are the steps you 
+			will have to perform:</P>
+		<P>Set each control with a FlatStyle property to FlatStyle.System
+			<BR>
+			<BR>
+			Create a manifest file to bind your app to comctl6. The sample manifest file 
+			below can be used to bind any app (managed or&nbsp;unmanaged) to comctl6. Just 
+			copy it to&nbsp;the&nbsp;location of the .exe and rename it to &lt;app 
+			name&gt;.exe.manifest.
+		</P>
+		<P>You must then add a Win32 resource to your application.&nbsp; This is 
+			accomplished by first opening up the *.exe.</P>
+		<P>1. Open your exe in VS (file -&gt; open file)
+			<BR>
+			2. Right click on it and select add resource
+			<BR>
+			3. Click "Import..." from the dialog
+			<BR>
+			4. Select your manifest file
+			<BR>
+			5. In the "Resource Type" field, enter "RT_MANIFEST"
+			<BR>
+			6. In the property grid, change the resource ID from "101" to "1".
+			<BR>
+			7. Save the exe.
+			<BR>
+			8. Make sure the manifest is keep at the same directory&nbsp;level as the 
+			executable.&nbsp; (In this How-To it is placed in the bin directory of the 
+			solution)</P>
+		<P>A sample manifest is also included and is named Sample_Manifest.xml.</P>
+		<P><STRONG>See Also</STRONG></P>
+		<P><A href="http://www.gotdotnet.com/team/windowsforms/Themes.aspx">Using Themes with 
+				Windows XP</A></P> <!-- End Content -->
+	</body>
+</html>

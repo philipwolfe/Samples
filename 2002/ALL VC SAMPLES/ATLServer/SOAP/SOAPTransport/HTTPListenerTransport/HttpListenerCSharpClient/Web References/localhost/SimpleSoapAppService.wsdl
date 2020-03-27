@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:SimpleSoapAppService" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="urn:SimpleSoapAppService" />
+  </types>
+  <message name="HelloWorldIn">
+    <part name="bstrInput" type="xsd:string" />
+  </message>
+  <message name="HelloWorldOut">
+    <part name="return" type="xsd:string" />
+  </message>
+  <portType name="SimpleSoapAppServiceSoap">
+    <operation name="HelloWorld">
+      <input xmlns:q1="urn:SimpleSoapAppService" message="q1:HelloWorldIn" />
+      <output xmlns:q2="urn:SimpleSoapAppService" message="q2:HelloWorldOut" />
+    </operation>
+  </portType>
+  <binding name="SimpleSoapAppServiceSoap" xmlns:q3="urn:SimpleSoapAppService" type="q3:SimpleSoapAppServiceSoap">
+    <binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <operation name="HelloWorld">
+      <operation soapAction="#HelloWorld" style="rpc" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input>
+        <body use="encoded" namespace="urn:SimpleSoapAppService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output>
+        <body use="encoded" namespace="urn:SimpleSoapAppService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="SimpleSoapAppService">
+    <port name="SimpleSoapAppServiceSoap" xmlns:q4="urn:SimpleSoapAppService" binding="q4:SimpleSoapAppServiceSoap">
+      <address location="http://localhost:333/SimpleSoapAppService?Invoke?Handler=Default" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    </port>
+  </service>
+</definitions>

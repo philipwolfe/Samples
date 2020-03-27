@@ -1,0 +1,26 @@
+HKCR
+{
+	Math.Subtracter.1 = s 'Subtracter Class'
+	{
+		CLSID = s '{843DBE57-63C3-47C4-AF6E-829C91A0A2A8}'
+	}
+	Math.Subtracter = s 'Subtracter Class'
+	{
+		CLSID = s '{843DBE57-63C3-47C4-AF6E-829C91A0A2A8}'
+		CurVer = s 'Math.Subtracter.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {843DBE57-63C3-47C4-AF6E-829C91A0A2A8} = s 'Subtracter Class'
+		{
+			ProgID = s 'Math.Subtracter.1'
+			VersionIndependentProgID = s 'Math.Subtracter'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{A54A8EDB-EA0C-4FFA-B64A-C19CB663A2EB}'
+		}
+	}
+}

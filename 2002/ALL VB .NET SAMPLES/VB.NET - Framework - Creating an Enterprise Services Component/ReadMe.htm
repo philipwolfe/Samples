@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+		<meta name="ProgId" content="FrontPage.Editor.Document">
+		<meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+		<h1>Advanced Framework (Enterprise Services):<br>
+			Create Enterprise Services Components</h1>
+		Create and work with Enterprise Services Components.&nbsp;
+		<h2>Featured Highlights:</h2>
+		<p>This application&nbsp;offers&nbsp;a simple system for maintaining a database of 
+			suppliers and products. It provides functions for adding updating, retrieving 
+			and deleting suppliers and products. All database access is simulated.</p>
+		<ul>
+			<li>
+			Invokes COM+ Services for implementing transactions, just-in-time activation, 
+			object pooling and object construction.
+			<li>
+				Uses Dynamic Registration to add Enterprise Components to the COM+ Catalog.</li></ul>
+        <h2>Requirements:</h2>
+        <p>Microsoft Visual Studio.NET Professional or greater.<br>
+        Windows 2000 or Windows XP.</p>
+        <h2>Running the Sample:</h2>
+		<p>There are two classes, Supplier and Product, that form the basis for the 
+			components in this application.</p>
+		<p>The application has been programmed for Dynamic Registration, which means that 
+			the COM+ application&nbsp;the components&nbsp;belong to will automatically be 
+			created the first time one of the classes&nbsp;is invoked, provided that the 
+			calling application has Administrator privileges. Review the AssemblyInfo file, 
+			where the assembly attributes that enable dynamic registration are located.</p>
+		<p>On the data input form you can add a supplier, by entering a Company Name and 
+			Phone and clicking Add Supplier. To update, enter a Company Name, Phone and ID. 
+			To delete a supplier, only an ID is needed. If the operation is successful, a 
+			message on the status line will indicate that. Working with products is 
+			similar.<BR>
+			<BR>
+			Note that no database access is performed.&nbsp; This How-To is focused on 
+			illustrating COM+ features.</p>
+		<p>Each class writes to the Output Window when various events occur, such as 
+			instantiation, activation, and deactivation. See the DoTracing procedure in 
+			each class. You can uncomment the lines that make it also write to the Event 
+			Log. Review these entries to track the life cycle of the components.</p>
+		<p>Set breakpoints at various places in the classes to see the sequence of events 
+			as an object is used in the Enterprise Services environment.</p>
+		<h3>See Also</h3>
+        <p>
+        <a href="ms-help://MS.VSCC/MS.MSDNVS/cpguide/html/cpconwritingservicedcomponents.htm">
+        Writing Serviced Components</a>&nbsp;
+        <a href="ms-help://MS.VSCC/MS.MSDNVS/cpguide/html/cpconautomatictransactionprocessing.htm">
+        Transaction Processing</a>&nbsp;
+        <a href="ms-help://MS.VSCC/MS.MSDNVS/cpguide/html/cpconapplyingattributestoconfigureservices.htm">
+        List of COM+ Attributes</a></p>
+	</body>
+</html>

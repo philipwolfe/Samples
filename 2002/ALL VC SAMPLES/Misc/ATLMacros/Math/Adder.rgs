@@ -1,0 +1,26 @@
+HKCR
+{
+	Math.Adder.1 = s 'Adder Class'
+	{
+		CLSID = s '{FF381FA0-7EA5-4F6F-9DD1-DADE83249ED5}'
+	}
+	Math.Adder = s 'Adder Class'
+	{
+		CLSID = s '{FF381FA0-7EA5-4F6F-9DD1-DADE83249ED5}'
+		CurVer = s 'Math.Adder.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {FF381FA0-7EA5-4F6F-9DD1-DADE83249ED5} = s 'Adder Class'
+		{
+			ProgID = s 'Math.Adder.1'
+			VersionIndependentProgID = s 'Math.Adder'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{A54A8EDB-EA0C-4FFA-B64A-C19CB663A2EB}'
+		}
+	}
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+    <title>Using Managed Stored Procedures and User Defined Functions with SQL Server 2005
+        Sample</title>
+</head>
+<body>
+    <h1>
+        Using Managed Stored Procedures and User Defined Functions sample</h1>
+    When prompted upon opening this solution, manually connect to an SQL Server instance
+    and select the tempdb database. You will also want to make sure that the 'DistanceCalculator'
+    project is set as the startup project for the solution.
+    <p>
+    </p>In this example, you see how to create and execute Stored Procedures and User Defined
+    Functions. By creating Stored Procedures and User Defined Functions in Visual Studio
+    2005, you can create, execute, debug and deploy directly from the IDE. This creates
+    better efficiency when writing these procedures and also makes these procedures
+    fully managed within the CLR.
+    <p>
+    </p>
+    To run this example, you may need to execute the following statement to allow these
+    stored procedures and user defined functions to be executed within the code:
+    <p>
+        sp_configure @configname = 'clr enabled', @configvalue = 1<br />
+        RECONFIGURE WITH OVERRIDE<br />
+        GO<br />
+    </p>
+    <p>
+    </p>
+    You may also need to deploy the SPUDF project manually if it does not automatically
+    deploy when the project is run.  To do this, open the properties page for the SPUDF project
+    and select the database tab.  Add a connection to the localhost\tempdb database and save.
+    <p>
+    </p>
+    In this example, you enter two value pairs for longitude and latitude. When you
+    click the Insert New Data button, you see how long it takes to call the CalculateDistance
+    User Defined Function and the spInsertData Stored Procedure. Finally, by clicking
+    the Retrieve Data button, you will see the data that is stored in the table.
+    <p>
+    </p>
+    This sample requires the following to be installed:
+    <ul>
+        <li>Visual Studio 2005</li>
+        <li>SQL Server 2005</li>
+    </ul>
+</body>
+</html>

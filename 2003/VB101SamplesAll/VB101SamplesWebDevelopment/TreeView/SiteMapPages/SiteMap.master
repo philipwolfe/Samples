@@ -1,0 +1,39 @@
+<%@ Master Language="VB" CodeFile="SiteMap.master.vb" Inherits="SiteMap_master" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title>Binding to a SiteMapDataSource Control</title>
+    <LINK rel="stylesheet" type="text/css" href="../styles.css">
+</head>
+<body>
+    <form id="form1" runat="server">
+    <table border="0" cellpadding="10" cellspacing="5">
+        <tr>
+            <td valign="top">
+                <!--
+                Note how simple it is to bind the TreeView to a SiteMapDataSource control. The only
+                thing required is setting the value of the datasourceid attribute to the name of the
+                SiteMapDataSource control. Everything else is for fonts, colors, and other styles.
+                -->
+                <asp:treeview id="TreeView1" runat="server" datasourceid="SiteMapDataSource1" imageset="Simple" showlines="True">
+                    <selectednodestyle font-underline="True" forecolor="#5555DD"></selectednodestyle>
+                    <nodestyle font-names="Tahoma" font-size="10pt" forecolor="Black"></nodestyle>
+                    <hovernodestyle font-underline="True" forecolor="#5555DD"></hovernodestyle>
+                </asp:treeview>
+            </td>
+            <td valign="top">
+		<h1>Binding to a SiteMapDataSource Control</h1>
+
+                <asp:contentplaceholder id="Content" runat="Server"></asp:contentplaceholder>
+            </td>
+        </tr>
+    </table>
+    
+    <!-- By default, the SiteMapDataSource control uses the contents of the web.sitemap file -->
+    <asp:sitemapdatasource id="SiteMapDataSource1" runat="server" />
+    
+    </form>
+</body>
+</html>

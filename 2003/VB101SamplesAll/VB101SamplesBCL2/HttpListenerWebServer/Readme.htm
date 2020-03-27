@@ -1,0 +1,84 @@
+<strong><span style="font-size: 14pt; font-family: Arial">Using the HttpListener class in the .NET 2.0 BCL
+    <br />
+</span>
+    <br />
+</strong><span style="font-family: Arial"><strong>
+
+ 
+
+Introduction:
+<br />
+</strong></span>
+<br />
+<span style="font-family: Arial">
+
+ 
+
+New features for internetworking in .NET 2.0 allow applications to achieve high performance with minimal effort.  Many of the enhancements relate to the addition of asynchronous operations to existing networking classes.  In this example, an entirely new class in the .NET 2.0 BCL is used to construct a web server that can process requests asynchronously in about&nbsp; 100 lines of code. 
+<br />
+</span>
+<br />
+<span style="font-family: Arial"><strong>
+
+ 
+
+New features demonstrated:
+<br />
+</strong></span>
+<br />
+<span style="font-family: Arial">
+
+ 
+
+The example code will demonstrate the HttpListener class and the asynchronous request processing capability built into it.
+<br />
+</span>
+<br />
+<span style="font-family: Arial"><strong>
+
+ 
+
+Example code:
+<br />
+</strong></span>
+<br />
+<span style="font-family: Arial">
+
+ 
+
+The example consists of code that creates an instance of the HttpListener class, populates it with URI strings to respond to, starts the listener, and enters an asynchronous request processing loop.  The ‘BeginGetContext’ method of HttpListener is called with a callback method that handles the request processing.  When a request is received the callback method is invoked. The callback invokes the ‘EndGetContext’ method to signal the completion of the asynchronous operation. In the example an asynchronous wait handle is used to make sure the callback has completed.  The callback method constructs a response HTML string and sends it to the client.
+<br />
+<br />
+    <strong>
+
+ 
+
+Running the example:
+<br />
+    </strong></span>
+<br />
+<span style="font-family: Arial">
+
+ 
+
+The example is available as a VS.NET 2005 windows application project in both C# and VB.NET.  In operation, the forms window will report on each client connection received and completed.  The example creates a web server listening on port 8080 of the local host.  If a web browser is pointed at the URL <a href="http://localhost:8080">
+        http://localhost:8080</a> the console window should report the connection and the browser should display: 
+<br />
+</span><span style="font-family: Arial"></span><span style="font-family: Arial"></span>
+<br />
+<h1>
+
+You have contacted an HttpListener web server</h1>
+<br />
+<span style="font-family: Arial"><strong>
+
+This sample requires the following to be installed:
+<br />
+</strong></span>
+<br />
+<span style="font-family: Arial">
+
+Visual Studio .NET 2005
+<br />
+    HttpListener is only supported under
+Windows Server 2003 or Windows XP SP2. </span>

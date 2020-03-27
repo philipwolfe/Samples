@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft Visual Studio.NET 7.0">
+		<meta name="ProgId" content="VisualStudio.HTML">
+		<meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+		<font face="Verdana, Arial, System">
+			<h1>
+				Language: Creating a Custom Collection Class</h1>
+			<p>
+				This solution demonstrates the usage of the new 
+				System.Collections.CollectionBase class for creating a strongly-typed 
+				collection.
+			</p>
+			<h2>Featured Highlights</h2>
+			<p>
+				This sample uses two classes: Customer and Customers. Customers inherits from 
+				System.Collections.CollectionBase in order to create a type safe collection to 
+				manage multiple customer instances. The CollectionBase class exposes an 
+				InnerList instance which is used to store Customer instance references.
+			</p>
+			<P>The Customers class exposes overloaded versions of Add, Item, and Remove to 
+				facilitate management of the Customer instances. Unlike earlier versions of 
+				Visual Basic where optional parameters might have been used, overloaded members 
+				provide a more type safe way of accessing and managing a collection of internal 
+				types.</P>
+			<P>See the comments in the source code&nbsp;for more information.</P>
+			<h2>Requirements</h2>
+			<p>
+				Requires the Trial or Release version of Visual Studio .NET Professional (or 
+				greater).
+			</p>
+			<h2>Running the Sample</h2>
+			<p>
+				Enter some data for the first name, last name, and account number in the three 
+				text boxes on the main form and click the Add button. This will add a Customer 
+				object to the Customers collection with the data you specified. The account 
+				number for each&nbsp;customer added to the collection will appear in the 
+				listbox. After there is at least one Customer in the collection, you can select 
+				it in the listbox. Then you can remove it from the collection or show the 
+				details of a particular Customer in the collection. You can also click "Reload 
+				from collection" to clear the listbox and reload each item in the collection 
+				into the listbox.&nbsp;
+			</p>
+			<h3>Last Update:&nbsp;15 July 2002</h3>
+		</font>
+	</body>
+</html>

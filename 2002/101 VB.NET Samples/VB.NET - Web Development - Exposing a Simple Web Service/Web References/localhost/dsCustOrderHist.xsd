@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:mstns="http://tempuri.org/dsCustOrderHist.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns="http://tempuri.org/dsCustOrderHist.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dsCustOrderHist.xsd" id="dsCustOrderHist" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" name="dsCustOrderHist">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element name="CustOrderHist">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ProductName" type="xs:string" />
+              <xs:element msdata:ReadOnly="true" minOccurs="0" name="Total" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

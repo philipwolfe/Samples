@@ -1,0 +1,90 @@
+Using P/Invoke in a managed C++ application.
+Igor Chouvalov, Dundas Software Ltd
+
+PInvokeDemo demonstrates .NET interoperability between .NET managed
+code and old unmanaged code. It uses the P/Invoke mechanism to call unmanaged
+DLL entry points.
+
+To demonstrate this technique let's create a managed C++ console program that will
+run an application specified as a parameter of its command line.
+We uses the ShellExecute function exported by the unmanaged DLL shell32.dll
+
+First we create a new C++ project based on the managed C++ Console Application.
+The application wizard creates a class that has one static method main()
+that is an entry point to our application.
+
+To access the .NET classes for P/Invoke support add following line to your code:
+
+using namespace System::Runtime::InteropServices;
+
+In order to call a DLL export, we need to declare the method with the attached
+a DllImport attribute.
+
+// Declare the function that is exported from unmanaged dll (shell32.dll).
+[DllImport("shell32.dll")]
+extern "C" int _cdecl ShellExecute(	int hwnd,		// Handle to a parent window.
+					String *strVerb,	// Action to be performed.
+					String *strFileName,	// File or object on which to execute the specified verb.
+					String *strParameters,	// Parameters to be passed to the application.
+					String *strDirectory,	// Default directory.
+					int nShowCmd);		// Flags.
+
+
+The marshaling service will marshal the managed types to the unmanaged types according
+its built-in rules. During the P/Invoke call the marshaler will automatically copy 
+managed integer type into unmanaged integer type, it will convert (copy) Unicode 
+character buffer of the String objects to the ANSI character buffer.
+
+Other data types have other marshalling characteristics. You can override the default 
+behavior by specifying custom marshalling. Refer to the Data Marshaling Specification 
+section of the .NET Beta Specification in MSDN.
+
+Now you can call your declared method. The following code illustrates this.
+
+#using <mscorlib.dll>
+
+using namespace System;
+using namespace System::Runtime::InteropServices;
+
+// Declare the function that is exported from unmanaged dll (shell32.dll).
+[DllImport("shell32.dll")]
+extern "C" int _cdecl ShellExecute(	int hwnd,				// Handle to a parent window.
+									String *strVerb,		// Action to be performed.
+									String *strFileName,	// File or object on which to execute the specified verb.
+									String *strParameters,	// Parameters to be passed to the application.
+									String *strDirectory,	// Default directory.
+									int nShowCmd);			// Flags.
+
+// Managed class demonstrates Runtime's Platform Invocation Service
+// (P/Invoke) to call unmanaged code from managed code.
+ __gc class Launcher
+{
+public:
+	// Starts program that specified by strFileName parameter
+	static int StartProgram(String *strFileName)
+	{
+		return ShellExecute(0,
+							S"Open",
+							strFileName,
+							String::Empty,
+							String::Empty,
+							1 /*SW_SHOWNORMAL*/);
+	}
+};
+
+// This is the entry point for this application
+int main( int argc, char *argv[ ])
+{
+	// Check parameters.
+	if(argc < 2)
+	{
+		Console::Write(S"Not enough parameters.");
+		return 0;
+	}
+
+	// Call static function of the Launcher class and start program.
+	if(Launcher::StartProgram(new String(argv[1])) < 33)
+		Console::Write(S"Couldn't launch the program!");
+
+    return 0;
+}

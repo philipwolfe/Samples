@@ -1,0 +1,315 @@
+<VisualStudioProject>
+    <VisualBasic
+        ProjectType = "Local"
+        ProductVersion = "7.0.9466"
+        SchemaVersion = "1.0"
+        ProjectGuid = "{C69C044E-EE6B-4B20-B8E8-CC4341587709}"
+    >
+        <Build>
+            <Settings
+                ApplicationIcon = ""
+                AssemblyKeyContainerName = ""
+                AssemblyName = "VB.NET How-To Consume Web Service"
+                AssemblyOriginatorKeyFile = ""
+                AssemblyOriginatorKeyMode = "None"
+                DefaultClientScript = "JScript"
+                DefaultHTMLPageLayout = "Grid"
+                DefaultTargetSchema = "IE50"
+                DelaySign = "false"
+                OutputType = "WinExe"
+                OptionCompare = "Binary"
+                OptionExplicit = "On"
+                OptionStrict = "On"
+                RootNamespace = "VBNET.HowTo"
+                StartupObject = "VBNET.HowTo.frmMain"
+            >
+                <Config
+                    Name = "Debug"
+                    BaseAddress = "285212672"
+                    ConfigurationOverrideFile = ""
+                    DefineConstants = ""
+                    DefineDebug = "true"
+                    DefineTrace = "true"
+                    DebugSymbols = "true"
+                    IncrementalBuild = "true"
+                    Optimize = "false"
+                    OutputPath = "bin\"
+                    RegisterForComInterop = "false"
+                    RemoveIntegerChecks = "false"
+                    TreatWarningsAsErrors = "true"
+                    WarningLevel = "1"
+                />
+                <Config
+                    Name = "Release"
+                    BaseAddress = "285212672"
+                    ConfigurationOverrideFile = ""
+                    DefineConstants = ""
+                    DefineDebug = "false"
+                    DefineTrace = "true"
+                    DebugSymbols = "false"
+                    IncrementalBuild = "false"
+                    Optimize = "true"
+                    OutputPath = "bin\"
+                    RegisterForComInterop = "false"
+                    RemoveIntegerChecks = "false"
+                    TreatWarningsAsErrors = "true"
+                    WarningLevel = "1"
+                />
+            </Settings>
+            <References>
+                <Reference
+                    Name = "System"
+                    AssemblyName = "System"
+                />
+                <Reference
+                    Name = "System.Data"
+                    AssemblyName = "System.Data"
+                />
+                <Reference
+                    Name = "System.Drawing"
+                    AssemblyName = "System.Drawing"
+                />
+                <Reference
+                    Name = "System.Windows.Forms"
+                    AssemblyName = "System.Windows.Forms"
+                />
+                <Reference
+                    Name = "System.XML"
+                    AssemblyName = "System.Xml"
+                />
+                <Reference
+                    Name = "System.Web.Services"
+                    AssemblyName = "System.Web.Services"
+                    HintPath = "C:\WINDOWS\Microsoft.NET\Framework\v1.0.3705\System.Web.Services.dll"
+                />
+                <Reference
+                    Name = "Microsoft.Uddi.Sdk"
+                    AssemblyName = "Microsoft.Uddi.Sdk"
+                    HintPath = "..\..\..\Program Files\Microsoft UDDI SDK\Microsoft.Uddi.Sdk.dll"
+                />
+            </References>
+            <Imports>
+                <Import Namespace = "Microsoft.VisualBasic" />
+                <Import Namespace = "System" />
+                <Import Namespace = "System.Collections" />
+                <Import Namespace = "System.Data" />
+                <Import Namespace = "System.Drawing" />
+                <Import Namespace = "System.Diagnostics" />
+                <Import Namespace = "System.Windows.Forms" />
+            </Imports>
+        </Build>
+        <Files>
+            <Include>
+                <File
+                    RelPath = "AssemblyInfo.vb"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "ecc_countries.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "frmAbout.resx"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "frmAbout.vb"
+                    SubType = "Form"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "frmMain.vb"
+                    SubType = "Form"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "frmMain.resx"
+                    DependentUpon = "frmMain.vb"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "frmStatus.vb"
+                    SubType = "Form"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "frmStatus.resx"
+                    DependentUpon = "frmStatus.vb"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "ReadMe.htm"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Web References\Alethea\LocalTime.disco"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Web References\Alethea\LocalTime.wsdl"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Web References\Alethea\Reference.map"
+                    BuildAction = "None"
+                    Generator = "MSDiscoCodeGenerator"
+                    LastGenOutput = "Reference.vb"
+                />
+                <File
+                    RelPath = "Web References\Alethea\Reference.vb"
+                    DependentUpon = "Reference.map"
+                    SubType = "code"
+                    BuildAction = "Compile"
+                    DesignTime = "True"
+                    AutoGen = "True"
+                />
+                <Folder
+                    RelPath = "Web References\Alethea\"
+                    WebReferenceUrl = "http://www.alethea.net/webservices/LocalTime.asmx"
+                    UrlBehavior = "Static"
+                />
+                <File
+                    RelPath = "Web References\Esynaps\DailyDiblert.disco"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Web References\Esynaps\DailyDiblert.wsdl"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Web References\Esynaps\Reference.map"
+                    BuildAction = "None"
+                    Generator = "MSDiscoCodeGenerator"
+                    LastGenOutput = "Reference.vb"
+                />
+                <File
+                    RelPath = "Web References\Esynaps\Reference.vb"
+                    DependentUpon = "Reference.map"
+                    SubType = "code"
+                    BuildAction = "Compile"
+                    DesignTime = "True"
+                    AutoGen = "True"
+                />
+                <Folder
+                    RelPath = "Web References\Esynaps\"
+                    WebReferenceUrl = "http://www.esynaps.com/WebServices/DailyDiblert.asmx"
+                    UrlBehavior = "Static"
+                />
+                <File
+                    RelPath = "Web References\LearnXMLWS\Reference.map"
+                    BuildAction = "None"
+                    Generator = "MSDiscoCodeGenerator"
+                    LastGenOutput = "Reference.vb"
+                />
+                <File
+                    RelPath = "Web References\LearnXMLWS\Reference.vb"
+                    DependentUpon = "Reference.map"
+                    SubType = "code"
+                    BuildAction = "Compile"
+                    DesignTime = "True"
+                    AutoGen = "True"
+                />
+                <File
+                    RelPath = "Web References\LearnXMLWS\weatherRetriever.disco"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Web References\LearnXMLWS\weatherRetriever.wsdl"
+                    BuildAction = "None"
+                />
+                <Folder
+                    RelPath = "Web References\LearnXMLWS\"
+                    WebReferenceUrl = "http://www.learnxmlws.com/services/weatherRetriever.asmx"
+                    UrlBehavior = "Static"
+                />
+                <File
+                    RelPath = "Web References\PerfectXML\BookService.disco"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Web References\PerfectXML\BookService.wsdl"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Web References\PerfectXML\Reference.map"
+                    BuildAction = "None"
+                    Generator = "MSDiscoCodeGenerator"
+                    LastGenOutput = "Reference.vb"
+                />
+                <File
+                    RelPath = "Web References\PerfectXML\Reference.vb"
+                    DependentUpon = "Reference.map"
+                    SubType = "code"
+                    BuildAction = "Compile"
+                    DesignTime = "True"
+                    AutoGen = "True"
+                />
+                <Folder
+                    RelPath = "Web References\PerfectXML\"
+                    WebReferenceUrl = "http://www.perfectxml.net/WebServices/SalesRankNPrice/BookService.asmx"
+                    UrlBehavior = "Static"
+                />
+                <File
+                    RelPath = "Web References\VBWS\Reference.map"
+                    BuildAction = "None"
+                    Generator = "MSDiscoCodeGenerator"
+                    LastGenOutput = "Reference.vb"
+                />
+                <File
+                    RelPath = "Web References\VBWS\Reference.vb"
+                    DependentUpon = "Reference.map"
+                    SubType = "code"
+                    BuildAction = "Compile"
+                    DesignTime = "True"
+                    AutoGen = "True"
+                />
+                <File
+                    RelPath = "Web References\VBWS\ServerTime.disco"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Web References\VBWS\ServerTime.wsdl"
+                    BuildAction = "None"
+                />
+                <Folder
+                    RelPath = "Web References\VBWS\"
+                    WebReferenceUrl = "http://www.vbws.com/services/ServerTime.asmx"
+                    UrlBehavior = "Static"
+                />
+                <File
+                    RelPath = "Web References\XML-WebServices\euro_conver.disco"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Web References\XML-WebServices\euro_conver.wsdl"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "Web References\XML-WebServices\Reference.map"
+                    BuildAction = "None"
+                    Generator = "MSDiscoCodeGenerator"
+                    LastGenOutput = "Reference.vb"
+                />
+                <File
+                    RelPath = "Web References\XML-WebServices\Reference.vb"
+                    DependentUpon = "Reference.map"
+                    SubType = "code"
+                    BuildAction = "Compile"
+                    DesignTime = "True"
+                    AutoGen = "True"
+                />
+                <Folder
+                    RelPath = "Web References\XML-WebServices\"
+                    WebReferenceUrl = "http://www.xml-webservices.net/services/conversions/euro_convert/euro_conver.asmx"
+                    UrlBehavior = "Static"
+                />
+                <Folder
+                    RelPath = "Web References\"
+                    WebReferences = "TRUE"
+                />
+            </Include>
+        </Files>
+    </VisualBasic>
+</VisualStudioProject>
+

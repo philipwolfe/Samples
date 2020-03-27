@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft Visual Studio.NET 7.0">
+		<meta name="ProgId" content="VisualStudio.HTML">
+		<meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+		<font face="Verdana, Arial, System">
+			<h1>
+				WinForms: Multiple Top-Level Forms Management
+			</h1>
+			<p>
+				Demonstrates a multiple top-level forms application similar to Microsoft© Word.
+			</p>
+			<H2>Featured Highlights</H2>
+			<P>Many document-based applications support multiple windows, one per open 
+				document, displayed as top-level windows which show in the task list. This 
+				enables the user to use Alt+Tab to switch between the documents as if they were 
+				each separate processes, but without the overhead incurred by loading each 
+				document in a separate process. This application functions in a similar 
+				fashion.</P>
+			<P>When the application starts, via Sub Main inside a class named Forms, it creates 
+				a new form instance by calling the NewForm method of the class and adds the new 
+				form to an internal collection. Once the first form is created, the code calls 
+				Application.Run to start the main application thread so that closing the first 
+				form does not shut down the process. Each document form exposes a File|New menu 
+				item. Clicking the button calls Forms.NewForm which opens a new document form 
+				just as the Sub Main did as the application loaded.
+			</P>
+			<P>
+				Each form also provides File|Close and File|Exit menu items. Choosing 
+				File|Close starts the closing process. Each form has a Closing event which 
+				allows the form's code to check if the document contents have been modified 
+				(via a Dirty property) and if so, to ask the user whether to save or not. The 
+				application uses events raised by the form instances to allow your code to 
+				react to a user closing a form, exiting the application, and canceling the 
+				option to save a dirty document.</P>
+			<h2>Requirements</h2>
+			<p>
+				Requires the Trial or Release version of Visual Studio .NET Professional (or 
+				greater).
+			</p>
+			<h2>Running the Sample</h2>
+			<P>Start the application and create several document windows using the File|New 
+				menu item. Note how all the documents show up in the task list. Use the Task 
+				Manager to verify that only one process is running for the application. Close 
+				the first document form, Document1, and note how the process does not exit. 
+				Type some text in a few of the windows and note how the status bar text changes 
+				from "Ready" to an indicationthat the data has not been saved. (In addition, 
+				"dirty" forms include an * appended to the form's caption.) Saving a form's 
+				contents resets the form's Dirty property , resets the Form's title, and the 
+				sets the status bar text to "Ready". Note this application does not actually 
+				perform any file I/O to save the file.
+			</P>
+			<P>If you try and close a document that is dirty (either by closing the form, or by 
+				exiting the application), you'll see a dialog box asking you to save the form's 
+				contents. If you click Yes, the code calls the form's Save method and closes 
+				the form. If you click No, the form simply closes. If you click Cancel, the 
+				form doesn't close and a custom event is raised telling the application to stop 
+				shutting down if a shutdown is in progress.</P>
+			<h3>Last Update: 11 July 2002</h3>
+		</font>
+	</body>
+</html>

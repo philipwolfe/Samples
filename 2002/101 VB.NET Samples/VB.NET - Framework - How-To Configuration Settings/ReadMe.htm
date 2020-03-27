@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft Visual Studio.NET 7.0">
+		<meta name="ProgId" content="VisualStudio.HTML">
+		<meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+		<font face="Verdana, Arial, System">
+			<h1>
+				.NET Framework: Configuration Settings</h1>
+			<p>
+				This sample demonstrates how&nbsp;to read and write to an application's 
+				configuration file&nbsp;appSettings section.
+			</p>
+			<h2>Featured Highlights</h2>
+			<p>
+				.NET applications support custom XML configuration files out-of-the box. You 
+				simply add an app.config file to your solution via Project | Add New Item and 
+				select&nbsp;the Application Configuration File option. The item will<FONT face="Verdana, Arial, System"></FONT>
+				be added to your bin directory each time you compile. You can then add your own 
+				settings to this file so that users or administrators can adjust an 
+				application's settings by simply adjusting a text file.
+			</p>
+			<P>You can specifiy settings for individual controls that you want exposed via the 
+				configuration file. You simply add a Dynamic Property for any control value you 
+				want exposed. Examine the lblValue control for an example. Any of the dynamic 
+				property values defined in the appSettings section of configuration file will 
+				be loaded at runtime. You can access the values via the 
+				ConfigurationSettings.AppSettings. However, the NameValueCollection object 
+				exposed is read only. In addition, the settings are only loaded once at 
+				application startup.</P>
+			<P>If you want to be able to make changes to the file at runtime, you will need use 
+				the classes in the System.Xml namespace. This sample exposes two classes to let 
+				you do this:</P>
+			<UL>
+				<LI>
+					AppSettings which wraps the configuration file's appSettings section</LI>
+				<LI>
+					AppSetting which represents a single name/value pair item</LI></UL>
+			<P>AppSettings allows you to add, retrieve, update, and remove name/value pairs 
+				from the configuration file. It does this by wrapping access to the file via an 
+				XmlDocument instance.&nbsp;In addition it supports saving the changes manually 
+				or via an auto-save feature. Finally, the class implements IEnumerable to 
+				provide For..Each support.</P>
+			<h2>Requirements</h2>
+			<p>
+				Requires the Trial or Release version of Visual Studio .NET Professional (or 
+				greater).
+			</p>
+			<h2>Running the Sample</h2>
+			<p>
+				Start the program and examine the data exposed. Change the file manually and 
+				then use the functions on the Custom tab to see the changes. Or, use the 
+				command options exposed under the Custom tab.
+			</p>
+			<h3>Last Update:&nbsp;18 July 2002</h3>
+		</font>
+	</body>
+</html>

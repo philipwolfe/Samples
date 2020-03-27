@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+    <title>User Defined Types Sample</title>
+</head>
+<body>
+    <h1>
+        Functionality shown in this sample:</h1>
+    When prompted upon opening this solution, manually connect to an SQL Server instance
+    and select the tempdb database.
+    <p>
+    </p>
+    In this example, you see how to implement a User Defined Type and use it within
+    a Windows Form. User Defined Types allow us to group data together into one defined
+    type that can be accessed in one type.
+    <p>
+    </p>
+    To run this example, you may need to execute the following statement to allow these
+    stored procedures and user defined functions to be executed within the code:
+    <p>
+        sp_configure @configname = 'clr enabled', @configvalue = 1<br />
+        RECONFIGURE WITH OVERRIDE<br />
+        GO<br />
+    </p>
+    <p>
+    </p>
+    You may also need to deploy the UDT project manually if it does not automatically
+    deploy when the project is run.
+    <p>
+    </p>
+    In this example, enter a longitude and latitude value and a city that is associated
+    to that particular data point. Clicking the Enter a New GeoCache Location button
+    inserts the user data into the user defined data type. After the data is inserted,
+    the complete table contents are displaysed in the rich text box.
+    <p>
+    </p>
+    To re-run this sample, first drop the MyData table and then start again otherwise,
+    you will receive a deploy error for the User-Defined type.
+    <p>
+    </p>
+    This sample requires the following to be installed:
+    <ul>
+        <li>Visual Studio 2005</li>
+        <li>SQL Server 2005</li>
+    </ul>
+</body>
+</html>

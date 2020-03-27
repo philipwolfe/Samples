@@ -1,0 +1,33 @@
+HKCR
+{
+	StockProperty.Test.1 = s 'Stock Property Test Class'
+	{
+		CLSID = s '{A2F5480C-F54E-4D8F-BD78-E09BA74F7D5A}'
+	}
+	StockProperty.Test = s 'Stock Property Test Class'
+	{
+		CLSID = s '{A2F5480C-F54E-4D8F-BD78-E09BA74F7D5A}'
+		CurVer = s 'StockProperty.Test.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {A2F5480C-F54E-4D8F-BD78-E09BA74F7D5A} = s 'Stock Property Test Class'
+		{
+			ProgID = s 'StockProperty.Test.1'
+			VersionIndependentProgID = s 'StockProperty.Test'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			ForceRemove 'Control'
+			ForceRemove 'ToolboxBitmap32' = s '%MODULE%, 102'
+			'MiscStatus' = s '0'
+			{
+			    '1' = s '%OLEMISC%'
+			}
+			'TypeLib' = s '{63B3596D-27BE-4D38-881E-BB475DB71A05}'
+			'Version' = s '1.0'
+		}
+	}
+}

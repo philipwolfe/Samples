@@ -1,0 +1,42 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title></title>
+		<meta name="GENERATOR" content="Microsoft Visual Studio.NET 7.0">
+		<meta name=ProgId content=VisualStudio.HTML>
+		<meta name=Originator content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+<h1>
+    Embedded Resources</h1>
+<p></p>
+The .NET Compact Framework (.NET CF) 2.0 and Visual Studio 2005 make it easier to
+        create smart device applications.
+<p></p>
+        Resources such as files and images may be embedded into the assembly and accessed at run time from the assembly.&nbsp; A couple of notes to ensure you embed your
+        desired resources correctly.&nbsp;
+        <br />
+        <br />
+        First, add the desired resource to the project--in our case a .bmp image file.<br />
+        <br />
+        Second, set the Build Action property of the resource to 'Embedded Resource.'&nbsp;<br />
+        <br />
+        Third, when&nbsp; referencing the resource in code, be sure and remember to include
+        the namespace in the resource name when calling the GetManifestResourceStream method.&nbsp;
+        The namespace for this project is 'EmbeddedResources' which is the name of the project.&nbsp;&nbsp;Furthermore,
+        if resources
+        are placed in a subdirectory under the project root directory such as 'Images,'
+        then the correct call to the GetManifestResourceStream method would be something
+        like this: GetManifestResourceStream("EmbeddedResources.Images.Gone Fishing.bmp")<br />
+        <br />
+        This sample uses an embedded resource image to set the background of the form and
+        embedded resource images to load the thumbnail PictureBox controls.&nbsp; Clicking
+        on a thumbnail image will display this image in the MainPictureBox.<br />
+        <br />
+<p></p>
+<b>This sample requires the following to be installed: </b>
+<ul>
+<li>Visual Studio 2005 Beta 2.</li>
+</ul>
+	</body>
+</html>

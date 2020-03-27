@@ -1,0 +1,126 @@
+{{// This is an example of a server-side comment before handler declaration}} 
+{{handler SRFSyntaxSample.dll/Default}} 
+
+
+
+{{// This is an example of a subhandler. A subhandler acts as a namespace 
+containing replacement methods. A replacement method may be called by prefixing 
+the replacement tag with the subhandler ID. The class implementing the 
+subhandler may be in the same or a different DLL than the default handler }} 
+{{subhandler alternate SRFSyntaxSample.dll/Alternate}} 
+
+{{// This is an example of a server-side comment. The "handler" tag above 
+identifies the DLL and request handler that will be accessed to execute this page. 
+It is of the form: handler [dll_location]/[handler_name] The dll location can be a 
+relative path. The handler name is the name you give your handler in the 
+HANDLER_MAP or the name parameter you specify in the request_handler attribute. }}
+<html>
+	<head>
+		<link rel="stylesheet" href="root.css" type="text/css">
+		<TITLE>SRFSyntax Sample - Basic SRF Syntax elements </TITLE>
+	</head>
+	<body>
+		<DIV>
+		Click <A href="SRFParams.srf">here</A> to load the <A href="SRFParams.srf">SRFParams.srf</A>
+		page that demonstrates using of replacement tags with parameters
+		</DIV>
+		<HR>		
+		<h2>
+			Simple replacement method
+		</h2>
+		
+		{{// "Hello" is an example of how to call a replacement method. Right-click on 
+		the "Hello" tag below to edit its C++ handler. }}
+		<br>
+			{{// the following text is to be displayed in the browser}} 
+			Simple replacement method, no parameters:
+		<br>
+			This is a test:
+		<div class="code">
+			{{Hello}}
+		</div>
+		<br>
+		<br>
+		<h2>
+			Condition
+		</h2>
+		{{// "Condition" is an example of how to conditionally call a replacement 
+		method, using the "if" keyword }}
+		{{// the following text is to be displayed in the browser}} 
+		Two replacement methods, conditionally called:
+		<br>
+			The first <b>if</b> returns HTTP_S_FALSE, the second returns HTTP_SUCCESS:
+		<br>
+		<br>
+			Call first replacement method:
+		<br>
+			{{if failCondition}} Inside the first <b>if</b>:
+		<div class="code">
+			{{Hello}}
+		</div>
+		<br>
+			{{endif}}
+		<br>
+			Call second replacement method:
+		<br>
+			{{if passCondition}} Inside the second <b>if</b>:
+		<div class="code">
+			{{Hello}}
+		</div>
+		<br>
+			{{endif}}
+		<h2>
+			Iteration
+		</h2>
+		{{// "Iteration" is an example of how to conditionally call a replacement 
+		method, using the "while" keyword }} 
+		{{// the following text is to be displayed in the browser}} 
+		Two replacement methods, conditionally called:
+		<br>
+			The first <b>while</b> returns HTTP_S_FALSE at each call, the second returns HTTP_SUCCESS 3 times, 
+		then HTTP_S_FALSE:
+		<br>
+		<br>
+			Call first replacement method:
+		<br>
+			{{while failLoopCondition}} Inside the first <b>while</b>:
+		<div class="code">
+			{{Hello}}
+		</div>
+		<br>
+			{{endwhile}}
+		<br>
+			Call second replacement method:
+		<br>
+			{{while passLoopCondition}} Inside the second <b>while</b>:
+		<div class="code">
+			{{Hello}}
+		</div>
+		<br>
+			{{endwhile}}
+		<br>
+		<h2>
+			Invoking methods from a subhandler
+		</h2>
+		This method is part of a subhandler:
+		<br>
+		<div class="code">
+			{{alternate.Hello}}
+		</div>
+		<h2>
+			Included files
+		</h2>
+		{{// This is an example of how to include a SRF file The SRF file has its own 
+		replacement handler }} Entering the included file
+		<br>
+			{{include IncludedFile.srf}} Leaving the included file
+		<br>
+		
+		<HR>		
+		<DIV>
+		Click <A href="SRFParams.srf">here</A> to load the <A href="SRFParams.srf">SRFParams.srf</A>
+		page that demonstrates using of replacement tags with parameters
+		</DIV>
+		
+	</body>
+</html>

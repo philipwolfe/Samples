@@ -1,0 +1,50 @@
+{{ handler bin\ShowImage.dll/Default }}
+<html>
+	<!-- (c) 2000 Microsoft Corporation -->
+	<head>
+		<title>{{Title}}</title>
+		<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+		<link rel="stylesheet" href="normal.css" type="text/css">
+	</head>
+
+	<body>
+		<h1>{{Title}}</h1>
+		
+		<h2>These files were sent to the server:</h2>
+		{{TableHeader}}
+		{{ShowFiles}}
+		{{TableFooter}}
+
+		{{ShowImage}}
+
+		<h3>Instructions</h3>
+		<p>
+		Use <a href="form.srf">this form</a> to send some image files to this page.
+		The server will attempt to convert the files to PNG format and add the image data
+		to a database. The response will indicate which files were received by the server,
+		which files were images, which could be converted to PNG format, and which of those 
+		could be added to the database. Any images added to the database will be displayed
+		as part of the page.
+		</p>
+		
+		<h3>How It Works</h3>
+		<p>
+		The server loops through the files sent to the server and loads each of them into a CImage object.
+		If the file could be loaded successfully, the server generates a temporary file name and tries
+		to save the image to that file name in PNG format. If that is successful, the server loads the file
+		into an object that exposes the data via the IWriteStream interface and hooks that up to an OLE DB
+		accessor. The server then calls a stored procedure using that accessor to add the image to the database
+		along with information such as its width, height, and bits per pixel. Each image added to the database
+		causes an IMG element to be added to the response.
+		</p>
+		
+		<p>
+		The SRC attribute of the IMG is a URL to this page.
+		The presence of a query string indicates that the server should send back image data retrieved
+		from the database rather than an HTML page. In this example, the query string just contains the ID of the
+		database record holding the image. This ID is used as a parameter to a stored procedure that returns the
+		image data which is then written to the client.
+		</p>
+
+	</body>
+</html>

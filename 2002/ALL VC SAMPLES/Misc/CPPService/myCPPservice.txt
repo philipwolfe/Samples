@@ -1,0 +1,122 @@
+Your first managed C++ Web Service
+Chris Maunder, The Code Project (www.codeproject.com)
+
+
+An introduction and sample showing how to write your first WebService using C++ with managed extensions.
+
+
+Introduction
+
+This article assumes you are familiar with declaring and using managed types and the .NET Garbage Collector. 
+
+Creating your first web service is incredibly easy if you use C# or VB.NET (see my previous article for details). Writing a WebService using managed C++ in .NET is also extremely simple, but there are a couple of 'gotcha's that can cause a few frustrating moments. 
+
+My first suggestion is to use the Visual Studio.NET Wizards to create your WebService (in fact it's a great idea for all your apps when you are first starting out). This is especially important if you are moving up through the various builds of the beta bits of .NET. What is perfectly acceptable in one build may fail to compile in another build, and it may be difficult to work out which piece of the puzzle you are missing. 
+
+Using the Wizards can get you a managed C++ WebService up and running in minutes, but things can start to get a little weird as soon as you try something a little more risque. 
+
+For this example I have created a service called MyCPPService by using the Wizard. Simply select File | New Project and run through the wizard to create a C++ WebService. 
+
+A new namespace will be defined called MyCPPService, and within this namespace will be the classes and structures that implement your webservice. For this example I have called the class CPPWebService. Other files that are created by the wizard include the .asmx file that acts as a proxy for your service; the config.web file for configuration settings, and the .disco file for service discovery. Once you compile the class your assembly will be stored as MyCPPService.dll in the /bin directory. 
+
+I wanted to mimic the C# WebService created in my previous article. With this in mind I defined a structure ClientData within the namespace that would contain a name and an ID (string and int values respectively). I also prefixed the __gc keyword to inform the compiler that the structure was to be managed by the CLR (ie garbage collected). In a similar fashion I defined my CPPWebService class as a simple managed C++ class with one method called GetClientData that would return an ArrayList containing the ClientData structures. 
+
+The important thing to notice about the function prototype is the [WebMethod] attribute - this informs the compiler that the method will be a method of a web service, and that it should provide the appropriate support and plumbing. The method you attach this attribute to must also be publicly accessible. 
+
+// MyCPPService.h
+
+#pragma once
+
+namespace MyCPPService
+{
+    __gc public struct ClientData
+    {
+        String *Name;
+        int    ID;
+    };
+
+    __gc public class CPPWebService 
+    {    
+    public:
+        [WebMethod]                                       // Mark as WebMethod
+        ArrayList* GetClientData(int Number);
+    };
+}
+
+The implementation (.cpp) file is as follows. 
+
+// MyCPPService.cpp
+
+#using <mscorlib.dll>
+#using "System.Web.dll"
+#using "System.Web.Services.dll"
+
+using namespace System;
+using namespace System::Web;
+using namespace System::Web::Services;
+using namespace System::Text;
+using namespace System::Collections;
+
+#include "MyCPPService.h"
+
+namespace MyCPPService
+{
+    ArrayList* CPPWebService::GetClientData(int Number)
+    {
+        ArrayList *Clients = new ArrayList;
+
+        if (Number > 0 && Number <= 10)
+        {
+            for (int i = 0; i < Number; i++)
+            {
+                ClientData* Client = new ClientData;
+
+                Client->Name = new String(L"Client ");
+                Client->Name->Concat(i.ToString());
+                Client->ID = i;
+
+                Clients->Add(Client);
+            }
+        }
+        return Clients;
+    }
+};
+
+Note the use of the syntax i.ToString(). In .NET, value types such as int's and enums can have methods associated with them. i.ToString() simply calls the Int32::ToString() for the variable i. 
+
+It is almost that easy. I say 'almost' because we have introduced a complication in the form of the ClientData structure. If we had simply returned a base type, or an array of base types (such as int or string) we could compile the web service and we would be done.
+
+The code above will certainly compile, but when you attempt to invoke the service you will get an error stating that the XML serializer is having great difficulty with your ClientData structure and that you should use the XmlIncludeAttribute class to inform the serializer about your structure. 
+
+Huh? 
+
+The XmlIncludeAttribute class is an attribute class that helps the serializer convert your return values into XML so they can be passed back to the client. All you have to do to let the serializer know the types of your return values is to add the [XmlInclude] attribute to your method's prototype: 
+
+// MyCPPService.h
+
+#pragma once
+
+// So we can use the XmlIncludeAttribute class...
+#using "System.Xml.Serialization.dll"
+using namespace System::Xml::Serialization;
+
+namespace MyCPPService
+{
+    ...
+
+    __gc public class CPPWebService 
+    {    
+    public:
+        [WebMethod]                                       // Mark as WebMethod
+        [XmlInclude(__typeof(MyCPPService::ClientData))]  // Tell Serializer about our struct
+        ArrayList* GetClientData(int Number);
+    };
+}
+Once you have the changes in place you can build the project then test the service by right clicking on the MyCPPService.asmx in the Solution Explorer in Visual Studio and choosing "View in Browser". The test page is shown below.
+ 
+When invoked this returns the following:
+
+ 
+Conclusion
+
+Writing WebServices using Visual C++ with managed extensions is just as easy as writing them using C# or VB.NET, as long as you remember a few simple things: use attributes, declare your classes as managed and make them publicly accessible. Using the Visual Studio.NET wizards makes writing and deploying these services a point and click affair, but even if you wish to do it by hand then the steps involved are extremely simple.

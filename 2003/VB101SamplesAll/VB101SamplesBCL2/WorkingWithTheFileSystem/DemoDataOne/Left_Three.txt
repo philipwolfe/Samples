@@ -1,0 +1,15 @@
+Traditional filesystems also offer facilities to truncate, append to,
+create, move, delete and in-place modify files. They do not offer
+facilities to prepend to or truncate from the beginning of a file, let
+alone arbitrary insertion into or deletion from a file. The operations
+provided are highly asymmetric and lack the generality to be useful in
+unexpected contexts. For example, interprocess pipes in Unix have to be
+implemented outside of the filesystem because it does not offer
+truncation from the beginning of files.
+
+Secure access to basic file system operations can be based on a scheme
+of access control lists or capabilities. Research has shown access
+control lists to be difficult to secure properly, which is why research
+operating systems tend to use capabilities. Commercial file systems
+still use access control lists.
+

@@ -1,0 +1,73 @@
+<span style="font-size: 14pt; font-family: Arial"><strong>Using Sockets With the .NET 2.0 BCL<br />
+</strong></span>
+<br />
+<strong><span style="font-family: Arial">
+
+ 
+
+Introduction:
+<br />
+</span></strong>
+<br />
+<span style="font-family: Arial">
+
+ 
+
+New features for socket-based communication in .NET 2.0 allow applications to achieve higher performance through greater control of socket lifecycle as well as asynchronous operations.  The example code will demonstrate a high-performance socket pool that recycles Socket instances and increased performance of threads through asynchronous connect operations.<br />
+</span>
+<br />
+<span style="font-family: Arial"><strong>
+
+ 
+
+New features demonstrated:<br />
+</strong></span>
+<br />
+<span style="font-family: Arial">
+
+ 
+
+New to .NET 2.0 are the System.Net.Sockets.Socket methods ‘Disconnect’ and the asynchronous ‘BeginConnect‘ and ‘EndConnect’.  The ‘Disconnect’ method can be used to shut down a socket and allow it to be recycled, thus saving the overhead of Socket object creation.  The ‘BeginConnect’ and ‘EndConnect’ methods allow a socket to asynchronously establish a connection and notify a callback method when that connection has been established.  All of the methods must be used because once a socket has been disconnected, the only way to reuse it is to asynchronously connect to a brand new endpoint using the asynchronous methods.  Attempting to re-use a disconnected socket using the standard ‘Connect’ method will result in an exception being thrown.
+<br />
+</span>
+<br />
+<span style="font-family: Arial"><strong>
+
+ 
+
+Example code:
+<br />
+</strong></span>
+<br />
+<span style="font-family: Arial">
+
+ 
+
+The example consists of code that builds a list of URL’s of the form http://www.aN.com,
+where 'N' is a value incremented N times.   After the list is built, several threads are created which perform the operations of locking the list, getting the next value, and incrementing a thread-wide counter for the next URL.  Once a URL has been obtained, the thread locks the socket pool list, finds an unconnected socket, and performs an asynchronous connect operation to the URL.  If no unconnected socket is available the thread will use ‘Monitor.Wait’ to wait for an available socket from the pool.  Once an asynchronous connection has been established, an HTTP GET is performed to retrieve the home page contents and the number of bytes retrieved is displayed.  The ‘Disconnect’ method is called on the socket and the socket obtains an unconnected status in the pool list.  A ‘Monitor.Pulse’ call is made to notify any waiting threads that a new socket has become available in the pool.
+    <br />
+    <br />
+    <strong>
+
+ 
+
+Running the example:
+    <br />
+    </strong></span>
+    <br />
+<span style="font-family: Arial">
+
+ 
+
+The example is available as a VS.NET 2005 windows forms project in both C# and VB.NET.  In operation, the forms window will display results from each thread as it moves through the URL list and attempts to connect and retrieve data from port 80 of the address.  Since many of the generated URL’s are invalid, quite a few failed connections will be reported as well as successful ones.  Upon a successful connection, the number of bytes retrieved will display for each URL that can be successfully queried. 
+<br />
+<br />
+    <strong>
+This sample requires the following to be installed:
+<br />
+    </strong></span>
+<br />
+<span style="font-family: Arial">
+Visual Studio .NET 2005
+<br /> 
+</span> 

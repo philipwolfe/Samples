@@ -1,0 +1,44 @@
+﻿Sean<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ClickOnce Sample Readme</title>
+	</head>
+	<body>
+        <h1>Using ClickOnce</h1>
+        ClickOnce is a new deployment technology introduced in the .NET Framework 2.0.
+        ClickOnce supports three deployment strategies:
+        <ul>
+            <li>Check for updates automatically on startup</li>
+            <li>Check for updates automatically after startup</li>
+            <li>Check for upgrades through application logic</li>
+        </ul>
+        The first two strategies are configured using Visual Studio 2005, as part of 
+        ClickOnce publishing.  The third strategy involves adding code to the application
+        to check for updates via a user interface element such as an Update Now button, 
+        or automatically by some custom logic.
+        <br><br>
+        This sample demonstrates implementing ClickOnce updates through application logic,
+        in this case, a user interface that allows the user to check for and commence updates.
+        <br><br>
+        <b>Important Note:</b> This sample cannot be run in Visual Studio 2005.  It must be deployed using ClickOnce, 
+        and run from the installed application.  ClickOnce has been configured in this sample 
+        to install the application to a local Web site, <a href="http://localhost/UsingClickOnce">http://localhost/UsingClickOnce</a>.  
+        To create this Web site and deploy the application , in Visual Studio 2005 select the 
+        <b>Build | Publish UsingClickOnce</b> menu command. This will launch the <b>Publish Wizard</b>.
+        Accept the default values, and click <b>Finish</b> to deploy the sample application.
+        ClickOnce will open a browser to the deployment Web page for the application.  Click
+        <b>Install</b> to install the application. If a security warning dialog appears, click <b>Install</b>. 
+        ClickOnce will launch the application once it is installed.
+        <br><br>
+        To generate an update for the application, exit the application and re-publish it using the same procedure. 
+        There is no need to make any changes to the application to create an update.  Once an update has been published, do not reinstall
+        from the deployment Web page. Instead, navigate to <b>Start | All Programs | Visual Studio 2005 101 Samples | Using ClickOnce</b> to 
+        use the application to update itself.
+        <br><br>
+			This sample requires the following to be installed:	
+				<ul>
+				<li>Visual Studio 2005</li>
+				<li>Internet Information Services</li>
+				</ul>
+	</body>
+</html>

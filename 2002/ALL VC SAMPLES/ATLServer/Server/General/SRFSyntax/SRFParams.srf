@@ -1,0 +1,104 @@
+{{//This SRF file uses SRF replacement tags with pameters}}
+{{handler SRFSyntaxSample.dll/ReplTagsWithParams}} 
+<html>
+	<head>
+		<link rel="stylesheet" href="root.css" type="text/css">
+		<TITLE>SRFSyntax Sample - Using replacement tags with parameters </TITLE>
+	</head>
+	<body>
+		<DIV>
+		Click <A href="SRFSyntax.srf">here</A> to load the <A href="SRFSyntax.srf">SRFSyntax.srf</A>
+		page that demonstrates common SRF syntax elements
+		</DIV>
+		<HR>		
+		
+		
+		<h2>
+			Replacement methods with parameters
+		</h2>
+		<h3>
+			Single integer parameter
+		</h3>
+		{{// "simpleIntHello" is an example of how to call a replacement method with a 
+		simple integer parameter, using the default parsing function. Right-click on 
+		the "simpleIntHello" tag below to edit its C++ handler. }}
+		<br>
+			{{// the following text is to be displayed in the browser}} 
+			Replacement method, single parameter, using default parsing function:
+		<br>
+		<div class="code">
+			{{simpleIntHello(5)}}
+			<br>
+		</div>
+		<br>
+		<h3>
+			Single string parameter
+		</h3>
+		{{// "simpleStringHello" is an example of how to call a replacement method with 
+		a simple string parameter. Right-click on the "simpleStringHello" tag below to 
+		edit its C++ handler. }}
+		<br>
+			{{// the following text is to be displayed in the browser}} Replacement method, 
+			single parameter:
+		<br>
+		<div class="code">
+			{{simpleStringHello(User)}}
+			<br>
+		</div>
+		<br>
+		<h3>
+			Complex parameter
+		</h3>
+		{{// "multipleParamHello" is an example of how to call a replacement method 
+		with a structure as parameter, and fill the fields of that structure using the 
+		replacement tag parameters Right-click on the "multipleParamHello" tag below to 
+		edit its C++ handler. }}
+		<br>
+			{{// the following text is to be displayed in the browser}} Replacement method, 
+			multiple parameters:
+		<br>
+		<div class="code">
+			{{multipleParamHello(User, ATL Server, .NET, 4)}}
+			<br>
+		</div>
+		<br>
+		
+		<h3>
+			More complex example : browse SRFs in the current folder
+		</h3>
+		{{// this section is an example of how to use the tags with parameters to display different attributes of an onject.
+		 Right-click on the "multipleParamHello" tag below to edit its C++ handler. }}
+		<br>
+			{{// the following text is to be displayed in the browser}} 
+			SRF Files in the current folder :
+		<br>
+		<table border=2 width=60%>
+			<thead align = center>
+				<td><b>File Name</b></td>
+				<td><b>File Size</b></td>
+				<td><b>File Date</b></td>
+			</thead>
+			
+			{{// Iterate through the files of a specific extension. Change the extension 
+			to get different files}}
+			{{while getNextFile(*.SRF)}}
+				{{//for each file matching the filter, render a table line with the properties of that file}}
+				<tr>
+					{{// use the same replacement tag with different parameters to render different attributes}}
+					<td><a href="{{file(name)}}">{{file(name)}}</a></td>
+					<td>{{file(size)}}</td>
+					<td>{{file(date)}}</td>
+				</tr>
+			{{endwhile}}
+		</table>
+		<br>
+		
+		
+		<hr>
+		<DIV>
+		Click <A href="SRFSyntax.srf">here</A> to load the <A href="SRFSyntax.srf">SRFSyntax.srf</A>
+		page that demonstrates common SRF syntax elements
+		</DIV>
+		
+	</body>
+</html>

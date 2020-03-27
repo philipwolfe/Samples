@@ -1,0 +1,47 @@
+{{ handler bin\ForceLogin.dll/LoginPage }}
+<html>
+	<!-- (c) 2000 Microsoft Corporation -->
+	<head>
+		<title>{{Title}}</title>
+		<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+		<link rel="stylesheet" href="normal.css" type="text/css">
+	</head>
+
+	<body>
+		<h1>{{Title}}</h1>
+		<form method="post" action="{{SubmitUrl}}" AUTOCOMPLETE="OFF">
+			<table width="480" border="0" rules="none" frame="void">
+				<tr>
+					<td>user name</td>
+					<td><input type="text" name="user" value="{{UserName}}"></input></td>
+				</tr>
+				<tr>
+					<td>password</td>
+					<td><input type="password" name="password"></input></td>
+				</tr>
+			</table>
+			<div align="right">
+				<input type="submit" name="cmdSubmit" value="Submit">
+				<input type="reset" name="cmdCancel" value="Cancel">
+			</div>
+		</form>
+
+		<h3>Instructions</h3>
+		<p>
+		Enter a user name and password to gain access to this protected resource.
+		(Hint: Any identical user name and password will work.) You will only be asked to log on
+		once per session.
+		</p>
+
+		<h3>How It Works</h3>
+		<p>
+		When the server receives a request for this resource, the server looks for a special cookie.
+		If the cookie is not present or its contents are invalid, the server redirects the user to the login page.
+		When submitted, the login page returns the user's name and password to the server along with the URL
+		that they originally requested (the URL is hidden from the user - view the source of this page to see where it is).
+		If the login attempt is successful, the user is supplied with the 
+		special cookie then redirected back to the original resource. This time the server allows access to the resource, 
+		and will continue to allow access for as long as the user retains the cookie.
+		</p>
+	</body>
+</html>

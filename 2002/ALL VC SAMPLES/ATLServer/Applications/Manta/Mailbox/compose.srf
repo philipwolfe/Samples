@@ -1,0 +1,63 @@
+<!--{{handler cgi-bin\Mailbox.dll/Compose}} This file (c) 2000 Microsoft Corporation -->
+<html>
+<head>
+<base target="main_frame">
+<link rel="stylesheet" href="main.css" type="text/css">
+<script language="JavaScript">
+<!--
+var submit = false;
+
+function Submit()
+{
+	submit = true;
+}
+
+function Test() 
+{
+	if (!submit)
+	{
+		var to = document.form1.to.value;
+		var subject = document.form1.subject.value;
+		var message = document.form1.message.value;
+		if (to != '' || subject != '' || message != '')
+		{
+			if (confirm("If you do not click \"Send To Outbox\" your message will be discarded.  Send to Outbox now?"))
+			{
+				document.form1.submit();
+			}
+		}
+	}
+}
+-->
+</script>
+</head>
+<body OnUnload="Test()">
+<form method="POST" action="compose.srf" name="form1" OnSubmit="Submit()">
+<table border="1" cellspacing="0" cellpadding="2" bgcolor="#FFFFCC" width="627">
+  <tr>
+    <td width="13"><font color="#3A6EA5"><span style="font-variant: small-caps"><b>To:</b></span></font></td>
+    <td width="449" bgcolor="#FFFFFF"><input type="text" name="to" size="88" value="{{To}}" tabindex="1"></td>
+  </tr>
+  <tr>
+    <td width="13"><font color="#3A6EA5"><span style="font-variant: small-caps"><b>From:</b></span></font></td>
+    <td width="449" bgcolor="#FFFFFF"><font color="#3A6EA5"><b>{{From}}</b></font></td>
+  </tr>
+  <tr>
+    <td width="13"><font color="#3A6EA5"><span style="font-variant: small-caps"><b>Subject:</b></span></font></td>
+    <td width="449" bgcolor="#FFFFFF"><input type="text" name="subject" size="88" value="{{Subject}}" tabindex="2"></td>
+  </tr>
+</table>
+  <p><textarea rows="17" name="message" cols="76" tabindex="3">{{Message}}</textarea></p>
+<font size="2" color="#FF0000">
+  {{if Failure}}<p>Please make sure the To, Subject, and Message fields are not blank.<br>
+  Verify that the To field specifies either a valid e-mail address or a valid MantaWeb login.</p>{{endif}}</font>
+<p>
+<font size="2">
+Please note: this message will not be sent until the &quot;Send Mail&quot; button in your Outbox is clicked. Your composed <br>
+messages will be moved to your Outbox when you click &quot;Send To Outbox&quot;.</font><br><br>
+</p>
+<p><input type="submit" value="Send To Outbox" name="sendButton" tabindex="4"></p>
+</form>
+<p>&nbsp;</p>
+</body>
+</html>

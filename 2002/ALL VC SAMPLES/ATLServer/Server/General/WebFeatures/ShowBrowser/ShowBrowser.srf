@@ -1,0 +1,25 @@
+{{ handler bin\ShowBrowser.dll/Default }}
+<html>
+	<!-- (c) 2000 Microsoft Corporation -->	
+	<head>
+		<title>{{Title}}</title>
+		<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+		<link rel="stylesheet" href="normal.css" type="text/css">
+	</head>
+
+	<body>
+		<h1>{{Title}}</h1>
+
+		<h3>Instructions</h3>
+		<p>
+		This sample displays information about your browser.
+		This information is obtained by comparing the User-Agent header sent by your browser
+		with information contained in an INI file. Try viewing this page with another
+		browser or a different version of your current browser to see how the server
+		can recognize its capabilities.
+		</p>
+		
+		{{ShowBrowser}}
+
+	</body>
+</html>

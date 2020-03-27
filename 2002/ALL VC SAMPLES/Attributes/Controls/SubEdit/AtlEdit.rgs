@@ -1,0 +1,33 @@
+HKCR
+{
+	AtlEdit.AtlEdit.1 = s 'AtlEdit Class'
+	{
+		CLSID = s '{AF1F3D15-D053-4072-8943-4E3997D48C5D}'
+		'Insertable'
+	}
+	AtlEdit.AtlEdit = s 'AtlEdit Class'
+	{
+		CLSID = s '{AF1F3D15-D053-4072-8943-4E3997D48C5D}'
+		CurVer = s 'AtlEdit.AtlEdit.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {AF1F3D15-D053-4072-8943-4E3997D48C5D} = s 'AtlEdit Class'
+		{
+			ProgID = s 'AtlEdit.AtlEdit.1'
+			VersionIndependentProgID = s 'AtlEdit.AtlEdit'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			ForceRemove 'Control'
+			ForceRemove 'ToolboxBitmap32' = s '%MODULE%, 1'
+			'MiscStatus' = s '0'
+			{
+			    '1' = s '131473'
+			}
+			'TypeLib' = s '{AF1F3D15-D053-4072-8943-4E3997D48C5D}'
+			'Version' = s '1.0'
+		}
+	}
+}

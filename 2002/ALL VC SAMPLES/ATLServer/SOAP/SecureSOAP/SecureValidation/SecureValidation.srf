@@ -1,0 +1,42 @@
+<html>
+	<HEAD>
+		<title>
+			SecureSOAP - {{if valid}}User validated{{else}}Login page{{endif}}
+		</title>
+	</HEAD>
+	<BODY>
+		{{// use MSDN's "ATL Server Response File Reference" to learn about SRF 
+		files.}} {{handler SecureValidation.dll/Default}} {{if mode(resultPage)}} 
+		{{displayStatus}} {{else}}
+		<form action="SecureValidation.srf?mode=validate" method=post>
+			<h2>
+				SecureSOAP Login
+			</h2>
+			<table border=0>
+				<tr>
+					<td>
+						User name :
+					</td>
+					<td>
+						<input type=text size=30 name=userName>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Password :
+					</td>
+					<td>
+						<input type=password size=30 name=pwd>
+					</td>
+				</tr>
+				<tr>
+					<td align=center colspan=2>
+						<input type=submit value="Log on!" id=Submit1 name=Submit1>
+					</td>
+				</tr>
+			</table>
+		</form>
+		{{endif}}
+		<br>
+	</BODY>
+</html>

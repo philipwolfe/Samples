@@ -1,0 +1,90 @@
+Using ADO.NET in a managed C++ application.
+Igor Chouvalov, Dundas Software Ltd
+
+This example demonstrates the basics of accessing a
+database and retrieving data from that database using
+the ADO.NET data classes. The sample is based on a 
+simple managed C++ console application.
+
+It uses the .NET DataReader class to retrieve a read-only, forward-only
+stream of data from the database. Using the DataReader can increase
+application performance and reduce system overhead because
+only one row at a time is ever in memory.
+
+This example is based on the standard Managed C++ Application created by the
+Application Wizard.
+
+To get an access to the .NET Framework classes we need for 
+database support, we should add the following lines to the main
+source file:
+
+#using <mscorlib.dll>
+
+// Add access to .NET Framework classes.
+#using <System.dll>
+#using <System.Data.dll>
+
+using namespace System;
+using namespace System::Data::OleDb;
+
+To retrieve the data from the database we must first create
+a connection to the database using the OleDbConnection class.
+We then set the ConnectionString to specify the data source and then 
+connect to the database using the Open() method of the OleDbConnection 
+class.
+
+After that we create a command object to get the data using the 
+OleDbCommand class. Executing this command returns us a reference to 
+the data reader class, which is an instance of the OleDbDataReader
+class.
+
+We then loop through each row of data one at the time by calling the Read()
+member of OleDbDataReader class. It retrieves data that is accessible
+as an items collection. We can get items by index or by column name.
+Note: We should always call the Read method before we access the data
+in the OleDbDataReader object.
+
+int main(void)
+{
+	OleDbConnection* connection;	// ADO connection.
+	OleDbCommand* command;		// ADO command
+	OleDbDataReader* dataReader;	// ADO data reader
+
+	try
+	{
+		// Create connection, set connection string and open connection to
+		// specified database.
+		connection = new OleDbConnection();
+		connection->set_ConnectionString(S"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=..\\Data\\grocertogo.mdb;Persist Security Info=False");
+		
+		connection->Open();
+
+
+		// Create command and get data reader by executing this command.
+		command = new OleDbCommand(S"SELECT ProductName, UnitPrice FROM Products", connection);
+		dataReader = command->ExecuteReader();
+
+		// Print table header
+		Console::WriteLine(S"_____________________________________");
+		Console::WriteLine(S"Product                       | Price");
+		Console::WriteLine(S"_____________________________________");
+
+		// Iterate through rows set and print data.
+		while(dataReader->Read())
+			Console::WriteLine(S"{0, -30}| {1}", dataReader->get_Item("ProductName"), dataReader->get_Item("UnitPrice"));
+
+		// Print table footer.
+		Console::WriteLine(S"_____________________________________");
+
+		// Close connection.
+		connection->Close();
+	}
+	catch(Exception* e)
+	{
+		// Print error message and close connection.
+		Console::WriteLine("Error occured: {0}", e->Message);
+		connection->Close();
+	}
+
+    return 0;
+}

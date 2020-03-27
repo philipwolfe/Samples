@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!-- ATL Server generated Web Service Description -->
+<definitions 
+	xmlns:s="http://www.w3.org/2001/XMLSchema" 
+	xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" 
+	xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" 
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+	xmlns:s0="urn:HWService" 
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:atls="http://tempuri.org/vc/atl/server/"
+	targetNamespace="urn:HWService" 
+	xmlns="http://schemas.xmlsoap.org/wsdl/"
+>
+	<types>
+		<s:schema targetNamespace="urn:SimpleSoapAppService" attributeFormDefault="qualified" elementFormDefault="qualified">
+		</s:schema>
+	</types>
+	<message name="HelloWorldIn">
+		<part name="bstrInput" type="s:string"/>
+	</message>
+	<message name="HelloWorldOut">
+		<part name="return" type="s:string"/>
+	</message>
+	<portType name="SimpleSoapAppServiceSoap">
+		<operation name="HelloWorld">
+			<input message="s0:HelloWorldIn"/>
+			<output message="s0:HelloWorldOut"/>
+		</operation>
+	</portType>
+	<binding name="SimpleSoapAppServiceSoap" type="s0:SimpleSoapAppServiceSoap">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc"/>
+		<operation name="HelloWorld">
+			<soap:operation soapAction="#HelloWorld" style="rpc"/>
+			<input>
+				<soap:body use="encoded" namespace="urn:SimpleSoapAppService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="urn:SimpleSoapAppService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="SimpleSoapAppService">
+		<port name="SimpleSoapAppServiceSoap" binding="s0:SimpleSoapAppServiceSoap">
+			<soap:address location="http://localhost/soapinterop/HW.dll?Handler=Default"/>
+		</port>
+	</service>
+</definitions>

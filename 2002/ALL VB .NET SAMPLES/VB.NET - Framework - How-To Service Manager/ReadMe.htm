@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft Visual Studio.NET 7.0">
+		<meta name="ProgId" content="VisualStudio.HTML">
+		<meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+		<font face="Verdana, Arial, System">
+			<h1>
+				.NET Framework: Service Controller</h1>
+			<p>
+				This sample shows how to control Windows Services under Windows NT, Windows 
+				2000, or Windows XP.
+			</p>
+			<h2>Featured Highlights</h2>
+			<p>
+				Windows&nbsp;Services are long running programs (analogous to UNIX daemons) 
+				that&nbsp;perform task without user interaction. Services are controlled by a 
+				system service know as the Service Control Manager (SCM). This sample uses the 
+				ServiceController class from the System.ServiceProcess namespace.
+			</p>
+			<P>Using the UI presented you can Start, Stop, Pause, and Resume a service. The 
+				sample checks the current state of the service to see what buttons should be 
+				enabled.&nbsp;A timer control runs every 5 seconds by default refreshing the 
+				status of all running services. Note that it does not re-enumerate the list of 
+				possible services. If you install or uninstall a service while the program is 
+				running, you will need the application to re-enumerate the list of possible 
+				services. This is accomplished by selecting <STRONG>Relist All Services</STRONG>
+				from the Tools menu. The timer can be toggled on &amp; off by checking the <STRONG>Auto 
+					Refresh</STRONG> check box. You can manually refresh the status of all 
+				services by pressing <STRONG>F5</STRONG> or selecting <STRONG>Refresh</STRONG> from 
+				the Tools menu.</P>
+			<h2>Requirements</h2>
+			<p>
+				Requires the Trial or Release version of Visual Studio .NET Professional (or 
+				greater). Services only run on Windows operating systems based upon the Windows 
+				NT kernel.
+			</p>
+			<h2>Running the Sample</h2>
+			<p>
+				Start&nbsp;the application and it will enumerate all&nbsp;services and show 
+				thier status and type. By selecting a different service, the buttons&nbsp;at 
+				the bottom of the screen will change their status.&nbsp;Clicking an enabled 
+				button will cause it to perform the action requested.
+			</p>
+			<P>Note that a service can take a few seconds to adjust its state depending upon 
+				what it is doing when you request a state change.</P>
+			<h3>Last Update:&nbsp;15 July 2002</h3>
+		</font>
+	</body>
+</html>

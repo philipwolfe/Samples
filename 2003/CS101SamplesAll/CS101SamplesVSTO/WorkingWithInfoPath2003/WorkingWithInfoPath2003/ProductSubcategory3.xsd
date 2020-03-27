@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<xsd:schema targetNamespace="http://schemas.microsoft.com/office/infopath/2003/ado/dataFields" elementFormDefault="unqualified" attributeFormDefault="unqualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:d="http://schemas.microsoft.com/office/infopath/2003/ado/dataFields">
+	<xsd:element name="ProductSubcategory">
+		<xsd:complexType>
+			<xsd:attribute name="ProductSubcategoryID" type="d:optional_int"></xsd:attribute>
+			<xsd:attribute name="ProductCategoryID" type="xsd:int" use="required"></xsd:attribute>
+			<xsd:attribute name="Name" use="required">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="50"></xsd:maxLength>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+			<xsd:attribute name="rowguid" use="required">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:pattern value="\{[0-9A-F]{8,8}\-[0-9A-F]{4,4}\-[0-9A-F]{4,4}\-[0-9A-F]{4,4}\-[0-9A-F]{12,12}\}"></xsd:pattern>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:attribute>
+			<xsd:attribute name="ModifiedDate" type="d:dateTime.notz" use="required"></xsd:attribute>
+			<xsd:anyAttribute namespace="http://schemas.microsoft.com/office/infopath/2003/adomapping" processContents="skip"></xsd:anyAttribute>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:simpleType name="dateTime.notz">
+		<xsd:union memberTypes="xsd:dateTime xsd:date"></xsd:union>
+	</xsd:simpleType>
+	<xsd:simpleType name="optional">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="0"></xsd:maxLength>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="optional_dateTime.notz">
+		<xsd:union memberTypes="xsd:dateTime xsd:date d:optional"></xsd:union>
+	</xsd:simpleType>
+	<xsd:simpleType name="optional_int">
+		<xsd:union memberTypes="xsd:int d:optional"></xsd:union>
+	</xsd:simpleType>
+</xsd:schema>

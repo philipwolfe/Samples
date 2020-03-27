@@ -1,0 +1,11 @@
+HKCR
+{
+	NoRemove AppID
+	{
+		'%APPID%' = s 'PerfDisp'
+		'PerfDisp.DLL'
+		{
+			val AppID = s '%APPID%'
+		}
+	}
+}

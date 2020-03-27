@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.alethea.net/webservices/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.alethea.net/webservices/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.alethea.net/webservices/">
+      <s:element name="LocalTimeByZipCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ZipCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LocalTimeByZipCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LocalTimeByZipCodeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </types>
+  <message name="LocalTimeByZipCodeSoapIn">
+    <part name="parameters" element="s0:LocalTimeByZipCode" />
+  </message>
+  <message name="LocalTimeByZipCodeSoapOut">
+    <part name="parameters" element="s0:LocalTimeByZipCodeResponse" />
+  </message>
+  <message name="LocalTimeByZipCodeHttpGetIn">
+    <part name="ZipCode" type="s:string" />
+  </message>
+  <message name="LocalTimeByZipCodeHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="LocalTimeByZipCodeHttpPostIn">
+    <part name="ZipCode" type="s:string" />
+  </message>
+  <message name="LocalTimeByZipCodeHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <portType name="LocalTimeSoap">
+    <operation name="LocalTimeByZipCode">
+      <documentation>Returns the local time for a given zip code.</documentation>
+      <input message="s0:LocalTimeByZipCodeSoapIn" />
+      <output message="s0:LocalTimeByZipCodeSoapOut" />
+    </operation>
+  </portType>
+  <portType name="LocalTimeHttpGet">
+    <operation name="LocalTimeByZipCode">
+      <documentation>Returns the local time for a given zip code.</documentation>
+      <input message="s0:LocalTimeByZipCodeHttpGetIn" />
+      <output message="s0:LocalTimeByZipCodeHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="LocalTimeHttpPost">
+    <operation name="LocalTimeByZipCode">
+      <documentation>Returns the local time for a given zip code.</documentation>
+      <input message="s0:LocalTimeByZipCodeHttpPostIn" />
+      <output message="s0:LocalTimeByZipCodeHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="LocalTimeSoap" type="s0:LocalTimeSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="LocalTimeByZipCode">
+      <soap:operation soapAction="http://www.alethea.net/webservices/LocalTimeByZipCode" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="LocalTimeHttpGet" type="s0:LocalTimeHttpGet">
+    <http:binding verb="GET" />
+    <operation name="LocalTimeByZipCode">
+      <http:operation location="/LocalTimeByZipCode" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="LocalTimeHttpPost" type="s0:LocalTimeHttpPost">
+    <http:binding verb="POST" />
+    <operation name="LocalTimeByZipCode">
+      <http:operation location="/LocalTimeByZipCode" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="LocalTime">
+    <port name="LocalTimeSoap" binding="s0:LocalTimeSoap">
+      <soap:address location="http://www.alethea.net/webservices/LocalTime.asmx" />
+    </port>
+    <port name="LocalTimeHttpGet" binding="s0:LocalTimeHttpGet">
+      <http:address location="http://www.alethea.net/webservices/LocalTime.asmx" />
+    </port>
+    <port name="LocalTimeHttpPost" binding="s0:LocalTimeHttpPost">
+      <http:address location="http://www.alethea.net/webservices/LocalTime.asmx" />
+    </port>
+  </service>
+</definitions>

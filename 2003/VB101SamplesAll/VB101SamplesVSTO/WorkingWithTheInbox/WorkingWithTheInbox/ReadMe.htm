@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Working with the Inbox in Outlook</title>
+    <meta name="GENERATOR" content="Microsoft Visual Studio.NET 7.0" />
+    <meta name="ProgId" content="VisualStudio.HTML" />
+    <meta name="Originator" content="Microsoft Visual Studio.NET 7.0" />
+</head>
+<body>
+    <h1>Working with the Inbox in Outlook</h1>
+    <p>
+    </p>
+    <p>
+        The Outlook Inbox is where many professionals spend a large amount of time each
+        day.&nbsp; This makes it a great place to create customizations that run when new
+        mail is received, filed, or based on explicit actions.&nbsp; The Outlook object
+        model exposes a wealth of information on mail items, and makes it easy to work with and
+        manipulate that information.</p>
+    <p>
+    </p>
+    <p>
+        In this sample, an Inbox customization is registered when Outlook starts up.&nbsp;
+        This exposes no interface, but monitors for new messages.&nbsp; When new mail items arrive, it checks
+        their subject and body for various phrases in order to take actions
+        such as modifying the importance, flagging for followup, or deleting the message.&nbsp;
+        Using the NewMailEx event, you can be notified of all messages and take action using
+        the power of the .NET Framework and the Outlook managed API.</p>
+    <p>
+        Here are the triggers and the actions taken:</p>
+    <p></p>
+        <table border="2">
+            <tr style="background-color:Silver">
+                <td style="width: 286px">
+                    <strong>
+                    Trigger</strong></td>
+                <td style="width: 356px">
+                    <strong>
+                    Action</strong></td>
+            </tr>
+            <tr>
+                <td style="width: 286px">
+                    Subject starts with "URGENT:"</td>
+                <td style="width: 356px">
+                    Importance = HIGH</td>
+            </tr>
+            <tr>
+                <td style="width: 286px">
+                    Subject starts with "OPENME:"</td>
+                <td style="width: 356px">
+                    Displays the message</td>
+            </tr>
+            <tr>
+                <td style="width: 286px; height: 23px;">
+                    Subject starts with "FYI:"</td>
+                <td style="width: 356px; height: 23px;">
+                    Importance = LOW</td>
+            </tr>
+            <tr>
+                <td style="width: 286px">
+                    Subject starts with "FOLLOWUP:"</td>
+                <td style="width: 356px">
+                    Flags the message for followup</td>
+            </tr>
+            <tr>
+                <td style="width: 286px">
+                    Subject starts with "FLAGME:"</td>
+                <td style="width: 356px">
+                    Flags the message for followup and adds a red colored flag</td>
+            </tr>
+            <tr>
+                <td style="width: 286px">
+                    Body contains "This is an automated message"</td>
+                <td style="width: 356px">
+                    Deletes the message</td>
+            </tr>
+        </table>
+    <p>
+    </p>
+    <p>
+        <b>This sample requires the following to be installed: </b>
+    </p>
+    <ul>
+        <li>Visual Studio 2005</li>
+        <li>Microsoft Outlook 2003</li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:s1="http://tempuri.org/literalTypes" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema targetNamespace="http://tempuri.org/">
+      <s:complexType name="CurrentWeather">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdated" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IconUrl" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Conditions" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CurrentTemp" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Humidity" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Barometer" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="BarometerDirection" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/literalTypes">
+      <s:element name="float" type="s:float" />
+      <s:element name="CurrentWeather" type="s1:CurrentWeather" />
+      <s:complexType name="CurrentWeather">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="LastUpdated" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IconUrl" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Conditions" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CurrentTemp" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Humidity" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Barometer" type="s:float" />
+          <s:element minOccurs="0" maxOccurs="1" name="BarometerDirection" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </types>
+  <message name="GetTemperatureSoapIn">
+    <part name="zipCode" type="s:string" />
+  </message>
+  <message name="GetTemperatureSoapOut">
+    <part name="GetTemperatureResult" type="s:float" />
+  </message>
+  <message name="GetWeatherSoapIn">
+    <part name="zipCode" type="s:string" />
+  </message>
+  <message name="GetWeatherSoapOut">
+    <part name="GetWeatherResult" type="s0:CurrentWeather" />
+  </message>
+  <message name="GetTemperatureHttpGetIn">
+    <part name="zipCode" type="s:string" />
+  </message>
+  <message name="GetTemperatureHttpGetOut">
+    <part name="Body" element="s1:float" />
+  </message>
+  <message name="GetWeatherHttpGetIn">
+    <part name="zipCode" type="s:string" />
+  </message>
+  <message name="GetWeatherHttpGetOut">
+    <part name="Body" element="s1:CurrentWeather" />
+  </message>
+  <message name="GetTemperatureHttpPostIn">
+    <part name="zipCode" type="s:string" />
+  </message>
+  <message name="GetTemperatureHttpPostOut">
+    <part name="Body" element="s1:float" />
+  </message>
+  <message name="GetWeatherHttpPostIn">
+    <part name="zipCode" type="s:string" />
+  </message>
+  <message name="GetWeatherHttpPostOut">
+    <part name="Body" element="s1:CurrentWeather" />
+  </message>
+  <portType name="WeatherRetrieverSoap">
+    <operation name="GetTemperature">
+      <input message="s0:GetTemperatureSoapIn" />
+      <output message="s0:GetTemperatureSoapOut" />
+    </operation>
+    <operation name="GetWeather">
+      <input message="s0:GetWeatherSoapIn" />
+      <output message="s0:GetWeatherSoapOut" />
+    </operation>
+  </portType>
+  <portType name="WeatherRetrieverHttpGet">
+    <operation name="GetTemperature">
+      <input message="s0:GetTemperatureHttpGetIn" />
+      <output message="s0:GetTemperatureHttpGetOut" />
+    </operation>
+    <operation name="GetWeather">
+      <input message="s0:GetWeatherHttpGetIn" />
+      <output message="s0:GetWeatherHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="WeatherRetrieverHttpPost">
+    <operation name="GetTemperature">
+      <input message="s0:GetTemperatureHttpPostIn" />
+      <output message="s0:GetTemperatureHttpPostOut" />
+    </operation>
+    <operation name="GetWeather">
+      <input message="s0:GetWeatherHttpPostIn" />
+      <output message="s0:GetWeatherHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="WeatherRetrieverSoap" type="s0:WeatherRetrieverSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <operation name="GetTemperature">
+      <soap:operation soapAction="http://tempuri.org/GetTemperature" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="GetWeather">
+      <soap:operation soapAction="http://tempuri.org/GetWeather" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://tempuri.org/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="WeatherRetrieverHttpGet" type="s0:WeatherRetrieverHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetTemperature">
+      <http:operation location="/GetTemperature" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetWeather">
+      <http:operation location="/GetWeather" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="WeatherRetrieverHttpPost" type="s0:WeatherRetrieverHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetTemperature">
+      <http:operation location="/GetTemperature" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetWeather">
+      <http:operation location="/GetWeather" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="WeatherRetriever">
+    <port name="WeatherRetrieverSoap" binding="s0:WeatherRetrieverSoap">
+      <soap:address location="http://www.learnxmlws.com/services/weatherRetriever.asmx" />
+    </port>
+    <port name="WeatherRetrieverHttpGet" binding="s0:WeatherRetrieverHttpGet">
+      <http:address location="http://www.learnxmlws.com/services/weatherRetriever.asmx" />
+    </port>
+    <port name="WeatherRetrieverHttpPost" binding="s0:WeatherRetrieverHttpPost">
+      <http:address location="http://www.learnxmlws.com/services/weatherRetriever.asmx" />
+    </port>
+  </service>
+</definitions>

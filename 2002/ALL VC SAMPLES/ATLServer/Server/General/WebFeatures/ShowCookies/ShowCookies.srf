@@ -1,0 +1,44 @@
+{{ handler bin\ShowCookies.dll/Default }}
+<html>
+	<!-- (c) 2000 Microsoft Corporation -->
+	<head>
+		<title>{{Title}}</title>
+		<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+		<link rel="stylesheet" href="normal.css" type="text/css">
+	</head>
+
+	<body>
+		<h1>{{Title}}</h1>
+
+		<h3>Instructions</h3>
+		<p>
+		Use the <a href="setcookies.srf">SetCookies Sample</a> to create some cookies
+		then return to this page to see that the browser has successfully returned them
+		to the server. Compare the cookies collection and the HTTP_COOKIE variable, which are
+		both available on the server, with the <b>cookie</b> property of the <b>document</b> object, which
+		is available via client-side script.
+		</p>
+
+		<h2>Server - Cookies collection</h2>
+		<table>
+		<tr><th>Name</th><th>Value</th></tr>
+		{{ShowCookies}}
+		</table>
+
+		<h2>Server - GetServerVariable("HTTP_COOKIE")</h2>
+		<div id="serverCookie">
+		{{ShowCookieVariable}}
+		</div>
+
+		<h2>Client - document.cookie</h2>
+		<div id="clientCookie">
+		<script language="javascript">
+		<!--
+			document.write(document.cookie);
+		//-->
+		</script>
+		</div>
+
+
+	</body>
+</html>

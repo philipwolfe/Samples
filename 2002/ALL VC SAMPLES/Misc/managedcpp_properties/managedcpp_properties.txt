@@ -1,0 +1,145 @@
+Using properties in managed C++
+Chris Maunder, The Code Project (www.codeproject.com)
+
+This sample demonstrates using using scalar and indexed properties in managed C++ using
+the _gc and __property keywords. 
+
+
+Introduction
+
+With the introduction of managed extensions for C++ comes the concept of properties. A property is similar to a field, in that it allows you to read and write values to a class instance, but whereas a field is an actual data member that you are accessing directly, a property is implemented via get and set methods that allow you to fully control access to the value. This control can be extended to allow the property to be read-only, write-only, or read and write accessible, and allows you to perform processing such as validation or caching to simplify your code. A property does not need to be associated with an underlying data member of the class. 
+
+This article assumes you are familiar with declaring and using managed types and the .NET Garbage Collector. 
+
+C++ with managed extensions supports two types of properties: Scale and Indexed. Scalar Properties are analogous to member fields, and Indexed properties are analogous to member arrays. 
+
+
+Declaring a Scalar property
+
+Property accessor functions use a special naming convention: 
+
+__property type get_PropertyName();           // declare a readable property
+__property void set_PropertyName(type value); // declare a writeable property
+
+type is the property's type, PropertyName is the name of the property, and __property is a new C++ keyword that declares the method as a property accessor. The property is accessed by referring to only the name of the property using the same syntax as you would if you were accessing a data field.
+
+For example, suppose we have a managed class Item three properties: Cost, Size and Faulty. You wish to have Size be read-only, since it will never change, Cost be read/write accessible since it will change, and Faulty be write-accessible publicly, but not read-accessible from outside the class.
+
+To control the accessibility of the properties you simply pick and choose which property methods (get/set) you implement. For the Size property we only want to implement a get_Size method. For Cost we want to implement get_Cost and set_Cost, and for Faulty we need set_Faulty: 
+
+__gc class Item
+{
+public:
+    Item()
+    {
+        m_dCost = 0.0;
+        m_blnFaulty = false;
+    }
+    
+    // A write-only property called Faulty
+    __property void set_Faulty(bool value)
+    {
+        m_blnFaulty = value;
+    }
+
+    // A read/write propert called Cost.
+    __property decimal get_Cost()
+    {
+        return m_dmCost;
+    }
+    __property void set_Cost(decimal cost)
+    {
+        if (cost > 0)
+            m_dmCost = cost;
+        else
+            m_dmCost = 0;
+    }
+
+    // A read only property called Size
+    __property int get_Size()
+    {
+        return 100;
+    }
+
+private:
+    decimal m_dmCost;
+    bool    m_blnFaulty;
+};
+
+Notice that in the above class we have performed validation on the Cost property to ensure that illegal values aren't set, and we have implemented the Size property without associating a member variable. We could just as easily have implemented the Size property by having the class lookup a database or query a cache. 
+
+Note also the use of the new .NET type decimal. 
+
+
+Using Scalar Properties
+
+To the consumer of the class all they see are properties that they can access like fields:
+
+Item* item = new Item();
+
+// Access the Read-only property as if it were a field
+int Size = item->Size;
+
+// Access the Write-only property as if it were a field
+item->Faulty = true;
+
+// The following line will produce a compiler error since we are 
+// trying to access Faulty as a readable property, when it is write-only.
+// if (item->Faulty) Console::WriteLine("Item is faulty");
+
+// Access the Read/Write property as if it were a field
+item->Cost = -4;
+
+// show the value of Cost. It will be 0 due to range-checking
+// performed in the set_ accessor.
+Console::WriteLine("Item::Cost = {0}", item->Cost.ToString());
+
+Note that the ToString() function in the above code simply converts the value types (int, double) into a string object containing a representation of the value. Value types in .NET can have member functions. 
+
+
+Declaring an Indexed property
+
+Indexed properties are similar to scalar properties except that instead of accessing a single value as you would a field, you access one of many possible values as if the property were an array.
+
+For instance, we will add a property to our Item class called Stock. This property is indexed as a 2-dimensional array by State and City (both declared as .NET String types): 
+
+// Indexed property - Get
+__property int get_Stock(String* State, String* City)   
+{
+    // Return a value - either from an internal member array
+    // or maybe a database query
+   ...
+}
+
+// Indexed property - Set
+__property void set_Stock(String* State, String* City, int value) 
+{
+   // Store the value in some meaningful way
+   ...
+}
+
+Using an indexed property is the same as accessing an array member field of the class. 
+
+// Set item in Seattle, WA
+item->Stock["Seattle"]["WA"] = 1;
+
+// Get Stock at Toronto, ON
+int nStock = item->Stock["Toronto"]["ON"];
+
+
+Conclusion
+
+Properties help promote encapsulation and can make you code neater and easier to to follow, but are only available in managed C++ programs. A few points about properties:
+
+- You cannot take the address of a property
+- The name of the Get and Set methods must start with get_ and set_ 
+  respectively, and be prefixed with the __property keyword.
+- The names of the Get and Set methods for a given property must 
+  be the same apart from the get_ and set_ prefixes.
+- Property methods can be virtual and pure virtual
+- The Get and Set method may have different accessibility
+- If either of the Get or Set methods are static, they both must be.
+- You don't have to implement both the Get and Set methods (this 
+  controls read/write as stated above).
+- The last variable type in the Set method's parameter list must match 
+  the return type of the Get method.

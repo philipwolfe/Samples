@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title></title>
+	</head>
+	<body>
+        <h1>
+            Speech Recognition</h1>
+        This sample demonstrates the capabilities of the Speech API, which comes standard
+        with Microsoft Windows XP Tablet PC Edition 2005. Although SAPI is less programmed
+        for than other APIs, it's extremely rich and similar enough to the handwriting recognition
+        APIs that it can be easily learned by those programming Microsoft Windows XP Tablet
+        PC Edition 2005.<br />
+        <br />
+        You must create an Interop wrapper for the SAPI DLL. This can be done by using the
+        "Add Reference..." capability, selecting the COM tab, and selecting the "Microsoft
+        Speech Object Library." Once that's done, and the <strong>SpeechLib </strong>namespace
+        is imported, things are quite similar to programming handwriting recognition using
+        the Tablet PC Platform SDK. A recognizer is created (in this case, an in-process
+        <strong>SpInProcRecognizer</strong>) and generates a context (type <strong>SpInProcRecoContext</strong>)
+        that is associated with the particular recognition. Events associated with the recognition
+        process are the <strong>Hypothesis</strong>, <strong>Recognition</strong>, and <strong>
+            EndStream </strong>events. A large number of <strong>Hypothesis </strong>events
+        will be generated while only one <strong>Recognition </strong>and <strong>EndStream</strong>
+        events will be associated with a particular recognition attempt.
+        <br />
+        <br />
+        The sample provides a standard file dialog to open a user-supplied .WAV file. Recognition
+        occurs against this file, with the results placed in a <strong>RichTextEdit</strong>
+        box. The technique for iterating over alternative possibilities is also shown, although
+        that output is directed to the Debug console.
+        <br />
+        <br />
+        This sample requires:<br />
+        <ul>
+            <li>Visual Studio 2005</li>
+            <li>Microsoft Windows XP Tablet PC Edition 2005 </li>
+        </ul>
+	
+	</body>
+</html>

@@ -1,0 +1,83 @@
+<?xml version="1.0" ?>
+<serviceDescription 
+	name="DigiServiceService"
+	xmlns:s0="urn:DigiServiceService"
+	xmlns="urn:schemas-xmlsoap-org:sdl.2000-01-25"
+	targetNamespace="">
+<schema targetNamespace="urn:DigiServiceService" xmlns="http://www.w3.org/1999/XMLSchema">
+	<complexType name="_tagSpecials">
+		<all>
+			<element name="nID" type="int"/>
+			<element name="bstrName" type="string"/>
+			<element name="fPrice" type="float"/>
+		</all>
+	</complexType>
+	<complexType name="_tagAccessories">
+		<all>
+			<element name="bstrName" type="string"/>
+			<element name="bstrDescription" type="string"/>
+			<element name="fPrice" type="float"/>
+		</all>
+	</complexType>
+	<element name="GetSpecials">
+		<complexType>
+			<all>
+				<element name="count" type="int"/>
+			</all>
+		</complexType>
+	</element>
+	<element name="GetSpecialsResponse">
+		<complexType>
+			<all>
+				<element name="count" type="int"/>
+				<element name="return">
+					<complexType xmlns:q1="http://schemas.xmlsoap.org/soap/encoding/" base="q1:Array">
+						<all>
+							<element name="_tagSpecials" type="s0:_tagSpecials" minOccurs="0" maxOccurs="unbounded"/>
+						</all>
+					</complexType>
+				</element>
+			</all>
+		</complexType>
+	</element>
+	<element name="GetAccessories">
+		<complexType>
+			<all>
+				<element name="nCameraID" type="int"/>
+				<element name="count" type="int"/>
+			</all>
+		</complexType>
+	</element>
+	<element name="GetAccessoriesResponse">
+		<complexType>
+			<all>
+				<element name="count" type="int"/>
+				<element name="return">
+					<complexType xmlns:q1="http://schemas.xmlsoap.org/soap/encoding/" base="q1:Array">
+						<all>
+							<element name="_tagAccessories" type="s0:_tagAccessories" minOccurs="0" maxOccurs="unbounded"/>
+						</all>
+					</complexType>
+				</element>
+			</all>
+		</complexType>
+	</element>
+	
+</schema>
+<soap xmlns="urn:schemas-xmlsoap-org:soap-sdl-2000-01-25">
+	<service>
+		<requestResponse name="GetSpecials" soapAction="#GetSpecials">
+			<request  ref="s0:GetSpecials"/>
+			<response ref="s0:GetSpecialsResponse"/>
+		</requestResponse>
+		<requestResponse name="GetAccessories" soapAction="#GetAccessories">
+			<request  ref="s0:GetAccessories"/>
+			<response ref="s0:GetAccessoriesResponse"/>
+		</requestResponse>
+		<addresses>
+			<!-- apply to all interactions -->
+			<address uri="http://localhost/Cameras/DigiService.dll?Handler=Default"/>
+		</addresses>
+	</service>
+</soap>
+</serviceDescription>

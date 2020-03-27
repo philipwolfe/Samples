@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Using Managed Controls in Excel</title>
+    <meta name="GENERATOR" content="Microsoft Visual Studio.NET 7.0" />
+    <meta name="ProgId" content="VisualStudio.HTML" />
+    <meta name="Originator" content="Microsoft Visual Studio.NET 7.0" />
+</head>
+<body>
+    <h1>Using Managed Controls in Excel</h1>
+    <p>
+    </p>
+    <p>
+        Both Excel and Word support the embedding of Windows form controls directly into
+        the document, in addition to full support for displaying stand-alone forms and message
+        boxes.&nbsp; You have full access to most of the Windows forms libraries.&nbsp; When you add a managed control to the document surface, an ActiveX control is automatically
+        added to host the control, shielding the document itself from any awareness of the
+        managed code.</p>
+    <p>
+    </p>
+    <p>
+        In this sample, you will see a number of Windows forms capabilities exploited in
+        a worksheet.&nbsp; Two controls, a Button and a Month Calendar are directly emedded
+        into the worksheet.&nbsp; In addition, a standard Windows message box is displayed,
+        and a custom Windows form is displayed.&nbsp; The button interacts with a ListObject
+        control to add rows of random data.&nbsp; The other elements are based on events
+        raised from NamedRange objects embedded in cells.&nbsp; Double-click cell B9 to
+        display a message box, right-click cell B12 to display the form, and simply enter
+        cell B15 (this selects the cell, raising the Selected event) to display the MonthCalendar
+        control.&nbsp; Selecting a date from the calendar inserts the date in short format,
+        and returns focus to the cell.&nbsp; Tabbing away, or otherwise deselecting the
+        cell causes the MonthCalendar control to be hidden.&nbsp; Such functionality could be extended to cause a calendar to popup near date formatted cells when they are
+        entered.&nbsp; Being able to tie into the existing managed controls can bring enormous
+        flexibility to your documents with relatively little effort.</p>
+    <p>
+    </p>
+    <p>
+        <b>This sample requires the following to be installed: </b>
+    </p>
+    <ul>
+        <li>Visual Studio 2005</li>
+        <li>Microsoft Excel 2003</li>
+    </ul>
+</body>
+</html>

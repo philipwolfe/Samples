@@ -1,0 +1,60 @@
+Input Validation sample
+
+Purpose
+~~~~~~~
+
+To demonstrate one way of validating input using the ATL Server architecture.
+
+This sample shows:
+
+	* Separation of developer and designer tasks
+	* Including both client-side validation and server-side validation
+	* Extensible set of validation routines
+
+Separation of developer and designer tasks
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The ATLS architecture was designed so that the developer needs only
+to pass a list of the stencil tags to be used to the HTML designer.
+
+This makes it possible for the HTML designer to focus on the presentation
+requirements of the web page, without having to worry about the 
+implementation details of validation or data retrieval.  The developer, 
+on the other hand, can more productively spend his time writing C++ code.
+
+Including both client-side and server-side validation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Modern browsers that support client-side scripting can be used to 
+enhance the user experience by validating input before it is even
+submitted to the server.
+
+Client-side validation provides a convenient way for the user to 
+correct input mistakes and prevents round trips to the server which
+would otherwise be necessary.  Unfortunately, client-side validation
+cannot be trusted as a security measure, since it is trivial for 
+malicious users to send an HTTP query and bypass the script 
+validation code.
+
+So, even when client-side scripting is used to enhance the user experience,
+it is still always necessary to validate input on the server as well before
+you can trust what it actually contains.  In the ATLS architecture, this is typically done in the ValidateAndExchange method of the request handler. 
+
+This sample demonstrates using a class with methods designed to 
+output client validation code as well as perform server validation 
+inside of the ValidateAndExchange method of the request handler DLL.
+
+Extensible set of validation routines
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+As you develop your web application, you will most likely develop a 
+reusable collection of regular expression validation routines specific 
+to your application.
+
+The validation routines in this sample are based on the principle that
+it is safer to verify that input data conforms to a known good pattern 
+than to try and catch all of the bad patterns.
+
+Some fields may use the same validation routine, such as first name and 
+last name.  Others may require custom validation, such as a select box or
+check box that may require very specific values.

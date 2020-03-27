@@ -1,0 +1,66 @@
+<%@ Master Language="C#" CodeFile="SiteMaster.master.cs" Inherits="SiteMaster_master" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title>Untitled Page</title>
+    <LINK rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <form id="form1" runat="server">
+    <table border="1" cellpadding="5" cellspacing="0" width="100%" height="100%">
+        <!-- site header -->
+        <tr>
+            <td colspan="2" align="right" class="wrapper">
+                <asp:loginview id="LoginView2" runat="server">
+                    <loggedintemplate>
+                        You are logged in as: <b><asp:loginname id="LoginName1" runat="server" /></b>&nbsp;|
+                        <asp:loginstatus id="LoginStatus1" runat="server" logoutpageurl="~/Logout.aspx" logoutaction="Redirect" />
+                    </loggedintemplate>
+                    <anonymoustemplate>
+                        <p>You are not logged in.</p>
+                    </anonymoustemplate>
+                </asp:loginview>    
+            </td>
+        </tr>      
+        <tr>
+            <!-- site navigation -->
+            <td valign="top" style="width: 150px" class="nav">
+                <asp:hyperlink navigateurl="~/start.aspx" runat="server" id="Hyperlink6">Start</asp:hyperlink>
+                <br />
+                <asp:hyperlink navigateurl="~/Home.aspx" runat="server" id="Hyperlink5">Home</asp:hyperlink>
+                <br />
+                <br />
+                <asp:loginview id="LoginView1" runat="server">
+                    <loggedintemplate>
+                        <p><h3>Secure Menu:</h3>
+                            <asp:hyperlink navigateurl="~/Admin/Admin.aspx" runat="server" id="Hyperlink4">Administrators</asp:hyperlink>
+                            <br />
+                            <asp:hyperlink navigateurl="~/Contractors/ContractorPage.aspx" runat="server" id="Hyperlink1">Contractors</asp:hyperlink>
+                            <br />
+                            <asp:hyperlink navigateurl="~/Employees/EmployeePage.aspx" runat="server" id="Hyperlink2">Employees</asp:hyperlink>
+                            <br />
+                            <asp:hyperlink navigateurl="~/Managers/ManagerPage.aspx" runat="server" id="Hyperlink3">Managers</asp:hyperlink>
+                        </p>
+                        <br /><br />
+                    </loggedintemplate>
+                </asp:loginview>
+            </td>
+            
+            <td valign="top" align="left" class="body">
+                <!-- this is the placeholder for the page content -->
+                <asp:contentplaceholder id="PageContent" runat="server" />
+                
+                <br />
+            </td>
+        </tr>
+        
+        <!-- site footer -->
+        <tr>
+            <td colspan="2" align="center" class="wrapper">&nbsp;</td>
+        </tr>
+    </table>
+    </form>
+</body>
+</html>

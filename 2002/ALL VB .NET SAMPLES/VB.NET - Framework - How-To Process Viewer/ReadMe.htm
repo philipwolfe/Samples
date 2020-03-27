@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft Visual Studio.NET 7.0">
+		<meta name="ProgId" content="VisualStudio.HTML">
+		<meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+		<font face="Verdana, Arial, System">
+			<h1>
+				.NET Framework: Process Viewer</h1>
+			<p>
+				This sample uses various classes in System.Diagnostics to&nbsp;gather running 
+				process information.&nbsp;
+			</p>
+			<h2>Featured Highlights</h2>
+			<p>
+				This&nbsp;Windows Form application uses three list view controls on the main 
+				form to show&nbsp;all the processes running on the current machine. Once a 
+				process is selected, the supporting list view controls&nbsp;will list 
+				additional process data as well as data about the Win32 threads in the process. 
+				Note that the thread data shown is gathered via the ThreadInfo class not the 
+				System.Threading.Thread class. In addition, a secondary child form can be shown 
+				detailing the modules (DLLs) loaded by the process including the name of the 
+				file where the code was loaded.
+			</p>
+			<P>Note that there are three processes that don't supply complete information:</P>
+			<UL>
+				<LI>
+					<STRONG>_Total</STRONG>—Used to provide summary execution time, and 
+				processor utilization.
+				<LI>
+					<STRONG>Idle</STRONG>—Not a real process.
+				<LI>
+					<STRONG>System</STRONG>—Does not&nbsp;expose module information.</LI></UL>
+			<P>Clicking on these items will result in clearing of the list views and/or 
+				disallowing opening of the Module Detail child form. Note also that when 
+				running the program certain process details may not be available for cetain 
+				running programs.</P>
+			<P>The form&nbsp;uses docking with splitter &amp; panel controls to achieve the 
+				desired effect for easy resizing. In addition, there is code to deal with 
+				synchronization of data between the three list views. In addition a context 
+				menu is used.</P>
+			<h2>Requirements</h2>
+			<p>
+				Requires the Trial or Release version of Visual Studio .NET Professional (or 
+				greater).
+			</p>
+			<h2>Running the Sample</h2>
+			<p>
+				Press <STRONG>F5</STRONG> to start the application. The list of current 
+				processes will be loaded automatically. Click on a process to have its details 
+				and thread data loaded. Press <STRONG>Ctrl+V</STRONG> or use the menus to view 
+				the list of modules loaded by a particular process. Press <STRONG>F5</STRONG> while 
+				the program is running to refresh the list of the processes.
+			</p>
+			<h3>Last Update:&nbsp;17 July 2002</h3>
+		</font>
+	</body>
+</html>

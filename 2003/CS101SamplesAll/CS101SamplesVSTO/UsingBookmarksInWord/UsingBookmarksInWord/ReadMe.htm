@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Using Bookmarks in Word</title>
+    <meta name="GENERATOR" content="Microsoft Visual Studio.NET 7.0" />
+    <meta name="ProgId" content="VisualStudio.HTML" />
+    <meta name="Originator" content="Microsoft Visual Studio.NET 7.0" />
+</head>
+<body>
+    <h1>Using Bookmarks in Word</h1>
+    <p>
+    </p>
+    <p>
+        Bookmarks are encapsulations of ranges in Word that allow naming, event handling,
+        and in-code manipulation.&nbsp; You can update and retrieve the contents of a Bookmark
+        programatically, and users have full control to modify the contents.&nbsp; Use Bookmarks
+        as placeholders within a document as opposed to searching and replacing strings
+        of text, as in a template.</p>
+    <p>
+    </p>
+    <p>
+        In this sample, a number of Bookmark objects have been added to the document at
+        runtime.&nbsp; These fields comprise the first and last name, job title, and email
+        address of an Adventure Works employee.&nbsp; The overall document scenario is the
+        beginning of an employee review.&nbsp; When the document starts up, the code demonstrates
+        adding an additional Bookmark, in this case, for phone number.&nbsp; In addition to the document controls, a user control, EmployeeSelectorUserControl, is created
+        to display several fields from a selected row in the vEmployee view of the AdventureWorks
+        database.&nbsp; Use the BindingNavigator control to move through the records, then
+        click the Select button to update the Bookmark controls with the current employee.&nbsp;
+        The design-time Bookmark controls can be updated in-place with the Text property,
+        but the run-time instance needs to be re-added to the Bookmarks collection after
+        being updated.&nbsp; The C# sample requires several additional steps compared to
+        the Visual Basic version due to the COM foundation of the VSTO objects.</p>
+    <p>
+        <b>This sample requires the following to be installed: </b>
+    </p>
+    <ul>
+        <li>Visual Studio 2005</li>
+        <li>Microsoft Word 2003</li>
+        <li>Adventure Works sample database installed at "C:\Program Files\Microsoft SQL Server\MSSQL.1\MSSQL\Data"</li>
+    </ul>
+    <p>
+        You can download the Adventure Works sample database 
+        <a href="http://go.microsoft.com/fwlink/?linkid=31046">here</a>
+    </p>
+</body>
+</html>

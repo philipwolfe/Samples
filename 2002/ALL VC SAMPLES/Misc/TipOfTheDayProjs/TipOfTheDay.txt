@@ -1,0 +1,1000 @@
+Create an ATL Server to generate random tips using a Server Response File.
+By Erik Thompson, The Code Project (www.codeproject.com)
+
+
+Create an ATL Server to generate random tips using a Server Response File
+This articles talks about and walks you through the development of a ATL Server 
+application that you can extend or usein the reference of VS.NET Beta1. In addition 
+you may pick up knowledge on smart pointers, the IXMLDOM* interfaces, the new ATL 
+CString class, and _bstr_t. 
+
+Background
+
+With the growing presence of VisualStudio.NET (VS7), the teams within Microsoft 
+have added many new features into the hands of developers. One of these new 
+features is called an "ATL Server". The ATL Server makes the development of 
+previous ISAPI extension much easier and allows you to only put the logic that 
+you need to into your ATL Server Object and interject the results back into a 
+calling file called a "Server Response File", a file with the extension ".SRF". 
+The ISAPI extension is associated with the file extension at the website or web 
+application level and runs it through it's paces, passing it off to your extension 
+when neccessary or when called. 
+
+
+What Should I Get From This
+
+This articles talks about and walks you through the development of a ATL Server 
+application that you can extend or usein the reference of VS.NET Beta1. In addition 
+you may pick up knowledge on smart pointers, the IXMLDOM* interfaces, the new ATL 
+CString class, and _bstr_t. 
+
+
+Before We Begin
+
+I have also assumed that you can program in C++ and know the fundamentals about 
+ATL, have a basic understanding of HTML, CSS and XML. Also, while the code is fairly 
+clean; I use some conventions that make it easier to step through stages of the 
+applications development and may not neccessarily be the way you would have done 
+it. The code is laid out for easy follow along as this article progresses. An 
+example is the declaration of variables just before they are used. 
+
+
+ATL Server Basics
+
+To read more about the ATL Server architecture search MSDN Online for "ATL Server". 
+One article that will give you an overview is located Here. 
+
+ATL Servers are the next step from what ISAPI Extensions were. ATL servers are called 
+by ISAPI extensions to process Server Response Files (.SRF). When an SRF file is 
+encountered the ISAPI Extension passes it to the application DLL (in our case 
+TipOfTheDay.dll) and which then parses it for tokens and processes the found tokens 
+(tags). This is done for each tag found which is then passed to the default ATL 
+Server handler or specified handler which then replaces the tag with the response 
+the tag handler writes to the m_HttpResposne stream at the time of invocation. 
+
+There are a handful of tags that can be used in SRF files. The way to identify a 
+tag is by the {{[tag]}} form where "[tag]" is replaced with a some tag name. The 
+ones I will use are 
+
+
+handler
+
+The handler tells the ISAPI extension which ATL Server dll and handler in the dll
+to use, because ATL Server implementations can have more than one handler in them. 
+include
+The include tag is used to include another file into the SRF stream at that location. 
+This gives you the same idea behind the #include directive in ASP pages. The ISAPI 
+extension will parse the included file for tokens and if any are found will be 
+called for. Unlike ASP #include directives this file is processed independently 
+of the parent and only the resultant stream is inserted into the parent. For this 
+reason, you will need do define a handler token if you are using any handlers from 
+a ATL Server object. We will show this in the Header.SRF section of the project below. 
+
+
+[tagname]
+
+This can be an known tag within the default handler or named handler. Below in our 
+application an example would be, "DisplayVersion". What happens is the ATL Server is 
+called on the tagname and then handler for that tagname is invoked. The implementation 
+then can write anything into the stream for that tag as we shall show. 
+
+
+Create The Project
+
+- Start Visual Studio.NET 
+- On the VS Start Page, Click "Create New Project". Or from the IDE Menu Click, 
+  File | New | Project... You will see a dialog similar to Figure 1. 
+- In the Project Types treeview, select "Visual C++ Projects". The Templates 
+  listview will update. 
+- In the Templates listview, select "ATL Server Project" 
+- In the Name editbox type "TipOfTheDay" 
+- Click the "Ok" button. 
+
+The ATL Server Project Wizard will be started and will provide overview information.
+You will notice that the wizard has a tabbed orientation to it. By using the mouse 
+and mousing over the text down the left hand side you will see that they are 
+hyperlink-like. You can examine the different pages for what the default values 
+are set to. When you are ready, Click the "Finish" button to generate the Projects 
+and their template code. 
+
+In the solution explorer you will see 3 tree nodes under the solution node. One is 
+the ATL Server Project, the second is the ISAPI extension Project associated with the 
+ATL Server Project, and the third is the deployment wizard to deploy your ATL Server 
+and its ISAPI extension on the target machine. 
+
+Expand the "TipOfTheDay" Project tree node under the TipOfTheDay Solution root node. 
+Then expand the "Header Files" and "Source Files" tree nodes under the project. You 
+will see that there are 2 source files and 2 header files associated with the ATL 
+Server Project. These files will be where you will implement your compiled logic and 
+tag handlers. 
+
+Also notice that under the same project there is a "TipOfTheDay.srf" file. If you 
+double click this tree item you will see the contents of the SRF file in your main 
+document area. This is the template that the wizard generated for you when it created 
+your project. 
+
+
+Initial Build And Deploy
+
+Now is a good time to do your initial build and deployment of your solution. 
+
+Right click on the TipOfTheDay solution node in the Solution Explorer and Deploy 
+Solution from the context menu. This will make sure all your solution projects are 
+up-to-date and build an MSI in which it will deploy your components to your webserver. 
+And also which you can reuse to deploy the solution onto another site or server. 
+
+If you think that the system has hung during the deployment process (it's on the same 
+task and the progress isn't changing in the past couple minutes) you can try cancelling 
+and redeploying the solution. 
+
+If you get an error while deploying the solution, Rebuild the entire solution and 
+deploy it again. The previous two comments may happen later on during subsequent 
+builds but now was a good time to mention them. 
+
+
+Visit The Deployment
+
+Now that the solution is built and deployed take a look at what the wizard has 
+generated for you and what it produced after parsing and processing the application. 
+Visit http://localhost/TipOfTheDay] to view the output so far. 
+
+
+Remove The Wizard Defaults
+
+What the wizard produced for us is just a basic sample and pretty useless. Since 
+our application will not be making use of the implemented Hello Handler, we will
+remove all references to it. 
+
+Open the TipOfTheDay.h header file in the TipOfTheDay project from the solution 
+explorer. 
+
+Remove from the TipOfTheDay.h header file the following lines 
+
+// Here is an example of how to use a replacement tag with the stencil processor
+[ tag_name(name="Hello") ]
+HTTP_CODE OnHello(void)
+{
+    m_HttpResponse << "Hello World!";
+    return HTTP_SUCCESS;
+}
+
+Now Open the TipOfTheDay.srf file and remove the line with the hello token handler 
+on it. 
+
+This is a test: {{Hello}}<br>
+
+Save your Solution. It's a good idea since the IDE is still Beta, save yourself from
+any lost work. If you built the solution and deployed it at this time, the application 
+would still work correctly it just wouldn't do anything. Less now than before. 
+
+
+Implement Tag Handlers
+
+We are going to need to implement a handful of ATL Server tag handlers. We will need
+a DisplayVersion which gives the applications title and version in 1 string. The 
+DisplayVersion tag will be used in the content file's page title and header content. 
+We will also need a few tag handlers to load a random tip, RandomTip. We will need 
+tag handlers to get the details of the random tip; the tag names are TipCategoryMajor, 
+TipCategoryMinor, TipSource, TipOfTheDay. We will also need to declare some member 
+variables, a private method, and do some initialization. In addition we will need 
+some additional header files. 
+
+
+Required Header Files
+
+Open stdafx.h from the TipOfTheDay Project. Under the TODO line add include statements
+for comdef.h and msxml.h. Then Save. 
+
+// TODO: reference additional headers your program requires here
+#include <comdef.h>			// need this for _bstr_t and _com_ptr_t
+#include <msxml.h>			// need this for our tips XML file to parse it.
+
+
+Member Variables
+
+Open TipOfTheDay.h from the TipOfTheDay Project. Under the protected section comment 
+add the following member variables. Then Save. 
+
+// Put protected members here
+_bstr_t m_bsCategoryMajor;		// category major: company, product, heading
+_bstr_t m_bsCategoryMinor;		// category minor: division, technology, {optional}
+_bstr_t m_bsTipOfTheDay;		// Tip Of The Day: Text but could be substituted with quote of the day
+_bstr_t m_bsSource;			// Source: Who added the tip or came up with the quote
+
+bool m_bInited;
+
+
+Private Methods
+
+We need one private method to make sure that the user has called RandomTip before
+accessing any of the Tip* tag handlers. Add the IsInited method to the protected 
+section of the TipOfTheDay.h file as seen below. 
+
+inline bool IsInited(bool bShowInstructions = false)
+{
+    if (!m_bInited && bShowInstructions)
+    {
+        m_HttpResponse << "Call RandomTip before accessing any Tip* Methods";
+    }
+    return m_bInited;
+}
+
+
+Initialization In ValidateAndExchange
+
+In the same header file add the following code to the ValidateAndExchange method 
+under the TODO comment like seen below. Then Save. 
+
+HTTP_CODE ValidateAndExchange()
+{
+    // TODO: Put all initialization and validation code here
+    m_bInited = false;
+    m_bsCategoryMajor = "";
+    m_bsCategoryMinor = "";
+    m_bsTipOfTheDay = "";
+    m_bsSource = "Unknown";
+
+    // Set the content-type
+    m_HttpResponse.SetContentType("text/html");
+
+    return HTTP_SUCCESS;
+}
+
+
+DisplayVersion
+
+The DisplayVersion tag handler writes the application name and version to the 
+requesting response objects output stream. Insert the following code into the 
+header and source files for TipOfTheDay as shown. 
+
+Insert into TipOfTheDay.h 
+
+[ tag_name(name="DisplayVersion") ]
+HTTP_CODE OnDisplayVersion(void);
+
+Insert into TipOfTheDay.cpp 
+
+HTTP_CODE CTipOfTheDayHandler::OnDisplayVersion(void)
+{
+    m_HttpResponse << "Tip Of The Day ATL Server 1.0";
+    return HTTP_SUCCESS;
+}
+
+
+RandomTip
+
+The RandomTip Handler is used to load the tips XML file and randomly get a tip to
+display to the requestor through the response object. For now we will put in the stubs
+ and later insert and examine the implementation of this method 
+
+Insert into TipOfTheDay.h 
+
+[ tag_name(name="RandomTip") ]
+HTTP_CODE OnRandomTip(void);
+
+Insert into TipOfTheDay.cpp 
+
+HTTP_CODE CTipOfTheDayHandler::OnRandomTip(void)
+{
+    m_bInited = true;
+    return HTTP_SUCCESS;
+}
+
+
+TipCategoryMajor
+
+The TipCategoryMajor handler writes to the response object stream of the request 
+the Major Category for which the Tip belongs. In the tips XML file the content of 
+this field is optional. 
+
+Insert into TipOfTheDay.h 
+
+[ tag_name(name="TipCategoryMajor") ]
+HTTP_CODE OnTipCategoryMajor(void);
+
+Insert into TipOfTheDay.cpp 
+
+HTTP_CODE CTipOfTheDayHandler::OnTipCategoryMajor(void)
+{
+    if (IsInited())
+    {
+        m_HttpResponse << static_cast(m_bsCategoryMajor);
+    }
+    return HTTP_SUCCESS;
+}
+
+
+TipCategoryMinor
+
+The TipCategoryMinor handler writes to the response object stream of the request 
+the Minor Category for which the Tip belongs. In the tips XML file the content of 
+this field is optional. 
+
+Insert into TipOfTheDay.h 
+
+[ tag_name(name="TipCategoryMinor") ]
+HTTP_CODE OnTipCategoryMinor(void);
+
+Insert into TipOfTheDay.cpp HTTP_CODE CTipOfTheDayHandler::OnTipCategoryMinor(void)
+{
+    if (IsInited())
+    {
+        m_HttpResponse << static_cast(m_bsCategoryMinor);
+    }
+    return HTTP_SUCCESS;
+}
+
+
+TipOfTheDay
+
+The TipOfTheDay handler writes to the response object stream of the request the 
+TipOfTheDay text that was specified for the tip in the XML file. This field is 
+required in the XML file otherwise you wouldn't have any tip to display. Notice 
+that the name of the tag does not have to match the handling function. You may have 
+also noticed that the call to IsInited is passing an arguement of true this is so 
+that if the RandomTip method has not been called we can display an output string 
+in the stream letting the developer/tester of a content file know that it should 
+be called. 
+
+Insert into TipOfTheDay.h 
+
+[ tag_name(name="TipOfTheDay") ]
+HTTP_CODE OnTipInfo(void);
+
+Insert into TipOfTheDay.cpp 
+
+HTTP_CODE CTipOfTheDayHandler::OnTipInfo(void)
+{
+    if (IsInited(true))
+    {
+        m_HttpResponse << static_cast(m_bsTipOfTheDay);
+    }
+    return HTTP_SUCCESS;
+}
+
+
+TipSource
+
+The TipSource handler replaces the TipSource Tag in the parsed file with the source
+of the tip, if the source is not specified in the XML file then an empty string will 
+be written to the response stream and none will be displayed. 
+
+Insert into TipOfTheDay.h 
+
+[ tag_name(name="TipSource") ]
+HTTP_CODE OnTipSource(void);
+
+Insert into TipOfTheDay.cpp 
+
+HTTP_CODE CTipOfTheDayHandler::OnTipSource(void)
+{
+    if (IsInited())
+    {
+        m_HttpResponse << static_cast(m_bsSource);
+    }
+    return HTTP_SUCCESS;
+}
+
+
+Update TipOfTheDay.SRF
+
+Before we continue, Save all your work. Now that we have implemented most of our
+tag handlers we need to update the TipOfTheDay.SRF file to call them and display
+their results into the page. Below is what your updated TipOfTheDay.SRF file should 
+look like the new handler usage and html are in bold. In the TipOfTheDay.SRF file we 
+have put the DisplayVersion tag into between the TITLE tags. We don't call RandomTip 
+since we have yet to implement the handler completely and this way see what is 
+generated if RandomTip is not called before using any of the other Tip* tags. We 
+then made a table to house our Tip Of The Day information by displaying the 
+CategoryMajor value in the upper left, the CategoryMinor value in the upper right, 
+the Tip text in the middle, and the source underneath the Tip text. 
+
+Insert bold code sections into TipOfTheDay.srf 
+
+<html>
+{{handler TipOfTheDay.dll/Default}}
+<head>
+    {{// Set the title of the page with the component's title string}}
+    <title>{{DisplayVersion}}</title>
+</head>
+<body>
+    <table align="center" cellspacing="0" cellpadding="4" width="80%">
+        <tr>
+            {{// Display the random tip product and technology associations}}
+            <td class="ProductTechnology" nowrap="true">{{TipCategoryMajor}}</td>
+            <td> </td>
+            <td class="ProductTechnology" nowrap="true" align="right">{{TipCategoryMinor}}</td>
+        </tr>
+        <tr>
+            {{// Display the Tip of the day text information}}
+            <td COLSPAN="3" class="TipInfo">{{TipOfTheDay}}</td>
+        </tr>
+        <tr>
+            {{// Display the Source if any}}
+            <td COLSPAN="3" class="Source" nowrap="true" align="right">{{TipSource}}</td>
+        </tr>
+    </table>
+</body>
+</html>
+
+
+Build And Deploy (Second Time)
+
+Repeat the steps and instructions under the section headings "Initial Build And 
+Deploy" and "Visit The Deployment". It's still boring but we will fix that shortly. 
+
+
+Look And Feel
+
+We have this application and it's in a table but we can't tell that just yet. 
+As you can see from the code that we just implemented that we are using the 
+class attribute. We should have a stylesheet which will give the generated page 
+a look and feel. We will add a stylesheet to the TipOfTheDay.SRF file and implement 
+the stylsheet source. 
+
+- In the Solution Explorer right click the TipOfTheDay project and from the context 
+  menu select Add | Add New Item.... 
+- From the Add New Item dialog, select the Visual C++ Category on the left hand side
+  and then select the "Style Sheet" from the Templates listview. 
+- In the name field type "TipOfTheDay" and click open. A file will be added to your 
+  project called "TipOfTheDay.css" 
+- In the Solution Explorer click on the "TipOfTheDay.css" tree node. Then look at 
+  the properties window and set the Content attribute to True, see Figure 6. By 
+  setting the Content attribute to true this will inform the project that this file 
+  needs to be added to the deployment package when built. 
+
+
+Double click the "TipOfTheDay.css" tree node to open the file and insert the 
+stylesheet information below into that file and save everything. 
+
+
+Stylesheet definitions inserted into TipOfTheDay.CSS 
+
+TABLE
+{
+	border:solid 1px black;
+}
+
+TD
+{
+	background-color:506C86;
+	color:FFFFFF;
+}
+TD.ProductTechnology
+{
+	font-weight:bold;
+}
+
+TD.TipInfo
+{
+	background-color:infobackground;
+	text-align:center;
+	color:000000;
+}
+
+TD.Source
+{
+	background-color:506C86;
+	font-size:xx-small;
+}
+
+TD.PageHeader
+{
+	font-size:x-large;
+	text-align:center;
+}
+
+A
+{
+	color:FFFFFF;
+}
+
+Next we will need to update the TipOfTheDay.SRF file to use the new stylesheet. 
+Insert the text in bold into the TipOfTheDay.SRF file. And Save. 
+
+
+Stylesheet added to TipOfTheDay.SRF 
+
+<html>
+{{handler TipOfTheDay.dll/Default}}
+<head>
+    <link rel="stylesheet" type="text/css" href="TipOfTheDay.css">
+    {{// Set the title of the page with the component's title string}}
+    <title>{{DisplayVersion}}</title>
+</head>
+<body>
+    <table align="center" cellspacing="0" cellpadding="4" width="80%">
+        <tr>
+            {{// Display the random tip product and technology associations}}
+            <td class="ProductTechnology" nowrap="true">{{TipCategoryMajor}}</td>
+            <td> </td>
+            <td class="ProductTechnology" nowrap="true" align="right">{{TipCategoryMinor}}</td>
+        </tr>
+        <tr>
+            {{// Display the Tip of the day text information}}
+            <td COLSPAN="3" class="TipInfo">{{TipOfTheDay}}</td>
+        </tr>
+        <tr>
+            {{// Display the Source if any}}
+            <td COLSPAN="3" class="Source" nowrap="true" align="right">{{TipSource}}</td>
+        </tr>
+    </table>
+</body>
+</html>
+
+
+Build And Deploy (Third Time)
+
+Repeat the steps and instructions under the section headings "Initial Build And 
+Deploy" and "Visit The Deployment". Now it has a nicer look and feel. 
+
+
+Implement Random Tip Of The Day
+
+Now that we have our tag replacement handlers implemented, a SRF file with a decent 
+UI, and a UI witha look and feel; let's go back to your TipOfTheDay.cpp file and 
+insert the implementation of RandomTip to load a tip from the Tips XML file and 
+cache the values for the tip selected. 
+
+First, let us add another file to our project. This time an XML file to put our 
+tips into. We are going to repeat the same exact steps we did for our CSS file 
+but instead select and name a XML file. The steps are repeated for your convience. 
+In the Solution Explorer right click the TipOfTheDay project and from the context 
+menu select Add | Add New Item.... 
+
+- From the Add New Item dialog, select the Visual C++ Category on the left hand side 
+  and then select the "XML File" from the Templates listview. 
+- In the name field type "TipOfTheDay" and click open. A file will be added to your 
+  project called "TipOfTheDay.xml" 
+- In the Solution Explorer click on the "TipOfTheDay.xml" tree node. Then look at the 
+  properties window and set the Content attribute to True, see Figure 6 as a refernce. 
+  By setting the Content attribute to true this will inform the project that this file 
+  needs to be added to the deployment package when built. 
+
+Now that we have our Tips XML file double click the "TipOfTheDay.xml" tree node and 
+insert tips of your choice using the following schema 
+
+
+TipOfTheDay.xml file schema where Tip and its children should be repeated for each 
+new tip.
+
+<?xml version="1.0"?>
+<Tips>
+    <Tip>
+        <CategoryMajor>ATL Server</CategoryMajor>
+        <CategoryMinor>SRF Tags</CategoryMinor>
+        <TipText>When commenting your files being used by your ATL Server, 
+            don't put tags in comments unless you mean to, as they will be 
+            processed by the associated ATL Server handler</TipText>
+        <Source>Erik Thompson</Source>
+    </Tip>
+</Tips>
+
+Now that we have an XML file with our Tip(s) let us implement the core of the 
+RandomTip tag handler. 
+
+First save your project. Then, double click "TipOfTheDay.cpp" to begin editing. 
+Add the following lines of code to the source file below the stdafx.h include 
+directive as shown below. The new include for time allows us to see the srand 
+function so that our selected tip is as random as possible. The smart pointer 
+declarations allow us to use the XMLDOM interfaces with ease. 
+
+#include <stdafx.h>
+#include <time.h>        // need this to see the random function to get a random tip
+
+// Smart pointers that we will use when building the current random tip.
+_COM_SMARTPTR_TYPEDEF(IXMLDOMDocument,  __uuidof(IXMLDOMDocument));
+_COM_SMARTPTR_TYPEDEF(IXMLDOMElement,   __uuidof(IXMLDOMElement));
+_COM_SMARTPTR_TYPEDEF(IXMLDOMNodeList,  __uuidof(IXMLDOMNodeList));
+_COM_SMARTPTR_TYPEDEF(IXMLDOMNode,      __uuidof(IXMLDOMNode));
+
+Now scroll down to the RandomTip method implementation and we will insert the code 
+neccessary to load a tip and store it's associated values. 
+
+Right now our RandomTip implementation does nothing but set our initialzing flag to 
+true, lets add the code to open our TipOfTheDay.xml file 
+
+The first thing we need to do is create a XMLDOMDocument object using CreateInstance. 
+Once we have an object we can move onto the next setp and attempt to load the XML file. 
+
+Add the code below in bold to the OnRandomTip method 
+
+HTTP_CODE CTipOfTheDayHandler::OnRandomTip(void)
+{
+    HRESULT hr = S_OK;
+    IXMLDOMDocumentPtr ptrTipsFile = NULL;
+    hr = ptrTipsFile.CreateInstance(CLSID_DOMDocument);
+    if (SUCCEEDED(hr) && ptrTipsFile != NULL)
+    {
+        // More implemetation to come.
+        ptrTipsFile=NULL;
+    }
+    m_bInited = true;
+    return HTTP_SUCCESS;
+}
+
+After we have a XML object we build the physical path to the TipOfTheDay.xml file 
+using the new ATL CString class and the m_HttpRequest object. 
+
+We then try to load the list of XML Tips into the XML object. If we succeed we 
+will move forward and try to get a random tip and it's contents. 
+
+Add the code below in bold to the OnRandomTip method 
+
+HTTP_CODE CTipOfTheDayHandler::OnRandomTip(void)
+{
+    HRESULT hr = S_OK;
+    IXMLDOMDocumentPtr ptrTipsFile = NULL;
+    hr = ptrTipsFile.CreateInstance(CLSID_DOMDocument);
+    if (SUCCEEDED(hr) && ptrTipsFile != NULL)
+    {
+        // build path to tip of the day xml file
+        CString strPath;
+        m_HttpRequest.GetPhysicalPath(strPath);
+        strPath.Append("TipOfTheDay.xml");
+
+        // load document
+        VARIANT_BOOL vbLoaded = VARIANT_FALSE;
+        ptrTipsFile->put_async(VARIANT_FALSE);
+        hr = ptrTipsFile->load(_variant_t(strPath), &vbLoaded);
+        if (SUCCEEDED(hr) && vbLoaded == VARIANT_TRUE)
+        {
+            IXMLDOMElementPtr ptrDocRoot = NULL;
+            hr = ptrTipsFile->get_documentElement(&ptrDocRoot);
+            if (SUCCEEDED(hr) && ptrDocRoot != NULL)
+            {
+                // More implemetation to come.
+                ptrDocRoot = NULL;
+            }
+        }
+        ptrTipsFile=NULL;
+    }
+    m_bInited = true;
+    return HTTP_SUCCESS;
+}
+
+Next we need to get all the children of the root node from the XML document, this will 
+be the avilable tips. 
+
+From the list of available tips we will get the number of tips and select a random tip 
+from the available tips using the rand() method 
+
+Once we have the tip we can finally get the attribute values of the tip for your 
+associated Tip* Handlers. 
+
+Add the code below in bold to the OnRandomTip method 
+
+HTTP_CODE CTipOfTheDayHandler::OnRandomTip(void)
+{
+    HRESULT hr = S_OK;
+    IXMLDOMDocumentPtr ptrTipsFile = NULL;
+    hr = ptrTipsFile.CreateInstance(CLSID_DOMDocument);
+    if (SUCCEEDED(hr) && ptrTipsFile != NULL)
+    {
+        // build path to tip of the day xml file
+        CString strPath;
+        m_HttpRequest.GetPhysicalPath(strPath);
+        strPath.Append("TipOfTheDay.xml");
+
+        // load document
+        VARIANT_BOOL vbLoaded = VARIANT_FALSE;
+        ptrTipsFile->put_async(VARIANT_FALSE);
+        hr = ptrTipsFile->load(_variant_t(strPath), &vbLoaded);
+        if (SUCCEEDED(hr) && vbLoaded == VARIANT_TRUE)
+        {
+            IXMLDOMElementPtr ptrDocRoot = NULL;
+            hr = ptrTipsFile->get_documentElement(&ptrDocRoot);
+            if (SUCCEEDED(hr) && ptrDocRoot != NULL)
+            {
+                IXMLDOMNodeListPtr ptrTipsList = NULL;
+                hr = ptrDocRoot->get_childNodes(&ptrTipsList);
+                if (SUCCEEDED(hr) && ptrTipsList != NULL)
+                {
+                    long lTipCount = 0;
+                    hr = ptrTipsList->get_length(&lTipCount);
+                    if (SUCCEEDED(hr) && lTipCount)
+                    {
+                        IXMLDOMNodePtr ptrTip = NULL;
+                        // randomize and load tip of the day
+                        // seed random number generator
+                        srand( (unsigned)time( NULL ) );
+                        hr = ptrTipsList->get_item(rand() % lTipCount, &ptrTip);
+                        if (SUCCEEDED(hr) && ptrTip != NULL)
+                        {
+                            // More implemetation to come.
+                            ptrTip = NULL;
+                        }
+                    }
+                    ptrTipsList = NULL;
+                }
+                ptrDocRoot = NULL;
+            }
+        }
+        ptrTipsFile=NULL;
+    }
+    m_bInited = true;
+    return HTTP_SUCCESS;
+}
+
+Finally we select the node we are working with for the current attribute from the 
+Tip node. We then get the attribute's contained value and store it into the 
+associated member variable which a tag handler will later use to write the value 
+to the page requestor. 
+
+Add the code below in bold to the OnRandomTip method 
+
+HTTP_CODE CTipOfTheDayHandler::OnRandomTip(void)
+{
+    HRESULT hr = S_OK;
+    IXMLDOMDocumentPtr ptrTipsFile = NULL;
+    hr = ptrTipsFile.CreateInstance(CLSID_DOMDocument);
+    if (SUCCEEDED(hr) && ptrTipsFile != NULL)
+    {
+        // build path to tip of the day xml file
+        CString strPath;
+        m_HttpRequest.GetPhysicalPath(strPath);
+        strPath.Append("TipOfTheDay.xml");
+
+        // load document
+        VARIANT_BOOL vbLoaded = VARIANT_FALSE;
+        ptrTipsFile->put_async(VARIANT_FALSE);
+        hr = ptrTipsFile->load(_variant_t(strPath), &vbLoaded);
+        if (SUCCEEDED(hr) && vbLoaded == VARIANT_TRUE)
+        {
+            IXMLDOMElementPtr ptrDocRoot = NULL;
+            hr = ptrTipsFile->get_documentElement(&ptrDocRoot);
+            if (SUCCEEDED(hr) && ptrDocRoot != NULL)
+            {
+                IXMLDOMNodeListPtr ptrTipsList = NULL;
+                hr = ptrDocRoot->get_childNodes(&ptrTipsList);
+                if (SUCCEEDED(hr) && ptrTipsList != NULL)
+                {
+                    long lTipCount = 0;
+                    hr = ptrTipsList->get_length(&lTipCount);
+                    if (SUCCEEDED(hr) && lTipCount)
+                    {
+                        IXMLDOMNodePtr ptrTip = NULL;
+                        // randomize and load tip of the day
+                        // seed random number generator
+                        srand( (unsigned)time( NULL ) );
+                        hr = ptrTipsList->get_item(rand() % lTipCount, &ptrTip);
+                        if (SUCCEEDED(hr) && ptrTip != NULL)
+                        {
+                            IXMLDOMNodePtr ptrField = NULL;
+                            _bstr_t bsField;
+                            BSTR bstrText = NULL;
+
+                            bsField = "CategoryMajor";
+                            hr = ptrTip->selectSingleNode(bsField, &ptrField);
+                            if (SUCCEEDED(hr) && ptrField != NULL)
+                            {
+                                ptrField->get_text(&bstrText);
+                                m_bsCategoryMajor = bstrText;
+                                SysFreeString(bstrText), bstrText = NULL;
+                                ptrField = NULL;
+                            }
+
+                            bsField = "CategoryMinor";
+                            hr = ptrTip->selectSingleNode(bsField, &ptrField);
+                            if (SUCCEEDED(hr) && ptrField != NULL)
+                            {
+                                ptrField->get_text(&bstrText);
+                                m_bsCategoryMinor = bstrText;
+                                SysFreeString(bstrText), bstrText = NULL;
+                                ptrField = NULL;
+                            }
+
+                            bsField = "TipText";
+                            hr = ptrTip->selectSingleNode(bsField, &ptrField);
+                            if (SUCCEEDED(hr) && ptrField != NULL)
+                            {
+                                ptrField->get_text(&bstrText);
+                                m_bsTipOfTheDay = bstrText;
+                                SysFreeString(bstrText), bstrText = NULL;
+                                ptrField = NULL;
+                            }
+
+                            bsField = "Source";
+                            hr = ptrTip->selectSingleNode(bsField, &ptrField);
+                            if (SUCCEEDED(hr) && ptrField != NULL)
+                            {
+                                ptrField->get_text(&bstrText);
+                                m_bsSource = bstrText;
+                                SysFreeString(bstrText), bstrText = NULL;
+                                ptrField = NULL;
+                            }
+                            ptrTip = NULL;
+                        }
+                    }
+                    ptrTipsList = NULL;
+                }
+                ptrDocRoot = NULL;
+            }
+        }
+        ptrTipsFile=NULL;
+    }
+    m_bInited = true;
+    return HTTP_SUCCESS;
+}
+
+The final thing we need to do before we build and deploy is add the {{RandomTip}} 
+tag to the TipOfTheDay.srf file. 
+
+
+Add the lines in bold to TipOfTheDay.srf 
+
+<html>
+{{handler TipOfTheDay.dll/Default}}
+<head>
+    <link rel="stylesheet" type="text/css" href="TipOfTheDay.css">
+    {{// Set the title of the page with the component's title string}}
+    <title>{{DisplayVersion}}</title>
+</head>
+<body>
+    {{// See the TipOfTheDay}}
+    {{RandomTip}}
+    <table align="center" cellspacing="0" cellpadding="4" width="80%">
+        <tr>
+            {{// Display the random tip product and technology associations}}
+            <td class="ProductTechnology" nowrap="true">{{TipCategoryMajor}}</td>
+            <td> </td>
+            <td class="ProductTechnology" nowrap="true" align="right">{{TipCategoryMinor}}</td>
+        </tr>
+        <tr>
+            {{// Display the Tip of the day text information}}
+            <td COLSPAN="3" class="TipInfo">{{TipOfTheDay}}</td>
+        </tr>
+        <tr>
+            {{// Display the Source if any}}
+            <td COLSPAN="3" class="Source" nowrap="true" align="right">{{TipSource}}</td>
+        </tr>
+    </table>
+</body>
+</html>
+
+
+Build And Deploy (Fourth Time)
+
+Repeat the steps and instructions under the section headings "Initial Build And Deploy" 
+and "Visit The Deployment". 
+
+
+Introduce Additional SRF Tags
+
+Server Response Files allow you to do includes of other html files, text files, 
+and SRF files to build up a page. When another SRF file is called, the file is 
+parsed and tokens found are processed. The resulting processed SRF file contents 
+are injected back into the SRF file which included it replacing in place of the 
+include tag. We will add a header and a footer to our SRF file. The header will be 
+another SRF file which will add a table bar with the display version in a large font. 
+The footer will display another table displaying the build which the project is for 
+and how to contact me. 
+
+
+Adding A Header
+
+To add the header to the SRF file we first need to create the file and add it to 
+our project. We are going to follow the same steps as we did for the TipOfTheDay.css 
+and TipOfTheDay.xml files. The steps are repeated for your convience. 
+
+- In the Solution Explorer right click the TipOfTheDay project and from the context 
+  menu select Add | Add New Item.... 
+- From the Add New Item dialog, select the Visual C++ Category on the left hand side 
+  and then select the "SRF File (.srf)" from the Templates listview. 
+- In the name field type "Header" and click open. A file will be added to your project
+  called "Header.srf" 
+- In the Solution Explorer click on the "Header.srf" tree node. Then look at the 
+  properties window and set the Content attribute to True, see Figure 6 as a refernce. 
+  By setting the Content attribute to true this will inform the project that this file 
+  needs to be added to the deployment package when built. 
+
+Now that we have our Header file double click the "Header.srf" tree node and insert the code below into it. 
+
+
+Implementation of Header.srf 
+
+{{handler TipOfTheDay.dll/Default}}
+<table width="100%" align="center">
+    <tr>
+        <td class="PageHeader">{{DisplayVersion}}</td>
+    </tr>
+</table>
+<BR>
+<BR>
+<BR>
+
+
+Add A Footer
+To add the footer to the SRF file we first need to create the file and add it to 
+our project. We are going to follow the same steps as we have for the past 3 times. 
+
+- In the Solution Explorer right click the TipOfTheDay project and from the context
+  menu select Add | Add New Item.... 
+- From the Add New Item dialog, select the Visual C++ Category on the left hand side
+  and then select the "HTML Page" from the Templates listview. 
+- In the name field type "Footer" and click open. A file will be added to your project 
+  called "Footer.htm" 
+- In the Solution Explorer click on the "Footer.htm" tree node. Then look at the 
+  properties window and set the Content attribute to True, see Figure 6 as a refernce. 
+  By setting the Content attribute to true this will inform the project that this 
+  file needs to be added to the deployment package when built. 
+
+Now that we have our Footer file double click the "Footer.htm" tree node and insert 
+the footer code below into it. 
+
+Implementation of Footer.htm 
+
+<br>
+<br>
+<br>
+<table width="100%" align="center">
+    <tr>
+        <td align="left" width="50%">VisualStudio.NET Beta1, ATL Server Example</td>
+        <td align="right">Created By: <a href="mailto:erikt@radbytes.com">Erik Thompson</a></td>
+    </tr>
+</table>
+
+
+Update TipOfTheDay.SRF
+
+Now that we have these new content files we need to add code to the TipOfTheDay.srf 
+file to have the ATLServer process and interject responses into the processed result. 
+
+
+Add the code in bold below to TipOfTheDay.srf 
+
+<html>
+{{handler TipOfTheDay.dll/Default}}
+<head>
+    <link rel="stylesheet" type="text/css" href="TipOfTheDay.css">
+    {{// Set the title of the page with the component's title string}}
+    <title>{{DisplayVersion}}</title>
+</head>
+<body>
+    <!-- Header section-->
+    {{include Header.srf}}
+
+    <!-- Tip Of The Day section-->
+    {{// See the TipOfTheDay}}
+    {{RandomTip}}
+    <table align="center" cellspacing="0" cellpadding="4" width="80%">
+        <tr>
+            {{// Display the random tip product and technology associations}}
+            <td class="ProductTechnology" nowrap="true">{{TipCategoryMajor}}</td>
+            <td> </td>
+            <td class="ProductTechnology" nowrap="true" align="right">{{TipCategoryMinor}}</td>
+        </tr>
+        <tr>
+            {{// Display the Tip of the day text information}}
+            <td COLSPAN="3" class="TipInfo">{{TipOfTheDay}}</td>
+        </tr>
+        <tr>
+            {{// Display the Source if any}}
+            <td COLSPAN="3" class="Source" nowrap="true" align="right">{{TipSource}}</td>
+        </tr>
+    </table>
+    <!-- Footer section-->
+    {{include Footer.htm}}
+
+</body>
+</html>
+
+
+Build And Deploy (Fifth Time)
+
+Let's build and deploy the project for the last time. Repeat the steps and instructions 
+under the section headings "Initial Build And Deploy" and "Visit The Deployment". 
+
+
+Conclusion
+
+ATL Servers are the next step for ISAPI. It brings to ISAPI what was missing in the 
+past. In the past ISAPI extensions housed the logic, content, and UI. Now ATL 
+Servers povide the best of both worlds. They house only the logic and allow the some 
+of the content and UI to be outside the DLL and updateable. It's also a compiled 
+solution that will give system not running .NET an avenue for better performance 
+in web applications compared to using ASP. Microsoft has done well by making ISAPI 
+development easier through the housing of the Response, Request interfaces that ASP 
+and ASP Component developers are accustomed to but also provide rich abilities to 
+external services through a compiled object.     
+ 

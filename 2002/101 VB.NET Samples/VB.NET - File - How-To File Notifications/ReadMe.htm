@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft Visual Studio.NET 7.0">
+		<meta name="ProgId" content="VisualStudio.HTML">
+		<meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+		<font face="Verdana, Arial, System">
+			<h1>
+				File System: File System Notifications</h1>
+			<p>
+				The .NET Framework makes it easy to monitor file system changes--the 
+				FileSystemWatcher class can raise events when you create, delete, modify, or 
+				rename files in the folders that it's "watching". This sample 
+				demonstrates&nbsp;the properties exposed by the class, and allows you to 
+				interactively try out the various events.&nbsp;
+			</p>
+			<h2>Featured Highlights</h2>
+			<P>The sample form allows you to set properties of the FileSystemWatcher object 
+				used by the demonstration, including:</P>
+			<UL>
+				<LI>
+				Path: The file system path to be "watched" by the object.
+				<LI>
+				Filter: The types of files to be watched. By default, this is *.*, although you 
+				can change this to any legal file specification.
+				<LI>
+				NotifyFilter: The types of changes to watch for. This property can be 0 or more 
+				values from the System.IO.NotifyFilters enumeration, combined together. By 
+				default, the FileSystemWatcher detects FileName, DirectoryName, and LastWrite 
+				changes.
+				<LI>
+				IncludeSubdirectories: Indicates whether the monitoring should include 
+				directories beneath the selected path.
+				<LI>
+					EnableRaisingEvents: If true, the object monitors for file system changes and 
+					raises events as they occur. Basically, this is the "on/off switch". In this 
+					demonstration, this property is controlled using a CheckBox control displayed 
+					as a toggle button (see the Appearance property of the control).</LI></UL>
+			<P>Selecting the Enable Raising Events button turns on event handling for the 
+				FileSystemWatcher object, and event handlers in the form's class will write 
+				items to the list box on the form as you change files in the selected path. To 
+				make it easier to demonstrate, you can use the Create/Rename/Modify/Delete 
+				Sample File buttons on the form. These buttons create temporary files in the 
+				selected folder. (Use the Delete All Sample Files button to clean up all 
+				remaining sample files when you're done.)</P>
+			<P>You can also use Windows Explorer or any other application to create, modify, 
+				rename, and delete files. The sample application will still display the 
+				notifications, since the FileSystemWatcher object simply monitors for changes, 
+				without regard to the source application.&nbsp;
+				<h2>Requirements</h2>
+			<p>
+				Requires the Trial or Release version of Visual Studio .NET Professional (or 
+				greater).
+			</p>
+			<h2>Running the Sample</h2>
+			<P>Although this sample application uses the FileSystemWatcher component (from the 
+				Components tab on the Toolbox), this isn't required.&nbsp;This does make it 
+				simpler to&nbsp;set properties at design time, but offers no real benefits 
+				beyond that. Adding the component to a form rather than using a normal instance 
+				of the object in code makes no difference in the code, except that you can set 
+				properties at design time, and the designer takes care of creating the variable 
+				and setting its properties in code. If you want to bypass the&nbsp;component, 
+				and do it all in code, you'd only need to&nbsp;delete the item from the form, 
+				and add to the class:</P>
+			<P><FONT face="Courier New">Private WithEvents fsw As New FileSystemWatcher()</FONT></P>
+			<P>You'll find only three event handlers in the class, although the 
+				FileSystemWatcher class raises five events. Because the Created, Changed, and 
+				Deleted events all share the same event signature, one event handler manages 
+				them all. The Renamed and Error events each have their own handlers, because 
+				their event signatures are slightly different.</P>
+			<P>In addition,&nbsp;a large block of code in the sample deals with using 
+				a&nbsp;CheckedListBox control to display the one or more bit-mask values in the 
+				NotifyFilter property. If you're interested in displaying enumerated values, 
+				allowing users to select one or more, and then applying the values back 
+				into&nbsp;a property that accepts an enumerated value, check out the code. The 
+				GetChecks and SetChecks procedures are basically generic--you should be able to 
+				pick them up and use them elsewhere, as long as you add items to the control as 
+				we've done here.
+				<h3>Last Update:&nbsp;7 July 2002</h3>
+		</font>
+	</body>
+</html>

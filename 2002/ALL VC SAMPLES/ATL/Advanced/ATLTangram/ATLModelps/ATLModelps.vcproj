@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding = "Windows-1252"?>
+<VisualStudioProject
+	ProjectType="Visual C++"
+	Version="7.00"
+	Name="ATLModelps"
+	SccProjectName=""
+	SccLocalPath="">
+	<Platforms>
+		<Platform
+			Name="Win32"/>
+	</Platforms>
+	<Configurations>
+		<Configuration
+			Name="Release|Win32"
+			OutputDirectory=".\ReleasePS"
+			IntermediateDirectory=".\ReleasePS"
+			ConfigurationType="2"
+			UseOfMFC="0"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				InlineFunctionExpansion="0"
+				AdditionalIncludeDirectories="..\;..\ATLModel"
+				PreprocessorDefinitions="WIN32;REGISTER_PROXY_DLL"
+				RuntimeLibrary="2"
+				WarningLevel="4"
+				Detect64BitPortabilityProblems="TRUE"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="kernel32.lib user32.lib  rpcndr.lib rpcns4.lib rpcrt4.lib"
+				ModuleDefinitionFile=".\ATLModelps.def"
+				SubSystem="2"
+				TargetMachine="1"/>
+			<Tool
+				Name="VCMIDLTool"
+				WarningLevel="1"
+				SuppressStartupBanner="TRUE"
+				GenerateStublessProxies="TRUE"
+				InterfaceIdentifierFileName="$(InputName)_p.c"/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				Description="Registering proxy/stub dll..."
+				CommandLine="regsvr32 /s .\ReleasePS/ATLModelps.dll"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+		</Configuration>
+		<Configuration
+			Name="Debug|Win32"
+			OutputDirectory=".\DebugPS"
+			IntermediateDirectory=".\DebugPS"
+			ConfigurationType="2"
+			UseOfMFC="0"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalIncludeDirectories="..\;..\ATLModel"
+				PreprocessorDefinitions="WIN32;REGISTER_PROXY_DLL;_DEBUG"
+				RuntimeLibrary="3"
+				BrowseInformation="0"
+				WarningLevel="4"
+				Detect64BitPortabilityProblems="TRUE"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="kernel32.lib rpcndr.lib rpcns4.lib rpcrt4.lib uuid.lib"
+				ModuleDefinitionFile=".\ATLModelps.def"
+				GenerateDebugInformation="TRUE"
+				SubSystem="2"
+				TargetMachine="1"/>
+			<Tool
+				Name="VCMIDLTool"
+				MkTypLibCompatible="FALSE"
+				WarningLevel="1"
+				SuppressStartupBanner="TRUE"
+				GenerateStublessProxies="TRUE"
+				InterfaceIdentifierFileName="$(InputName)_p.c"/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				Description="Registering proxy/stub dll..."
+				CommandLine="regsvr32 /s .\DebugPS/ATLModelps.dll"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+		</Configuration>
+	</Configurations>
+	<Files>
+		<Filter
+			Name="Source Files"
+			Filter="">
+			<File
+				RelativePath="ATLModelps.def">
+			</File>
+		</Filter>
+	</Files>
+	<Globals>
+	</Globals>
+</VisualStudioProject>

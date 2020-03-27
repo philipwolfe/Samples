@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft Visual Studio.NET 7.0">
+		<meta name="ProgId" content="VisualStudio.HTML">
+		<meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+		<font face="Verdana, Arial, System">
+			<h1>
+				Advanced: Remoting - Host</h1>
+			<p>
+				This application provides a host process for the objects defined in 
+				RemoteCustomer.dll.&nbsp;
+			</p>
+			<h2>Featured Highlights</h2>
+			<p>
+				This application when started will read the remoting.config file to figure out 
+				what objects should be exposed, how, and on what port.
+			</p>
+			<h2>Requirements</h2>
+			<p>
+				Requires the Trial or Release version of Visual Studio .NET Professional (or 
+				greater).
+			</p>
+			<h2>Running the Sample</h2>
+			<P>In order for the client to 'load' the objects, it reads <STRONG>Host.exe.config</STRONG>
+				file at startup. The application's assumption is that the file lives in the 
+				same directory as the exe file.&nbsp; Note that the file itself is stored at 
+				the source directory level as <STRONG>app.config</STRONG>. When you compile the 
+				application, the file is automatically copied to the output directory with the 
+				correct name.
+			</P>
+			<P>In addition, the host assumes it will find RemoteCustomer.dll in the same 
+				directory as the remoting.config file. Note that host.exe is taking the place 
+				of DLLHOST.EXE in COM+ (MTX.EXE in MTS under Windows NT 4.0).
+			</P>
+			<P>For a production application, you might consider a Windows service or hosting 
+				the RemoteCustomer.dll inside IIS.
+			</P>
+			<P>Please see the <STRONG>ReadMe.htm</STRONG> file located in the directory above 
+				this one for more information.
+			</P>
+			<h3>Last Update:&nbsp;7 July 2002</h3>
+		</font>
+	</body>
+</html>

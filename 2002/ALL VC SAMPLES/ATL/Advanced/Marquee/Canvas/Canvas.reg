@@ -1,0 +1,14 @@
+REGEDIT
+; This .REG file may be used by your SETUP program.
+;   If a SETUP program is not available, the entries below will be
+;   registered in your InitInstance automatically with a call to
+;   CWinApp::RegisterShellFileTypes and COleObjectFactory::UpdateRegistryAll.
+
+HKEY_CLASSES_ROOT\Canvas.Application = Canvas Application
+HKEY_CLASSES_ROOT\Canvas.Application\CLSID = {29B8A4CA-2C1E-4281-A8AF-2D1BBC8A761C}
+
+HKEY_CLASSES_ROOT\CLSID\{29B8A4CA-2C1E-4281-A8AF-2D1BBC8A761C} = Canvas Application
+HKEY_CLASSES_ROOT\CLSID\{29B8A4CA-2C1E-4281-A8AF-2D1BBC8A761C}\ProgId = Canvas.Application
+
+
+HKEY_CLASSES_ROOT\CLSID\{29B8A4CA-2C1E-4281-A8AF-2D1BBC8A761C}\LocalServer32 = Canvas.EXE

@@ -1,0 +1,60 @@
+<!--{{handler cgi-bin\Mailbox.dll/Message }} This file (c) 2000 Microsoft Corporation -->
+<html>
+<head>
+<base target="main_frame">
+<link rel="stylesheet" href="main.css" type="text/css">
+<script language="JavaScript">
+<!--
+function ReplyMsg() 
+{
+	navigate("compose.srf?msgto={{From}}&msgsubject=Re: {{Subject}}");
+}
+
+function ForwardMsg() 
+{
+	navigate("compose.srf?msgsubject=Fw: {{Subject}}");
+}
+
+function DeleteMsg() 
+{
+	navigate("message.srf?delmsg={{MessageID}}&ref={{Ref}}");
+}
+-->
+</script>
+</head>
+<body>
+<table border="1" cellspacing="0" cellpadding="2" bgcolor="#FFFFCC" width="627">
+  <tr>
+    <td width="44"><font color="#3A6EA5"><span style="font-variant: small-caps"><b>From:</b></span></font></td>
+    <td width="1043"><font color="#3A6EA5"><b>{{From}}</b></font></td>
+  </tr>
+  <tr>
+    <td width="44"><font color="#3A6EA5"><span style="font-variant: small-caps"><b>To:</b></span></font></td>
+    <td width="1043"><font color="#3A6EA5"><b>{{To}}</b></font></td>
+  </tr>
+  <tr>
+    <td width="44"><font color="#3A6EA5"><span style="font-variant: small-caps"><b>Subject:</b></span></font></td>
+    <td width="1043"><font color="#3A6EA5"><b>{{Subject}}</b></font></td>
+  </tr>
+  <tr>
+    <td width="44"><font color="#3A6EA5"><span style="font-variant: small-caps"><b>Date:&nbsp;</b></span></font></td>
+    <td width="1043"><font color="#3A6EA5"><b>{{Date}}</b></font></td>
+  </tr>
+</table>
+<form method="POST" action="message.srf">
+  <p><textarea rows="17" name="messageText" cols="76" tabindex="1" OnFocus="this.blur()">{{Message}}</textarea></p><br>
+  <input type="hidden" name="message" value="{{MessageID}}">
+  <font size="2">
+    {{if ReplyButton}}Click the &quotReply&quot button to reply to this message.<br>{{endif}}
+    {{if ForwardButton}}Click the &quotForward&quot button to forward this message to someone else.<br>{{endif}}
+    {{if DeleteButton}}Click the &quotDelete&quot button to delete this message.<br>{{endif}}
+    {{if SaveButton}}Click the &quotSave&quot button to save an update of this message.<br>{{endif}}
+    <br>
+  </font>
+  {{if ReplyButton}}<input type="button" value="Reply" name="replyButton" tabindex="2" onclick="ReplyMsg()">&nbsp;&nbsp;{{endif}}
+  {{if ForwardButton}}<input type="button" value="Forward" name="forwardButton" tabindex="3" onclick="ForwardMsg()">&nbsp;&nbsp;{{endif}}
+  {{if DeleteButton}}<input type="button" value="Delete" name="deleteButton" tabindex="4" onclick="DeleteMsg()">&nbsp;&nbsp;{{endif}}
+  {{if SaveButton}}<input type="submit" value="Save" name="saveButton" tabindex="5">&nbsp;&nbsp;{{endif}}
+</form>
+</body>
+</html>

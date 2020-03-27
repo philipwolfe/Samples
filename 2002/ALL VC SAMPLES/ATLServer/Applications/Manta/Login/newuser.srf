@@ -1,0 +1,103 @@
+<!-- {{handler cgi-bin\Login.dll/AddUser}} This file (c) 2000 Microsoft Corporation  -->
+<html>
+<head>
+<title>Signup For MantaWeb Today!</title>
+<link rel="stylesheet" href="login.css" type="text/css">
+</head>
+<body>
+<table border="0" cellspacing="0" cellpadding="0" width="720">
+  <tr>
+    <td width="115"></td>
+    <td>
+      <img border="0" src="images/banner.gif">
+      <p>
+        <font size="2">
+          To create a new account, please specify your first name, your last name, your email address, a
+          desired login name, a desired account password, and
+          your account password again to ensure it is correct.
+        </font>
+      </p>
+      <p>
+        <font size="2">
+          Select &quot;Remember My Password&quot; if you wish to have MantaWeb remember
+          your login name and password so you do not have to supply this information
+          to log in.&nbsp; If you are not the only person using your computer, it is
+          recommended that you do not turn on this feature.
+        </font>
+      </p>
+      <p>
+        <font size="2">
+          When you have supplied all the information, click on &quot;Create Account&quot;.
+        </font>
+      </p>
+      {{if Failure}}<font size="2" color="#FF0000">Some of the data supplied is incorrect.<br>
+      Fields marked with * specify incorrect or missing data.<br></font>{{endif}}
+      <br>
+    </td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>
+      <form method="post" action="newuser.srf" name="formNewUser">
+        <table border="0" cellspacing="0" cellpadding="0" width="588">
+          <tr>
+            <td width="112"><font size="2">First Name:</font></td>
+            <td width="472"><input type="text" name="firstname" size="22" tabindex="1" value="{{FirstName}}">
+              <font size="2" color="#FF0000">{{if InvalidFirstName}}* First name empty, invalid, or too long (max = {{MaxStringLen}}){{endif}}</font>
+            </td>
+          </tr>
+          <tr>
+            <td width="112"><font size="2">Last Name:</font></td>
+            <td width="472"><input type="text" name="lastname" size="22" tabindex="2" value="{{LastName}}">
+              <font size="2" color="#FF0000">{{if InvalidLastName}}* Last name empty, invalid, or too long (max = {{MaxStringLen}}){{endif}}</font>
+            </td>
+          </tr>
+          <tr>
+            <td width="112"><font size="2">E-Mail Address:</font></td>
+            <td width="472"><input type="text" name="email" size="22" tabindex="3" value="{{Email}}">
+              <font size="2" color="#FF0000">{{if InvalidEmail}}* Address empty, invalid, or too long (max = {{MaxStringLen}}){{endif}}</font>
+            </td>
+          </tr>
+          <tr>
+            <td width="112"><font size="2">Desired Login:</font></td>
+            <td width="472"><input type="text" name="login" size="22" tabindex="4" value="{{Login}}">
+              <font size="2" color="#FF0000">{{if InvalidLogin}}* Login empty, invalid, or too long (max = {{MaxStringLen}}){{endif}}
+              {{if LoginTaken}}* Login already exists, please pick another{{endif}}</font>
+            </td>
+          </tr>
+          <tr>
+            <td width="112"><font size="2">Password:</font></td>
+            <td width="472"><input type="password" name="password1" size="22" tabindex="5" value="{{Password1}}">
+              <font size="2" color="#FF0000">{{if InvalidPassword}}* Password empty, invalid, or too long (max = {{MaxStringLen}}){{endif}}
+              {{if PasswordMismatch}}* Passwords do not match{{endif}}</font>
+            </td>
+          </tr>
+          <tr>
+            <td width="112"><font size="2">Confirm Password:</font></td>
+            <td width="472"><input type="password" name="password2" size="22" tabindex="6" value="{{Password2}}">
+              <font size="2" color="#FF0000">{{if PasswordMismatch}}* Passwords do not match{{endif}}</font>
+            </td>
+          </tr>
+          <tr>
+            <td width="112"><font size="2">Password Hint:</font></td>
+            <td width="472"><input type="text" name="hint" size="22" tabindex="6" value="{{Hint}}">
+              <font size="2" color="#FF0000">{{if InvalidHint}}* Hint is empty, invalid, or too long (max = {{MaxStringLen}}){{endif}}</font>
+            </td>
+          </tr>
+        </table>
+        <p><font size="2"><input type="checkbox" name="rememberpass" value="1" tabindex="7" {{if RememberPass}}checked{{endif}} >Remember My Password</font></p>
+        <p>&nbsp;</p>
+        <p><input type="submit" value="Create Account" name="submitButton">&nbsp;&nbsp;&nbsp;<input type="reset" value="Reset" name="resetButton"></p>
+      </form>
+    </td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>
+      <br><br><br><br><br>
+      <font size="1"> ATL Server Sample © 2000 Microsoft Corporation. All rights reserved.
+    </td>
+  </tr>
+</table>
+</body>
+</html>

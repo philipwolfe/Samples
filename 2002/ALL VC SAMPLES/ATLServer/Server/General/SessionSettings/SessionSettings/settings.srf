@@ -1,0 +1,98 @@
+<HTML>
+	<HEAD>
+		<TITLE>
+			SessionSettings - ATL Server Sample
+		</TITLE>
+	</HEAD>
+	<BODY>
+		{{handler SessionSettings.dll/Intro}}
+		<p>
+			<font size=4>Photo gallery settings</font>
+		</p>
+		<form id="form1" action="settings.srf" method="post">
+			<p>
+				<table height=0 cellSpacing=1 cellPadding=4 width=300 align=left border=0>
+					<tr>
+						<td align=middle>
+							<strong>Image Resolution</strong>
+						</td>
+					</tr>
+					<tr>
+						<td align=middle>
+							<table cellSpacing=1 cellPadding=1 width=300 border=1>
+								<tr>
+									<td style="WIDTH: 57px">
+										<input id="resHigh" name="res" type=radio value="high" {{highcheck}}>
+											&nbsp;<strong>High</strong>&nbsp;
+									</td>
+									<td>
+										Large images for optimal&nbsp;viewing (Recommended for broadband connections)
+									</td>
+								</tr>
+								<tr>
+									<td align=left style="WIDTH: 57px">
+										<input id="resMed" name="res" type=radio value="med" {{medcheck}}>
+											&nbsp;<strong>Medium</strong>&nbsp;
+									</td>
+									<td align=left>
+										Moderate size and resolution
+									</td>
+								</tr>
+								<tr>
+									<td align=left style="WIDTH: 57px">
+										<input id="resLow" name="res" type=radio value="low" {{lowcheck}}>
+											&nbsp;<strong>Low</strong>
+									</td>
+									<td align=left>
+										Small images for optimal speed (Recommended for slow dial-up connections)
+									</td>
+								</tr>
+							</table>
+							<p>
+								&nbsp;
+							</p>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p align=center>
+								<strong>Image Appearance</strong>
+							</p>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<table cellspacing=1 cellpadding=1 width=300 border=1>
+								<tr>
+									<td style="WIDTH: 57px">
+										<input id=Radio1 type=radio value=no name=scale {{scaleNo}}>
+											&nbsp;<strong>Actual</strong>&nbsp;
+									</td>
+									<td>
+										Displayed in actual size
+									</td>
+								</tr>
+								<tr>
+									<td style="WIDTH: 57px" align=left>
+										<input id=Radio2 type=radio value=yes name=scale {{scaleYes}}>
+											&nbsp;<strong>Scaled</strong>&nbsp;
+									</td>
+									<td align=left>
+										Stretch small images
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p align=center>
+								<input id="Submit1" type="submit" value="View gallery">
+							</p>
+						</td>
+					</tr>
+				</table>
+			</p>
+		</form>
+	</BODY>
+</HTML>

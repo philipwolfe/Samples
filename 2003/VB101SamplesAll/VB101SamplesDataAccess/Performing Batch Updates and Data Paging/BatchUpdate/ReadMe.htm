@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title></title>
+		<meta name="GENERATOR" content="Microsoft Visual Studio.NET 7.0">
+		<meta name=ProgId content=VisualStudio.HTML>
+		<meta name=Originator content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+        <h1>Batch Updates and Paging</h1>
+        With ADO.NET 2.0 and Visual Studio 2005, you can now take advantage of a new property, BatchUpdateSize, when updating records from your
+        DataSet to the final database.  Previously, when you committed records to the database from a DataSet, it would update each record individually.
+        For small DataSets, this did not create any performance issues.  However, as the number of changes increased, the number of round-trips to the 
+        database increased resulting in decreased performance. 
+        <p></p>
+        With ADO.NET 2.0 and BatchUpdateSize, you can expicitly set the size of the batch that will be updated to the database from the DataSet.  This 
+        provides a significant increase in performance over its predecessor.
+        <p></p>
+        In this example, you can view the performance and the resulting updating technique leveraged when inserting a number of rows into a DataSet.
+        If you choose "0" from the ComboBox, a single batch containing all the records will be sent to the database.  Conversely, if you select "1" from
+        the ComboBox, you will insert each record individually just as it was done previously.  Finally, you can choose different batch sizes and 
+        compare the resulting performance change.
+        
+        <p></p>
+        <b>This sample requires the following to be installed: </b>
+        <ul>
+        
+        <li>Visual Studio 2005.</li>
+        <li>SQL Server Express 2005.</li>
+	    </ul>
+	</body>
+</html>

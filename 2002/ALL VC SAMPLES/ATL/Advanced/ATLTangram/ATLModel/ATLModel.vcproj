@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding = "Windows-1252"?>
+<VisualStudioProject
+	ProjectType="Visual C++"
+	Version="7.00"
+	Name="ATLModel"
+	SccProjectName=""
+	SccLocalPath="">
+	<Platforms>
+		<Platform
+			Name="Win32"/>
+	</Platforms>
+	<Configurations>
+		<Configuration
+			Name="Release|Win32"
+			OutputDirectory=".\Release"
+			IntermediateDirectory=".\Release"
+			ConfigurationType="2"
+			UseOfMFC="2"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="2"
+				InlineFunctionExpansion="1"
+				AdditionalIncludeDirectories="..\"
+				PreprocessorDefinitions="_WINDLL;WIN32;_WINDOWS;_USRDLL;NDEBUG"
+				ExceptionHandling="TRUE"
+				RuntimeLibrary="2"
+				UsePrecompiledHeader="3"
+				WarningLevel="4"
+				Detect64BitPortabilityProblems="TRUE"/>
+			<Tool
+				Name="VCCustomBuildTool"
+				Description="Registering ActiveX Control..."
+				CommandLine="regsvr32 /s /c &quot;$(TargetPath)&quot;
+
+echo regsvr32 exec. time &gt; &quot;$(OutDir)\regsvr32.trg&quot;
+"
+				Outputs="$(OutDir)\regsvr32.trg"/>
+			<Tool
+				Name="VCLinkerTool"
+				LinkIncremental="0"
+				ModuleDefinitionFile=".\ATLModel.def"
+				SubSystem="2"
+				TargetMachine="1"/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="NDEBUG"
+				AdditionalIncludeDirectories="..\"
+				MkTypLibCompatible="FALSE"
+				WarningLevel="1"
+				TargetEnvironment="1"
+				RedirectOutputAndErrors="NUL"/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				Description="Performing $(InputName) Event..."
+				CommandLine="copy dlldata.c ..\ATLModelps
+
+copy ATLModel_i.c ..\ATLModelps
+
+copy ATLModel_p.c ..\ATLModelps
+
+"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="NDEBUG"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+		</Configuration>
+		<Configuration
+			Name="Debug|Win32"
+			OutputDirectory=".\Debug"
+			IntermediateDirectory=".\Debug"
+			ConfigurationType="2"
+			UseOfMFC="2"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				AdditionalIncludeDirectories="..\"
+				PreprocessorDefinitions="_WINDLL,WIN32,_DEBUG,_WINDOWS,_USRDLL"
+				ExceptionHandling="TRUE"
+				RuntimeLibrary="3"
+				UsePrecompiledHeader="3"
+				BrowseInformation="0"
+				WarningLevel="4"
+				Detect64BitPortabilityProblems="TRUE"
+				DebugInformationFormat="4"/>
+			<Tool
+				Name="VCCustomBuildTool"
+				Description="Registering ActiveX Control..."
+				CommandLine="regsvr32 /s /c &quot;$(TargetPath)&quot;
+
+echo regsvr32 exec. time &gt; &quot;$(OutDir)\regsvr32.trg&quot;
+"
+				Outputs="$(OutDir)\regsvr32.trg"/>
+			<Tool
+				Name="VCLinkerTool"
+				LinkIncremental="0"
+				ModuleDefinitionFile=".\ATLModel.def"
+				GenerateDebugInformation="TRUE"
+				SubSystem="2"
+				TargetMachine="1"/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="_DEBUG"
+				AdditionalIncludeDirectories="..\"
+				MkTypLibCompatible="FALSE"
+				WarningLevel="1"
+				TargetEnvironment="1"
+				RedirectOutputAndErrors="NUL"/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				Description="Performing $(InputName) Event..."
+				CommandLine="copy dlldata.c ..\ATLModelps
+
+copy ATLModel_i.c ..\ATLModelps
+
+copy ATLModel_p.c ..\ATLModelps
+
+"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="_DEBUG"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+		</Configuration>
+	</Configurations>
+	<Files>
+		<Filter
+			Name="Source Files"
+			Filter="cpp;c;cxx;def;r;odl;idl;hpj;bat">
+			<File
+				RelativePath="ATLModel.cpp">
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						AssemblerListingLocation="$(INTDIR)/"
+						ObjectFile="$(INTDIR)/"
+						ProgramDataBaseFileName="$(INTDIR)/"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						AssemblerListingLocation="$(INTDIR)/"
+						ObjectFile="$(INTDIR)/"
+						ProgramDataBaseFileName="$(INTDIR)/"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="ATLModel.def">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="ATLModel.idl">
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCMIDLTool"
+						MkTypLibCompatible="FALSE"
+						TargetEnvironment="1"
+						TypeLibraryName=".\ATLModel.tlb"
+						HeaderFileName="ATLModel.h"
+						InterfaceIdentifierFileName="ATLModel_i.c"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCMIDLTool"
+						MkTypLibCompatible="FALSE"
+						TargetEnvironment="1"
+						TypeLibraryName=".\ATLModel.tlb"
+						HeaderFileName="ATLModel.h"
+						InterfaceIdentifierFileName="ATLModel_i.c"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="ATLTangramModel.cpp">
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						AssemblerListingLocation="$(INTDIR)/"
+						ObjectFile="$(INTDIR)/"
+						ProgramDataBaseFileName="$(INTDIR)/"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						AssemblerListingLocation="$(INTDIR)/"
+						ObjectFile="$(INTDIR)/"
+						ProgramDataBaseFileName="$(INTDIR)/"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="StdAfx.cpp">
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="1"
+						AssemblerListingLocation="$(INTDIR)/"
+						ObjectFile="$(INTDIR)/"
+						ProgramDataBaseFileName="$(INTDIR)/"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="1"
+						AssemblerListingLocation="$(INTDIR)/"
+						ObjectFile="$(INTDIR)/"
+						ProgramDataBaseFileName="$(INTDIR)/"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\tantype.idl">
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCMIDLTool"
+						HeaderFileName="..\$(InputName).h"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCMIDLTool"
+						HeaderFileName="..\$(InputName).h"/>
+				</FileConfiguration>
+			</File>
+		</Filter>
+		<Filter
+			Name="Header Files"
+			Filter="h;hpp;hxx;hm;inl">
+			<File
+				RelativePath="ATLTangramModel.h">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="CPATLModel.h">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="Resource.h">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="StdAfx.h">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"/>
+				</FileConfiguration>
+			</File>
+		</Filter>
+		<Filter
+			Name="Resource Files"
+			Filter="ico;cur;bmp;dlg;rc;rc2;rct;bin;cnt;rtf;gif;jpg;jpeg;jpe">
+			<File
+				RelativePath="ATLModel.rc">
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCResourceCompilerTool"
+						AdditionalIncludeDirectories="$(OUTDIR)"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCResourceCompilerTool"
+						AdditionalIncludeDirectories="$(OUTDIR)"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="ATLModelExe.rgs">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="ATLTangramModel.rgs">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"/>
+				</FileConfiguration>
+			</File>
+		</Filter>
+	</Files>
+	<Globals>
+	</Globals>
+</VisualStudioProject>

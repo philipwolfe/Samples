@@ -1,0 +1,44 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PoolingIsapi", "PoolingIsapi\PoolingIsapi.vcproj", "{07601FC0-A87D-459A-B3D5-9BC243F638C3}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PooledAsyncSoapSrv", "PooledAsyncSoapSrv\PooledAsyncSoapSrv.vcproj", "{1567F81D-2604-4AC5-908A-7C3329C65D5E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PooledAsyncApp", "PooledAsyncApp\PooledAsyncApp.vcproj", "{01194541-541A-431F-8728-34C213E1123B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PoolAsyncSoapClient", "PoolAsyncSoapClient\PoolAsyncSoapClient.vcproj", "{CB4A9446-5CA4-4866-B406-D785A269CB6E}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+		{1567F81D-2604-4AC5-908A-7C3329C65D5E}.0 = {07601FC0-A87D-459A-B3D5-9BC243F638C3}
+		{01194541-541A-431F-8728-34C213E1123B}.0 = {07601FC0-A87D-459A-B3D5-9BC243F638C3}
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{07601FC0-A87D-459A-B3D5-9BC243F638C3}.Debug.ActiveCfg = Debug|Win32
+		{07601FC0-A87D-459A-B3D5-9BC243F638C3}.Debug.Build.0 = Debug|Win32
+		{07601FC0-A87D-459A-B3D5-9BC243F638C3}.Release.ActiveCfg = Release|Win32
+		{07601FC0-A87D-459A-B3D5-9BC243F638C3}.Release.Build.0 = Release|Win32
+		{1567F81D-2604-4AC5-908A-7C3329C65D5E}.Debug.ActiveCfg = Debug|Win32
+		{1567F81D-2604-4AC5-908A-7C3329C65D5E}.Debug.Build.0 = Debug|Win32
+		{1567F81D-2604-4AC5-908A-7C3329C65D5E}.Release.ActiveCfg = Release|Win32
+		{1567F81D-2604-4AC5-908A-7C3329C65D5E}.Release.Build.0 = Release|Win32
+		{01194541-541A-431F-8728-34C213E1123B}.Debug.ActiveCfg = Debug|Win32
+		{01194541-541A-431F-8728-34C213E1123B}.Debug.Build.0 = Debug|Win32
+		{01194541-541A-431F-8728-34C213E1123B}.Release.ActiveCfg = Release|Win32
+		{01194541-541A-431F-8728-34C213E1123B}.Release.Build.0 = Release|Win32
+		{CB4A9446-5CA4-4866-B406-D785A269CB6E}.Debug.ActiveCfg = Debug|Win32
+		{CB4A9446-5CA4-4866-B406-D785A269CB6E}.Debug.Build.0 = Debug|Win32
+		{CB4A9446-5CA4-4866-B406-D785A269CB6E}.Release.ActiveCfg = Release|Win32
+		{CB4A9446-5CA4-4866-B406-D785A269CB6E}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionItems) = postSolution
+		Item:1 = include\commonPool.h
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

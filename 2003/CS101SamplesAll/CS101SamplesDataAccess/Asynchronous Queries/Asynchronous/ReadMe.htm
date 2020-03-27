@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title></title>
+		<meta name="GENERATOR" content="Microsoft Visual Studio.NET 7.0">
+		<meta name=ProgId content=VisualStudio.HTML>
+		<meta name=Originator content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+        <h1>Asynchronous Queries Sample</h1>
+        With SQL Server 2005 and Visual Studio 2005, you can process Asynchronous data request by three different methods.  
+        The first technique is polling.  This method accesses the IAsyncResult property to determine if the asynchronous process has
+        completed.  While it is still processing other tasks can be completed.
+        <p></p>
+        The second technique involves using Callbacks to handle when asynchronous requests have completed.  With this technique, you
+        register delegates that handle the results as they return from processing.  When we BeginExecuteReader, we pass in a AsyncCallback
+        object which contains a reference to the method that will be called when the process returns.  This method then calls the methods defined
+        in the delegates to display information on the user interface.
+        <p></p>
+        The third method uses WaitHandles to process results as they complete.  As each BegineExecuteReader object is called, a WaitHandle is created
+        by calling the AsyncWaitHandle of the IAsyncResult object.  These Wait Handles are then stored in an array for processing.  As processing continues,
+        the WaitAny method of the WaitHandle object returns the index of the WaitHandle that is finished processing. As each process completes,
+        specific processing is called for each process.
+        
+        <p></p>
+        In this example, you exercise each of these techniques.  First load the database with data by clicking on the "Fill Tables" button.  Then, to see 
+        polling, click the "Polling" button.  Next, to view the Callback technique, click the "Callback" button.  Finally, to view the WaitHandle 
+        method, click the "Wait" button.  In the Test Results group box, you will see the performance of each of these techiniques as well
+        as the user messages that are generated.
+        <p></p>
+        <b>This sample requires the following to be installed: </b>
+        <ul>
+        
+        <li>Visual Studio 2005.</li>
+        <li>SQL Server Express 2005.</li>
+	    </ul>
+	</body>
+</html>

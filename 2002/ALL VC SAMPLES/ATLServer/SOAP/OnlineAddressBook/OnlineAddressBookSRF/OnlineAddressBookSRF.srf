@@ -1,0 +1,121 @@
+<html>
+	<HEAD>
+	<title="Online Address Book"></title>
+	</HEAD>
+	<BODY>
+		<P>
+			{{handler OnlineAddressBookSRF.dll/Default}}
+		</P>
+		<P>
+			{{if authenticated}}
+		</P>
+		<P>
+			{{StartAddressList}}
+		</P>
+		<table id="recordstable" border="1">
+			<tr bgcolor="#ff6633">
+				<td>
+					<P align="center">
+						<STRONG>name</STRONG>
+					</P>
+				</td>
+				<td>
+					<P align="center">
+						<STRONG>email</STRONG>
+					</P>
+				</td>
+				<td>
+					<P align="center">
+						<STRONG>Home Phone</STRONG>
+					</P>
+				</td>
+				<td>
+					<P align="center">
+						<STRONG>Work Phone</STRONG>
+					</P>
+				</td>
+				<td>
+					<P align="center">
+						<STRONG>Mobile Phone</STRONG>
+					</P>
+				</td>
+				<td>
+					<P align="center">
+						<STRONG>Home Page</STRONG>
+					</P>
+				</td>
+				<td>
+					<P align="center">
+						<STRONG>Home Address</STRONG>
+					</P>
+				</td>
+				<td>
+					<P align="center">
+						<STRONG>Work Address</STRONG>
+					</P>
+				</td>
+				<td>
+					<P align="center">
+						<STRONG>Company</STRONG>
+					</P>
+				</td>
+			</tr>
+			{{while StillRecords}}
+			<tr bgcolor="{{getRowColor}}">
+				<td>
+					{{Name}}
+				</td>
+				<td>
+					<A href="mailto:{{email}}">{{email}}</A>
+				</td>
+				<td>
+					{{HomePhone}}
+				</td>
+				<td>
+					{{WorkPhone}}
+				</td>
+				<td>
+					{{MPhone}}
+				</td>
+				<td>
+					{{URL}}
+				</td>
+				<td>
+					{{HAddy}}
+				</td>
+				<td>
+					{{WAddy}}
+				</td>
+				<td>
+					{{Comp}}
+				</td>
+			</tr>
+			{{endwhile}}
+		</table>
+		<P>
+		</P>
+		<P>
+			{{else}}
+		</P>
+		<form method="post">
+			<P>
+				email:
+			</P>
+			<INPUT id="email" type="text" name="email">
+			<P>
+				password:
+			</P>
+			<INPUT id="password" type="password" name="password">
+			<P>
+				<FONT face="Tahoma" size="2"><STRONG>you need to use a separate client to create an 
+						account and add records to your online address book</STRONG></FONT></P>
+			<P>
+				<INPUT id="logIn" type="submit" value="logIn" name="logIn"></P>
+		</form>
+		<P>
+			{{endif}}
+		</P>
+		<P>
+				<FONT face="Tahoma" size="1"><A href="http://msdn.microsoft.com/visualc/"><STRONG>Built using ATL Server! </STRONG></a></FONT></P>
+	</BODY>
+</html>

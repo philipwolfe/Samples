@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Untitled Page</title>
+</head>
+<body>
+    <h1>
+        Using NGEN</h1>
+    <br />
+    <p style="font-size: 10pt; margin: 0in; font-family: Verdana; mso-outline-level: 1">
+        The .NET Framework 2.0 contains an enhanced version of the NGEN command-line utility
+        which is used to generate native code assemblies in place of run-time JIT compilation.
+    </p>
+    <p style="font-size: 10pt; margin: 0in; font-family: Verdana; mso-outline-level: 1">
+        &nbsp;</p>
+    <p style="font-size: 10pt; margin: 0in; font-family: Verdana; mso-outline-level: 1">
+        This sample allows you to install and uninstall native images from the Native Image Cache.
+        Installing an image is performed by the NGEN utility which will first generate the native
+        image file from a compiled .NET assembly, and then install the native image into the cache.
+        </p><p></p>
+    <p style="font-size: 10pt; margin: 0in; font-family: Verdana; mso-outline-level: 1">
+        This sample comes with two additional projects, ConsoleApp and SharedLib1. ConsoleApp is 
+        dependent on SharedLib1. You are encouraged to install ConsoleApp.exe into the Native Image 
+        Cache by browsing to the file in the ConsoleApp\bin\debug directory. After it is installed,
+        you can choose to view the entire contents of the Native Image Cache. You will find that the
+        SharedLib1 assembly was also installed into the cache as a result of ConsoleApp's dependence 
+        on this shared assembly. Automatically installing dependent assemblies is one of the new 
+        features provided in the .NET Framework's 2.0 version of NGEN.
+        </p><p></p>
+    <p style="font-size: 10pt; margin: 0in; font-family: Verdana; mso-outline-level: 1">      
+        When you view the Native Image Cache, you will see that each native image is displayed in four 
+        parts representing the four parts of a full assembly name (base name, version, culture and 
+        public key token). Once the native images are displayed in the ListView control, you can select 
+        one or more of them and uninstall them from the cache. Please be aware, however, that removing 
+        system assemblies from the native image cache can have an adverse effect on performance of all 
+        .NET applications. For this reason, we encourage you to experiment with the sample console
+        application provided and with your own development projects.
+        </p>
+    <p style="font-size: 10pt; margin: 0in; font-family: Verdana; mso-outline-level: 1">
+        &nbsp;</p>
+    <p style="font-size: 10pt; margin: 0in; font-family: Verdana; mso-outline-level: 1">
+        For many application deployments, NGEN is not necessary or may provide limited benefit.
+        You should carefully consider whether NGEN is appropriate for your application before
+        applying it in a production environment.</p>
+    <p>
+        <strong>This sample requires the following to be installed:</strong></p>
+    <p>
+        Visual Studio .NET 2005</p>
+
+</body>
+</html>

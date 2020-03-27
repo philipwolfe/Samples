@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+    <head>
+        <title>ReadMe</title>
+        <meta name="vs_defaultClientScript" content="JavaScript">
+        <meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+        <meta name="GENERATOR" content="Microsoft Visual Studio.NET 7.0">
+        <meta name="ProgId" content="VisualStudio.HTML">
+        <meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+    </head>
+    <body>
+        <font face="Verdana, Arial, System">
+            <h1>.NET Framework: Send &amp; Receive Data via HTTP</h1>
+            <p>
+                This solution demonstrates how to send and receive data using HTTP and 
+                streams using the System.Net classes.
+            </p>
+
+            <h2>Highlights</h2>
+            <P>The form contains four Button controls, two TextBox controls, and one PictureBox 
+                control. The first three buttons 
+                show how to send and receive data from a file. The last button 
+                shows how to send text back and forth to the web application. When using the 
+                fourth button, the text in the editable text box is sent to the web server, and 
+                the returned text is displayed in the read-only text box. Additionally, 
+                there is a virtual directory named SendAndReceiveDataWebPages that receives and 
+                returns data. 
+            </P>
+            <P>File I/O is performed in and out of the files using FileStreams. Network 
+                I/O is performed between client and server using Request and Response 
+                streams.</P>
+            <h2>Requirements</h2>
+            <p>
+                Requires the Trial or Release version of Visual Studio .NET Professional (or 
+                greater) 2003.<BR>
+                Also requires a version of Windows that supports ASP.NET.
+            </p>
+            <h2>Running the Sample</h2>
+
+            <ol type=1>
+            <li>Run the Setup.vbs file located in the root folder of this sample to create the
+               virtual directory.
+            <P>The application communicates with a set of ASP.NET files that 
+                are served up by IIS. The Setup.vbs file copies these files from a subdirectory
+                of the sample to a subdirectory of the default Web site.
+            </p>
+            </li>
+            <li>Complete the following steps to allow the ASPNET account to read and write to the 
+                virual folder created by Setup.vbs. 
+                <OL>
+                    <LI>Open Windows Explorer.
+                    <LI>Navigate to the <STRONG>physical</STRONG> folder containing the ASPX files. 
+                        This will typically be under C:\InetPub\wwwroot.
+                    <LI>Right-click on the SendAndReceiveDataWebPages folder and select Properties.
+                    <LI>Click the tab named Security.
+                    <LI>Click the Add button.
+                    <li>Click the Locations button and select the node that represents your computer. Click OK.
+                    <LI>In the text box labeled 'Enter the object names to select (examples):' 
+                        type <STRONG>ASPNET</STRONG> and then click the Check Names button. 
+                        Click OK once the name validates.
+                    <LI>Next select the Modify check box under the Allow column and then click OK.
+                    </LI>
+                </OL>
+                <p></p>
+            </li> 
+            <p></p>
+            <li>Press F5 to run the Windows application.
+            </li>
+        </font>
+    </body>
+</html>

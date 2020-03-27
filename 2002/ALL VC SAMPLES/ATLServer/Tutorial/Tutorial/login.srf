@@ -1,0 +1,44 @@
+<html>
+	{{handler bin\tutorial.dll/Login}}
+	<body>
+		{{Status}}
+		Please Login:
+		<p>
+			<table>
+				<form action="login.srf" method="post">
+					<tr>
+						<td>
+							Username:
+						</td>
+						<td>
+							<input type="text" size="50" name="username">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Password:
+						</td>
+						<td>
+							<input type="password" size="50" name="password">
+						</td>
+					</tr>
+					{{ if Debug }}
+					<tr>
+						<td>
+							Email:
+						</td>
+						<td>
+							<input type="text" size="100" name="email"> (Only required for first login)
+						</td>
+					</tr>
+					{{ endif }}
+					<tr>
+						<td>
+							<input type="submit" value="Login">
+						</td>
+					</tr>
+				</form>
+			</table>
+		</p>
+	</body>
+</html>

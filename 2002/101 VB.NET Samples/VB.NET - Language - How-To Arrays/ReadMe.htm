@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta content="JavaScript" name="vs_defaultClientScript">
+		<meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
+		<meta content="Microsoft Visual Studio.NET 7.0" name="GENERATOR">
+		<meta content="VisualStudio.HTML" name="ProgId">
+		<meta content="Microsoft Visual Studio.NET 7.0" name="Originator">
+	</head>
+	<body>
+		<font face="Verdana, Arial, System">
+			<h1>Language: Arrays</h1>
+			<p>This sample demonstrates features of arrays using Visual Basic .NET.&nbsp;
+			</p>
+			<h2>Featured Highlights</h2>
+			<p>The application shows how to work with an array of value types, strings, 
+				and&nbsp;an array of reference types, a custom Customer object. The Customer 
+				object exposes public&nbsp;Id and Name fields. There are six command buttons 
+				which execute various procedures.
+			</p>
+			<UL>
+				<LI>
+					<STRONG>Create Static Array</STRONG>葉his procedure will create an array 
+				using the new {} syntax to load an array of values. The Array of group box 
+				provides an option for loading the array with strings or objects (Customer) 
+				instances. Once the array is loaded, it is passed to a support procedure, 
+				DisplayArrayData, which enumerates through the array and puts the values in 
+				Data As Loaded list box.
+				<LI>
+					<STRONG>Sort</STRONG>葉his procedure loads the data using the same code as 
+				in the Create Static Array example. However, once the data is loaded, the 
+				shared method Sort from the Array class is applied the data is loaded into the 
+				lstAfter list box control.
+				<LI>
+					<STRONG>Reverse</STRONG>葉his procedure works just like Sort except it 
+				sorts the data in the reverse order of which the data was loaded.
+				<LI>
+					<STRONG>Binary Search</STRONG>用erforming a binary search requires that array 
+					be sorted first. So after the data is loaded into the array, it is sorted, and 
+					then a binary search is performed. The value provided in text box labeled 
+					Search For is used as the search criteria. If the item is found, then its index 
+					position is displayed. If the item is not found, the Array.BinarySearch 
+					function returns the bitwise complement of where the item <EM>would</EM>
+				have been if it existed.
+				<LI>
+					<STRONG>Create Dynamic Array</STRONG>葉his procedure uses the numeric value 
+				provided in the text box txtLength to ReDim an array. It the loops through each 
+				new element and displays an InputBox requested a value for the item. After 
+				which, that data is loaded into a list box.
+				<LI>
+					<STRONG>Create Matrix Array</STRONG>葉his procedure builds a static two 
+					dimensional array that contains two columns, and three rows and then displays 
+					it in a list box.</LI></UL>
+			<P>Note that in order to keep the code isolated, each array is built at the 
+				procedure level each time you click one of the buttons.</P>
+			<h2>Requirements</h2>
+			<p>
+				Requires the Trial or Release version of Visual Studio .NET Professional (or 
+				greater).
+			</p>
+			<h2>Running the Sample</h2>
+			<p>
+				Changing&nbsp;the <STRONG>Array of</STRONG> option from Strings to Objects 
+				will&nbsp;enable&nbsp;<STRONG>Field to use for Sorts&nbsp;</STRONG>which 
+				controls whether an array of Customer objects is sorted by the Customer's Name 
+				field or Id field. In order for&nbsp;sorting or searching of an arry of objects 
+				to work, the object needs to implement the IComparable&nbsp;interface. This 
+				interface exposes a single method <STRONG>CompareTo</STRONG>. CompareTo simply 
+				evaluates the passed in object reference to itself using any criteria that 
+				makes since to the object. If the object passed in equals&nbsp;the current 
+				object, the 0 is returned. If the object is less than the current object, 
+				return 1, otherwise -1. The Customer object uses its name field as the test 
+				value to determine object equivalence. Optionally, the shared method 
+				SetCompareKey can be called before a sort is performed to change the field 
+				used.
+			</p>
+			<P>Note that strings and primative types like integers are automatically 
+				comparable.</P>
+			<h3>Last Update:&nbsp;12 July 2002</h3>
+		</font>
+	</body>
+</html>

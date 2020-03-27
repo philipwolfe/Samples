@@ -1,0 +1,33 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title></title>
+		<meta name="GENERATOR" content="Microsoft Visual Studio.NET 7.0">
+		<meta name=ProgId content=VisualStudio.HTML>
+		<meta name=Originator content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+        <h1>
+            Controlling Caching</h1>
+        <p>
+        The .NET Framework 2.0 introduces the new namespace "System.Net.Cache" which defines
+            cache policies for resources obtained using the WebRequest and HttpWebRequest classes.</p>
+        <p>
+            This sample allows the user to select which caching policy will be in effect for
+            a URL when the "GoButton" is clicked.&nbsp; A description of the selected caching
+            policy is displayed for the selected policy.&nbsp; The raw HttpResponse is displayed
+            in a RichTextBox after the "GoButton" is clicked.</p>
+        <p>
+            The status label will display whether the reponse came from the cache or not.&nbsp;
+            It is interesting to note how setting the cache policy to "NoCacheNoStore" for a
+            web request clears out the cache for a specific page and then setting the cache
+            policy to "CacheOnly" for a web request for the same url throws the correct exception
+            that there is no response in the cache.</p>
+        <p>
+        <b>This sample requires the following to be installed: </b>
+        </p>
+        <ul>
+        <li>Visual Studio 2005</li>
+        </ul>
+	</body>
+</html>

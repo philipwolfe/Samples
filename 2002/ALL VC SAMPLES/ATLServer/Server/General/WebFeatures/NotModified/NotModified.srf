@@ -1,0 +1,94 @@
+{{ handler bin\NotModified.dll/Default }}
+<html>
+	<!-- (c) 2000 Microsoft Corporation -->	
+	<head>
+		<title>{{Title}}</title>
+		<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+		<link rel="stylesheet" href="normal.css" type="text/css">
+	</head>
+
+	<body>
+		<h1>{{Title}}</h1>
+
+		<h2>Page Created : {{NotModified}}</h2>
+
+		<h3>Instructions</h3>
+		<p>
+		Hit <a href="javascript:location.reload()">Refresh</a>
+		repeatedly and see how long it takes before the page creation date changes.
+		(Answer: The page will change after 1 minute if client-side caching is enabled,
+		or immediately if it's not enabled.)
+		</p>
+		
+		<h3>How It Works</h3>
+		<p>
+		The server compares the value of the HTTP_IF_MODIFIED_SINCE request header
+		with the current time. If less than 1 minute has passed, the server returns 
+		a 304 (Not Modified) status code without generating a response body.
+		If more than 1 minute has passed, or the HTTP_IF_MODIFIED_SINCE
+		header wasn't present in the request, the server generates the response in the 
+		standard way and sets the 'Last-Modified' response header with the current 
+		server time.
+		</p>
+
+		<hr></hr>
+
+		<h2>Details</h2>
+		<p>
+		This sample demonstrates the use of the 304 (Not Modified) HTTP status code.
+		</p>
+
+		<p>
+		Use this status code when:
+			<ul>
+				<li>The client has performed a conditional GET request.</li>
+				<li>Access to the resource is allowed.</li>
+				<li>The content cached by the client is up to date.</li>
+			</ul>
+		</p>
+
+		<p>
+		Benefits:
+			<ul>
+				<li>
+				Performance: The server avoids generating a response body and transmitting that data over the wire.
+				</li>
+			</ul>
+		</p>
+
+		<p>
+		Response Requirements:
+			<ul>
+				<li>Do not send a body.</li>
+			</ul>
+		</p>
+
+		<p>
+		To make use of this status code:
+			<ul>
+				<li>
+				Append a 'Last-Modified' header and/or an 'ETag' header to a successful (200 OK) response for this resource.
+				This supplies the client with the information it needs to enable it to make conditional requests.
+				</li>
+				<li>
+				Check the HTTP_IF_MODIFIED_SINCE and/or HTTP_IF_NONE_MATCH request headers.
+				You should receive a request containing a HTTP_IF_MODIFIED_SINCE header if the client cached
+				a response that contained a 'Last-Modified' header.
+				You should receive a request containing a HTTP_IF_NONE_MATCH header if the client cached
+				a response that contained an 'ETag' header.
+				</li>
+				<li>Use HTTP_IF_MODIFIED_SINCE for time-based validation of the cached content.</li>
+				<li>Use HTTP_IF_NONE_MATCH for other validation of the cached content (the meaning of the ETag is decided by the server).</li>
+			</ul>
+		</p>
+
+		<p><i>
+		The information presented here is simplified for developers using 
+		ATL Server on IIS 5.0. A requirement may be omitted if it is handled
+		by this platform without user intervention.
+		For complete information on this status code, see the
+		<a href="http://www.ietf.org/rfc/rfc2616.txt">HTTP 1.1 specification.</a>
+		</i></p>
+
+	</body>
+</html>

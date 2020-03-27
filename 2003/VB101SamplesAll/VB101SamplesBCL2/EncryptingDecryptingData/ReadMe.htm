@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+    <title>ReadMe</title>
+</head>
+<body>
+    <h1>
+        Encrypting and Decrypting Data
+    </h1>
+    This sample demonstrates how to encrypt and decrypt data, using both Symmetric and
+    Asymmetric algorithms.<br />
+    <br />
+    Symmetric encryption requires that the sender and the recipient both have the same
+    key for encrypting and decrypting the data. The sender must therefore provide this
+    shared key to the recipient safely, to avoid the possibility of the key being intercepted
+    and used by others to decrypt the supposedly secret data. One means of securing
+    the shared key is to encrypt it with asymmetric encryption, which uses a public
+    and private key pair for encryption and decryption.<br />
+    <br />
+    Symmetric encryption is several times faster than asymmetric, and thus is suitable
+    for large quantities of data. Asymmetric encryption can be considered more secure
+    because it does not require a shared key. To get the best of both worlds, you will
+    typically encrypt data symmetrically, then encrypt the shared key asymmetrically
+    before sending it to the recipient. When you encrypt the symmetric key and vector
+    using the recipient's public key, only the recipient can decrypt them using his/her
+    private key, which is unknown to anyone else.<br />
+    <br />
+    Encrypted and decrypted files for this sample are in the DemoData folder.
+    <br />
+    <br />
+    <strong>This sample requires the following to be installed:</strong>
+    <br />
+    <ul>
+        <li>Visual Studio 2005</li>
+    </ul>
+</body>
+</html>

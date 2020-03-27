@@ -1,0 +1,43 @@
+<HTML><HEAD>
+<title>Statistics</title></HEAD>
+<BODY class=highlight>{{handler SCSample.dll/Stats}} 
+<link rel="stylesheet" href="root.css" type="text/css">
+The lower frame is the result of running the cached stencil<br>
+Each increase in the hits number means the file was retrieved from the cache.<br>
+Each decrease in the hits number means the cache has expired, and the SRF was re-loaded.<br>
+Watch closely the Hits/Miss indicators below to notice when a file is retrieved from <br>
+the cache and when it is reloaded.<br>
+<br>
+Stencil Cache statistics :<br>
+Default Lifespan : {{getDefaultLifespan}}<br>
+{{getStats}}<br>
+<br>
+Once the file is requested and retrieved from the cache, the lifespan counter is reset.
+So, the file will be cached for another {{getDefaultLifespan}} seconds<br>
+
+
+<br>
+
+When the page is refreshed, the HIT count should increase, while the MISS count should remain the same<br>
+When the cache expires, the  MISS count should increase.<br>
+When the file is touched, the MISS count should not increase(as the file is found in cache), but the content should change <br>
+(as the new hard drive content has higher priority than the cache content)<br>
+The increment is 4 (as there aare two SRF files, each of them looked up twice in the cache : once in the ISAPI extension and once in the App DLL)
+
+<form name="mainSRF" method="post" target = _parent action="Frames.srf">
+<input type="hidden" name="mode" value="noop">
+<input type="button" name="touch" value="Touch!" onclick=onClick()>
+<input type="button" name="value" value="Refresh" onclick=onClick()>
+<input type="button" name="reset" value="Reset" onclick=onClick()>
+</form>
+
+<script language="javascript">
+	function onClick()
+	{
+		document.mainSRF.mode.value = window.event.srcElement.name;
+		document.mainSRF.submit();
+	}
+
+
+</script>
+</BODY></HTML>

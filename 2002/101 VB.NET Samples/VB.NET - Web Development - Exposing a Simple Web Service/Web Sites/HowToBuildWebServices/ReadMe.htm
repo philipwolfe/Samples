@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+		<meta name="ProgId" content="FrontPage.Editor.Document">
+		<meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+		<h1>Web Services: How to Build Web Services</h1>
+		<p>Web services are a very important new technology for exposing application logic 
+			to remote Web clients using HTTP and XML-based standards. For more information 
+			see <A href="http://msdn.microsoft.com/webservices">http://msdn.microsoft.com/webservices</A>.</p>
+		<h2>Featured Highlights</h2>
+		<P>This sample consists of a Web service and two client applications that consume 
+			the Web service. One client is a Web Form application, and the other is a 
+			Windows Forms application. The Web service exposes two Web methods that return 
+			data from the Northwind database. GetTenMostExpensiveProducts() is a simple Web 
+			method that returns a generic DataSet. It is consumed by the Web application. 
+			GetCustomerOrderHistory()&nbsp;demonstrates how to return a&nbsp;custom complex 
+			type--an instance of a class that has two public fields, one of which is a 
+			typed DataSet. This Web method is consumed by the Windows Forms application.</P>
+		<h2>Requirements</h2>
+		<P>This application requires the release version of Visual Studio .NET Professional 
+			(or greater) and access to the Northwind database residing in SQL Server or the 
+			Microsoft Data Engine (MSDE). To install MSDE, do the following:</P>
+		<P><STRONG>1. </STRONG>Open the Start menu, click Programs, click Microsoft .NET 
+			Framework SDK, and then click Samples and Quickstart Tutorials.
+		</P>
+		<P><STRONG>2. </STRONG>Click "Step 1: Install the .NET Framework Samples Database".
+		</P>
+		<P><STRONG>3. </STRONG>Open a command window, and CD to <EM>[FrameworkSDKInstallRoot]</EM>\Samples\Setup 
+			This is typically : C:\Program Files\Microsoft Visual Studio 
+			.NET\FrameworkSDK\Samples\Setup
+		</P>
+		<P><STRONG>4. </STRONG>Type: osql -E -S (local)\NetSDK -i InstNwnd.sql</P>
+		<h2>Running the Sample</h2>
+		<P><STRONG>To install the Web Service and Web Forms Client:</STRONG></P>
+		<P>1. Double-click SetupWebs.vbs in the root folder.&nbsp;(Note: The Visual Studio 
+			.NET Solution file resides in the "How To" root folder, not at 
+			c:\inetpub\wwwroot\HowToBuildWebServices.)</P>
+		<P><STRONG>To run the Web Forms client:</STRONG></P>
+		<P dir="ltr" style="MARGIN-RIGHT: 0px">1. In the <STRONG>Solution Explorer</STRONG>, 
+			right-click <STRONG>HowToWebServiceClient</STRONG> and then click <STRONG>Set as 
+				StartUp Project</STRONG>.<BR>
+			2. Right-click <STRONG>Main.aspx</STRONG> and then click <STRONG>Set As Start Page</STRONG>.<BR>
+			3. Press <STRONG>F5</STRONG> to build and run the sample.</P>
+		<P dir="ltr"><STRONG>If you get the following error the aspnet worker process is 
+				locking the Web-based&nbsp;DLLs. Take the corrective steps that follow. </STRONG>
+		</P>
+		<P dir="ltr"><FONT size="2"><FONT face="Courier New">Could not copy temporary files to the 
+					output directory.<BR>
+					The file 'bin\HowToBuildWebServices.dll' cannot be copied to the run directory. 
+					The process cannot access the file because it is being used by another process.<BR>
+					The file 'bin\HowToBuildWebServices.pdb' cannot be copied to the run directory. 
+					The process cannot access the file because it is being used by another process.</FONT>
+			</FONT>
+		</P>
+		<P dir="ltr" style="MARGIN-RIGHT: 0px">1.&nbsp;Press <STRONG>CTRL + ALT + Delete</STRONG>
+			to open the <STRONG>Windows Task Manager</STRONG>.<BR>
+			2.&nbsp;Click the <STRONG>Processes</STRONG> tab.<BR>
+			3.&nbsp;Click the <STRONG>Image Name</STRONG> ListView header to sort <STRONG>aspnet_wp.exe</STRONG>
+			to the top.<BR>
+			4.&nbsp;Click <STRONG>aspnet_wp.exe</STRONG> and then click <STRONG>End Process</STRONG>.<BR>
+			5.&nbsp;Close <STRONG>Windows Task Manager</STRONG>.</P>
+		<P dir="ltr" style="MARGIN-RIGHT: 0px"><STRONG>To run the Windows Forms client:</STRONG></P>
+		<P dir="ltr" style="MARGIN-RIGHT: 0px">1. In the <STRONG>Solution Explorer</STRONG>, 
+			right-click <STRONG>VB.NET How-To Build Web Services (Client)</STRONG> and then 
+			click <STRONG>Set as StartUp Project</STRONG>.<BR>
+			2. Press <STRONG>F5</STRONG> to build and run the sample.<BR>
+			3. Sample Customer ID values are COMMI, GODOS, and ISLAT.
+		</P>
+		<P dir="ltr" style="MARGIN-RIGHT: 0px"><STRONG>To run the Web Services directly, 
+				without the use of a client:</STRONG></P>
+		<P dir="ltr" style="MARGIN-RIGHT: 0px">1. In the <STRONG>Solution Explorer</STRONG>, 
+			right-click <STRONG>main.asmx </STRONG>and then click <STRONG>View in Browser</STRONG>.<BR>
+		2. Click the link for any of the Web methods to go to the test page. Sample 
+		Customer ID values are COMMI, GODOS, and ISLAT.
+		<P dir="ltr"><STRONG>To add a typed DataSet to the project for data from the Northwind 
+				database take the following steps:</STRONG></P>
+		<P dir="ltr" style="MARGIN-RIGHT: 0px">1. In the <STRONG>Solution Explorer</STRONG>, 
+			right-click the project, point to <STRONG>Add</STRONG>, and then click <STRONG>Add 
+				New Item</STRONG>.<BR>
+			2. From <STRONG>Templates</STRONG> click <STRONG>DataSet</STRONG>. Give it a 
+			name with a .xsd file extension and click <STRONG>Open</STRONG>. This will add 
+			an XSD&nbsp;schema file to the project. From this file is&nbsp; generated 
+			the&nbsp;typed DataSet class that derives from System.Data.DataSet.<BR>
+			3.&nbsp;Open the Server Explorer and expand the nodes under SQL Servers to find 
+			the Northwind Stored Procedures.<BR>
+			4.&nbsp;Click and drag a stored procedure onto the design surface of the schema 
+			file.<BR>
+			5.&nbsp;Right-click on the design surface and make sure <STRONG>Generate DataSet</STRONG>
+			is checked. If not, click it.<BR>
+			6.&nbsp;Press CTRL + S to save the schema, which generates the typed DataSet 
+			class.&nbsp;
+			<BR>
+			7. To view the typed DataSet class, in the Solution Explorer click the <STRONG>Show 
+				All Files</STRONG> icon. Expand the .xsd node to see the .vb file of the 
+			same name.</P>
+		<P dir="ltr" style="MARGIN-RIGHT: 0px"><STRONG>NOTE:</STRONG></P>
+		<P>If you get an error when running the sample make sure that IIS has appropriate 
+			permissions to query tables in the local SQL Server.&nbsp; There are multiple 
+			ways to achieve this but the easiest way to do this for testing and running 
+			samples is to change the default &lt;processModel&gt; settings in 
+			machine.config.&nbsp; The steps to do this are as follows:</P>
+		<P>1.&nbsp;&nbsp;&nbsp; Navigate to 
+			c:\[WINDOWSDIR]\Microsoft.NET\Framework\[FrameworkVersion]\Config<BR>
+			2.&nbsp;&nbsp;&nbsp; Open the Machine.Config file found there and change the 
+			userName attribute so that it's&nbsp;value is&nbsp;SYSTEM (i.e. 
+			userName="SYSTEM")<BR>
+			3.&nbsp;&nbsp;&nbsp; Save the File.<BR>
+			4.&nbsp;&nbsp;&nbsp; Open up a command prompt and type IISReset to restart IIS.<BR>
+			<BR>
+			Another options to use that is more applicable for a production environment is 
+			to give appropriate permissions to the ASPNET account in the appropriate 
+			database.&nbsp;
+		</P>
+		<H3>See Also</H3>
+		<P><A href="ms-help://MS.VSCC/MS.MSDNVS/vbcon/html/vbconWebServicesConsumption.htm">Working 
+				with XML Web Services</A></P>
+	</body>
+</html>

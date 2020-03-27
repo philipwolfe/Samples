@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft Visual Studio.NET 7.0">
+		<meta name="ProgId" content="VisualStudio.HTML">
+		<meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+		<h1>Language: Use Scoping-Overriding-Overloading</h1>
+		Shows how to allow various levels of access to the members of a class, 
+		including Public, Private, Protected and otherwise. To demonstrate how to 
+		extend derived classes with features like Overloading and Overriding.
+		<h2>Featured Highlights:</h2>
+		<p>This application&nbsp;simulates&nbsp;a simple hiring system, allowing for the 
+			hiring of full-time, part-time and temporary employees. Each kind of employee 
+			has specific features that set them apart from&nbsp;the other kinds. For 
+			example, only full-time employees get annual leave, and only temporary 
+			employees have an expected termination date when they are hired. Part-time 
+			employees are required to work at least 20 hours per week. However, all 
+			employees have many things in common: they all get hired, all have salaries, 
+			each has a name, etc.</p>
+		<p>The application utilizes a base class called Employee, from which the classes 
+			FullTimeEmployee, PartTimeEmployee and TempEmployee are derived. Each derived 
+			class extends the base class in some way: by overriding methods of the base 
+			class, by implementing new methods or properties of its own, or by replacing 
+			(shadowing) members of the base class. There is also a Friend class called 
+			EmployeeDataManager which simulates reading and writing employee data to and 
+			from a database.</p>
+		<p>The application demonstrates the use of these statements and modifiers in 
+			classes and their members:</p>
+		<ul>
+			<li>
+				<strong>Inherits:</strong>
+			Specifies the class (also known as the base class) from which the current class 
+			inherits.
+			<li>
+				<strong>NotInheritable:</strong>
+			Prevents programmers from using the class as a base class.
+			<li>
+				<strong>MustInherit:</strong>
+			Specifies that instances of the given class cannot be created. The only way to 
+			use the class is to inherit from it.
+			<li>
+				<strong>Overridable:</strong>
+			Allows a property or a method to be overridden in an inheriting class. Public 
+			methods are NotOverridable by default.
+			<li>
+				<strong>Overrides:</strong>
+			Allows you to override a property or method that is defined in the base class.
+			<li>
+				<strong>NotOverridable (default):</strong>
+			Prevents a property or method from being overridden in an inheriting class.
+			<li>
+				<strong>MustOverride:</strong>
+			Requires the inheriting class to override the property or method.
+			<li>
+				<strong>Shadows:</strong> Allows reuse of the names of inherited class members, 
+				making all of the inherited type members unavailable in the derived 
+				class.&nbsp;</li></ul>
+		<p>It also demonstrates scoping with the use of these keywords:</p>
+		<ul>
+			<li>
+				<strong>Public:</strong>
+			Classes and procedures declared with the Public keyword have public access. 
+			There are no restrictions on their accessibility.
+			<li>
+				<strong>Protected:</strong>
+			Class members declared with the Protected keyword are accessible only from 
+			within their own class or from a derived class.
+			<li>
+				<strong>Friend:</strong>
+			Classes and procedures declared with the Friend keyword are accessible from 
+			within the program where they are declared and from anywhere else in the same 
+			assembly.
+			<li>
+				<strong>Private:</strong>
+			Class members declared with the Private keyword are accessible only from within 
+			the class where they are declared.
+			<li>
+				<strong>Shared:</strong> Procedures declared with the Shared keyword can be 
+				used without necessarily having to create an instance of the class they belong 
+				to. You can call a shared procedure either by qualifying it with the class name 
+				(EmployeeDataManager.WriteEmployeeData), or with the variable name of a 
+				specific instance of the class (edmManager.WriteEmployeeData).
+			</li>
+		</ul>
+		<h2>Requirements:</h2>
+		<ul>
+			<li>
+			There is no database access, since this is a simulation. All data is in memory.
+			<li>
+				Set breakpoints at strategic places throughout the classes&nbsp;to observe the 
+				interaction between base class and inherited class.</li></ul>
+		<H2>Running the Sample:</H2>
+		<P>Simply press <STRONG>F5</STRONG>.</P>
+		<H3>See Also</H3>
+	</body>
+</html>

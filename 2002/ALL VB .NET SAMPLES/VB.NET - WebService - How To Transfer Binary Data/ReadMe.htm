@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft Visual Studio.NET 7.0">
+		<meta name="ProgId" content="VisualStudio.HTML">
+		<meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+		<font face="Verdana, Arial, System">
+			<h1>
+				Web Service: Transfer Binary Data via HTTP</h1>
+			<p>
+				This sample is designed to show how to transfer binary data (images in this 
+				case) over a web service.
+			</p>
+			<h2>Featured Highlights</h2>
+			<P>The sample contains two solutions:
+			</P>
+			<UL>
+				<LI>
+				VB.NET How-To Web Service Graphics (in the Client folder)&nbsp;
+				<LI>
+					GraphicsServer (in the WebService folder)</LI></UL>
+			<P>Each solution has one project.
+			</P>
+			<P><EM>Please see the individual ReadMe.htm files for each solution.</EM></P>
+			<h2>Requirements</h2>
+			<p>
+				Requires the Trial or Release version of Visual Studio .NET Professional (or 
+				greater).
+			</p>
+			<h2>Running the Sample</h2>
+			<P>Because this example involves both a Windows client application and a Web 
+				Service application, its installation is a bit trickier than most samples. The 
+				client application, VB.NET How-To Web Service Graphics, includes&nbsp;a Web 
+				Reference to the Web Service exposed by the GraphicsServer project. Your goal 
+				is to create a new virtual directory named <STRONG>VB.NETHowToGraphicsServer</STRONG>
+				that "points" to the WebService folder that was created when you installed this 
+				example.
+			</P>
+			<P>In order to create the necessary IIS (Internet Information Server) project, 
+				follow these steps:</P>
+			<OL>
+				<LI>
+				From the Windows Control Panel, Administrative Tools menu, select Internet 
+				Information Services.
+				<LI>
+				Within the Internet Information Services applet, expand nodes in the treeview 
+				panel on the left, expanding Internet Information Services, your local 
+				computer, Web Sites, then Default Web Site.
+				<LI>
+				Right-click on Default Web Site, and select New, then Virtual Directory. Click 
+				Next to bypass the Welcome page.
+				<LI>
+					In the Virtual Directory Alias page, enter <STRONG>VB.NETHowToGraphicsServer</STRONG>. 
+				Click Next.
+				<LI>
+				In the Web Site Content Directory page, browse to the WebService folder within 
+				the sample you've installed, and select the WebService folder. Click Next.
+				<LI>
+				In the Access Permissions page, click Next to accept the default settings.
+				<LI>
+					Click Finish to complete the wizard.</LI></OL>
+			<P>Once you've added the new virtual directory, you should be able to load 
+				the&nbsp; <STRONG>VB.NET How-To Web Service Graphics.sln</STRONG> file, in the 
+				Client folder, and then load and run the sample.</P>
+			<h3>Last Update:&nbsp;7 July 2002</h3>
+		</font>
+	</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title></title>
+		<meta name="GENERATOR" content="Microsoft Visual Studio.NET 7.0">
+		<meta name=ProgId content=VisualStudio.HTML>
+		<meta name=Originator content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+        <h1>Transactions Sample</h1>
+        The new System.Transactions namespace allows you to create applications that can participate in transactions
+        like those managed by the Microsoft Distributed Transaction Coordinator (DTC) or use the new LightweightTransactionManager
+        for simple transactions. The TransactionScope class allows small portions of code to participate in a transaction. 
+        You can also use the IEnlistmentNotification, ISinglePhaseNotification interfaces to create your own transactional 
+        version of common operations such as file copies, deletes or registry changes.
+        <p></p>
+        In this example we show how to combine a database call and file copy into a transaction using the TransactionScope class.
+        If the transaction fails, both the database operations and the file copy are rolled back.
+        <p></p>
+        <b>This sample requires the following to be installed: </b>
+        <ul>
+        <li>Visual Studio 2005.</li>
+        <li>SQL Server Express 2005.</li>
+        <li>AdventureWorks Sample Database</li>
+	    </ul>
+        <p>
+            Depending upon your installation, you may also need to modify the connection string
+            which is defined in the file <a href=".\Form1.cs">Form1.cs</a>, line 107. The sample
+            copies the "ReadMe.htm" file from this project as part of the sample, so if you
+            copy this project to another folder, be sure to include this file. You may also need to ensure
+            that you have the correct credentials to access the AdventureWorks sample database.</p>
+        <p>
+            &nbsp;</p>
+	</body>
+</html>

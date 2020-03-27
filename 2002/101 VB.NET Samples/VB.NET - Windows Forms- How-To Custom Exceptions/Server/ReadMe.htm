@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft Visual Studio.NET 7.0">
+		<meta name="ProgId" content="VisualStudio.HTML">
+		<meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+		<font face="Verdana, Arial, System">
+			<h1>
+				WinForms: Custom Exceptions &amp; Global Exception Handlers</h1>
+			<p>
+				This solution demonstrates two more advanced exception mangement 
+				techniques.&nbsp;
+			</p>
+			<h2>Featured Highlights</h2>
+			<P>This sample contains two projects:&nbsp;a Windows Forms client and a Class 
+				Library.
+			</P>
+			<P><STRONG>Class Library</STRONG></P>
+			<P>The class library defines one application class, Customer. In addition it 
+				exposes a set of custom exception class which are used to expose application 
+				defined errors. Unlike previous versions of Visual Basic (and COM which it was 
+				based upon), .NET Exceptions are fully typed removing the need for error 
+				numbers. While you can still have error numbers, it is much better to defined 
+				application exceptions which can expose a much richer array of information to 
+				the caller. In this application there is a hierarchy of exceptions. At the top 
+				is CRMSystemException for the fictitious SomeCompany CRM system. It inherits 
+				from System.Application exception (as opposed to System.SystemException which 
+				is used by Microsoft). From there, two classes inherit from it:</P>
+			<UL>
+				<LI>
+				CustomerException
+				<LI>
+					EmployeeException</LI></UL>
+			<P>There is nothing in this sample related to employees, but we wanted to show how 
+				you can have a larger product that could be made up of various modules or 
+				components. There then two more exceptions which both inherit 
+				from&nbsp;CustomerException:</P>
+			<UL>
+				<LI>
+				CustomerNotFoundException
+				<LI>
+					CustomerNotDeletedException</LI></UL>
+			<P>Each class exposes different levels of information and functionality. Examine 
+				the source code for more comments. Note that your exceptions classes can be 
+				named anything, but by convention they should end with the suffix Exception.</P>
+			<h2>Requirements</h2>
+			<p>
+				Requires the Trial or Release version of Visual Studio .NET Professional (or 
+				greater).
+			</p>
+			<h2>Running the Sample</h2>
+			<p>
+				You need to run the Client application. Please see that ReadMe file.
+			</p>
+			<h3>Last Update:&nbsp;16 July 2002</h3>
+		</font>
+	</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+		<meta name="ProgId" content="FrontPage.Editor.Document">
+		<meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+		<h1>Security: How to Use Cryptographic Hash Algorithms</h1>
+		<p>Hash values (digests) are unique and extremely compact numerical representations 
+			of a piece of data. Changing even one character in a source file can result in 
+			huge differences in the hash value. Hashes are used to ensure data integrity. 
+			For example, by comparing the hash value generated before a message is sent 
+			with the hash value generated from the received text,&nbsp;the recipient can 
+			determine whether the message has been corrupted. This application demonstrates 
+			how to use hash functions for this purpose.</p>
+		<h2>Featured Highlights:</h2>
+		<p>Scenario: The fictitious Northwind Corporation wants to send a highly 
+			confidential listing of its products and prices to you for marketing overseas. 
+			The data is transmitted over a secure connection, but both parties want 
+			additional measures taken to ensure that the listing is not corrupted in 
+			transit.</p>
+		<P>When you run this application, an XML data document of all the Northwind 
+			products is created by querying the SQL Server Northwind database and 
+			persisting the DataSet to XML. This simulates the sender creating the source 
+			document. The contents of this document&nbsp;are then&nbsp;read into a 
+			StreamReader and converted to a string to display in&nbsp;a TextBox. This 
+			simulates&nbsp;you receiving the transmitted document.&nbsp;</P>
+		<P>Additionally, when the Form is&nbsp;loaded an MD5&nbsp;hash digest is created to 
+			use as an original "key" by which you can validate the transmitted XML. Click 
+			the Compare! button to compare the hash digest for the products "sent over the 
+			wire" (displayed) with the hash digest sent from Northwind. Alter the contents 
+			of the TextBox and click Compare! to see the results.</P>
+		<P>Examples of three different hash types are provided: MD5, SHA1, and SHA384.</P>
+		<h2>Requirements:</h2>
+		<P>This application requires the release version of Visual Studio .NET Professional 
+			(or greater) and access to the Northwind database residing in SQL Server or the 
+			Microsoft Data Engine (MSDE). To install MSDE, do the following:</P>
+		<P><STRONG>1. </STRONG>Open the Start menu, click Programs, click Microsoft .NET 
+			Framework SDK, and then click Samples and Quickstart Tutorials.
+		</P>
+		<P><STRONG>2. </STRONG>Click "Step 1: Install the .NET Framework Samples Database".
+		</P>
+		<P><STRONG>3. </STRONG>Open a command window, and CD to
+			<FRAMEWORKSDK>\Samples\Setup This is typically : C:\Program Files\Microsoft 
+			Visual Studio .NET\FrameworkSDK\Samples\Setup
+		</P>
+		<P><STRONG>4. </STRONG>Type: osql -E -S (local)\NetSDK -i InstNwnd.sql
+			<h2>Running the Sample:</h2>
+		<p>Simply press <STRONG>F5</STRONG>.
+		</p>
+		<h3>See also</h3>
+		<p><a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpguide/html/cpconcryptographyoverview.asp">Cryptography 
+				Overview</a> (MSDN)</p>
+	</body>
+</html>

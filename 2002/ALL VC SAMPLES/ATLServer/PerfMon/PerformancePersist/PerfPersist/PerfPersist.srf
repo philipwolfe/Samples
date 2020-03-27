@@ -1,0 +1,16 @@
+<html>
+	{{// use MSDN's "ATL Server Response File Reference" to learn about SRF files.}}
+	{{handler bin\PerfPersist.dll/Default}}
+	<head>
+	</head>
+	<body>
+		<br>
+			{{Result}}
+		<br>
+			Enter a number from 1 to&nbsp;50 to computer it's fibonacci number:
+		<form action=PerfPersist.srf method=post ID=Form1>
+			<input type=text maxlength=4 size=4 name="request" ID=Text1>
+			<input type=submit value="Send Request" ID=Submit1 NAME="Submit1">
+		</form>
+	</body>
+</html>

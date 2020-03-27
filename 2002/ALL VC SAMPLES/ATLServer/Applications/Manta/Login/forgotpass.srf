@@ -1,0 +1,46 @@
+<!-- {{ handler cgi-bin\Login.dll/ForgotPass }} This file (c) 2000 Microsoft Corporation -->
+<html>
+<head>
+<title>MantaWeb: Forgotten Password</title>
+<link rel="stylesheet" href="login.css" type="text/css">
+</head>
+<body>
+<table border="0" cellspacing="0" cellpadding="0" width="682">
+<tr>
+	<td width="115"></td>
+	<td>
+     <img border="0" src="images/banner.gif">
+     <p><font size="2">Forgot your account password?&nbsp; MantaWeb can e-mail your account information to you.&nbsp;&nbsp;</font></p>
+     <p><font size="2">All you have to do is supply your e-mail address below to have your details e-mailed to you.&nbsp;&nbsp;</font></p>
+     {{if Failed}}<font color="#FF0000" size="2">The specified e-mail address could not be found.<br>Please check to see if what you typed is correct.</font><br>{{endif}}
+     {{if MessageSent}}<font color="#00FF00" size="2">Your password's hint has been sent.<br>Please check your mail account so you can login.</font><br>{{endif}}
+     <br>
+	</td>
+</tr>
+<tr>
+	<td></td>
+	<td>
+        <form method="POST" action="forgotpass.srf">
+          <table border="0" cellspacing="0" cellpadding="0" width="400">
+            <tr>
+              <td width="99"><font size="2">E-Mail Address:</font></td>
+              <td width="297"><font size="2"><input type="text" name="email" size="40" value="{{EmailAddress}}" tabindex="1"></font></td>
+            </tr>
+            <tr>
+              <td width="99"></td>
+              <td width="297"><font size="2"><br></font></td>
+            </tr>
+          </table>
+          <p><font size="2"><input type="submit" value="Send Now!" name="submitButton" tabindex="2">&nbsp;&nbsp;&nbsp;<input type="reset" value="Reset" name="resetButton" tabindex="3"></font></p>
+        </form>
+	</td>
+</tr>
+<tr>
+	<td></td>
+	<td>
+		<br><br><br><br><br><font size="1"> ATL Server Sample © 2000 Microsoft Corporation. All rights reserved.
+	</td>
+</tr>
+</table>
+</body>
+</html>

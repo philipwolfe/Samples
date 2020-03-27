@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+		<meta name="ProgId" content="FrontPage.Editor.Document">
+		<meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+		<h1>Data Access:  Retrieve and Process Data Using a DataReader</h1>
+		<p>This sample application demonstrates the various ways to use a DataReader to 
+			retrieve data and use it to fill a ComboBox, a TextBox, and other controls. A 
+			DataReader is also used behind the scenes by the DataAdapter object (to fill a 
+			DataSet) and&nbsp;the Command object (to execute SQL statements, such as the 
+			ones used in this application to add several stored procedures to the Northwind 
+			database). The focus of the application is, however, on data retrieval, which 
+			is the only time when you work directly with the DataReader object.</p>
+		<h2>Featured Highlights</h2>
+		<UL>
+			<LI>
+			Programmatically create stored procedures in the SQL Server database 
+			"Northwind" by executing ad hoc SQL statements using classes from the 
+			System.Data.SqlClient namespace.
+			<LI>
+			Execute a query (stored procedure) that ships with the Microsoft Access version 
+			of the Northwind database. This example uses classes that reside in the 
+			System.Data.OleDb namespace.
+			<LI>
+			Execute a stored procedure that requires an input parameter and fill&nbsp;a 
+			DataGrid with the results.
+			<LI>
+			Execute a stored procedure that requires both input and output parameters, and 
+			that makes use of a return value.
+			<LI>
+				See how the use of a DataSet compares with a DataReader for filling a ComboBox. 
+				Uncomment the code under the "USING A DATASET:" comments.</LI></UL>
+		<h2>Requirements</h2>
+		<P>This application requires the release version of Visual Studio .NET Professional 
+			(or greater) and access to the Northwind database residing in SQL Server or the 
+			Microsoft Data Engine (MSDE). To install MSDE, do the following:</P>
+		<P><STRONG>1. </STRONG>Open the Start menu, click Programs, click Microsoft .NET 
+			Framework SDK, and then click Samples and Quickstart Tutorials.
+		</P>
+		<P><STRONG>2. </STRONG>Click "Step 1: Install the .NET Framework Samples Database".
+		</P>
+		<P><STRONG>3. </STRONG>Open a command window, and CD to
+			<FRAMEWORKSDK>\Samples\Setup This is typically : C:\Program Files\Microsoft 
+			Visual Studio .NET\FrameworkSDK\Samples\Setup
+		</P>
+		<P><STRONG>4. </STRONG>Type: osql -E -S (local)\NetSDK -i InstNwnd.sql
+			<h2>Running the Sample</h2>
+		<p>Simply press <b>F5</b>.</p>
+		<P><STRONG>1. </STRONG>A DataReader will tie up the existing connection because the 
+			data is streamed instead of retrieved and cached, like with a DataSet. 
+			Therefore, you will want to close a connection used by a DataReader as soon as 
+			possible. The best way to do this is to pass the 
+			CommandBehavior.CloseConnection enum to the Execute<EM>XXXX</EM> command.</P>
+		<P><STRONG>2. </STRONG>Although a DataReader is faster and requires less overhead 
+			than a DataSet, a DataReader has the following limitations (among others):</P>
+		<BLOCKQUOTE dir="ltr" style="MARGIN-RIGHT: 0px">
+			<P>a) It has no inherent support for the serialization of relational data as XML 
+				with a corresponding schema. You can call ExecuteXMLReader and retrieve an XML 
+				stream, but this is only if the T-SQL "FOR XML" clause is used in the query 
+				(SQL Server 2000 only). If you want to retrieve relational data that can be 
+				readily serialized as XML then you should use a DataSet.</P>
+			<P>b) It cannot be instantiated directly. You must go through the Command object to 
+				get&nbsp;a DataReader object.</P>
+			<P>c) It cannot be used to create a DataView. If you need to filter and/or sort the 
+				data then you will need a DataSet.</P>
+			<P>d) It does not permit disconnected access to data.</P>
+			<P>
+				e) It cannot be used for databinding (i.e., it does not support the IList or 
+				IListSource interface).&nbsp;You can only "databind" by iterating through its 
+				Items collection, retrieving the values, and adding them to the Items 
+				collection of a control or another object that does implement one of those 
+				interfaces. This object can then be used for true databinding. Examples of both 
+				are demonstrated with the two ComboBox controls (see Note 4, below).</P>
+		</BLOCKQUOTE>
+		<P><STRONG>3. </STRONG>The data is retrieved forward-only. Once it is streamed in, 
+			you cannot go back through the rows in the DataReader unless you have stored 
+			the data in an object that supports this, such as an ArrayList or a DataTable.</P>
+		<P><STRONG>4. </STRONG>One of the best uses for a DataReader is for filling user 
+			interface controls like a ComboBox.&nbsp; "Filling" is not the same as 
+			databinding. You cannot databind a ComboBox to a DataReader like you can 
+			databind the equivalent ASP .NET control--the DropDownList. The ComboBox 
+			requires a DataSource that implements the IList or IListSource interfaces. 
+			Therefore, you must use iterate through the DataReader and use 
+			ComboBox.Items.Add to fill the ComboBox. With a DropDownList you can set the 
+			DataSource property directly to the DataReader. Furthermore, with a ComboBox 
+			you cannot assign values to the DisplayMember and ValueMember properties when 
+			using a DataReader directly. With a DropDownList, however, you can do this. 
+			Following is how you would use a DataReader to databind to a DropDownList in 
+			ASP.NET:</P>
+		<BLOCKQUOTE dir="ltr" style="MARGIN-RIGHT: 0px">
+			<P>With DropDownList1<BR>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.DataSource = sdr<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.DataTextField = "CategoryName"<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.DataValueField = "CategoryID"&lt; BR &gt; 
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.DataBind()<br>
+				End With</P>
+		</BLOCKQUOTE>
+		<P dir="ltr">In the code you will notice that only the "CategoryName" field is used 
+			to fill the ComboBox. There is no value for the ComboBox items.</P>
+		<P><STRONG>5. </STRONG>If the SQL statement contains output parameters or return 
+			values, these will not be available until after the DataReader is closed.</P>
+			<H3>See Also:</H3>
+		<P><A href='http://support.microsoft.com/default.aspx?scid=kb;EN-US;q308049"'>HOW TO: 
+				Call a Parameterized Stored Procedure by Using ADO.NET and Visual Basic .NET 
+				(Q308049)</A></P>
+		<P><A href="http://support.microsoft.com/default.aspx?scid=kb;EN-US;q308051">PRB: 
+				Output Parameters Are Not Returned When You Run an ADO.NET Command in Visual 
+				Basic .NET (Q308051)</A></P>
+	</body>
+</html>

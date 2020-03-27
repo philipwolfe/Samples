@@ -1,0 +1,52 @@
+{{handler input.dll/Default}}
+<html>
+<body>
+{{if ValidInput}}
+<h1>Input Received and Validated</h1>
+<p>Thank you, your input has been received and validated.</p>
+{{else}}
+<script language="JScript">
+function validate(submission)
+{
+	var error_message = "";
+	for (i=0; i<submission.elements.length; i++)
+	{
+		{{//call the RegexTests stencil tag defined in input.h to loop through and output JScript tests for each form element}}
+		{{RegexTests}}
+	}
+	if (error_message=="")
+	{
+		return true;
+	}
+	else
+	{
+		alert("Please correct the following items:\n\n" + error_message);
+		return false;
+	}
+} //validate
+</script>
+
+<h1>Sample Input Form</h1>
+<p>This sample demonstrates client and server-side validation of input.</p>
+{{ShowErrors}}
+<form action="input.srf" onSubmit="return validate(this)" method="post">
+	<table border="0" cellpadding="0" cellspacing="0">
+	<tr><td colspan="2"><b>Contact Information</b></td></tr>
+	<tr><td>Title</td><td>{{Input(Title)}}</td></tr>
+	<tr><td>First Name</td><td>{{Input(FirstName)}}</td></tr>
+	<tr><td>Last Name</td><td>{{Input(LastName)}}</td></tr>
+	<tr><td>Email</td><td>{{Input(Email)}}</td></tr>
+	<tr><td>Phone Number</td><td>{{Input(Phone)}}</td></tr>
+	
+	<tr><td colspan="2"><hr><br><b>Postal Address</b></td></tr>
+	<tr><td>Address</td><td>{{Input(Street1)}}</td></tr>
+	<tr><td>&nbsp;</td><td>{{Input(Street2)}}</td></tr>
+	<tr><td>City</td><td>{{Input(City)}}</td></tr>
+	<tr><td>State</td><td>{{Input(State)}}</td></tr>
+	<tr><td>Zip Code</td><td>{{Input(ZipCode)}}</td></tr>
+	<tr><td colspan="2"><input type="submit" value="Submit Information"></td></tr>
+	</table>
+</form>
+{{endif}} 
+</body>
+</html>

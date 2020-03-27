@@ -1,0 +1,60 @@
+<html>
+	<HEAD>
+	</HEAD>
+	<BODY bgColor="white">
+		<P>
+			{{handler BlobCache.dll/Default}}
+		</P>
+		<P>
+			<b>ATL Server - BlobCache sample</b>
+		</P>
+		<form id="Form1" action="BlobCache.srf" method="post">
+			<P>
+				<B>Enter key (1-100):</B><input id="keystr" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; COLOR: blue; BORDER-BOTTOM: black 1px solid" type="text" size="5" name="keystr"><input id="Go" style="BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid" type="submit" value="Lookup" name="Go">
+			</P>
+			<P>
+				{{limit}}
+			</P>
+			<TABLE cellSpacing="1" cellPadding="1" width="300" border="1">
+				<TR>
+					<TD>
+						<P align="center">
+							<b>Cache</b>
+						</P>
+					</TD>
+					<TD>
+						<P align="center">
+							<b>Statistics</b>
+						</P>
+					</TD>
+				</TR>
+				<TR>
+					<TD>
+						<TABLE cellPadding="4" border="0">
+							{{output}}
+						</TABLE>
+					</TD>
+					<TD>
+						<TABLE cellPadding="4" border="0">
+							{{stats}}
+						</TABLE>
+					</TD>
+				</TR>
+				<TR>
+					<TD>
+						<P align="center">
+							<INPUT id="Clearcache" type="submit" size="4" value="Reset Cache" name="Clearcache">
+						</P>
+					</TD>
+					<TD>
+						<P align="center">
+							<INPUT id="Clearstats" type="submit" size="4" value="Reset Stats" name="Clearstats">
+						</P>
+					</TD>
+				</TR>
+			</TABLE>
+			<P>
+			</P>
+		</form>
+	</BODY>
+</html>

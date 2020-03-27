@@ -1,0 +1,38 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+    <title>Creating MasterDetails Sample Readme</title>
+</head>
+<body>
+    <h1>
+        Creating a Master-Details View</h1>
+    This sample demonstrates three ways to create a master-details view. A master-details
+    view is a common user interface paradigm in which two sets of data are displayed.
+    A master-details relationship (also known as a parent-child relationship) exists
+    between these two sets of data, and it is sometimes desirable to display only those
+    details data records that are related to the selected master record.
+    <br>
+    <br>
+    Three tabs are presented. All data is drawn from the AdventureWorks database. The
+    first tab presents a master-details view created entirely at design time, using
+    the Data Source Explorer. Department data are masters, and Employees in the Departments
+    are details.
+    <br>
+    <br>
+    The second tab is divided into two sections. The first section displays Department data, with a BindingNavigator control
+    for navigating through the records. The second section displays a DataGridView control of
+    Employees in the displayed Department. DataSet DataRelations are used to manage filtering the DataGridView data.
+    <br>
+    <br>
+    The third tab displays a form identical in functionality to that on the second tab,
+    but the DataGridView control data is filtered in event handlers, rather than using the data relations.
+    <br>
+    <br>
+    This sample requires the following to be installed:
+    <ul>
+        <li>Microsoft Visual Studio 2005</li>
+        <li>Microsoft SQL Server 2005 Express</li>
+        <li>AdventureWorks database installed in the default location.</li>
+    </ul>
+</body>
+</html>

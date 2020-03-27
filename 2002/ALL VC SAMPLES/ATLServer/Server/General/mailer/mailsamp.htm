@@ -1,0 +1,42 @@
+<html>
+<title>ATL Server SendMail Demo</title>
+<body>
+<H1>ATL Server SendMail Demo</H1>
+<form action=mailsamp.srf method=post enctype="multipart/form-data">
+
+<font face="courier" color=\"#0000FF\">Server Name&nbsp;&nbsp;&nbsp;&nbsp;: </font><input type=text name=server_name> <br>
+<font face="courier" color=\"#0000FF\">Sender Name&nbsp;&nbsp;&nbsp;&nbsp;: </font><input type=text name=sender_name> <br>												
+<font face="courier" color=\"#0000FF\">From&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </font><input type=text name=from><br>
+<font face="courier" color=\"#0000FF\">Recipient Name&nbsp;: </font><input type=text name=recip_name> <br>
+<font face="courier" color=\"#0000FF\">To&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </font><input type=text name=to><br>
+<font face="courier" color=\"#0000FF\">CC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </font><input type=text name=cc_field><br>
+<font face="courier" color=\"#0000FF\">Subject&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </font><input type=text name=subject_field><br><br>
+<font face="courier" color=\"#0000FF\">Message</font><br><textarea rows=10 cols=60 name=msg></textarea><br>
+<font face="courier" color=\"#0000FF\">Priority:<br>
+<select id="msg_pri" name="msg_pri">
+	<option value="3">Normal
+	<option value="1">High
+	<option value="5">Low
+</select><br>
+<br>Attach up to 3 Files<br>
+<font color=\"#0000FF\">Enter a file name here </font><input type=file name=file1>
+<select id="file1_enc" name="file1_enc">
+	<option value="0">base64
+	<option value="1">uuencode
+	<option value="2">quoted-printable
+</select><br>
+<font color=\"#0000FF\">Enter a file name here </font><input type=file name=file2>
+<select id="file2_enc" name="file2_enc">
+	<option value="0">base64
+	<option value="1">uuencode
+	<option value="2">quoted-printable
+</select><br>
+<font color=\"#0000FF\">Enter a file name here </font><input type=file name=file3>
+<select id="file3_enc" name="file3_enc">
+	<option value="0">base64
+	<option value="1">uuencode
+	<option value="2">quoted-printable
+</select><br><br>
+<input type=submit value="Send Message">
+</form>
+<hr> 

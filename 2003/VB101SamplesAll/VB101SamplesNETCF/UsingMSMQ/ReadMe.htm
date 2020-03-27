@@ -1,0 +1,38 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title></title>
+		<meta name="GENERATOR" content="Microsoft Visual Studio.NET 7.0">
+		<meta name=ProgId content=VisualStudio.HTML>
+		<meta name=Originator content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+<h1>
+    Using MSMQ</h1>
+<p></p>
+The .NET Compact Framework (.NET CF) 2.0 and Visual Studio 2005 make it easier to
+        deploy smart device applications.
+<p></p>
+This sample demonstrates the new support for the Microsoft Message Queue (MSMQ)
+        in the .NET Compact Framework (.NET CF) 2.0.<br />
+        <br />
+        In order to use MSMQ on a device or with the VS 2005 emulator, the following files
+        from the SDK must be present in the windows subdirectory: msmqadm.exe, msmqadmext.dll,
+        msmqd.dll and msmqrt.dll.&nbsp; These four files are added to the project with the
+        "Build Action" property set to "Content" and the "Copy To Output" property set to
+        "Copy Always."&nbsp; The first time this sample is run, the files are copied to
+        the windows directory and the MSMQ is initialized using the msmqadm utility through
+        a CreateProcess call to the CoreDll.dll.<br />
+        <br />
+        This sample demonstrates saving and retrieving strings to the queue.&nbsp;
+        Simply add string messages to the queue by typing text in the TextBox and clicking the
+        "Send" button.&nbsp; Click the "Receive" button to get the available messages from
+        the queue and display them in the ListBox.<br />
+        <br />
+<p></p>
+<b>This sample requires the following to be installed: </b>
+<ul>
+<li>Visual Studio 2005 Beta 2.</li>
+</ul>
+	</body>
+</html>

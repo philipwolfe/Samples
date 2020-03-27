@@ -1,0 +1,42 @@
+{{ handler bin\ShowQueryString.dll/Default }}
+<html>
+	<!-- (c) 2000 Microsoft Corporation -->
+	<head>
+		<title>{{Title}}</title>
+		<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+		<link rel="stylesheet" href="normal.css" type="text/css">
+	</head>
+
+	<body>
+		<h1>{{Title}}</h1>
+
+		<h3>Instructions</h3>
+		<p>
+		Use <a href="ShowQueryString.srf?first%20name=Austin&middle%20name=Danger&last%20name=Powers">this link</a> to send a query string to this page.
+		Compare the QueryParams collection and the QUERY_STRING variable, which are
+		both available on the server, with the <b>location.search</b> property of the <b>document</b> object, which
+		is available via client-side script.
+		</p>
+
+		<h2>Server - QueryParams collection</h2>
+		<table>
+		<tr><th>Name</th><th>Value</th></tr>
+		{{ShowQueryString}}
+		</table>
+
+		<h2>Server - GetServerVariable("QUERY_STRING")</h2>
+		<div id="serverQueryString">
+		{{ShowQueryStringVariable}}
+		</div>
+
+		<h2>Client - document.location.search</h2>
+		<div id="clientQueryString">
+		<script language="javascript">
+		<!--
+			document.write(document.location.search);
+		//-->
+		</script>
+		</div>
+		
+	</body>
+</html>

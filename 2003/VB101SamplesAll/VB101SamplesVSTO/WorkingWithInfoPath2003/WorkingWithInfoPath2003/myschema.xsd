@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema targetNamespace="http://schemas.microsoft.com/office/infopath/2003/myXSD/2005-10-25T23-50-04" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:d="http://schemas.microsoft.com/office/infopath/2003/ado/dataFields" xmlns:dfs="http://schemas.microsoft.com/office/infopath/2003/dataFormSolution" xmlns:my="http://schemas.microsoft.com/office/infopath/2003/myXSD/2005-10-25T23-50-04" xmlns:xd="http://schemas.microsoft.com/office/infopath/2003" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:element name="AdventureWorksProductsOrder">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="my:Product" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="my:SelectedCategory" minOccurs="0"/>
+				<xsd:element ref="my:SubTotal" minOccurs="0"/>
+				<xsd:element ref="my:Tax" minOccurs="0"/>
+				<xsd:element ref="my:Total" minOccurs="0"/>
+			</xsd:sequence>
+			<xsd:anyAttribute processContents="lax" namespace="http://www.w3.org/XML/1998/namespace"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="Product">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="my:ID" minOccurs="0"/>
+				<xsd:element ref="my:Name" minOccurs="0"/>
+				<xsd:element ref="my:Qty" minOccurs="0"/>
+				<xsd:element ref="my:UnitPrice" minOccurs="0"/>
+				<xsd:element ref="my:ExtPrice" minOccurs="0"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ID" nillable="true" type="xsd:integer"/>
+	<xsd:element name="Name" type="xsd:string"/>
+	<xsd:element name="Qty" nillable="true" type="xsd:integer"/>
+	<xsd:element name="UnitPrice" type="xsd:string"/>
+	<xsd:element name="ExtPrice" type="xsd:string"/>
+	<xsd:element name="SelectedCategory" type="my:requiredString"/>
+	<xsd:element name="SubTotal" nillable="true" type="xsd:double"/>
+	<xsd:element name="Tax" nillable="true" type="xsd:double"/>
+	<xsd:element name="Total" nillable="true" type="xsd:double"/>
+	<xsd:simpleType name="requiredString">
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="requiredAnyURI">
+		<xsd:restriction base="xsd:anyURI">
+			<xsd:minLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

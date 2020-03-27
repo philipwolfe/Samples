@@ -1,0 +1,155 @@
+<!--{{ handler cgi-bin\Calendar.dll/Calendar }} This file (c) 2000 Microsoft Corporation -->
+<html>
+<head>
+<base target="main_frame">
+<link rel="stylesheet" href="main.css" type="text/css">
+</head>
+<body>
+<table border="0" cellspacing="0" width="635">
+  <tr>
+    <td width="217" valign="top" height="16">
+      <form method="POST" action="calendar.srf">
+        <select size="1" name="month">
+    <option value="1" {{SelectedMonth(1)}}>January</option>
+    <option value="2" {{SelectedMonth(2)}}>Febuary</option>
+    <option value="3" {{SelectedMonth(3)}}>March</option>
+    <option value="4" {{SelectedMonth(4)}}>April</option>
+    <option value="5" {{SelectedMonth(5)}}>May</option>
+    <option value="6" {{SelectedMonth(6)}}>June</option>
+    <option value="7" {{SelectedMonth(7)}}>July</option>
+    <option value="8" {{SelectedMonth(8)}}>August</option>
+    <option value="9" {{SelectedMonth(9)}}>September</option>
+    <option value="10" {{SelectedMonth(10)}}>October</option>
+    <option value="11" {{SelectedMonth(11)}}>November</option>
+    <option value="12" {{SelectedMonth(12)}}>December</option>
+  </select>&nbsp; <select size="1" name="year">
+    <option value="1997" {{SelectedYear(1997)}}>1997</option>
+    <option value="1998" {{SelectedYear(1998)}}>1998</option>
+    <option value="1999" {{SelectedYear(1999)}}>1999</option>
+    <option value="2000" {{SelectedYear(2000)}}>2000</option>
+    <option value="2001" {{SelectedYear(2001)}}>2001</option>
+    <option value="2002" {{SelectedYear(2002)}}>2002</option>
+    <option value="2003" {{SelectedYear(2003)}}>2003</option>
+  </select>&nbsp; <input type="submit" value="Go" name="goButton">
+      </form>
+    </td>
+    <td width="410" valign="top" height="16">
+      Today is {{Date}}
+    </td>
+  </tr>
+</table>
+<table border="1" cellspacing="0">
+  <tr>
+    <td height="20" width="560" bgcolor="#FFFFCC" colspan="7" valign="middle" align="center">
+      <b>{{ViewMonth}}, {{ViewYear}}</b>
+    </td>
+  </tr>
+  <tr>
+    <td height="20" width="80" bgcolor="#FFFFCC" valign="middle" align="center"><font color="#3A6EA5"><span style="font-variant: small-caps"><b>Sun</b></span></font></td>
+    <td height="20" width="80" bgcolor="#FFFFCC" valign="middle" align="center"><font color="#3A6EA5"><span style="font-variant: small-caps"><b>Mon</b></span></font></td>
+    <td height="20" width="80" bgcolor="#FFFFCC" valign="middle" align="center"><font color="#3A6EA5"><span style="font-variant: small-caps"><b>Tue</b></span></font></td>
+    <td height="20" width="80" bgcolor="#FFFFCC" valign="middle" align="center"><font color="#3A6EA5"><span style="font-variant: small-caps"><b>Wed</b></span></font></td>
+    <td height="20" width="80" bgcolor="#FFFFCC" valign="middle" align="center"><font color="#3A6EA5"><span style="font-variant: small-caps"><b>Thu</b></span></font></td>
+    <td height="20" width="80" bgcolor="#FFFFCC" valign="middle" align="center"><font color="#3A6EA5"><span style="font-variant: small-caps"><b>Fri</b></span></font></td>
+    <td height="20" width="80" bgcolor="#FFFFCC" valign="middle" align="center"><font color="#3A6EA5"><span style="font-variant: small-caps"><b>Sat</b></span></font></td>
+  </tr>
+  <tr>
+    <td valign="top" height="80" width="80" bgcolor="{{CellColor}}"><a href="schedule.srf?day={{Day}}&amp;month={{Month}}&amp;year={{Year}}">{{Day}}</a><br><font size="1">{{CellData}}</font></td>
+    <!--{{NextCell}}-->
+    <td valign="top" height="80" width="80" bgcolor="{{CellColor}}"><a href="schedule.srf?day={{Day}}&amp;month={{Month}}&amp;year={{Year}}">{{Day}}</a><br><font size="1">{{CellData}}</font></td>
+    <!--{{NextCell}}-->
+    <td valign="top" height="80" width="80" bgcolor="{{CellColor}}"><a href="schedule.srf?day={{Day}}&amp;month={{Month}}&amp;year={{Year}}">{{Day}}</a><br><font size="1">{{CellData}}</font></td>
+    <!--{{NextCell}}-->
+    <td valign="top" height="80" width="80" bgcolor="{{CellColor}}"><a href="schedule.srf?day={{Day}}&amp;month={{Month}}&amp;year={{Year}}">{{Day}}</a><br><font size="1">{{CellData}}</font></td>
+    <!--{{NextCell}}-->
+    <td valign="top" height="80" width="80" bgcolor="{{CellColor}}"><a href="schedule.srf?day={{Day}}&amp;month={{Month}}&amp;year={{Year}}">{{Day}}</a><br><font size="1">{{CellData}}</font></td>
+    <!--{{NextCell}}-->
+    <td valign="top" height="80" width="80" bgcolor="{{CellColor}}"><a href="schedule.srf?day={{Day}}&amp;month={{Month}}&amp;year={{Year}}">{{Day}}</a><br><font size="1">{{CellData}}</font></td>
+    <!--{{NextCell}}-->
+    <td valign="top" height="80" width="80" bgcolor="{{CellColor}}"><a href="schedule.srf?day={{Day}}&amp;month={{Month}}&amp;year={{Year}}">{{Day}}</a><br><font size="1">{{CellData}}</font></td>
+    <!--{{NextCell}}-->
+  </tr>
+  <tr>
+    <td valign="top" height="80" width="80" bgcolor="{{CellColor}}"><a href="schedule.srf?day={{Day}}&amp;month={{Month}}&amp;year={{Year}}">{{Day}}</a><br><font size="1">{{CellData}}</font></td>
+    <!--{{NextCell}}-->
+    <td valign="top" height="80" width="80" bgcolor="{{CellColor}}"><a href="schedule.srf?day={{Day}}&amp;month={{Month}}&amp;year={{Year}}">{{Day}}</a><br><font size="1">{{CellData}}</font></td>
+    <!--{{NextCell}}-->
+    <td valign="top" height="80" width="80" bgcolor="{{CellColor}}"><a href="schedule.srf?day={{Day}}&amp;month={{Month}}&amp;year={{Year}}">{{Day}}</a><br><font size="1">{{CellData}}</font></td>
+    <!--{{NextCell}}-->
+    <td valign="top" height="80" width="80" bgcolor="{{CellColor}}"><a href="schedule.srf?day={{Day}}&amp;month={{Month}}&amp;year={{Year}}">{{Day}}</a><br><font size="1">{{CellData}}</font></td>
+    <!--{{NextCell}}-->
+    <td valign="top" height="80" width="80" bgcolor="{{CellColor}}"><a href="schedule.srf?day={{Day}}&amp;month={{Month}}&amp;year={{Year}}">{{Day}}</a><br><font size="1">{{CellData}}</font></td>
+    <!--{{NextCell}}-->
+    <td valign="top" height="80" width="80" bgcolor="{{CellColor}}"><a href="schedule.srf?day={{Day}}&amp;month={{Month}}&amp;year={{Year}}">{{Day}}</a><br><font size="1">{{CellData}}</font></td>
+    <!--{{NextCell}}-->
+    <td valign="top" height="80" width="80" bgcolor="{{CellColor}}"><a href="schedule.srf?day={{Day}}&amp;month={{Month}}&amp;year={{Year}}">{{Day}}</a><br><font size="1">{{CellData}}</font></td>
+    <!--{{NextCell}}-->
+  </tr>
+  <tr>
+    <td valign="top" height="80" width="80" bgcolor="{{CellColor}}"><a href="schedule.srf?day={{Day}}&amp;month={{Month}}&amp;year={{Year}}">{{Day}}</a><br><font size="1">{{CellData}}</font></td>
+    <!--{{NextCell}}-->
+    <td valign="top" height="80" width="80" bgcolor="{{CellColor}}"><a href="schedule.srf?day={{Day}}&amp;month={{Month}}&amp;year={{Year}}">{{Day}}</a><br><font size="1">{{CellData}}</font></td>
+    <!--{{NextCell}}-->
+    <td valign="top" height="80" width="80" bgcolor="{{CellColor}}"><a href="schedule.srf?day={{Day}}&amp;month={{Month}}&amp;year={{Year}}">{{Day}}</a><br><font size="1">{{CellData}}</font></td>
+    <!--{{NextCell}}-->
+    <td valign="top" height="80" width="80" bgcolor="{{CellColor}}"><a href="schedule.srf?day={{Day}}&amp;month={{Month}}&amp;year={{Year}}">{{Day}}</a><br><font size="1">{{CellData}}</font></td>
+    <!--{{NextCell}}-->
+    <td valign="top" height="80" width="80" bgcolor="{{CellColor}}"><a href="schedule.srf?day={{Day}}&amp;month={{Month}}&amp;year={{Year}}">{{Day}}</a><br><font size="1">{{CellData}}</font></td>
+    <!--{{NextCell}}-->
+    <td valign="top" height="80" width="80" bgcolor="{{CellColor}}"><a href="schedule.srf?day={{Day}}&amp;month={{Month}}&amp;year={{Year}}">{{Day}}</a><br><font size="1">{{CellData}}</font></td>
+    <!--{{NextCell}}-->
+    <td valign="top" height="80" width="80" bgcolor="{{CellColor}}"><a href="schedule.srf?day={{Day}}&amp;month={{Month}}&amp;year={{Year}}">{{Day}}</a><br><font size="1">{{CellData}}</font></td>
+    <!--{{NextCell}}-->
+  </tr>
+  <tr>
+    <td valign="top" height="80" width="80" bgcolor="{{CellColor}}"><a href="schedule.srf?day={{Day}}&amp;month={{Month}}&amp;year={{Year}}">{{Day}}</a><br><font size="1">{{CellData}}</font></td>
+    <!--{{NextCell}}-->
+    <td valign="top" height="80" width="80" bgcolor="{{CellColor}}"><a href="schedule.srf?day={{Day}}&amp;month={{Month}}&amp;year={{Year}}">{{Day}}</a><br><font size="1">{{CellData}}</font></td>
+    <!--{{NextCell}}-->
+    <td valign="top" height="80" width="80" bgcolor="{{CellColor}}"><a href="schedule.srf?day={{Day}}&amp;month={{Month}}&amp;year={{Year}}">{{Day}}</a><br><font size="1">{{CellData}}</font></td>
+    <!--{{NextCell}}-->
+    <td valign="top" height="80" width="80" bgcolor="{{CellColor}}"><a href="schedule.srf?day={{Day}}&amp;month={{Month}}&amp;year={{Year}}">{{Day}}</a><br><font size="1">{{CellData}}</font></td>
+    <!--{{NextCell}}-->
+    <td valign="top" height="80" width="80" bgcolor="{{CellColor}}"><a href="schedule.srf?day={{Day}}&amp;month={{Month}}&amp;year={{Year}}">{{Day}}</a><br><font size="1">{{CellData}}</font></td>
+    <!--{{NextCell}}-->
+    <td valign="top" height="80" width="80" bgcolor="{{CellColor}}"><a href="schedule.srf?day={{Day}}&amp;month={{Month}}&amp;year={{Year}}">{{Day}}</a><br><font size="1">{{CellData}}</font></td>
+    <!--{{NextCell}}-->
+    <td valign="top" height="80" width="80" bgcolor="{{CellColor}}"><a href="schedule.srf?day={{Day}}&amp;month={{Month}}&amp;year={{Year}}">{{Day}}</a><br><font size="1">{{CellData}}</font></td>
+    <!--{{NextCell}}-->
+  </tr>
+  <tr>
+    <td valign="top" height="80" width="80" bgcolor="{{CellColor}}"><a href="schedule.srf?day={{Day}}&amp;month={{Month}}&amp;year={{Year}}">{{Day}}</a><br><font size="1">{{CellData}}</font></td>
+    <!--{{NextCell}}-->
+    <td valign="top" height="80" width="80" bgcolor="{{CellColor}}"><a href="schedule.srf?day={{Day}}&amp;month={{Month}}&amp;year={{Year}}">{{Day}}</a><br><font size="1">{{CellData}}</font></td>
+    <!--{{NextCell}}-->
+    <td valign="top" height="80" width="80" bgcolor="{{CellColor}}"><a href="schedule.srf?day={{Day}}&amp;month={{Month}}&amp;year={{Year}}">{{Day}}</a><br><font size="1">{{CellData}}</font></td>
+    <!--{{NextCell}}-->
+    <td valign="top" height="80" width="80" bgcolor="{{CellColor}}"><a href="schedule.srf?day={{Day}}&amp;month={{Month}}&amp;year={{Year}}">{{Day}}</a><br><font size="1">{{CellData}}</font></td>
+    <!--{{NextCell}}-->
+    <td valign="top" height="80" width="80" bgcolor="{{CellColor}}"><a href="schedule.srf?day={{Day}}&amp;month={{Month}}&amp;year={{Year}}">{{Day}}</a><br><font size="1">{{CellData}}</font></td>
+    <!--{{NextCell}}-->
+    <td valign="top" height="80" width="80" bgcolor="{{CellColor}}"><a href="schedule.srf?day={{Day}}&amp;month={{Month}}&amp;year={{Year}}">{{Day}}</a><br><font size="1">{{CellData}}</font></td>
+    <!--{{NextCell}}-->
+    <td valign="top" height="80" width="80" bgcolor="{{CellColor}}"><a href="schedule.srf?day={{Day}}&amp;month={{Month}}&amp;year={{Year}}">{{Day}}</a><br><font size="1">{{CellData}}</font></td>
+    <!--{{NextCell}}-->
+  </tr>
+  <tr>
+    <td valign="top" height="80" width="80" bgcolor="{{CellColor}}"><a href="schedule.srf?day={{Day}}&amp;month={{Month}}&amp;year={{Year}}">{{Day}}</a><br><font size="1">{{CellData}}</font></td>
+    <!--{{NextCell}}-->
+    <td valign="top" height="80" width="80" bgcolor="{{CellColor}}"><a href="schedule.srf?day={{Day}}&amp;month={{Month}}&amp;year={{Year}}">{{Day}}</a><br><font size="1">{{CellData}}</font></td>
+    <!--{{NextCell}}-->
+    <td valign="top" height="80" width="80" bgcolor="{{CellColor}}"><a href="schedule.srf?day={{Day}}&amp;month={{Month}}&amp;year={{Year}}">{{Day}}</a><br><font size="1">{{CellData}}</font></td>
+    <!--{{NextCell}}-->
+    <td valign="top" height="80" width="80" bgcolor="{{CellColor}}"><a href="schedule.srf?day={{Day}}&amp;month={{Month}}&amp;year={{Year}}">{{Day}}</a><br><font size="1">{{CellData}}</font></td>
+    <!--{{NextCell}}-->
+    <td valign="top" height="80" width="80" bgcolor="{{CellColor}}"><a href="schedule.srf?day={{Day}}&amp;month={{Month}}&amp;year={{Year}}">{{Day}}</a><br><font size="1">{{CellData}}</font></td>
+    <!--{{NextCell}}-->
+    <td valign="top" height="80" width="80" bgcolor="{{CellColor}}"><a href="schedule.srf?day={{Day}}&amp;month={{Month}}&amp;year={{Year}}">{{Day}}</a><br><font size="1">{{CellData}}</font></td>
+    <!--{{NextCell}}-->
+    <td valign="top" height="80" width="80" bgcolor="{{CellColor}}"><a href="schedule.srf?day={{Day}}&amp;month={{Month}}&amp;year={{Year}}">{{Day}}</a><br><font size="1">{{CellData}}</font></td>
+    <!--{{NextCell}}-->
+  </tr>
+</table>
+</body>
+</html>
+

@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Using VBA and VSTO Together</title>
+    <meta name="GENERATOR" content="Microsoft Visual Studio.NET 7.0" />
+    <meta name="ProgId" content="VisualStudio.HTML" />
+    <meta name="Originator" content="Microsoft Visual Studio.NET 7.0" />
+</head>
+<body>
+    <h1>Using VBA and VSTO Together</h1>
+    <p>
+    </p>
+    <p>
+        Even before the advent of managed code and Visual Studio
+        Tools for Office, savvy
+        developers have been able to extend the native Excel features in a variety of ways
+        using Visual Basic for Applications.&nbsp; The Visual Basic syntax along with the
+        built-in development environment made it accessible to many professionals creating
+        rich Office documents.&nbsp; With VSTO available, legacy VBA code will continue
+        to run unchanged alongside the new managed code.</p>
+    <p>
+    </p>
+    <p>
+        In this sample, you will see a simple time card spreadsheet already in use within
+        the fictitious Adventure Works company.&nbsp; The legacy spreadsheet uses a VBA
+        function to lookup an account code description given the code value.&nbsp; For the
+        sample, this lookup occurs via a <em>select case </em>block, but similar lookups
+        are common using database tables.&nbsp; An enhancement request was made to enable
+        employees to auto-fill name and job details to save time and reduce errors.&nbsp;
+        With VSTO 2005 available, the decision was made to create the new customization
+        in managed code.&nbsp; A new user control, EmployeeSelectorUserControl, is created
+        and embedded in the Document Actions pane.&nbsp; This automatically binds to and
+        retrieves data from the Adventure Works vEmployee view.&nbsp; A BindingNavigator
+        object is used to navigate through employee records.&nbsp; Click the Select button
+        to insert the current employee information.</p>
+    <p>
+        In the Account Code column, enter three digit numbers rounded to the hundred from
+        100-600 (100, 200, 300, etc.).&nbsp; Tabbing away will invoke the LookupAccountCode
+        VBA function to set the account code description in the Account Description column.</p>
+    <p>
+        <strong>NOTE</strong>: When you start the sample, you will receive an error message
+        that macros are disabled because security setting are set to high. Use the <strong>Tools
+            | Macro | Security </strong>menu command in Excel to set security for the document
+        to low.&nbsp; Starting the sample again will allow it to run properly.</p>
+    <p>
+    </p>
+    <p>
+        <b>This sample requires the following to be installed: </b>
+    </p>
+    <ul>
+        <li>Visual Studio 2005</li>
+        <li>Microsoft Excel 2003</li>
+        <li>Adventure Works sample database installed at "C:\Program Files\Microsoft SQL Server\MSSQL.1\MSSQL\Data</li>
+    </ul>
+    <p>
+        You can download the Adventure Works sample database 
+        <a href="http://go.microsoft.com/fwlink/?linkid=31046">here</a>
+    </p>
+</body>
+</html>

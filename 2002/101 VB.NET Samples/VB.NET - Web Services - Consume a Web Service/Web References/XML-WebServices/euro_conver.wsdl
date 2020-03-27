@@ -1,0 +1,2047 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.xml-webservices.net/services/conversions/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.xml-webservices.net/services/conversions/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.xml-webservices.net/services/conversions/">
+      <s:import namespace="http://www.w3.org/2001/XMLSchema" />
+      <s:element name="FromAmountToEuros">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="Currency" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromAmountToEurosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="FromAmountToEurosResult" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromBelgiumFrancsToEuros">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromBelgiumFrancsToEurosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="FromBelgiumFrancsToEurosResult" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromGermanyDeutscheMarksToEuros">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromGermanyDeutscheMarksToEurosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="FromGermanyDeutscheMarksToEurosResult" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromFranceFrancsToEuros">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromFranceFrancsToEurosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="FromFranceFrancsToEurosResult" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromSpainPesetasToEuros">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromSpainPesetasToEurosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="FromSpainPesetasToEurosResult" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromIrelandPoundsToEuros">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromIrelandPoundsToEurosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="FromIrelandPoundsToEurosResult" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromItalyLireToEuros">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromItalyLireToEurosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="FromItalyLireToEurosResult" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromLuxembourgFrancsToEuros">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromLuxembourgFrancsToEurosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="FromLuxembourgFrancsToEurosResult" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromHollandGuildersToEuros">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromHollandGuildersToEurosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="FromHollandGuildersToEurosResult" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromAustriaShillingsToEuros">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromAustriaShillingsToEurosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="FromAustriaShillingsToEurosResult" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromPortugalEscudosToEuros">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromPortugalEscudosToEurosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="FromPortugalEscudosToEurosResult" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromFinlandMarkkaaToEuros">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromFinlandMarkkaaToEurosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="FromFinlandMarkkaaToEurosResult" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromGreeceDrachmaeToEuros">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromGreeceDrachmaeToEurosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="FromGreeceDrachmaeToEurosResult" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromEurosToAmount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Currency" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromEurosToAmountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="FromEurosToAmountResult" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromEurosToBelgiumFrancs">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromEurosToBelgiumFrancsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="FromEurosToBelgiumFrancsResult" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromEurosToGermanyDeutscheMarks">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromEurosToGermanyDeutscheMarksResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="FromEurosToGermanyDeutscheMarksResult" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromEurosToSpainPesetas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromEurosToSpainPesetasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="FromEurosToSpainPesetasResult" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromEurosToFranceFrancs">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromEurosToFranceFrancsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="FromEurosToFranceFrancsResult" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromEurosToIrelandPounds">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromEurosToIrelandPoundsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="FromEurosToIrelandPoundsResult" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromEurosToItalyLire">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromEurosToItalyLireResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="FromEurosToItalyLireResult" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromEurosToLuxembourgFrancs">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromEurosToLuxembourgFrancsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="FromEurosToLuxembourgFrancsResult" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromEurosToHollandGuilders">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromEurosToHollandGuildersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="FromEurosToHollandGuildersResult" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromEurosToAustriaShillings">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromEurosToAustriaShillingsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="FromEurosToAustriaShillingsResult" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromEurosToPortugalEscudos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromEurosToPortugalEscudosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="FromEurosToPortugalEscudosResult" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromEurosToFinlandMarkkaa">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromEurosToFinlandMarkkaaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="FromEurosToFinlandMarkkaaResult" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromEurosToGreeceDrachmae">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FromEurosToGreeceDrachmaeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="FromEurosToGreeceDrachmaeResult" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CurrenciesToDataSet">
+        <s:complexType />
+      </s:element>
+      <s:element name="CurrenciesToDataSetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CurrenciesToDataSetResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="decimal" type="s:decimal" />
+      <s:element name="DataSet" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s:schema" />
+            <s:any />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </types>
+  <message name="FromAmountToEurosSoapIn">
+    <part name="parameters" element="s0:FromAmountToEuros" />
+  </message>
+  <message name="FromAmountToEurosSoapOut">
+    <part name="parameters" element="s0:FromAmountToEurosResponse" />
+  </message>
+  <message name="FromBelgiumFrancsToEurosSoapIn">
+    <part name="parameters" element="s0:FromBelgiumFrancsToEuros" />
+  </message>
+  <message name="FromBelgiumFrancsToEurosSoapOut">
+    <part name="parameters" element="s0:FromBelgiumFrancsToEurosResponse" />
+  </message>
+  <message name="FromGermanyDeutscheMarksToEurosSoapIn">
+    <part name="parameters" element="s0:FromGermanyDeutscheMarksToEuros" />
+  </message>
+  <message name="FromGermanyDeutscheMarksToEurosSoapOut">
+    <part name="parameters" element="s0:FromGermanyDeutscheMarksToEurosResponse" />
+  </message>
+  <message name="FromFranceFrancsToEurosSoapIn">
+    <part name="parameters" element="s0:FromFranceFrancsToEuros" />
+  </message>
+  <message name="FromFranceFrancsToEurosSoapOut">
+    <part name="parameters" element="s0:FromFranceFrancsToEurosResponse" />
+  </message>
+  <message name="FromSpainPesetasToEurosSoapIn">
+    <part name="parameters" element="s0:FromSpainPesetasToEuros" />
+  </message>
+  <message name="FromSpainPesetasToEurosSoapOut">
+    <part name="parameters" element="s0:FromSpainPesetasToEurosResponse" />
+  </message>
+  <message name="FromIrelandPoundsToEurosSoapIn">
+    <part name="parameters" element="s0:FromIrelandPoundsToEuros" />
+  </message>
+  <message name="FromIrelandPoundsToEurosSoapOut">
+    <part name="parameters" element="s0:FromIrelandPoundsToEurosResponse" />
+  </message>
+  <message name="FromItalyLireToEurosSoapIn">
+    <part name="parameters" element="s0:FromItalyLireToEuros" />
+  </message>
+  <message name="FromItalyLireToEurosSoapOut">
+    <part name="parameters" element="s0:FromItalyLireToEurosResponse" />
+  </message>
+  <message name="FromLuxembourgFrancsToEurosSoapIn">
+    <part name="parameters" element="s0:FromLuxembourgFrancsToEuros" />
+  </message>
+  <message name="FromLuxembourgFrancsToEurosSoapOut">
+    <part name="parameters" element="s0:FromLuxembourgFrancsToEurosResponse" />
+  </message>
+  <message name="FromHollandGuildersToEurosSoapIn">
+    <part name="parameters" element="s0:FromHollandGuildersToEuros" />
+  </message>
+  <message name="FromHollandGuildersToEurosSoapOut">
+    <part name="parameters" element="s0:FromHollandGuildersToEurosResponse" />
+  </message>
+  <message name="FromAustriaShillingsToEurosSoapIn">
+    <part name="parameters" element="s0:FromAustriaShillingsToEuros" />
+  </message>
+  <message name="FromAustriaShillingsToEurosSoapOut">
+    <part name="parameters" element="s0:FromAustriaShillingsToEurosResponse" />
+  </message>
+  <message name="FromPortugalEscudosToEurosSoapIn">
+    <part name="parameters" element="s0:FromPortugalEscudosToEuros" />
+  </message>
+  <message name="FromPortugalEscudosToEurosSoapOut">
+    <part name="parameters" element="s0:FromPortugalEscudosToEurosResponse" />
+  </message>
+  <message name="FromFinlandMarkkaaToEurosSoapIn">
+    <part name="parameters" element="s0:FromFinlandMarkkaaToEuros" />
+  </message>
+  <message name="FromFinlandMarkkaaToEurosSoapOut">
+    <part name="parameters" element="s0:FromFinlandMarkkaaToEurosResponse" />
+  </message>
+  <message name="FromGreeceDrachmaeToEurosSoapIn">
+    <part name="parameters" element="s0:FromGreeceDrachmaeToEuros" />
+  </message>
+  <message name="FromGreeceDrachmaeToEurosSoapOut">
+    <part name="parameters" element="s0:FromGreeceDrachmaeToEurosResponse" />
+  </message>
+  <message name="FromEurosToAmountSoapIn">
+    <part name="parameters" element="s0:FromEurosToAmount" />
+  </message>
+  <message name="FromEurosToAmountSoapOut">
+    <part name="parameters" element="s0:FromEurosToAmountResponse" />
+  </message>
+  <message name="FromEurosToBelgiumFrancsSoapIn">
+    <part name="parameters" element="s0:FromEurosToBelgiumFrancs" />
+  </message>
+  <message name="FromEurosToBelgiumFrancsSoapOut">
+    <part name="parameters" element="s0:FromEurosToBelgiumFrancsResponse" />
+  </message>
+  <message name="FromEurosToGermanyDeutscheMarksSoapIn">
+    <part name="parameters" element="s0:FromEurosToGermanyDeutscheMarks" />
+  </message>
+  <message name="FromEurosToGermanyDeutscheMarksSoapOut">
+    <part name="parameters" element="s0:FromEurosToGermanyDeutscheMarksResponse" />
+  </message>
+  <message name="FromEurosToSpainPesetasSoapIn">
+    <part name="parameters" element="s0:FromEurosToSpainPesetas" />
+  </message>
+  <message name="FromEurosToSpainPesetasSoapOut">
+    <part name="parameters" element="s0:FromEurosToSpainPesetasResponse" />
+  </message>
+  <message name="FromEurosToFranceFrancsSoapIn">
+    <part name="parameters" element="s0:FromEurosToFranceFrancs" />
+  </message>
+  <message name="FromEurosToFranceFrancsSoapOut">
+    <part name="parameters" element="s0:FromEurosToFranceFrancsResponse" />
+  </message>
+  <message name="FromEurosToIrelandPoundsSoapIn">
+    <part name="parameters" element="s0:FromEurosToIrelandPounds" />
+  </message>
+  <message name="FromEurosToIrelandPoundsSoapOut">
+    <part name="parameters" element="s0:FromEurosToIrelandPoundsResponse" />
+  </message>
+  <message name="FromEurosToItalyLireSoapIn">
+    <part name="parameters" element="s0:FromEurosToItalyLire" />
+  </message>
+  <message name="FromEurosToItalyLireSoapOut">
+    <part name="parameters" element="s0:FromEurosToItalyLireResponse" />
+  </message>
+  <message name="FromEurosToLuxembourgFrancsSoapIn">
+    <part name="parameters" element="s0:FromEurosToLuxembourgFrancs" />
+  </message>
+  <message name="FromEurosToLuxembourgFrancsSoapOut">
+    <part name="parameters" element="s0:FromEurosToLuxembourgFrancsResponse" />
+  </message>
+  <message name="FromEurosToHollandGuildersSoapIn">
+    <part name="parameters" element="s0:FromEurosToHollandGuilders" />
+  </message>
+  <message name="FromEurosToHollandGuildersSoapOut">
+    <part name="parameters" element="s0:FromEurosToHollandGuildersResponse" />
+  </message>
+  <message name="FromEurosToAustriaShillingsSoapIn">
+    <part name="parameters" element="s0:FromEurosToAustriaShillings" />
+  </message>
+  <message name="FromEurosToAustriaShillingsSoapOut">
+    <part name="parameters" element="s0:FromEurosToAustriaShillingsResponse" />
+  </message>
+  <message name="FromEurosToPortugalEscudosSoapIn">
+    <part name="parameters" element="s0:FromEurosToPortugalEscudos" />
+  </message>
+  <message name="FromEurosToPortugalEscudosSoapOut">
+    <part name="parameters" element="s0:FromEurosToPortugalEscudosResponse" />
+  </message>
+  <message name="FromEurosToFinlandMarkkaaSoapIn">
+    <part name="parameters" element="s0:FromEurosToFinlandMarkkaa" />
+  </message>
+  <message name="FromEurosToFinlandMarkkaaSoapOut">
+    <part name="parameters" element="s0:FromEurosToFinlandMarkkaaResponse" />
+  </message>
+  <message name="FromEurosToGreeceDrachmaeSoapIn">
+    <part name="parameters" element="s0:FromEurosToGreeceDrachmae" />
+  </message>
+  <message name="FromEurosToGreeceDrachmaeSoapOut">
+    <part name="parameters" element="s0:FromEurosToGreeceDrachmaeResponse" />
+  </message>
+  <message name="CurrenciesToDataSetSoapIn">
+    <part name="parameters" element="s0:CurrenciesToDataSet" />
+  </message>
+  <message name="CurrenciesToDataSetSoapOut">
+    <part name="parameters" element="s0:CurrenciesToDataSetResponse" />
+  </message>
+  <message name="FromAmountToEurosHttpGetIn">
+    <part name="Amount" type="s:string" />
+    <part name="Currency" type="s:string" />
+  </message>
+  <message name="FromAmountToEurosHttpGetOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromBelgiumFrancsToEurosHttpGetIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromBelgiumFrancsToEurosHttpGetOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromGermanyDeutscheMarksToEurosHttpGetIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromGermanyDeutscheMarksToEurosHttpGetOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromFranceFrancsToEurosHttpGetIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromFranceFrancsToEurosHttpGetOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromSpainPesetasToEurosHttpGetIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromSpainPesetasToEurosHttpGetOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromIrelandPoundsToEurosHttpGetIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromIrelandPoundsToEurosHttpGetOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromItalyLireToEurosHttpGetIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromItalyLireToEurosHttpGetOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromLuxembourgFrancsToEurosHttpGetIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromLuxembourgFrancsToEurosHttpGetOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromHollandGuildersToEurosHttpGetIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromHollandGuildersToEurosHttpGetOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromAustriaShillingsToEurosHttpGetIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromAustriaShillingsToEurosHttpGetOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromPortugalEscudosToEurosHttpGetIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromPortugalEscudosToEurosHttpGetOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromFinlandMarkkaaToEurosHttpGetIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromFinlandMarkkaaToEurosHttpGetOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromGreeceDrachmaeToEurosHttpGetIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromGreeceDrachmaeToEurosHttpGetOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromEurosToAmountHttpGetIn">
+    <part name="Amount" type="s:string" />
+    <part name="Currency" type="s:string" />
+  </message>
+  <message name="FromEurosToAmountHttpGetOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromEurosToBelgiumFrancsHttpGetIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromEurosToBelgiumFrancsHttpGetOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromEurosToGermanyDeutscheMarksHttpGetIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromEurosToGermanyDeutscheMarksHttpGetOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromEurosToSpainPesetasHttpGetIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromEurosToSpainPesetasHttpGetOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromEurosToFranceFrancsHttpGetIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromEurosToFranceFrancsHttpGetOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromEurosToIrelandPoundsHttpGetIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromEurosToIrelandPoundsHttpGetOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromEurosToItalyLireHttpGetIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromEurosToItalyLireHttpGetOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromEurosToLuxembourgFrancsHttpGetIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromEurosToLuxembourgFrancsHttpGetOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromEurosToHollandGuildersHttpGetIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromEurosToHollandGuildersHttpGetOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromEurosToAustriaShillingsHttpGetIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromEurosToAustriaShillingsHttpGetOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromEurosToPortugalEscudosHttpGetIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromEurosToPortugalEscudosHttpGetOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromEurosToFinlandMarkkaaHttpGetIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromEurosToFinlandMarkkaaHttpGetOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromEurosToGreeceDrachmaeHttpGetIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromEurosToGreeceDrachmaeHttpGetOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="CurrenciesToDataSetHttpGetIn" />
+  <message name="CurrenciesToDataSetHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="FromAmountToEurosHttpPostIn">
+    <part name="Amount" type="s:string" />
+    <part name="Currency" type="s:string" />
+  </message>
+  <message name="FromAmountToEurosHttpPostOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromBelgiumFrancsToEurosHttpPostIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromBelgiumFrancsToEurosHttpPostOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromGermanyDeutscheMarksToEurosHttpPostIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromGermanyDeutscheMarksToEurosHttpPostOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromFranceFrancsToEurosHttpPostIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromFranceFrancsToEurosHttpPostOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromSpainPesetasToEurosHttpPostIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromSpainPesetasToEurosHttpPostOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromIrelandPoundsToEurosHttpPostIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromIrelandPoundsToEurosHttpPostOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromItalyLireToEurosHttpPostIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromItalyLireToEurosHttpPostOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromLuxembourgFrancsToEurosHttpPostIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromLuxembourgFrancsToEurosHttpPostOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromHollandGuildersToEurosHttpPostIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromHollandGuildersToEurosHttpPostOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromAustriaShillingsToEurosHttpPostIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromAustriaShillingsToEurosHttpPostOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromPortugalEscudosToEurosHttpPostIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromPortugalEscudosToEurosHttpPostOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromFinlandMarkkaaToEurosHttpPostIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromFinlandMarkkaaToEurosHttpPostOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromGreeceDrachmaeToEurosHttpPostIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromGreeceDrachmaeToEurosHttpPostOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromEurosToAmountHttpPostIn">
+    <part name="Amount" type="s:string" />
+    <part name="Currency" type="s:string" />
+  </message>
+  <message name="FromEurosToAmountHttpPostOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromEurosToBelgiumFrancsHttpPostIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromEurosToBelgiumFrancsHttpPostOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromEurosToGermanyDeutscheMarksHttpPostIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromEurosToGermanyDeutscheMarksHttpPostOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromEurosToSpainPesetasHttpPostIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromEurosToSpainPesetasHttpPostOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromEurosToFranceFrancsHttpPostIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromEurosToFranceFrancsHttpPostOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromEurosToIrelandPoundsHttpPostIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromEurosToIrelandPoundsHttpPostOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromEurosToItalyLireHttpPostIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromEurosToItalyLireHttpPostOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromEurosToLuxembourgFrancsHttpPostIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromEurosToLuxembourgFrancsHttpPostOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromEurosToHollandGuildersHttpPostIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromEurosToHollandGuildersHttpPostOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromEurosToAustriaShillingsHttpPostIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromEurosToAustriaShillingsHttpPostOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromEurosToPortugalEscudosHttpPostIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromEurosToPortugalEscudosHttpPostOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromEurosToFinlandMarkkaaHttpPostIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromEurosToFinlandMarkkaaHttpPostOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="FromEurosToGreeceDrachmaeHttpPostIn">
+    <part name="Amount" type="s:string" />
+  </message>
+  <message name="FromEurosToGreeceDrachmaeHttpPostOut">
+    <part name="Body" element="s0:decimal" />
+  </message>
+  <message name="CurrenciesToDataSetHttpPostIn" />
+  <message name="CurrenciesToDataSetHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <portType name="EuroConvertSoap">
+    <operation name="FromAmountToEuros">
+      <documentation>this method converts from any of the currencies of te 12 countries belonging to the EU to Euros</documentation>
+      <input message="s0:FromAmountToEurosSoapIn" />
+      <output message="s0:FromAmountToEurosSoapOut" />
+    </operation>
+    <operation name="FromBelgiumFrancsToEuros">
+      <documentation>this method converts from Belgium Francs to euro, it admits a amount of francs and returns a amount of euros, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromBelgiumFrancsToEurosSoapIn" />
+      <output message="s0:FromBelgiumFrancsToEurosSoapOut" />
+    </operation>
+    <operation name="FromGermanyDeutscheMarksToEuros">
+      <documentation>this method converts from Germany Deutsche Marks to euro, it admits a amount of marks and returns a amount of euros, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromGermanyDeutscheMarksToEurosSoapIn" />
+      <output message="s0:FromGermanyDeutscheMarksToEurosSoapOut" />
+    </operation>
+    <operation name="FromFranceFrancsToEuros">
+      <documentation>this method converts from France Francs to euro, it admits a amount of francs and returns a amount of euros, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromFranceFrancsToEurosSoapIn" />
+      <output message="s0:FromFranceFrancsToEurosSoapOut" />
+    </operation>
+    <operation name="FromSpainPesetasToEuros">
+      <documentation>this method converts from Spain Pesetas to euro, it admits a amount of pesetas and returns a amount of euros, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromSpainPesetasToEurosSoapIn" />
+      <output message="s0:FromSpainPesetasToEurosSoapOut" />
+    </operation>
+    <operation name="FromIrelandPoundsToEuros">
+      <documentation>this method converts from Ireland Pounds to euro, it admits a amount of pounds and returns a amount of euros, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromIrelandPoundsToEurosSoapIn" />
+      <output message="s0:FromIrelandPoundsToEurosSoapOut" />
+    </operation>
+    <operation name="FromItalyLireToEuros">
+      <documentation>this method converts from Italy Lire to euro, it admits a amount of lires and returns a amount of euros, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromItalyLireToEurosSoapIn" />
+      <output message="s0:FromItalyLireToEurosSoapOut" />
+    </operation>
+    <operation name="FromLuxembourgFrancsToEuros">
+      <documentation>this method converts from Luxembourg Francs to euro, it admits a amount of francs and returns a amount of euros, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromLuxembourgFrancsToEurosSoapIn" />
+      <output message="s0:FromLuxembourgFrancsToEurosSoapOut" />
+    </operation>
+    <operation name="FromHollandGuildersToEuros">
+      <documentation>this method converts from Holland Guilders to euro, it admits a amount of guilders and returns a amount of euros, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromHollandGuildersToEurosSoapIn" />
+      <output message="s0:FromHollandGuildersToEurosSoapOut" />
+    </operation>
+    <operation name="FromAustriaShillingsToEuros">
+      <documentation>this method converts from Austria Shillings to euro, it admits a amount of shillings and returns a amount of euros, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromAustriaShillingsToEurosSoapIn" />
+      <output message="s0:FromAustriaShillingsToEurosSoapOut" />
+    </operation>
+    <operation name="FromPortugalEscudosToEuros">
+      <documentation>this method converts from Portugal Escudos to euro, it admits a amount of escudos and returns a amount of euros, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromPortugalEscudosToEurosSoapIn" />
+      <output message="s0:FromPortugalEscudosToEurosSoapOut" />
+    </operation>
+    <operation name="FromFinlandMarkkaaToEuros">
+      <documentation>this method converts from Finland Markkaa  to euro, it admits a amount of markkaa and returns a amount of euros, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromFinlandMarkkaaToEurosSoapIn" />
+      <output message="s0:FromFinlandMarkkaaToEurosSoapOut" />
+    </operation>
+    <operation name="FromGreeceDrachmaeToEuros">
+      <documentation>this method converts from Greece Drachmae  to euro, it admits a amount of drachmae and returns a amount of euros, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromGreeceDrachmaeToEurosSoapIn" />
+      <output message="s0:FromGreeceDrachmaeToEurosSoapOut" />
+    </operation>
+    <operation name="FromEurosToAmount">
+      <documentation>this method converts from Euros to any of the currencies of the 12 countries belonging to the EU</documentation>
+      <input message="s0:FromEurosToAmountSoapIn" />
+      <output message="s0:FromEurosToAmountSoapOut" />
+    </operation>
+    <operation name="FromEurosToBelgiumFrancs">
+      <documentation>this method converts from euro to Belgium Francs, it admits a amount of euros and returns a amount of francs, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromEurosToBelgiumFrancsSoapIn" />
+      <output message="s0:FromEurosToBelgiumFrancsSoapOut" />
+    </operation>
+    <operation name="FromEurosToGermanyDeutscheMarks">
+      <documentation>this method converts from euro to Germany Deutsche Marks, it admits a amount of euros and returns a amount of marks, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromEurosToGermanyDeutscheMarksSoapIn" />
+      <output message="s0:FromEurosToGermanyDeutscheMarksSoapOut" />
+    </operation>
+    <operation name="FromEurosToSpainPesetas">
+      <documentation>this method converts from euro to Spain Pesetas, it admits a amount of euros and returns a amount of pesetas, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromEurosToSpainPesetasSoapIn" />
+      <output message="s0:FromEurosToSpainPesetasSoapOut" />
+    </operation>
+    <operation name="FromEurosToFranceFrancs">
+      <documentation>this method converts from euro to France Francs, it admits a amount of euros and returns a amount of francs, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromEurosToFranceFrancsSoapIn" />
+      <output message="s0:FromEurosToFranceFrancsSoapOut" />
+    </operation>
+    <operation name="FromEurosToIrelandPounds">
+      <documentation>this method converts from euro to Ireland Pounds, it admits a amount of euros and returns a amount of pounds, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromEurosToIrelandPoundsSoapIn" />
+      <output message="s0:FromEurosToIrelandPoundsSoapOut" />
+    </operation>
+    <operation name="FromEurosToItalyLire">
+      <documentation>this method converts from euro to Italy Lire, it admits a amount of euros and returns a amount of lires, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromEurosToItalyLireSoapIn" />
+      <output message="s0:FromEurosToItalyLireSoapOut" />
+    </operation>
+    <operation name="FromEurosToLuxembourgFrancs">
+      <documentation>this method converts from euro to Luxembourg Francs, it admits a amount of euros and returns a amount of francs, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromEurosToLuxembourgFrancsSoapIn" />
+      <output message="s0:FromEurosToLuxembourgFrancsSoapOut" />
+    </operation>
+    <operation name="FromEurosToHollandGuilders">
+      <documentation>this method converts from euro to Holland Guilders, it admits a amount of euros and returns a amount of guilders, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromEurosToHollandGuildersSoapIn" />
+      <output message="s0:FromEurosToHollandGuildersSoapOut" />
+    </operation>
+    <operation name="FromEurosToAustriaShillings">
+      <documentation>this method converts from euro to Austria Shillings, it admits a amount of euros and returns a amount of shillings, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromEurosToAustriaShillingsSoapIn" />
+      <output message="s0:FromEurosToAustriaShillingsSoapOut" />
+    </operation>
+    <operation name="FromEurosToPortugalEscudos">
+      <documentation>this method converts from euro to Portugal Escudos, it admits a amount of euros and returns a amount of escudos, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromEurosToPortugalEscudosSoapIn" />
+      <output message="s0:FromEurosToPortugalEscudosSoapOut" />
+    </operation>
+    <operation name="FromEurosToFinlandMarkkaa">
+      <documentation>this method converts from euro to Finland Mark, it admits a amount of euros and returns a amount of markkaa, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromEurosToFinlandMarkkaaSoapIn" />
+      <output message="s0:FromEurosToFinlandMarkkaaSoapOut" />
+    </operation>
+    <operation name="FromEurosToGreeceDrachmae">
+      <documentation>this method converts from euro to Greece Drachmae, it admits a amount of euros and returns a amount of drachmae, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromEurosToGreeceDrachmaeSoapIn" />
+      <output message="s0:FromEurosToGreeceDrachmaeSoapOut" />
+    </operation>
+    <operation name="CurrenciesToDataSet">
+      <documentation>this method returns a dataset containing all the abailable currency codes for services from FromEurosToAmount, FromAmountToEuros</documentation>
+      <input message="s0:CurrenciesToDataSetSoapIn" />
+      <output message="s0:CurrenciesToDataSetSoapOut" />
+    </operation>
+  </portType>
+  <portType name="EuroConvertHttpGet">
+    <operation name="FromAmountToEuros">
+      <documentation>this method converts from any of the currencies of te 12 countries belonging to the EU to Euros</documentation>
+      <input message="s0:FromAmountToEurosHttpGetIn" />
+      <output message="s0:FromAmountToEurosHttpGetOut" />
+    </operation>
+    <operation name="FromBelgiumFrancsToEuros">
+      <documentation>this method converts from Belgium Francs to euro, it admits a amount of francs and returns a amount of euros, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromBelgiumFrancsToEurosHttpGetIn" />
+      <output message="s0:FromBelgiumFrancsToEurosHttpGetOut" />
+    </operation>
+    <operation name="FromGermanyDeutscheMarksToEuros">
+      <documentation>this method converts from Germany Deutsche Marks to euro, it admits a amount of marks and returns a amount of euros, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromGermanyDeutscheMarksToEurosHttpGetIn" />
+      <output message="s0:FromGermanyDeutscheMarksToEurosHttpGetOut" />
+    </operation>
+    <operation name="FromFranceFrancsToEuros">
+      <documentation>this method converts from France Francs to euro, it admits a amount of francs and returns a amount of euros, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromFranceFrancsToEurosHttpGetIn" />
+      <output message="s0:FromFranceFrancsToEurosHttpGetOut" />
+    </operation>
+    <operation name="FromSpainPesetasToEuros">
+      <documentation>this method converts from Spain Pesetas to euro, it admits a amount of pesetas and returns a amount of euros, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromSpainPesetasToEurosHttpGetIn" />
+      <output message="s0:FromSpainPesetasToEurosHttpGetOut" />
+    </operation>
+    <operation name="FromIrelandPoundsToEuros">
+      <documentation>this method converts from Ireland Pounds to euro, it admits a amount of pounds and returns a amount of euros, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromIrelandPoundsToEurosHttpGetIn" />
+      <output message="s0:FromIrelandPoundsToEurosHttpGetOut" />
+    </operation>
+    <operation name="FromItalyLireToEuros">
+      <documentation>this method converts from Italy Lire to euro, it admits a amount of lires and returns a amount of euros, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromItalyLireToEurosHttpGetIn" />
+      <output message="s0:FromItalyLireToEurosHttpGetOut" />
+    </operation>
+    <operation name="FromLuxembourgFrancsToEuros">
+      <documentation>this method converts from Luxembourg Francs to euro, it admits a amount of francs and returns a amount of euros, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromLuxembourgFrancsToEurosHttpGetIn" />
+      <output message="s0:FromLuxembourgFrancsToEurosHttpGetOut" />
+    </operation>
+    <operation name="FromHollandGuildersToEuros">
+      <documentation>this method converts from Holland Guilders to euro, it admits a amount of guilders and returns a amount of euros, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromHollandGuildersToEurosHttpGetIn" />
+      <output message="s0:FromHollandGuildersToEurosHttpGetOut" />
+    </operation>
+    <operation name="FromAustriaShillingsToEuros">
+      <documentation>this method converts from Austria Shillings to euro, it admits a amount of shillings and returns a amount of euros, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromAustriaShillingsToEurosHttpGetIn" />
+      <output message="s0:FromAustriaShillingsToEurosHttpGetOut" />
+    </operation>
+    <operation name="FromPortugalEscudosToEuros">
+      <documentation>this method converts from Portugal Escudos to euro, it admits a amount of escudos and returns a amount of euros, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromPortugalEscudosToEurosHttpGetIn" />
+      <output message="s0:FromPortugalEscudosToEurosHttpGetOut" />
+    </operation>
+    <operation name="FromFinlandMarkkaaToEuros">
+      <documentation>this method converts from Finland Markkaa  to euro, it admits a amount of markkaa and returns a amount of euros, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromFinlandMarkkaaToEurosHttpGetIn" />
+      <output message="s0:FromFinlandMarkkaaToEurosHttpGetOut" />
+    </operation>
+    <operation name="FromGreeceDrachmaeToEuros">
+      <documentation>this method converts from Greece Drachmae  to euro, it admits a amount of drachmae and returns a amount of euros, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromGreeceDrachmaeToEurosHttpGetIn" />
+      <output message="s0:FromGreeceDrachmaeToEurosHttpGetOut" />
+    </operation>
+    <operation name="FromEurosToAmount">
+      <documentation>this method converts from Euros to any of the currencies of the 12 countries belonging to the EU</documentation>
+      <input message="s0:FromEurosToAmountHttpGetIn" />
+      <output message="s0:FromEurosToAmountHttpGetOut" />
+    </operation>
+    <operation name="FromEurosToBelgiumFrancs">
+      <documentation>this method converts from euro to Belgium Francs, it admits a amount of euros and returns a amount of francs, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromEurosToBelgiumFrancsHttpGetIn" />
+      <output message="s0:FromEurosToBelgiumFrancsHttpGetOut" />
+    </operation>
+    <operation name="FromEurosToGermanyDeutscheMarks">
+      <documentation>this method converts from euro to Germany Deutsche Marks, it admits a amount of euros and returns a amount of marks, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromEurosToGermanyDeutscheMarksHttpGetIn" />
+      <output message="s0:FromEurosToGermanyDeutscheMarksHttpGetOut" />
+    </operation>
+    <operation name="FromEurosToSpainPesetas">
+      <documentation>this method converts from euro to Spain Pesetas, it admits a amount of euros and returns a amount of pesetas, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromEurosToSpainPesetasHttpGetIn" />
+      <output message="s0:FromEurosToSpainPesetasHttpGetOut" />
+    </operation>
+    <operation name="FromEurosToFranceFrancs">
+      <documentation>this method converts from euro to France Francs, it admits a amount of euros and returns a amount of francs, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromEurosToFranceFrancsHttpGetIn" />
+      <output message="s0:FromEurosToFranceFrancsHttpGetOut" />
+    </operation>
+    <operation name="FromEurosToIrelandPounds">
+      <documentation>this method converts from euro to Ireland Pounds, it admits a amount of euros and returns a amount of pounds, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromEurosToIrelandPoundsHttpGetIn" />
+      <output message="s0:FromEurosToIrelandPoundsHttpGetOut" />
+    </operation>
+    <operation name="FromEurosToItalyLire">
+      <documentation>this method converts from euro to Italy Lire, it admits a amount of euros and returns a amount of lires, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromEurosToItalyLireHttpGetIn" />
+      <output message="s0:FromEurosToItalyLireHttpGetOut" />
+    </operation>
+    <operation name="FromEurosToLuxembourgFrancs">
+      <documentation>this method converts from euro to Luxembourg Francs, it admits a amount of euros and returns a amount of francs, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromEurosToLuxembourgFrancsHttpGetIn" />
+      <output message="s0:FromEurosToLuxembourgFrancsHttpGetOut" />
+    </operation>
+    <operation name="FromEurosToHollandGuilders">
+      <documentation>this method converts from euro to Holland Guilders, it admits a amount of euros and returns a amount of guilders, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromEurosToHollandGuildersHttpGetIn" />
+      <output message="s0:FromEurosToHollandGuildersHttpGetOut" />
+    </operation>
+    <operation name="FromEurosToAustriaShillings">
+      <documentation>this method converts from euro to Austria Shillings, it admits a amount of euros and returns a amount of shillings, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromEurosToAustriaShillingsHttpGetIn" />
+      <output message="s0:FromEurosToAustriaShillingsHttpGetOut" />
+    </operation>
+    <operation name="FromEurosToPortugalEscudos">
+      <documentation>this method converts from euro to Portugal Escudos, it admits a amount of euros and returns a amount of escudos, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromEurosToPortugalEscudosHttpGetIn" />
+      <output message="s0:FromEurosToPortugalEscudosHttpGetOut" />
+    </operation>
+    <operation name="FromEurosToFinlandMarkkaa">
+      <documentation>this method converts from euro to Finland Mark, it admits a amount of euros and returns a amount of markkaa, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromEurosToFinlandMarkkaaHttpGetIn" />
+      <output message="s0:FromEurosToFinlandMarkkaaHttpGetOut" />
+    </operation>
+    <operation name="FromEurosToGreeceDrachmae">
+      <documentation>this method converts from euro to Greece Drachmae, it admits a amount of euros and returns a amount of drachmae, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromEurosToGreeceDrachmaeHttpGetIn" />
+      <output message="s0:FromEurosToGreeceDrachmaeHttpGetOut" />
+    </operation>
+    <operation name="CurrenciesToDataSet">
+      <documentation>this method returns a dataset containing all the abailable currency codes for services from FromEurosToAmount, FromAmountToEuros</documentation>
+      <input message="s0:CurrenciesToDataSetHttpGetIn" />
+      <output message="s0:CurrenciesToDataSetHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="EuroConvertHttpPost">
+    <operation name="FromAmountToEuros">
+      <documentation>this method converts from any of the currencies of te 12 countries belonging to the EU to Euros</documentation>
+      <input message="s0:FromAmountToEurosHttpPostIn" />
+      <output message="s0:FromAmountToEurosHttpPostOut" />
+    </operation>
+    <operation name="FromBelgiumFrancsToEuros">
+      <documentation>this method converts from Belgium Francs to euro, it admits a amount of francs and returns a amount of euros, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromBelgiumFrancsToEurosHttpPostIn" />
+      <output message="s0:FromBelgiumFrancsToEurosHttpPostOut" />
+    </operation>
+    <operation name="FromGermanyDeutscheMarksToEuros">
+      <documentation>this method converts from Germany Deutsche Marks to euro, it admits a amount of marks and returns a amount of euros, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromGermanyDeutscheMarksToEurosHttpPostIn" />
+      <output message="s0:FromGermanyDeutscheMarksToEurosHttpPostOut" />
+    </operation>
+    <operation name="FromFranceFrancsToEuros">
+      <documentation>this method converts from France Francs to euro, it admits a amount of francs and returns a amount of euros, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromFranceFrancsToEurosHttpPostIn" />
+      <output message="s0:FromFranceFrancsToEurosHttpPostOut" />
+    </operation>
+    <operation name="FromSpainPesetasToEuros">
+      <documentation>this method converts from Spain Pesetas to euro, it admits a amount of pesetas and returns a amount of euros, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromSpainPesetasToEurosHttpPostIn" />
+      <output message="s0:FromSpainPesetasToEurosHttpPostOut" />
+    </operation>
+    <operation name="FromIrelandPoundsToEuros">
+      <documentation>this method converts from Ireland Pounds to euro, it admits a amount of pounds and returns a amount of euros, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromIrelandPoundsToEurosHttpPostIn" />
+      <output message="s0:FromIrelandPoundsToEurosHttpPostOut" />
+    </operation>
+    <operation name="FromItalyLireToEuros">
+      <documentation>this method converts from Italy Lire to euro, it admits a amount of lires and returns a amount of euros, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromItalyLireToEurosHttpPostIn" />
+      <output message="s0:FromItalyLireToEurosHttpPostOut" />
+    </operation>
+    <operation name="FromLuxembourgFrancsToEuros">
+      <documentation>this method converts from Luxembourg Francs to euro, it admits a amount of francs and returns a amount of euros, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromLuxembourgFrancsToEurosHttpPostIn" />
+      <output message="s0:FromLuxembourgFrancsToEurosHttpPostOut" />
+    </operation>
+    <operation name="FromHollandGuildersToEuros">
+      <documentation>this method converts from Holland Guilders to euro, it admits a amount of guilders and returns a amount of euros, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromHollandGuildersToEurosHttpPostIn" />
+      <output message="s0:FromHollandGuildersToEurosHttpPostOut" />
+    </operation>
+    <operation name="FromAustriaShillingsToEuros">
+      <documentation>this method converts from Austria Shillings to euro, it admits a amount of shillings and returns a amount of euros, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromAustriaShillingsToEurosHttpPostIn" />
+      <output message="s0:FromAustriaShillingsToEurosHttpPostOut" />
+    </operation>
+    <operation name="FromPortugalEscudosToEuros">
+      <documentation>this method converts from Portugal Escudos to euro, it admits a amount of escudos and returns a amount of euros, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromPortugalEscudosToEurosHttpPostIn" />
+      <output message="s0:FromPortugalEscudosToEurosHttpPostOut" />
+    </operation>
+    <operation name="FromFinlandMarkkaaToEuros">
+      <documentation>this method converts from Finland Markkaa  to euro, it admits a amount of markkaa and returns a amount of euros, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromFinlandMarkkaaToEurosHttpPostIn" />
+      <output message="s0:FromFinlandMarkkaaToEurosHttpPostOut" />
+    </operation>
+    <operation name="FromGreeceDrachmaeToEuros">
+      <documentation>this method converts from Greece Drachmae  to euro, it admits a amount of drachmae and returns a amount of euros, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromGreeceDrachmaeToEurosHttpPostIn" />
+      <output message="s0:FromGreeceDrachmaeToEurosHttpPostOut" />
+    </operation>
+    <operation name="FromEurosToAmount">
+      <documentation>this method converts from Euros to any of the currencies of the 12 countries belonging to the EU</documentation>
+      <input message="s0:FromEurosToAmountHttpPostIn" />
+      <output message="s0:FromEurosToAmountHttpPostOut" />
+    </operation>
+    <operation name="FromEurosToBelgiumFrancs">
+      <documentation>this method converts from euro to Belgium Francs, it admits a amount of euros and returns a amount of francs, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromEurosToBelgiumFrancsHttpPostIn" />
+      <output message="s0:FromEurosToBelgiumFrancsHttpPostOut" />
+    </operation>
+    <operation name="FromEurosToGermanyDeutscheMarks">
+      <documentation>this method converts from euro to Germany Deutsche Marks, it admits a amount of euros and returns a amount of marks, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromEurosToGermanyDeutscheMarksHttpPostIn" />
+      <output message="s0:FromEurosToGermanyDeutscheMarksHttpPostOut" />
+    </operation>
+    <operation name="FromEurosToSpainPesetas">
+      <documentation>this method converts from euro to Spain Pesetas, it admits a amount of euros and returns a amount of pesetas, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromEurosToSpainPesetasHttpPostIn" />
+      <output message="s0:FromEurosToSpainPesetasHttpPostOut" />
+    </operation>
+    <operation name="FromEurosToFranceFrancs">
+      <documentation>this method converts from euro to France Francs, it admits a amount of euros and returns a amount of francs, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromEurosToFranceFrancsHttpPostIn" />
+      <output message="s0:FromEurosToFranceFrancsHttpPostOut" />
+    </operation>
+    <operation name="FromEurosToIrelandPounds">
+      <documentation>this method converts from euro to Ireland Pounds, it admits a amount of euros and returns a amount of pounds, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromEurosToIrelandPoundsHttpPostIn" />
+      <output message="s0:FromEurosToIrelandPoundsHttpPostOut" />
+    </operation>
+    <operation name="FromEurosToItalyLire">
+      <documentation>this method converts from euro to Italy Lire, it admits a amount of euros and returns a amount of lires, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromEurosToItalyLireHttpPostIn" />
+      <output message="s0:FromEurosToItalyLireHttpPostOut" />
+    </operation>
+    <operation name="FromEurosToLuxembourgFrancs">
+      <documentation>this method converts from euro to Luxembourg Francs, it admits a amount of euros and returns a amount of francs, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromEurosToLuxembourgFrancsHttpPostIn" />
+      <output message="s0:FromEurosToLuxembourgFrancsHttpPostOut" />
+    </operation>
+    <operation name="FromEurosToHollandGuilders">
+      <documentation>this method converts from euro to Holland Guilders, it admits a amount of euros and returns a amount of guilders, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromEurosToHollandGuildersHttpPostIn" />
+      <output message="s0:FromEurosToHollandGuildersHttpPostOut" />
+    </operation>
+    <operation name="FromEurosToAustriaShillings">
+      <documentation>this method converts from euro to Austria Shillings, it admits a amount of euros and returns a amount of shillings, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromEurosToAustriaShillingsHttpPostIn" />
+      <output message="s0:FromEurosToAustriaShillingsHttpPostOut" />
+    </operation>
+    <operation name="FromEurosToPortugalEscudos">
+      <documentation>this method converts from euro to Portugal Escudos, it admits a amount of euros and returns a amount of escudos, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromEurosToPortugalEscudosHttpPostIn" />
+      <output message="s0:FromEurosToPortugalEscudosHttpPostOut" />
+    </operation>
+    <operation name="FromEurosToFinlandMarkkaa">
+      <documentation>this method converts from euro to Finland Mark, it admits a amount of euros and returns a amount of markkaa, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromEurosToFinlandMarkkaaHttpPostIn" />
+      <output message="s0:FromEurosToFinlandMarkkaaHttpPostOut" />
+    </operation>
+    <operation name="FromEurosToGreeceDrachmae">
+      <documentation>this method converts from euro to Greece Drachmae, it admits a amount of euros and returns a amount of drachmae, yo can pass the amount with 3 decimal positions</documentation>
+      <input message="s0:FromEurosToGreeceDrachmaeHttpPostIn" />
+      <output message="s0:FromEurosToGreeceDrachmaeHttpPostOut" />
+    </operation>
+    <operation name="CurrenciesToDataSet">
+      <documentation>this method returns a dataset containing all the abailable currency codes for services from FromEurosToAmount, FromAmountToEuros</documentation>
+      <input message="s0:CurrenciesToDataSetHttpPostIn" />
+      <output message="s0:CurrenciesToDataSetHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="EuroConvertSoap" type="s0:EuroConvertSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="FromAmountToEuros">
+      <soap:operation soapAction="http://www.xml-webservices.net/services/conversions/FromAmountToEuros" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FromBelgiumFrancsToEuros">
+      <soap:operation soapAction="http://www.xml-webservices.net/services/conversions/FromBelgiumFrancsToEuros" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FromGermanyDeutscheMarksToEuros">
+      <soap:operation soapAction="http://www.xml-webservices.net/services/conversions/FromGermanyDeutscheMarksToEuros" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FromFranceFrancsToEuros">
+      <soap:operation soapAction="http://www.xml-webservices.net/services/conversions/FromFranceFrancsToEuros" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FromSpainPesetasToEuros">
+      <soap:operation soapAction="http://www.xml-webservices.net/services/conversions/FromSpainPesetasToEuros" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FromIrelandPoundsToEuros">
+      <soap:operation soapAction="http://www.xml-webservices.net/services/conversions/FromIrelandPoundsToEuros" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FromItalyLireToEuros">
+      <soap:operation soapAction="http://www.xml-webservices.net/services/conversions/FromItalyLireToEuros" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FromLuxembourgFrancsToEuros">
+      <soap:operation soapAction="http://www.xml-webservices.net/services/conversions/FromLuxembourgFrancsToEuros" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FromHollandGuildersToEuros">
+      <soap:operation soapAction="http://www.xml-webservices.net/services/conversions/FromHollandGuildersToEuros" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FromAustriaShillingsToEuros">
+      <soap:operation soapAction="http://www.xml-webservices.net/services/conversions/FromAustriaShillingsToEuros" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FromPortugalEscudosToEuros">
+      <soap:operation soapAction="http://www.xml-webservices.net/services/conversions/FromPortugalEscudosToEuros" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FromFinlandMarkkaaToEuros">
+      <soap:operation soapAction="http://www.xml-webservices.net/services/conversions/FromFinlandMarkkaaToEuros" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FromGreeceDrachmaeToEuros">
+      <soap:operation soapAction="http://www.xml-webservices.net/services/conversions/FromGreeceDrachmaeToEuros" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FromEurosToAmount">
+      <soap:operation soapAction="http://www.xml-webservices.net/services/conversions/FromEurosToAmount" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FromEurosToBelgiumFrancs">
+      <soap:operation soapAction="http://www.xml-webservices.net/services/conversions/FromEurosToBelgiumFrancs" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FromEurosToGermanyDeutscheMarks">
+      <soap:operation soapAction="http://www.xml-webservices.net/services/conversions/FromEurosToGermanyDeutscheMarks" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FromEurosToSpainPesetas">
+      <soap:operation soapAction="http://www.xml-webservices.net/services/conversions/FromEurosToSpainPesetas" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FromEurosToFranceFrancs">
+      <soap:operation soapAction="http://www.xml-webservices.net/services/conversions/FromEurosToFranceFrancs" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FromEurosToIrelandPounds">
+      <soap:operation soapAction="http://www.xml-webservices.net/services/conversions/FromEurosToIrelandPounds" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FromEurosToItalyLire">
+      <soap:operation soapAction="http://www.xml-webservices.net/services/conversions/FromEurosToItalyLire" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FromEurosToLuxembourgFrancs">
+      <soap:operation soapAction="http://www.xml-webservices.net/services/conversions/FromEurosToLuxembourgFrancs" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FromEurosToHollandGuilders">
+      <soap:operation soapAction="http://www.xml-webservices.net/services/conversions/FromEurosToHollandGuilders" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FromEurosToAustriaShillings">
+      <soap:operation soapAction="http://www.xml-webservices.net/services/conversions/FromEurosToAustriaShillings" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FromEurosToPortugalEscudos">
+      <soap:operation soapAction="http://www.xml-webservices.net/services/conversions/FromEurosToPortugalEscudos" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FromEurosToFinlandMarkkaa">
+      <soap:operation soapAction="http://www.xml-webservices.net/services/conversions/FromEurosToFinlandMarkkaa" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="FromEurosToGreeceDrachmae">
+      <soap:operation soapAction="http://www.xml-webservices.net/services/conversions/FromEurosToGreeceDrachmae" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CurrenciesToDataSet">
+      <soap:operation soapAction="http://www.xml-webservices.net/services/conversions/CurrenciesToDataSet" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="EuroConvertHttpGet" type="s0:EuroConvertHttpGet">
+    <http:binding verb="GET" />
+    <operation name="FromAmountToEuros">
+      <http:operation location="/FromAmountToEuros" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromBelgiumFrancsToEuros">
+      <http:operation location="/FromBelgiumFrancsToEuros" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromGermanyDeutscheMarksToEuros">
+      <http:operation location="/FromGermanyDeutscheMarksToEuros" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromFranceFrancsToEuros">
+      <http:operation location="/FromFranceFrancsToEuros" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromSpainPesetasToEuros">
+      <http:operation location="/FromSpainPesetasToEuros" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromIrelandPoundsToEuros">
+      <http:operation location="/FromIrelandPoundsToEuros" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromItalyLireToEuros">
+      <http:operation location="/FromItalyLireToEuros" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromLuxembourgFrancsToEuros">
+      <http:operation location="/FromLuxembourgFrancsToEuros" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromHollandGuildersToEuros">
+      <http:operation location="/FromHollandGuildersToEuros" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromAustriaShillingsToEuros">
+      <http:operation location="/FromAustriaShillingsToEuros" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromPortugalEscudosToEuros">
+      <http:operation location="/FromPortugalEscudosToEuros" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromFinlandMarkkaaToEuros">
+      <http:operation location="/FromFinlandMarkkaaToEuros" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromGreeceDrachmaeToEuros">
+      <http:operation location="/FromGreeceDrachmaeToEuros" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromEurosToAmount">
+      <http:operation location="/FromEurosToAmount" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromEurosToBelgiumFrancs">
+      <http:operation location="/FromEurosToBelgiumFrancs" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromEurosToGermanyDeutscheMarks">
+      <http:operation location="/FromEurosToGermanyDeutscheMarks" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromEurosToSpainPesetas">
+      <http:operation location="/FromEurosToSpainPesetas" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromEurosToFranceFrancs">
+      <http:operation location="/FromEurosToFranceFrancs" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromEurosToIrelandPounds">
+      <http:operation location="/FromEurosToIrelandPounds" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromEurosToItalyLire">
+      <http:operation location="/FromEurosToItalyLire" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromEurosToLuxembourgFrancs">
+      <http:operation location="/FromEurosToLuxembourgFrancs" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromEurosToHollandGuilders">
+      <http:operation location="/FromEurosToHollandGuilders" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromEurosToAustriaShillings">
+      <http:operation location="/FromEurosToAustriaShillings" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromEurosToPortugalEscudos">
+      <http:operation location="/FromEurosToPortugalEscudos" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromEurosToFinlandMarkkaa">
+      <http:operation location="/FromEurosToFinlandMarkkaa" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromEurosToGreeceDrachmae">
+      <http:operation location="/FromEurosToGreeceDrachmae" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CurrenciesToDataSet">
+      <http:operation location="/CurrenciesToDataSet" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="EuroConvertHttpPost" type="s0:EuroConvertHttpPost">
+    <http:binding verb="POST" />
+    <operation name="FromAmountToEuros">
+      <http:operation location="/FromAmountToEuros" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromBelgiumFrancsToEuros">
+      <http:operation location="/FromBelgiumFrancsToEuros" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromGermanyDeutscheMarksToEuros">
+      <http:operation location="/FromGermanyDeutscheMarksToEuros" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromFranceFrancsToEuros">
+      <http:operation location="/FromFranceFrancsToEuros" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromSpainPesetasToEuros">
+      <http:operation location="/FromSpainPesetasToEuros" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromIrelandPoundsToEuros">
+      <http:operation location="/FromIrelandPoundsToEuros" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromItalyLireToEuros">
+      <http:operation location="/FromItalyLireToEuros" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromLuxembourgFrancsToEuros">
+      <http:operation location="/FromLuxembourgFrancsToEuros" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromHollandGuildersToEuros">
+      <http:operation location="/FromHollandGuildersToEuros" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromAustriaShillingsToEuros">
+      <http:operation location="/FromAustriaShillingsToEuros" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromPortugalEscudosToEuros">
+      <http:operation location="/FromPortugalEscudosToEuros" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromFinlandMarkkaaToEuros">
+      <http:operation location="/FromFinlandMarkkaaToEuros" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromGreeceDrachmaeToEuros">
+      <http:operation location="/FromGreeceDrachmaeToEuros" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromEurosToAmount">
+      <http:operation location="/FromEurosToAmount" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromEurosToBelgiumFrancs">
+      <http:operation location="/FromEurosToBelgiumFrancs" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromEurosToGermanyDeutscheMarks">
+      <http:operation location="/FromEurosToGermanyDeutscheMarks" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromEurosToSpainPesetas">
+      <http:operation location="/FromEurosToSpainPesetas" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromEurosToFranceFrancs">
+      <http:operation location="/FromEurosToFranceFrancs" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromEurosToIrelandPounds">
+      <http:operation location="/FromEurosToIrelandPounds" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromEurosToItalyLire">
+      <http:operation location="/FromEurosToItalyLire" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromEurosToLuxembourgFrancs">
+      <http:operation location="/FromEurosToLuxembourgFrancs" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromEurosToHollandGuilders">
+      <http:operation location="/FromEurosToHollandGuilders" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromEurosToAustriaShillings">
+      <http:operation location="/FromEurosToAustriaShillings" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromEurosToPortugalEscudos">
+      <http:operation location="/FromEurosToPortugalEscudos" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromEurosToFinlandMarkkaa">
+      <http:operation location="/FromEurosToFinlandMarkkaa" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="FromEurosToGreeceDrachmae">
+      <http:operation location="/FromEurosToGreeceDrachmae" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CurrenciesToDataSet">
+      <http:operation location="/CurrenciesToDataSet" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="EuroConvert">
+    <documentation>This Web Service converts to and from any currency within the UE to Euro €. these services calculate using the oficial exisiting exchange rates, there is no rounding plan for the results</documentation>
+    <port name="EuroConvertSoap" binding="s0:EuroConvertSoap">
+      <soap:address location="http://www.xml-webservices.net/services/conversions/euro_convert/euro_conver.asmx" />
+    </port>
+    <port name="EuroConvertHttpGet" binding="s0:EuroConvertHttpGet">
+      <http:address location="http://www.xml-webservices.net/services/conversions/euro_convert/euro_conver.asmx" />
+    </port>
+    <port name="EuroConvertHttpPost" binding="s0:EuroConvertHttpPost">
+      <http:address location="http://www.xml-webservices.net/services/conversions/euro_convert/euro_conver.asmx" />
+    </port>
+  </service>
+</definitions>

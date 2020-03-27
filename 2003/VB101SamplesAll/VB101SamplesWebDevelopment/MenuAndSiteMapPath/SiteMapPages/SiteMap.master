@@ -1,0 +1,61 @@
+<%@ Master Language="VB" CodeFile="SiteMap.master.vb" Inherits="SiteMap_master" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title>Adding a Breadcrumbs with a SiteMapPath Control</title>
+    <LINK rel="stylesheet" type="text/css" href="../styles.css">  
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>   
+        <table border="0" cellpadding="10" cellspacing="5">
+            <tr>
+                <td valign="top">&nbsp;</td>
+                <td valign="top">
+                    <!--
+                    Unlike the Menu control, the SiteMapPath control does not have a datasourceid attribute
+                    to use when needing to bind to a SiteMapDataSource control. That's because by default,
+                    the SiteMapPath control uses the default SiteMapProvider in ASP.NET to use the contents
+                    of the web.sitemap file in its display.
+                    -->
+                    <asp:sitemappath id="SiteMapPath1" runat="server" pathseparator=" : " font-names="Verdana" font-size=".9em">
+                        <pathseparatorstyle font-bold="True" forecolor="#507CD1"></pathseparatorstyle>
+                        <currentnodestyle forecolor="#333333"></currentnodestyle>
+                        <nodestyle font-bold="True" forecolor="#284E98"></nodestyle>
+                        <rootnodestyle font-bold="True" forecolor="#507CD1"></rootnodestyle>
+                    </asp:sitemappath>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top" rowspan="2">
+                    <asp:treeview id="TreeView1" runat="server" datasourceid="SiteMapDataSource1" nodeindent="0" showexpandcollapse="False" imageset="Msdn">
+                        <selectednodestyle backcolor="White" verticalpadding="1" bordercolor="#888888" borderstyle="Solid" borderwidth="1px" horizontalpadding="3"></selectednodestyle>
+                        <nodestyle verticalpadding="2" font-names="Verdana" font-size="8pt" nodespacing="1" horizontalpadding="5" forecolor="Black"></nodestyle>
+                        <hovernodestyle backcolor="CornflowerBlue" ForeColor="white" bordercolor="#888888" borderstyle="Solid" borderwidth="1px" font-underline="True"></hovernodestyle>
+                    </asp:treeview>
+                    
+                    <!-- This SiteMapDataSource control is for the above TreeView, not the SiteMapPath -->
+                    <asp:sitemapdatasource id="SiteMapDataSource1" runat="server" />
+                </td>
+                <td valign="top" class="body">
+                    <h1>Adding a Breadcrumbs with a SiteMapPath Control</h1>
+                
+                    <asp:contentplaceholder id="Content" runat="server">
+                    </asp:contentplaceholder>
+                    
+                    <p>Notice the breadcrumb trail above. Since the SiteMapPath control is based on the
+                    contents of the web.sitemap file by default, it can render the nodes of the breadcrumb
+                    trail dynamically. This allows users to very easily understand where they are within
+                    your site, and helps them get back to where they started more quickly.</p>
+                    
+                    <p>NOTE: The SiteMapPath control for this part of the sample is contained in the
+                    SiteMap.master file in the SiteMapPages folder.</p>
+                </td>
+             </tr>
+        </table>
+        </div>
+    </form>
+</body>
+</html>

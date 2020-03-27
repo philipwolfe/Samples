@@ -1,0 +1,148 @@
+<?xml version="1.0"?>
+<!-- ATL Server generated Web Service Description -->
+<definitions 
+	xmlns:s="http://www.w3.org/2001/XMLSchema" 
+	xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" 
+	xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" 
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+	xmlns:s0="urn:MailService" 
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:atls="http://tempuri.org/vc/atl/server/"
+	targetNamespace="urn:MailService" 
+	xmlns="http://schemas.xmlsoap.org/wsdl/"
+>
+	<types>
+		<s:schema targetNamespace="urn:MailService" attributeFormDefault="qualified" elementFormDefault="qualified">
+			<s:complexType name="GetMessages_msgData_Array">
+				<s:complexContent>
+					<s:restriction base="soapenc:Array">
+						<s:attribute ref="soapenc:arrayType" wsdl:arrayType="s0:_MSGDATA[]"/>
+					</s:restriction>
+				</s:complexContent>
+			</s:complexType>
+			<s:complexType name="_MSGDATA">
+				<s:sequence>
+					<s:element name="m_bstrFrom" type="s:string"/>
+					<s:element name="m_DateSent" type="s:double"/>
+					<s:element name="m_bstrSubject" type="s:string"/>
+					<s:element name="m_lMessageID" type="s:int"/>
+					<s:element name="m_bMarkedRead" type="s:int"/>
+				</s:sequence>
+			</s:complexType>
+		</s:schema>
+	</types>
+	<message name="LoginIn">
+		<part name="bstrLogin" type="s:string"/>
+		<part name="bstrPassword" type="s:string"/>
+	</message>
+	<message name="LoginOut">
+		<part name="lUserID" type="s:int"/>
+		<part name="bstrSessionID" type="s:string"/>
+	</message>
+	<message name="GetMessageCountIn">
+		<part name="lUserID" type="s:int"/>
+		<part name="bstrSessionID" type="s:string"/>
+	</message>
+	<message name="GetMessageCountOut">
+		<part name="lMessageCount" type="s:int"/>
+	</message>
+	<message name="GetUnreadCountIn">
+		<part name="lUserID" type="s:int"/>
+		<part name="bstrSessionID" type="s:string"/>
+	</message>
+	<message name="GetUnreadCountOut">
+		<part name="lUnreadCount" type="s:int"/>
+	</message>
+	<message name="GetMessagesIn">
+		<part name="lUserID" type="s:int"/>
+		<part name="bstrSessionID" type="s:string"/>
+		<part name="lMax" type="s:int"/>
+	</message>
+	<message name="GetMessagesOut">
+		<part name="msgData" type="s0:GetMessages_msgData_Array"/>
+	</message>
+	<message name="GetLaunchURLIn">
+		<part name="lUserID" type="s:int"/>
+		<part name="bstrSessionID" type="s:string"/>
+		<part name="lMessageID" type="s:int"/>
+	</message>
+	<message name="GetLaunchURLOut">
+		<part name="bstrURL" type="s:string"/>
+	</message>
+	<portType name="MailServiceSoap">
+		<operation name="Login">
+			<input message="s0:LoginIn"/>
+			<output message="s0:LoginOut"/>
+		</operation>
+		<operation name="GetMessageCount">
+			<input message="s0:GetMessageCountIn"/>
+			<output message="s0:GetMessageCountOut"/>
+		</operation>
+		<operation name="GetUnreadCount">
+			<input message="s0:GetUnreadCountIn"/>
+			<output message="s0:GetUnreadCountOut"/>
+		</operation>
+		<operation name="GetMessages">
+			<input message="s0:GetMessagesIn"/>
+			<output message="s0:GetMessagesOut"/>
+		</operation>
+		<operation name="GetLaunchURL">
+			<input message="s0:GetLaunchURLIn"/>
+			<output message="s0:GetLaunchURLOut"/>
+		</operation>
+	</portType>
+	<binding name="MailServiceSoap" type="s0:MailServiceSoap">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc"/>
+		<operation name="Login">
+			<soap:operation soapAction="#Login" style="rpc"/>
+			<input>
+				<soap:body use="encoded" namespace="urn:MailService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="urn:MailService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="GetMessageCount">
+			<soap:operation soapAction="#GetMessageCount" style="rpc"/>
+			<input>
+				<soap:body use="encoded" namespace="urn:MailService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="urn:MailService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="GetUnreadCount">
+			<soap:operation soapAction="#GetUnreadCount" style="rpc"/>
+			<input>
+				<soap:body use="encoded" namespace="urn:MailService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="urn:MailService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="GetMessages">
+			<soap:operation soapAction="#GetMessages" style="rpc"/>
+			<input>
+				<soap:body use="encoded" namespace="urn:MailService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="urn:MailService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="GetLaunchURL">
+			<soap:operation soapAction="#GetLaunchURL" style="rpc"/>
+			<input>
+				<soap:body use="encoded" namespace="urn:MailService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="urn:MailService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="MailService">
+		<port name="MailServiceSoap" binding="s0:MailServiceSoap">
+			<soap:address location="http://localhost/mantaweb/cgi-bin/MailService.dll?Handler=Default"/>
+		</port>
+	</service>
+</definitions>

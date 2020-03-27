@@ -1,0 +1,42 @@
+<!--{{ handler cgi-bin\Calendar.dll/Task }} This file (c) 2000 Microsoft Corporation -->
+<html>
+<head>
+<base target="main_frame">
+<link rel="stylesheet" href="main.css" type="text/css">
+<script language="JavaScript">
+<!--
+function OnDelete() 
+{
+	if (confirm("Are you sure you want to delete this task?"))
+	{
+		navigate("task.srf?delete=1&taskid={{ID}}");
+	}
+}
+-->
+</script>
+</head>
+<body>
+<table border="1" width="627" bgcolor="#FFFFCC" cellspacing="0" cellpadding="2">
+  <tr>
+    <td width="71" align="right"><font color="#3A6EA5"><b><span style="font-variant: small-caps">TASK:</span></b></font></td>
+    <td width="471" bgcolor="#FFFFFF"><font color="#3A6EA5">{{Title}}</font></td>
+  </tr>
+  <tr>
+    <td width="71" align="right"><font color="#3A6EA5"><b><span style="font-variant: small-caps">DUE
+      DATE:</span></b></font></td>
+    <td width="471" bgcolor="#FFFFFF"><font color="#3A6EA5">{{Date}}</font></td>
+  </tr>
+  <tr>
+    <td width="71" align="right"><font color="#3A6EA5"><b><span style="font-variant: small-caps">PRIORITY:</span></b></font></td>
+    <td width="471" bgcolor="#FFFFFF"><font color="#3A6EA5">{{Priority}}</font></td>
+  </tr>
+  <tr>
+    <td width="71" align="right"><font color="#3A6EA5"><b><span style="font-variant: small-caps">Details:</span></b></font></td>
+    <td width="471" bgcolor="#FFFFFF"><font color="#3A6EA5"><textarea rows="3" cols="65" OnFocus="this.blur()" name="details">{{Details}}</textarea></font></td>
+  </tr>
+</table>
+<br><br>
+<input type="button" value="Delete This Task" name="deleteButton" OnClick="OnDelete();">
+</body>
+</html>
+

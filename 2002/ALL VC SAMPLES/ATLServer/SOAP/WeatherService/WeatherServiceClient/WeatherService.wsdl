@@ -1,0 +1,142 @@
+<?xml version="1.0"?>
+<!-- ATL Server generated Web Service Description -->
+<definitions 
+	xmlns:s="http://www.w3.org/2001/XMLSchema" 
+	xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" 
+	xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" 
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+	xmlns:s0="urn:CWeatherService" 
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:atls="http://tempuri.org/vc/atl/server/"
+	targetNamespace="urn:CWeatherService" 
+	xmlns="http://schemas.xmlsoap.org/wsdl/"
+>
+	<types>
+		<s:schema targetNamespace="urn:CWeatherService" attributeFormDefault="qualified" elementFormDefault="qualified">
+			<s:complexType name="GetAvailableCities_cities_Array">
+				<s:complexContent>
+					<s:restriction base="soapenc:Array">
+						<s:attribute ref="soapenc:arrayType" wsdl:arrayType="s:string[]"/>
+					</s:restriction>
+				</s:complexContent>
+			</s:complexType>
+			<s:complexType name="GetForecast_return_Array">
+				<s:complexContent>
+					<s:restriction base="soapenc:Array">
+						<s:attribute ref="soapenc:arrayType" wsdl:arrayType="s0:Forecast[5]"/>
+					</s:restriction>
+				</s:complexContent>
+			</s:complexType>
+			<s:simpleType name="WeatherConditions">
+				<s:restriction base="s:string">
+					<s:enumeration value="Sunny"/>
+					<s:enumeration value="Showers"/>
+					<s:enumeration value="Rainy"/>
+					<s:enumeration value="Fair"/>
+					<s:enumeration value="Cloudy"/>
+				</s:restriction>
+			</s:simpleType>
+			<s:complexType name="Forecast">
+				<s:sequence>
+					<s:element name="hiTemp" type="s:int"/>
+					<s:element name="loTemp" type="s:int"/>
+					<s:element name="description" type="s0:WeatherConditions"/>
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="Conditions">
+				<s:sequence>
+					<s:element name="temperature" type="s:int"/>
+					<s:element name="description" type="s0:WeatherConditions"/>
+					<s:element name="date" type="s:string"/>
+				</s:sequence>
+			</s:complexType>
+		</s:schema>
+	</types>
+	<message name="GetCurrentConditionsIn">
+		<part name="cityname" type="s:string"/>
+	</message>
+	<message name="GetCurrentConditionsOut">
+		<part name="return" type="s0:Conditions"/>
+	</message>
+	<message name="GetAvailableCitiesIn">
+	</message>
+	<message name="GetAvailableCitiesOut">
+		<part name="cities" type="s0:GetAvailableCities_cities_Array"/>
+	</message>
+	<message name="GetForecastIn">
+		<part name="cityname" type="s:string"/>
+	</message>
+	<message name="GetForecastOut">
+		<part name="return" type="s0:GetForecast_return_Array"/>
+	</message>
+	<message name="GetCityLocationIn">
+		<part name="cityname" type="s:string"/>
+	</message>
+	<message name="GetCityLocationOut">
+		<part name="longitude" type="s:double"/>
+		<part name="latitude" type="s:double"/>
+	</message>
+	<portType name="WeatherServiceSoap">
+		<operation name="GetCurrentConditions">
+			<input message="s0:GetCurrentConditionsIn"/>
+			<output message="s0:GetCurrentConditionsOut"/>
+		</operation>
+		<operation name="GetAvailableCities">
+			<input message="s0:GetAvailableCitiesIn"/>
+			<output message="s0:GetAvailableCitiesOut"/>
+		</operation>
+		<operation name="GetForecast">
+			<input message="s0:GetForecastIn"/>
+			<output message="s0:GetForecastOut"/>
+		</operation>
+		<operation name="GetCityLocation">
+			<input message="s0:GetCityLocationIn"/>
+			<output message="s0:GetCityLocationOut"/>
+		</operation>
+	</portType>
+	<binding name="WeatherServiceSoap" type="s0:WeatherServiceSoap">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc"/>
+		<operation name="GetCurrentConditions">
+			<soap:operation soapAction="#GetCurrentConditions" style="rpc"/>
+			<input>
+				<soap:body use="encoded" namespace="urn:CWeatherService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="urn:CWeatherService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="GetAvailableCities">
+			<soap:operation soapAction="#GetAvailableCities" style="rpc"/>
+			<input>
+				<soap:body use="encoded" namespace="urn:CWeatherService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="urn:CWeatherService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="GetForecast">
+			<soap:operation soapAction="#GetForecast" style="rpc"/>
+			<input>
+				<soap:body use="encoded" namespace="urn:CWeatherService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="urn:CWeatherService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="GetCityLocation">
+			<soap:operation soapAction="#GetCityLocation" style="rpc"/>
+			<input>
+				<soap:body use="encoded" namespace="urn:CWeatherService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body use="encoded" namespace="urn:CWeatherService" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="WeatherService">
+		<port name="WeatherServiceSoap" binding="s0:WeatherServiceSoap">
+			<soap:address location="http://localhost/WeatherService/WeatherService.dll?Handler=Default"/>
+		</port>
+	</service>
+</definitions>

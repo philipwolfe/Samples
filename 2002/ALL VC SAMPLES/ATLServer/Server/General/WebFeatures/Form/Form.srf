@@ -1,0 +1,114 @@
+{{ handler bin\Form.dll/Default }}
+<html>
+	<!-- (c) 2000 Microsoft Corporation -->	
+	<head>
+		<title>{{Title}}</title>
+		<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+		<link rel="stylesheet" href="normal.css" type="text/css">
+		<script id="eventhandler" language="javascript">
+		<!--
+
+		function submit_the_form()
+		{
+			var nIndex = document.forms.theform.submitmethod.selectedIndex;
+			document.forms.theform.method = document.forms.theform.submitmethod.options[nIndex].value;
+
+			nIndex = document.forms.theform.submitencoding.selectedIndex;
+			document.forms.theform.encoding = document.forms.theform.submitencoding.options[nIndex].value;
+
+			document.forms.theform.action = document.forms.theform.submitaction.value;
+
+			return true;
+		}
+
+		function new_file_element(theParent)
+		{
+			var theP = document.createElement("p");
+			var theInput = document.createElement("input");
+			theInput.name = "File" + (theParent.children.length).toString();
+			theInput.type = "file";
+
+			theP.appendChild(theInput);
+
+			theParent.appendChild(theP);
+
+			return true;
+		}
+
+		function remove_file_elements(theParent)
+		{
+			var lastIndex = -1;
+			for (var nIndex = theParent.children.length - 1; nIndex >= 0; --nIndex)
+			{
+				if (theParent.children[nIndex].tagName.toLowerCase() == "p")
+				{
+					if (lastIndex != -1)
+						theParent.children[lastIndex].removeNode(true);
+					lastIndex = nIndex;
+				}
+			}
+
+			return true;
+		}
+
+		//-->
+		</script>
+	</head>
+
+	<body onload="new_file_element(thespan);">
+		<center>
+		<h1>Form</h1>
+
+		<form id="theform" name="theform" method="post" action="{{Referrer}}" onsubmit="return submit_the_form();" onreset = "return remove_file_elements(thespan);">
+			<table border="0" rules="none" frame="void">
+				<tr>
+					<td>submit method</td>
+					<td>
+						<select id="submitmethod" name="submitmethod" value="post">
+						<option value="get">get</option>
+						<option value="post" selected>post</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>submit encoding</td>
+					<td>
+						<select id="submitencoding" name="submitencoding" value="multipart/form-data">
+						<option value="application/x-www-form-urlencoded">application/x-www-form-urlencoded</option>
+						<option value="multipart/form-data" selected>multipart/form-data</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>submit url</td>
+					<td><input id="submitaction" name="submitaction" value="{{Referrer}}"></input></td>
+				</tr>
+				<tr>
+					<td>data</td>
+					<td><input name="thedata"></input><input name="bigdata" type="hidden"></input></td>
+				</tr>
+				<tr>
+					<td>file</td>
+					<td><span id="thespan"></span></td>
+				</tr>
+			</table> 
+			<div align="right"> 
+				<input type="button" value="Add File" onclick="new_file_element(thespan);">
+				<input type="submit" id="cmdSubmit" value="Submit"></input>
+				<input type="reset" id="cmdCancel" value="Cancel"></input>
+			</div> 
+		</form>
+
+		<h2>Instructions</h2>
+		<p>You can submit this form to any URL by filling in the <b>submit url</b> field.</p>
+		<p>Use the <b>submit method</b> field to choose whether to GET or POST the request.</p>
+		<p>Use the <b>submit encoding</b> field to select the encoding used for the request.</p>
+
+		<p>
+		If you want to submit more than one file,
+		use the <A HREF="#" onclick="new_file_element(thespan);">Add File</A> button to
+		add a new file input element to the page.
+		</p>
+		</center>
+	</body>
+</html>

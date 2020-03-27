@@ -1,0 +1,87 @@
+{{handler atlrt.dll/Default}} 
+<!-- SetContentType can be used to specify the type of document you want to generate.  
+     'text/html', 'text/xml', 
+-->
+{{SetContentType(text/html)}}
+<head>
+	<style>
+		body {font-family:tahoma; font-size:10pt} table {font-family:tahoma; 
+		font-size:10pt}
+	</style>
+	<html>
+		<body>
+			<h2>
+				If you see this message, then you have installed ATLRT correctly!
+			</h2>
+			<form>
+				<table border="1">
+					<tr>
+						<td><b>ATLRT has routines that allow you to process user input. Here are some examples:</b>
+							<ul>
+								What is your name? <input name="input"><input type="submit" name="GetValueTest" value="Enter">
+								{{ if ContainsValue(GetValueTest) }} Hello : {{GetValue(input)}}! {{ endif }}
+								<hr noshade>
+								<br>
+								Where is 1 + 1? <input name="add"><input type="submit" name="CompareValueTest" value="Enter">
+								{{ if ContainsValue(CompareValueTest) }} {{ if CompareValue(name=add;value=2) 
+								}} 1 + 1 equals {{GetValue(add)}}! {{ else }} 1 + 1 does not equal 
+								{{GetValue(add)}}! {{ endif }} {{ endif }}
+								<hr noshade>
+								<br>
+								You can also use ATLRT to retrieve server variables, here are a few examples:
+								<br>
+								<ul>
+									<table border="1">
+										<tr>
+											<td>Query String</td>
+											<td>{{GetValue(QUERY_STRING)}}</td>
+										</tr>
+										<tr>
+											<td>Path Info</td>
+											<td>{{GetValue(PATH_INFO)}}</td>
+										</tr>
+										<tr>
+											<td>Path Translated</td>
+											<td>{{GetValue(PATH_TRANSLATED)}}</td>
+										</tr>
+										<tr>
+											<td>Remote Host</td>
+											<td>{{GetValue(REMOTE_HOST)}}</td>
+										</tr>
+										<tr>
+											<td>Request Method</td>
+											<td>{{GetValue(REQUEST_METHOD)}}</td>
+										</tr>
+										<tr>
+											<td>Server Name</td>
+											<td>{{GetValue(SERVER_NAME)}}</td>
+										</tr>
+									</table>
+								</ul>
+								<br>
+						</td>
+					</tr>
+					<tr>
+						<td><b>ATLRT also contains methods to make accessing databases easier.</b>
+							<ul>
+								<H1>Edit this connection string to suit your database server</H1>
+								{{SetConnection("Provider=SQLOLEDB")}} 
+								{{Execute(cmd="sp_ShowAuthors")}}
+								<table border="1">
+									{{while MoveNextRow()}}
+									<tr>
+										{{while MoveNextColumn()}}
+										<td>
+											{{GetColumnValue()}}
+										</td>
+										{{endwhile}}
+									</tr>
+									{{endwhile}}
+								</table>
+							</ul>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</body>
+	</html>

@@ -1,0 +1,105 @@
+// PerfDisp.idl : IDL source for PerfDisp.dll
+//
+// Copyright (c) Microsoft Corporation.  All rights reserved.
+//
+// This source code is only intended as a supplement to the
+// Microsoft Classes Reference and related electronic
+// documentation provided with the library.
+// See these sources for detailed information regarding the
+// Microsoft C++ Libraries products.
+
+// This file will be processed by the MIDL tool to
+// produce the type library (PerfDisp.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	uuid(FACBF2F4-19BE-4771-96FA-6FEAAC45D1EC),
+	version(1.0),
+	helpstring("PerfDisp 1.0 Type Library")
+]
+library PERFDISPLib
+{
+	importlib("stdole2.tlb");
+
+	//////////////////////////////////////////////////////////
+	// PerfMonDisp object
+	[
+		object,
+		uuid(E5052101-FA13-499B-BF8A-C2950D9E3A4F),
+		dual,
+		helpstring("IPerfMonDisp Interface"),
+		pointer_default(unique)
+	]
+	interface IPerfMonDisp : IDispatch
+	{
+		[propput, id(1)] HRESULT AppName([in] BSTR bstrName);
+		[propget, id(1)] HRESULT AppName([out, retval] BSTR* pbstrName);
+		[id(2)] HRESULT Initialize([out, retval] BOOL* bSuccess);
+
+		[id(3)] HRESULT PrepRegister();
+		[id(4)] HRESULT AddObjectDefinition(
+			[in] BSTR bstrObjectName,
+			[in] BSTR bstrHelpString,
+			[in] int nDetailLevel,
+			[in] int nDefaultCounter,
+			[in] BOOL bInstanceLess,
+			[out, retval] int* pnPerfId
+		);
+		[id(5)] HRESULT AddCounterDefinition(
+			[in] BSTR bstrObjectName,
+			[in] BSTR bstrHelpString,
+			[in] int nDetailLevel,
+			[in] int nCounterType,
+			[in] int nMaxCounterSize,
+			[in] int nDefaultScale,
+			[out, retval] int* pnPerfId
+		);
+		[id(6)] HRESULT Register();
+		[id(7)] HRESULT RegisterStrings([in] int nLanguage);
+		[id(8)] HRESULT Unregister();
+
+		[id(9)] HRESULT LoadStrings([in] int nLanguage, [out, retval] BOOL* bRegistered);
+		[id(10)] HRESULT GetObjectId([in] BSTR bstrName, [out, retval] int* pnId);
+		[id(11)] HRESULT GetCounterId([in] int nObjectId, [in] BSTR bstrName, [out, retval] int* pnId);
+
+		[id(12)] HRESULT CreateInstance([in] int nId, [in] int nInstance, [in] BSTR bstrName, [out, retval] VARIANT* pInstance);
+		[id(13)] HRESULT CreateInstanceByName([in] int nId, [in] BSTR bstrName, [out, retval] VARIANT* pInstance);
+
+		[id(100), helpstring("method Trace")] HRESULT Trace([in] BSTR str);
+	};
+
+	[
+		uuid(C1F65BB8-F300-423F-9532-9D981381CB18),
+		helpstring("PerfMonDisp Class")
+	]
+	coclass PerfMonDisp
+	{
+		[default] interface IPerfMonDisp;
+	};
+
+	//////////////////////////////////////////////////////////
+	// PerfObjectDisp object
+	[
+		object,
+		uuid(B2427724-60F6-4915-8BA8-60E6269F28A6),
+		dual,
+		helpstring("IPerfObjectDisp Interface"),
+		pointer_default(unique)
+	]
+	interface IPerfObjectDisp : IDispatch
+	{
+		[id(1)] HRESULT GetCounter([in] int nCounter, [out, retval] VARIANT* pvValue);
+		[id(2)] HRESULT SetCounter([in] int nCounter, [in] VARIANT vValue);
+	};
+
+	[
+		uuid(5C163489-661F-4B5E-A6CE-78B2DC1D5FF2),
+		helpstring("PerfObjectDisp Class")
+	]
+	coclass PerfObjectDisp
+	{
+		[default] interface IPerfObjectDisp;
+	};
+};

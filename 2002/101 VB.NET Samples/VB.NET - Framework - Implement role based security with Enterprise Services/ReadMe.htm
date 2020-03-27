@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+    <head>
+        <title>ReadMe</title>
+        <meta name="vs_defaultClientScript" content="JavaScript">
+        <meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+        <meta name="GENERATOR" content="Microsoft Visual Studio.NET 7.0">
+        <meta name="ProgId" content="VisualStudio.HTML">
+        <meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+    </head>
+    <body>
+        <h1>Visual Basic .NET How-To:<br>
+            Implement Role-Based Security in Enterprise Services</h1>
+        <h2>Purpose:</h2>
+        Show how to add Role-based security to components running within
+        the&nbsp;Enterprise Services&nbsp;environment. Such security controls who has
+        access to the component, based on roles defined within the COM+ application to
+        which the component belongs, and having users added to those roles.&nbsp;
+        <h2>Features:</h2>
+<p>This application&nbsp;offers&nbsp;a simple system for maintaining a database of suppliers
+and products. It provides functions for adding updating, retrieving and deleting suppliers and products. All database access is
+simulated.</p>
+
+        <ul>
+  <li>Creates application roles using Dynamic Registration. 
+  <li>Controls access to components through permissions 
+  granted to individual roles.. 
+  <li>
+            Invokes COM+ Services for implementing transactions, just-in-time activation,
+            object pooling and object construction.
+            <li>
+                Uses Dynamic Registration to add Enterprise 
+  Components to the COM+ Catalog.</li>
+        </ul>
+        <h2>Notes:</h2>
+<p>There are two classes, Supplier and Product, that form the basis for the 
+components in this application.</p>
+<p>The application has been programmed for Dynamic Registration, which means 
+that the COM+ application&nbsp;the components&nbsp;belong to will automatically 
+be created the first time one of the classes&nbsp;is invoked, provided that the 
+calling application has Administrator privileges. Review the AssemblyInfo file, 
+where the assembly attributes that enable dynamic registration are located.</p>
+<p>On the data input form you can add a supplier, by entering a Company Name and 
+Phone and clicking Add Supplier. To update, enter a Company Name, Phone and ID. 
+To delete a supplier, only an ID is needed. If the operation is successful, a 
+message on the status line will indicate that. Working with products is 
+similar.</p>
+<p>Each class writes to the Output Window when various events occur, such as 
+instantiation, activation, and deactivation. See the DoTracing procedure in each 
+class. You can uncomment the lines that make it also write to the Event Log. 
+Review these entries to track the life cycle of the components.</p>
+<p>Set breakpoints at various places in the classes to see the sequence of 
+events as an object is used in the Enterprise Services environment.
+<p>Two roles are created for this application: Managers and 
+Clerks. Managers will have complets access to both the Supplier and
+Product components. Clerks have access only to the Product component. See
+the classes for the security attributes that enable role-based security. </p>
+<p><strong>Important:</strong>&nbsp; Roles are created automatically when the
+application is first executed and added to the COM+ Catalog, but user accounts
+must manually be added to the roles, using the COM+ Explorer.</p>
+<p>To test access permissions, run the application and click Get Suppliers or
+Get Products. This will invoke&nbsp;one of the&nbsp;components and cause the
+application to be installed in COM+. Exit the application and manually add user
+accounts&nbsp;to the Managers and Clerks roles, using the COM+ Explorer. Then
+log on as each user and test for allowed access.</p>
+<h3>Alternatives</h3>
+<p>As an alternative to implementing roles using attributes, as is done in this 
+example, you can achieve the same result programatically. By using the Component 
+Services Administration (COMAdmin) Library, you can automate just about all the 
+actions that are possible in the COM+ Explorer, including: </p>
+<ul>
+  <li>Creating a new COM+ application.</li>
+  <li>Installing components into the application.</li>
+  <li>Configuring role-based security for the application.</li>
+  <li>Assigning roles access to the entire application or portions of it.</li>
+  <li>Turning on security properties so that role checking will be enforced for 
+  the application.</li>
+  <li>Exporting the application to a file so that it can be installed on other 
+  computers.</li></ul>
+<p>Note, however, that assemblies placed in the global assembly cache require 
+manual registration.</p>
+<p>See <a 
+href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cossdk/htm/pgautomatingadmin_2j51.asp">Automating 
+COM+ Administration</a>&nbsp;for more.</p>
+        <h3>Last Update:&nbsp;10&nbsp;July 2002</h3>
+    </body>
+</html>

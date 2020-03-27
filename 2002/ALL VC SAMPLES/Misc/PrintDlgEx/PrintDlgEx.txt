@@ -1,0 +1,250 @@
+CPrintDialogEx - demonstration of the new MFC print dialog class
+Igor Chouvalov, Dundas Software Ltd
+
+The PrintDlgEx demo demonstrates the new MFC print dialog class,
+encapsulated by CPrintDialogEx class. This demonstration allows
+you to enter text in an edit box, and then choose whether to print
+the text via the old or the new print dialogs.
+
+The demo is based on a Dialog based MFC application generated
+by AppWizard. In the resource editor an edit box was added with 
+ID IDC_EDIT, as well as two buttons: 'Old Style Print' (ID_PRINT)
+and "New Style Print" (ID_PRINT_NEW).
+
+In order to use the CPrintDialogEx MFC class you must include afxdlgs.h
+In our type application this has already been done by the AppWizard). 
+WINVER should be greater or equal than 0500, so check you should ensure
+this has been done in your stdafx.h file. If not, update the line where 
+it is defined with:
+
+	#define WINVER 0x0500
+
+To handle the 'Old Style Print' button, add a OnPrint handler to the 
+dialog class. This function demonstrates working with the old fashion 
+print dialog using CPrintDialog. Inside we create an instance of the 
+printer dialog.  We can alse customize it by modifying the m_pd member 
+structure of the the dialog object.
+
+Once the dialog is created and customised we show the dialog by calling 
+DoModal(), which allows the user to set their print configuration. After
+DoModal() returns the return value is checked to find out which action 
+was performed by the user. If it was IDOK, the user clicked the OK button.
+If it was IDCANCEL, he clicked the Cancel button. The configuration that
+was set by user can be checked be looking at the fields of the m_pd structure.
+
+In our code we just create printer device context based on the selection
+made by the user and pass it's handle to the function that does the actual 
+printing.
+
+//*******************************************************************
+//	OnPrint
+//		Handles Print button. Calls old fashion Print Dialog,
+//		gets Printer device context and calls function to print
+//		text from edit box.
+//*******************************************************************
+void CPrintDlgExDlg::OnPrint()
+{
+	// Create old fashion print dialog.
+	CPrintDialog dlgPrint(FALSE);
+
+	// Show the dialog, if user press OK button, DoModal
+	// function returns IDOK, so we prints.
+	if(dlgPrint.DoModal() == IDOK)
+	{
+		HDC hdc = dlgPrint.GetPrinterDC();
+		// Print using device context we got from dialog.
+		Print(hdc);
+
+		// Clean up. We are responsible for deleting the device context.
+		::DeleteDC(hdc);
+	}
+}
+
+Using the new CPrintDialogEx based print dialog is a little bit different.
+We create a dialog, customize it by modifying the m_pdex member and show 
+it to the user by calling DoModal(). In order to use the printer device 
+context from dialog we need to set the PD_RETURNDC flag in the Flags field 
+of m_pdex. The CPrintDialog did this for you automatically if you chose 
+Print instead of the Print Setup dialog.
+
+The CPrintDialogEx class encapsulates the services provided by the Windows
+2000 Print property sheet. You can rely on the framework to handle many
+aspects of the printing process for your application.
+
+To find out what action the user performed you should use different logic to
+the old Print dialog.  First you check the value returned by the DoModal call.
+It returns S_OK if the call succeeded or one of the COM error codes if a 
+function failed. If it was successful we need to look at the dwResultAction 
+member of the m_pdex structure. The dwResultAction can be one of the following 
+values:
+
+PD_RESULT_APPLY	- The user clicked the Apply button and later clicked
+                  the Cancel button,
+PD_RESULT_CANCEL - The user clicked the Cancel button,
+PD_RESULT_PRINT - The user clicked the Print button.
+
+Now we can analyze what configuration was set by the user by calling the
+print dialog members or checking the fields of the m_pdex structure.
+In our code we just create a printer device context based on the selection
+made by the user and pass its handle to the function that does the actual 
+printing.
+
+//*******************************************************************
+//	OnPrintNew
+//		Handles "Print new style"  button. Calls W2K type
+//		Print Dialog, gets Printer device context and calls function
+//		to print text from edit box.
+//*******************************************************************
+void CPrintDlgExDlg::OnPrintNew()
+{
+	// Create new looking Print Dialog with default flags.
+	CPrintDialogEx dlgPrint;
+
+	// After constructing a CPrintDialogEx object, you can use
+	// m_pdex member to set various aspects of the dialog box before
+	// calling the DoModal member function. For more information on
+	// the m_pdex structure, see PRINTDLGEX in the Platform SDK.
+
+	// To obtain device context from dialog we should set this flag.
+	dlgPrint.m_pdex.Flags |= PD_RETURNDC;
+
+	// Documentation says that this member must be a valid window handle;
+	// it cannot be NULL. Let's make it happy.
+	dlgPrint.m_pdex.hwndOwner = GetSafeHwnd();
+
+	// To find out what action was chosen another technique is used
+	// for CPrintDialogEx class.
+	// INT_PTR value that DoModal function returns is actually an HRESULT.
+	// DoModal calls PrintDlgEx internally and passes it's returned value.
+	// See the Return Values section in PrintDlgEx in the Platform SDK.
+	//
+	// So at first we check if DoModal call succeeded and if it is,
+	// the dwResultAction member of the m_pdex structure contains the
+	// outcome of the dialog.
+
+	// The dwResultAction can be one of the following values:
+	// PD_RESULT_APPLY - The user clicked the Apply button and later clicked
+	//				     the Cancel button,
+	// PD_RESULT_CANCEL - The user clicked the Cancel button.
+	// PD_RESULT_PRINT - The user clicked the Print button.
+	if(dlgPrint.DoModal() == S_OK && dlgPrint.m_pdex.dwResultAction)
+	{
+		HDC hdc = dlgPrint.GetPrinterDC();
+		// Print using device context we got from dialog.
+		Print(hdc);
+
+		// Clean up. We are responsible for deleting the device context.
+		::DeleteDC(hdc);
+	}
+}
+
+The actual printing is performed by the Print function. Inside we initialize 
+a printer job and print the text from the edit box one line at the time.
+
+//*******************************************************************
+//	Print
+//		Prints content of the edit box to the printer.
+//
+//	PARAMS:	hdc - handle of the printer device context to print.
+//*******************************************************************
+void CPrintDlgExDlg::Print(HDC hdc)
+{
+	// Check device context.
+	if(hdc == NULL)
+		return;
+
+	CWnd* pEdit;				// Pointer to the edit box window.
+	CString strTextToPrint;		// Text from the edit box.
+	CString strRow;				// Row that we print.
+
+	// Obtain text from the edit box.
+	// Print default string if empty.
+	pEdit = GetDlgItem(IDC_EDIT);
+
+	if(pEdit != NULL)
+		GetDlgItemText(IDC_EDIT, strTextToPrint);
+
+	if(strTextToPrint.IsEmpty())
+		strTextToPrint = _T("There is nothing to print");
+
+	// Replace tabs with spaces.
+	strTextToPrint.Replace(_T("\t"), _T("    "));
+
+	// Create a CDC from the passed handle to the printer device context.
+	CDC dcPrinter;
+	dcPrinter.Attach(hdc);
+
+	// Call StartDoc() to begin printing.
+	DOCINFO docinfo;
+	memset(&docinfo, 0, sizeof(docinfo));
+	docinfo.cbSize = sizeof(docinfo);
+	docinfo.lpszDocName = _T("MFC Windows 2000 print dialog demo");
+
+	// If it fails, complain and exit gracefully.
+	if (dcPrinter.StartDoc(&docinfo) < 0)
+	{
+	MessageBox(_T("Printer wouldn't initialize"));
+	  return;
+	}
+
+	// Start a page.
+	if (dcPrinter.StartPage() < 0)
+	{
+	MessageBox(_T("Could not start page"));
+	dcPrinter.AbortDoc();
+		return;
+	}
+
+	int nX;				// X coordinate of the text to print.
+	int nY;				// X coordinate of the text to print..
+	int nRowHeight;			// Height of the row of text on printer.
+	TEXTMETRIC tm;
+
+	// Get text height.
+	dcPrinter.GetTextMetrics(&tm);
+	nRowHeight = tm.tmHeight + tm.tmExternalLeading;
+
+	// Get page margins.
+	nX = dcPrinter.GetDeviceCaps(PHYSICALOFFSETX);
+	nY = dcPrinter.GetDeviceCaps(PHYSICALOFFSETY);
+
+
+	int nBegin = 0;
+	int nEnd = 0;
+	int nLength = strTextToPrint.GetLength();
+
+	// Parse multiline text into rows.
+	do
+	{
+		// Get next end of line symbol.
+		nEnd = strTextToPrint.Find("\r\n", nBegin);
+
+		// If it is not the last row, extract the next row and
+		// adjust position to begin next iteration.
+		if(nEnd >=0)
+		{
+			strRow = strTextToPrint.Mid(nBegin, nEnd-nBegin);
+			nBegin = nEnd + 2;
+		}
+		// It is a last row, get it all.
+		else
+			strRow = strTextToPrint.Mid(nBegin);
+
+		// Print current row on printer.
+		dcPrinter.TextOut(nX, nY, strRow, strRow.GetLength());
+
+		// Adjust y position to print new row.
+		nY += nRowHeight;
+
+		// We reached end of text, so exit from loop.
+		if(nBegin >= nLength)
+			break;
+
+	}while(nEnd >= 0);
+
+	// Finish print job.
+	dcPrinter.EndPage();
+	dcPrinter.EndDoc();
+
+	return;
+}

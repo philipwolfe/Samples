@@ -1,0 +1,679 @@
+"DeployProject"
+{
+"VSVersion" = "3:700"
+"ProjectType" = "8:{5443560c-dbb4-11d2-8724-00a0c9a8b90c}"
+"IsWebType" = "8:TRUE"
+"ProjectName" = "8:TipOfTheDayDeploy"
+"LanguageId" = "3:1033"
+"CodePage" = "3:1252"
+"UILanguageId" = "3:1033"
+"SccProjectName" = "8:"
+"SccLocalPath" = "8:"
+"SccAuxPath" = "8:"
+"SccProvider" = "8:"
+    "Hierarchy"
+    {
+    }
+    "Configurations"
+    {
+        "Debug"
+        {
+        "DisplayName" = "8:Debug"
+        "IsDebugOnly" = "11:TRUE"
+        "IsReleaseOnly" = "11:FALSE"
+        "OutputFilename" = "8:Debug\\TipOfTheDayDeploy.msi"
+        "PackageFilesAs" = "3:1"
+        "PackageFileSize" = "3:-2147483648"
+        "CabType" = "3:1"
+        "Compression" = "3:2"
+        "SignOutput" = "11:FALSE"
+        "CertificateFile" = "8:"
+        "PrivateKeyFile" = "8:"
+        "TimeStampServer" = "8:"
+        "InstallerBootstrapper" = "3:1"
+        "RemoteMachine" = "8:localhost"
+        "FolderLocation" = "8:"
+        "LoginName" = "8:"
+        "LoginType" = "3:1"
+        "Reboot" = "11:TRUE"
+        "RebootW3Svc" = "11:TRUE"
+        "InstallAllUsers" = "11:FALSE"
+        "PassArguments" = "11:TRUE"
+        "Arguments" = "8:"
+        "EnableLogging" = "11:FALSE"
+        "Log" = "8:"
+        }
+        "Release"
+        {
+        "DisplayName" = "8:Release"
+        "IsDebugOnly" = "11:FALSE"
+        "IsReleaseOnly" = "11:TRUE"
+        "OutputFilename" = "8:Release\\TipOfTheDayDeploy.msi"
+        "PackageFilesAs" = "3:2"
+        "PackageFileSize" = "3:-2147483648"
+        "CabType" = "3:1"
+        "Compression" = "3:2"
+        "SignOutput" = "11:FALSE"
+        "CertificateFile" = "8:"
+        "PrivateKeyFile" = "8:"
+        "TimeStampServer" = "8:"
+        "InstallerBootstrapper" = "3:1"
+        "RemoteMachine" = "8:localhost"
+        "FolderLocation" = "8:"
+        "LoginName" = "8:"
+        "LoginType" = "3:1"
+        "Reboot" = "11:TRUE"
+        "RebootW3Svc" = "11:FALSE"
+        "InstallAllUsers" = "11:FALSE"
+        "PassArguments" = "11:TRUE"
+        "Arguments" = "8:"
+        "EnableLogging" = "11:FALSE"
+        "Log" = "8:"
+        }
+    }
+    "Deployable"
+    {
+        "CustomAction"
+        {
+        }
+        "DefaultFeature"
+        {
+        "Name" = "8:DefaultFeature"
+        "Title" = "8:"
+        "Description" = "8:"
+        }
+        "Feature"
+        {
+        }
+        "File"
+        {
+        }
+        "FileType"
+        {
+        }
+        "Folder"
+        {
+            "{1AE77DA4-1063-4AB3-BCD2-085B001EFB97}:_21B1AF1957BB4550BB1E89CBBF0C1960"
+            {
+            "Name" = "8:Global Assembly Cache Folder"
+            "AlwaysCreate" = "11:FALSE"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Property" = "8:GAC"
+                "Folders"
+                {
+                }
+            }
+            "{8054AE80-46B3-11D3-8E20-00C04F6837D0}:_A149373DB58D47CF99FB6A45DB99DF5A"
+            {
+            "VirtualDirectory" = "8:TipOfTheDay"
+            "Port" = "3:80"
+            "IsApplication" = "11:TRUE"
+            "AllowScriptSourceAccess" = "11:FALSE"
+            "AllowReadAccess" = "11:TRUE"
+            "AllowWriteAccess" = "11:FALSE"
+            "AllowDirectoryBrowse" = "11:FALSE"
+            "LogVisits" = "11:FALSE"
+            "Index" = "11:TRUE"
+            "ExecutePermissions" = "3:3"
+            "DefaultDocument" = "8:TipOfTheDay.srf"
+            "ApplicationProtection" = "3:1"
+                "ApplicationMappings"
+                {
+                    "{94A51FDD-2F82-4A04-ACA8-D3145F528870}:_19DE5F1A371E454B8D586EE4652610D9"
+                    {
+                    "Extension" = "8:srf"
+                    "Executable" = "8:_A47383F9450D405C9F511789078AF80E"
+                    "Verbs" = "8:*"
+                    }
+                    "{94A51FDD-2F82-4A04-ACA8-D3145F528870}:_B0105B2F24914DDE88B27F1ED8A324D8"
+                    {
+                    "Extension" = "8:dll"
+                    "Executable" = "8:_A47383F9450D405C9F511789078AF80E"
+                    "Verbs" = "8:*"
+                    }
+                }
+            "Name" = "8:Web Application Folder"
+            "AlwaysCreate" = "11:TRUE"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Property" = "8:TARGETDIR"
+                "Folders"
+                {
+                    "{8EE1DBB3-F9D3-4E26-8327-7B3B9604DA0D}:_1C19C9AFC64747F9ACD4D20199328799"
+                    {
+                    "AllowScriptSourceAccess" = "11:FALSE"
+                    "AllowReadAccess" = "11:FALSE"
+                    "AllowWriteAccess" = "11:FALSE"
+                    "AllowDirectoryBrowse" = "11:FALSE"
+                    "LogVisits" = "11:TRUE"
+                    "Index" = "11:TRUE"
+                    "ExecutePermissions" = "3:2"
+                    "Name" = "8:bin"
+                    "AlwaysCreate" = "11:TRUE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_3DC701A6DB3845AB84F875ECAC8DDC1C"
+                        "Folders"
+                        {
+                        }
+                    }
+                }
+            }
+        }
+        "LaunchCondition"
+        {
+            "{B26CFB94-18E3-45BF-8D42-933BDAF5E76C}:_DF1CA2119CD64D4B94CE993CF1624ACE"
+            {
+            "Name" = "8:Condition1"
+            "Condition" = "8:REGISTRYVALUE1"
+            "Message" = "8:[VSDIISMSG]"
+            }
+        }
+        "Locator"
+        {
+            "{328616F4-3D88-44AA-B041-F8100F0FDCF1}:_04904C1EB41D4AEB868E336FBFF3FDF9"
+            {
+            "Name" = "8:Search for RegistryEntry1"
+            "Root" = "2:3"
+            "RegKey" = "8:CLSID\\{A9E69610-B80D-11D0-B9B9-00A0C922E750}"
+            "Value" = "8:"
+            "Property" = "8:REGISTRYVALUE1"
+            }
+        }
+        "Shortcut"
+        {
+        }
+        "Sequences"
+        {
+        }
+        "Registry"
+        {
+            "HKLM"
+            {
+                "Keys"
+                {
+                }
+            }
+            "HKCU"
+            {
+                "Keys"
+                {
+                }
+            }
+            "HKCR"
+            {
+                "Keys"
+                {
+                }
+            }
+            "HKU"
+            {
+                "Keys"
+                {
+                }
+            }
+            "HKPU"
+            {
+                "Keys"
+                {
+                }
+            }
+        }
+        "ProjectOutput"
+        {
+            "{B1E2BB22-187D-11D3-8E02-00C04F6837D0}:_013F350FFDA440CC8FEC056F09B58F01"
+            {
+            "SourcePath" = "8:"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_A149373DB58D47CF99FB6A45DB99DF5A"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:TRUE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:ContentFiles"
+            "OutputProjectCanonicalName" = "8:TipOfTheDay.vcproj"
+            "OutputProjectGuid" = "8:{F168C350-7CA0-4B30-9328-35A134DFC833}"
+                "ExcludeFilters"
+                {
+                }
+            }
+            "{B1E2BB22-187D-11D3-8E02-00C04F6837D0}:_1F402BD3F51A4D8593DFECA491A998ED"
+            {
+            "SourcePath" = "8:..\\TipOfTheDay\\Release\\TipOfTheDay.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_A149373DB58D47CF99FB6A45DB99DF5A"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:Built"
+            "OutputProjectCanonicalName" = "8:TipOfTheDay.vcproj"
+            "OutputProjectGuid" = "8:{F168C350-7CA0-4B30-9328-35A134DFC833}"
+                "ExcludeFilters"
+                {
+                }
+            }
+            "{B1E2BB22-187D-11D3-8E02-00C04F6837D0}:_A47383F9450D405C9F511789078AF80E"
+            {
+            "SourcePath" = "8:..\\TipOfTheDayIsapi\\Release\\TipOfTheDayIsapi.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_A149373DB58D47CF99FB6A45DB99DF5A"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:Built"
+            "OutputProjectCanonicalName" = "8:..\\TipOfTheDayIsapi\\TipOfTheDayIsapi.vcproj"
+            "OutputProjectGuid" = "8:{2DBF4896-DAFA-498B-B922-0F8D94757ACA}"
+                "ExcludeFilters"
+                {
+                }
+            }
+        }
+        "Product"
+        {
+        "Name" = "8:Microsoft Visual Studio"
+        "ProductName" = "8:TipOfTheDayDeploy"
+        "ProductCode" = "8:{2DEE062C-4970-4B64-AA92-D55A924D2C65}"
+        "PackageCode" = "8:{4A03B5A6-FE57-40C3-AC8D-AF5AFE720A68}"
+        "UpgradeCode" = "8:{B8AF3124-D4AC-4414-BEA6-2F4AF4FCC2C2}"
+        "RemovePreviousVersions" = "11:FALSE"
+        "DetectNewerInstalledVersion" = "11:TRUE"
+        "ProductVersion" = "8:1.0.0"
+        "Manufacturer" = "8:The Code Project"
+        "ARPHELPTELEPHONE" = "8:"
+        "ARPHELPLINK" = "8:"
+        "Title" = "8:TipOfTheDayDeploy"
+        "Subject" = "8:"
+        "ARPCONTACT" = "8:The Code Project"
+        "Keywords" = "8:"
+        "ARPCOMMENTS" = "8:An example ATL Server project that displays a random tip of the day."
+        "ARPURLINFOABOUT" = "8:http://www.codeproject.com"
+        "ARPPRODUCTICON" = "8:"
+        "ARPIconIndex" = "3:0"
+        "SearchPath" = "8:"
+        "UseSystemSearchPath" = "11:TRUE"
+        }
+        "MsiBootstrapper"
+        {
+        "IncludeBootstrapper" = "3:1"
+        "LangId" = "3:1033"
+        }
+        "MergeModule"
+        {
+        }
+        "UserInterface"
+        {
+            "{E4ECAB26-4AB7-11D3-8D78-00A0C9CFCEE6}:_0FC2C506371649A8B901B389706CED84"
+            {
+            "UseDynamicProperties" = "11:FALSE"
+            "SourcePath" = "8:<VsdDialogDir>\\VsdBasicDialogs.wim"
+            }
+            "{7DFFC192-4ABE-11D3-8D78-00A0C9CFCEE6}:_30164A12F91348109E373B1A29D2C497"
+            {
+            "Name" = "8:Progress"
+            "Sequence" = "3:2"
+            "Attributes" = "3:2"
+                "Dialogs"
+                {
+                    "{E4ECAB24-4AB7-11D3-8D78-00A0C9CFCEE6}:_AF2AA1F59F2441D4AD17AC7F1044AFDF"
+                    {
+                    "Sequence" = "3:100"
+                    "UseDynamicProperties" = "11:TRUE"
+                    "SourcePath" = "8:<VsdDialogDir>\\VsdAdminProgressDlg.wid"
+                        "Properties"
+                        {
+                            "BannerBitmap"
+                            {
+                            "Name" = "8:BannerBitmap"
+                            "DisplayName" = "8:BannerBitmap"
+                            "Description" = "8:The bitmap (*.bmp) file used as the background for the banner across the top of this dialog."
+                            "Type" = "3:8"
+                            "ContextData" = "8:Bitmap"
+                            "Attributes" = "3:4"
+                            "Setting" = "3:1"
+                            "DefaultValue" = "8:DefBannerBitmap"
+                            }
+                            "ShowProgress"
+                            {
+                            "Name" = "8:ShowProgress"
+                            "DisplayName" = "8:ShowProgressBar"
+                            "Description" = "8:Whether to display the dynamic progress bar during the installation."
+                            "Type" = "3:5"
+                            "ContextData" = "8:1;True=1;False=0"
+                            "Attributes" = "3:0"
+                            "Setting" = "3:0"
+                            "Value" = "3:1"
+                            "DefaultValue" = "3:1"
+                            }
+                        }
+                    }
+                }
+            }
+            "{7DFFC192-4ABE-11D3-8D78-00A0C9CFCEE6}:_38014E470D274E5BAE6539DE1DA27544"
+            {
+            "Name" = "8:Progress"
+            "Sequence" = "3:1"
+            "Attributes" = "3:2"
+                "Dialogs"
+                {
+                    "{E4ECAB24-4AB7-11D3-8D78-00A0C9CFCEE6}:_16CD7DF12CCE4403B0ED7988D703FCA1"
+                    {
+                    "Sequence" = "3:100"
+                    "UseDynamicProperties" = "11:TRUE"
+                    "SourcePath" = "8:<VsdDialogDir>\\VsdProgressDlg.wid"
+                        "Properties"
+                        {
+                            "BannerBitmap"
+                            {
+                            "Name" = "8:BannerBitmap"
+                            "DisplayName" = "8:BannerBitmap"
+                            "Description" = "8:The bitmap (*.bmp) file used as the background for the banner across the top of this dialog."
+                            "Type" = "3:8"
+                            "ContextData" = "8:Bitmap"
+                            "Attributes" = "3:4"
+                            "Setting" = "3:1"
+                            "DefaultValue" = "8:DefBannerBitmap"
+                            }
+                            "ShowProgress"
+                            {
+                            "Name" = "8:ShowProgress"
+                            "DisplayName" = "8:ShowProgressBar"
+                            "Description" = "8:Whether to display the dynamic progress bar during the installation."
+                            "Type" = "3:5"
+                            "ContextData" = "8:1;True=1;False=0"
+                            "Attributes" = "3:0"
+                            "Setting" = "3:0"
+                            "Value" = "3:1"
+                            "DefaultValue" = "3:1"
+                            }
+                        }
+                    }
+                }
+            }
+            "{7DFFC192-4ABE-11D3-8D78-00A0C9CFCEE6}:_4C7F16BE02F1444F83EE672190875507"
+            {
+            "Name" = "8:End"
+            "Sequence" = "3:1"
+            "Attributes" = "3:3"
+                "Dialogs"
+                {
+                    "{E4ECAB24-4AB7-11D3-8D78-00A0C9CFCEE6}:_9C327E5F11704E99AA7BF016C66FDC1D"
+                    {
+                    "Sequence" = "3:100"
+                    "UseDynamicProperties" = "11:TRUE"
+                    "SourcePath" = "8:<VsdDialogDir>\\VsdFinishedDlg.wid"
+                        "Properties"
+                        {
+                            "BannerBitmap"
+                            {
+                            "Name" = "8:BannerBitmap"
+                            "DisplayName" = "8:BannerBitmap"
+                            "Description" = "8:The bitmap (*.bmp) file used as the background for the banner across the top of this dialog."
+                            "Type" = "3:8"
+                            "ContextData" = "8:Bitmap"
+                            "Attributes" = "3:4"
+                            "Setting" = "3:1"
+                            "DefaultValue" = "8:DefBannerBitmap"
+                            }
+                        }
+                    }
+                }
+            }
+            "{E4ECAB26-4AB7-11D3-8D78-00A0C9CFCEE6}:_B1463CE3B39444BCA9DC5123C2153274"
+            {
+            "UseDynamicProperties" = "11:FALSE"
+            "SourcePath" = "8:<VsdDialogDir>\\VsdUserInterface.wim"
+            }
+            "{7DFFC192-4ABE-11D3-8D78-00A0C9CFCEE6}:_B1E4C82DF8EB4CFB95F42CC9AD9A492F"
+            {
+            "Name" = "8:Start"
+            "Sequence" = "3:2"
+            "Attributes" = "3:1"
+                "Dialogs"
+                {
+                    "{E4ECAB24-4AB7-11D3-8D78-00A0C9CFCEE6}:_672A9472BAA94730849FEBEFCF1356A6"
+                    {
+                    "Sequence" = "3:200"
+                    "UseDynamicProperties" = "11:TRUE"
+                    "SourcePath" = "8:<VsdDialogDir>\\VsdAdminWebFolderDlg.wid"
+                        "Properties"
+                        {
+                            "BannerBitmap"
+                            {
+                            "Name" = "8:BannerBitmap"
+                            "DisplayName" = "8:BannerBitmap"
+                            "Description" = "8:The bitmap (*.bmp) file used as the background for the banner across the top of this dialog."
+                            "Type" = "3:8"
+                            "ContextData" = "8:Bitmap"
+                            "Attributes" = "3:4"
+                            "Setting" = "3:1"
+                            "DefaultValue" = "8:DefBannerBitmap"
+                            }
+                        }
+                    }
+                    "{E4ECAB24-4AB7-11D3-8D78-00A0C9CFCEE6}:_75EB043486B1423DAB909CBCFE5F6BDE"
+                    {
+                    "Sequence" = "3:100"
+                    "UseDynamicProperties" = "11:TRUE"
+                    "SourcePath" = "8:<VsdDialogDir>\\VsdAdminWelcomeDlg.wid"
+                        "Properties"
+                        {
+                            "BannerBitmap"
+                            {
+                            "Name" = "8:BannerBitmap"
+                            "DisplayName" = "8:BannerBitmap"
+                            "Description" = "8:The bitmap (*.bmp) file used as the background for the banner across the top of this dialog."
+                            "Type" = "3:8"
+                            "ContextData" = "8:Bitmap"
+                            "Attributes" = "3:4"
+                            "Setting" = "3:1"
+                            "DefaultValue" = "8:DefBannerBitmap"
+                            }
+                            "CopyrightWarning"
+                            {
+                            "Name" = "8:CopyrightWarning"
+                            "DisplayName" = "8:CopyrightWarning"
+                            "Description" = "8:The copyright warning text to display at the bottom of this dialog."
+                            "Type" = "3:3"
+                            "ContextData" = "8:"
+                            "Attributes" = "3:0"
+                            "Setting" = "3:1"
+                            "Value" = "8:WARNING: This computer program is protected by copyright law and international treaties. Unauthorized duplication or distribution of this program, or any portion of it, may result in severe civil or criminal penalties, and will be prosecuted to the maximum extent possible under the law."
+                            "DefaultValue" = "8:WARNING: This computer program is protected by copyright law and international treaties. Unauthorized duplication or distribution of this program, or any portion of it, may result in severe civil or criminal penalties, and will be prosecuted to the maximum extent possible under the law."
+                            }
+                            "Welcome"
+                            {
+                            "Name" = "8:Welcome"
+                            "DisplayName" = "8:WelcomeText"
+                            "Description" = "8:The welcome text to display at the top of this dialog."
+                            "Type" = "3:3"
+                            "ContextData" = "8:"
+                            "Attributes" = "3:0"
+                            "Setting" = "3:1"
+                            "Value" = "8:The installer will guide you through the steps required to install [ProductName] on your computer."
+                            "DefaultValue" = "8:The installer will guide you through the steps required to install [ProductName] on your computer."
+                            }
+                        }
+                    }
+                    "{E4ECAB24-4AB7-11D3-8D78-00A0C9CFCEE6}:_A09296C2540C4AF2BEDE5F5258DB4194"
+                    {
+                    "Sequence" = "3:300"
+                    "UseDynamicProperties" = "11:TRUE"
+                    "SourcePath" = "8:<VsdDialogDir>\\VsdAdminConfirmDlg.wid"
+                        "Properties"
+                        {
+                            "BannerBitmap"
+                            {
+                            "Name" = "8:BannerBitmap"
+                            "DisplayName" = "8:BannerBitmap"
+                            "Description" = "8:The bitmap (*.bmp) file used as the background for the banner across the top of this dialog."
+                            "Type" = "3:8"
+                            "ContextData" = "8:Bitmap"
+                            "Attributes" = "3:4"
+                            "Setting" = "3:1"
+                            "DefaultValue" = "8:DefBannerBitmap"
+                            }
+                        }
+                    }
+                }
+            }
+            "{7DFFC192-4ABE-11D3-8D78-00A0C9CFCEE6}:_B36B3D3C63BE44689729B8910417F241"
+            {
+            "Name" = "8:End"
+            "Sequence" = "3:2"
+            "Attributes" = "3:3"
+                "Dialogs"
+                {
+                    "{E4ECAB24-4AB7-11D3-8D78-00A0C9CFCEE6}:_6601A2AFB0BD450382EC5FD972504614"
+                    {
+                    "Sequence" = "3:100"
+                    "UseDynamicProperties" = "11:TRUE"
+                    "SourcePath" = "8:<VsdDialogDir>\\VsdAdminFinishedDlg.wid"
+                        "Properties"
+                        {
+                            "BannerBitmap"
+                            {
+                            "Name" = "8:BannerBitmap"
+                            "DisplayName" = "8:BannerBitmap"
+                            "Description" = "8:The bitmap (*.bmp) file used as the background for the banner across the top of this dialog."
+                            "Type" = "3:8"
+                            "ContextData" = "8:Bitmap"
+                            "Attributes" = "3:4"
+                            "Setting" = "3:1"
+                            "DefaultValue" = "8:DefBannerBitmap"
+                            }
+                        }
+                    }
+                }
+            }
+            "{7DFFC192-4ABE-11D3-8D78-00A0C9CFCEE6}:_D3FEDAD1C2774360B70C19A762DCA8EC"
+            {
+            "Name" = "8:Start"
+            "Sequence" = "3:1"
+            "Attributes" = "3:1"
+                "Dialogs"
+                {
+                    "{E4ECAB24-4AB7-11D3-8D78-00A0C9CFCEE6}:_3B068052C9A64123AB69DDECE1DD65E2"
+                    {
+                    "Sequence" = "3:100"
+                    "UseDynamicProperties" = "11:TRUE"
+                    "SourcePath" = "8:<VsdDialogDir>\\VsdWelcomeDlg.wid"
+                        "Properties"
+                        {
+                            "BannerBitmap"
+                            {
+                            "Name" = "8:BannerBitmap"
+                            "DisplayName" = "8:BannerBitmap"
+                            "Description" = "8:The bitmap (*.bmp) file used as the background for the banner across the top of this dialog."
+                            "Type" = "3:8"
+                            "ContextData" = "8:Bitmap"
+                            "Attributes" = "3:4"
+                            "Setting" = "3:1"
+                            "DefaultValue" = "8:DefBannerBitmap"
+                            }
+                            "CopyrightWarning"
+                            {
+                            "Name" = "8:CopyrightWarning"
+                            "DisplayName" = "8:CopyrightWarning"
+                            "Description" = "8:The copyright warning text to display at the bottom of this dialog."
+                            "Type" = "3:3"
+                            "ContextData" = "8:"
+                            "Attributes" = "3:0"
+                            "Setting" = "3:1"
+                            "Value" = "8:WARNING: This computer program is protected by copyright law and international treaties. Unauthorized duplication or distribution of this program, or any portion of it, may result in severe civil or criminal penalties, and will be prosecuted to the maximum extent possible under the law."
+                            "DefaultValue" = "8:WARNING: This computer program is protected by copyright law and international treaties. Unauthorized duplication or distribution of this program, or any portion of it, may result in severe civil or criminal penalties, and will be prosecuted to the maximum extent possible under the law."
+                            }
+                            "Welcome"
+                            {
+                            "Name" = "8:Welcome"
+                            "DisplayName" = "8:WelcomeText"
+                            "Description" = "8:The welcome text to display at the top of this dialog."
+                            "Type" = "3:3"
+                            "ContextData" = "8:"
+                            "Attributes" = "3:0"
+                            "Setting" = "3:1"
+                            "Value" = "8:The installer will guide you through the steps required to install [ProductName] on your computer."
+                            "DefaultValue" = "8:The installer will guide you through the steps required to install [ProductName] on your computer."
+                            }
+                        }
+                    }
+                    "{E4ECAB24-4AB7-11D3-8D78-00A0C9CFCEE6}:_624FFBD3011C4EF083B960BC360A3E00"
+                    {
+                    "Sequence" = "3:300"
+                    "UseDynamicProperties" = "11:TRUE"
+                    "SourcePath" = "8:<VsdDialogDir>\\VsdConfirmDlg.wid"
+                        "Properties"
+                        {
+                            "BannerBitmap"
+                            {
+                            "Name" = "8:BannerBitmap"
+                            "DisplayName" = "8:BannerBitmap"
+                            "Description" = "8:The bitmap (*.bmp) file used as the background for the banner across the top of this dialog."
+                            "Type" = "3:8"
+                            "ContextData" = "8:Bitmap"
+                            "Attributes" = "3:4"
+                            "Setting" = "3:1"
+                            "DefaultValue" = "8:DefBannerBitmap"
+                            }
+                        }
+                    }
+                    "{E4ECAB24-4AB7-11D3-8D78-00A0C9CFCEE6}:_E5E92BE4986940D1986C5879E7153353"
+                    {
+                    "Sequence" = "3:200"
+                    "UseDynamicProperties" = "11:TRUE"
+                    "SourcePath" = "8:<VsdDialogDir>\\VsdWebFolderDlg.wid"
+                        "Properties"
+                        {
+                            "BannerBitmap"
+                            {
+                            "Name" = "8:BannerBitmap"
+                            "DisplayName" = "8:BannerBitmap"
+                            "Description" = "8:The bitmap (*.bmp) file used as the background for the banner across the top of this dialog."
+                            "Type" = "3:8"
+                            "ContextData" = "8:Bitmap"
+                            "Attributes" = "3:4"
+                            "Setting" = "3:1"
+                            "DefaultValue" = "8:DefBannerBitmap"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,52 @@
+<!--{{handler cgi-bin\Mailbox.dll/Trashbin}} This file (c) 2000 Microsoft Corporation -->
+<html>
+<head>
+<base target="main_frame">
+<link rel="stylesheet" href="main.css" type="text/css">
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function DeleteAll() 
+{
+	if (confirm("Are you sure you want to permanently delete all the messages in your Trash Bin?"))
+	{
+		navigate("trashbin.srf?deleteall=1");
+	}
+}
+-->
+</SCRIPT>
+</head>
+<body>
+<p><font size="2">There are {{MessageCount}} messages marked for deletion in your Trashbin.<br>
+Click &quot;Delete All&quot; to permanently delete these messages.</font></p>
+<form method="POST" action="trashbin.srf">
+<table border="1" cellspacing="0" cellpadding="2" bgcolor="#FFFFCC" width="627">
+  <tr>
+    <td align="center" width="5%"><font color="#3A6EA5"><span style="font-variant: small-caps"><b>Mark:</b></span></font></td>
+    <td align="center"><font color="#3A6EA5"><span style="font-variant: small-caps"><b>To:</b></span></font></td>
+    <td align="center"><font color="#3A6EA5"><span style="font-variant: small-caps"><b>From:</b></span></font></td>
+    <td align="center"><font color="#3A6EA5"><span style="font-variant: small-caps"><b>Subject:</b></span></font></td>
+    <td align="center" width="15%"><font color="#3A6EA5"><span style="font-variant: small-caps"><b>Date:</b></span></font></td>
+  </tr>
+  <!--{{if MessagesLeft}}-->
+  <!--{{while MessagesLeft}}-->
+  <tr>
+    <td align="center" bgcolor="#FFFFFF"><input type="checkbox" name="id{{MessageID}}" value="ON"></td>
+    <td align="left" bgcolor="#FFFFFF"><font size="2">{{MessageTo}}</font></td>
+    <td align="left" bgcolor="#FFFFFF"><font size="2">{{MessageFrom}}</font></td>
+    <td align="left" bgcolor="#FFFFFF"><a href="message.srf?message={{MessageID}}&ref=trash"><font size="2">{{MessageSubject}}</font></a></td>
+    <td align="center" bgcolor="#FFFFFF"><font size="2">{{MessageDate}}</font></td>
+  </tr>
+  <!--{{NextMessage}}{{endwhile}}-->
+  <!--{{else}}-->
+  <tr>
+    <td bgcolor="#FFFFFF" colspan="5"><font size="2">You have no messages marked for deletion in your Trashbin.</font></td>
+  </tr>
+  <!--{{endif}}-->
+</table>
+<br><br>
+<input type="button" value="Delete All" name="deleteButton" {{if DisableButtons}}disabled{{endif}} OnClick="DeleteAll()">&nbsp;&nbsp;&nbsp;
+<input type="submit" value="Restore Marked Messages" name="restoreButton" {{if DisableButtons}}disabled{{endif}}>
+<input type="hidden" name="restoremsgs" value="1">
+</form>
+</body>
+</html>

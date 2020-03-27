@@ -1,0 +1,44 @@
+{{handler TipOfTheDay.dll/Default}}
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="TipOfTheDay.css">
+			{{// Set the title of the page with the component's title string}} <title>{{DisplayVersion}}</title>
+	</head>
+	<body>
+		<!-- Header section-->
+		{{include Header.srf}} 
+		<!-- Tip Of The Day section-->
+		{{// See the TipOfTheDay}} {{RandomTip}}
+		<table align="center" cellspacing="0" cellpadding="4" width="80%">
+			<tr>
+				{{// Display the random tip product and technology associations}}
+				<td class="ProductTechnology" nowrap="true">
+					{{TipCategoryMajor}}
+				</td>
+				<td>
+					&nbsp;
+				</td>
+				<td class="ProductTechnology" nowrap="true" align="right">
+					{{TipCategoryMinor}}
+				</td>
+			</tr>
+			<tr>
+				{{// Display the Tip of the day text information}}
+				<td COLSPAN="3" class="TipInfo">
+					{{TipOfTheDay}}
+				</td>
+			</tr>
+			<tr>
+				{{// Display the Source if any}}
+				<td COLSPAN="3" class="Source" nowrap="true" align="right">
+					{{TipSource}}
+				</td>
+			</tr>
+		</table>
+		<!-- Footer section-->
+		{{include Footer.htm}}
+		<hr>
+		<!-- Instructions section-->
+		<!--<pre>{{include Instructions.txt}}</pre>-->
+	</body>
+</html>

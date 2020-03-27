@@ -1,0 +1,93 @@
+<!--{{ handler cgi-bin\Calendar.dll/Schedule }} This file (c) 2000 Microsoft Corporation -->
+<html>
+<head>
+<base target="main_frame">
+<link rel="stylesheet" href="main.css" type="text/css">
+<script language="JavaScript">
+<!--
+function OnNext()
+{
+	location.href = "schedule.srf?day={{NextDay}}&month={{NextMonth}}&year={{NextYear}}"
+}
+
+function OnPrevious()
+{
+	location.href = "schedule.srf?day={{PrevDay}}&month={{PrevMonth}}&year={{PrevYear}}"
+}
+-->
+</script>
+</head>
+<body>
+<table border="0" width="551" cellspacing="0" height="41">
+  <tr>
+    <td width="255" height="39">{{Date}} </td>
+    <td width="280" height="39">
+      <input type="button" value="&lt;&lt; Previous Day" name="Previous" onclick="OnPrevious()">&nbsp;&nbsp;
+      <input type="button" value="Next Day &gt;&gt;" name="Next" onclick="OnNext()"></td>
+  </tr>
+</table>
+<table border="1" cellspacing="0" cellpadding="2" bgcolor="#FFFFFF" width="627">
+  <!--{{ while RowsLeft }}-->
+  <tr>
+    <td width="14" align="center" bgcolor="{{CellColor}}"><span style="font-variant: small-caps"><font color="#3A6EA5" size="2"><b>{{StartTime}}</b></font></span></td>
+    <td width="20" align="center" bgcolor="{{CellColor}}"><span style="font-variant: small-caps"><font color="#3A6EA5" size="2"><b>{{if StartAM}}AM{{else}}PM{{endif}}</b></font></span></td>
+    <td width="18" align="center" bgcolor="{{CellColor}}"><span style="font-variant: small-caps"><font color="#3A6EA5" size="2"><b>to</b></font></span></td>
+    <td width="14" align="center" bgcolor="{{CellColor}}"><span style="font-variant: small-caps"><font color="#3A6EA5" size="2"><b>{{EndTime}}</b></font></span></td>
+    <td width="20" align="center" bgcolor="{{CellColor}}"><span style="font-variant: small-caps"><font color="#3A6EA5" size="2"><b>{{if EndAM}}AM{{else}}PM{{endif}}</b></font></span></td>
+    <td width="428" bgcolor="{{CellColor}}"><font size="2">&nbsp;<a href="appointment.srf?view=1&amp;appid={{AppointmentID}}">{{AppointmentTitle}}</a></font></td>
+  </tr>
+  <!--{{ NextRow }} {{ endwhile }}-->
+</table>
+<form method="POST">
+  <table border="1" cellspacing="0" bgcolor="#FFFFCC" cellpadding="2" width="627">
+    <tr>
+      <td height="23" align="right"><font color="#3A6EA5"><span style="font-variant: small-caps"><b>Appointment
+        Title:</b></span></font></td>
+      <td height="23" bgcolor="#FFFFFF"><input type="text" name="title" size="70" value="{{TitleInput}}"></td>
+    </tr>
+    <tr>
+      <td height="23" align="right"><font color="#3A6EA5"><span style="font-variant: small-caps"><b>Appointment
+        Location:</b></span></font></td>
+      <td height="23" bgcolor="#FFFFFF"><input type="text" name="location" size="70" value="{{LocationInput}}"></td>
+    </tr>
+    <tr>
+      <td height="23" align="right"><font color="#3A6EA5"><span style="font-variant: small-caps"><b>Appointment
+        Details:</b></span></font></td>
+      <td height="23" bgcolor="#FFFFFF"><textarea rows="3" cols="53" name="details">{{DetailsInput}}</textarea></td>
+    </tr>
+    <tr>
+      <td height="23" align="right"><font color="#3A6EA5"><span style="font-variant: small-caps"><b>Start
+        Time:</b></span></font></td>
+      <td height="23" bgcolor="#FFFFFF"><select size="1" name="start">
+          <option value="8" {{TimeSelected(8)}}>8 AM</option>
+          <option value="9" {{TimeSelected(9)}}>9 AM</option>
+          <option value="10" {{TimeSelected(10)}}>10 AM</option>
+          <option value="11" {{TimeSelected(11)}}>11 AM</option>
+          <option value="12" {{TimeSelected(12)}}>12 PM</option>
+          <option value="13" {{TimeSelected(13)}}>1 PM</option>
+          <option value="14" {{TimeSelected(14)}}>2 PM</option>
+          <option value="15" {{TimeSelected(15)}}>3 PM</option>
+          <option value="16" {{TimeSelected(16)}}>4 PM</option>
+          <option value="17" {{TimeSelected(17)}}>5 PM</option>
+          <option value="18" {{TimeSelected(18)}}>6 PM</option>
+          <option value="19" {{TimeSelected(19)}}>7 PM</option>
+        </select></td>
+    </tr>
+    <tr>
+      <td height="23" align="right"><font color="#3A6EA5"><span style="font-variant: small-caps"><b>Duration:&nbsp;
+        </b></span></font></td>
+      <td height="23" bgcolor="#FFFFFF"><select size="1" name="duration">
+          <option value="1">1 Hour</option>
+        </select></td>
+    </tr>
+  </table>
+  {{if Failure}}<br><font color="#FF0000" size="2">You must specify a title before you can add an appointment.<br>
+    You can only make appointments on empty time slots.<br>
+    Task title cannot exceed {{MaxStringLen}} characters.<br>
+	Task details can not exceed {{MaxDetailsLen}} characters.</font>{{endif}}
+  <p><input type="submit" value="Add New Appointment" name="addAppointmentButton">&nbsp;&nbsp;
+  <input type="reset" value="Reset" name="B2"></p>
+</form>
+</body>
+</html>
+

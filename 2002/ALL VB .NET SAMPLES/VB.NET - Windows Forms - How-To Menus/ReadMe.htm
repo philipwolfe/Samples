@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft Visual Studio.NET 7.0">
+		<meta name="ProgId" content="VisualStudio.HTML">
+		<meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+		<font face="Verdana, Arial, System">
+			<h1>
+				WinForms: Menus</h1>
+			<p>
+				Demonstrates simple use of menus in Windows applications.
+			</p>
+			<h2>Featured Highlights</h2>
+			<p>
+				This demo allows you to test the MainMenu control, in the context of a simple 
+				MDI application. The sample application uses most of the design-time features 
+				of the MainMenu control, including menu merging, and menu events (Popup, 
+				Select, and Click events). You can also investigate the use of the MdiList, 
+				RadioCheck, and Checked properties. In addition, the demonstration shows how to 
+				handle multiple events, display a status bar with information about menu items, 
+				and more.
+			</p>
+			<h2>Requirements</h2>
+			<p>
+				Requires the Trial or Release version of Visual Studio .NET Professional (or 
+				greater).
+			</p>
+			<h2>Running the Sample</h2>
+			<P>This example doesn't include much code, but does show off several interesting 
+				features of menus and toolbars in Windows applications.
+			</P>
+			<P>For example:
+			</P>
+			<UL>
+				<LI>
+				Merging menu items from child forms, on the parent form, can be tricky. See the 
+				menu items (and their MergeOrder and MergeType properties). Some menus add to 
+				the parent (the Edit menu on frmEdit, for example) and others merge (the items 
+				on the File menu, for example). Check out the MergeType and MergeOrder 
+				properties of the File menus on frmMain and frmEdit, for example. The MergeType 
+				property is set to MergeItems--that way, the File menu on frmMain merges with 
+				the items on the File menu of frmEdit when it has the focus. The Edit menu on 
+				frmEdit has its MergeType property set to Add--that way, when it has the focus, 
+				its Edit menu gets added to its parent form's menus. The MergeOrder property 
+				controls where, in the menu structure, the merged items end up. The values in 
+				this property are relative. That is, the actual values don't matter, except in 
+				relation to other items. On frmMain, the File|New menu item's MergeOrder is 0, 
+				and File|Exit menu item's MergeOrder is 10. On frmEdit, the File|Save menu item 
+				is set to 2, and File|Print is set to 3. The top and bottom dividers are set to 
+				1 and 4. When you select File|New from the main form, the child form appears, 
+				and its menus merge into the File menu on the main form. The same issues apply 
+				to the Edit menu of frmEdit. The top-level menu items on frmMain have their 
+				MergeOrder properties set to 0, 10, 20, 30, and 40. The Edit menu on frmEdit 
+				has its MergeOrder property set to 5. When an instance of frmEdit has the 
+				focus, its Edit menu appears between the first two menus on frmMain (because 5 
+				is between 0 and 10).
+				<LI>
+				A menu's Popup event occurs when the menu is about to appear. This gives you a 
+				chance to determine whether to enable child items. Check out frmMain's File 
+				menu, and frmEdit's Edit menu for examples. Each uses the Popup event to 
+				enable/disable items.
+				<LI>
+				The Window menu item has its MdiList property set to True, so that it displays 
+				a list of MDI child windows.
+				<LI>
+				The Window menu's cascade, Tile Horizontally and Tile Vertically menu items are 
+				disabled if there aren't any child windows. (See the mnuWindow_Popup 
+				procedure.)
+				<LI>
+				Some menu items include shortcuts (see the Edit menu on frmEdit). You can 
+				display or hide this information on the menus, using the ShowShortCut property.
+				<LI>
+				One menu item on each menu can be selected as the default item for that menu, 
+				using the DefaultItem property. See the File|New menu item on the main form. 
+				(Visual Studio .NET doesn't keep you from selecting multiple default items per 
+				menu, but it doesn't make much sense to do so.)
+				<LI>
+				The View|Status Bar menu item uses a checked menu item to toggle the visibility 
+				of the status bar. See the mnuView_Popup procedure to see how to check a menu 
+				item. See mnuStatusBar_Click to see how to toggle the state.
+				<LI>
+				Handling RadioCheck menu items is up to your code. The Edit|Text Size menu item 
+				allows you to select Small, Medium, or Large for the font size. Selecting any 
+				of these items checks the selected item, and unchecks the others in the group.
+				<LI>
+					You change the Text property of a menu item at any time. See the handling of 
+					mnuUndo in frmEdit for a demonstration (look in the HandleEditItems procedure).
+				</LI>
+			</UL>
+			<h3>Last Update:&nbsp;7 July 2002</h3>
+		</font>
+	</body>
+</html>

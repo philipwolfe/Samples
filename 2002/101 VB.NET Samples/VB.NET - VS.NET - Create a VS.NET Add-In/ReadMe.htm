@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+		<meta name="ProgId" content="FrontPage.Editor.Document">
+		<meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+		<H1>
+			Visual Studio: Create a VS.NET Add-in</H1>
+		<P>This sample shows some how&nbsp;to create a VS.NET Add-In using Visual Studio 
+			.NET. It also demonstrates how to&nbsp;check&nbsp;whether or not an add-in in 
+			currently installed and&nbsp;available.&nbsp;</P>
+		<H2>Featured Highlights:</H2>
+		<P>This how-to demonstrates many of the important features of Visual Studio .NET 
+			Add-Ins. In particular, it covers:</P>
+		<UL>
+			<LI>
+			Implementing the Extensibility.IDTExtensibility2 interface.
+			<LI>
+			Installing an Add-in using an Microsoft Installer file (MSI), or changing the 
+			registry to install the Add-in using a REG file.
+			<LI>
+				React to Visual Studio events to output event messages to a log file.<UL>
+			<li>Log File location is [SystemRoot]\IDELOG.txt</li>
+                </UL>
+		    </LI></UL>
+		<H2>Requirements:</H2>
+		<UL>
+			<LI>
+			Trial or Release version of Visual Studio .NET Professional or greater.
+			<LI>
+				Windows 2000 or Windows XP</LI></UL>
+		<H2>Running the Sample:</H2>
+		<P>To run the sample:
+		</P>
+		<OL>
+			<LI>
+				Doubleclick the <STRONG>VB.NET How-To&nbsp;Create A VS.NET Add-in.sln</STRONG>
+			file.&nbsp;
+			<LI>
+				Run the <STRONG>VbNetHowTo_ExampleAddInSetup.msi</STRONG> installation file, or 
+				run the <STRONG>ReCreateCommands.reg</STRONG>
+			registry file.
+			<LI>
+				Run the application and examine the&nbsp;<STRONG>frmMain</STRONG>
+			code to learn how to iterate through the Add-ins collection.&nbsp;
+			<LI>
+				Start the Add-in by using <STRONG>Tools -&gt; Add-in Manager</STRONG>
+			and selecting the check-box next to "VB.NET How To Example Add-in".
+			<LI>
+				Examine the code in the sample to understand how the code works.&nbsp;</LI></OL>
+		<H3>Notes:</H3>
+		<P>To best understand the process of creating a VS.NET Add-in, use the Wizard 
+			provided by Visual Studio .NET. The wizard generates the majority of the code 
+			necessary. Then, simply hook up to the events you want to react to.</P>
+		<H3>Additional Projects in this Sample</H3>
+		<P><STRONG>VbNetHowTo_ExampleAddIn</STRONG> - This project contains the code that 
+			defines the Add-in.</P>
+		<P><STRONG>VbNetHowTo_ExampleAddInSetup</STRONG> - This project contains the setup 
+			project that creates the MSI file to deploy the applicatoin.</P>
+		<H3>See Also:</H3>
+		<P><A href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/vsintro7/html/vxconCreatingAutomationObjects.asp">
+				Creating Add-ins and Wizards</A>, <A href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/vsintro7/html/vxoriExtensibilityReference.asp">
+				Automation and Extensibility Reference</A>, <A href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/vsintro7/html/vxlrfIDTExtensibility2Interface.asp">
+				IDTExtensibility2 Interface</A></P>
+	</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Data Islands and Caching</title>
+</head>
+<body>
+    <h1>Data Islands and Caching</h1>
+    <p>
+    </p>
+    <p>
+        Microsoft Office 2003 provides a powerful data caching ability using a feature called
+        data islands.&nbsp; This allows you to store arbitrary serializable data with your
+        document.&nbsp; This can be accessed by your customization the next time it is run,
+        or by a server in a back-end scenario.</p>
+    <p>
+    </p>
+    <p>
+        In this sample, you will see a method of filling a dataset, in this case using the Product table in Adventure Works, then storing the data in the document behind
+        the scenes.&nbsp; When the document initializes each time, it first attempts to
+        read the data from the database directly.&nbsp; If the database cannot be reached,
+        most likely due to an off-network scenario, the data is retrieved from the data
+        island, if available.&nbsp; A status message in the worksheet indicates the source
+        of the data, and whether or not it was found cached (even if it was loaded live).&nbsp;
+        The dataset is cached declaratively using the attribute, <em>Cached</em>.&nbsp;
+        A second cached field is cached imperatively using the <em>StartCaching </em>method
+        which takes the name of an instance variable.&nbsp; The ability to store network-accessed
+        information for offline use without resorting to custom persistence is a powerful
+        features enabling a more productive, mobile workforce.</p>
+    <p>
+    </p>
+    <p>
+        <b>This sample requires the following to be installed: </b>
+    </p>
+    <ul>
+        <li>Visual Studio 2005</li>
+        <li>Microsoft Excel 2003 </li>
+        <li>Adventure Works sample database installed at "C:\Program Files\Microsoft SQL
+            Server\MSSQL\MSSQL.1\Data<wbr></wbr>" </li>
+    </ul>
+    <p>
+        You can download the Adventure Works sample database 
+        <a href="http://go.microsoft.com/fwlink/?linkid=31046">here</a>
+    </p>
+</body>
+</html>

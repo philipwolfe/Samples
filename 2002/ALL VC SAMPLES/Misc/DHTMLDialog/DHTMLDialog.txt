@@ -1,0 +1,82 @@
+The MFC CDHTMLDialogDlg class
+Chris Maunder, The Code Project (www.codeproject.com)
+
+This sample demonstrates using the MFC CDHTMLDialogDlg class. A
+dialog with a simple HTML page is created and displayed, and events
+from objects within that page are handled, and the HTML within the
+page modified dynamically to respond to these events.
+
+
+Creating the Application
+
+The sample application is based on the MFC AppWizard. To create the
+project, use the wizard to create a standard MFC dialog and in the
+'Appliaction Type' property page ensure that you choose 'dialog
+based', and check the 'Use HTML dialog'. An application will be 
+created with the main dialog derived from CDHTMLDialogDlg. A resource
+containing a HTML page will also be created, and it's this page 
+that will be displayed in the dialog at execution.
+
+The HTML designer in Visual Studio allows you to edit the HTML. Each
+element on the HTML should be given an ID so that it can be accessed
+from within your CDHTMLDialogDlg derived class.
+
+
+HTML Element events
+
+To catch events fired by HTML elements (such as mouse clicks on buttons)
+you must add an entry to the dialog's DHTML event map. This is analogous
+to adding message handlers for normal windows controls:
+
+BEGIN_DHTML_EVENT_MAP(CDHTMLDialogDlg)
+    DHTML_EVENT_ONCLICK(_T("ButtonOK"), OnButtonOK)
+    DHTML_EVENT_ONCLICK(_T("ButtonCancel"), OnButtonCancel)
+    DHTML_EVENT_ONCLICK(_T("CheckLink"), OnCheckClick)
+END_DHTML_EVENT_MAP()
+
+Our HTML page contains 2 buttons (OK, with ID 'ButtonOK' and Cancel, with ID
+'ButtonCancel') and a checkbox (ID 'CheckLink'). We will use the checkbox 
+to enable/disable a hyperlink element (ID 'LinkCP') on the same page.
+
+The DHTML event map shown above associates click events for the buttons
+and check boxes with member functions of the dialog. The OK and Cancel
+button handlers simply call base class members that close the dialog. The
+OnCheckClick handler is called when the checkbox in the HTML page is clicked.
+
+To make the check box determine the state of the hyperlink we catch the click
+event for the checkbox and replace the outer HTML of the hyperlink (the outer 
+HTML is the HTML within the hyperlink plus the open and closing <a> tags). For 
+a non-active state we replace the out HTML with plain text, and for an active
+state we insert the <a href=...> tag.
+
+Our click event handler function looks like the following. We use a member 
+variable m_LinkActive to keep track of the state of the link. 
+
+
+HRESULT CDHTMLDialogDlg::OnCheckClick(IHTMLElement* pElement)
+{
+    // toggle the link's active state
+    m_LinkActive = !m_LinkActive;
+
+    // we need to get an interface pointer to the link element
+    IHTMLElement* pLinkElement = NULL;
+
+    if (GetElement(_T("LinkCP"), &pLinkElement) == S_OK && 
+          pLinkElement != NULL)
+    {
+        // For an active link, set the outerHTML as the appropriate <a ...> tag
+        if (m_LinkActive)
+        {
+            pLinkElement->put_outerHTML(_bstr_t("<a ID=LinkCP target=_blank href='http://www.codeproject.com'>here</a>"));
+        }
+        // For an inactive link, replace the outerHTML with grey text
+        else
+        {
+            pLinkElement->put_outerHTML(_bstr_t("<font ID=LinkCP color='#COCOCO'>here</font>"));
+        }
+    }
+
+    return S_OK;
+}
+
+

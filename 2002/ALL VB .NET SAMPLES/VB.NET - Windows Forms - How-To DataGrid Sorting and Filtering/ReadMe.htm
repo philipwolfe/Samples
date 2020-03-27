@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+	<HEAD>
+		<TITLE>ReadMe</TITLE>
+		<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<META content="JavaScript" name="vs_defaultClientScript">
+		<META content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
+		<META content="Microsoft FrontPage 5.0" name="GENERATOR">
+		<META content="FrontPage.Editor.Document" name="ProgId">
+		<META content="Microsoft Visual Studio.NET 7.0" name="Originator">
+	</HEAD>
+	<BODY>
+		<H1>Windows Forms: Data Grid Sorting and Filtering</H1>
+		<H2><span style="font-weight: 400"><font size="3">This sample shows how you can retrieve 
+					data from the database, and display that
+					<br>
+					data in a datagrid.</font></span></H2>
+		<H2>Featured Highlights<span style="font-weight: 400"><font size="3"><br>
+					<br>
+					ADO.NET is used to retrieve the information from SQL Server. The data is loaded 
+					into<br>
+					a DataSet, and the grid is populated by binding to the DataSet. ADO.NET is also 
+					used<br>
+					to filter the data. When the user clicks the Filter button, a DataView is used 
+					to
+					<br>
+					exclude some of the rows. You can also re-sort the data simply by clicking any 
+					column<br>
+					headings in the DataGrid.<br>
+					<br>
+					The controls on this form utilize anchoring so that the form resizes 
+					intelligently<br>
+					without the developer having to write any code.<br>
+					<br>
+					Tooltips are used on the TextBox, and the Load Data buttons to provide 
+					additional<br>
+					guidance to the user.<br>
+					<br>
+					Validation is done in the filtering event procedure. If the user enters a 
+					criteria<br>
+					that doesn't match any rows, the user is notified.<br>
+					<br>
+					Debug.Assert is used to perform a sanity check. This &quot;defensive 
+					coding&quot; can prevent<br>
+					bugs that would be easily introduced later. For detail on how to test the 
+					Debug.Assert,<br>
+					see the notes section.</font></span></H2>
+		<p>Debug.Assert is used in the filter event procedure to insure that the DataSet 
+			contains<br>
+			data before attempting to filter the results. To see this in action, do the 
+			following:<br>
+			<br>
+			1. Change the Enabled property of btnFilter from false to true.<br>
+			2. Press F5 to start the application.<br>
+			3. Click &quot;Filter&quot; without clicking &quot;Load Data&quot;.<br>
+			<br>
+			Debug.Assert only operates when compiling in debug mode, so you don't have to 
+			worry about<br>
+			it showing errors or wasting processor cycles in released code.<br>
+			<br>
+			1. On the Visual Studio toolbar, change the Solution Configurations drop down 
+			from
+			<br>
+			&quot;Debug&quot; to &quot;Release&quot;<br>
+			2. Press F5<br>
+			3. Click &quot;Filter&quot; without clicking &quot;Load Data&quot;.</p>
+		<H2>Requirements</H2>
+		<H2><span style="font-weight: 400"><font size="3">Requires the release version of Visual 
+					Studio .NET Professional (or greater)<br>
+					and access to the Northwind database residing in SQL Server or the Microsoft<br>
+					Data Engine (MSDE). To install MSDE, do the following:<br>
+					<br>
+					1. Open the Start menu, then click Programs, the click Microsoft .NET Framework<br>
+					SDK, and then click Samples and Quickstart Tutorials.<br>
+					<br>
+					2. Click &quot;Step 1: Install the .NET Framework Samples Database&quot;.<br>
+					<br>
+					3. Open a command window, and CD to &lt;FrameworkSDK&gt;\Samples\Setup
+					<br>
+					This is typically :
+					<br>
+					C:\Program Files\Microsoft Visual Studio .NET\FrameworkSDK\Samples\Setup<br>
+					<br>
+					4. Type: osql -E -S (local)\NetSDK -i InstNwnd.sql</font></span></H2>
+		<H2>Running the Sample</H2>
+		<P>Simply Press F5.
+		</P>
+		<h3>See also</h3>
+		<H3><span style="font-weight: 400"><font size="3"> <a href="ms-help://MS.VSCC/MS.MSDNVS/cpref/html/frlrfSystemWindowsFormsDataGridClassTopic.htm">
+						DataGrid</a></font></span><font size="3"><span style="font-weight: 400">&nbsp;
+					<a href="ms-help://MS.VSCC/MS.MSDNVS/vbcon/html/vbconDataGridOverview.htm">Working 
+						with the DataGrid</a></span></font></H3>
+	</BODY>
+</HTML>

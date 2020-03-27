@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+    <title>ReadMe</title>
+</head>
+<body>
+    <h1>
+        Working With Threads
+    </h1>
+    This sample demonstrates how to use threads to accomplish multiple tasks simultaneously
+    using the application's thread pool, and the BackgroundWorker component.<br />
+    <br />
+    Using threads lets you handle multiple programmatic actions simultaneously. For
+    example, your program may need to do one or more of the following tasks, each of
+    which could take a long time, forcing the user to wait:<br />
+    <br />
+    <ul>
+        <li>Perform complex mathematical calculations</li>
+        <li>Draw graphical images</li>
+        <li>Access a web service</li>
+        <li>Upload or download files</li>
+    </ul>
+    You want your application to remain responsive to user input. You can carry out
+    these functions on separate threads, while the user can carry on with other tasks.<br />
+    <br />
+    <strong>What is a thread?<br />
+    </strong>It is a unit of processing that is part of a process, using the process's
+    memory space and data. Consider it a subprocess.<br />
+    <br />
+    Working with threads is not a trivial task for the developer. There are pitfalls
+    such as potential corruption of shared data if it is accessed by two or more threads
+    at the same time. Background threads don't have direct access to the user interface
+    (which runs on the main thread), requiring the use of delegates to interact between
+    the threads.<br />
+    <br />
+    <strong>Thread Pool<br />
+    </strong>Each application has access to a pool of threads, maintained by the Common
+    Language Runtime, from which it can draw threads at will.<br />
+    <br />
+    <strong>BackgroundWorker Component<br />
+    </strong>This component, new to Visual Studio 2005, lets you implement background
+    processing much more simply than ever. Once you drag a BackgroundWorker control
+    from the ToolBox onto a form, you can use its methods and events to:<br />
+    <br />
+    <ul>
+        <li>start a task in the background</li>
+        <li>monitor the progress of the task</li>
+        <li>cancel the task</li>
+        <li>receive the results</li>
+    </ul>
+    <p>
+        You can do all this without having to be concerned about thread management, data
+        corruption, or synchronization between threads.<br />
+        <br />
+        <strong>This sample requires the following to be installed:</strong>
+        <ul>
+            <li>Visual Studio 2005</li>
+        </ul>
+</body>
+</html>

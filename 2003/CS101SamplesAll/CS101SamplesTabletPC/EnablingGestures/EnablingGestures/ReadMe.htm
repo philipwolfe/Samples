@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title></title>
+	</head>
+	<body>
+        <h1>
+            Recognizing Gestures</h1>
+        <p>
+        The Microsoft Windows XP Tablet PC Edition 2005 provides system-level recognition
+            of various traced gestures, ranging from basic geometric shapes (square, circle,
+            triangle, etc.) to proof-reading symbols such as curlicues and chevrons. Gesture
+            recognition can be turned on or off, and fine-tuned using the <strong>SetGestureStatus()
+            </strong>method of the <strong>InkOverlay </strong>class.
+        </p>
+        <p>
+            &nbsp;</p>
+        <p>
+            This samples enumerates all of the system gestures and populates a <strong>CheckedListBox
+            </strong>with their names. As gestures are checked and unchecked, listening for
+            them is turned on or off. There is some additional processing to handle the special
+            gestures "AllGestures" and "NoGestures" commands.
+        </p>
+        <p>
+            The <strong>Gesture </strong>event is fired by the <strong>InkOverlay</strong> as
+            appropriate. The associated event arguments contain an array of <strong>Gesture</strong>s
+            with their <strong>ID</strong>s and <strong>Confidence </strong>levels. N.B.: <strong>
+                NoGesture</strong> is often passed with a higher <strong>Confidence </strong>
+            than the hoped-for gesture, so it's important to use a loop similar to what is shown
+            in this sample to iterate over the passed-in <strong>Gesture</strong>s and confirm
+            that the hoped-for gesture has, in fact, a higher confidence.</p>
+        <p>
+            The array of returned <strong>Gesture</strong>s is displayed in a <strong>Label</strong>.
+        </p>
+        <p>
+        <b>This sample requires the following to be installed: </b>
+        </p>
+        <ul>
+        <li>Visual Studio 2005. </li>
+            <li>Microsoft Tablet PC Platform SDK.</li>
+            <li>Microsoft Windows XP Tablet PC Edition 2005.</li>
+        </ul>
+	</body>
+</html>
+

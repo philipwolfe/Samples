@@ -1,0 +1,50 @@
+{{handler bin\PerformanceCounter.dll/Default}}
+<html>
+	<HEAD>
+	</HEAD>
+	<BODY>
+		<p>
+			<FONT face=Arial><b>{{SampleTitle}}</b></FONT>
+		</p>
+		<p>
+			<FONT face=Arial>
+			This sample uses ATL Server's performance monitoring support
+			to demonstrate performance counters within an ATL Server web application.
+			Each of the buttons below is represented by two performance counters.
+			The first counter tracks the rate at which the button is pressed,
+			and the second tracks the total number of button presses.
+			</FONT>
+		</p>
+		<form id=FORM1 action="PerformanceCounter.srf" method=post>
+			<input id=Submit1 type=submit value=Counter1 name=Submit1>
+			<input id=Submit2 type=submit value=Counter2 name=Submit2>
+			<input id=Submit3 type=submit value=Counter3 name=Submit3>
+		</form>
+		<p>
+			<FONT face=Arial>
+			The counter values can be viewed using the Windows Performance Console 
+			(Start | Programs | Administrative Tools | Performance). Within the console:
+			<ul>
+			<li>Press the <b>+</b> button</li>
+			<li>Select <b>PerformanceCounterSample</b> in the <b>Performance Object</b> dropdown list</li>
+			<li>Select the <b>All Counters</b> and <b>All Instances</b> radio buttons</li>
+			<li>Press the <b>Add</b> button</li>
+			</ul>
+			</FONT>
+		</p>
+		<p>
+			<FONT face=Arial>
+			The Performance Console will then display the six counter values 
+			(two counters for each of the three buttons on this page).
+			Pressing a button will increment the button's counters.
+			</FONT>
+		</p>
+		<P>
+			<FONT face=Arial>
+			No luck finding or displaying the data in the Performance Console?
+			Make sure the PerformanceCounterIsapi DLL is registered using <b>regsvr32</b>.
+			Still not working? See the PerformanceCounter Sample in MSDN for troubleshooting steps.
+			</FONT>
+		</P>
+	</BODY>
+</html>

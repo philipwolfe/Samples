@@ -1,0 +1,12 @@
+// Copyright (c) Microsoft Corporation.  All rights reserved.
+[
+	object,
+	uuid(332781CD-76BD-11D3-BAB1-00C04F8EC847),
+	helpstring("IAtlEventSink Interface"),
+	pointer_default(unique)
+]
+interface IAtlEventSink : IUnknown
+{
+	HRESULT Advise([in] IUnknown* pSrc);
+	HRESULT Unadvise();
+};

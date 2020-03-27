@@ -1,0 +1,312 @@
+<?xml version="1.0"?>
+<!-- ATL Server generated Web Service Description -->
+<definitions 
+	xmlns:s="http://www.w3.org/2001/XMLSchema" 
+	xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" 
+	xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" 
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+	xmlns:s0="urn:OnlineAddressBookWSService" 
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:atls="http://tempuri.org/vc/atl/server/"
+	targetNamespace="urn:OnlineAddressBookWSService" 
+	xmlns="http://schemas.xmlsoap.org/wsdl/"
+>
+	<types>
+		<s:schema targetNamespace="urn:OnlineAddressBookWSService" attributeFormDefault="qualified" elementFormDefault="qualified">
+			<s:element name="LogOff">
+				<s:complexType>
+					<s:sequence>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="LogOffResponse">
+				<s:complexType>
+					<s:sequence>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="DeleteAllContacts">
+				<s:complexType>
+					<s:sequence>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="DeleteAllContactsResponse">
+				<s:complexType>
+					<s:sequence>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="LogOn">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="strEmail" type="s:string"/>
+						<s:element name="strPassword" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="LogOnResponse">
+				<s:complexType>
+					<s:sequence>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="GetAddressBookEntry">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="lContactID" type="s:int"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="GetAddressBookEntryResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="return" type="s0:ContactItem"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="GetContactList">
+				<s:complexType>
+					<s:sequence>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="GetContactListResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="NameList" nillable="true">
+							<s:complexType>
+								<s:sequence>
+									<s:element name="string" type="s:string" minOccurs="0" maxOccurs="unbounded"/>
+								</s:sequence>
+							</s:complexType>
+						</s:element>
+						<s:element name="IDList" nillable="true">
+							<s:complexType>
+								<s:sequence>
+									<s:element name="int" type="s:int" minOccurs="0" maxOccurs="unbounded"/>
+								</s:sequence>
+							</s:complexType>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="CreateAccount">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="strEmail" type="s:string"/>
+						<s:element name="strPassword" type="s:string"/>
+						<s:element name="strFirstName" type="s:string"/>
+						<s:element name="strLastName" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="CreateAccountResponse">
+				<s:complexType>
+					<s:sequence>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="InsertContact">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="newContactItem" type="s0:ContactItem"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="InsertContactResponse">
+				<s:complexType>
+					<s:sequence>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:complexType name="ContactItem">
+				<s:sequence>
+					<s:element name="m_ContactID" type="s:int"/>
+					<s:element name="m_Birthday" type="s:string"/>
+					<s:element name="m_BusinessCity" type="s:string"/>
+					<s:element name="m_BusinessCountry" type="s:string"/>
+					<s:element name="m_BusinessFax" type="s:string"/>
+					<s:element name="m_BusinessPhone" type="s:string"/>
+					<s:element name="m_BusinessPostalCode" type="s:string"/>
+					<s:element name="m_BusinessState" type="s:string"/>
+					<s:element name="m_BusinessStreet" type="s:string"/>
+					<s:element name="m_Company" type="s:string"/>
+					<s:element name="m_Department" type="s:string"/>
+					<s:element name="m_EmailAddress" type="s:string"/>
+					<s:element name="m_FirstName" type="s:string"/>
+					<s:element name="m_HomeCity" type="s:string"/>
+					<s:element name="m_HomeCountry" type="s:string"/>
+					<s:element name="m_HomeFax" type="s:string"/>
+					<s:element name="m_HomePhone" type="s:string"/>
+					<s:element name="m_HomePostalCode" type="s:string"/>
+					<s:element name="m_HomeState" type="s:string"/>
+					<s:element name="m_HomeStreet" type="s:string"/>
+					<s:element name="m_JobTitle" type="s:string"/>
+					<s:element name="m_LastName" type="s:string"/>
+					<s:element name="m_MiddleName" type="s:string"/>
+					<s:element name="m_MobilePhone" type="s:string"/>
+					<s:element name="m_OtherPhone" type="s:string"/>
+					<s:element name="m_Suffix" type="s:string"/>
+					<s:element name="m_Title" type="s:string"/>
+					<s:element name="m_WebPage" type="s:string"/>
+				</s:sequence>
+			</s:complexType>
+			<s:element name="m_SessionID" type="s:string"/>
+		</s:schema>
+	</types>
+	<message name="LogOffIn">
+		<part name="parameters" element="s0:LogOff"/>
+	</message>
+	<message name="LogOffOut">
+		<part name="parameters" element="s0:LogOffResponse"/>
+	</message>
+	<message name="DeleteAllContactsIn">
+		<part name="parameters" element="s0:DeleteAllContacts"/>
+	</message>
+	<message name="DeleteAllContactsOut">
+		<part name="parameters" element="s0:DeleteAllContactsResponse"/>
+	</message>
+	<message name="LogOnIn">
+		<part name="parameters" element="s0:LogOn"/>
+	</message>
+	<message name="LogOnOut">
+		<part name="parameters" element="s0:LogOnResponse"/>
+	</message>
+	<message name="GetAddressBookEntryIn">
+		<part name="parameters" element="s0:GetAddressBookEntry"/>
+	</message>
+	<message name="GetAddressBookEntryOut">
+		<part name="parameters" element="s0:GetAddressBookEntryResponse"/>
+	</message>
+	<message name="GetContactListIn">
+		<part name="parameters" element="s0:GetContactList"/>
+	</message>
+	<message name="GetContactListOut">
+		<part name="parameters" element="s0:GetContactListResponse"/>
+	</message>
+	<message name="CreateAccountIn">
+		<part name="parameters" element="s0:CreateAccount"/>
+	</message>
+	<message name="CreateAccountOut">
+		<part name="parameters" element="s0:CreateAccountResponse"/>
+	</message>
+	<message name="InsertContactIn">
+		<part name="parameters" element="s0:InsertContact"/>
+	</message>
+	<message name="InsertContactOut">
+		<part name="parameters" element="s0:InsertContactResponse"/>
+	</message>
+	<message name="m_SessionID">
+		<part name="m_SessionID" element="s0:m_SessionID"/>
+	</message>
+	<portType name="OnlineAddressBookWSServiceSoap">
+		<operation name="LogOff">
+			<input message="s0:LogOffIn"/>
+			<output message="s0:LogOffOut"/>
+		</operation>
+		<operation name="DeleteAllContacts">
+			<input message="s0:DeleteAllContactsIn"/>
+			<output message="s0:DeleteAllContactsOut"/>
+		</operation>
+		<operation name="LogOn">
+			<input message="s0:LogOnIn"/>
+			<output message="s0:LogOnOut"/>
+		</operation>
+		<operation name="GetAddressBookEntry">
+			<input message="s0:GetAddressBookEntryIn"/>
+			<output message="s0:GetAddressBookEntryOut"/>
+		</operation>
+		<operation name="GetContactList">
+			<input message="s0:GetContactListIn"/>
+			<output message="s0:GetContactListOut"/>
+		</operation>
+		<operation name="CreateAccount">
+			<input message="s0:CreateAccountIn"/>
+			<output message="s0:CreateAccountOut"/>
+		</operation>
+		<operation name="InsertContact">
+			<input message="s0:InsertContactIn"/>
+			<output message="s0:InsertContactOut"/>
+		</operation>
+	</portType>
+	<binding name="OnlineAddressBookWSServiceSoap" type="s0:OnlineAddressBookWSServiceSoap">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+		<operation name="LogOff">
+			<soap:operation soapAction="#LogOff" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+				<soap:header message="s0:m_SessionID" part="m_SessionID" wsdl:required="true" use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="DeleteAllContacts">
+			<soap:operation soapAction="#DeleteAllContacts" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+				<soap:header message="s0:m_SessionID" part="m_SessionID" wsdl:required="true" use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="LogOn">
+			<soap:operation soapAction="#LogOn" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+				<soap:header message="s0:m_SessionID" part="m_SessionID" wsdl:required="true"  use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetAddressBookEntry">
+			<soap:operation soapAction="#GetAddressBookEntry" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+				<soap:header message="s0:m_SessionID" part="m_SessionID" wsdl:required="true" use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+				<soap:header message="s0:m_SessionID" part="m_SessionID" wsdl:required="true"  use="literal"/>
+			</output>
+		</operation>
+		<operation name="GetContactList">
+			<soap:operation soapAction="#GetContactList" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+				<soap:header message="s0:m_SessionID" part="m_SessionID" wsdl:required="true" use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="CreateAccount">
+			<soap:operation soapAction="#CreateAccount" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="InsertContact">
+			<soap:operation soapAction="#InsertContact" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+				<soap:header message="s0:m_SessionID" part="m_SessionID" wsdl:required="true" use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="OnlineAddressBookWSService">
+		<port name="OnlineAddressBookWSServiceSoap" binding="s0:OnlineAddressBookWSServiceSoap">
+			<soap:address location="http://localhost/OnlineAddressBookWS/OnlineAddressBookWS.dll?Handler=Default"/>
+		</port>
+	</service>
+</definitions>

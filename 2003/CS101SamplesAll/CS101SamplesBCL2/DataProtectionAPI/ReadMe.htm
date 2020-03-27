@@ -1,0 +1,51 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title></title>
+		<meta name="GENERATOR" content="Microsoft Visual Studio.NET 7.0">
+		<meta name=ProgId content=VisualStudio.HTML>
+		<meta name=Originator content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+        <h1>
+            DataProtection API</h1>
+        <p>
+        The .NET Framework provides access to the data protection API (DPAPI), which allows
+            you to encrypt data using information from the current user account or computer.
+            When you use the DPAPI, you alleviate the difficult problem of explicitly generating
+            and storing a cryptographic key.</p>
+        <p>
+            This sample demonstrates the use of both the ProtectedMemory and ProtectedData objects.&nbsp;
+            This functionality is available in Microsoft Windows XP and later operating systems.</p>
+        <p>
+            Use the
+            <?xml namespace="" ns="http://msdn.microsoft.com/mshelp" prefix="MSHelp" ?>
+            <mshelp:link keywords="T:System.Security.Cryptography.ProtectedMemory" tabindex="0">ProtectedMemory</mshelp:link>
+            class to encrypt an array of in-memory bytes.&nbsp; You can specify that memory
+            encrypted by the current process can be decrypted by the current process only, by
+            all processes, or from the same user context. This sample demonstrates the current
+            process only option.&nbsp; See the
+            <mshelp:link keywords="T:System.Security.Cryptography.MemoryProtectionScope" tabindex="0">MemoryProtectionScope</mshelp:link>
+            enumeration for a detailed description of <b>ProtectedMemory</b> options.
+        </p>
+        <p>
+            Use the
+            <mshelp:link keywords="T:System.Security.Cryptography.ProtectedData" tabindex="0">ProtectedData</mshelp:link>
+            class to encrypt a copy of an array of bytes. In this sample, the encrypted data
+            is written to a file, "Data.dat" and decrypted by reading this file.&nbsp; You can
+            specify that data encrypted by the current user account can be decrypted only by
+            the same user account, or you can specify that data encrypted by the current user
+            account can be decrypted by any account on the computer. This sample demonstrates
+            the same user account option.&nbsp; See the
+            <mshelp:link keywords="T:System.Security.Cryptography.DataProtectionScope" tabindex="0">DataProtectionScope</mshelp:link>
+            enumeration for a detailed description of <b>ProtectedData</b> options.<br />
+        </p>
+        <p>
+        <b>This sample requires the following to be installed: </b>
+        </p>
+        <ul>
+        <li>Visual Studio 2005</li>
+            <li>Microsoft Windows XP and later operating systems</li>
+        </ul>
+	</body>
+</html>

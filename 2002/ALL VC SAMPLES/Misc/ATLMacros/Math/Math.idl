@@ -1,0 +1,58 @@
+// Math.idl : IDL source for Math
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (Math.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(8E127E6C-16B3-44B4-89CE-520C9058A8C1),
+	dual,
+	nonextensible,
+	helpstring("IAdder Interface"),
+	pointer_default(unique)
+]
+interface IAdder : IDispatch{
+
+	[id(1), helpstring("Returns sum of two numbers")] HRESULT Add([in] short sAddend1, [in] short sAddend2, [out,retval] long* plSum);
+};
+[
+	object,
+	uuid(D6FB16C3-18F8-421E-8BC4-EBAA1BC53D72),
+	dual,
+	nonextensible,
+	helpstring("ISubtracter Interface"),
+	pointer_default(unique)
+]
+interface ISubtracter : IDispatch{
+
+	[id(1), helpstring("Returns residual of  two numbers")] HRESULT Subtract([in] long lMinuend, [in] long lSubtrahend, [out,retval] long* plResidual);
+};
+[
+	uuid(A54A8EDB-EA0C-4FFA-B64A-C19CB663A2EB),
+	version(1.0),
+	helpstring("Math 1.0 Type Library")
+]
+library MathLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(FF381FA0-7EA5-4F6F-9DD1-DADE83249ED5),
+		helpstring("Adder Class")
+	]
+	coclass Adder
+	{
+		[default] interface IAdder;
+	};
+	[
+		uuid(843DBE57-63C3-47C4-AF6E-829C91A0A2A8),
+		helpstring("Subtracter Class")
+	]
+	coclass Subtracter
+	{
+		[default] interface ISubtracter;
+	};
+};

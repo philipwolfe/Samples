@@ -1,0 +1,52 @@
+<!--{{ handler cgi-bin\Mailbox.dll/Inbox }} This file (c) 2000 Microsoft Corporation -->
+<html>
+<head>
+<base target="main_frame">
+<link rel="stylesheet" href="main.css" type="text/css">
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function CheckPOPMail() 
+{
+	if (confirm("Are you sure you want to check external POP mail now? (checking POP mail might take several minutes)"))
+	{
+		navigate("inbox.srf?checkpopmail=1");
+	}
+}
+-->
+</SCRIPT>
+</head>
+<body background="">
+<p><font size="2">You have {{MessageCount}} message(s) total in your Inbox.<br>
+{{if HasUnreadMail}}<font color="#0065FF">You have {{UnreadMessageCount}} unread message(s).</font>{{endif}}</font></p>
+<form method="POST" action="inbox.srf">
+<table border="1" cellspacing="0" cellpadding="2" bgcolor="#FFFFCC" width="627">
+  <tr>
+    <td align="center" width="5%"><font color="#3A6EA5"><span style="font-variant: small-caps"><b>Mark:</b></span></font></td>
+    <td align="center" width="5%"><font color="#3A6EA5"><span style="font-variant: small-caps"><b>&nbsp;</b></span></font></td>
+    <td align="center"><font color="#3A6EA5"><span style="font-variant: small-caps"><b>From:</b></span></font></td>
+    <td align="center"><font color="#3A6EA5"><span style="font-variant: small-caps"><b>Subject:</b></span></font></td>
+    <td align="center" width="15%"><font color="#3A6EA5"><span style="font-variant: small-caps"><b>Date:</b></span></font></td>
+  </tr>
+  <!--{{if MessagesLeft}}-->
+  <!--{{while MessagesLeft}}-->
+  <tr>
+    <td align="center" bgcolor="#FFFFFF"><input type="checkbox" name="id{{MessageID}}" value="ON"></td>
+    <td align="center" bgcolor="#FFFFFF"><img src="images\{{if MarkedRead}}opened{{else}}closed{{endif}}.gif" alt="{{if MarkedRead}}This message has been previously read.{{else}}This message has not yet been read.{{endif}}"></td>
+    <td align="left" bgcolor="#FFFFFF"><font size="2">{{MessageFrom}}</font></td>
+    <td align="left" bgcolor="#FFFFFF"><font size="2"><a href="message.srf?message={{MessageID}}&ref=inbox">{{MessageSubject}}</a></font></td>
+    <td align="left" bgcolor="#FFFFFF"><font size="2">{{MessageDate}}</font></td>
+  </tr>
+  <!--{{NextMessage}}{{endwhile}}-->
+  <!--{{else}}-->
+  <tr>
+    <td bgcolor="#FFFFFF" colspan="5"><font size="2">You have no messages in your Inbox.</font></td>
+  </tr>
+  <!--{{endif}}-->
+</table>
+<br><br>
+<input type="button" value="Check POP Mail" name="checkPOPMail" OnClick="CheckPOPMail()">&nbsp;&nbsp;&nbsp;
+<input type="submit" value="Delete Marked Messages" name="deleteButton" {{if DisableButtons}}disabled{{endif}}>
+<input type="hidden" name="deletemsgs" value="1">
+</form>
+</body>
+</html>

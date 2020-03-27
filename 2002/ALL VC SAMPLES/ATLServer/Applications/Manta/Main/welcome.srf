@@ -1,0 +1,71 @@
+<!--
+{{ handler cgi-bin\Main.dll/Default }}
+{{ subhandler Inbox cgi-bin\Mailbox.dll/Inbox }}
+{{ subhandler Outbox cgi-bin\Mailbox.dll/Outbox }}
+{{ subhandler Trashbin cgi-bin\Mailbox.dll/Trashbin }} 
+{{ subhandler Tasks cgi-bin\Calendar.dll/Tasks }}
+{{ subhandler Schedule cgi-bin\Calendar.dll/Schedule }}
+This file (c) 2000 Microsoft Corporation
+-->
+<html>
+<head>
+<base target="main_frame">
+<link rel="stylesheet" href="main.css" type="text/css">
+</head>
+<body background="">
+<p>Welcome back, {{FirstName}}!
+{{if Inbox.HasUnreadMail}}You have {{Inbox.UnreadMessageCount}} unread message(s) waiting in your <a href="inbox.srf">Inbox</a>. {{endif}}
+</p>
+<table border="1" cellspacing="0" cellpadding="2" bgcolor="#FFFFCC" width="627">
+  <tr>
+    <td align="center" width="20%"><a href="inbox.srf"><font size="2">Inbox</font></a></td>
+    <td align="center" width="20%"><a href="outbox.srf"><font size="2">Outbox</font></a></td>
+    <td align="center" width="20%"><a href="trashbin.srf"><font size="2">Trash</font></a></td>
+  </tr>
+  <tr>
+    <td align="center" bgcolor="#FFFFFF"><font size="2">{{Inbox.MessageCount}}
+      ({{Inbox.UnreadMessageCount}} unread)</font></td>
+    <td align="center" bgcolor="#FFFFFF"><font size="2">{{Outbox.MessageCount}}</font></td>
+    <td align="center" bgcolor="#FFFFFF"><font size="2">{{Trashbin.MessageCount}}</font></td>
+  </tr>
+</table>
+<br>
+<table border="1" cellspacing="0" width="627" bgcolor="#FFFFCC" cellpadding="2">
+  <tr>
+    <td colspan="2"><font size="2">Today's <a href="tasks.srf">Tasks</a>:</font></td>
+  </tr>
+  <!--{{if Tasks.TasksLeftToday}}-->
+  <!--{{while Tasks.TasksLeftToday}}-->
+  <tr>
+  	<td bgcolor="#FFFFFF" width="5%" align="center"><font size="2">{{Tasks.PriorityImageToday}}</font></td>
+  	<td bgcolor="#FFFFFF"><font size="2"><a href="task.srf?view=1&taskid={{Tasks.TaskIDToday}}">{{Tasks.TaskTitleToday}}</a></font></td>
+  </tr>
+  <!--{{Tasks.NextTaskToday}}{{endwhile}}-->
+  <!--{{else}}-->
+  <tr>
+    <td bgcolor="#FFFFFF" colspan="2"><font size="2">You have no tasks that are due today.</font></td>
+  </tr>
+  <!--{{endif}}-->
+</table>
+<br>
+<table border="1" cellspacing="0" width="627" bgcolor="#FFFFCC" cellpadding="2">
+  <tr>
+    <td colspan="2"><font size="2">Today's <a href="schedule.srf">Schedule</a>:</font></td>
+  </tr>
+  <!--{{Schedule.SetTodays}} Schedule set to today's, ignores the current hour value (prints todays appointments in order). -->
+  <!--{{if Schedule.AppointmentsLeft}}-->
+  <!--{{while Schedule.AppointmentsLeft}}-->
+  <tr>
+  	<td bgcolor="#FFFFFF" width="115"><font size="2">{{Schedule.StartTime}} {{if Schedule.StartAM}}AM{{else}}PM{{endif}} to {{Schedule.EndTime}} {{if Schedule.EndAM}}AM{{else}}PM{{endif}}</font></td>
+  	<td bgcolor="#FFFFFF"><font size="2"><a href="appointment.srf?view=1&appid={{Schedule.AppointmentID}}">{{Schedule.AppointmentTitle}}</font></td>
+  </tr>
+  <!--{{Schedule.NextAppointment}}{{endwhile}}-->
+  <!--{{else}}-->
+  <tr>
+    <td bgcolor="#FFFFFF" colspan="2"><font size="2">You have no appointments today.</font></td>
+  </tr>
+  <!--{{endif}}-->
+</table>
+<br>
+</body>
+</html>

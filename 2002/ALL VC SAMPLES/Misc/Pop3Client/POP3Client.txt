@@ -1,0 +1,161 @@
+Using the managed TCP/IP classes in a managed C++ appplication
+Igor Chouvalov, Dundas Software Ltd
+
+This sample demonstrates a basic technique of networking
+using the TCP/IP protocol. It implements a simple POP3 client
+that connects to the POP3 mail server and retrieves the number
+of messages in your mailbox.
+
+The sample is based on the Managed C++ Application created by
+Application Wizard.
+
+All changes are made in the main source file. In our case this is the
+POP3Client.cpp file.
+
+All functionality is implemented in the CPOP3Client class. This class 
+has four properties:
+
+POP3HostName  - POP3 server address,
+UserName      - User Name,
+Password      - User Password,
+Status        - Error message (read-only)
+
+and public property NumberOfMessages to retrieve the number
+of messages in the mailbox.
+
+The TcpClient class from .NET Framework is used to create a client
+connection to a remote host. Inside of the NumberOfMessages function
+we create connection, get access to the buffer to read the data,
+read the response from the server, and check it. If it is positive value
+we return true, otherwise we return false.
+
+	bool ConnectToServer()
+	{
+		String *strReadBuffer;
+		StreamReader *streamRead;
+
+		// Close exist connection.
+		if(m_Client != NULL)
+		{
+			m_Client->Close();
+			m_Client = NULL;
+		}
+
+		// Create connection to the server.
+		m_Client = new TcpClient(m_strPOP3HostName, 110);
+
+		// Create stream to read.
+		streamRead = new StreamReader(m_Client->GetStream(), Encoding::ASCII );
+
+		strReadBuffer = streamRead->ReadLine();
+
+		// Ignore rest of the buffer.
+		streamRead->DiscardBufferedData();
+
+		// Check response for +OK reply.
+		if(strReadBuffer->StartsWith("+OK"))
+			return true;
+		else
+		{
+			m_Client->Close();
+			m_Client = NULL;
+			return false;
+		}
+	}
+
+The DisconnectFromServer function just sends a QUIT command to the server.
+
+	void DisconnectFromServer()
+	{
+		String *strResponse = String::Empty;
+
+		SendCommand("QUIT", &strResponse);
+		
+		m_Client->Close();
+		m_Client = NULL;
+	}
+
+After connecting to the server we get access to the mailbox by sending
+USER and PASS commands to the server. The SendCommand class member takes care of this.
+It uses two streams one for reading from the socket (an instance of
+the StreamReader class) and another stream for writing to the socket
+(an instance of the NetworkStream class). It writes the command to the output
+stream and gets the response from the input streams. For our current needs
+it reads only the first line of the response and discards rest
+of the buffer. To get multiline response, you should read data in a loop
+until end of the stream.
+
+	bool SendCommand(String *strCommand, String** pstrOutput)
+	{
+		Byte outbuffer __gc[];
+
+		StreamReader	*streamRead;
+		NetworkStream	*streamWrite;
+		String		*strRequest;
+
+		// Add crlf to the command.
+		strRequest = String::Concat(strCommand, S"\r\n");
+
+		// Create streams to read from socket and write to it.
+		streamWrite = m_Client->GetStream();
+		streamRead = new StreamReader(streamWrite, Encoding::ASCII);
+
+		// Convert from the string to the byte stream and write to socket.
+		outbuffer = Encoding::ASCII->GetBytes(strRequest);
+		streamWrite->Write(outbuffer, 0, outbuffer->Length);
+
+		// read response from the socket.
+		*pstrOutput = streamRead->ReadLine();
+
+		// Ignore rest of the buffer.
+		streamRead->DiscardBufferedData();
+
+		return (*pstrOutput)->StartsWith(S"+OK") ? true : false;
+	}
+
+Inside main function we read the parameters from a command line
+POP3 server address, user name, and password,
+create instance of CPOP3Client, set its properties based  on the
+command line parameters and call the NumberOfMessages method to retrieve
+number of messages in the mailbox.
+
+If an error occurs we print whatever useful information we can.
+
+int main(int argc, char *argv[ ])
+{
+	CPOP3Client* pPOP3Client;
+	int nNrOfMessages;
+
+	// Check parameters.
+	if(argc != 4)
+	{
+		Console::WriteLine(S"Wrong argument number.");
+		Console::WriteLine(S"Use following command line:");
+		Console::WriteLine(S"pop3client.exe POP3Hostname username password");
+		return 0;
+	}
+
+	// Create POP3Client object.
+	pPOP3Client = new CPOP3Client();
+
+	// Set properties from command line.
+	pPOP3Client->set_POP3HostName(new String(argv[1]));
+	pPOP3Client->set_UserName(new String(argv[2]));
+	pPOP3Client->set_Password(new String(argv[3]));
+
+	// Get number of messages in the mailbox.
+	nNrOfMessages = pPOP3Client->GetNumberOfMessages();
+
+	// If -1 returned, error occurred, then print error message.
+	// otherwise 
+	if(nNrOfMessages < 0)
+		Console::Write(String::Concat(S"Error occured: ", pPOP3Client->get_Status()));
+	else
+	{
+		Console::Write(S"You have ");
+		Console::Write(nNrOfMessages);
+		Console::WriteLine(S" messages in your mailbox.");
+	}
+    return 0;
+
+}

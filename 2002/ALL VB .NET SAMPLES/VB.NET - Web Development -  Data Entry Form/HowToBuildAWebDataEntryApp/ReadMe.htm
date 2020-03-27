@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+		<meta name="ProgId" content="FrontPage.Editor.Document">
+		<meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+		<h1>
+			Web Development: Build a Web-Based Data Entry Application</h1>
+		<p>
+			Anyone interested in data entry over the Web&nbsp;will find this sample 
+			application&nbsp;valuable.</p>
+		<h2>Featured Highlights</h2>
+		<UL>
+			<LI>
+			View data in a DataGrid that displays custom formatting with BoundColumns, 
+			TemplateColumns, and CSS classes.
+			<LI>
+			Add a new item, edit an existing item, or delete an existing item.
+			<LI>
+			The Application Cache is used to store&nbsp;the DataView that is bound to the 
+			DataGrid.&nbsp;In this way the data only has to be downloaded once. The cache 
+			is dumped when any changes are made to the underlying data.
+			<LI>
+			DataGrid sorting persists even during paging. The sort expression is stored in 
+			an HTMLInputHidden control.
+			<LI>
+				RequiredFieldValidator and RegularExpressionValidator controls are used to 
+				ensure data integrity during data entry.</LI></UL>
+		<h2>Requirements</h2>
+		<P>This application requires the release version of Visual Studio .NET Professional 
+			(or greater) and access to the Northwind database residing in SQL Server or the 
+			Microsoft Data Engine (MSDE). To install MSDE, do the following:</P>
+		<P><STRONG>1. </STRONG>Open the Start menu, click Programs, click Microsoft .NET 
+			Framework SDK, and then click Samples and Quickstart Tutorials.
+		</P>
+		<P><STRONG>2. </STRONG>Click "Step 1: Install the .NET Framework Samples Database".
+		</P>
+		<P><STRONG>3. </STRONG>Open a command window, and CD to <EM>[FRAMEWORKSDK]</EM>\Samples\Setup 
+			This is typically : C:\Program Files\Microsoft Visual Studio 
+			.NET\FrameworkSDK\Samples\Setup
+		</P>
+		<P><STRONG>4. </STRONG>Type: osql -E -S (local)\NetSDK -i InstNwnd.sql</P>
+		<h2>Running the Sample</h2>
+		<P>Press <STRONG>F5</STRONG> to run the sample.
+			<BR>
+			<BR>
+			<STRONG>Note:</STRONG></P>
+		<P>If you get an error when running the sample make sure that IIS has appropriate 
+			permissions to query tables in the local SQL Server.&nbsp; There are multiple 
+			ways to achieve this but the easiest way to do this for testing and running 
+			samples is to change the default &lt;processModel&gt; settings in 
+			machine.config.&nbsp; The steps to do this are as follows:</P>
+		<P>1.&nbsp;&nbsp;&nbsp; Navigate to 
+			c:\[WINDOWSDIR]\Microsoft.NET\Framework\[FrameworkVersion]\Config<BR>
+			2.&nbsp;&nbsp;&nbsp; Open the Machine.Config file found there and 
+        change the userName attribute so that it's&nbsp;value is&nbsp;SYSTEM (i.e. 
+        userName=&quot;SYSTEM&quot;)<BR>
+			3.&nbsp;&nbsp;&nbsp; Save the File.<BR>
+			4.&nbsp;&nbsp;&nbsp; Open up a command prompt and type IISReset to restart IIS.<BR>
+			<BR>
+			Another options to use that is more applicable for a production environment is 
+			to give appropriate permissions to the ASPNET account in the appropriate 
+			database.&nbsp;
+		</P>
+		<P><STRONG>See Also</STRONG></P>
+		<P><A href="ms-help://MS.VSCC/MS.MSDNVS/vbcon/html/vbconDataGridWebControl.htm">Using 
+				the DataGrid Control</A>&nbsp; <A href="ms-help://MS.VSCC/MS.MSDNVS/vbcon/html/vbtskallowinguserstoedititemsindatagridwebcontrol.htm">
+				Editing Items in a DataGrid</A></P>
+	</body>
+</html>

@@ -1,0 +1,64 @@
+Using the managed TCP/IP classes in a managed C++ appplication
+Igor Chouvalov, Dundas Software Ltd
+
+The ATLMacros sample demonstrates using the new ATL macros OBJECT_ENTRY_AUTO.
+This replaces the BEGIN_OBJECT_MAP/OBJECT_ENTRY/END_OBJECT_MAP combination.
+
+The sample is based on the ATL Project created by the AppWizard. If you choose
+to follow the steps in this document to create your own application, then ensure
+that in the Application settings dialog you choose 'DLL project' and you must 
+ensure that you uncheck the 'Attributed' checkbox, otherwise the code will be
+created using the new C++ Attributes for the COM classes.
+
+In VC6 the Object Map BEGIN_OBJECT_MAP/END_OBJECT_MAP was used to list all
+the ATL classes in the server that implemented COM classes. The Object Map 
+was located in the server .cpp file (where WinMain() or DllMain() functions 
+were located). To add a class to the map, the OBJECT_ENTRY macro was used. 
+Object Maps provides support for the registration, initialization, and 
+creation of a class.
+
+In VC7 the OBJECT_ENTRY_AUTO  macro is used for this instead.
+
+Syntax:
+
+	OBJECT_ENTRY_AUTO(clsid, class )
+
+Parameters:
+
+	clsid 
+	[in] The CLSID of a COM class implemented by the C++ class named class.
+
+	class 
+	[in] The name of the C++ class implementing the COM class represented
+	by clsid. 
+
+
+So now there is no Object Map. You simply place the object entry macros at 
+global scope in the project and it does all the work for you. The AppWizard 
+puts this macro to the end of the ATL class header file, so you have all your 
+class code in one place. Previously (VC6) it was easy to forget to add a 
+class to the Object Map. Now you have all your code in one place, so it is 
+easy to reuse existing classes since you can just copy the files that implement 
+it and add them to the project. No more messing around with OBJECT_ENTRY macros.
+
+
+The Sample Application
+
+The Math DLL implements two COM object: Adder and Subtracter. 
+
+The Adder object has a method Add that returns the sum of two addends passed 
+as parameters. A C++ class is implemented in Adder.h and Adder.cpp files.
+
+Subtracter has a method Sub that returns the residual of the numbers passed
+as parameters. A C++ class is implemented in Subtracter.h and Subtracter.cpp
+files.
+
+MathClient is a simple console application to test the Adder and Subtracter
+objects. It reads two numbers and an operation sign (+/-) from the command line
+and, depending on the operation, calls Adder or Subtracter. The operation is
+performed and the results outputed
+
+You must ensure that the Math.dll file has been registered for the demonstration
+to work.
+
+

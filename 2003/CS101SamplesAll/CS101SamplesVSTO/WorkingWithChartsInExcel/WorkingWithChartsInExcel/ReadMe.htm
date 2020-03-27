@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Working with Charts in Excel</title>
+    <meta name="GENERATOR" content="Microsoft Visual Studio.NET 7.0" />
+    <meta name="ProgId" content="VisualStudio.HTML" />
+    <meta name="Originator" content="Microsoft Visual Studio.NET 7.0" />
+</head>
+<body>
+    <h1>Working with Charts in Excel</h1>
+    <p>
+    </p>
+    <p>
+        Microsoft Excel offers a powerful data presentation and manipulation platform for
+        tabular data in many formats.&nbsp; In addition to the traditional row/column spreadsheet
+        metaphor, you can also create dynamic charts to better visualize data trends.&nbsp;
+        As with other Excel objects, you can programmatically interact with charts in various
+        ways.</p>
+    <p>
+    </p>
+    <p>
+        In this sample, you will see two styles of charts -- a chart object embedded within
+        a worksheet, and a chart sheet host item.&nbsp; A chart sheet host item is analogous
+        to a worksheet, but contains only a chart, and no cells.&nbsp; In Visual Studio
+        Tools for Office, chart sheets have
+        their own designer and code-behind. &nbsp; A
+        chart object, on the other hand, is treated like any other control.&nbsp; Data is
+        bound to columns A-D from the Adventure Works vSalesPersonSalesByFiscalYears view.&nbsp;
+        The data is used as the source data for the two charts.&nbsp; The Document Actions
+        pane is used to demonstrate programatically setting the chart's caption, the chart
+        type, and filtering a dataset bound to a ListObject to affect rendered chart data.&nbsp;
+        Note that four of the chart types, with names beginning with xlStock, require specific
+        data arrangement in order to work, so will be ignored if selected.&nbsp; Also notice
+        that both the chart object and chart sheet are both able to be manipulated identically
+        using the customization.&nbsp; Entering a value in the "Show sales consistently
+        above" field acts as a filter only showing rows where all values from 2002-2004
+        are above that target.</p>
+    <p>
+    </p>
+    <p>
+        <b>This sample requires the following to be installed: </b>
+    </p>
+    <ul>
+        <li>Visual Studio 2005</li>
+        <li>Microsoft Excel 2003</li>
+        <li>Adventure Works sample database installed at "C:\Program Files\Microsoft SQL Server\MSSQL.1\MSSQL\Data</li>
+    </ul>
+    <p>
+        You can download the Adventure Works sample database 
+        <a href="http://go.microsoft.com/fwlink/?linkid=31046">here</a>
+    </p>
+</body>
+</html>

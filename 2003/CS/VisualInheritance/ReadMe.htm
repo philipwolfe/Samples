@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta content="JavaScript" name="vs_defaultClientScript">
+		<meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
+		<meta content="Microsoft Visual Studio.NET 7.0" name="GENERATOR">
+		<meta content="VisualStudio.HTML" name="ProgId">
+		<meta content="Microsoft Visual Studio.NET 7.0" name="Originator">
+	</head>
+	<body>
+		<h1>
+			Windows Forms: Using Forms Inheritance</h1>
+		<p>This sample shows how you can use inheritance with Windows Forms. A Form is 
+			really only a class, like any other class in .NET, except that it has the 
+			capability to display visual user interface elements. To use this type of 
+			inheritance simply create a class that derives from a class that, in turn, 
+			derives from System.Windows.Forms.Form.
+		</p>
+		<h2>Featured Highlights:</h2>
+		<UL>
+			<LI>
+			This application uses frmMain to launch two other forms that derive from 
+			frmBase.vb: frmDataGrid and frmRichTextBox. Each of these two forms inherit the 
+			frmBase class which includes a Label, a Button, other Form properties that 
+			affect its appearance, and a function that returns a DataSet. The derived forms 
+			fill in the empty middle area of frmBase with either a DataGrid or a 
+			RichTextBox, displaying the same DataSet.
+			<LI>
+			ADO.NET is used to retrieve the information from SQL Server. The data is loaded 
+			into a DataSet, and the DataGrid is populated by binding to the DataSet.
+			<LI>
+			The controls on this form utilize anchoring so that the form resizes 
+			intelligently without the developer having to write any code.
+			<LI>
+			The DataGrid's appearance is formatted via table and column style objects.
+			<LI>
+				Two additional Label controls, with their Text properties set to an empty 
+				string, are also in place on frmBase. One is declared Protected and the other 
+				Private. (Controls placed by the Visual Studio Designer are declared with the 
+				Friend modifier by default.) On the inherited Forms try to access the members 
+				of each Label. You will notice that only the Label declared as Protected is 
+				accessible.</LI></UL>
+		<H2>Requirements:</H2>
+		<P>This application requires the release version of Visual Studio .NET Professional 
+			(or greater) and access to the Northwind database residing in SQL Server or the 
+			Microsoft Data Engine (MSDE). To install MSDE, do the following:</P>
+		<P><STRONG>1. </STRONG>Open the Start menu, click Programs, click Microsoft .NET 
+			Framework SDK, and then click Samples and Quickstart Tutorials.
+		</P>
+		<P><STRONG>2. </STRONG>Click "Step 1: Install the .NET Framework Samples Database".
+		</P>
+		<P><STRONG>3. </STRONG>Open a command window, and CD to
+			<FRAMEWORKSDK>\Samples\Setup This is typically : C:\Program Files\Microsoft 
+			Visual Studio .NET\FrameworkSDK\Samples\Setup
+		</P>
+		<P><STRONG>4. </STRONG>Type: osql -E -S (local)\NetSDK -i InstNwnd.sql</P>
+		<h2>Running the Sample:</h2>
+		<P>To view the Forms that derive from frmBase (i.e., that use inheritance) in the 
+			Designer, you will first have to compile the project. If you open a derived 
+			Form (frmRichTextBox or frmDataGrid) before compiling, close the Form, compile, 
+			and then reopen the Form.</P>
+		<h3>See also</h3>
+		<a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dnmag01/html/basics0106.asp">
+			Advanced Basics: Using Inheritance in Windows Forms Applications</a>
+	</body>
+</html>

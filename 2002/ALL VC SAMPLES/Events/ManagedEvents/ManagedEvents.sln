@@ -1,0 +1,36 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Event", "Event\Event.vcproj", "{743618C1-BC3C-4E93-A722-CC2A008E9998}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSEvent", "CSEvent\CSEvent.csproj", "{9D0BD0F0-4199-41F9-A663-6A8B996567E3}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Receiver", "Receiver\Receiver.vcproj", "{A161D871-DA7D-4687-BB22-35D3DA0687A3}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+		{9D0BD0F0-4199-41F9-A663-6A8B996567E3}.0 = {743618C1-BC3C-4E93-A722-CC2A008E9998}
+		{A161D871-DA7D-4687-BB22-35D3DA0687A3}.0 = {9D0BD0F0-4199-41F9-A663-6A8B996567E3}
+		{A161D871-DA7D-4687-BB22-35D3DA0687A3}.1 = {743618C1-BC3C-4E93-A722-CC2A008E9998}
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{743618C1-BC3C-4E93-A722-CC2A008E9998}.Debug.ActiveCfg = Debug|Win32
+		{743618C1-BC3C-4E93-A722-CC2A008E9998}.Debug.Build.0 = Debug|Win32
+		{743618C1-BC3C-4E93-A722-CC2A008E9998}.Release.ActiveCfg = Release|Win32
+		{743618C1-BC3C-4E93-A722-CC2A008E9998}.Release.Build.0 = Release|Win32
+		{9D0BD0F0-4199-41F9-A663-6A8B996567E3}.Debug.ActiveCfg = Debug|.NET
+		{9D0BD0F0-4199-41F9-A663-6A8B996567E3}.Debug.Build.0 = Debug|.NET
+		{9D0BD0F0-4199-41F9-A663-6A8B996567E3}.Release.ActiveCfg = Release|.NET
+		{9D0BD0F0-4199-41F9-A663-6A8B996567E3}.Release.Build.0 = Release|.NET
+		{A161D871-DA7D-4687-BB22-35D3DA0687A3}.Debug.ActiveCfg = Debug|Win32
+		{A161D871-DA7D-4687-BB22-35D3DA0687A3}.Debug.Build.0 = Debug|Win32
+		{A161D871-DA7D-4687-BB22-35D3DA0687A3}.Release.ActiveCfg = Release|Win32
+		{A161D871-DA7D-4687-BB22-35D3DA0687A3}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

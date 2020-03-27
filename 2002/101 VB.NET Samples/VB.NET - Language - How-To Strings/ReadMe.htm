@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft Visual Studio.NET 7.0">
+		<meta name="ProgId" content="VisualStudio.HTML">
+		<meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+		<font face="Verdana, Arial, System">
+			<h1>
+				Language: Strings</h1>
+			<p>
+				This sample demonstrates many of the methods of the String class provided by 
+				the .NET Framework. The sample form breaks the methods up into two 
+				three&nbsp;groups: methods that return strings (such as Insert, Remove, and so 
+				on), methods that return information (such as IndexOf), and&nbsp;shared methods 
+				(like String.Format). In addition, the demonstration introduces two useful 
+				adjuncts to string handling: the StringBuilder and StringWriter classes.
+			</p>
+			<h2>Featured Highlights</h2>
+			<P>The sample form allows you to interactively investigate many of the methods of 
+				the String, StringBuilder, and StringWriter classes. The first three tabs (<EM>Methods 
+					that Return Strings</EM>, <EM>Methods that Return Information</EM>, <EM>Shared 
+					Methods</EM>) all include buttons that display parameters for each method. 
+				If you want to change a parameter and test the behavior, select Recalc when 
+				you're done, to update the results. You can also change the input string—click 
+				Refresh to set it back to its original value.</P>
+			<P>Not all methods require three parameters, and you'll see the parameter text 
+				boxes appear as necessary. In addition, some methods provide multiple 
+				overloaded versions which may allow you to specify fewer parameters. For 
+				example, the IndexOf method (on the "Methods that Return Information" page) can 
+				accept 1, 2, or 3 parameters. You can try the method various ways, and the code 
+				should handle each test appropriately.</P>
+			<P>If you pass incorrect parameters (if you enter the wrong data type, for 
+				example), the form will display the error message instead of results.
+			</P>
+			<P>In addition to the String class, the sample form also introduces the 
+				StringBuilder and StringWriter classes. For multiple operations on the same 
+				string, you may find the StringBuilder class to be more efficient than using a 
+				String object. Because the String object is immutable-that is, once you've set 
+				its value, you can't change it. The only alternative is to return a new string 
+				if you attempt to insert, delete, or modify any portion of a string. The 
+				StringBuilder class provides an internal buffer whose size is managed by the 
+				class itself. You simply call methods of the StringBuilder object you create, 
+				and the .NET Framework manages the buffer containing your text. When you're 
+				done with the manipulations, you can use the ToString method of the object to 
+				retrieve the text. Watch out, however—not all String class methods are 
+				available when you're using the StringBuilder, and in cases where you need 
+				those methods (IndexOf is one example of such a method), you'll need to 
+				retrieve the contents as a string, do your work on that string, and then 
+				continue with the StringBuilder. The StringBuilder class does provide all the 
+				methods you'll need in order to manipulate text, however. Click the 
+				StringBuilder button on the <EM>Other Classes</EM> tab to test out this class.</P>
+			<P>The StringWriter class is useful when you need to append text to an output 
+				string, optionally including carriage return/line feed character. (This class 
+				uses a StringBuilder, under the covers.) Although you can do this sort of work 
+				using a String object, your code can be messy and somewhat inefficient. The 
+				StringWriter class provides an internal buffer to which you can write text as 
+				if you were writing to a file. You call the Write and/or WriteLine methods to 
+				append text to the buffer, and you can retrieve the text using the ToString 
+				method. Click the StringWriter button on the <EM>Other Classes </EM>tab to test 
+				this class.
+				<h2>Requirements</h2>
+			<p>
+				Requires the Trial or Release version of Visual Studio .NET Professional (or 
+				greater).
+			</p>
+			<h2>Running the Sample</h2>
+			<P>The demo code for this example is somewhat complex—this complexity allows you to 
+				interact with the String class methods at runtime. Note the following features 
+				that may be of interest, as you peruse the sample code:</P>
+			<UL>
+				<LI>
+				Although the sample form demonstrates one version of each method, many methods 
+				provide multiple overloaded versions. Check out the documentation on each 
+				specific method to&nbsp;determine if there are alternate ways to invoke the 
+				method.&nbsp;
+				<LI>
+				Buttons listing String class methods are actually RadioButton controls. By 
+				setting the Appearance property to Button, you can make RadioButton controls 
+				(or CheckBox controls) appear like normal buttons. This feature allows you to 
+				create controls that look like buttons, but act like CheckBox or RadioButton 
+				controls. (That is, they stay selected once you click on them. CheckBox 
+				controls allow multiple items to be selected simultaneously. RadioButton 
+				controls only allow a single selected value within the group of controls.)
+				<LI>
+				The buttons allowing you to select the String class methods all call into the 
+				same event handler, HandleCheckedChanged. This procedure uses many Handles 
+				clauses, handling events for many controls. Inside the procedure, a big 
+				If...Then statement uses the sender parameter to determine which button you 
+				selected, and acts appropriately.
+				<LI>
+				The code includes several overloaded versions of the HandleParameters method. 
+				This procedure sets up the display so that it appropriately shows 0, 1, 2, or 3 
+				parameters for the selected String method.
+				<LI>
+					There's no way to "float" controls on top of a tab control. That is, you can't 
+					have a group of controls appear on each page. For this demonstration, that's 
+					required, so selecting a page on the tab control sets the Parent property of a 
+					Panel control containing all the "common" controls to be the selected page, 
+					like this:</LI></UL>
+			<BLOCKQUOTE dir="ltr" style="MARGIN-RIGHT: 0px">
+				<P><FONT face="Courier New">pnlDemo.Parent = tabStringDemo.SelectedTab</FONT>
+				</P>
+			</BLOCKQUOTE>
+			<UL dir="ltr">
+				<LI>
+					<DIV>In order to trigger a breakpoint, so you can walk through the code, the sample 
+						uses the System.Diagnostics.Debugger.Break method.</DIV>
+				</LI>
+			</UL>
+			<h3>Last Update:&nbsp;7 July 2002</h3>
+		</font>
+	</body>
+</html>

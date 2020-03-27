@@ -1,0 +1,120 @@
+New type safe message maps in MFC
+Igor Chouvalov, Dundas Software Ltd
+
+The MsgMapDemo example demonstrates changes that were made in MFC Message 
+Map implementation. Beginning with Visual C++.NET, MFC provides stricter
+type checking for the return and parameter types of message handler functions.
+This new behavior notifies the developer of potential problems by flagging
+potentially unsafe message handlers with an error message. MFC now uses
+static casts for ON_MESSAGE, ON_REGISTERED_MESSAGE, ON_THREAD_MESSAGE,
+and ON_REGISTERED_THREAD_MESSAGE. 
+
+The example was created using the MFC Application AppWizard to create a dialog 
+based application. The MsgMapDemo application shows a dialog with a button and
+vertical progress bar. A user defined message WM_USER_MESSAGE is used
+to move a progress indicator. It should be sent or posted to the dialog.
+
+To add a user defined message and handler make the following changes
+in the source code:
+
+1. A ON_MESSAGE(message, memberFxn) macro should be added to the dialog
+   message map, where message is the message ID, and memberFxn is the
+   name of the message-handler function to which the message is mapped.
+
+	...
+	BEGIN_MESSAGE_MAP(CMsgMapdemoDlg, CDialog)
+		ON_WM_SYSCOMMAND()
+		ON_WM_PAINT()
+		ON_WM_QUERYDRAGICON()
+		ON_BN_CLICKED(ID_BTN_OK, OnBtnClicked)
+		//}}AFX_MSG_MAP
+		ON_MESSAGE(WM_USER_MESSAGE, OnUserMessage)
+	END_MESSAGE_MAP()
+	...
+
+2. Define the memberFxn message handler (OnUserMessage) with the 
+   following signature 
+
+	afx_msg LRESULT memberFxn(WPARAM, LPARAM)
+
+   in dialog header file:
+
+   	afx_msg LRESULT OnUserMessage(WPARAM wParam, LPARAM lParam);
+
+3. Write the implementation for this function in the source file.
+   
+	//*******************************************************************
+	//	OnUserMessage
+	//
+	//		Handles WM_USER_MESSAGE user message.
+	//		Advances the current position for a progress bar by the step.
+	//*******************************************************************
+	LRESULT CMsgMapdemoDlg::OnUserMessage(WPARAM wParam, LPARAM lParam)
+	{
+		CWnd* pProgress;
+
+		// Get a pointer to the progress bar window.
+		pProgress = GetDlgItem(IDC_PROGRESS);
+
+		// Move progress bar indicator one step.
+		if(pProgress != NULL)
+			pProgress->SendMessage(PBM_STEPIT);
+
+		return 0;
+	}
+
+The main difference from previous versions of MFC is that now the compiler
+checks the message handler's function signature. For user message using the 
+ON_MESSAGE macro it should be:
+
+	afx_msg LRESULT memberFxn(WPARAM, LPARAM)
+
+Previous versions of the compiler did not make this check, so you could use 
+a function that uses the wrong number of parameters or the wrong parameter 
+types, or return an incorrect value type, such as:
+
+	// Try it in VC6 release build, it will crash.
+	afx_msg LRESULT OnUserMessage(WPARAM wParam);	
+
+	// Try it in VC6 release build, it will crash.
+	afx_msg LRESULT OnUserMessage();		
+
+	// Try it in VC6 release build, it will crash.
+	afx_msg void OnUserMessage();
+
+The compiler did not previously catch this, and very often it even worked 
+in debug build, but in most cases it crashed in release mode so it could 
+be found only at the final stages of developing. Now, if you use the wrong
+function signature, you will receive a Compiler Error C2440. This allows you
+to detect the problem immediately and potentiall save you a lot of debugging
+time.
+
+Let's return to our code and finish it.
+
+When the "Fill the glass" button is presses a WM_USER_MESSAGE message is
+sent to the dialog. To add code the code that will handle the button click
+and send the message you need to add the following macro to the dialog's
+ message map:
+
+	ON_BN_CLICKED(ID_BTN_OK, OnBtnClicked)
+
+Add a prototype of the OnBtnClicked function to the dialog header file:
+
+	afx_msg void OnBtnClicked();
+
+Implement this function in the dialog source file:
+
+	//*******************************************************************
+	//	OnBtnClicked
+	//
+	//		Handles pressing dialog button.
+	//*******************************************************************
+	void CMsgMapdemoDlg::OnBtnClicked() 
+	{
+		// Send use defined message to move progress indicator.
+		SendMessage(WM_USER_MESSAGE);
+	}
+
+The button click handler is now hooked up to the button, and when your user
+clicks on the button a WM_USER_MESSAGE message is sent to the dialog, and
+the OnUserMessage handler will be called.

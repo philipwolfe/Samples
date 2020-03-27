@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft Visual Studio.NET 7.0">
+		<meta name="ProgId" content="VisualStudio.HTML">
+		<meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+		<font face="Verdana, Arial, System">
+			<h1>
+				Security: Role-based security</h1>
+			<p>
+				This sample will show you how to retrieve login &amp; group membership for 
+				Windows users of your application. This allows the application to enable 
+				application features(controls for example) based upon a user's identity. In 
+				addition,&nbsp;it will show&nbsp;how to make&nbsp;role-based security demands 
+				via code.
+			</p>
+			<h2>Featured Highlights</h2>
+			<p>
+				The main form has a tab control with two pages. The first tab page retrieves 
+				user login information to create a WindowsPrincipal object. The properties of 
+				the WindowsIdentity are displayed. The code uses the IsInRole method to check 
+				the CheckBox controls based on group membership. The second tab page contains 
+				Button controls that execute code to open a secured form based on security 
+				demands. If the user is a member of the Windows group, the protected form 
+				opens. If a security exception occurs as a result of the user not being a 
+				member of the group, a message is displayed.
+			</p>
+			<h2>Requirements</h2>
+			<p>
+				Requires the Trial or Release version of Visual Studio .NET Professional (or 
+				greater).
+			</p>
+			<h2>Running the Sample</h2>
+			<P>When you click the button, <SPAN style="FONT-SIZE: 12pt; FONT-FAMILY: 'Times New Roman'; mso-fareast-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+					Retrieve </SPAN>User Information, the program checks for the current logged 
+				in user to see if she is a member of four groups:
+			</P>
+			<UL>
+				<LI>
+				Administrators
+				<LI>
+				Power Users
+				<LI>
+				Users
+				<LI>
+					Managers</LI></UL>
+			<P>The group Managers is a custom group which you will need to create. If the user 
+				is not a member of a requested group the checkbox next to the group name will 
+				not be checked. In addition, if the custom group Managers does not exist, the 
+				check box will also not be checked. Note that an exception will not occur if 
+				the group is not there.</P>
+			<P>If you make changes to your current group membership in Windows in order to test 
+				the code (such as by creating a Managers group and adding your account to it), 
+				then you will need to log off and log on again before those changes will take 
+				effect.</P>
+			<P><EM>Please see the comments for additional information.</EM>
+				<h3>Last Update:&nbsp;7 July 2002</h3>
+		</font>
+	</body>
+</html>

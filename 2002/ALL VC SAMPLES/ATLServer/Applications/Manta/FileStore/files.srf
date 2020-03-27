@@ -1,0 +1,103 @@
+<!--{{ handler cgi-bin\FileStore.dll/Files }} This file (c) 2000 Microsoft Corporation -->
+<html>
+<head>
+<base target="main_frame">
+<link rel="stylesheet" href="main.css" type="text/css">
+<script language="JavaScript">
+<!--
+function OnDelete()
+{
+	if (confirm("Are you sure you want to delete the files and folders you have marked?\rPlease note: non-empty folders cannot be deleted."))
+	{
+		document.forms.deleteform.submit();
+	}
+}
+function OnUpload()
+{
+	if (confirm("Upload the selected file now?\rPlease note: depending on the file size, upload may take a long time."))
+	{
+		document.forms.uploadform.submit();
+	}
+}
+-->
+</script>
+</head>
+<body>
+<p>
+  <font size="2">Viewing folder contents for folder: \{{CurrentFolder}}</font>&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="files.srf?changefolder=1&folder={{if NotAtRoot}}\{{endif}}{{CurrentFolder}}\..">
+    <img border="0" src="images/up_folder.gif" width="15" height="13" alt="Move up to parent folder" align="middle">
+  </a><br>
+  <font size="2">To save files to your computer, right click the link and choose
+  &quot;Save Target As...&quot;.</font>
+</p>
+<form method="POST" action="files.srf" name="deleteform">
+  <table border="1" bgcolor="#FFFFCC" cellspacing="0" cellpadding="2">
+    <tr>
+      <td><span style="font-variant: small-caps"><b><font color="#396DA5">Mark:</font></b></span></td>
+      <td>&nbsp;</td>
+      <td><span style="font-variant: small-caps"><b><font color="#396DA5">File Name:</font></b></span></td>
+      <td><span style="font-variant: small-caps"><b><font color="#396DA5">File Size:</font></b></span></td>
+      <td><span style="font-variant: small-caps"><b><font color="#396DA5">File Type:</font></b></span></td>
+      <td><b><font color="#396DA5"><span style="font-variant: small-caps">Date uploaded</span></font></b><span style="font-variant: small-caps"><b><font color="#396DA5">:</font></b></span></td>
+    </tr>
+    <!-- {{if FilesLeft}} -->
+    <!-- {{while FilesLeft}} -->
+    <tr>
+      <td align="center" bgcolor="#FFFFFF"><font size="2"><input type="checkbox" name="{{if IsFile}}file_{{else}}folder_{{endif}}{{FileName}}" value="ON"></font></td>
+      <td bgcolor="#FFFFFF"><font size="2">
+        {{if IsFile}}<img src="images/file.gif" alt="File">{{else}}<img src="images/folder.gif" alt="Folder">{{endif}}</font></td>
+      <td bgcolor="#FFFFFF"><font size="2">
+        <a href="files.srf{{if IsFile}}/{{FileName}}?download=1&file={{else}}?changefolder=1&folder={{endif}}{{if NotAtRoot}}\{{endif}}{{CurrentFolderEscaped}}\{{FileNameEscaped}}">{{FileName}}</a></font></td>
+      <td bgcolor="#FFFFFF"><font size="2">{{FileSize}}</font></td>
+      <td bgcolor="#FFFFFF"><font size="2">{{FileType}}</font></td>
+      <td bgcolor="#FFFFFF"><font size="2">{{CreationDate}}</font></td>
+    </tr>
+    <!-- {{NextFile}} -->
+    <!-- {{endwhile}} -->
+    <!-- {{else}} -->
+    <tr>
+      <td colspan="6" bgcolor="#FFFFFF"><font size="2">You have not stored any files in this folder.</font></td>
+    </tr>
+    <!-- {{endif}} -->
+  </table>
+  <p><input type="button" value="Delete Marked Files" name="deleteButton" OnClick="OnDelete();" {{DisableDeleteButton}}></p>
+  <input type="hidden" name="curfolder" value="\{{CurrentFolder}}">
+  <input type="hidden" name="deleteform" value="1">
+</form>
+<form method="POST" action="files.srf" name="uploadform" enctype="multipart/form-data">
+  <table border="1" bgcolor="#FFFFCC" cellspacing="0" width="627" cellpadding="2">
+    <tr>
+      <td width="101" align="right"><b><span style="font-variant: small-caps"><font color="#396DA5">Upload File:</font></span></b></td>
+      <td><b><span style="font-variant: small-caps"><font color="#396DA5"><input type="file" value="" name="file1" size="67"></font></span></b></td>
+    </tr>
+    <tr>
+      <td bgcolor="#FFFFFF">&nbsp;</td>
+      <td bgcolor="#FFFFFF"><input type="button" value="Upload File" name="uploadButton" OnClick="OnUpload();">&nbsp;&nbsp;&nbsp;<input type="reset" value="Reset" name="reset1"></td>
+    </tr>
+  </table>
+  <input type="hidden" name="curfolder" value="\{{CurrentFolder}}">
+  <input type="hidden" name="uploadform" value="1">
+</form>
+ {{if UploadError}}<font size="2" color="#FF0000">An error occured uploading a file to the server.<br>
+ Files cannot be zero bytes in length and cannot be the same name as an existing file.</font>
+ {{endif}}
+<form method="POST" action="files.srf">
+  <table border="1" bgcolor="#FFFFCC" cellspacing="0" width="627" cellpadding="2">
+    <tr>
+      <td width="101" align="right"><b><font color="#396DA5"><span style="font-variant: small-caps">Folder Name:</span></font></b></td>
+      <td>&nbsp;<input type="text" name="folder" size="81"></td>
+    </tr>
+    <tr>
+      <td bgcolor="#FFFFFF">&nbsp;</td>
+      <td bgcolor="#FFFFFF"><input type="submit" value="Create New Folder" name="createButton">&nbsp;&nbsp;&nbsp;<input type="reset" value="Reset" name="reset2"></td>
+    </tr>
+  </table>
+  <input type="hidden" name="curfolder" value="\{{CurrentFolder}}">
+  <input type="hidden" name="createform" value="1">
+</form>
+{{if CreateFolderError}}<font size="2" color="#FF0000">An error occured creating a folder on the server.<br>
+Folder names cannot be empty and a folder cannot be created that matches the name of an existing folder.</font>
+{{endif}}
+</body>
+</html>

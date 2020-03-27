@@ -1,0 +1,47 @@
+{{ handler bin\ShowSession.dll/Default }}
+<html>
+	<!-- (c) 2000 Microsoft Corporation -->
+	<head>
+		<title>{{Title}}</title>
+		<meta http-equiv="content-type" content="text/html; charset=iso8859-1">
+		<link rel="stylesheet" href="normal.css" type="text/css">
+	</head>
+
+	<body>
+		<h1>{{Title}}</h1>
+
+		<h3>Instructions</h3>
+		<p>
+		Use the form to set or get the value of a session variable.
+		The number of sessions and session variables will update on each request to the server.
+		</p>
+
+		<hr></hr>
+
+		{{ShowSession}}
+
+		<form id="theform" name="theform" method="post" action="ShowSession.srf">
+			<table border="0" rules="none" frame="void">
+				<tr>
+					<th>Direction</th><th>Name</th><th>Value</th>
+				</tr>
+				<tr>
+					<td>
+					<select id="themethod" name="themethod">
+						<option value="get">get</option>
+						<option value="put" {{ShowPut}} >put</option>
+					</select>
+					</td>
+					<td><input id="thename" name="thename" value="{{ShowName}}" style="width:100%;"></input></td>
+					<td><input id="thevalue" name="thevalue" value="{{ShowValue}}" style="width:100%;"></input></td>
+				</tr>
+			</table> 
+			<div align="right"> 
+				<input type="submit" id="cmdSubmit" value="Submit"></input>
+				<input type="reset" id="cmdCancel" value="Cancel"></input>
+			</div> 
+		</form>
+
+
+	</body>
+</html>

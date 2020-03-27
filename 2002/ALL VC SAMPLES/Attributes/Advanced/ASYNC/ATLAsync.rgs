@@ -1,0 +1,32 @@
+HKCR
+{
+	[!progid].1 = s '[!progid] Object'
+	{
+		CLSID = s '{[!uuid]}'
+	}
+	[!progid] = s '[!progid] Object'
+	{
+		CLSID = s '{[!uuid]}'
+		CurVer = s '[!progid]'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {[!uuid]} = s '[!progid] Object'
+		{
+			ProgID = s '[!progid].1'
+			VersionIndependentProgID = s '[!progid]'
+			%MODULETYPE% = s '%MODULE%'
+			{
+				val ThreadingModel = s '[!threading]'
+			}
+			ForceRemove 'Control'
+			ForceRemove 'ToolboxBitmap32' = s '%MODULE%, 1'
+			'MiscStatus' = s '0'
+			{
+				'1' = s '131473'
+			}
+			'TypeLib' = s '%MODULEGUID%'
+			'Version' = s '1.0'
+		}
+	}
+}

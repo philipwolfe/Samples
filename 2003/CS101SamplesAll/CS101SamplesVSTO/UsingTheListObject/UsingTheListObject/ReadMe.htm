@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Using the List Object in Excel</title>
+    <meta name="GENERATOR" content="Microsoft Visual Studio.NET 7.0" />
+    <meta name="ProgId" content="VisualStudio.HTML" />
+    <meta name="Originator" content="Microsoft Visual Studio.NET 7.0" />
+</head>
+<body>
+    <h1>
+        Using the ListObject in Excel</h1>
+    <p>
+    </p>
+    <p>
+        The ListObject is a key object in Excel.&nbsp; They offer a container for ranges
+        that support a header row, automatic total calculation, and dynamic growth as rows
+        are added.&nbsp; Built in filtering and sorting rounds out the feature set.&nbsp; Learning about the ListObject provides an important tool in modeling data in a logical
+        and intuitive manner for your users.</p>
+    <p>
+    </p>
+    <p>
+        In this sample, the main
+        sheet is setup as a simple invoice for the ficticious company,
+        Adventure Works.&nbsp; The list of ordered products is implemented as a ListObject.&nbsp;
+        In order to add products, a user control, AddProductUserControl is hosted in the
+        Document Actions pane.&nbsp; Enter a product number from the Product table, lookup
+        the number, then you can insert the number, name, and price
+        into the ListObject.&nbsp;
+        This uses a strong-typed dataset for the database integration.&nbsp; The logic is
+        all contained in the user control, other than the creation and presentation of the
+        control in the Startup event of the sheet.&nbsp; You can try out the sample using
+        a product number of SA-M198.</p>
+    <p>
+    </p>
+    <p>
+        <b>This sample requires the following to be installed: </b>
+    </p>
+    <ul>
+        <li>Visual Studio 2005</li>
+        <li>Microsoft Excel 2003</li>
+        <li>Adventure Works sample database installed at "C:\Program Files\Microsoft SQL Server\MSSQL.1\MSSQL\Data"</li>
+    </ul>
+    <p>
+        You can download the Adventure Works sample database 
+        <a href="http://go.microsoft.com/fwlink/?linkid=31046">here</a>
+    </p>
+</body>
+</html>

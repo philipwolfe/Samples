@@ -1,0 +1,297 @@
+GDI+ in managed C++ applications.
+Igor Chouvalov, Dundas Software Ltd
+
+
+This Sample demonstrates basic drawing techniques using GDI+
+n a Managed C++ application. The application implements a 
+control which acts as a ticker which scrolls 
+ext across a window at a constant speed. The Client can 
+control the scroll speed (how often ticker moves), the scroll smoothness 
+(how many pixels it moves in one step), and the text to display.
+
+The control uses an "off screen" painting technique similar to drawing
+to memory device contexts.
+
+Let's start from the Managed C++ Class Library.
+
+The application wizard creates the TickerControl.h and TickerControl.cpp
+files for us, and created a managed class TickerControl.
+We do not want to write the control from scratch, so let's derive it
+from the Control class in the System::Windows:Forms namespace and
+inherit the functionality of Control.
+
+In order to do that we should add code to access the .NET framework classes.
+Add following lines to the top of your Control header file.
+
+	#using <System.dll>
+	#using <System.Drawing.DLL>
+	#using <System.Windows.Forms.dll>
+
+	using namespace System;
+	using namespace System::Drawing;
+	using namespace System::Windows::Forms;
+
+Class members that used by the control are defined in the Control Members section 
+of the control's header class.
+
+In the constructor we create a timer and subscribe to a Tick event.
+
+	CTickerControl() :	m_nScrollSmoothness(1),
+						m_strTickerText(S"Ticker"),
+						m_nOffset(0),
+						m_nTickerWidth(0),
+						m_bmpTicker(NULL)
+	{
+		// Create timer and set interval.
+		m_tmTicker = new Timer();
+		m_tmTicker->set_Interval(10);
+
+		// Subscribe for timer events.
+		m_tmTicker->add_Tick(new EventHandler(this, &CTickerControl::OnTimer));
+	}
+
+In the destructor we unsubscribe from the timer event.
+
+	// Destructor.
+	~CTickerControl()
+	{
+		// Unsubscribe from timer event.
+		m_tmTicker->remove_Tick(new EventHandler(this, &CTickerControl::OnTimer));
+	}
+
+Some of them we need to expose as control properties. The Control Properties 
+section of the Control header class demonstrates how to do this. All properties 
+have get_ and set_ functions, so they are accessible for reading and writing. You 
+can omit one of the function and get read-only or write-only properties. The 
+following code implements the TickerText property.
+
+	// Text to show in the ticker.
+	__property String* get_TickerText()
+	{
+		return m_strTickerText;
+	}
+
+	 __property void set_TickerText(String *strTickerText)
+	{
+		m_strTickerText = strTickerText;
+
+		// Recreate face image bitmap for the new Ticker text.
+		// But we shouldn't do it before the first OnPaint call,
+		// otherwise both of the bitmap dimensions will be 0
+		// and Bitmap constructor will throw the exception.
+		if(m_bmpTicker != NULL)
+			m_bmpTicker = CreateBitmap();
+	}
+
+The StartTicker and StopTicker methods start and stop the text moving.
+Internally it just starts and stops timer.
+
+	void StartTicker()
+	{
+		// Start timer.
+		m_tmTicker->Start();
+	}
+
+	void StopTicker()
+	{
+		// Stop timer.
+		m_tmTicker->Stop();
+	}
+
+The bitmap that we use for the control face is created by the Create bitmap function.
+At first it creates a graphics object that is used by the control window to paint.
+
+	graphMeasure = Graphics::FromHwnd(this->get_Handle());
+
+We use
+
+	sizeString = graphMeasure->MeasureString(m_strTickerText, font);
+
+to define how many pixels the Ticket Text string occupies.
+After that it creates a bitmap that has a width equal to the width
+of the control client rectangle plus the width of the Ticker text string.
+In order to draw on the bitmap we get a pointer to the graphics object
+associated with bitmap using
+
+	graphImage = Graphics::FromImage(bmpTicker);
+
+The rest of the code just fills a bitmap background and draws the Ticker text
+string to the bitmap.
+
+	Bitmap* CreateBitmap()
+	{
+		Bitmap* bmpTicker;		// Result bitmap.
+		Graphics* graphImage;		// Graphics used to draw to bitmap.
+		Graphics* graphMeasure;		// Graphics used to measure string.
+		SizeF sizeString;		// Size of Ticker text string.
+		System::Drawing::Font* font;	// Font used to draw string.
+		SolidBrush* brush;		// Brush to fill background.
+		Rectangle rect;			// Control client rectangle.
+
+		int nBmpWidth;			// Bitmap width.
+		int nBmpHeight;			// Bitmap height.
+		int nRepeat;			// How many time we should draw ticker
+						// text string in the image.
+
+		// Get a graphic object used by control window.
+		graphMeasure = Graphics::FromHwnd(this->get_Handle());
+
+		// Create a font and brush to draw.
+		font = new System::Drawing::Font("Courier", 10);
+		brush = new SolidBrush(get_BackColor());
+
+		// Get a size that  ticker text string occupies on the string. 
+		sizeString = graphMeasure->MeasureString(m_strTickerText, font);
+
+		m_nTickerWidth = (int)sizeString.get_Width();
+		
+		rect = this->get_ClientRectangle();
+
+		// Bitmap width equals size of the control client rectangle
+		// plus width of the Ticker text string.
+		nBmpWidth = rect.get_Width() + m_nTickerWidth;
+
+		// Define how many time we have to draw the string to bitmap.
+		nRepeat = (int)(nBmpWidth/m_nTickerWidth + 1);
+
+		nBmpHeight = rect.get_Height();
+
+		// Create a bitmap to draw off screen.
+		bmpTicker = new Bitmap(	nBmpWidth, 
+					nBmpHeight, 
+					graphMeasure);
+
+		// Get a graphic object to draw to bitmap.
+		graphImage = Graphics::FromImage(bmpTicker);
+
+		// Fill the background.
+		graphImage->FillRectangle(brush, 0, 0, nBmpWidth, nBmpHeight);
+
+		// Draw string, if it is short, draw it several times.
+		for(int nCounter = 0; nCounter < nRepeat; nCounter++)
+			graphImage->DrawString(m_strTickerText, font, Brushes::Black, nCounter * m_nTickerWidth, 0);
+
+		return bmpTicker;
+	}
+
+OnPaint is a function that do actual painting job. We overwrite this virtual
+function to do our painting.
+All we do here is just get a pointer to the graphics object to draw
+and draw our bitmap using DrawImageUnscaled function using current offset.
+
+	virtual void OnPaint(PaintEventArgs* pe)
+	{
+		Graphics* graph;
+
+		// Get a Graphics object that is used to draw.
+		graph = pe->get_Graphics();
+
+		// If face image bitmap is not exist, create it.
+		if(m_bmpTicker == NULL)
+			m_bmpTicker = CreateBitmap();
+
+		// Draw the face image bitmap.
+		graph->DrawImageUnscaled(m_bmpTicker, Point((m_nOffset - m_nTickerWidth), 0));
+	}
+
+Drawing or bitmap we cover all control client area, so n order to avoid flickering we
+should overwrite OnPaintBackground virtual function with doing nothing inside.
+
+	virtual void OnPaintBackground(PaintEventArgs* pe)
+	{
+	}
+
+The last thing we should do is to implement Timer event handler.
+Here we just adjust bitmap offset and redraw control.
+
+	void OnTimer( Object* myObject, EventArgs* myEventArgs )
+	{
+		// Adjust bitmap offset.
+		m_nOffset -= m_nScrollSmoothness;
+
+		// If we finish to scroll bitmap, recreate it.
+		if(m_nOffset < 0)
+			m_nOffset = m_nTickerWidth - m_nScrollSmoothness;
+
+		// Redraw control.
+		Invalidate();
+		Update();
+	}
+
+
+To create a client we need to create Managed C++ Application
+and add a code that implements a windows form to the main
+source file, it is very similar what we did for the control.
+Following code illustrates it.
+
+#include "stdafx.h"
+
+// Add it to get an access to .NET Framework classes.
+#using <mscorlib.dll>
+#using <System.dll>
+#using <System.Drawing.DLL>
+#using <System.Windows.Forms.dll>
+
+// Import Ticker control information.
+#using "..\Bin\TickerControl.dll"
+
+using namespace System;
+using namespace System::ComponentModel;
+using namespace System::Drawing;
+using namespace System::Windows::Forms;
+
+// Class that implements simple windows form.
+__gc class CTickerClientForm : public Form
+{
+	// Constructor.
+public:
+	CTickerClientForm()
+	{
+		// Create ticker control.
+		ctrlTicker = new CTickerControl();
+
+		InitForm();
+	}
+
+	// Initializes a form.
+protected:
+	void InitForm()
+	{
+		// Set window title and size.
+		this->set_Text(S"Ticker");
+		this->set_Size(System::Drawing::Size(400, 300));
+
+		// Set control location and size on the form.
+		ctrlTicker->set_Location(System::Drawing::Point(30, 100));
+		ctrlTicker->set_Size(System::Drawing::Size(300, 100));
+
+		// Set ticker properties and start ticker to move.
+		ctrlTicker->set_TimerInterval(10);
+		ctrlTicker->set_TickerText(S"This is very very ... long string.");
+		ctrlTicker->set_ScrollSmoothness(1);
+		ctrlTicker->StartTicker();
+	
+		// Add ticker to form controls collection.
+		this->get_Controls()->Add(this->ctrlTicker);
+	}
+
+	// Members.
+private:
+	CTickerControl* ctrlTicker;		// Ticker control.
+};
+
+int main(void)
+{
+	try
+	{
+		// Create Form.
+		Application::Run(new CTickerClientForm());
+	}
+	catch(Exception* e)
+	{
+		Console::Write("Error occured: ");
+		Console::WriteLine(e->get_Message());
+	}
+
+    return 0;
+}

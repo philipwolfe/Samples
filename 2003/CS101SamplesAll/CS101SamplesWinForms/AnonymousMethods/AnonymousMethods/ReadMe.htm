@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft Visual Studio 2005">
+		<meta name="ProgId" content="VisualStudio.HTML">
+		<meta name="Originator" content="Microsoft Visual Studio 2005">
+	</head>
+	<body>
+		<font face="Times New Roman, Arial, System">
+			<h1>
+				.NET Framework: Anonymous Methods</h1>
+			<p>
+				This sample uses shows how Anonymous Methods can be used to simplify the code required
+                when using delegates.
+			</p>
+			<h2>Featured Highlights</h2>
+			<p>
+				This&nbsp;Windows Form application provides a default list of 'grocery items' that
+                can be added to as
+				desired and a set of organizing tools that can be used to manipulate
+                the list data.&nbsp; When looking at the code note that the use of delegates has
+                been simplified dramatically when performing operations on the List&lt;T&gt; generic
+                type.&nbsp; In addition to removing the need for a separate method declaration they
+                are also declared in line with the calling method of the List&lt;T&gt; class.</p>
+			<P>Note the following when running the application:</P>
+			<UL>
+				<LI><strong>Add Item</strong>—Enter an item description and a price then click the 'Add'
+                    button to display the item in the grid and append it to the List&lt;T&gt;. &nbsp;When
+                    an item is added the List&lt;T&gt;.ForEach method is used with an Anonymous Method
+                    to repopulate and revise the total price.&nbsp;<LI>
+					<STRONG>Filter</STRONG>—Select a filter method from the pull down box and enter a price.&nbsp;
+                        When the 'Filter' button is clicked the List&lt;T&gt;.FindAll method compares the
+                        given criteria with the items in the list and returns a new List&lt;T&gt; with only
+                        the matching items.</LI>
+                    <li><strong>Sort---</strong>Select an item to sort by with the pull down box and click
+                        the 'Sort' button.&nbsp; Items will be sorted alphabetically according the selected
+                        criteria.&nbsp;</li>
+                    <li><strong>Reset</strong>---The grid can be reset after performing a filter or sort
+                        by clicking the 'Reset' button.</li>
+            </UL>
+			<h2>Requirements</h2>
+			<p>
+				Requires Visual Studio 2005.
+			</p>
+			<h2>Running the Sample</h2>
+			<p>
+				Press <STRONG>F5</STRONG> to start the application. The list of default items will be loaded automatically.&nbsp;
+			</p>
+			<h3>Last Update:&nbsp;9 March 2006</h3>
+		</font>
+	</body>
+</html>
