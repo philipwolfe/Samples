@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+		<meta name="ProgId" content="FrontPage.Editor.Document">
+		<meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+		<h1>Security: Creating a Login Dialog Box</h1>
+		<P>This solution demonstrates creating a login dialog box to authenticate users and 
+			restrict access to features in an application.&nbsp; The user must first log 
+			in, within&nbsp;3 attempts,&nbsp;either using custom authentication or Windows 
+			Authentication.&nbsp; After the user logs in, the role membership is checked to 
+			see if the user is a "Manager" or a Windows Administrator.&nbsp; If so, the 
+			Main form displays a list of the users in the XML file, otherwise the Main form 
+			is left blank.&nbsp;&nbsp;&nbsp;
+		</P>
+		<h2>Feature Highlights:</h2>
+		<P>A Windows Principal object&nbsp;is used to determine if the&nbsp;user logged 
+			into Windows is an Administrator.</P>
+		<P>A Generic Principal object is used to determine if a user is a member of the 
+			"Manager" role.</P>
+		<P>An XML file is loaded into a DataSet and searched for an appropriate match</P>
+		<P>A DataGrid on the Main form is anchored so that it resizes as the form resizes.</P>
+		<P>If the user logs in as an Administrator or Manager (Account named: Bob) the 
+			current list of users and passwords is made available to the user.&nbsp;
+			<BR>
+			If the user logs on with the account named John the user is not able to view 
+			this information.</P>
+		<P><font size="5"><b>Requirements:</b></font></P>
+		<P>Microsoft Visual Studio.NET Professional or greater.<br>
+        Windows 2000 or Windows XP</P>
+		<p><font size="5"><b>Running the Sample:</b></font></p>
+		<P>Simply press <b>F5</b>.</P>
+		<P>The Users.Xml file is stored in the bin directory and is used to store the user 
+			accounts.<BR>
+			The XML is file is not encrypted for simplicity.&nbsp; Encryption should be 
+			used to protect the passwords when someone opens the XML file.</P>
+		<P>There are 2 user accounts:</P>
+		<P>
+			<TABLE id="Table1" cellSpacing="1" cellPadding="1" border="0">
+				<TR>
+					<TD>Name</TD>
+					<TD>Password</TD>
+					<TD>Role</TD>
+				</TR>
+				<TR>
+					<TD>Bob</TD>
+					<TD>pass</TD>
+					<TD>Manager</TD>
+				</TR>
+				<TR>
+					<TD>John</TD>
+					<TD>pass</TD>
+					<TD>Sales</TD>
+				</TR>
+			</TABLE>
+		</P>
+		<p><b>See Also</b></p>
+        <p>
+        <a href="ms-help://MS.VSCC/MS.MSDNVS/cpguide/html/cpconcreatingwindowsidentitywindowsprincipalobjects.htm">
+        Creating Windows Principal and Windows Identity objects.</a>&nbsp;
+        <a href="ms-help://MS.VSCC/MS.MSDNVS/cpguide/html/cpconcreatinggenericprincipalgenericidentityobjects.htm">
+        Creating Generic Principal and Generic Identity Objects</a></p>
+	</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+    <head>
+        <title>ReadMe</title>
+        <meta name="vs_defaultClientScript" content="JavaScript">
+        <meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+        <meta name="GENERATOR" content="Microsoft Visual Studio.NET 7.0">
+        <meta name="ProgId" content="VisualStudio.HTML">
+        <meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+    </head>
+    <body>
+        <font face="Verdana, Arial, System">
+            <h1>
+                Windows Forms: ListBox and ComboBox</h1>
+            <p>
+                Demonstrates binding ListBox and ComboBox controls, and working with selected 
+                items.
+            </p>
+            <h2>Highlights</h2>
+            <p>
+                Demonstrates several different techniques for binding data to ListBox and 
+                ComboBox controls, and shows different ways to retrieve the selected item or 
+                items from the controls.
+            </p>
+            <h2>Requirements</h2>
+            <P>This application requires the release version of Visual Studio .NET Professional 
+                (or greater) and access to the Northwind database residing in SQL Server or the 
+                Microsoft Data Engine (MSDE). To install MSDE, do the following:</P>
+            <P><STRONG>1. </STRONG>Open the Start menu, click Programs, click Microsoft .NET 
+                Framework SDK, and then click Samples and Quickstart Tutorials.
+            </P>
+            <P><STRONG>2. </STRONG>Click "Step 1: Install the .NET Framework Samples Database".
+            </P>
+            <P><STRONG>3. </STRONG>Open a command window, and CD to
+                <FRAMEWORKSDK>\Samples\Setup This is typically : C:\Program Files\Microsoft 
+                Visual Studio .NET\FrameworkSDK\Samples\Setup
+            </P>
+            <P><STRONG>4. </STRONG>Type: osql -E -S (local)\NetSDK -i InstNwnd.sql</P>
+
+            <h2>Running the Sample</h2>
+            <P>The pages of the Tab control on the sample demonstrate different techniques:
+            </P>
+            <UL>
+                <LI>
+                    <STRONG>Add Items</STRONG>: Demonstrates how to add objects to a ListBox 
+                control, using the DisplayMember property of the control to determine which 
+                property of the objects contained within the list displays in the list. (Note 
+                that because this example doesn't set the DataSource property of the control, 
+                and instead adds items individually, the code can't use the ValueMember 
+                property of the control to retrieve the selected value when you select 
+                something. See the lstProcessesAddItem_SelectedIndexChanged procedure for more 
+                details.)
+                <LI>
+                    <STRONG>Selection Mode</STRONG>: Allows you to test out different styles of 
+                multi-select list boxes. Selecting items displays the SelectedIndices 
+                collection and the SelectedItems collection. (To see list box controls with the 
+                SelectionMode set to Nothing, check out the two controls displaying selected 
+                items on the page.)
+                <LI>
+                    <STRONG>Bind to DataTable</STRONG>: Fills a DataTable with a list of all 
+                files in your C:\ folder, then binds the list box to that DataTable.
+                <LI>
+                    <STRONG>Bind to Array</STRONG>: Binds a list box to the results of 
+                retrieving all running processes—an array of Process objects. Demonstrates the 
+                use of the DisplayMember and ValueMember properties.
+                <LI>
+                    <STRONG>ComboBox</STRONG>: Demonstrates binding to a DataTable retrieved from 
+                    SQL Server. This example expects that it can find the <STRONG>Northwind</STRONG>
+                    sample database in SQL Server on the local computer. The page also allows you 
+                    to try out some of the layout properties that affect the behavior of the combo 
+                    box.
+                </LI>
+            </UL>
+        </font>
+    </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>ReadMe</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<META content=JavaScript name=vs_defaultClientScript>
+<META content=http://schemas.microsoft.com/intellisense/ie5 
+name=vs_targetSchema>
+<META content="Microsoft FrontPage 5.0" name=GENERATOR>
+<META content=FrontPage.Editor.Document name=ProgId>
+<META content="Microsoft Visual Studio.NET 7.0" name=Originator></HEAD>
+<BODY>
+<H1>Windows Forms: DataGrid Formatting</H1>
+<H2><span style="font-weight: 400"><font size="3">This sample shows how you can 
+retrieve data from the database, display the <br>
+data in a DataGrid, and how to format the appearance of the DataGrid.</font></span></H2>
+<H2>Featured Highlights<span style="font-weight: 400"><font size="3"><br>
+<br>
+ADO.NET is used to retrieve the information from SQL Server. The data is loaded 
+into<br>
+a DataSet, and the DataGrid is populated by binding to the DataSet.<br>
+<br>
+The controls on this form utilize anchoring so that the form resizes 
+intelligently<br>
+without the developer having to write any code.<br>
+<br>
+Formatting the DataGrid's appearance is accomplished using code in four button 
+click event<br>
+handlers. The formatting code implemented in each event handler increases in 
+complexity and<br>
+granularity. The buttons are named as follows (ranked in order of increasing 
+control over<br>
+formatting):<br>
+<br>
+1. Default: Only default DataGrid formatting is used.<br>
+2. Grid Properties: Only DataGrid formatting properties are used.<br>
+3. Table Style: A DataGridTableStyle object is used to format the DataGrid.<br>
+4. Column Styles: DataGridColumnStyle objects are added to the 
+DataGridTableStyle object.</font></span></H2>
+<H2>Requirements</H2>
+<P>Requires the release version of Visual Studio .NET Professional (or greater)<br>
+and access to the Northwind database residing in SQL Server or the Microsoft<br>
+Data Engine (MSDE). To install MSDE, do the following:<br>
+<br>
+1. Open the Start menu, then click Programs, the click Microsoft .NET Framework<br>
+SDK, and then click Samples and Quickstart Tutorials.<br>
+<br>
+2. Click &quot;Step 1: Install the .NET Framework Samples Database&quot;.<br>
+<br>
+3. Open a command window, and CD to &lt;FrameworkSDK&gt;\Samples\Setup <br>
+This is typically : <br>
+C:\Program Files\Microsoft Visual Studio .NET\FrameworkSDK\Samples\Setup<br>
+<br>
+4. Type: osql -E -S (local)\NetSDK -i InstNwnd.sql<br>
+&nbsp;</P>
+<H2>Running the Sample</H2>
+<P>Simply Press F5. </P>
+<h3>See also</h3>
+<H3><span style="font-weight: 400"><font size="3">
+<a href="ms-help://MS.VSCC/MS.MSDNVS/vbcon/html/vbtskFormattingtheDataGridAtDesignTime.htm">
+Formatting the DataGrid</a></font></span></H3></BODY></HTML>

@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+		<meta name="ProgId" content="FrontPage.Editor.Document">
+		<meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+		<h1>Data Access:  Sort and Filter with a Dataview</h1>
+		<P>
+			This sample shows some how to use a dataview to sort and filter the contents of 
+			a table of product information.&nbsp;
+		</P>
+		<h2>Featured Highlights:</h2>
+		<P>The code demonstrates how to use a dataview to sort and filter the contents of 
+			the products table from the Northwind SQL Server database. When the main form 
+			loads, the products table is retrived into a dataset using a simple&nbsp;SQL 
+			Select statement.&nbsp;A dataview is constructed to filter and sort the 
+			products table. The user can&nbsp;select filter and sort criteria and view the 
+			results in a datagrid, without having to return to the data source. Rows may be 
+			filtered by selecting those products that have a user selected first character, 
+			for example all product names that begin with C, or by the UnitsInStock column, 
+			for example all rows that have &gt; 10 units. The rows displayed may also be 
+			sorted on a primary/secondary sort key, each sort key allowing ascending or 
+			descending ordering. The primary sort key is the UnitsInStock column&nbsp;and 
+			the secondary key is UnitsOnOrder column.</P>
+		<h2>Requirements:</h2>
+			Trial or Release version of Visual Studio .NET Professional (or greater).
+        <br>
+        <br>
+				Access to the Northwind database residing in SQL Server or the Microsoft Data 
+				Engine (MSDE).&nbsp; To install MSDE, do the following:
+				<UL>
+					<LI>
+						<DIV align="left">Open the Start menu, then click Programs, the click Microsoft 
+							.NET Framework SDK, and then click Samples and Quickstart Tutorials.
+						</DIV>
+					<LI>
+						<DIV align="left">Click "Step 1: Install the .NET Framework Samples Database".</DIV>
+					<LI>
+						<DIV align="left">Open a command window, and CD to
+							<FRAMEWORKSDK>
+							\Samples\Setup This is typically : C:\Program Files\Microsoft Visual Studio 
+							.NET\FrameworkSDK\Samples\Setup</DIV>
+					<LI>
+						<DIV align="left">Type: osql -E -S (local)\NetSDK -i InstNwnd.sql</DIV>
+					</LI>
+				</UL>
+		<H2>Running the Sample</H2>
+		<p>Simply press <b>F5</b>.</p>
+		<OL>
+			<LI>
+			When the main form initially loads&nbsp;a&nbsp;dataset is loaded with all 
+			rows&nbsp;form the products table in the Northwind database. All manipulations 
+			of this product data that subsequently occur are accomplished by filtering/ 
+			sorting the disconnected copy of the product data in the dataset through usage 
+			of&nbsp;a dataview. The product data is not retreived from the data source 
+			after the initial load in order to satisfy any user filter/sort requests.
+			<LI>
+				Filter criteria specifies the subset of rows based on an 
+				expression.&nbsp;Expressions have a very rich syntax which can accommodate 
+				complex selection criteria.</LI>
+		</OL>
+		<H3>See Also:</H3>
+		<P><A href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpref/html/frlrfSystemData.asp">System.Data 
+				Namespace</A>,&nbsp; <A href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpref/html/frlrfSystemDataDataViewClassTopic.asp">
+				DataView Class</A>,&nbsp; <A href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpguide/html/cpconcreatingdataview.asp">
+				Creating a DataView,</A>&nbsp; <A href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpguide/html/cpconsortingfilteringdatausingdataview.asp">
+				Sorting and Filtering Using a DataView</A>
+		</P>
+		<h3>
+			&nbsp;</h3>
+		<UL>
+		</UL>
+	</body>
+</html>

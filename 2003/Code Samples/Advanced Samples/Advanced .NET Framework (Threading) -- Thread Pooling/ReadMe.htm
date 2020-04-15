@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft Visual Studio.NET 7.0">
+		<meta name="ProgId" content="VisualStudio.HTML">
+		<meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+		<h1>
+			Windows Forms: Use Thread Pooling</h1>
+		<P>Shows&nbsp;how to use Thread Pooling in C#.</P>
+		<h2>Featured Highlights:</h2>
+		<P>This application demonstrates three uses of the Thread pool in .NET:</P>
+		<P>1. Function Queuing</P>
+		<P>
+			This demonstration compares running three processes in sequential order, using 
+			three dedicated threads, and using ThreadPool.QueueUserWorkItem.&nbsp; It 
+			displays the thread numbers for each process so you can see how the processes 
+			are distributed across the threads. You are able to select between low CPU 
+			usage processes and high intensity process to see how it affects the outcome of 
+			each process. The QueueUserWorkItem function executes the processes according 
+			to CPU availability, so the results should be different from having dedicated 
+			threads.
+		</P>
+		<P>2. Timers:</P>
+		<P>
+			This demonstration shows how to set up timed callbacks using the 
+			Threading.Timer class, which uses the ThreadPool. It displays the thread 
+			number, showing how the ThreadPool manages the threads to fire the timer 
+			callbacks.
+		</P>
+		<P>3. Synchronization Objects:</P>
+		<P>
+			This demonstration shows how to use the ThreadPool to run processes that wait 
+			for synchronization objects to be set/released without using dedicated threads 
+			that use blocking to monitor the synchronization object changes. This shows how 
+			to use the three synchronization objects derived from WaitHandle: Mutex, 
+			ManualResetEvent, and AutoResetEvent.
+		</P>
+		<h2>Requirements:<BR>
+			<BR>
+			Running the Sample:</h2>
+		<P>Simply press <STRONG>F5.</STRONG></P>
+		<P>
+			To fully appreciate what is happening in each of the above demonstrations, it 
+			is helpful to open the task manager to display CPU usage.
+		</P>
+		<h3>See Also</h3>
+		<P><A href="ms-help://MS.VSCC/MS.MSDNVS/cpguide/html/cpconthreading.htm">Threading</A></P>
+	</body>
+</html>

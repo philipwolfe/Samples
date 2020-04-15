@@ -1,0 +1,176 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+		<meta name="ProgId" content="FrontPage.Editor.Document">
+		<meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+		<h1>.NET Framework: How to Use Simple Controls Shared By Web and Windows Forms</h1>
+		<p>
+			This sample application demonstrates how to databind and access selected 
+			information from&nbsp;single- and multi-select controls. The closest equivalent 
+			controls for both Windows Forms and Web Forms applications are used. The 
+			Windows Forms sample demonstrates databinding and selected/checked item 
+			information gathering for the ComboBox and the CheckedListBox. The Web Forms 
+			sample uses the DropDownList and CheckBoxList controls.</p>
+		<h2>Featured Highlights</h2>
+		<UL>
+			<LI>
+			Databinds to both a DataSet and an ArrayList filled by iterating through a 
+			DataReader.
+			<LI>
+			Uses shared methods of a custom Class Library helper class to add an extra 
+			option to a control prior to databinding. This supports the very common 
+			real-world need to add an "All _________" or "Any __________" option, 
+			especially to a single-select control. It addresses the challenge of making 
+			this option appear at the top of the list of alphabetically sorted options.
+			<LI>
+			Accesses information about the selected item (single-select) or checked items 
+			(multi-select).
+			<LI>
+				Provides&nbsp;comparisons of the usage differences between equivalent controls 
+				on both platforms (see commented code and summary tables, below).</LI></UL>
+		<h2>Requirements</h2>
+		<P>This application requires the release version of Visual Studio .NET Professional 
+			(or greater) and access to the Northwind database residing in SQL Server or the 
+			Microsoft Data Engine (MSDE). To install MSDE, do the following:</P>
+		<P><STRONG>1. </STRONG>Open the Start menu, click Programs, click Microsoft .NET 
+			Framework SDK, and then click Samples and Quickstart Tutorials.
+		</P>
+		<P><STRONG>2. </STRONG>Click "Step 1: Install the .NET Framework Samples Database".
+		</P>
+		<P><STRONG>3. </STRONG>Open a command window, and CD to <EM>[FRAMEWORKSDK]</EM>\Samples\Setup 
+			This is typically : C:\Program Files\Microsoft Visual Studio 
+			.NET\FrameworkSDK\Samples\Setup
+		</P>
+		<P><STRONG>4. </STRONG>Type: osql -E -S (local)\NetSDK -i InstNwnd.sql.
+			<h2>Running the Sample</h2>
+		<P><STRONG>To install the Web Forms application:</STRONG></P>
+		<P>1. Double-click SetupWebApp.vbs in the root folder.&nbsp;(Note: The Visual 
+			Studio .NET Solution file resides in the "How To" root folder, not at 
+			c:\inetpub\wwwroot\HowToUseSimpleWebControls.)</P>
+		<P><STRONG>To run the Web Forms client:</STRONG></P>
+		<P dir="ltr" style="MARGIN-RIGHT: 0px">1. In the <STRONG>Solution Explorer</STRONG>, 
+			right-click <STRONG>HowToUseSimpleWebControls</STRONG> and then click <STRONG>Set 
+				as StartUp Project</STRONG>.<BR>
+			2. Right-click <STRONG>Main.aspx</STRONG> and then click <STRONG>Set As Start Page</STRONG>.<BR>
+			3. Press <STRONG>F5</STRONG> to build and run the sample.</P>
+		<P dir="ltr"><STRONG>If you get the following error the aspnet worker process is 
+				locking the Web-based&nbsp;DLLs. Take the corrective steps that follow. </STRONG>
+		</P>
+		<P dir="ltr"><FONT size="2"><FONT face="Courier New">Could not copy temporary files to the 
+					output directory.<BR>
+					The file 'bin\HowToUseSimpleWebControls.dll' cannot be copied to the run 
+					directory. The process cannot access the file because it is being used by 
+					another process.<BR>
+					The file 'bin\HowToUseSimpleWebControls.pdb' cannot be copied to the run 
+					directory. The process cannot access the file because it is being used by 
+					another process.</FONT> </FONT>
+		</P>
+		<P dir="ltr">1.&nbsp;Open the <STRONG>IIS Management Console</STRONG>.<BR>
+			2. Drill down to the <STRONG>Default Web Site</STRONG>, then right-click and 
+			then click <STRONG>Properties</STRONG>.<BR>
+			3. Click the <STRONG>Home Directory</STRONG> tab.<BR>
+			4. Make sure there is no trailing "\" in the <STRONG>Local Path</STRONG> fiel 
+			(i.e., it should read "c:\inetpub\wwwroot" <EM>not</EM> "c:\inetpub\wwwroot\").<BR>
+			5. Click <STRONG>OK </STRONG>to exit the <STRONG>Properties</STRONG> dialog.<BR>
+			6. For more information on this issue, <a href="http://groups.google.com/groups?hl=en&amp;lr=&amp;ie=UTF-8&amp;threadm=eUtlP%23hxBHA.492%40tkmsftngp02&amp;rnum=3&amp;prev=/groups%3Fq%3D%2522Could%2Bnot%2Bcopy%2Btemporary%2Bfiles%2Bto%2Bthe%2Boutput%2Bdirectory.%2522%2Bgroup:microsoft.public.dotnet.*%26hl%3Den%26lr%3D%26ie%3DUTF-8%26selm%3DeUtlP%2523hxBHA.492%2540tkmsftngp02%26rnum%3D3">
+				click here</a>.</P>
+		<P dir="ltr">If the problem persists you can temporarily resolve it on each build 
+			with the following steps:</P>
+		<P dir="ltr">1.&nbsp;Press <STRONG>CTRL + ALT + Delete</STRONG> to open the <STRONG>Windows 
+				Task Manager</STRONG>.<BR>
+			2.&nbsp;Click the <STRONG>Processes</STRONG> tab.<BR>
+			3.&nbsp;Click the <STRONG>Image Name</STRONG> ListView header to sort <STRONG>aspnet_wp.exe</STRONG>
+			to the top.<BR>
+			4.&nbsp;Click <STRONG>aspnet_wp.exe</STRONG> and then click <STRONG>End Process</STRONG>.<BR>
+			5.&nbsp;Close <STRONG>Windows Task Manager</STRONG>.</P>
+		<P dir="ltr" style="MARGIN-RIGHT: 0px"><STRONG>To run the Windows Forms client:</STRONG></P>
+		<P dir="ltr" style="MARGIN-RIGHT: 0px">1. In the <STRONG>Solution Explorer</STRONG>, 
+			right-click <STRONG>VB.NET How-To Use Simple Windows Forms Controls</STRONG> and 
+			then click <STRONG>Set as StartUp Project</STRONG>.<BR>
+			2. Press <STRONG>F5</STRONG> to build and run the sample.</P>
+		<P>
+			Notes:</P>
+		<P>1&nbsp;For the Helper.UI.AddOption method to work the DataSet must be 
+			pre-sorted. This is easy to do in the SQL statement. Without pre-sorting the 
+			DataSet you would be left with having to create a DataView and sorting on the 
+			DisplayMember (DataTextField) or ValueMember (DataValueField), which may not 
+			always achieve the results you want. For example, in this sample application 
+			the ComboBox is filled with data from the Products table. One of the products 
+			alphabetically precedes the phrase "All Products". Thus, if you sorted by the 
+			DisplayMember (DataTextField) "All Products" would be listed second. If you 
+			sorted by ValueMember (DataValueField), "All Products" would be listed first 
+			(because its value = 0) but the product names would not be in alphabetical 
+			order. Usually this is undesirable. If you can pre-sort, 
+			DataTable.Rows.InsertAt(0) works well.</P>
+		<P>2. Following are tables summarizing the usage differences between the single- 
+			and multi-select controls in this How-To.</P>
+		<P>
+			<TABLE width="100%" border="1">
+				<TR>
+					<TD width="50%"><STRONG>
+							<P align="center">ComboBox (in DropDownList mode, Windows Forms)</P>
+						</STRONG>
+					</TD>
+					<TD><STRONG>
+							<P align="center">DropDownList (Web Forms)</P>
+						</STRONG>
+					</TD>
+				</TR>
+				<TR>
+					<TD>DisplayMember and ValueMember are used to set the databindings.</TD>
+					<TD>DataTextField and DataValueField are used to set the databindings.</TD>
+				</TR>
+				<TR>
+					<TD>There is no DataBind method. Databinding occurs automatically. However, when 
+						the datasource is a DataSet you must explicitly set the DataTable, e.g., 
+						clstProducts.DataSource = dsProducts.Tables(0).</TD>
+					<TD>You must explicitly call the DataBind method. You can also bind directly to a 
+						DataSet unless it contains more than one DataTable, in which case you would 
+						need to explicitly set the DataTable.</TD>
+				</TR>
+				<TR>
+					<TD>Access information about the selected item using the SelectedIndex, 
+						SelectedValue, and Text properties.</TD>
+					<TD>Access information about the selected item using the SelectedIndex, 
+						SelectedItem.Value, and SelectedItem.Text properties.</TD>
+				</TR>
+			</TABLE>
+			<br>
+			<TABLE width="100%" border="1">
+				<TR>
+					<TD width="50%"><STRONG>
+							<P align="center">CheckedListBox (Windows Forms)</P>
+						</STRONG>
+					</TD>
+					<TD><STRONG>
+							<P align="center">CheckBoxList (Web Forms)</P>
+						</STRONG>
+					</TD>
+				</TR>
+				<TR>
+					<TD colspan="2">The first two rows in the above table also apply to these controls.</TD>
+				</TR>
+				<TR>
+					<TD>"Selected" means "highlighted",&nbsp;which is different than "checked".</TD>
+					<TD>"Selected" means "checked".</TD>
+				</TR>
+				<TR>
+					<TD>Exposes a SelectedItems and CheckedItems collection. The former is not relevant 
+						as it contains 0 or 1 items.</TD>
+					<TD>Exposes only an Items collection. You must iterate through all items and check 
+						the value of the Selected property. (There is no Checked property.)</TD>
+				</TR>
+				<TR>
+					<TD>Objects in the CheckedItems collection are of type DataRowView.</TD>
+					<TD>Objects in the Items collection are of type ListItem.</TD>
+				</TR>
+			</TABLE>
+		</P>
+	</body>
+</html>

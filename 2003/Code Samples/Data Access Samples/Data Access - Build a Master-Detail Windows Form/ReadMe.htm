@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+		<meta name="ProgId" content="FrontPage.Editor.Document">
+		<meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+		<h1>
+			Data Access: Build a Master-Details Windows Forms App</h1>
+		This sample shows you how to build a master-details application.&nbsp;This 
+		common type of data-bound form is useful for navigating through records and 
+		viewing various levels of detail for the data related to each 
+		record.&nbsp;&nbsp;
+		<h2>Featured Highlights</h2>
+		<UL>
+			<LI>
+			See how a single DataSet can be filled with four DataTables and bound to 
+			various controls that are&nbsp;kept in sync with each other by the Form's 
+			BindingContext object.
+			<LI>
+				View&nbsp; two types of Master-Details interfaces:
+				<UL>
+					<LI>
+					Display data in&nbsp;two separate DataGrid controls, one for the Master 
+					"Orders" table, and another for the Details "Order Details" table.
+					<LI>
+						Display data in a&nbsp;single DataGrid, using the DataGrid's intrinsic 
+						node-like controls for drilling down into the order details.</LI></UL>
+			<LI>
+			Navigate back and forth through the records by clicking navigational buttons or 
+			by pressing arrow keys or the Home/End keys.
+			<LI>
+				See how custom formatting can be applied to data bound controls.</LI></UL>
+		<h2>Requirements</h2>
+		<P>This application requires the release version of Visual Studio .NET Professional 
+			(or greater) and access to the Northwind database residing in SQL Server or the 
+			Microsoft Data Engine (MSDE). To install MSDE, do the following:</P>
+		<P><STRONG>1. </STRONG>Open the Start menu, click Programs, click Microsoft .NET 
+			Framework SDK, and then click Samples and Quickstart Tutorials.
+		</P>
+		<P><STRONG>2. </STRONG>Click "Step 1: Install the .NET Framework Samples Database".
+		</P>
+		<P><STRONG>3. </STRONG>Open a command window, and CD to
+			<FRAMEWORKSDK>\Samples\Setup This is typically : C:\Program Files\Microsoft 
+			Visual Studio .NET\FrameworkSDK\Samples\Setup
+		</P>
+		<P><STRONG>4. </STRONG>Type: osql -E -S (local)\NetSDK -i InstNwnd.sql</P>
+		<H2>Running the Sample</H2>
+		<P>
+			Simply press <b>F5</b>.<br>
+            <br>
+            To view the alternate 
+			Master-Details interface, uncomment the line labeled OPTIONAL in the CreateDataSet method.
+		</P>
+		</FONT>
+	    <p><b>See Also</b></p>
+        <p>
+        <a href="ms-help://MS.VSCC/MS.MSDNVS/vbcon/html/vbwlkWalkthroughCreatingMaster-DetailWindowsForm.htm">
+        Creating a Master Detail Form</a>&nbsp;
+        <a href="ms-help://MS.VSCC/MS.MSDNVS/vbcon/html/vbconIntroductionToDatasetRelations.htm">
+        DataRelation Objects</a>
+        <a href="ms-help://MS.VSCC/MS.MSDNVS/vbcon/html/vbconDataSets.htm">
+        DataSets</a></p>
+	</body>
+</html>

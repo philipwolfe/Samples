@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta content="JavaScript" name="vs_defaultClientScript">
+		<meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
+		<meta content="Microsoft FrontPage 5.0" name="GENERATOR">
+		<meta content="FrontPage.Editor.Document" name="ProgId">
+		<meta content="Microsoft Visual Studio.NET 7.0" name="Originator">
+	</head>
+	<body>
+		<h1>Windows Forms : Use Drag-and-Drop</h1>
+		<p>
+			This demonstration shows you how to implement drag and drop functionality in a 
+			Windows Form. Drag-and-drop is one of the fundamental metaphors underlying the 
+			Microsoft® Windows® family of operating systems. Users understand that some 
+			items can be moved around by holding the mouse down on them, and that they'll 
+			get appropriate visual feedback when they're over a spot where the item can be 
+			dropped. They expect to be able to move data and images from one spot to 
+			another this way. .NET makes it easy to implement drag-and-drop in your own 
+			applications. You can control all aspects of the process, including which 
+			controls allow dragging, what data they make available to drag, and where it 
+			can be dropped. You can implement this both within a single application and 
+			between applications. In this How To, you'll learn how to manage drag-and-drop 
+			in .NET.
+		</p>
+		<h2>Featured Highlights:</h2>
+		<P>This application has three examples of drag and drop:
+		</P>
+		<P>a) From a TextBox control to two other TextBox controls, one of which does not 
+			have the AllowDrop property set to True, demonstrating how to prevent a drop on 
+			a control.
+		</P>
+		<P>b) From a TreeView control to another TreeView control, demonstrating how to 
+			move nodes from one to the other.
+		</P>
+		<P>c) From a PictureBox to another PictureBox, demonstrating how to copy images 
+			from one to the other.
+		</P>
+		<P>You can do a Copy or a Move when you drag and drop. To copy, hold down the Ctrl 
+			key while dragging. When you do this notice the Copy-Drop symbol (rectangle 
+			with + sign). The Move symbol is just the rectangle.
+		</P>
+		<H2>Requirements:</H2>
+		<P>Microsoft Visual Studio.NET Professional or greater.<br>
+			Windows 2000 or Windows XP</P>
+		<h2>Running the Sample:</h2>
+		<P>There are no special instructions for running the sample. However, consider the 
+			following when coding drag-and-drop operations:</P>
+		<P>1. In Version 1.0 of Visual Studio .NET there is no way to set the AllowDrop 
+			property of the PictureBox using the Forms designer. Currently you have to set 
+			this property directly in the code.
+		</P>
+		<P>2. The data to be dragged should be an instance of the String, Bitmap, or 
+			MetaFile class, or an object that implements the ISerializable or IDataObject 
+			interfaces.
+		</P>
+		<h3>See also</h3>
+		<a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dndotnet/html/dragndropops.asp">
+			Performing Drag-and-Drop Operations</a>
+	</body>
+</html>

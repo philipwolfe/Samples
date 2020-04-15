@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+		<meta name="ProgId" content="FrontPage.Editor.Document">
+		<meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+		<h1>
+			Data Access: Using Stored Procedures</h1>
+		This application demonstrates how to programmatically create and use stored 
+		procedures with ADO .NET and Microsoft SQL Server. The use of&nbsp;a query 
+		(a.k.a., stored procedure) in a Microsoft Access database is also demonstrated.
+		<h2>Featured Highlights</h2>
+		<UL>
+			<LI>
+			Programmatically create stored procedures in the SQL Server database 
+			"Northwind" by executing ad hoc SQL statements using classes from the 
+			System.Data.SqlClient namespace.
+			<LI>
+			Execute an existing Northwind&nbsp;stored procedure that does not require any 
+			parameters, using a SqlDataReader object.
+			<LI>
+			Execute a stored procedure that requires an input parameter and fill&nbsp;a 
+			DataGrid with the results.
+			<LI>
+			Execute a stored procedure that requires both input and output parameters, and 
+			that makes use of a return value.
+			<LI>
+				Execute an existing&nbsp;query (stored procedure) in the Microsoft Access 
+				version of Northwind using classes in the System.Data.OleDb namespace. (The 
+				Northwind database is included with this How To.)</LI></UL>
+		<h2>Requirements</h2>
+		<P>This application requires the release version of Visual Studio .NET Professional 
+			(or greater) and access to the Northwind database residing in SQL Server or the 
+			Microsoft Data Engine (MSDE). To install MSDE, do the following:</P>
+		<P><STRONG>1. </STRONG>Open the Start menu, click Programs, click Microsoft .NET 
+			Framework SDK, and then click Samples and Quickstart Tutorials.
+		</P>
+		<P><STRONG>2. </STRONG>Click "Step 1: Install the .NET Framework Samples Database".
+		</P>
+		<P><STRONG>3. </STRONG>Open a command window, and CD to
+			<FRAMEWORKSDK>\Samples\Setup This is typically : C:\Program Files\Microsoft 
+			Visual Studio .NET\FrameworkSDK\Samples\Setup
+		</P>
+		<P><STRONG>4. </STRONG>Type: osql -E -S (local)\NetSDK -i InstNwnd.sql</P>
+		<H2>Running the Sample</H2>
+		<P>
+			Simply press<b> F5</b>.<b> </b>
+		</P>
+		<H3>
+			Other links:</H3>
+		<P><A href='http://support.microsoft.com/default.aspx?scid=kb;EN-US;q308049"'>HOW TO: 
+				Call a Parameterized Stored Procedure by Using ADO.NET and Visual Basic .NET 
+				(Q308049)</A></P>
+		<P><A href="http://support.microsoft.com/default.aspx?scid=kb;EN-US;q308051">PRB: 
+				Output Parameters Are Not Returned When You Run an ADO.NET Command in Visual 
+				Basic .NET (Q308051)</A></P>
+		</FONT>
+	</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft Visual Studio.NET 7.0">
+		<meta name="ProgId" content="VisualStudio.HTML">
+		<meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+		<font face="Verdana, Arial, System">
+			<h1>
+				Advanced: Remoting</h1>
+			<p>
+				This sample is designed to show how to use the .NET Remoting architecture using 
+				three types of remote objects. In addition, it uses XML configuration files to 
+				specify available objects and server location information instead of 
+				hard-coding them into the binaries or putting the data into the system 
+				registry.
+			</p>
+			<h2>Featured Highlights</h2>
+			<P>The sample contains three solutions:
+			</P>
+			<UL>
+				<LI>
+				How-To Remoting - Server
+				<LI>
+				How-To Remoting - Host
+				<LI>
+					How-To Remoting - Client</LI></UL>
+			<P>Each solution has one project.
+			</P>
+			<P>One of the projects (RemoteCustomer) is a class library that exposes three 
+				creatable types:
+			</P>
+			<UL>
+				<LI>
+				Customer (client activated)
+				<LI>
+				SingleCallCustomer (WellKnown singlecall)
+				<LI>
+					SingletonCustomer (WellKnown singleton)</LI></UL>
+			<P>To make it easier to configure, each class lives in the same namespace, <EM>RemotingSample</EM>, 
+				which is defined in each class source file.
+			</P>
+			<P>The Host project contains a Windows Forms application that will read an XML 
+				configuration file named <STRONG>Host.exe.config</STRONG> to make available the 
+				classes defined in the RemoteCustomer project. For a production application, 
+				you might want to host the class library (RemoteCustomer.dll) in a Windows 
+				service.
+			</P>
+			<P>The Client project is also a Windows Forms application. It relies upon a 
+				configuration file named <STRONG>Client.exe.config </STRONG>to know where to 
+				look for the remote objects.
+				<h2>Requirements</h2>
+			<p>
+				Requires the Trial or Release version of Visual Studio .NET Professional (or 
+				greater).
+			</p>
+			<h2>Running the Sample</h2>
+			<P>Before running the demo, you need to build all three projects. You should build 
+				them in this order:
+			</P>
+			<OL>
+				<LI>
+				RemoteCustomer
+				<LI>
+				Host
+				<LI>
+					Client</LI></OL>
+			<P>Once the binaries have been build, you will need to start the Host application 
+				first to make sure your objects are available for remoting. Next start your 
+				client.
+			</P>
+			<P>If you wish to test on two different machines, you will need to make changes to 
+				the client's&nbsp;.config file changing localhost to an IP address or DNS name 
+				for the server machine. In addition, you might need to change the server's file 
+				if you change the port number. See the comments in both the client's .config 
+				file and the host's .config file for examples.
+			</P>
+			<h3>Last Update:&nbsp;7 July 2002</h3>
+		</font>
+	</body>
+</html>

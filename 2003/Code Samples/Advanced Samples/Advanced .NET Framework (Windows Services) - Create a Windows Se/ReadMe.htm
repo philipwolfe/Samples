@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+		<meta name="ProgId" content="FrontPage.Editor.Document">
+		<meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+		<h1>Advanced .NET Framework (Windows Services):&nbsp; Creating a Windows Service</h1>
+		<P>This sample shows some how a Windows Service is created and deployed.
+		</P>
+		<h2>Featured Highlights:</h2>
+		<P>The code demonstrates how to build a Windows Service that includes methods that 
+			respond when the service is started, stopped, paused, continued, and when the 
+			service is stopped due to a system shut down. In addition, code is provided to 
+			demonstrate how to us a deployment project to deploy the Windows Service.</P>
+		<h2>Requirements:</h2>
+		<UL>
+			<LI>
+			Trial or Release version of Visual Studio .NET Professional (or greater).
+			<LI>
+				A Windows Operating System that supports services. 
+				(Windows&nbsp;NT&nbsp;Server&nbsp;4.0, 
+				Windows&nbsp;NT&nbsp;Workstation&nbsp;4.0, Windows&nbsp;2000, 
+				Windows&nbsp;XP&nbsp;Home&nbsp;Edition, Windows&nbsp;XP&nbsp;Professional, or 
+				Windows&nbsp;.NET&nbsp;Server&nbsp;family)</LI></UL>
+		<H2>Running the Sample:</H2>
+		<P>To run the sample:
+		</P>
+		<OL>
+			<LI>
+				Install the Windows Service Demo by double clicking on the <STRONG>How-To Windows 
+					Service - Time Track.msi</STRONG>
+			file.
+			<LI>
+				Doubleclick the <STRONG>How-To Creating a Windows Service.sln</STRONG>
+			file.&nbsp;
+			<LI>
+				Explore the <STRONG>How-To Windows Service Demo</STRONG>
+			project for an example of creating a Windows Service in code.
+			<LI>
+				Explore the&nbsp; <STRONG>How-To Windows Service - Time Track Install</STRONG> project 
+				for an example of creating a deployment project for a Windows Service.</LI></OL>
+		<H3>Notes:</H3>
+		<P>Although completed sample code can be useful, it doesn't show the process for 
+			creating a Windows Service on your own. There are three very important steps.</P>
+		<OL>
+			<LI>
+			Create the Windows Service.&nbsp; Simply create a new Windows Service project 
+			in Visual Basic. You are provided with a overrides for the OnStart and OnStop 
+			methods. Add code to these methods, and implement any additional overrides 
+			(such as for the OnContinue and OnPause methods). You must also set the proper 
+			parameter.&nbsp; For instance, the CanPauseAndContinue must be set to True for 
+			the service to be able to accept those events.
+			<LI>
+			Add an Installer. You can add an installer by right clicking on the design 
+			palette of the windows service, and selecting "Add Installer". The installer is 
+			required to make the proper changes in the registry, and to get the service 
+			hooked into the right event sources. You can then configure the installer. In 
+			your ServiceProcessInstaller, you need to determine the account that will start 
+			the service. Popular choices are&nbsp;LocalSystem and User. In the 
+			WindowsServiceInstaller, you need to specifiy how the service will start. 
+			Choose Manual if the service should be started by a user action. Select 
+			Automatic if the service should be run on startup.
+			<LI>
+				Create a deployment. Windows Services can be deployed by using the 
+				InstallUtil.exe utility that comes with the .NET Framework. However, a more 
+				convenient method is to use a deployment project to create an MSI file. This is 
+				only slightly tricky for a Windows Service. First, add a deployment project to 
+				the solution containing the service project. Then create a Custom Action for 
+				the primary output of the Windows Service project. (To do this, right-click on 
+				the deployment project name and select View -&gt; Custom Actions. Then right 
+				click on the Custom Actions and select Add Custom Action. When the dialog box 
+				opens double click the Application folder and select the primary output from 
+				your Windows Service project. It will add this custom action to all four 
+				installer actions: Install, Commit, Rollback and Uninstall.) You can now Build 
+				your solution, and the resulting MSI file will install the Windows Service.</LI></OL>
+		<H3>See Also:</H3>
+		<P><A href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpref/html/frlrfSystemServiceProcess.asp">System.ServiceProcess 
+				Namespace</A>, <A href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpref/html/frlrfSystemServiceProcessServiceBaseClassTopic.asp">
+				ServiceBase Class</A>, <A href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpref/html/frlrfSystemServiceProcessServiceInstallerClassTopic.asp">
+				ServiceInstaller Class</A>, <A href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpguide/html/cpcondeployingnetframeworkapplications.asp">
+				Deploying Applications</A>, <A href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cptutorials/html/introduction_to_packaging_and_deployment.asp">
+				Introduction to Packaging and Deployment</A>
+		</P>
+	</body>
+</html>

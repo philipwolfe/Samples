@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://msdn.microsoft.com/csharp/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://msdn.microsoft.com/csharp/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://msdn.microsoft.com/csharp/">
+      <s:element name="Browse">
+        <s:complexType />
+      </s:element>
+      <s:element name="BrowseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BrowseResult" type="s0:ArrayOfImageInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfImageInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ImageInfo" nillable="true" type="s0:ImageInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ImageInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Size" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="Height" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Width" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="HorizontalResolution" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="VerticalResolution" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="PixelFormat" type="s0:PixelFormat" />
+          <s:element minOccurs="0" maxOccurs="1" name="Thumbnail" type="s:base64Binary" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="PixelFormat">
+        <s:restriction base="s:string">
+          <s:enumeration value="Indexed" />
+          <s:enumeration value="Gdi" />
+          <s:enumeration value="Alpha" />
+          <s:enumeration value="PAlpha" />
+          <s:enumeration value="Extended" />
+          <s:enumeration value="Canonical" />
+          <s:enumeration value="Undefined" />
+          <s:enumeration value="DontCare" />
+          <s:enumeration value="Format1bppIndexed" />
+          <s:enumeration value="Format4bppIndexed" />
+          <s:enumeration value="Format8bppIndexed" />
+          <s:enumeration value="Format16bppGrayScale" />
+          <s:enumeration value="Format16bppRgb555" />
+          <s:enumeration value="Format16bppRgb565" />
+          <s:enumeration value="Format16bppArgb1555" />
+          <s:enumeration value="Format24bppRgb" />
+          <s:enumeration value="Format32bppRgb" />
+          <s:enumeration value="Format32bppArgb" />
+          <s:enumeration value="Format32bppPArgb" />
+          <s:enumeration value="Format48bppRgb" />
+          <s:enumeration value="Format64bppArgb" />
+          <s:enumeration value="Format64bppPArgb" />
+          <s:enumeration value="Max" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetThumbnail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FileName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetThumbnailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetThumbnailResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetImage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FileName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetImageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetImageResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="About">
+        <s:complexType />
+      </s:element>
+      <s:element name="AboutResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AboutResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </types>
+  <message name="BrowseSoapIn">
+    <part name="parameters" element="s0:Browse" />
+  </message>
+  <message name="BrowseSoapOut">
+    <part name="parameters" element="s0:BrowseResponse" />
+  </message>
+  <message name="GetThumbnailSoapIn">
+    <part name="parameters" element="s0:GetThumbnail" />
+  </message>
+  <message name="GetThumbnailSoapOut">
+    <part name="parameters" element="s0:GetThumbnailResponse" />
+  </message>
+  <message name="GetImageSoapIn">
+    <part name="parameters" element="s0:GetImage" />
+  </message>
+  <message name="GetImageSoapOut">
+    <part name="parameters" element="s0:GetImageResponse" />
+  </message>
+  <message name="AboutSoapIn">
+    <part name="parameters" element="s0:About" />
+  </message>
+  <message name="AboutSoapOut">
+    <part name="parameters" element="s0:AboutResponse" />
+  </message>
+  <portType name="ImageServiceSoap">
+    <operation name="Browse">
+      <documentation>Retrieve an array of image file names.</documentation>
+      <input message="s0:BrowseSoapIn" />
+      <output message="s0:BrowseSoapOut" />
+    </operation>
+    <operation name="GetThumbnail">
+      <documentation>Retrieve an individual thumbnail.</documentation>
+      <input message="s0:GetThumbnailSoapIn" />
+      <output message="s0:GetThumbnailSoapOut" />
+    </operation>
+    <operation name="GetImage">
+      <documentation>Retrieve a single image.</documentation>
+      <input message="s0:GetImageSoapIn" />
+      <output message="s0:GetImageSoapOut" />
+    </operation>
+    <operation name="About">
+      <documentation>Retrieves version + copyright information about this web service.</documentation>
+      <input message="s0:AboutSoapIn" />
+      <output message="s0:AboutSoapOut" />
+    </operation>
+  </portType>
+  <binding name="ImageServiceSoap" type="s0:ImageServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="Browse">
+      <soap:operation soapAction="http://msdn.microsoft.com/csharp/Browse" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetThumbnail">
+      <soap:operation soapAction="http://msdn.microsoft.com/csharp/GetThumbnail" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetImage">
+      <soap:operation soapAction="http://msdn.microsoft.com/csharp/GetImage" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="About">
+      <soap:operation soapAction="http://msdn.microsoft.com/csharp/About" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ImageService">
+    <port name="ImageServiceSoap" binding="s0:ImageServiceSoap">
+      <soap:address location="http://localhost/HowToGraphicsServer/ImageService.asmx" />
+    </port>
+  </service>
+</definitions>

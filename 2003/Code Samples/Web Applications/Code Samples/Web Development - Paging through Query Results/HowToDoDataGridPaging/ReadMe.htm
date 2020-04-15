@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+		<meta name="ProgId" content="FrontPage.Editor.Document">
+		<meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+		<h1>Web Development: How to Do DataGrid Paging</h1>
+		<p>DataGrid paging is important for a number of reasons. In most cases it is not 
+			good to display the entire results set all at once. It is typically best to 
+			display only small subsets of the data, one "page" at a time. This keeps the 
+			DataGrid in the user's field of view and prevents Web page scrolling. It means 
+			the page will render more quickly. If you implement paging at the SQL Server 
+			level then there can be an extra performance gain because you are only 
+			returning over the network the currently viewed results, not the entire results 
+			set.</p>
+		<h2>Featured Highlights</h2>
+		<UL>
+			<LI>
+			DataGrid paging is demonstrated in two ways: a) The standard built-in paging 
+			that ships with the ASP .NET DataGrid control; b)&nbsp;Custom paging using a 
+			"RowID" column added to the DataSet along with a DataView RowFilter.
+			<LI>
+			DataGrid sorting persists even during paging. The sort expression is stored in 
+			an HTMLInputHidden control.
+			<LI>
+			The Application Cache is used to store&nbsp;the DataView that is the DataSource 
+			for both types of paging.&nbsp;In this way the data, which is over 2500 
+			records,&nbsp;only has to be downloaded once.
+			<LI>
+				DataFormatStrings are used to format price and discount (percentage).</LI></UL>
+		<h2>Requirements</h2>
+		<P>This application requires the release version of Visual Studio .NET Professional 
+			(or greater) and access to the Northwind database residing in SQL Server or the 
+			Microsoft Data Engine (MSDE). To install MSDE, do the following:</P>
+		<P><STRONG>1. </STRONG>Open the Start menu, click Programs, click Microsoft .NET 
+			Framework SDK, and then click Samples and Quickstart Tutorials.
+		</P>
+		<P><STRONG>2. </STRONG>Click "Step 1: Install the .NET Framework Samples Database".
+		</P>
+		<P><STRONG>3. </STRONG>Open a command window, and CD to <EM>[FRAMEWORKSDK]</EM>\Samples\Setup 
+			This is typically : C:\Program Files\Microsoft Visual Studio 
+			.NET\FrameworkSDK\Samples\Setup
+		</P>
+		<P><STRONG>4. </STRONG>Type: osql -E -S (local)\NetSDK -i InstNwnd.sql</P>
+		<h2>Running the Sample</h2>
+		<p>Press <STRONG>F5</STRONG> to run the sample.
+		</p>
+		<p>It is worth pointing out that there is at least one other type of custom paging 
+			you could implement. This consists of moving the logic for determining the 
+			actual rows to display from the code to the SQL Server tier. The RowID column 
+			would be added to a temporary table in a stored procedure (instead of to the 
+			DataSet's DataTable, as in this How-To). The "FirstRecord" / "LastRecord" 
+			values would then be assigned to input parameters (instead of being used in a 
+			RowFilter statement, as in this How-To) and used to SELECT the subset of rows 
+			to be returned via a SqlDataReader (instead of a DataSet). In this case the 
+			performance gains come from using a SQL Server more effectively and using a 
+			faster SqlDataReader to return a much smaller results set. The disadvantage is 
+			that you have to recreate a potentially large temporary table on each paging 
+			request; and if the RowID field did not already exist in the SQL Server table 
+			from which the temporary table is created, you would also have to add the 
+			identity column on each paging request. Finally, you could not cache a DataView 
+			of the results set as it would be different for every paging request. It boils 
+			down whether you want to use SQL Server resources or Web server resources for 
+			the performance gains. The "right way" to do DataGrid paging is definitely 
+			scenario-driven.</p>
+		<P>For more on this technique see <A href="http://www.dotnetjunkies.com/tutorials.aspx?tutorialid=50">
+				http://www.dotnetjunkies.com/tutorials.aspx?tutorialid=50</A>.</P>
+	    <p><b>Note:</b></p>
+        <p>If you get an error when running the sample make sure that IIS has 
+        appropriate permissions to query tables in the local SQL Server.&nbsp; 
+        There are multiple ways to achieve this but the easiest way to do this 
+        for testing and running samples is to change the default &lt;processModel&gt; 
+        settings in machine.config.&nbsp; The steps to do this are as follows:</p>
+        <p>1.&nbsp;&nbsp;&nbsp; Navigate to 
+        c:\[WINDOWSDIR]\Microsoft.NET\Framework\[FrameworkVersion]\Config<br>
+        2.&nbsp;&nbsp;&nbsp; Open the Machine.Config file found there and change 
+        the userName attribute so that it's&nbsp;value is&nbsp;SYSTEM (i.e. 
+        userName=&quot;SYSTEM&quot;)<br>
+        3.&nbsp;&nbsp;&nbsp; Save the File.<br>
+        4.&nbsp;&nbsp;&nbsp; Open up a command prompt and type IISReset to 
+        restart IIS.<br>
+        <br>
+        Another options to use that is more applicable for a production 
+        environment is to give appropriate permissions to the ASPNET account in 
+        the appropriate database.&nbsp; </p>
+        <p><b>See Also</b></p>
+        <p>
+        <a href="ms-help://MS.VSCC/MS.MSDNVS/cpref/html/frlrfSystemWebUIWebControlsDataGridClassTopic.htm">
+        DataGrid</a>&nbsp;
+        <a href="ms-help://MS.VSCC/MS.MSDNVS/vbcon/html/vbconDataGridWebControl.htm">
+        Using the DataGrid Control</a></p>
+	</body>
+</html>

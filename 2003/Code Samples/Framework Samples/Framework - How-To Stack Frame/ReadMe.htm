@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft Visual Studio.NET 7.0">
+		<meta name="ProgId" content="VisualStudio.HTML">
+		<meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+		<font face="Verdana, Arial, System">
+			<h1>
+				.NET Framework: Stack Frame</h1>
+			<P>
+				Developers have been asking for a way to programmatically retrieve information 
+				about the call stack at any point from within their code. It would be nice to 
+				be able to determine, in code, how you "got" to where you are, or to be able to 
+				determine the sequence of procedures that your application "visited" before 
+				getting to the current procedure. In specific, developers need to be able to 
+				programmatically walk the stack frames, starting with the current procedure, 
+				and working back up a specific number of levels, or all the way back to the 
+				start of your application.
+			</P>
+			<P>
+				The .NET Framework provides the functionality as part of the 
+				System.Diagnostics.StackFrame class. Along the way, the sample demonstrates two 
+				other classes: System.Diagnostics.StackTrace and System.Reflection.MethodInfo. 
+				You'll use the StackTrace class created with no parameters sent to its 
+				constructor, providing a complete set of StackFrame objects, giving information 
+				from the time your application started. You can also use the StackTrace class 
+				created by passing an Exception object to its constructor, providing stack 
+				trace information back to the code that triggered the exception.
+			</P>
+			<P>This sample demonstrates two uses of the StackTrace and StackFrame classes: it 
+				shows how you can walk all the way back up the stack (<EM>all </EM>the way back 
+				up, as you'll see) at any point, and it shows how to walk the stack after an 
+				exception.
+				<h2>Featured Highlights</h2>
+			<p>
+				On the sample form, click "Test Procedure Stack" to call a procedure several 
+				levels deep (the click event handler calls ProcA, which calls ProcB, which 
+				displays the call stack). Click "Test Exception Handling" to walk the stack 
+				trace associated with an exception.
+			</p>
+			<h2>Requirements</h2>
+			<p>
+				Requires the Trial or Release version of Visual Studio .NET Professional (or 
+				greater).
+			</p>
+			<h2>Running the Sample</h2>
+			<P>Clicking the "Test Procedure Stack" button calls ProcA, which calls ProcB. ProcB 
+				calls the GetFullStackFrameInfo procedure, passing in a new StackTrace object:</P>
+			<P><FONT face="Courier New">GetFullStackFrameInfo(New StackTrace()) </FONT>
+			</P>
+			<P>In the GetFullStackFrameInfo procedure, code uses the FrameCount property of the 
+				StackTrace object to retrieve the total number of stackframes, working 
+				backwards from the current procedure:</P>
+			<P><FONT face="Courier New">Dim fc As Integer = st.FrameCount</FONT></P>
+			<P>The procedure then adds information about each stack frame to the list box on 
+				the sample, calling the GetFrame method to retrieve an indexed stack frame 
+				object:</P>
+			<P><FONT face="Courier New">For i = 0 To fc - 1<BR>
+					&nbsp; lstStackItems.Items.Add( _<BR>
+					&nbsp;&nbsp;&nbsp;GetStackFrameInfo(st.GetFrame(i)))<BR>
+					Next i </FONT>
+			</P>
+			<P>The GetStackFrameInfo procedure calls the GetMethod method of the StackFrame 
+				object the code sent it, and then retrieves properties of the MethodInfo object 
+				to display information about the procedure in the list box (see the procedure 
+				for the details of retrieving method information):</P>
+			<P><FONT face="Courier New">Dim mi As MethodInfo
+					<BR>
+					Dim strOut As String
+					<BR>
+					mi = CType(sf.GetMethod(), MethodInfo) </FONT>
+			</P>
+			<P>The "Test Exception Handling" button takes similar actions, but the code 
+				triggers an exception and passes that exception to the constructor for the 
+				StackTrace object:</P>
+			<P><FONT face="Courier New">Try
+					<BR>
+					&nbsp; ProcException1(1, 2)
+					<BR>
+					Catch exp As Exception
+					<BR>
+					&nbsp; GetFullStackFrameInfo(New StackTrace(exp))
+					<BR>
+					End Try </FONT>
+			</P>
+			<P>Passing an exception into the constructor yields a different set of results, as 
+				you can see by running the sample. If you investigate the documentation, you'll 
+				see that there are other ways to create a StackTrace object. You can, for 
+				example, request debugging information such as line numbers. (Note that this 
+				feature isn't implemented in the first release of the .NET Framework. It may 
+				work in the current release.) Take the time to investigate the documentation on 
+				these three objects: StackTrace, StackFrame, and MethodInfo. You'll find a 
+				wealth of information about the history behind your procedures, all available 
+				to you at runtime.
+				<h3>Last Update:&nbsp;7 July 2002</h3>
+		</font>
+	</body>
+</html>

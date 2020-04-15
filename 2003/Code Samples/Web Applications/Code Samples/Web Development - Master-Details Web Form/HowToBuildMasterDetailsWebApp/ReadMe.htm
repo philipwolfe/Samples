@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+		<meta name="ProgId" content="FrontPage.Editor.Document">
+		<meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+		<h1>Web Development: How to Build a Master-Details Web Application</h1>
+		<p>A master-details interface is one of the most common types of data access 
+			interfaces in use. Imagine data structured hierarchically, like in the TreeView 
+			control used in Windows Explorer. With a Master-Details interface you can drill 
+			down into the data through successive levels of granularity, the previous level 
+			being the "master" for the next level's "details". This helps you find what you 
+			need without losing sight of the data's context.</p>
+		<h2>Featured Highlights</h2>
+		<UL>
+			<LI>
+			Three DataGrid controls are each bound to their own&nbsp;DataSet using data 
+			from the Northwind database. Thus, the main Master DataGrid contains the 
+			highest level view of the data for Northwind customers. Click a customer's 
+			"Orders" button&nbsp;and view the next level of data in a second DataGrid: all 
+			of the customer's orders. Finally, click an order's "Details" button and view 
+			the final level of data: all of the items in the selected order.
+			<LI>
+			The DataGrid is very flexibly formatted using BoundColumn objects and CssClass 
+			styles (as opposed to the default formatting using auto-generated columns and 
+			inline styles).
+			<LI>
+				The DataGrids in the first two levels of data implement the built-in DataGrid 
+				paging functionality.</LI></UL>
+		<h2>Requirements</h2>
+		<P>This application requires the release version of Visual Studio .NET Professional 
+			(or greater) and access to the Northwind database residing in SQL Server or the 
+			Microsoft Data Engine (MSDE). To install MSDE, do the following:</P>
+		<P><STRONG>1. </STRONG>Open the Start menu, click Programs, click Microsoft .NET 
+			Framework SDK, and then click Samples and Quickstart Tutorials.
+		</P>
+		<P><STRONG>2. </STRONG>Click "Step 1: Install the .NET Framework Samples Database".
+		</P>
+		<P><STRONG>3. </STRONG>Open a command window, and CD to <EM>[FRAMEWORKSDK]</EM>\Samples\Setup 
+			This is typically : C:\Program Files\Microsoft Visual Studio 
+			.NET\FrameworkSDK\Samples\Setup
+		</P>
+		<P><STRONG>4. </STRONG>Type: osql -E -S (local)\NetSDK -i InstNwnd.sql</P>
+		<h2>Running the Sample</h2>
+		<p>Press <STRONG>F5</STRONG> to run the sample.
+		</p>
+	    <p><b>Note:</b></p>
+        <p>If you get an error when running the sample make sure that IIS has 
+        appropriate permissions to query tables in the local SQL Server.&nbsp; 
+        There are multiple ways to achieve this but the easiest way to do this 
+        for testing and running samples is to change the default &lt;processModel&gt; 
+        settings in machine.config.&nbsp; The steps to do this are as follows:</p>
+        <p>1.&nbsp;&nbsp;&nbsp; Navigate to c:\[WINDOWSDIR]\Microsoft.NET\Framework\[FrameworkVersion]\Config<br>
+        2.&nbsp;&nbsp;&nbsp; Open the Machine.Config file found there and change 
+        the userName attribute so that it equals SYSTEM<br>
+        3.&nbsp;&nbsp;&nbsp; Save the File.<br>
+        4.&nbsp;&nbsp;&nbsp; Open up a command prompt and type IISReset to 
+        restart IIS.<br>
+        <br>
+        Another options to use that is more applicable for a production 
+        environment is to give appropriate permissions to the ASPNET account in 
+        the appropriate database.&nbsp; </p>
+	    <p><b>See Also</b></p>
+        <p>
+        <a href="ms-help://MS.VSCC/MS.MSDNVS/cpref/html/frlrfSystemWebUIWebControlsDataGridClassTopic.htm">
+        DataGrid</a>&nbsp; </p>
+	</body>
+</html>

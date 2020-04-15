@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft Visual Studio.NET 7.0">
+		<meta name="ProgId" content="VisualStudio.HTML">
+		<meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+		<H1>
+			Framework:&nbsp;Understanding the Garbage Collector</H1>
+		<P>This sample shows some how&nbsp;to control how the Garbage Collector 
+			operates.&nbsp;It demonstrates when the garbage collector calls any 
+			Finalize&nbsp;methods on&nbsp;created objects, as well as how to supress 
+			finalization.&nbsp;</P>
+		<H2>Featured Highlights:</H2>
+		<P>This tutorial demonstrates how to use the Garbage Collector (GC). In particular, 
+			it discusses:</P>
+		<P>Using the GC.Collect() method to force the garbage collector to run.
+			<BR>
+			Improving&nbsp;garbage collector performance&nbsp;on certain objects by using 
+			the GC.SuppressFinalize() method.
+			<BR>
+			How to mark an object for garbage collection (setting it equal to 
+			Nothing).&nbsp;&nbsp;</P>
+		<H2>Requirements:</H2>
+		<P>Microsoft Visual Studio.NET Professional or greater.<BR>
+			Windows XP or Windows 2000</P>
+		<H2>Running the Sample:</H2>
+		<P>To run the sample:
+		</P>
+		<OL>
+			<LI>
+				Doubleclick the <STRONG>How-To&nbsp;Intro to the Garbage Collector.sln</STRONG>
+			file.&nbsp;
+			<LI>
+				Click the buttons on the form to test the functionality.
+				<UL>
+					<LI>
+						Click the <STRONG>Create Objects</STRONG>
+					button to create a hierarchy of objects.
+					<LI>
+						Select one of the objects in the list box, and use the <STRONG>Kill Selected Object</STRONG>
+						or <STRONG>Dispose Selected Object</STRONG>
+					button to kill or dispose of the object.
+					<LI>
+						Press the <STRONG>Run GC</STRONG>
+					button to see the effect of forcing the garbage collector to run.
+					<LI>
+						Notice in the <STRONG>Activity Log</STRONG> that when Dispose is called with 
+						the <STRONG>Suppress Finalize in Dispose</STRONG> checkbox checked&nbsp;that 
+						the Finalize method is not fired, and does not appear in the output.</LI></UL>
+			<LI>
+			Examine the code in the sample to understand how the code works.
+			<LI>
+				Close the running application, and note how any unfinalized objects are 
+				finalized as the form is closed.</LI></OL>
+		<H3>See Also:</H3>
+		<P><A href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpref/html/frlrfSystemGCClassTopic.asp">System.GC 
+				Class</A>, <A href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpref/html/frlrfSystemGCClassCollectTopic.asp">
+				GC.Collect Method</A>, <A href="http://msdn.microsoft.com/library/en-us/cpref/html/frlrfsystemgcclasssuppressfinalizetopic.asp">
+				GC.SuppressFinalize Method</A>, <A href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpguide/html/cpconprogrammingessentialsforgarbagecollection.asp">
+				Programming For Garbage Collection</A></P>
+	</body>
+</html>

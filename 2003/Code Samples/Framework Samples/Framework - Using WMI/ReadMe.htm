@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft Visual Studio.NET 7.0">
+		<meta name="ProgId" content="VisualStudio.HTML">
+		<meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+		<h1>
+			Windows Management Instrumentation</h1>
+		How to use Windows Management Instrumentation (WMI)
+		<h2>Featured Highlights:</h2>
+		<P>
+			This How-to shows how to use System.Management to incorporate WMI calls. The 
+			application has tabs demonstrating three different uses of WMI:
+		</P>
+		<P>
+			1. WMI Queries. This shows how to use the ManagementObjectSearcher class to 
+			query the following system information: Operating System Name, Version, 
+			Manufacturer, Computer name, and Windows Directory; Computer System 
+			Manufacturer, Model, System Type, and Total Physical Memory; Processor name; 
+			Bios version; and Time zone. Queries are created both using the SelectQuery 
+			class and by the WQL string version.
+		</P>
+		<P>
+			2. Asynchronous Enumerations. In many cases WMI is used to retrieve large 
+			quantities of data. In these situations it is important that the operation is 
+			done asynchronously, allowing the user interface, and other ongoing processes 
+			to continue. This demonstrates how to get a list of logical drives and their 
+			properties asynchronously using the ManagementOperationObserver class, with a 
+			callback event.
+		</P>
+		<P>
+			3. WMI Classes. This shows how to enumerate through the top-level WMI classes 
+			and all of their subclasses using the ManagementClass and EnumerationOptions 
+			classes.
+		</P>
+		<H2>Requirements:</H2>
+		<P>Microsoft Visual Studio.NET Professional or greater.<BR>
+			Windows 2000 or Windows XP.</P>
+		<H2>Running the Sample:</H2>
+		<P>Simply press <STRONG>F5</STRONG>.</P>
+		<P><STRONG>See Also</STRONG></P>
+		<P><A href="http://www.microsoft.com/hwdev/driver/WMI/default.asp">Windows Management 
+				Instrumentation</A>&nbsp;
+		</P>
+	</body>
+</html>

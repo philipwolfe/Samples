@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+		<meta name="ProgId" content="FrontPage.Editor.Document">
+		<meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+		<h1>Advanced .NET Framework: How To Use the Win32 API</h1>
+		<P>
+			How to use Win32 API functions</P>
+		<h2>Featured Highlights:</h2>
+		<P>
+			This application has four demonstrations of how to use Win32 API calls. Each of 
+			the Win32 API functions and constants have been wrapped up in the Win32API 
+			class for use in each demonstration (Except for Beep calling variations which 
+			is in class CallingVariations):
+		</P>
+		<ul>
+			<li>
+			Active processes: This fills a list view with all running Windows processes. 
+			The emphasis of this example is how to use a Win32 callback function, 
+			EnumWindows by using a delegate.
+			<li>
+			Active windows: This fills a listbox with all active visual windows, by 
+			filtering the results of the callback function, EnumWindows using various Win32 
+			API functions. In this example EnumWindows is defined using DllImport instead 
+			of Declare to contrast the difference between using the two methods.
+			<li>
+			Show window: This demonstration allows the user to type in a window caption 
+			and/or class name, and bring the window to the foreground. The emphasis is on 
+			overloading multiple types of parameters to one WinAPI function to allow 
+			passing different types of variables to the function.
+			<li>
+				API Calls: This shows how to use the following miscellaneous Win32 API calls: 
+				GetDiskFreeSpace, GetDiskFreeSpaceEx, GetDriveType, CreateDirectory, 
+				SwapMouseButton, IsPwrHibernateAllowed, SetSuspendState, and Beep examples for 
+				each calling variation. These are examples of calls that returned information 
+				that is not obtainable from managed classes.</li>
+		</ul>
+		<h2>Requirements:</h2>
+		<p>Microsoft Visual Studio.NET Professional or greater.<br>
+			Windows 2000 or Windows XP.</p>
+		<h2>Running the Sample:</h2>
+		<p>Simply press <b>F5</b>.</p>
+		<p><b>See Also:</b></p>
+		<p><b> <a href="ms-help://MS.VSCC/MS.MSDNVS/vccore/html/vcwlkSysimportAttributeTutorial.htm">
+					DLLImport Attribute</a>&nbsp; <a href="ms-help://MS.VSCC/MS.MSDNVS/vblr7/html/vastmDeclare.htm">
+					Declare Statement</a></b></p>
+	</body>
+</html>

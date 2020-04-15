@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+		<meta name="ProgId" content="FrontPage.Editor.Document">
+		<meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+		<h1>
+			.NET Framework: Work with the Console</h1>
+		<P>
+			This sample shows how to create console applications.&nbsp;
+		</P>
+		<P>
+			<h2>Featured Highlights:</h2>
+		<P>
+			The code demonstrates how to create a console application. The console 
+			application&nbsp;uses SQL Server to&nbsp;read&nbsp;the Northwind database 
+			Products table into a dataset. When the console application is run, it accepts 
+			input from the user that is either a product id or 'quit'. If quit is entered, 
+			the console application ends. If a valid product id (integer format)&nbsp;is 
+			entered its associated product information is displayed. If an 
+			invalid&nbsp;product id is entered, an exception message is displayed. Users 
+			can continue to input product id's until quit is entered.</P>
+		<h2>Requirements:</h2>
+		<UL>
+			<LI>
+			Trial or Release version of Visual Studio .NET Professional (or greater).
+			<LI>
+				Access to the Northwind database residing in SQL Server or the Microsoft Data 
+				Engine (MSDE).&nbsp; To install MSDE, do the following:
+				<UL>
+					<LI>
+						<DIV align="left">Open the Start menu, then click Programs, the click Microsoft 
+							.NET Framework SDK, and then click Samples and Quickstart Tutorials.
+						</DIV>
+					<LI>
+						<DIV align="left">Click "Step 1: Install the .NET Framework Samples Database".</DIV>
+					<LI>
+						<DIV align="left">Open a command window, and CD to
+							<FRAMEWORKSDK>
+							\Samples\Setup This is typically : C:\Program Files\Microsoft Visual Studio 
+							.NET\FrameworkSDK\Samples\Setup</DIV>
+					<LI>
+						<DIV align="left">Type: osql -E -S (local)\NetSDK -i InstNwnd.sql</DIV>
+					</LI>
+				</UL>
+			</LI>
+		</UL>
+		<H2>Running the Sample</H2>
+		<p>Simply press <b>F5</b>.</p>
+		<OL>
+			<LI>
+				The&nbsp;How To-Work&nbsp;with the Console solution consists of 2 projects. The 
+				startup project is a windows project, How-To Work with the Console, that 
+				displays a windows form which will allow a user launch the actual console 
+				project. The second project in the solution is the console application, How-To 
+				Work with the Console Application, that provides the functionality described in 
+				featured highlights.</LI>
+		</OL>
+		<H3>See Also:</H3>
+		<P><A href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpguide/html/cpconbuildingconsoleapplications.asp">
+				Building Console Applications,</A>&nbsp; <A href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpref/html/frlrfSystemConsoleClassTopic.asp">
+				Console Class,</A>&nbsp; <A href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/vsdebug/html/vxtskDebuggingConsoleApplications.asp">
+				Debugging Preparation: Console Applications&nbsp;</A>
+		</P>
+		<h3>
+			&nbsp;</h3>
+		<UL>
+		</UL>
+	</body>
+</html>

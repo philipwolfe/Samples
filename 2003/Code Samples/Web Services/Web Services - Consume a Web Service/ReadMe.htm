@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+		<meta name="ProgId" content="FrontPage.Editor.Document">
+		<meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+		<h1>Web Services: How To Consume Web Services</h1>
+		<P>This application demonstrates how to consume&nbsp;various real-world .NET Web 
+			services.
+		</P>
+		<h2>Feature Highlights:</h2>
+		<P>A TabControl provides six different examples of Web service consumption, in 
+			increasing order of implementation complexity.</P>
+		<P><STRONG>1.</STRONG> Look up sales rank and price information for any book from 
+			Amazon and Barnes &amp; Noble by entering an ISBN number.<BR>
+			<STRONG>Web service URL:</STRONG> <a href="http://www.perfectxml.net/WebServices/SalesRankNPrice/BookService.asmx">
+				http://www.perfectxml.net/WebServices/SalesRankNPrice/BookService.asmx</a>
+		</P>
+		<P><STRONG>2.</STRONG> View the Dilbert cartoon-of-the-Day from the Daily Dilbert 
+			Web service. This example invokes the Web service asynchronously.<BR>
+			<STRONG>Web service URL:</STRONG> <a href="http://www.esynaps.com/WebServices/DailyDiblert.asmx">
+				http://www.esynaps.com/WebServices/DailyDiblert.asmx</a> (Notice there is a 
+			spelling error in this Url. It is correct as listed above. The Web service 
+			authors misspelled it.)</P>
+		<P>Status messages and error messages within structure error handling are used to 
+			inform the user during the data retrieval process.
+		</P>
+		<H2>Requirements:</H2>
+		<p>Requires Microsoft Visual Studio.NET Professional or Higher and Windows 2000 or 
+			Windows XP.</p>
+		<p>This application requires the Microsoft Universal Description Discovery and 
+			Integration (UDDI) SDK 1.76, which can be downloaded from: <a href="http://msdn.microsoft.com/library/default.asp?url=/nhp/Default.asp?contentid=28001204">
+				http://msdn.microsoft.com/library/default.asp?url=/nhp/Default.asp?contentid=28001204</a>
+		</p>
+		<P><STRONG>1.</STRONG> These real-world Web services were found on <a href="http://www.xmethods.com/">
+				http://www.xmethods.com/</a>.
+		</P>
+		<P><STRONG>2.</STRONG> To consume a Web service you need to add a Web Reference to 
+			the Visual Studio .NET project. In the Add Web Reference type in the address of 
+			the Web service (e.g., see those listed above) and click Add Reference. This 
+			will cause Visual Studio .NET to query the WSDL document and create a proxy 
+			class as a local API for you to program against.
+		</P>
+		<P><STRONG>3. </STRONG>Often the name given to the Web service proxy class 
+			namespace is undesirable. You can easily change this by expanding Web 
+			References in the Solution Explorer and right-clicking, Web Reference node you 
+			wish to change, and then selecting Rename.
+		</P>
+		<P><STRONG>4. </STRONG>You can use UDDI to search for available Web services from 
+			within Visual Studio .NET. Click the "XML Web Services" link on the Start page. 
+			If you do not see the Start page, from the Visual Studio .NET menu bar select 
+			Help | Show Start Page.
+		</P>
+		<p><b>See Also</b></p>
+		<p>
+			<a href="ms-help://MS.VSCC/MS.MSDNVS/vbcon/html/vbconwebservicesconsumption.htm">Accessing 
+				XML Web Services</a>&nbsp; <a href="ms-help://MS.VSCC/MS.MSDNVS/vbcon/html/vbtskmanagingprojectwebreferences.htm">
+				Managing Project Web References</a></p>
+	</body>
+</html>

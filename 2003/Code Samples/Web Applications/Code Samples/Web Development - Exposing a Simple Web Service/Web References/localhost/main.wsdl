@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://msdn.microsoft.com/csharp/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:i0="http://tempuri.org/dsCustOrderHist.xsd" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://msdn.microsoft.com/csharp/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <import namespace="http://tempuri.org/dsCustOrderHist.xsd" location="http://localhost/HowToBuildWebServices/main.asmx?schema=dsCustOrderHist" />
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://msdn.microsoft.com/csharp/">
+      <s:import namespace="http://tempuri.org/dsCustOrderHist.xsd" />
+      <s:import namespace="http://www.w3.org/2001/XMLSchema" />
+      <s:element name="About">
+        <s:complexType />
+      </s:element>
+      <s:element name="AboutResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AboutResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCustomerOrderHistory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCustID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCustomerOrderHistoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCustomerOrderHistoryResult" type="s0:CustomerAndOrderHistoryInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CustomerAndOrderHistoryInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Orders">
+            <s:complexType>
+              <s:sequence>
+                <s:any namespace="http://tempuri.org/dsCustOrderHist.xsd" />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+        <s:attribute name="Company" type="s:string" />
+      </s:complexType>
+      <s:element name="GetTenMostExpensiveProducts">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetTenMostExpensiveProductsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTenMostExpensiveProductsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </types>
+  <message name="AboutSoapIn">
+    <part name="parameters" element="s0:About" />
+  </message>
+  <message name="AboutSoapOut">
+    <part name="parameters" element="s0:AboutResponse" />
+  </message>
+  <message name="GetCustomerOrderHistorySoapIn">
+    <part name="parameters" element="s0:GetCustomerOrderHistory" />
+  </message>
+  <message name="GetCustomerOrderHistorySoapOut">
+    <part name="parameters" element="s0:GetCustomerOrderHistoryResponse" />
+  </message>
+  <message name="GetTenMostExpensiveProductsSoapIn">
+    <part name="parameters" element="s0:GetTenMostExpensiveProducts" />
+  </message>
+  <message name="GetTenMostExpensiveProductsSoapOut">
+    <part name="parameters" element="s0:GetTenMostExpensiveProductsResponse" />
+  </message>
+  <portType name="MainSoap">
+    <operation name="About">
+      <input message="s0:AboutSoapIn" />
+      <output message="s0:AboutSoapOut" />
+    </operation>
+    <operation name="GetCustomerOrderHistory">
+      <documentation>get {an instance of the custom class CustomerAndOrderHistoryInfo, which has a field containing a typed Dataset of products that the customer has ordered and a field for the company name.</documentation>
+      <input message="s0:GetCustomerOrderHistorySoapIn" />
+      <output message="s0:GetCustomerOrderHistorySoapOut" />
+    </operation>
+    <operation name="GetTenMostExpensiveProducts">
+      <documentation>get {an untyped Dataset of the ten most expensive products from the Northwind database.</documentation>
+      <input message="s0:GetTenMostExpensiveProductsSoapIn" />
+      <output message="s0:GetTenMostExpensiveProductsSoapOut" />
+    </operation>
+  </portType>
+  <binding name="MainSoap" type="s0:MainSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="About">
+      <soap:operation soapAction="http://msdn.microsoft.com/csharp/About" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetCustomerOrderHistory">
+      <soap:operation soapAction="http://msdn.microsoft.com/csharp/GetCustomerOrderHistory" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetTenMostExpensiveProducts">
+      <soap:operation soapAction="http://msdn.microsoft.com/csharp/GetTenMostExpensiveProducts" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Main">
+    <port name="MainSoap" binding="s0:MainSoap">
+      <soap:address location="http://localhost/HowToBuildWebServices/main.asmx" />
+    </port>
+  </service>
+</definitions>

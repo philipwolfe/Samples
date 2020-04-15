@@ -1,0 +1,215 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft Visual Studio.NET 7.0">
+		<meta name="ProgId" content="VisualStudio.HTML">
+		<meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+		<font face="Verdana, Arial, System">
+			<h1>
+				Web Service: Transfer Binary Data via HTTP</h1>
+			<P>Although XML Web Services generally return XML (that is, text), it's possible to 
+				have a Web Service return binary information, as well. Because the SOAP 
+				serializer automatically serializes byte arrays&nbsp;using Base64 encoding, 
+				your Web&nbsp;Service applications can easily return images, sounds, and 
+				more--it's just up to you to convert the source files into byte arrays. The 
+				.NET Framework takes care of the rest.</P>
+			<P>This demonstration&nbsp;includes a&nbsp;.NET Web Service that returns images, 
+				and a Windows application that consumes the methods of the Web Service. 
+				&nbsp;Specifically, the ImageService.asmx page provides three publicly callable 
+				methods:</P>
+			<UL>
+				<LI>
+					<STRONG>Browse</STRONG>: Returns an array of ImageInfo objects, filled in 
+				with information about the images it finds within the .\Images folder.
+				<LI>
+					<STRONG>GetThumbnail</STRONG>: Returns an array of bytes containing a 
+				thumbnail image (80 pixels high, varying widths depending on the ratio of width 
+				to height) based on the requested image. You supply a string containing the 
+				name of the image file. This entry point isn't used explicitly by the example 
+				(the example uses the thumbnails filled in by the call the Browse method.)
+				<LI>
+					<STRONG>GetImage</STRONG>: Returns an array of bytes containing the full image 
+					you request, given the name of the image file.</LI></UL>
+			<P>In addition, the ImageService.asmx class provides a public class, ImageInfo, 
+				which contains information about an image in the .\Images folder, including:</P>
+			<UL>
+				<LI>
+				Name
+				<LI>
+				Size
+				<LI>
+				Height
+				<LI>
+				Width
+				<LI>
+				HorizontalResolution
+				<LI>
+				VerticalResolution
+				<LI>
+				PixelFormat
+				<LI>
+					Thumbnail
+				</LI>
+			</UL>
+			<P>The client application calls the Browse method of the XML Web Service and 
+				displays a list of all the available images in a list box. As you select an 
+				item in the list box, the form displays a thumbnail image and information about 
+				the selected image. Double-clicking on the thumbnail (or clicking Display 
+				Image) displays the full image in a separate form. You can open as many image 
+				forms as you like. The image form (frmImage.vb) allows you to scale the image, 
+				or save it to a file.</P>
+			<H2>Installation:</H2>
+			<P><EM>This is repeated from the ReadMe.htm file one level up. You do not need to 
+					repeat it if you have already completed these steps.</EM></P>
+			<P>Because this example involves both a Windows client application and a Web 
+				Service application, its installation is a bit trickier than most samples. The 
+				client application, VB.NET How-To Web Service Graphics, includes&nbsp;a Web 
+				Reference to the Web Service exposed by the GraphicsServer project. Your goal 
+				is to create a new virtual directory named <STRONG>VB.NETHowToGraphicsServer</STRONG>
+				that "points" to the WebService folder that was created when you installed this 
+				example.
+			</P>
+			<P>In order to create the necessary IIS (Internet Information Server) project, 
+				follow these steps:</P>
+			<OL>
+				<LI>
+				From the Windows Control Panel, Administrative Tools menu, select Internet 
+				Information Services.
+				<LI>
+				Within the Internet Information Services applet, expand nodes in the treeview 
+				panel on the left, expanding Internet Information Services, your local 
+				computer, Web Sites, then Default Web Site.
+				<LI>
+				Right-click on Default Web Site, and select New, then Virtual Directory. Click 
+				Next to bypass the Welcome page.
+				<LI>
+					In the Virtual Directory Alias page, enter <STRONG>VB.NETHowToGraphicsServer</STRONG>. 
+				Click Next.
+				<LI>
+				In the Web Site Content Directory page, browse to the WebService folder within 
+				the sample you've installed, and select the WebService folder. Click Next.
+				<LI>
+				In the Access Permissions page, click Next to accept the default settings.
+				<LI>
+					Click Finish to complete the wizard.</LI></OL>
+			<P>Once you've added the new virtual directory, you should be able to load 
+				the&nbsp; <STRONG>VB.NET How-To Web Service Graphics.sln</STRONG> file, in the 
+				Client folder, and then load and run the sample.</P>
+			<h2>Featured Highlights</h2>
+			<P>This sample calls two Web Service methods:</P>
+			<UL>
+				<LI>
+					<STRONG>Browse</STRONG>, which returns an array of ImageInfo objects filled 
+				in with information about available images in the .\Images folder beneath the 
+				installation location of the GraphicsServer Web Service, and
+				<LI>
+					<STRONG>GetImage</STRONG>, which returns a byte array containing the image 
+					whose name you've specified in the call to the method.</LI></UL>
+			<P>When you click the Retrieve Images on the main form, the code calls the Browse 
+				method, retrieves the array of ImageInfo objects, stores the array into a class 
+				variable, and adds the name of each available image to the list box 
+				(lstImages). As you select each image, code in the SelectedIndexChanged event 
+				handler displays selected properties of each image, along with the thumbnail 
+				image.</P>
+			<P>Double-click on the thumbnail, or click Display Image, and the sample loads a 
+				new instance ofr frmImage. This form displays the full image you selected, and 
+				allows you to display that image at 50%, 100%, or 200% of its original size, as 
+				well as allowing you to stretch the form (and the image) to any size. You can 
+				save the image to one of several different image formats (bmp, jpg, and so on).</P>
+			<h2>Requirements</h2>
+			<p>
+				Requires the Trial or Release version of Visual Studio .NET Professional (or 
+				greater).
+			</p>
+			<h2>Running the Sample</h2>
+			<P>Understanding the techniques involved in returning and consuming binary values 
+				from Web Services is simple, as long as you buy into the concept of using byte 
+				arrays on both ends. The .NET SOAP serializer handles the conversion to and 
+				from Base64 encoding, so you needn't worry about that, but you will need to 
+				convert to and from byte arrays. On the server, you'll find code in the 
+				ReadFile procedure that handles converting from a FileStream into a byte array, 
+				like this:</P>
+			<P><FONT face="Courier New">Dim fs As FileStream
+					<BR>
+					' Read file and return contents
+					<BR>
+					fs = File.Open(FilePath, FileMode.Open, FileAccess.Read)
+					<BR>
+					Dim lngLen As Long = fs.Length
+					<BR>
+					Dim abytBuffer(lngLen - 1) As Byte
+					<BR>
+					fs.Read(abytBuffer, 0, lngLen) </FONT>
+			</P>
+			<P>On the client side, the code must convert from a byte array back into a Bitmap, 
+				using the following procedure:</P>
+			<P><FONT face="Courier New">Private Function GetImage(ByVal abyt() As Byte) As Bitmap
+					<BR>
+					&nbsp; ' Given an array of bytes, return an actual Bitmap
+					<BR>
+					&nbsp; ' object. This requires creating a new MemoryStream
+					<BR>
+					&nbsp; ' object based on the array of bytes, and then
+					<BR>
+					&nbsp; ' creating a new bitmap based on the memory stream.
+					<BR>
+					&nbsp; Return New Bitmap(New MemoryStream(abyt))
+					<BR>
+					End Function </FONT>
+			</P>
+			<P>This code counts on the fact that you can initialize a MemoryStream object given 
+				a byte array, and can create a Bitmap given a MemoryStream. There are 
+				undoubtedly other ways to accomplish the same goal, but this is quick and easy.</P>
+			<P>Retrieving the thumbnail is simple, but requires a little trick. The 
+				GetThumbNailImage method of the Bitmap class allows you to pass it a file name 
+				and the dimensions of the thumbnail, but it also requires a callback procedure 
+				to handle cancelling the conversion. At this point, the .NET Framework doesn't 
+				actually use the callback, but you must supply it, and it must match this 
+				definition:</P>
+			<P><FONT face="Courier New">Private Function ThumbnailCallback() As Boolean&nbsp;<BR>
+					&nbsp; Return False
+					<BR>
+					End Function </FONT>
+			</P>
+			<P>The method also includes a final parameter that must be IntPtr.Zero, at this 
+				time.
+			</P>
+			<P>In addition, to get the "shape" of the thumbnail correct, the sample code 
+				adjusts the width of the thumbnail to match a fixed height:</P>
+			<P><FONT face="Courier New">Const THUMBNAIL_HEIGHT = 80
+					<BR>
+					intWidth = bmp.Width
+					<BR>
+					intHeight = bmp.Height
+					<BR>
+					decRatio = intWidth / intHeight
+					<BR>
+					Dim bmpTemp As Bitmap
+					<BR>
+					bmpTemp = bmp.GetThumbnailImage(decRatio * THUMBNAIL_HEIGHT, THUMBNAIL_HEIGHT, 
+					_
+					<BR>
+					&nbsp;AddressOf ThumbnailCallback, IntPtr.Zero)
+					<BR>
+					bmpTemp.Save(ms, Imaging.ImageFormat.Jpeg) </FONT>
+			</P>
+			<P>The remainder of the code in this demonstration handles the display of the 
+				image, the sizing of frmImage, and the saving of the image. For more 
+				information, read the source code and its comments.</P>
+			<P>Certainly, if you were to create an application like this one for commercial 
+				use, you'd want to investigate ways to optimize bandwidth. We've 
+				simply&nbsp;required a&nbsp;call to the Web Service method for each image you 
+				request, yet the example could optimize the behavior by caching images both on 
+				the client side (storing them in a temporary folder,&nbsp;perhaps, or in 
+				memory) and on the server side using output caching provided by ASP.NET. 
+				Instead, this demonstration focuses on handling binary files as return values 
+				from Web Services.
+				<h3>Last Update:&nbsp;7 July 2002</h3>
+		</font>
+	</body>
+</html>

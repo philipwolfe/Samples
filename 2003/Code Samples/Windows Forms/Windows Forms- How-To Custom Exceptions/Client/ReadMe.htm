@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft Visual Studio.NET 7.0">
+		<meta name="ProgId" content="VisualStudio.HTML">
+		<meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+		<font face="Verdana, Arial, System">
+			<h1>
+				WinForms: Custom Exceptions &amp; Global Exception Handlers</h1>
+			<p>
+				This solution demonstrates two more advanced exception mangement 
+				techniques.&nbsp;
+			</p>
+			<h2>Featured Highlights</h2>
+			<P>This sample contains two projects:&nbsp;a Windows Forms client and a Class 
+				Library.
+			</P>
+			<P><STRONG>Client</STRONG></P>
+			<P>The client application has a reference to the class library. Two command buttons 
+				show how to execute methods against the customer class and catch the custom 
+				exceptions. A third command button causes an unhandled exception. In addition, 
+				there is a check box labeled 'Turn on Global Exception Trap' which when checked 
+				enabled a global exception trap. When enabled, the code defined 
+				in&nbsp;OnThreadException will be executed instead of the default Windows Form 
+				handler. Please see the comments for more information.</P>
+			<h2>Requirements</h2>
+			<p>
+				Requires the Trial or Release version of Visual Studio .NET Professional (or 
+				greater).
+			</p>
+			<h2>Running the Sample</h2>
+			<p>
+				The program is best run&nbsp;outside the debugger to see the effects of a 
+				global exception handler. Run the program and click&nbsp;all three buttons. 
+				Note how Edit Customer and Delete Customer display nice&nbsp;error dialogs. 
+				Note that by default if you click the third button labeled Untrapped Local 
+				Error, a custom dialog appears. This dialog is the global exception handler 
+				defined by Windows Forms. Check the check box labeled 'Turn on Global Exception 
+				Trap' to see a custom trap in action.
+			</p>
+			<h3>Last Update:&nbsp;16 July 2002</h3>
+		</font>
+	</body>
+</html>

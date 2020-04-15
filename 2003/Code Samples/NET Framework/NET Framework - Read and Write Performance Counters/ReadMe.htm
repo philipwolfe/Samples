@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ReadMe</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+		<meta name="ProgId" content="FrontPage.Editor.Document">
+		<meta name="Originator" content="Microsoft Visual Studio.NET 7.0">
+	</head>
+	<body>
+		<H1>.NET Framework: Reading and Writing to Performance Counters</H1>
+		<P>This sample shows some how&nbsp;to read from and write to Performance Counters 
+			using Visual Basic.NET. These counters can be used to track the performance of 
+			various parts of the operating system and .NET applications.</P>
+		<H2>Featured Highlights:</H2>
+		<P>This how-to demonstrates how to read from and write to performance counters. 
+			Concepts demonstrated are:</P>
+		<UL>
+			<LI>
+			Referencing&nbsp;an existing performance counter, and reading its value.
+			<LI>
+			Creating a custom performance counter that can be written to as well as read 
+			from.
+			<LI>
+				Determining via code whether a performance counter is custom or built-in.</LI></UL>
+		<H2>Requirements:</H2>
+		<p>Microsoft Visual Studio.NET Professional or greater.<br>
+			Windows 2000 or Windows XP.</p>
+		<H2>Running the Sample:</H2>
+		<P>To run the sample:
+		</P>
+		<OL>
+			<LI>
+				Doubleclick the <STRONG>How-To&nbsp;Reading and Writing to Performance Counters.sln</STRONG>
+			file.&nbsp;
+			<LI>
+				Create a custom performance counter that can be written to. Creating an example 
+				counter is outlined below.
+				<UL>
+					<LI>
+						Open the <STRONG>Server Explorer</STRONG>
+					<LI>
+						Select <STRONG>Servers</STRONG> -&gt; <EM>your computer name</EM> -&gt; <STRONG>Performance 
+							Counters</STRONG>
+					<LI>
+						Right click <STRONG>Performance Counters</STRONG> and select "<STRONG>Create New 
+							Category...</STRONG>"
+					<LI>
+						In the dialog box, enter "<STRONG> How-To Performance</STRONG> <STRONG>Counters</STRONG>" 
+					as the Category Name, and any description you would like in the Category 
+					Description text box.
+					<LI>
+					Click "New" to add a new Performance Counter.
+					<LI>
+						Enter "<STRONG>My First Custom Counter</STRONG>" as the <STRONG>Name</STRONG>, 
+						"<STRONG>NumberOfItems32</STRONG>" as the <STRONG>Type</STRONG>, and any 
+						description you would like as the <STRONG>Counter Description</STRONG>.
+					<LI>
+						Run the project, or press the "Refresh" button if it is already running.</LI></UL>
+			<LI>
+			Explore&nbsp;selecting and reading from&nbsp;the built-in performance counters.
+			<LI>
+			Select the custom performance counter you build earlier. Select it by Category 
+			and Counter, then use the increment and decrement buttons to increment and 
+			decrement the value.
+			<LI>
+				Explore Performance Counters further by creating more custom performance 
+				counters of other types, including "<STRONG>RateOfCountsPerSecond32</STRONG>" 
+				which measures the number of increments that occur in running one-second 
+				intervals.
+			</LI>
+		</OL>
+		<H3>See Also:</H3>
+		<P><A href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/vbcon/html/vbconIntroductionToMonitoringPerformanceThresholds.asp">
+				Introduction to Monitoring Performance Thresholds</A>, <A href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpref/html/frlrfSystemDiagnosticsPerformanceCounterClassTopic.asp">
+				System.Diagnostics.PerformanceCounter</A>, <A href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpref/html/frlrfSystemDiagnostics.asp">
+				System.Diagnostics Namespace</A></P>
+	</body>
+</html>
