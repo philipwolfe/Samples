@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetServerTime">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetServerTimeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetServerTimeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAppConfigProperty">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="propName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAppConfigPropertyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAppConfigPropertyResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetAppConfigProperty">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="appName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="propName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newvalue" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetAppConfigPropertyResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetServerTimeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetServerTime" />
+  </wsdl:message>
+  <wsdl:message name="GetServerTimeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetServerTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAppConfigPropertySoapIn">
+    <wsdl:part name="parameters" element="tns:GetAppConfigProperty" />
+  </wsdl:message>
+  <wsdl:message name="GetAppConfigPropertySoapOut">
+    <wsdl:part name="parameters" element="tns:GetAppConfigPropertyResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetAppConfigPropertySoapIn">
+    <wsdl:part name="parameters" element="tns:SetAppConfigProperty" />
+  </wsdl:message>
+  <wsdl:message name="SetAppConfigPropertySoapOut">
+    <wsdl:part name="parameters" element="tns:SetAppConfigPropertyResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebSettingsServiceSoap">
+    <wsdl:operation name="GetServerTime">
+      <wsdl:input message="tns:GetServerTimeSoapIn" />
+      <wsdl:output message="tns:GetServerTimeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAppConfigProperty">
+      <wsdl:input message="tns:GetAppConfigPropertySoapIn" />
+      <wsdl:output message="tns:GetAppConfigPropertySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetAppConfigProperty">
+      <wsdl:input message="tns:SetAppConfigPropertySoapIn" />
+      <wsdl:output message="tns:SetAppConfigPropertySoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebSettingsServiceSoap" type="tns:WebSettingsServiceSoap">
+    <wsdl:documentation>
+      <wsi:Claim conformsTo="http://ws-i.org/profiles/basic/1.1" xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/" />
+    </wsdl:documentation>
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetServerTime">
+      <soap:operation soapAction="http://tempuri.org/GetServerTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAppConfigProperty">
+      <soap:operation soapAction="http://tempuri.org/GetAppConfigProperty" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetAppConfigProperty">
+      <soap:operation soapAction="http://tempuri.org/SetAppConfigProperty" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebSettingsServiceSoap12" type="tns:WebSettingsServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetServerTime">
+      <soap12:operation soapAction="http://tempuri.org/GetServerTime" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAppConfigProperty">
+      <soap12:operation soapAction="http://tempuri.org/GetAppConfigProperty" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetAppConfigProperty">
+      <soap12:operation soapAction="http://tempuri.org/SetAppConfigProperty" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebSettingsService">
+    <wsdl:port name="WebSettingsServiceSoap" binding="tns:WebSettingsServiceSoap">
+      <soap:address location="http://localhost/WebSettings/WebSettingsService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebSettingsServiceSoap12" binding="tns:WebSettingsServiceSoap12">
+      <soap12:address location="http://localhost/WebSettings/WebSettingsService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

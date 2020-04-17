@@ -1,0 +1,145 @@
+<VSTemplate Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+	<TemplateData>
+		<Name>Web Form Workflow Approvals Starter Kit</Name>
+		<Description>&lt;No description available&gt;</Description>
+		<ProjectType>Web</ProjectType>
+		<ProjectSubType>CSharp</ProjectSubType>
+		<SortOrder>1000</SortOrder>
+		<CreateNewFolder>true</CreateNewFolder>
+		<DefaultName>Web Form Workflow Approvals Starter Kit</DefaultName>
+		<ProvideDefaultName>true</ProvideDefaultName>
+		<LocationField>Enabled</LocationField>
+		<EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+		<Icon>__TemplateIcon.ico</Icon>
+	</TemplateData>
+	<TemplateContent>
+
+		<Project TargetFileName="ProjectName.webproj" File="ProjectName.webproj" ReplaceParameters="true">
+
+			<Folder Name="App_Code" TargetFolderName="App_Code">
+
+				<Folder Name="Pages" TargetFolderName="Pages">
+					<ProjectItem ReplaceParameters="true" TargetFileName="ApprovalRequestBasePage.cs">ApprovalRequestBasePage.cs</ProjectItem>
+					<ProjectItem ReplaceParameters="true" TargetFileName="IBaseWorkflowTaskMasterPage.cs">IBaseWorkflowTaskMasterPage.cs</ProjectItem>
+				</Folder>
+
+				<Folder Name="TrackingService" TargetFolderName="TrackingService">
+					<ProjectItem ReplaceParameters="true" TargetFileName="DatabaseTrackingChannel.cs">DatabaseTrackingChannel.cs</ProjectItem>
+					<ProjectItem ReplaceParameters="true" TargetFileName="TrackingHelper.cs">TrackingHelper.cs</ProjectItem>
+					<ProjectItem ReplaceParameters="true" TargetFileName="DatabaseTrackingService.cs">DatabaseTrackingService.cs</ProjectItem>
+					<ProjectItem ReplaceParameters="true" TargetFileName="WorkItemsTrackingDataSet.xsd">WorkItemsTrackingDataSet.xsd</ProjectItem>
+					<ProjectItem ReplaceParameters="false" TargetFileName="WorkItemsTrackingDataSet.xss">WorkItemsTrackingDataSet.xss</ProjectItem>
+				</Folder>
+
+				<Folder Name="UserActivities" TargetFolderName="UserActivities">
+					<ProjectItem ReplaceParameters="true" TargetFileName="ActivityDataInterface.cs">ActivityDataInterface.cs</ProjectItem>
+					<ProjectItem ReplaceParameters="true" TargetFileName="Result.cs">Result.cs</ProjectItem>
+					<ProjectItem ReplaceParameters="true" TargetFileName="UserActivitiesDataSet.xsd">UserActivitiesDataSet.xsd</ProjectItem>
+					<ProjectItem ReplaceParameters="false" TargetFileName="UserActivitiesDataSet.xss">UserActivitiesDataSet.xss</ProjectItem>
+					<ProjectItem ReplaceParameters="true" TargetFileName="UserActivitiesHelper.cs">UserActivitiesHelper.cs</ProjectItem>
+					<ProjectItem ReplaceParameters="true" TargetFileName="UserActivityService.cs">UserActivityService.cs</ProjectItem>
+				</Folder>
+
+				<ProjectItem ReplaceParameters="true" TargetFileName="CSVHelper.cs">CSVHelper.cs</ProjectItem>
+				<ProjectItem ReplaceParameters="true" TargetFileName="Global.cs">Global.cs</ProjectItem>
+				<ProjectItem ReplaceParameters="true" TargetFileName="JavascriptHelper.cs">JavascriptHelper.cs</ProjectItem>
+				<ProjectItem ReplaceParameters="true" TargetFileName="QueryStringHelper.cs">QueryStringHelper.cs</ProjectItem>
+				<ProjectItem ReplaceParameters="true" TargetFileName="Security.cs">Security.cs</ProjectItem>
+				
+			</Folder>
+
+			<Folder Name="App_Data" TargetFolderName="App_Data">
+				<ProjectItem ReplaceParameters="false" TargetFileName="ASPNETDB.MDF">ASPNETDB.MDF</ProjectItem>
+				<ProjectItem ReplaceParameters="false" TargetFileName="aspnetdb_log.ldf">aspnetdb_log.ldf</ProjectItem>
+			</Folder>
+
+			<Folder Name="Authenticated" TargetFolderName="Authenticated">
+				<ProjectItem ReplaceParameters="true" TargetFileName="Administration.aspx">Administration.aspx</ProjectItem>
+				<ProjectItem ReplaceParameters="true" TargetFileName="Administration.aspx.cs">Administration.aspx.cs</ProjectItem>
+				<ProjectItem ReplaceParameters="true" TargetFileName="EnterApprovalRequestTask.aspx">EnterApprovalRequestTask.aspx</ProjectItem>
+				<ProjectItem ReplaceParameters="true" TargetFileName="EnterApprovalRequestTask.aspx.cs">EnterApprovalRequestTask.aspx.cs</ProjectItem>
+				<ProjectItem ReplaceParameters="true" TargetFileName="EnterResolutionTask.aspx">EnterResolutionTask.aspx</ProjectItem>
+				<ProjectItem ReplaceParameters="true" TargetFileName="EnterResolutionTask.aspx.cs">EnterResolutionTask.aspx.cs</ProjectItem>
+				<ProjectItem ReplaceParameters="true" TargetFileName="ManagerApprovalTask.aspx">ManagerApprovalTask.aspx</ProjectItem>
+				<ProjectItem ReplaceParameters="true" TargetFileName="ManagerApprovalTask.aspx.cs">ManagerApprovalTask.aspx.cs</ProjectItem>
+				<ProjectItem ReplaceParameters="true" TargetFileName="Web.config">Web.config</ProjectItem>
+				<ProjectItem ReplaceParameters="true" TargetFileName="WorkflowInstance.aspx">WorkflowInstance.aspx</ProjectItem>
+				<ProjectItem ReplaceParameters="true" TargetFileName="WorkflowInstance.aspx.cs">WorkflowInstance.aspx.cs</ProjectItem>
+			</Folder>
+
+			<Folder Name="Bin" TargetFolderName="Bin">
+				<ProjectItem ReplaceParameters="false" TargetFileName="Controls.dll">Controls.dll</ProjectItem>
+				<ProjectItem ReplaceParameters="false" TargetFileName="Controls.pdb">Controls.pdb</ProjectItem>
+				<ProjectItem ReplaceParameters="false" TargetFileName="WorkflowImageProvider.dll">WorkflowImageProvider.dll</ProjectItem>
+				<ProjectItem ReplaceParameters="false" TargetFileName="WorkflowImageProvider.pdb">WorkflowImageProvider.pdb</ProjectItem>
+				<ProjectItem ReplaceParameters="false" TargetFileName="Workflows.dll">Workflows.dll</ProjectItem>
+				<ProjectItem ReplaceParameters="false" TargetFileName="Workflows.pdb">Workflows.pdb</ProjectItem>
+			</Folder>
+
+			<Folder Name="Controls" TargetFolderName="Controls">
+				<ProjectItem ReplaceParameters="true" TargetFileName="AssignAnotherUser.ascx">AssignAnotherUser.ascx</ProjectItem>
+				<ProjectItem ReplaceParameters="true" TargetFileName="AssignAnotherUser.ascx.cs">AssignAnotherUser.ascx.cs</ProjectItem>
+				<ProjectItem ReplaceParameters="true" TargetFileName="AssignToAnotherRole.ascx">AssignToAnotherRole.ascx</ProjectItem>
+				<ProjectItem ReplaceParameters="true" TargetFileName="AssignToAnotherRole.ascx.cs">AssignToAnotherRole.ascx.cs</ProjectItem>
+				<ProjectItem ReplaceParameters="true" TargetFileName="AssignUsersToRoles.ascx">AssignUsersToRoles.ascx</ProjectItem>
+				<ProjectItem ReplaceParameters="true" TargetFileName="AssignUsersToRoles.ascx.cs">AssignUsersToRoles.ascx.cs</ProjectItem>
+				<ProjectItem ReplaceParameters="true" TargetFileName="FilterControl.ascx">FilterControl.ascx</ProjectItem>
+				<ProjectItem ReplaceParameters="true" TargetFileName="FilterControl.ascx.cs">FilterControl.ascx.cs</ProjectItem>
+				<ProjectItem ReplaceParameters="true" TargetFileName="TaskList.ascx">TaskList.ascx</ProjectItem>
+				<ProjectItem ReplaceParameters="true" TargetFileName="TaskList.ascx.cs">TaskList.ascx.cs</ProjectItem>
+				<ProjectItem ReplaceParameters="true" TargetFileName="TaskTracking.ascx">TaskTracking.ascx</ProjectItem>
+				<ProjectItem ReplaceParameters="true" TargetFileName="TaskTracking.ascx.cs">TaskTracking.ascx.cs</ProjectItem>
+				<ProjectItem ReplaceParameters="true" TargetFileName="Workflows.ascx">Workflows.ascx</ProjectItem>
+				<ProjectItem ReplaceParameters="true" TargetFileName="Workflows.ascx.cs">Workflows.ascx.cs</ProjectItem>
+			</Folder>
+
+			<Folder Name="Documentation" TargetFolderName="Documentation">
+				<Folder Name="images" TargetFolderName="images">
+					<ProjectItem ReplaceParameters="false" TargetFileName="aspCreateProject.Jpg">aspCreateProject.Jpg</ProjectItem>
+					<ProjectItem ReplaceParameters="false" TargetFileName="aspDeleteBins.Jpg">aspDeleteBins.Jpg</ProjectItem>
+					<ProjectItem ReplaceParameters="false" TargetFileName="aspMain.jpg">aspMain.jpg</ProjectItem>
+					<ProjectItem ReplaceParameters="false" TargetFileName="aspSetReferences.Jpg">aspSetReferences.Jpg</ProjectItem>
+					<ProjectItem ReplaceParameters="false" TargetFileName="aspStartupProject.gif">aspStartupProject.gif</ProjectItem>
+					<ProjectItem ReplaceParameters="false" TargetFileName="side-vc.gif">side-vc.gif</ProjectItem>
+					<ProjectItem ReplaceParameters="false" TargetFileName="top-vc.gif">top-vc.gif</ProjectItem>
+					<ProjectItem ReplaceParameters="false" TargetFileName="topJump-vc.gif">topJump-vc.gif</ProjectItem>
+				</Folder>
+				<ProjectItem ReplaceParameters="false" OpenOrder="10" OpenInWebBrowser="true" TargetFileName="ReadMe.htm">ReadMe.htm</ProjectItem>
+			</Folder>
+			
+			<Folder Name="Images" TargetFolderName="Images">
+				<ProjectItem ReplaceParameters="false" TargetFileName="bg-body.jpg">bg-body.jpg</ProjectItem>
+				<ProjectItem ReplaceParameters="false" TargetFileName="bg-header.jpg">bg-header.jpg</ProjectItem>
+				<ProjectItem ReplaceParameters="false" TargetFileName="btn-cancel.gif">btn-cancel.gif</ProjectItem>
+				<ProjectItem ReplaceParameters="false" TargetFileName="btn-details.gif">btn-details.gif</ProjectItem>
+				<ProjectItem ReplaceParameters="false" TargetFileName="btn-go.gif">btn-go.gif</ProjectItem>
+				<ProjectItem ReplaceParameters="false" TargetFileName="btn-reassignTask.gif">btn-reassignTask.gif</ProjectItem>
+				<ProjectItem ReplaceParameters="false" TargetFileName="btn-save.gif">btn-save.gif</ProjectItem>
+				<ProjectItem ReplaceParameters="false" TargetFileName="btn-submit.gif">btn-submit.gif</ProjectItem>
+				<ProjectItem ReplaceParameters="false" TargetFileName="icn-mytasks.gif">icn-mytasks.gif</ProjectItem>
+				<ProjectItem ReplaceParameters="false" TargetFileName="icn-refresh.gif">icn-refresh.gif</ProjectItem>
+				<ProjectItem ReplaceParameters="false" TargetFileName="icn-tasks.gif">icn-tasks.gif</ProjectItem>
+				<ProjectItem ReplaceParameters="false" TargetFileName="logo.jpg">logo.jpg</ProjectItem>
+			</Folder>
+			
+			<Folder Name="MasterPages" TargetFolderName="MasterPages">
+				<ProjectItem ReplaceParameters="true" TargetFileName="MasterPage.master">MasterPage.master</ProjectItem>
+				<ProjectItem ReplaceParameters="true" TargetFileName="MasterPage.master.cs">MasterPage.master.cs</ProjectItem>
+				<ProjectItem ReplaceParameters="true" TargetFileName="WorkflowTask.master">WorkflowTask.master</ProjectItem>
+				<ProjectItem ReplaceParameters="true" TargetFileName="WorkflowTask.master.cs">WorkflowTask.master.cs</ProjectItem>
+			</Folder>
+
+			<Folder Name="workflowImages" TargetFolderName="workflowImages">
+				<ProjectItem ReplaceParameters="true" TargetFileName="Web.config">Web.config</ProjectItem>
+			</Folder>
+			
+			<ProjectItem ReplaceParameters="true" TargetFileName="Default.aspx">Default.aspx</ProjectItem>
+			<ProjectItem ReplaceParameters="true" TargetFileName="Default.aspx.cs">Default.aspx.cs</ProjectItem>
+			<ProjectItem ReplaceParameters="true" TargetFileName="Global.asax">Global.asax</ProjectItem>
+			<ProjectItem ReplaceParameters="true" TargetFileName="style.css">style.css</ProjectItem>
+			<ProjectItem ReplaceParameters="true" TargetFileName="Web.Config">Web.Config</ProjectItem>
+			<ProjectItem ReplaceParameters="false" TargetFileName="Web.sitemap">Web.sitemap</ProjectItem>
+			
+		</Project>
+	</TemplateContent>
+</VSTemplate>

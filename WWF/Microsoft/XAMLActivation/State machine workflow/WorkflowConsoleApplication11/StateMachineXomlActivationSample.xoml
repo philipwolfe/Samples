@@ -1,0 +1,19 @@
+﻿<ns0:BaseWorkflow PurchaseOrder="{p1:Null}" InitialStateName="InitialState" x:Name="Workflow1" DynamicUpdateCondition="{x:Null}" CompletedStateName="CompletedState" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:BaseStateMachineLibrary;Assembly=BaseStateMachineLibrary, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<StateActivity x:Name="InitialState">
+		<StateInitializationActivity x:Name="InitializeState">
+			<IfElseActivity x:Name="isOver5000">
+				<IfElseBranchActivity x:Name="greaterThan5000">
+					<IfElseBranchActivity.Condition>
+						<RuleConditionReference ConditionName="Condition1" />
+					</IfElseBranchActivity.Condition>
+					<CodeActivity x:Name="greaterThan" ExecuteCode="{ActivityBind Workflow1,Path=Greater}" />
+				</IfElseBranchActivity>
+				<IfElseBranchActivity x:Name="lessThan5000">
+					<CodeActivity x:Name="lessThan" ExecuteCode="{ActivityBind Workflow1,Path=Less}" />
+				</IfElseBranchActivity>
+			</IfElseActivity>
+			<SetStateActivity x:Name="setCompleted" TargetStateName="CompletedState" />
+		</StateInitializationActivity>
+	</StateActivity>
+	<StateActivity x:Name="CompletedState" />
+</ns0:BaseWorkflow>

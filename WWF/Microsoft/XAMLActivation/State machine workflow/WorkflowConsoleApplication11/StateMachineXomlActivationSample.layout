@@ -1,0 +1,92 @@
+﻿<StateMachineWorkflowDesigner Name="Workflow1" AutoSize="False" xmlns:ns0="clr-namespace:System.Drawing;Assembly=System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow">
+	<StateMachineWorkflowDesigner.Location>
+		<ns0:Point X="30" Y="30" />
+	</StateMachineWorkflowDesigner.Location>
+	<StateMachineWorkflowDesigner.Designers>
+		<StateDesigner Name="InitialState" AutoSize="False">
+			<StateDesigner.Location>
+				<ns0:Point X="70" Y="70" />
+			</StateDesigner.Location>
+			<StateDesigner.Designers>
+				<StateInitializationDesigner Name="InitializeState">
+					<StateInitializationDesigner.Designers>
+						<IfElseDesigner Name="isOver5000">
+							<IfElseDesigner.Designers>
+								<IfElseBranchDesigner Name="greaterThan5000">
+									<IfElseBranchDesigner.Designers>
+										<CodeDesigner Name="greaterThan">
+											<CodeDesigner.Size>
+												<ns0:Size Width="90" Height="40" />
+											</CodeDesigner.Size>
+											<CodeDesigner.Location>
+												<ns0:Point X="208" Y="364" />
+											</CodeDesigner.Location>
+										</CodeDesigner>
+									</IfElseBranchDesigner.Designers>
+									<IfElseBranchDesigner.Size>
+										<ns0:Size Width="110" Height="142" />
+									</IfElseBranchDesigner.Size>
+									<IfElseBranchDesigner.Location>
+										<ns0:Point X="198" Y="292" />
+									</IfElseBranchDesigner.Location>
+								</IfElseBranchDesigner>
+								<IfElseBranchDesigner Name="lessThan5000">
+									<IfElseBranchDesigner.Designers>
+										<CodeDesigner Name="lessThan">
+											<CodeDesigner.Size>
+												<ns0:Size Width="90" Height="40" />
+											</CodeDesigner.Size>
+											<CodeDesigner.Location>
+												<ns0:Point X="341" Y="364" />
+											</CodeDesigner.Location>
+										</CodeDesigner>
+									</IfElseBranchDesigner.Designers>
+									<IfElseBranchDesigner.Size>
+										<ns0:Size Width="110" Height="142" />
+									</IfElseBranchDesigner.Size>
+									<IfElseBranchDesigner.Location>
+										<ns0:Point X="331" Y="292" />
+									</IfElseBranchDesigner.Location>
+								</IfElseBranchDesigner>
+							</IfElseDesigner.Designers>
+							<IfElseDesigner.Size>
+								<ns0:Size Width="281" Height="244" />
+							</IfElseDesigner.Size>
+							<IfElseDesigner.Location>
+								<ns0:Point X="179" Y="220" />
+							</IfElseDesigner.Location>
+						</IfElseDesigner>
+						<SetStateDesigner Name="setCompleted">
+							<SetStateDesigner.Size>
+								<ns0:Size Width="90" Height="50" />
+							</SetStateDesigner.Size>
+							<SetStateDesigner.Location>
+								<ns0:Point X="274" Y="494" />
+							</SetStateDesigner.Location>
+						</SetStateDesigner>
+					</StateInitializationDesigner.Designers>
+					<StateInitializationDesigner.Size>
+						<ns0:Size Width="301" Height="426" />
+					</StateInitializationDesigner.Size>
+					<StateInitializationDesigner.Location>
+						<ns0:Point X="169" Y="148" />
+					</StateInitializationDesigner.Location>
+				</StateInitializationDesigner>
+			</StateDesigner.Designers>
+			<StateDesigner.Size>
+				<ns0:Size Width="160" Height="80" />
+			</StateDesigner.Size>
+		</StateDesigner>
+		<StateDesigner Name="CompletedState">
+			<StateDesigner.Location>
+				<ns0:Point X="81" Y="203" />
+			</StateDesigner.Location>
+			<StateDesigner.Size>
+				<ns0:Size Width="160" Height="80" />
+			</StateDesigner.Size>
+		</StateDesigner>
+	</StateMachineWorkflowDesigner.Designers>
+	<StateMachineWorkflowDesigner.Size>
+		<ns0:Size Width="579" Height="500" />
+	</StateMachineWorkflowDesigner.Size>
+</StateMachineWorkflowDesigner>

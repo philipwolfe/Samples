@@ -1,0 +1,402 @@
+package Microsoft.Samples.WinForms.ManagedWebBrowser; 
+
+//---------------------------------------------------------------------
+//  This file is part of the Microsoft .NET Framework SDK Code Samples.
+// 
+//  Copyright (C) Microsoft Corporation.  All rights reserved.
+// 
+//This source code is intended only as a supplement to Microsoft
+//Development Tools and/or on-line documentation.  See these other
+//materials for detailed information regarding Microsoft code samples.
+// 
+//THIS CODE AND INFORMATION ARE PROVIDED AS IS WITHOUT WARRANTY OF ANY
+//KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+//IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+//PARTICULAR PURPOSE.
+//---------------------------------------------------------------------
+
+import System.*;
+import System.Drawing.*;
+import System.Collections.*;
+import System.ComponentModel.*;
+import System.Windows.Forms.*;
+import System.Runtime.InteropServices.*;
+import System.Data.*;
+import System.IO.*;
+
+/// <summary>
+/// Summary description for form.
+/// </summary>
+/// 
+class Form1 extends System.Windows.Forms.Form
+{
+    /// <summary>
+    /// Required designer variable.
+    /// </summary>
+    private System.ComponentModel.IContainer components = null;
+	private FileStream fs;
+
+	public Form1()
+    {
+        InitializeComponent();
+    } //Form1
+
+    private void Form1_Load(Object sender, EventArgs e)
+    {
+		// Navigate to our home page by default on startup
+        webBrowser1.GoHome();
+    
+	} //Form1_Load
+
+    private void browseButton_Click(Object sender, EventArgs e)
+    {
+        // This is the button handler for our HTML reader scenario
+        // We will restrict the browser security level so as to only allow 
+        // viewing HTMl files
+        
+		// Set up the properties for the OpenFile dialog.  
+        // Restrict to HTM and HTML files
+        openFileDialog1.set_Filter(
+            "HTML Files (*.html) | *.html|HTM Files (*.htm) | *.htm");
+        // Prompt the user to choose an HTML file
+        openFileDialog1.ShowDialog();
+        // Poke the chosen filename into the TextBox on the form
+        htmlFileName.set_Text(this.openFileDialog1.get_FileName());
+        if (!(htmlFileName.get_Text().Equals(""))) {
+            // Open the file that the user selected
+            fs = new FileStream(htmlFileName.get_Text(), 
+                FileMode.Open);
+            // Load the HTML file stream into the web browser control
+            webBrowser1.set_DocumentStream(fs);
+			this.openFileDialog1.Reset();
+		}
+    } //browseButton_Click
+
+    private void backButton_Click(Object sender, EventArgs e)
+    {
+        // Navigate the web browser control backward
+        webBrowser1.GoBack();
+    } //backButton_Click
+
+    private void forwardButton_Click(Object sender, EventArgs e)
+    {
+        // Navigate the web browser control forward
+        webBrowser1.GoForward();
+    } //forwardButton_Click
+
+    private void stopButton_Click(Object sender, EventArgs e)
+    {
+        // Send the stop command to the web browser control
+        webBrowser1.Stop();
+    } //stopButton_Click
+
+    private void refreshButton_Click(Object sender, EventArgs e)
+    {
+        // Refresh the page currently loaded in the web browser control
+        webBrowser1.Refresh();
+    } //refreshButton_Click
+
+    private void homeButton_Click(Object sender, EventArgs e)
+    {
+        // Navigate home
+        webBrowser1.GoHome();
+    } //homeButton_Click
+
+    private void goButton_Click(Object sender, EventArgs e)
+    {
+        // Navigate the web browser control to the URL indicated in the 
+        // toolStripTextBox
+        webBrowser1.Navigate(urlAddress.get_Text());
+    } //goButton_Click
+
+    private void loadScriptButton_Click(Object sender, EventArgs e)
+    {
+        // This is the handler for loading the script into the web browser 
+        // control and allowing us to interact between the script in the 
+        // browser control and this form class 
+        // Set the ObjectForScripting property of the web browser control to 
+        // point to this form class This will allow us to interact with 
+        // methods in this form class via the window.external property 
+        webBrowser1.set_ObjectForScripting(this);
+
+        // Load the script into the web browser by setting the DocumentText 
+        // property
+        // Note that we will pass the userName value in the input box to the 
+        // underlying form class method by hooking the OnClick event and 
+        // pointing to the Welcome() method via the window.external property
+        webBrowser1.set_DocumentText("<html><body>" 
+            + "Please enter your name:<br/>" 
+            + "<input type='text' name='Name'/><br/>" 
+            + "<a href='http://www.microsoft.com' " 
+            + "onClick='window.external.Welcome(Name.value)'>" 
+            + "Send input to method of Form class</a></body></html>");
+
+    } //loadScriptButton_Click
+
+    public void Welcome(String userName)
+    {
+        // Simply echo out the name that the user typed in the input box of 
+        // the HTML page
+        if (System.Threading.Thread.get_CurrentThread().get_CurrentUICulture().
+            get_TextInfo().get_IsRightToLeft() == true) {
+            MessageBox.Show("Hello " + userName, "Managed Web Browser Sample", 
+                MessageBoxButtons.OK, MessageBoxIcon.Information, 
+                MessageBoxDefaultButton.Button1, 
+                MessageBoxOptions.RightAlign | MessageBoxOptions.RtlReading);
+        }
+        else {
+            MessageBox.Show("Hello " + userName, "Managed Web Browser Sample", 
+                MessageBoxButtons.OK, MessageBoxIcon.Information, 
+                MessageBoxDefaultButton.Button1);
+        }
+    } //Welcome
+
+    /// <summary>
+    /// Required method for Designer support - do not modify
+    /// the contents of this method with the code editor.
+    /// </summary>
+    private void InitializeComponent()
+    {
+		System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(Form1.class.ToType());
+		this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+		this.groupBox3 = new System.Windows.Forms.GroupBox();
+		this.label3 = new System.Windows.Forms.Label();
+		this.loadScriptButton = new System.Windows.Forms.Button();
+		this.groupBox2 = new System.Windows.Forms.GroupBox();
+		this.label2 = new System.Windows.Forms.Label();
+		this.browseButton = new System.Windows.Forms.Button();
+		this.htmlFileName = new System.Windows.Forms.TextBox();
+		this.fileNameLabel = new System.Windows.Forms.Label();
+		this.groupBox1 = new System.Windows.Forms.GroupBox();
+		this.label1 = new System.Windows.Forms.Label();
+		this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+		this.backButton = new System.Windows.Forms.ToolStripButton();
+		this.forwardButton = new System.Windows.Forms.ToolStripButton();
+		this.stopButton = new System.Windows.Forms.ToolStripButton();
+		this.refreshButton = new System.Windows.Forms.ToolStripButton();
+		this.homeButton = new System.Windows.Forms.ToolStripButton();
+		this.urlAddress = new System.Windows.Forms.ToolStripTextBox();
+		this.goButton = new System.Windows.Forms.ToolStripButton();
+		this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+		this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+		this.splitContainer1.get_Panel1().SuspendLayout();
+		this.splitContainer1.get_Panel2().SuspendLayout();
+		this.splitContainer1.SuspendLayout();
+		this.groupBox3.SuspendLayout();
+		this.groupBox2.SuspendLayout();
+		this.groupBox1.SuspendLayout();
+		this.toolStrip1.SuspendLayout();
+		this.SuspendLayout();
+		// 
+		// splitContainer1
+		// 
+		resources.ApplyResources(this.splitContainer1, "splitContainer1");
+		this.splitContainer1.set_Name("splitContainer1");
+		// 
+		// splitContainer1.Panel1
+		// 
+		this.splitContainer1.get_Panel1().get_Controls().Add(this.groupBox3);
+		this.splitContainer1.get_Panel1().get_Controls().Add(this.groupBox2);
+		this.splitContainer1.get_Panel1().get_Controls().Add(this.groupBox1);
+		// 
+		// splitContainer1.Panel2
+		// 
+		this.splitContainer1.get_Panel2().get_Controls().Add(this.webBrowser1);
+		// 
+		// groupBox3
+		// 
+		this.groupBox3.get_Controls().Add(this.label3);
+		this.groupBox3.get_Controls().Add(this.loadScriptButton);
+		resources.ApplyResources(this.groupBox3, "groupBox3");
+		this.groupBox3.set_Name("groupBox3");
+		this.groupBox3.set_TabStop(false);
+		// 
+		// label3
+		// 
+		resources.ApplyResources(this.label3, "label3");
+		this.label3.set_Name("label3");
+		// 
+		// loadScriptButton
+		// 
+		resources.ApplyResources(this.loadScriptButton, "loadScriptButton");
+		this.loadScriptButton.set_Name("loadScriptButton");
+		this.loadScriptButton.add_Click(new System.EventHandler(this.loadScriptButton_Click));
+		// 
+		// groupBox2
+		// 
+		this.groupBox2.get_Controls().Add(this.label2);
+		this.groupBox2.get_Controls().Add(this.browseButton);
+		this.groupBox2.get_Controls().Add(this.htmlFileName);
+		this.groupBox2.get_Controls().Add(this.fileNameLabel);
+		resources.ApplyResources(this.groupBox2, "groupBox2");
+		this.groupBox2.set_Name("groupBox2");
+		this.groupBox2.set_TabStop(false);
+		// 
+		// label2
+		// 
+		resources.ApplyResources(this.label2, "label2");
+		this.label2.set_Name("label2");
+		// 
+		// browseButton
+		// 
+		resources.ApplyResources(this.browseButton, "browseButton");
+		this.browseButton.set_Name("browseButton");
+		this.browseButton.add_Click(new System.EventHandler(this.browseButton_Click));
+		// 
+		// htmlFileName
+		// 
+		resources.ApplyResources(this.htmlFileName, "htmlFileName");
+		this.htmlFileName.set_Name("htmlFileName");
+		// 
+		// fileNameLabel
+		// 
+		resources.ApplyResources(this.fileNameLabel, "fileNameLabel");
+		this.fileNameLabel.set_Name("fileNameLabel");
+		// 
+		// groupBox1
+		// 
+		this.groupBox1.get_Controls().Add(this.label1);
+		this.groupBox1.get_Controls().Add(this.toolStrip1);
+		resources.ApplyResources(this.groupBox1, "groupBox1");
+		this.groupBox1.set_Name("groupBox1");
+		this.groupBox1.set_TabStop(false);
+		// 
+		// label1
+		// 
+		resources.ApplyResources(this.label1, "label1");
+		this.label1.set_Name("label1");
+		// 
+		// toolStrip1
+		// 
+		this.toolStrip1.set_GripStyle(System.Windows.Forms.ToolStripGripStyle.Hidden);
+		this.toolStrip1.get_Items().AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.backButton,
+            this.forwardButton,
+            this.stopButton,
+            this.refreshButton,
+            this.homeButton,
+            this.urlAddress,
+            this.goButton}
+		);
+		resources.ApplyResources(this.toolStrip1, "toolStrip1");
+		this.toolStrip1.set_Name("toolStrip1");
+		this.toolStrip1.set_RenderMode(System.Windows.Forms.ToolStripRenderMode.System);
+		// 
+		// backButton
+		// 
+		this.backButton.set_DisplayStyle(System.Windows.Forms.ToolStripItemDisplayStyle.Image);
+		resources.ApplyResources(this.backButton, "backButton");
+		this.backButton.set_Name("backButton");
+		this.backButton.add_Click(new System.EventHandler(this.backButton_Click));
+		// 
+		// forwardButton
+		// 
+		this.forwardButton.set_DisplayStyle(System.Windows.Forms.ToolStripItemDisplayStyle.Image);
+		resources.ApplyResources(this.forwardButton, "forwardButton");
+		this.forwardButton.set_Name("forwardButton");
+		this.forwardButton.add_Click(new System.EventHandler(this.forwardButton_Click));
+		// 
+		// stopButton
+		// 
+		this.stopButton.set_DisplayStyle(System.Windows.Forms.ToolStripItemDisplayStyle.Image);
+		resources.ApplyResources(this.stopButton, "stopButton");
+		this.stopButton.set_Name("stopButton");
+		this.stopButton.add_Click(new System.EventHandler(this.stopButton_Click));
+		// 
+		// refreshButton
+		// 
+		this.refreshButton.set_DisplayStyle(System.Windows.Forms.ToolStripItemDisplayStyle.Image);
+		resources.ApplyResources(this.refreshButton, "refreshButton");
+		this.refreshButton.set_Name("refreshButton");
+		this.refreshButton.add_Click(new System.EventHandler(this.refreshButton_Click));
+		// 
+		// homeButton
+		// 
+		this.homeButton.set_DisplayStyle(System.Windows.Forms.ToolStripItemDisplayStyle.Image);
+		resources.ApplyResources(this.homeButton, "homeButton");
+		this.homeButton.set_Name("homeButton");
+		this.homeButton.add_Click(new System.EventHandler(this.homeButton_Click));
+		// 
+		// urlAddress
+		// 
+		this.urlAddress.set_DisplayStyle(System.Windows.Forms.ToolStripItemDisplayStyle.ImageAndText);
+		resources.ApplyResources(this.urlAddress, "urlAddress");
+		this.urlAddress.set_Name("urlAddress");
+		// 
+		// goButton
+		// 
+		this.goButton.set_DisplayStyle(System.Windows.Forms.ToolStripItemDisplayStyle.Image);
+		resources.ApplyResources(this.goButton, "goButton");
+		this.goButton.set_Name("goButton");
+		this.goButton.add_Click(new System.EventHandler(this.goButton_Click));
+		// 
+		// webBrowser1
+		// 
+		resources.ApplyResources(this.webBrowser1, "webBrowser1");
+		this.webBrowser1.set_Name("webBrowser1");
+		this.webBrowser1.add_DocumentCompleted(new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted));
+		// 
+		// openFileDialog1
+		// 
+		resources.ApplyResources(this.openFileDialog1, "openFileDialog1");
+		// 
+		// Form1
+		// 
+		resources.ApplyResources(this, "$this");
+		this.get_Controls().Add(this.splitContainer1);
+		this.set_Name("Form1");
+		this.add_Load(new System.EventHandler(this.Form1_Load));
+		this.splitContainer1.get_Panel1().ResumeLayout(false);
+		this.splitContainer1.get_Panel2().ResumeLayout(false);
+		this.splitContainer1.ResumeLayout(false);
+		this.groupBox3.ResumeLayout(false);
+		this.groupBox2.ResumeLayout(false);
+		this.groupBox2.PerformLayout();
+		this.groupBox1.ResumeLayout(false);
+		this.groupBox1.PerformLayout();
+		this.toolStrip1.ResumeLayout(false);
+		this.toolStrip1.PerformLayout();
+		this.ResumeLayout(false);
+
+	} //InitializeComponent
+
+	/// <summary>
+    /// Clean up any resources being used.
+    /// </summary>
+    protected void Dispose(boolean disposing)
+    {
+        if (disposing) {
+            if (components != null) {
+                components.Dispose();
+            }
+        }
+        super.Dispose(disposing);
+    } //Dispose
+
+    private System.Windows.Forms.SplitContainer splitContainer1;
+    private System.Windows.Forms.WebBrowser webBrowser1;
+    private System.Windows.Forms.GroupBox groupBox1;
+    private System.Windows.Forms.ToolStrip toolStrip1;
+    private System.Windows.Forms.ToolStripButton backButton;
+    private System.Windows.Forms.ToolStripButton forwardButton;
+    private System.Windows.Forms.ToolStripButton stopButton;
+    private System.Windows.Forms.ToolStripButton refreshButton;
+    private System.Windows.Forms.ToolStripButton homeButton;
+    private System.Windows.Forms.ToolStripTextBox urlAddress;
+    private System.Windows.Forms.ToolStripButton goButton;
+    private System.Windows.Forms.GroupBox groupBox2;
+    private System.Windows.Forms.Button browseButton;
+    private System.Windows.Forms.TextBox htmlFileName;
+    private System.Windows.Forms.Label fileNameLabel;
+    private System.Windows.Forms.OpenFileDialog openFileDialog1;
+    private System.Windows.Forms.GroupBox groupBox3;
+    private System.Windows.Forms.Label label1;
+    private System.Windows.Forms.Label label2;
+    private System.Windows.Forms.Button loadScriptButton;
+	private System.Windows.Forms.Label label3;
+
+	private void webBrowser1_DocumentCompleted(Object sender, WebBrowserDocumentCompletedEventArgs e)
+	{
+		this.fs.Close();
+	}
+} //Form1

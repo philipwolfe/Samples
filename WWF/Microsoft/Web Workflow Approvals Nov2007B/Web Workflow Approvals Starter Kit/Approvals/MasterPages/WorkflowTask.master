@@ -1,0 +1,40 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="WorkflowTask.master.cs"
+	Inherits="MasterPages_WorkflowTask" MasterPageFile="~/MasterPages/MasterPage.master" %>
+	
+<%@ Register Src="../Controls/AssignAnotherUser.ascx" TagName="AssignAnotherUser"
+	TagPrefix="uc1" %>
+	
+<asp:Content ID="content" runat="server" ContentPlaceHolderID="bodyContentPlaceHolder">
+	
+	<h2>Task:<asp:Label runat="server" ID="taskNameLabel" /></h2>
+		<h3><asp:Label runat="server" ID="taskTipLabel" Text="[Tip]" /></h3>
+		<div class="box" style="width: 645px;">
+			<div class="blueBoxBlueBorder">
+			
+			<!-- Custom activity fields will go here -->
+			<asp:ContentPlaceHolder ID="taskFieldsContentPlaceHolder" runat="server" />
+			
+			<div style="text-align:right">
+			
+			<asp:ImageButton ID="cancelImageButton" runat="server" ImageUrl="~/Images/btn-cancel.gif"
+				OnClick="Cancel" />&nbsp;
+			<asp:HyperLink runat="server" ID="detailsHyperLink" Target="WorkflowDetails">
+				<asp:Image ID="Image1" ImageUrl="~/Images/btn-details.gif" runat="server" BorderStyle="None" />
+			</asp:HyperLink>&nbsp;
+			<asp:ImageButton runat="server" ID="saveImageButton" ImageUrl="~/Images/btn-save.gif"
+				OnClick="Save" CausesValidation="true" ValidationGroup="TaskFields" />&nbsp;
+			<asp:ImageButton ID="submitImageButton" runat="server" CausesValidation="true" ImageUrl="~/Images/btn-submit.gif"
+				OnClick="Submit" ValidationGroup="TaskFields" />&nbsp;
+				</div>
+			
+			</div>
+		</div>
+		<div class="box right" style="width: 235px;">
+			<div class="blueBox clearfix">
+				<uc1:AssignAnotherUser ID="assignAnotherUser" runat="server" />
+			</div>
+		</div>
+	
+	
+	
+</asp:Content>

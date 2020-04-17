@@ -1,0 +1,53 @@
+package Microsoft.Samples; 
+
+//---------------------------------------------------------------------
+//  This file is part of the Microsoft .NET Framework SDK Code Samples.
+// 
+//  Copyright (C) Microsoft Corporation.  All rights reserved.
+// 
+//This source code is intended only as a supplement to Microsoft
+//Development Tools and/or on-line documentation.  See these other
+//materials for detailed information regarding Microsoft code samples.
+// 
+//THIS CODE AND INFORMATION ARE PROVIDED AS IS WITHOUT WARRANTY OF ANY
+//KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+//IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+//PARTICULAR PURPOSE.
+//---------------------------------------------------------------------
+ 
+import System.*;
+import System.Windows.Forms.Design.*;
+   
+   /// <summary>
+   /// Summary description for IPv5MaskDescriptor.
+   /// </summary>  
+public class IPv5MaskDescriptor extends MaskDescriptor
+{
+    /** @property  
+     */
+    public String get_Mask()
+    {
+        return "099.099.099.099";
+    } //get_Mask
+
+    /** @property 
+     */
+    public String get_Name()
+    {
+        return "IPv5 IP address";
+    } //get_Name
+
+    /** @property 
+     */
+    public String get_Sample()
+    {
+        return "128.128.1.0";
+    } //get_Sample
+
+    /** @property 
+     */
+    public Type get_ValidatingType()
+    {
+        return IPv5.class.ToType();
+    } //get_ValidatingType
+} //IPv5MaskDescriptor 

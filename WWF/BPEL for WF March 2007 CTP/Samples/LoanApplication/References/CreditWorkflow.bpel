@@ -1,0 +1,271 @@
+﻿<process name="CreditAgencyProcess"
+         xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:myns="http://tempuri.org/"
+	       targetNamespace="http://ms.com/processing"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema" >
+
+  <partnerLinks>
+    <partnerLink name="creditLink" partnerLinkType="myns:CreditAgencyLink" myRole="Borrower" />
+    <partnerLink name="databaseLink" partnerLinkType="myns:DatabaseServiceLink" myRole="DatabaseUser" />
+  </partnerLinks>
+
+  <variables>
+    <variable name="Input" messageType="myns:CheckCreditDetailsSoapIn" />
+    <variable name="FinalOutput" messageType="myns:CheckCreditDetailsSoapOut" />
+    <variable name="CreditDetailInput"  messageType="myns:GetCreditDetailsSoapIn" />
+    <variable name="CreditDetailOutput" messageType="myns:GetCreditDetailsSoapOut" />
+    <variable name="CreditReportInput"  messageType="myns:GenerateCreditReportSoapIn" />
+    <variable name="CreditReportOutput" messageType="myns:GenerateCreditReportSoapOut" />
+
+  </variables>
+
+  <correlationSets>
+    <correlationSet name="set1" properties="myns:CreditProperty" />
+  </correlationSets>
+
+
+  <faultHandlers>
+
+    <catchAll>
+
+      <sequence name="faultSequence">
+
+        <assign name="bpelAssignFault">
+          <copy>
+            <from expression="0" />
+            <to variable="FinalOutput" part="parameters" query="/myns:parameters/myns:CheckCreditDetailsResult" />
+          </copy>
+        </assign>
+
+        <reply partnerLink="creditLink" portType="myns:CreditAgencyWebServiceSoap"
+               operation="CheckCreditDetails" variable="FinalOutput" name="initReplyFault" />
+
+      </sequence>
+
+    </catchAll>
+
+  </faultHandlers>
+
+  <sequence name="mysequence1">
+
+    <receive partnerLink="creditLink" portType="myns:CreditAgencyWebServiceSoap"
+             operation="CheckCreditDetails" variable="Input" createInstance="yes" name="initReceive">
+      <correlations>
+        <correlation set="set1" initiate="yes" />
+      </correlations>
+    </receive>
+
+    <empty name="bpelEmpty" />
+
+    <switch name="bpelSwitch">
+
+      <!--  name="bpelCase"-->
+      <case condition="getVariableData('Input','parameters','/myns:parameters/myns:RequestId') != '00000000-0000-0000-0000-000000000000'
+        and getVariableData('Input','parameters','/myns:parameters/myns:RequestId') != ''">
+
+        <sequence name="bpelCaseSequence">
+
+          <assign name="bpelAssign1">
+
+            <copy>
+              <from variable="Input" part="parameters" query="/myns:parameters/myns:RequestId" />
+              <to variable="CreditDetailInput" part="parameters" query="/myns:parameters/myns:RequestId" />
+            </copy>
+
+          </assign>
+
+          <scope name="updateRequestStatusBrokerProcessing">
+            <invoke partnerLink="databaseLink"
+                    portType="myns:DatabaseServiceSoap"
+                    operation="GetCreditDetails"
+                    inputVariable="CreditDetailInput"
+                    outputVariable="CreditDetailOutput"
+                    name="GetCreditDetail" />
+          </scope>
+
+          <switch name="bpelSwitchProcessReport">
+            <case condition="getVariableData('CreditDetailOutput','parameters','/myns:parameters/myns:GetCreditDetailsResult/myns:CreditStatus') = 'VALID'
+              and getVariableData('CreditDetailOutput','parameters','/myns:parameters/myns:GetCreditDetailsResult/myns:Amount') &lt; 10000" >
+
+              <sequence name="creditReportSequence1">
+
+                <assign name="bpelAssign11">
+
+                  <copy>
+                    <from variable="Input" part="parameters" query="/myns:parameters/myns:RequestId" />
+                    <to variable="CreditReportInput" part="parameters" query="/myns:parameters/myns:RequestId" />
+                  </copy>
+
+                  <copy>
+                    <from expression="'APPROVE'" />
+                    <to variable="CreditReportInput" part="parameters" query="/myns:parameters/myns:CreditRating" />
+                  </copy>
+
+                </assign>
+
+                <scope name="updateRequestStatusBrokerProcessing1">
+                  <invoke partnerLink="databaseLink" portType="myns:DatabaseServiceSoap"
+                          operation="GenerateCreditReport" inputVariable="CreditReportInput"
+                          outputVariable="CreditReportOutput" name="creditReportInvoke1" />
+                </scope>
+
+                <assign name="bpelAssign12">
+
+                  <copy>
+                    <from variable="CreditReportOutput" part="parameters" query="/myns:parameters/myns:GenerateCreditReportResult" />
+                    <to variable="FinalOutput" part="parameters" query="/myns:parameters/myns:CheckCreditDetailsResult" />
+                  </copy>
+
+                </assign>
+
+              </sequence>
+              <!--<?xml version="1.0" encoding="utf-8"?><CodeActivity x:Name="codeActivityApproveCredit" ExecuteCode="codeActivityApproveCredit_ExecuteCode" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" />-->
+            </case>
+
+            <!-- name="bpelCaseAmtGreaterTenkLowProfile"-->
+            <case condition="getVariableData('CreditDetailOutput','parameters','/myns:parameters/myns:GetCreditDetailsResult/myns:CreditStatus') = 'VALID'
+              and getVariableData('CreditDetailOutput','parameters','/myns:parameters/myns:GetCreditDetailsResult/myns:Amount') &gt; 10000 
+              and getVariableData('CreditDetailOutput','parameters','/myns:parameters/myns:GetCreditDetailsResult/myns:RiskProfile') = 'LOW'" >
+
+              <sequence name="creditReportSequence2">
+
+                <assign name="bpelAssign21">
+
+                  <copy>
+                    <from variable="Input" part="parameters" query="/myns:parameters/myns:RequestId" />
+                    <to variable="CreditReportInput" part="parameters" query="/myns:parameters/myns:RequestId" />
+                  </copy>
+
+                  <copy>
+                    <from expression="'APPROVE'" />
+                    <to variable="CreditReportInput" part="parameters" query="/myns:parameters/myns:CreditRating" />
+                  </copy>
+
+                </assign>
+
+                <scope name="updateRequestStatusBrokerProcessing2">
+                  <invoke partnerLink="databaseLink" portType="myns:DatabaseServiceSoap"
+                          operation="GenerateCreditReport" inputVariable="CreditReportInput"
+                          outputVariable="CreditReportOutput" name="creditReportInvoke2" />
+                </scope>
+
+                <assign name="bpelAssign22">
+
+                  <copy>
+                    <from variable="CreditReportOutput" part="parameters" query="/myns:parameters/myns:GenerateCreditReportResult" />
+                    <to variable="FinalOutput" part="parameters" query="/myns:parameters/myns:CheckCreditDetailsResult" />
+                  </copy>
+
+                </assign>
+
+
+              </sequence>
+
+              <!--<?xml version="1.0" encoding="utf-8"?><CodeActivity x:Name="codeActivityApproveCreditTenkLowProfile" ExecuteCode="codeActivityApproveCredit_ExecuteCode" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" />-->
+            </case>
+
+            <!-- name="bpelCaseAmtGreaterTenkHighProfile"-->
+            <case condition="getVariableData('CreditDetailOutput','parameters','/myns:parameters/myns:GetCreditDetailsResult/myns:CreditStatus') = 'VALID'
+              and getVariableData('CreditDetailOutput','parameters','/myns:parameters/myns:GetCreditDetailsResult/myns:Amount') &gt;= 10000 
+              and getVariableData('CreditDetailOutput','parameters','/myns:parameters/myns:GetCreditDetailsResult/myns:RiskProfile') = 'HIGH'" >
+
+              <sequence name="creditReportSequence3">
+
+                <assign name="bpelAssign31">
+
+                  <copy>
+                    <from variable="Input" part="parameters" query="/myns:parameters/myns:RequestId" />
+                    <to variable="CreditReportInput" part="parameters" query="/myns:parameters/myns:RequestId" />
+                  </copy>
+
+                  <copy>
+                    <from expression="'REJECT'" />
+                    <to variable="CreditReportInput" part="parameters" query="/myns:parameters/myns:CreditRating" />
+                  </copy>
+
+                </assign>
+
+                <scope name="updateRequestStatusBrokerProcessing3">
+                  <invoke partnerLink="databaseLink" portType="myns:DatabaseServiceSoap"
+                          operation="GenerateCreditReport" inputVariable="CreditReportInput"
+                          outputVariable="CreditReportOutput" name="creditReportInvoke3" />
+                </scope>
+
+                <assign name="bpelAssign32">
+
+                  <copy>
+                    <from variable="CreditReportOutput" part="parameters" query="/myns:parameters/myns:GenerateCreditReportResult" />
+                    <to variable="FinalOutput" part="parameters" query="/myns:parameters/myns:CheckCreditDetailsResult" />
+                  </copy>
+                </assign>
+
+
+              </sequence>
+
+              <!--<?xml version="1.0" encoding="utf-8"?><CodeActivity x:Name="codeActivityRejectCreditTenkHighProfile" ExecuteCode="codeActivityRejectCredit_ExecuteCode" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" />-->
+            </case>
+
+            <otherwise>
+
+              <sequence name="creditReportSequence4">
+
+                <assign name="bpelAssign41">
+
+                  <copy>
+                    <from variable="Input" part="parameters" query="/myns:parameters/myns:RequestId" />
+                    <to variable="CreditReportInput" part="parameters" query="/myns:parameters/myns:RequestId" />
+                  </copy>
+
+                  <copy>
+                    <from expression="'REJECT'" />
+                    <to variable="CreditReportInput" part="parameters" query="/myns:parameters/myns:CreditRating" />
+                  </copy>
+
+                </assign>
+
+                <scope name="updateRequestStatusBrokerProcessing4">
+                  <invoke partnerLink="databaseLink" portType="myns:DatabaseServiceSoap"
+                          operation="GenerateCreditReport" inputVariable="CreditReportInput"
+                          outputVariable="CreditReportOutput" name="creditReportInvoke4" />
+                </scope>
+
+                <assign name="bpelAssign42">
+                  <copy>
+                    <from variable="CreditReportOutput" part="parameters" query="/myns:parameters/myns:GenerateCreditReportResult" />
+                    <to variable="FinalOutput" part="parameters" query="/myns:parameters/myns:CheckCreditDetailsResult" />
+                  </copy>
+
+                </assign>
+
+
+              </sequence>
+
+              <!--<?xml version="1.0" encoding="utf-8"?><CodeActivity x:Name="codeActivityRejectCredit" ExecuteCode="codeActivityRejectCredit_ExecuteCode" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" />-->
+            </otherwise>
+
+          </switch>
+
+
+        </sequence>
+
+      </case>
+
+      <otherwise>
+
+        <assign name="bpelAssign">
+          <copy>
+            <from expression="0" />
+            <to variable="FinalOutput" part="parameters" query="/myns:parameters/myns:CheckCreditDetailsResult" />
+          </copy>
+        </assign>
+
+      </otherwise>
+
+    </switch>
+
+    <reply partnerLink="creditLink" portType="myns:CreditAgencyWebServiceSoap"
+           operation="CheckCreditDetails" variable="FinalOutput" name="initReply" />
+
+  </sequence>
+
+</process>

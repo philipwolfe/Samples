@@ -1,0 +1,230 @@
+<p:Activity x:Class="Microsoft.Samples.StopWatchService.StopWatchWorkflow" 
+	xmlns="clr-namespace:System.Activities.Design.Xaml;assembly=System.Activities.Design" 
+	xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+	xmlns:p="http://schemas.microsoft.com/netfx/2009/xaml/activities" 
+	xmlns:p1="http://schemas.microsoft.com/netfx/2009/xaml/servicemodel" 
+	xmlns:s="clr-namespace:System;assembly=mscorlib" 
+	xmlns:sad="clr-namespace:System.Activities.Debugger;assembly=System.Activities" 
+	xmlns:sadv="clr-namespace:System.Activities.Design.View;assembly=System.Activities.Design" 
+	xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" 
+	xmlns:ssd="clr-namespace:System.ServiceModel.Dispatcher;assembly=System.ServiceModel" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <p:Flowchart StartNode="{x:Reference Name=__ReferenceID6}" sad:XamlDebuggerXmlReader.FileName="C:\_samplesHOLCheckin\StateMachineWithPick\CS\StopWatchService\StopWatchWorkflow.xaml">
+    <p:Flowchart.Variables>
+      <p:Variable x:TypeArguments="x:Int32" Name="currentState" />
+      <p:Variable x:TypeArguments="p1:CorrelationHandle" Name="correlationHandle1" />
+      <p:Variable x:TypeArguments="x:Int32" Name="WfInstID" />
+    </p:Flowchart.Variables>
+    <sadv:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, s:Object">
+        <av:PointCollection x:Key="ConnectorLocation">100,25 110,25 110,143.96046875 245,143.96046875</av:PointCollection>
+        <av:Point x:Key="ShapeLocation">50,0</av:Point>
+        <av:Size x:Key="ShapeSize">50,50</av:Size>
+      </scg:Dictionary>
+    </sadv:WorkflowViewStateService.ViewState>
+    <p:FlowStep x:Name="__ReferenceID0">
+      <p:FlowStep.Next>
+        <p:FlowDecision True="{x:Reference Name=__ReferenceID0}" x:Name="__ReferenceID4" Condition="[currentState &lt; 3]">
+          <p:FlowDecision.False>
+            <p:FlowStep x:Name="__ReferenceID5">
+              <sadv:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, s:Object">
+                  <av:Point x:Key="ShapeLocation">315,548</av:Point>
+                  <av:Size x:Key="ShapeSize">160,35.96</av:Size>
+                </scg:Dictionary>
+              </sadv:WorkflowViewStateService.ViewState>
+              <p:WriteLine>["Terminal State reached "]</p:WriteLine>
+            </p:FlowStep>
+          </p:FlowDecision.False>
+          <sadv:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, s:Object">
+              <av:Point x:Key="ShapeLocation">170,445</av:Point>
+              <av:Size x:Key="ShapeSize">60,60</av:Size>
+              <av:PointCollection x:Key="TrueConnector">170,475 115,475 115,262.321666666667 125,262.321666666667</av:PointCollection>
+              <av:PointCollection x:Key="FalseConnector">230,475 395,475 395,548</av:PointCollection>
+            </scg:Dictionary>
+          </sadv:WorkflowViewStateService.ViewState>
+        </p:FlowDecision>
+      </p:FlowStep.Next>
+      <sadv:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, s:Object">
+          <av:Point x:Key="ShapeLocation">120,231.361666666667</av:Point>
+          <av:Size x:Key="ShapeSize">170,61.92</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">205,288.281666666667 205,445 200,445</av:PointCollection>
+        </scg:Dictionary>
+      </sadv:WorkflowViewStateService.ViewState>
+      <p:Pick>
+        <p:PickBranch>
+          <p:PickBranch.Trigger>
+            <p1:Receive x:Name="__ReferenceID1" CanCreateInstance="True" OperationName="GetStart" ServiceContractName="StopWatchService" ValueType="x:Int32">
+              <p1:Receive.CorrelatesWith>
+                <p:InArgument x:TypeArguments="p1:CorrelationHandle">[correlationHandle1]</p:InArgument>
+              </p1:Receive.CorrelatesWith>
+              <p1:Receive.CorrelationQuery>
+                <p1:CorrelationQuery>
+                  <p1:CorrelationQuery.Select>
+                    <p1:MessageQuerySet>
+                      <p1:XPathMessageQuery x:Key="SessId">//*[local-name()='int']</p1:XPathMessageQuery>
+                    </p1:MessageQuerySet>
+                  </p1:CorrelationQuery.Select>
+                </p1:CorrelationQuery>
+              </p1:Receive.CorrelationQuery>
+              <p:OutArgument x:TypeArguments="x:Int32">[WfInstID]</p:OutArgument>
+            </p1:Receive>
+          </p:PickBranch.Trigger>
+          <p:Sequence>
+            <p:Switch x:TypeArguments="x:Int32" Expression="[currentState]">
+              <p:Switch.Default>
+                <p:WriteLine>["Invalid transition: Cannot transition from current state to Start State"]</p:WriteLine>
+              </p:Switch.Default>
+              <p:Sequence x:Key="0">
+                <p:Assign>
+                  <p:Assign.To>
+                    <p:OutArgument x:TypeArguments="x:Int32">[currentState]</p:OutArgument>
+                  </p:Assign.To>
+                  <p:Assign.Value>
+                    <p:InArgument x:TypeArguments="x:Int32">[1]</p:InArgument>
+                  </p:Assign.Value>
+                </p:Assign>
+                <p:WriteLine>["Transitioned from On to Start"]</p:WriteLine>
+              </p:Sequence>
+              <p:Sequence x:Key="2">
+                <p:Assign>
+                  <p:Assign.To>
+                    <p:OutArgument x:TypeArguments="x:Int32">[currentState]</p:OutArgument>
+                  </p:Assign.To>
+                  <p:Assign.Value>
+                    <p:InArgument x:TypeArguments="x:Int32">[1]</p:InArgument>
+                  </p:Assign.Value>
+                </p:Assign>
+                <p:WriteLine>["Transitioned from Stop to Start"]</p:WriteLine>
+              </p:Sequence>
+            </p:Switch>
+            <p1:SendReply Request="{x:Reference Name=__ReferenceID1}" DisplayName="SendReplyToReceive" ValueType="x:Int32">
+              <p1:SendReply.CorrelatesWith>
+                <p:InArgument x:TypeArguments="p1:CorrelationHandle">[correlationHandle1]</p:InArgument>
+              </p1:SendReply.CorrelatesWith>
+              <p:InArgument x:TypeArguments="x:Int32">[currentState]</p:InArgument>
+            </p1:SendReply>
+          </p:Sequence>
+        </p:PickBranch>
+        <p:PickBranch>
+          <p:PickBranch.Trigger>
+            <p1:Receive x:Name="__ReferenceID2" CanCreateInstance="True" OperationName="GetStop" ServiceContractName="StopWatchService" ValueType="x:Int32">
+              <p1:Receive.CorrelatesWith>
+                <p:InArgument x:TypeArguments="p1:CorrelationHandle">[correlationHandle1]</p:InArgument>
+              </p1:Receive.CorrelatesWith>
+              <p1:Receive.CorrelationQuery>
+                <p1:CorrelationQuery>
+                  <p1:CorrelationQuery.Select>
+                    <p1:MessageQuerySet>
+                      <p1:XPathMessageQuery x:Key="SessId">//*[local-name()='int']</p1:XPathMessageQuery>
+                    </p1:MessageQuerySet>
+                  </p1:CorrelationQuery.Select>
+                </p1:CorrelationQuery>
+              </p1:Receive.CorrelationQuery>
+              <p:OutArgument x:TypeArguments="x:Int32">[WfInstID]</p:OutArgument>
+            </p1:Receive>
+          </p:PickBranch.Trigger>
+          <p:Sequence>
+            <p:Switch x:TypeArguments="x:Int32" Expression="[currentState]">
+              <p:Switch.Default>
+                <p:WriteLine>["Invalid transition: Cannot transition from current state to Stop State"]</p:WriteLine>
+              </p:Switch.Default>
+              <p:Sequence x:Key="1">
+                <p:Assign>
+                  <p:Assign.To>
+                    <p:OutArgument x:TypeArguments="x:Int32">[currentState]</p:OutArgument>
+                  </p:Assign.To>
+                  <p:Assign.Value>
+                    <p:InArgument x:TypeArguments="x:Int32">[2]</p:InArgument>
+                  </p:Assign.Value>
+                </p:Assign>
+                <p:WriteLine>["Transitioned from Start to Stop"]</p:WriteLine>
+              </p:Sequence>
+            </p:Switch>
+            <p1:SendReply Request="{x:Reference Name=__ReferenceID2}" DisplayName="SendReplyToReceive" ValueType="x:Int32">
+              <p1:SendReply.CorrelatesWith>
+                <p:InArgument x:TypeArguments="p1:CorrelationHandle">[correlationHandle1]</p:InArgument>
+              </p1:SendReply.CorrelatesWith>
+              <p:InArgument x:TypeArguments="x:Int32">[currentState]</p:InArgument>
+            </p1:SendReply>
+          </p:Sequence>
+        </p:PickBranch>
+        <p:PickBranch>
+          <p:PickBranch.Trigger>
+            <p1:Receive x:Name="__ReferenceID3" CanCreateInstance="True" OperationName="GetOff" ServiceContractName="StopWatchService" ValueType="x:Int32">
+              <p1:Receive.CorrelatesWith>
+                <p:InArgument x:TypeArguments="p1:CorrelationHandle">[correlationHandle1]</p:InArgument>
+              </p1:Receive.CorrelatesWith>
+              <p1:Receive.CorrelationQuery>
+                <p1:CorrelationQuery>
+                  <p1:CorrelationQuery.Select>
+                    <p1:MessageQuerySet>
+                      <p1:XPathMessageQuery x:Key="SessId">//*[local-name()='int']</p1:XPathMessageQuery>
+                    </p1:MessageQuerySet>
+                  </p1:CorrelationQuery.Select>
+                </p1:CorrelationQuery>
+              </p1:Receive.CorrelationQuery>
+              <p:OutArgument x:TypeArguments="x:Int32">[WfInstID]</p:OutArgument>
+            </p1:Receive>
+          </p:PickBranch.Trigger>
+          <p:Sequence>
+            <p:Switch x:TypeArguments="x:Int32" Expression="[currentState]">
+              <p:Switch.Default>
+                <p:WriteLine>["Invalid transition: Cannot transition from current state to Off State"]</p:WriteLine>
+              </p:Switch.Default>
+              <p:Sequence x:Key="1">
+                <p:Assign>
+                  <p:Assign.To>
+                    <p:OutArgument x:TypeArguments="x:Int32">[currentState]</p:OutArgument>
+                  </p:Assign.To>
+                  <p:Assign.Value>
+                    <p:InArgument x:TypeArguments="x:Int32">[3]</p:InArgument>
+                  </p:Assign.Value>
+                </p:Assign>
+                <p:WriteLine>["Transitioned from Start to Off"]</p:WriteLine>
+              </p:Sequence>
+              <p:Sequence x:Key="2">
+                <p:Assign>
+                  <p:Assign.To>
+                    <p:OutArgument x:TypeArguments="x:Int32">[currentState]</p:OutArgument>
+                  </p:Assign.To>
+                  <p:Assign.Value>
+                    <p:InArgument x:TypeArguments="x:Int32">[3]</p:InArgument>
+                  </p:Assign.Value>
+                </p:Assign>
+                <p:WriteLine>["Transitioned from Stop to Off"]</p:WriteLine>
+              </p:Sequence>
+            </p:Switch>
+            <p1:SendReply Request="{x:Reference Name=__ReferenceID3}" DisplayName="SendReplyToReceive" ValueType="x:Int32">
+              <p1:SendReply.CorrelatesWith>
+                <p:InArgument x:TypeArguments="p1:CorrelationHandle">[correlationHandle1]</p:InArgument>
+              </p1:SendReply.CorrelatesWith>
+              <p:InArgument x:TypeArguments="x:Int32">[currentState]</p:InArgument>
+            </p1:SendReply>
+          </p:Sequence>
+        </p:PickBranch>
+      </p:Pick>
+    </p:FlowStep>
+    <x:Reference>__ReferenceID4</x:Reference>
+    <x:Reference>__ReferenceID5</x:Reference>
+    <p:FlowStep Next="{x:Reference Name=__ReferenceID0}" x:Name="__ReferenceID6">
+      <sadv:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, s:Object">
+          <av:Point x:Key="ShapeLocation">240,108</av:Point>
+          <av:Size x:Key="ShapeSize">228.21,71.9209375</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">354.105,174.9209375 354.105,226.361666666667 205,226.361666666667 205,236.361666666667</av:PointCollection>
+        </scg:Dictionary>
+      </sadv:WorkflowViewStateService.ViewState>
+      <p:Assign>
+        <p:Assign.To>
+          <p:OutArgument x:TypeArguments="x:Int32">[currentState]</p:OutArgument>
+        </p:Assign.To>
+        <p:Assign.Value>
+          <p:InArgument x:TypeArguments="x:Int32">[0]</p:InArgument>
+        </p:Assign.Value>
+      </p:Assign>
+    </p:FlowStep>
+  </p:Flowchart>
+</p:Activity>

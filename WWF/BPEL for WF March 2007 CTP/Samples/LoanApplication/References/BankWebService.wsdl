@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/"
+                  xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+                  xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+                  xmlns:tns="http://tempuri.org/"
+                  xmlns:s="http://www.w3.org/2001/XMLSchema"
+                  xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+                  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+                  targetNamespace="http://tempuri.org/"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process"
+                  xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link">
+
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetLoanQuote">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RequestId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="CreditReportId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLoanQuoteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetLoanQuoteResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetLoanQuoteSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLoanQuote" />
+  </wsdl:message>
+  <wsdl:message name="GetLoanQuoteSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLoanQuoteResponse" />
+  </wsdl:message>
+  <wsdl:portType name="BankWebServiceSoap">
+    <wsdl:operation name="GetLoanQuote">
+      <wsdl:input message="tns:GetLoanQuoteSoapIn" />
+      <wsdl:output message="tns:GetLoanQuoteSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BankWebServiceSoap" type="tns:BankWebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetLoanQuote">
+      <soap:operation soapAction="http://tempuri.org/GetLoanQuote" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BankWebServiceSoap12" type="tns:BankWebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetLoanQuote">
+      <soap12:operation soapAction="http://tempuri.org/GetLoanQuote" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BankWebService">
+    <wsdl:port name="BankWebServiceSoap" binding="tns:BankWebServiceSoap">
+      <soap:address location="http://localhost:8080/BankWebService/BankWebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="BankWebServiceSoap12" binding="tns:BankWebServiceSoap12">
+      <soap12:address location="http://localhost:8080/BankWebService/BankWebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+
+  <plnk:partnerLinkType name="InternationalBankLink">
+    <plnk:role name="Banker">
+      <plnk:portType name="BankWebServiceSoap"/>
+    </plnk:role>
+  </plnk:partnerLinkType>
+
+  <bpws:property name="BankProperty" type="xsd:string"/>
+
+  <bpws:propertyAlias propertyName="BankProperty"
+                      messageType="GetLoanQuoteSoapIn"
+                      part="parameters"
+                      query="/tns:parameters/tns:RequestId"/>
+
+</wsdl:definitions>

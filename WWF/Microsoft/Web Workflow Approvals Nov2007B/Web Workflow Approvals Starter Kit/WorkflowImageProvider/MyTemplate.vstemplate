@@ -1,0 +1,34 @@
+<VSTemplate Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>WorkflowImageProvider</Name>
+    <Description>&lt;No description available&gt;</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>WorkflowImageProvider</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="WorkflowImageProvider.csproj" File="WorkflowImageProvider.csproj" ReplaceParameters="true">
+      <ProjectItem ReplaceParameters="false" TargetFileName="key.snk">key.snk</ProjectItem>
+      <Folder Name="Properties" TargetFolderName="Properties">
+        <ProjectItem ReplaceParameters="true" TargetFileName="AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
+      </Folder>
+      <Folder Name="WorkflowDesigner" TargetFolderName="WorkflowDesigner">
+        <ProjectItem ReplaceParameters="true" TargetFileName="Services.cs">Services.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="WorkflowDesignerControl.cs">WorkflowDesignerControl.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="WorkflowDesignerControl.designer.cs">WorkflowDesignerControl.designer.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="WorkflowDesignerControl.resx">WorkflowDesignerControl.resx</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="WorkflowDesignerLoader.cs">WorkflowDesignerLoader.cs</ProjectItem>
+      </Folder>
+      <Folder Name="WorkflowImageHandler" TargetFolderName="WorkflowImageHandler">
+        <ProjectItem ReplaceParameters="true" TargetFileName="WFImageHandler.cs">WFImageHandler.cs</ProjectItem>
+      </Folder>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

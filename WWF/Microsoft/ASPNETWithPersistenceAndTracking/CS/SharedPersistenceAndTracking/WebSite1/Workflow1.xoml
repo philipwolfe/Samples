@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?><ns0:BaseOrderWorkflow InitialStateName="WaitingForOrderState" x:Name="Workflow1" DynamicUpdateCondition="{x:Null}" CompletedStateName="OrderCompletedState" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:WorkflowLibrary1;Assembly=WorkflowLibrary1, Version=3.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<StateActivity x:Name="WaitingForOrderState">
+		<EventDrivenActivity x:Name="OrderCreatedEvent">
+			<HandleExternalEventActivity x:Name="handleExternalEventActivity1" EventName="OrderCreated" InterfaceType="{x:Type OrderLocalServices.IOrderService}" Invoked="{ActivityBind Workflow1,Path=OrderCreated_Invoked}">
+				<HandleExternalEventActivity.ParameterBindings>
+					<WorkflowParameterBinding ParameterName="sender">
+						<WorkflowParameterBinding.Value>
+							<ActivityBind Name="Workflow1" Path="OrderSender" />
+						</WorkflowParameterBinding.Value>
+					</WorkflowParameterBinding>
+					<WorkflowParameterBinding ParameterName="e">
+						<WorkflowParameterBinding.Value>
+							<ActivityBind Name="Workflow1" Path="OrderEvtArgs" />
+						</WorkflowParameterBinding.Value>
+					</WorkflowParameterBinding>
+				</HandleExternalEventActivity.ParameterBindings>
+			</HandleExternalEventActivity>
+			<SetStateActivity x:Name="setStateActivity1" TargetStateName="OrderOpenState" />
+		</EventDrivenActivity>
+	</StateActivity>
+	<StateActivity x:Name="OrderOpenState">
+		<EventDrivenActivity x:Name="OrderUpdatedEvent">
+			<HandleExternalEventActivity x:Name="handleExternalEventActivity2" EventName="OrderUpdated" InterfaceType="{x:Type OrderLocalServices.IOrderService}">
+				<HandleExternalEventActivity.ParameterBindings>
+					<WorkflowParameterBinding ParameterName="e">
+						<WorkflowParameterBinding.Value>
+							<ActivityBind Name="Workflow1" Path="OrderEvtArgs" />
+						</WorkflowParameterBinding.Value>
+					</WorkflowParameterBinding>
+					<WorkflowParameterBinding ParameterName="sender">
+						<WorkflowParameterBinding.Value>
+							<ActivityBind Name="Workflow1" Path="OrderSender" />
+						</WorkflowParameterBinding.Value>
+					</WorkflowParameterBinding>
+				</HandleExternalEventActivity.ParameterBindings>
+			</HandleExternalEventActivity>
+			<SetStateActivity x:Name="setStateActivity2" TargetStateName="OrderOpenState" />
+		</EventDrivenActivity>
+		<EventDrivenActivity x:Name="OrderProcessedEvent">
+			<HandleExternalEventActivity x:Name="handleExternalEventActivity3" EventName="OrderProcessed" InterfaceType="{x:Type OrderLocalServices.IOrderService}">
+				<HandleExternalEventActivity.ParameterBindings>
+					<WorkflowParameterBinding ParameterName="e">
+						<WorkflowParameterBinding.Value>
+							<ActivityBind Name="Workflow1" Path="OrderEvtArgs" />
+						</WorkflowParameterBinding.Value>
+					</WorkflowParameterBinding>
+					<WorkflowParameterBinding ParameterName="sender">
+						<WorkflowParameterBinding.Value>
+							<ActivityBind Name="Workflow1" Path="OrderSender" />
+						</WorkflowParameterBinding.Value>
+					</WorkflowParameterBinding>
+				</HandleExternalEventActivity.ParameterBindings>
+			</HandleExternalEventActivity>
+			<SetStateActivity x:Name="setStateActivity3" TargetStateName="OrderProcessedState" />
+		</EventDrivenActivity>
+		<EventDrivenActivity x:Name="eventDrivenActivity1">
+			<DelayActivity TimeoutDuration="00:00:10" x:Name="delayActivity1" />
+			<SetStateActivity x:Name="setStateActivity6" TargetStateName="OrderCompletedState" />
+		</EventDrivenActivity>
+	</StateActivity>
+	<StateActivity x:Name="OrderProcessedState">
+		<EventDrivenActivity x:Name="OrderUpdatedEvent2">
+			<HandleExternalEventActivity x:Name="handleExternalEventActivity5" EventName="OrderUpdated" InterfaceType="{x:Type OrderLocalServices.IOrderService}">
+				<HandleExternalEventActivity.ParameterBindings>
+					<WorkflowParameterBinding ParameterName="e">
+						<WorkflowParameterBinding.Value>
+							<ActivityBind Name="Workflow1" Path="OrderEvtArgs" />
+						</WorkflowParameterBinding.Value>
+					</WorkflowParameterBinding>
+					<WorkflowParameterBinding ParameterName="sender">
+						<WorkflowParameterBinding.Value>
+							<ActivityBind Name="Workflow1" Path="OrderSender" />
+						</WorkflowParameterBinding.Value>
+					</WorkflowParameterBinding>
+				</HandleExternalEventActivity.ParameterBindings>
+			</HandleExternalEventActivity>
+			<SetStateActivity x:Name="setStateActivity5" TargetStateName="OrderOpenState" />
+		</EventDrivenActivity>
+		<EventDrivenActivity x:Name="OrderCanceled">
+			<HandleExternalEventActivity x:Name="handleExternalEventActivity4" EventName="OrderCanceled" InterfaceType="{x:Type OrderLocalServices.IOrderService}">
+				<HandleExternalEventActivity.ParameterBindings>
+					<WorkflowParameterBinding ParameterName="e">
+						<WorkflowParameterBinding.Value>
+							<ActivityBind Name="Workflow1" Path="OrderEvtArgs" />
+						</WorkflowParameterBinding.Value>
+					</WorkflowParameterBinding>
+					<WorkflowParameterBinding ParameterName="sender">
+						<WorkflowParameterBinding.Value>
+							<ActivityBind Name="Workflow1" Path="OrderSender" />
+						</WorkflowParameterBinding.Value>
+					</WorkflowParameterBinding>
+				</HandleExternalEventActivity.ParameterBindings>
+			</HandleExternalEventActivity>
+			<TerminateActivity x:Name="terminateActivity1" Error="{ActivityBind Workflow1,Path=OrderCanceledError}" />
+		</EventDrivenActivity>
+		<EventDrivenActivity x:Name="OrderShippedEvent">
+			<HandleExternalEventActivity x:Name="handleExternalEventActivity6" EventName="OrderShipped" InterfaceType="{x:Type OrderLocalServices.IOrderService}" Invoked="{ActivityBind Workflow1,Path=OrderShipped_Invoked}">
+				<HandleExternalEventActivity.ParameterBindings>
+					<WorkflowParameterBinding ParameterName="e">
+						<WorkflowParameterBinding.Value>
+							<ActivityBind Name="Workflow1" Path="OrderEvtArgs" />
+						</WorkflowParameterBinding.Value>
+					</WorkflowParameterBinding>
+					<WorkflowParameterBinding ParameterName="sender">
+						<WorkflowParameterBinding.Value>
+							<ActivityBind Name="Workflow1" Path="OrderSender" />
+						</WorkflowParameterBinding.Value>
+					</WorkflowParameterBinding>
+				</HandleExternalEventActivity.ParameterBindings>
+			</HandleExternalEventActivity>
+			<SetStateActivity x:Name="setStateActivity4" TargetStateName="OrderCompletedState" />
+		</EventDrivenActivity>
+	</StateActivity>
+	<StateActivity x:Name="OrderCompletedState" />
+</ns0:BaseOrderWorkflow>

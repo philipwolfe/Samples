@@ -1,0 +1,511 @@
+package Microsoft.Samples; 
+
+//---------------------------------------------------------------------
+//  This file is part of the Microsoft .NET Framework SDK Code Samples.
+// 
+//  Copyright (C) Microsoft Corporation.  All rights reserved.
+// 
+//This source code is intended only as a supplement to Microsoft
+//Development Tools and/or on-line documentation.  See these other
+//materials for detailed information regarding Microsoft code samples.
+// 
+//THIS CODE AND INFORMATION ARE PROVIDED AS IS WITHOUT WARRANTY OF ANY
+//KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+//IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+//PARTICULAR PURPOSE.
+//---------------------------------------------------------------------
+
+import System.*;
+import System.Drawing.*;
+import System.Collections.*;
+import System.ComponentModel.*;
+import System.Windows.Forms.*;
+import System.Data.*;
+import System.Reflection.*;
+import System.IO.*;
+import Microsoft.VisualBasic.*;
+import System.Globalization.*;
+
+/// <summary>
+/// Summary description for form.
+/// </summary>
+class Form1 extends System.Windows.Forms.Form
+{
+    /// <summary>
+    /// Required designer variable.
+    /// </summary>
+    private System.ComponentModel.IContainer components = null;
+    private IPv5 ip;
+	private Label label4;
+	private Label label3;
+	private ComboBox copyMaskFormatComboBox;
+	private ComboBox textMaskFormatComboBox;
+    private static int logCount = 1;
+
+    public Form1()
+    {
+        InitializeComponent();
+    } //Form1
+
+    // Event handlers
+    private void Form1_Load(Object sender, System.EventArgs e)
+    {
+        // Add items to the ComboBoxes
+        this.prompCharComboBox.get_Items().
+            AddRange(new Object[] { "_", " ", "$", "#", "N", "A" });
+
+        this.passwordCharCombo.get_Items().
+            AddRange(new Object[] { " ", "*", "#", "^", "P", "O" });
+
+		this.textMaskFormatComboBox.get_Items().AddRange(Enum.GetNames(MaskFormat.class.ToType()));
+		this.copyMaskFormatComboBox.get_Items().AddRange(Enum.GetNames(MaskFormat.class.ToType()));
+
+        // Sync up properties UI to MaskedTextBox
+        SyncUIToControl();
+
+        // Setup MaskedTextBox validating type
+        this.maskedTextBox1.set_ValidatingType(IPv5.class.ToType());
+
+        // Bind outPutTextBox.Text to MaskedTextBox.Text
+        this.outputTextBox.get_DataBindings().Add(new Binding("Text", 
+            this.maskedTextBox1, "Text", false, DataSourceUpdateMode.OnPropertyChanged, 
+            CultureInfo.get_CurrentCulture()));
+
+    } //Form1_Load
+
+    private void maskedTextBox1_MaskInputRejected(Object sender, 
+        System.Windows.Forms.MaskInputRejectedEventArgs e)
+    {
+        AppendLog("Mask input rejected at position: " 
+            + System.Convert.ToString(e.get_Position()).
+            ToString(CultureInfo.get_CurrentCulture()));
+        this.eventLogTextBox.ScrollToCaret();
+    } //maskedTextBox1_MaskInputRejected
+
+    private void maskedTextBox1_TypeValidationCompleted(Object sender, 
+        System.Windows.Forms.TypeValidationEventArgs e)
+    {
+        if (e.get_IsValidInput()) {
+            AppendLog("Type validation succeeded.  Message: " + e.get_Message());
+            ip = (IPv5)e.get_ReturnValue();
+        }  
+        else {
+            ip = IPv5.get_InvalidIPv5();
+            AppendLog("Type validation failed.  Message: " + e.get_Message());
+            this.eventLogTextBox.ScrollToCaret();
+        }
+    } //maskedTextBox1_TypeValidationCompleted
+
+    // Methods
+    private void SyncUIToControl()
+    {
+        this.hidePromptOnLeaveCheckBox.set_Checked(this.maskedTextBox1.
+            get_HidePromptOnLeave());
+
+        this.useSystemPasswordCharCheckBox.set_Checked(this.maskedTextBox1.
+            get_UseSystemPasswordChar());
+
+        this.beepOnErrorCheckBox.set_Checked(this.maskedTextBox1.
+            get_BeepOnError());
+
+		this.passwordCharCombo.set_SelectedIndex(0);
+        
+		this.prompCharComboBox.set_SelectedIndex(0);
+
+		this.textMaskFormatComboBox.set_SelectedIndex(3);
+
+		this.copyMaskFormatComboBox.set_SelectedIndex(3);
+		
+		// Set the insert mode checkbox
+        if ((this.maskedTextBox1.get_InsertKeyMode()).Equals(InsertKeyMode.Insert)) 
+           this.insertKeyModeCheckBox.set_Checked(false);
+        else
+		    this.insertKeyModeCheckBox.set_Checked(true);
+        		
+        // Set read only properties 
+        this.maskCompletedStatusStripPanel.set_Text("Mask Completed: " 
+            + System.Convert.ToString(this.maskedTextBox1.get_MaskCompleted()));
+
+        this.maskFullStatusStripPanel.set_Text("Mask Full: " 
+            + System.Convert.ToString(this.maskedTextBox1.get_MaskFull()));
+
+    } //SyncUIToControl
+
+    private void maskedTextBox1_TextChanged(Object sender, System.EventArgs e)
+    {
+        this.maskCompletedStatusStripPanel.set_Text("Mask Completed: " 
+            + System.Convert.ToString(this.maskedTextBox1.get_MaskCompleted()));
+
+        this.maskFullStatusStripPanel.set_Text("Mask Full: " 
+            + System.Convert.ToString(this.maskedTextBox1.get_MaskFull()));
+
+    } //maskedTextBox1_TextChanged
+
+    private void propertyCheckBox_CheckedChanged(Object sender, 
+        System.EventArgs e)
+    {
+        // Cast the sender to a CheckBox
+        CheckBox cb = (CheckBox)sender;
+
+        // Make sure we don't have a null ref
+        if (cb != null) {        
+
+            // Switch on the CheckBoxes name and 
+            // set the corresponding property value
+            if (cb.get_Name().Equals("hidePromptOnLeaveCheckBox")) {
+                this.maskedTextBox1.set_HidePromptOnLeave(cb.get_Checked());
+            }
+
+            if (cb.get_Name().Equals("useSystemPasswordCharCheckBox")) {
+                this.maskedTextBox1.set_UseSystemPasswordChar(cb.get_Checked());
+            }
+
+            if (cb.get_Name().Equals("beepOnErrorCheckBox")) {
+                this.maskedTextBox1.set_BeepOnError(cb.get_Checked());
+            }
+
+			if (cb.get_Name().Equals("insertKeyModeCheckBox"))
+			{
+				if (cb.get_Checked())
+				{
+					this.maskedTextBox1.set_InsertKeyMode(InsertKeyMode.Insert);
+				}
+				else
+				{
+					this.maskedTextBox1.set_InsertKeyMode(InsertKeyMode.Overwrite);
+				}
+			}
+		}
+    } //propertyCheckBox_CheckedChanged
+
+    private void passwordCharCombo_SelectedIndexChanged(Object sender, System.EventArgs e)
+    {
+        try {
+            // Set the PasswordChar
+            char pwdChar = System.Convert.ToChar(this.passwordCharCombo.
+                 get_SelectedItem().ToString().ToCharArray().get_Item(0));
+     
+			// Special case a space as the null char
+            if (pwdChar == ' ') {
+                pwdChar = '\0';
+            }
+            this.maskedTextBox1.set_PasswordChar(pwdChar);
+			}
+        
+			catch (InvalidOperationException ex) {
+				MessageBox.Show(ex.get_Message());
+				this.passwordCharCombo.set_SelectedIndex(0);
+			}
+
+    } //passwordCharCombo_SelectedIndexChanged
+
+    private void prompCharComboBox_SelectedIndexChanged(Object sender, System.EventArgs e)
+    {
+        try 
+		{
+            // Set the PromptChar 
+            this.maskedTextBox1.set_PromptChar(System.Convert.ToChar(this.
+                prompCharComboBox.get_SelectedItem().ToString().
+                ToCharArray().get_Item(0)));
+        }
+
+        catch (InvalidOperationException ex) {
+            MessageBox.Show(ex.get_Message());
+            this.prompCharComboBox.set_SelectedIndex(0);
+        }
+
+    } //prompCharComboBox_SelectedIndexChanged
+
+	private void textMaskFormatComboBox_SelectedIndexChanged(Object sender, EventArgs e)
+	{
+		this.maskedTextBox1.set_TextMaskFormat((MaskFormat)Enum.Parse(MaskFormat.class.ToType(), this.textMaskFormatComboBox.get_SelectedItem().ToString()));
+	}
+
+	private void copyMaskFormatComboBox_SelectedIndexChanged(Object sender, EventArgs e)
+	{
+		this.maskedTextBox1.set_CutCopyMaskFormat((MaskFormat)Enum.Parse(MaskFormat.class.ToType(), this.textMaskFormatComboBox.get_SelectedItem().ToString()));
+	}
+	
+	private void button1_Click(Object sender, System.EventArgs e)
+    {
+        MessageBox.Show("IP Address: " + ip.ToString(), "MaskedTextBox.Value", MessageBoxButtons.OK);
+
+    } //button1_Click
+
+    private void AppendLog(String msg)
+    {
+        this.eventLogTextBox.AppendText(logCount + ". " + msg + "\r\n");
+        logCount++;
+
+    } //AppendLog
+
+
+
+    /// <summary>
+    /// Required method for Designer support - do not modify
+    /// the contents of this method with the code editor.
+    /// </summary>
+    private void InitializeComponent()
+    {
+		this.components = new System.ComponentModel.Container();
+		System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(Form1.class.ToType());
+		this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+		this.maskCompletedStatusStripPanel = new System.Windows.Forms.ToolStripStatusLabel();
+		this.maskFullStatusStripPanel = new System.Windows.Forms.ToolStripStatusLabel();
+		this.propertiesGroupBox = new System.Windows.Forms.GroupBox();
+		this.label4 = new System.Windows.Forms.Label();
+		this.label3 = new System.Windows.Forms.Label();
+		this.copyMaskFormatComboBox = new System.Windows.Forms.ComboBox();
+		this.textMaskFormatComboBox = new System.Windows.Forms.ComboBox();
+		this.insertKeyModeCheckBox = new System.Windows.Forms.CheckBox();
+		this.beepOnErrorCheckBox = new System.Windows.Forms.CheckBox();
+		this.hidePromptOnLeaveCheckBox = new System.Windows.Forms.CheckBox();
+		this.prompCharComboBox = new System.Windows.Forms.ComboBox();
+		this.promptCharLabel = new System.Windows.Forms.Label();
+		this.useSystemPasswordCharCheckBox = new System.Windows.Forms.CheckBox();
+		this.eventLogTextBox = new System.Windows.Forms.TextBox();
+		this.eventLogLabel = new System.Windows.Forms.Label();
+		this.passwordCharLabel = new System.Windows.Forms.Label();
+		this.passwordCharCombo = new System.Windows.Forms.ComboBox();
+		this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+		this.label1 = new System.Windows.Forms.Label();
+		this.label2 = new System.Windows.Forms.Label();
+		this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+		this.outputTextBox = new System.Windows.Forms.TextBox();
+		this.button1 = new System.Windows.Forms.Button();
+		this.statusStrip1.SuspendLayout();
+		this.propertiesGroupBox.SuspendLayout();
+		this.SuspendLayout();
+		// 
+		// statusStrip1
+		// 
+		this.statusStrip1.get_Items().AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.maskCompletedStatusStripPanel,
+            this.maskFullStatusStripPanel}
+		);
+		resources.ApplyResources(this.statusStrip1, "statusStrip1");
+		this.statusStrip1.set_Name("statusStrip1");
+		// 
+		// maskCompletedStatusStripPanel
+		// 
+		this.maskCompletedStatusStripPanel.set_Name("maskCompletedStatusStripPanel");
+		resources.ApplyResources(this.maskCompletedStatusStripPanel, "maskCompletedStatusStripPanel");
+		// 
+		// maskFullStatusStripPanel
+		// 
+		this.maskFullStatusStripPanel.set_Name("maskFullStatusStripPanel");
+		resources.ApplyResources(this.maskFullStatusStripPanel, "maskFullStatusStripPanel");
+		// 
+		// propertiesGroupBox
+		// 
+		this.propertiesGroupBox.get_Controls().Add(this.label4);
+		this.propertiesGroupBox.get_Controls().Add(this.label3);
+		this.propertiesGroupBox.get_Controls().Add(this.copyMaskFormatComboBox);
+		this.propertiesGroupBox.get_Controls().Add(this.textMaskFormatComboBox);
+		this.propertiesGroupBox.get_Controls().Add(this.insertKeyModeCheckBox);
+		this.propertiesGroupBox.get_Controls().Add(this.beepOnErrorCheckBox);
+		this.propertiesGroupBox.get_Controls().Add(this.hidePromptOnLeaveCheckBox);
+		this.propertiesGroupBox.get_Controls().Add(this.prompCharComboBox);
+		this.propertiesGroupBox.get_Controls().Add(this.promptCharLabel);
+		this.propertiesGroupBox.get_Controls().Add(this.useSystemPasswordCharCheckBox);
+		this.propertiesGroupBox.get_Controls().Add(this.eventLogTextBox);
+		this.propertiesGroupBox.get_Controls().Add(this.eventLogLabel);
+		this.propertiesGroupBox.get_Controls().Add(this.passwordCharLabel);
+		this.propertiesGroupBox.get_Controls().Add(this.passwordCharCombo);
+		resources.ApplyResources(this.propertiesGroupBox, "propertiesGroupBox");
+		this.propertiesGroupBox.set_Name("propertiesGroupBox");
+		this.propertiesGroupBox.set_TabStop(false);
+		// 
+		// label4
+		// 
+		resources.ApplyResources(this.label4, "label4");
+		this.label4.set_Name("label4");
+		this.toolTip1.SetToolTip(this.label4, resources.GetString("label4.ToolTip"));
+		// 
+		// label3
+		// 
+		resources.ApplyResources(this.label3, "label3");
+		this.label3.set_Name("label3");
+		this.toolTip1.SetToolTip(this.label3, resources.GetString("label3.ToolTip"));
+		// 
+		// copyMaskFormatComboBox
+		// 
+		this.copyMaskFormatComboBox.set_FormattingEnabled(true);
+		resources.ApplyResources(this.copyMaskFormatComboBox, "copyMaskFormatComboBox");
+		this.copyMaskFormatComboBox.set_Name("copyMaskFormatComboBox");
+		this.toolTip1.SetToolTip(this.copyMaskFormatComboBox, resources.GetString("copyMaskFormatComboBox.ToolTip"));
+		this.copyMaskFormatComboBox.add_SelectedIndexChanged(new System.EventHandler(this.copyMaskFormatComboBox_SelectedIndexChanged));
+		// 
+		// textMaskFormatComboBox
+		// 
+		this.textMaskFormatComboBox.set_FormattingEnabled(true);
+		resources.ApplyResources(this.textMaskFormatComboBox, "textMaskFormatComboBox");
+		this.textMaskFormatComboBox.set_Name("textMaskFormatComboBox");
+		this.toolTip1.SetToolTip(this.textMaskFormatComboBox, resources.GetString("textMaskFormatComboBox.ToolTip"));
+		this.textMaskFormatComboBox.add_SelectedIndexChanged(new System.EventHandler(this.textMaskFormatComboBox_SelectedIndexChanged));
+		// 
+		// insertKeyModeCheckBox
+		// 
+		resources.ApplyResources(this.insertKeyModeCheckBox, "insertKeyModeCheckBox");
+		this.insertKeyModeCheckBox.set_Name("insertKeyModeCheckBox");
+		this.toolTip1.SetToolTip(this.insertKeyModeCheckBox, resources.GetString("insertKeyModeCheckBox.ToolTip"));
+		this.insertKeyModeCheckBox.add_CheckedChanged(new System.EventHandler(this.propertyCheckBox_CheckedChanged));
+		// 
+		// beepOnErrorCheckBox
+		// 
+		resources.ApplyResources(this.beepOnErrorCheckBox, "beepOnErrorCheckBox");
+		this.beepOnErrorCheckBox.set_Name("beepOnErrorCheckBox");
+		this.toolTip1.SetToolTip(this.beepOnErrorCheckBox, resources.GetString("beepOnErrorCheckBox.ToolTip"));
+		this.beepOnErrorCheckBox.add_CheckedChanged(new System.EventHandler(this.propertyCheckBox_CheckedChanged));
+		// 
+		// hidePromptOnLeaveCheckBox
+		// 
+		resources.ApplyResources(this.hidePromptOnLeaveCheckBox, "hidePromptOnLeaveCheckBox");
+		this.hidePromptOnLeaveCheckBox.set_Name("hidePromptOnLeaveCheckBox");
+		this.toolTip1.SetToolTip(this.hidePromptOnLeaveCheckBox, resources.GetString("hidePromptOnLeaveCheckBox.ToolTip"));
+		this.hidePromptOnLeaveCheckBox.add_CheckedChanged(new System.EventHandler(this.propertyCheckBox_CheckedChanged));
+		// 
+		// prompCharComboBox
+		// 
+		this.prompCharComboBox.set_FormattingEnabled(true);
+		resources.ApplyResources(this.prompCharComboBox, "prompCharComboBox");
+		this.prompCharComboBox.set_Name("prompCharComboBox");
+		this.toolTip1.SetToolTip(this.prompCharComboBox, resources.GetString("prompCharComboBox.ToolTip"));
+		this.prompCharComboBox.add_SelectedIndexChanged(new System.EventHandler(this.prompCharComboBox_SelectedIndexChanged));
+		// 
+		// promptCharLabel
+		// 
+		resources.ApplyResources(this.promptCharLabel, "promptCharLabel");
+		this.promptCharLabel.set_Name("promptCharLabel");
+		this.toolTip1.SetToolTip(this.promptCharLabel, resources.GetString("promptCharLabel.ToolTip"));
+		// 
+		// useSystemPasswordCharCheckBox
+		// 
+		resources.ApplyResources(this.useSystemPasswordCharCheckBox, "useSystemPasswordCharCheckBox");
+		this.useSystemPasswordCharCheckBox.set_Name("useSystemPasswordCharCheckBox");
+		this.toolTip1.SetToolTip(this.useSystemPasswordCharCheckBox, resources.GetString("useSystemPasswordCharCheckBox.ToolTip"));
+		this.useSystemPasswordCharCheckBox.add_CheckedChanged(new System.EventHandler(this.propertyCheckBox_CheckedChanged));
+		// 
+		// eventLogTextBox
+		// 
+		this.eventLogTextBox.set_BackColor(System.Drawing.SystemColors.get_Window());
+		resources.ApplyResources(this.eventLogTextBox, "eventLogTextBox");
+		this.eventLogTextBox.set_Name("eventLogTextBox");
+		this.eventLogTextBox.set_ReadOnly(true);
+		this.toolTip1.SetToolTip(this.eventLogTextBox, resources.GetString("eventLogTextBox.ToolTip"));
+		// 
+		// eventLogLabel
+		// 
+		resources.ApplyResources(this.eventLogLabel, "eventLogLabel");
+		this.eventLogLabel.set_Name("eventLogLabel");
+		this.toolTip1.SetToolTip(this.eventLogLabel, resources.GetString("eventLogLabel.ToolTip"));
+		// 
+		// passwordCharLabel
+		// 
+		resources.ApplyResources(this.passwordCharLabel, "passwordCharLabel");
+		this.passwordCharLabel.set_Name("passwordCharLabel");
+		this.toolTip1.SetToolTip(this.passwordCharLabel, resources.GetString("passwordCharLabel.ToolTip"));
+		// 
+		// passwordCharCombo
+		// 
+		this.passwordCharCombo.set_FormattingEnabled(true);
+		resources.ApplyResources(this.passwordCharCombo, "passwordCharCombo");
+		this.passwordCharCombo.set_Name("passwordCharCombo");
+		this.toolTip1.SetToolTip(this.passwordCharCombo, resources.GetString("passwordCharCombo.ToolTip"));
+		this.passwordCharCombo.add_SelectedIndexChanged(new System.EventHandler(this.passwordCharCombo_SelectedIndexChanged));
+		// 
+		// label1
+		// 
+		resources.ApplyResources(this.label1, "label1");
+		this.label1.set_Name("label1");
+		this.toolTip1.SetToolTip(this.label1, resources.GetString("label1.ToolTip"));
+		// 
+		// label2
+		// 
+		resources.ApplyResources(this.label2, "label2");
+		this.label2.set_Name("label2");
+		this.toolTip1.SetToolTip(this.label2, resources.GetString("label2.ToolTip"));
+		// 
+		// maskedTextBox1
+		// 
+		this.maskedTextBox1.set_CutCopyMaskFormat(System.Windows.Forms.MaskFormat.IncludeLiterals);
+		this.maskedTextBox1.set_HidePromptOnLeave(false);
+		resources.ApplyResources(this.maskedTextBox1, "maskedTextBox1");
+		this.maskedTextBox1.set_Name("maskedTextBox1");
+		this.maskedTextBox1.set_TextMaskFormat(System.Windows.Forms.MaskFormat.IncludeLiterals);
+		this.toolTip1.SetToolTip(this.maskedTextBox1, resources.GetString("maskedTextBox1.ToolTip"));
+		this.maskedTextBox1.add_MaskInputRejected(new System.Windows.Forms.MaskInputRejectedEventHandler(this.maskedTextBox1_MaskInputRejected));
+		this.maskedTextBox1.add_TextChanged(new System.EventHandler(this.maskedTextBox1_TextChanged));
+		this.maskedTextBox1.add_TypeValidationCompleted(new System.Windows.Forms.TypeValidationEventHandler(this.maskedTextBox1_TypeValidationCompleted));
+		// 
+		// outputTextBox
+		// 
+		this.outputTextBox.set_BackColor(System.Drawing.SystemColors.get_Window());
+		resources.ApplyResources(this.outputTextBox, "outputTextBox");
+		this.outputTextBox.set_Name("outputTextBox");
+		this.outputTextBox.set_ReadOnly(true);
+		this.toolTip1.SetToolTip(this.outputTextBox, resources.GetString("outputTextBox.ToolTip"));
+		// 
+		// button1
+		// 
+		resources.ApplyResources(this.button1, "button1");
+		this.button1.set_Name("button1");
+		this.button1.add_Click(new System.EventHandler(this.button1_Click));
+		// 
+		// Form1
+		// 
+		resources.ApplyResources(this, "$this");
+		this.get_Controls().Add(this.button1);
+		this.get_Controls().Add(this.outputTextBox);
+		this.get_Controls().Add(this.label2);
+		this.get_Controls().Add(this.label1);
+		this.get_Controls().Add(this.maskedTextBox1);
+		this.get_Controls().Add(this.propertiesGroupBox);
+		this.get_Controls().Add(this.statusStrip1);
+		this.set_Name("Form1");
+		this.add_Load(new System.EventHandler(this.Form1_Load));
+		this.statusStrip1.ResumeLayout(false);
+		this.statusStrip1.PerformLayout();
+		this.propertiesGroupBox.ResumeLayout(false);
+		this.propertiesGroupBox.PerformLayout();
+		this.ResumeLayout(false);
+		this.PerformLayout();
+
+	} //InitializeComponent
+
+    /// <summary>
+    /// Clean up any resources being used.
+    /// </summary>
+    protected void Dispose(boolean disposing)
+    {
+        if (disposing) {
+            if (components != null) {
+                components.Dispose();
+            }
+        }
+        super.Dispose(disposing);
+    } //Dispose
+
+    private System.Windows.Forms.StatusStrip statusStrip1;
+    private System.Windows.Forms.ToolStripStatusLabel maskCompletedStatusStripPanel;
+	private System.Windows.Forms.ToolStripStatusLabel maskFullStatusStripPanel;
+    private System.Windows.Forms.GroupBox propertiesGroupBox;
+    private System.Windows.Forms.Label passwordCharLabel;
+    private System.Windows.Forms.ComboBox passwordCharCombo;
+    private System.Windows.Forms.TextBox eventLogTextBox;
+    private System.Windows.Forms.Label eventLogLabel;
+	private System.Windows.Forms.CheckBox useSystemPasswordCharCheckBox;
+    private System.Windows.Forms.CheckBox hidePromptOnLeaveCheckBox;
+    private System.Windows.Forms.CheckBox beepOnErrorCheckBox;
+    private System.Windows.Forms.CheckBox insertKeyModeCheckBox;
+    private System.Windows.Forms.Label label1;
+    private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+    private System.Windows.Forms.Label promptCharLabel;
+    private System.Windows.Forms.ComboBox prompCharComboBox;
+    private System.Windows.Forms.Label label2;
+    private System.Windows.Forms.TextBox outputTextBox;
+    private System.Windows.Forms.ToolTip toolTip1;
+    private System.Windows.Forms.Button button1;
+} //Form1
+
+

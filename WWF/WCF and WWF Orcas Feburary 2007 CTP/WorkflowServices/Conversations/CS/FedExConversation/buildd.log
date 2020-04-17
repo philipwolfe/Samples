@@ -1,0 +1,60 @@
+Executing prebuild scripts  ********************
+Performing prebuild steps...
+1>'c:\netfx35\public\ext\tools\buildpre.cmd -c'
+1>
+1>C:\NetFx35\private\samples\NetFx\sdk\WorkflowServices\Conversations\CS\FedExConversation>call c:\netfx35\public\ext\tools\prebuild.cmd 
+1>
+1>C:\NetFx35\private\samples\NetFx\sdk\WorkflowServices\Conversations\CS\FedExConversation>nmake /nologo /f c:\netfx35\public\ext\tools\prebuild.mak prebuild 
+1>PUBLISHLOG: C:\NetFx35\private\samples\NetFx\sdk\WorkflowServices\Conversations\CS\FedExConversation, c:\netfx35\objd\i386\versions.h, c:\netfx35\public\internal\Base\lib\i386\versions.h, Current, 2007/02/02-18:33:56
+1>PUBLISHLOG: C:\NetFx35\private\samples\NetFx\sdk\WorkflowServices\Conversations\CS\FedExConversation, c:\netfx35\objd\i386\versionsmk.inc, c:\netfx35\public\internal\Base\lib\i386\versionsmk.inc, Current, 2007/02/02-18:33:56
+1>PUBLISHLOG: C:\NetFx35\private\samples\NetFx\sdk\WorkflowServices\Conversations\CS\FedExConversation, c:\netfx35\objd\i386\ndp10.versions.h, c:\netfx35\public\internal\Base\lib\i386\ndp10.versions.h, Current, 2007/02/02-18:33:56
+1>PUBLISHLOG: C:\NetFx35\private\samples\NetFx\sdk\WorkflowServices\Conversations\CS\FedExConversation, c:\netfx35\objd\i386\ndp10.versionsmk.inc, c:\netfx35\public\internal\Base\lib\i386\ndp10.versionsmk.inc, Current, 2007/02/02-18:33:56
+1>PUBLISHLOG: C:\NetFx35\private\samples\NetFx\sdk\WorkflowServices\Conversations\CS\FedExConversation, c:\netfx35\objd\i386\ndp11.versions.h, c:\netfx35\public\internal\Base\lib\i386\ndp11.versions.h, Current, 2007/02/02-18:33:56
+1>PUBLISHLOG: C:\NetFx35\private\samples\NetFx\sdk\WorkflowServices\Conversations\CS\FedExConversation, c:\netfx35\objd\i386\ndp11.versionsmk.inc, c:\netfx35\public\internal\Base\lib\i386\ndp11.versionsmk.inc, Current, 2007/02/02-18:33:56
+1>PUBLISHLOG: C:\NetFx35\private\samples\NetFx\sdk\WorkflowServices\Conversations\CS\FedExConversation, c:\netfx35\objd\i386\ndp20.versions.h, c:\netfx35\public\internal\Base\lib\i386\ndp20.versions.h, Current, 2007/02/02-18:33:56
+1>PUBLISHLOG: C:\NetFx35\private\samples\NetFx\sdk\WorkflowServices\Conversations\CS\FedExConversation, c:\netfx35\objd\i386\ndp20.versionsmk.inc, c:\netfx35\public\internal\Base\lib\i386\ndp20.versionsmk.inc, Current, 2007/02/02-18:33:56
+1>*** COMPUTING ASMMETA BUILD RULES ***
+1>	cscript //nologo //job:genPrebuildRules c:\netfx35\public\ext\tools\prebuild.wsf /out:C:\DOCUME~1\pravini\LOCALS~1\Temp\prebuild6372.inc; c:\netfx35\public\ext\tools\prebuild.xml & REM C:\DOCUME~1\pravini\LOCALS~1\Temp\prebuild6372.inc;
+1>
+1>Stop.
+BUILD: Examining c:\netfx35\private\samples\netfx\sdk\workflowservices\conversations\cs\fedexconversation directory for files to compile.
+Executing PASS0 post process scripts  ********************
+Performing PASS0 post process steps...
+1>'c:\netfx35\public\ext\tools\buildpass0.cmd -c'
+1>
+1>C:\NetFx35\private\samples\NetFx\sdk\WorkflowServices\Conversations\CS\FedExConversation>call c:\netfx35\public\ext\tools\prebuild.cmd /postpass0 
+1>
+1>C:\NetFx35\private\samples\NetFx\sdk\WorkflowServices\Conversations\CS\FedExConversation>nmake /nologo /f c:\netfx35\public\ext\tools\prebuild.mak postpass0 
+1>
+1>Stop.
+Compiling c:\netfx35\private\samples\netfx\sdk\workflowservices\conversations\cs\fedexconversation directory ********************
+1>'NMAKE.EXE /nologo BUILDMSG=Stop. NTTEST= UMTEST= NOLINK=1 386=1'
+1>BUILDMSG: Processing c:\netfx35\private\samples\netfx\sdk\workflowservices\conversations\cs\fedexconversation
+1>BUILD: c:\netfx35\public\ext\tools\x86\genbasemac.pl objd\i386 FedExConversation c:\netfx35\public\ext\sdk\VS8RTM\sdk\lib\coffbase.txt
+1>genbasemac: module FedExConversation not found in c:\netfx35\public\ext\sdk\VS8RTM\sdk\lib\coffbase.txt
+1>
+1>Stop.
+Linking c:\netfx35\private\samples\netfx\sdk\workflowservices\conversations\cs\fedexconversation directory ********************
+1>'NMAKE.EXE /nologo BUILDMSG=Stop. LINKONLY=1 NOPASS0=1 NTTEST= UMTEST= 386=1'
+1>BUILD: c:\netfx35\public\ext\tools\x86\genbasemac.pl objd\i386 FedExConversation c:\netfx35\public\ext\sdk\VS8RTM\sdk\lib\coffbase.txt
+1>genbasemac: module FedExConversation not found in c:\netfx35\public\ext\sdk\VS8RTM\sdk\lib\coffbase.txt
+1>c:\netfx35\private\externals\WF\wfc.exe /target:ASSEMBLY /out:objd\i386\FedExConversation.exe /r:System.dll /r:System.Xml.dll /r:c:\netfx35\private\externals\WCF\System.ServiceModel.dll /r:c:\netfx35\private\externals\WCF\System.Runtime.Serialization.dll /r:c:\netfx35\private\externals\WF\System.Workflow.Activities.dll /r:c:\netfx35\private\externals\WF\System.Workflow.ComponentModel.dll /r:c:\netfx35\private\externals\WF\System.Workflow.Runtime.dll /r:c:\netfx35\target\debug\I386\System.WorkflowServices.dll Contracts.cs Program.cs SharedTypes.cs FedExConversation.cs FedExConversation.designer.cs
+1>Microsoft (R) Windows Workflow Compiler version 3.0.0.0
+1>Copyright (C) Microsoft Corporation 2005. All rights reserved.
+1>
+1>Compilation finished with 0 warning(s), 0 error(s).
+1>	IF EXIST objd\i386\FedExConversation.exe @binplace -R c:\netfx35\.  -:DBG -j -P placefile -y -S %inetroot%\Symbols\%BUILDTYPE%\%BUILDTARGET%    objd\i386\FedExConversation.exe
+1>Build_Status Postbuild Preplace - objd\i386\FedExConversation.exe.
+1>	"c:\netfx35\tools\build\buildtypes\preplace.cmd" objd\i386\FedExConversation.exe -R c:\netfx35\. -:DBG -j -P placefile -y -S c:\netfx35\Symbols\debug\i386 objd\i386\FedExConversation.exe
+1>Build_Status Binplace - 1 file(s).
+1>	binplace.exe -R c:\netfx35\. -:DBG -j -P placefile -y -S c:\netfx35\Symbols\debug\i386 objd\i386\FedExConversation.exe
+1>binplace C:\NetFx35\private\samples\NetFx\sdk\WorkflowServices\Conversations\CS\FedExConversation\objd\i386\FedExConversation.exe
+1>Build_Status Postbuild Postplace - objd\i386\FedExConversation.exe.
+1>	"c:\netfx35\tools\build\buildtypes\binplace.cmd" objd\i386\FedExConversation.exe -R c:\netfx35\. -:DBG -j -P placefile -y -S c:\netfx35\Symbols\debug\i386 objd\i386\FedExConversation.exe
+1>
+1>Stop.
+Executing post build scripts  ********************
+Fix Public Changes
+1>'c:\netfx35\public\ext\tools\buildpost.cmd '
+1>
+1>C:\NetFx35\private\samples\NetFx\sdk\WorkflowServices\Conversations\CS\FedExConversation>call c:\netfx35\public\ext\tools\fix_public.cmd 

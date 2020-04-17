@@ -1,0 +1,116 @@
+﻿<process name="InternationalBankProcess" 
+         xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/"        
+         xmlns:myns="http://tempuri.org/"
+	       targetNamespace="http://ms.com/processing">
+  
+  <partnerLinks>
+    <partnerLink name="bankLink" partnerLinkType="myns:InternationalBankLink" myRole="Banker" />
+    <partnerLink name="databaseLink" partnerLinkType="myns:DatabaseServiceLink" myRole="DatabaseUser" />
+  </partnerLinks>
+
+
+  <variables>
+
+    <variable name="Input" messageType="myns:GetLoanQuoteSoapIn" />
+    <variable name="FinalOutput" messageType="myns:GetLoanQuoteSoapOut" />
+    <variable name="GenerateInput" messageType="myns:GenerateLoanQuoteSoapIn" />
+    <variable name="GenerateOuput" messageType="myns:GenerateLoanQuoteSoapOut" />
+    
+  </variables>
+  
+  <correlationSets>
+    <correlationSet name="set1" properties="myns:BankProperty" />
+  </correlationSets>
+
+
+  <faultHandlers>
+    <catchAll>
+
+      <sequence name="faultSequence">
+
+        <assign name="bpelAssignFault">
+          <copy>
+            <from expression="0" />
+            <to variable="FinalOutput" part="parameters" query="/myns:parameters/myns:GetLoanQuoteResult" />
+          </copy>
+        </assign>
+
+        <reply partnerLink="bankLink" portType="myns:BankWebServiceSoap"
+               operation="GetLoanQuote" variable="FinalOutput" name="initReplyFault" />
+
+      </sequence>
+
+    </catchAll>
+  </faultHandlers>
+  
+  <sequence name="mysequence1">
+    
+    <receive partnerLink="bankLink" portType="myns:BankWebServiceSoap" 
+             operation="GetLoanQuote" variable="Input" createInstance="yes" name="initReceive">
+      <correlations>
+        <correlation set="set1" initiate="yes" />
+      </correlations>
+    </receive>
+   
+    <empty name="bpelEmpty" />
+  
+    <switch name="bpelSwitch">
+      <case condition="getVariableData('Input','parameters','/myns:parameters/myns:RequestId') != '00000000-0000-0000-0000-000000000000' 
+        and getVariableData('Input','parameters','/myns:parameters/myns:RequestId') != '' 
+        and getVariableData('Input','parameters','/myns:parameters/myns:CreditReportId') != ''"   >
+
+        <sequence name="bpelCaseSequence">
+
+
+          <assign name="bpelAssign11">
+
+            <copy>
+              <from variable="Input" part="parameters" query="/myns:parameters/myns:RequestId" />
+              <to variable="GenerateInput" part="parameters" query="/myns:parameters/myns:RequestId" />
+            </copy>
+
+            <copy>
+              <from variable="Input" part="parameters" query="/myns:parameters/myns:CreditReportId" />
+              <to variable="GenerateInput" part="parameters" query="/myns:parameters/myns:CreditReportId" />
+            </copy>
+
+          </assign>
+
+          <scope name="updateRequestStatusBrokerProcessing1">
+            <invoke partnerLink="databaseLink" portType="myns:DatabaseServiceSoap"
+                    operation="GenerateLoanQuote" inputVariable="GenerateInput"
+                    outputVariable="GenerateOuput" name="generateLoanQuoteInvoke" />
+          </scope>
+
+          <assign name="bpelAssign12">
+            
+          <copy>
+            <from variable="GenerateOuput" part="parameters" query="/myns:parameters/myns:GenerateLoanQuoteResult" />
+            <to variable="FinalOutput" part="parameters" query="/myns:parameters/myns:GetLoanQuoteResult" />
+          </copy>
+
+          </assign>
+
+          
+        </sequence>
+      </case>
+
+      <otherwise>
+        
+        <assign name="bpelAssign">
+          <copy>
+            <from expression="0" />
+            <to variable="FinalOutput" part="parameters" query="/myns:parameters/myns:GetLoanQuoteResult" />
+          </copy>
+        </assign>
+
+      </otherwise>
+
+    </switch>
+
+    <reply partnerLink="bankLink" portType="myns:BankWebServiceSoap"
+           operation="GetLoanQuote" variable="FinalOutput" name="initReply" />
+
+  </sequence>
+  
+</process>

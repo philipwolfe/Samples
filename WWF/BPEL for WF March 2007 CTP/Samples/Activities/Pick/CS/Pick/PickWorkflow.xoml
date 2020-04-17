@@ -1,0 +1,44 @@
+﻿<ns0:BpelProcess x:Class="Microsoft.Samples.Workflow.Bpel.Activities.Pick.PickWorkflow" x:Name="PickWorkflow" TargetNamespace="http://tempuri.org/" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:Microsoft.Workflow.Bpel.Activities;Assembly=Microsoft.Workflow.Bpel.Activities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=71530258abd56239">
+	<ns0:BpelProcess.PartnerLinks>
+		<ns0:PartnerLink Name="file" MyRole="application" Namespace="ns0" LinkType="fileLinkType" />
+		<ns0:PartnerLink Name="external" MyRole="application" Namespace="ns0" LinkType="pickLinkType" />
+	</ns0:BpelProcess.PartnerLinks>
+	<ns0:BpelProcess.XmlNamespaces>
+		<ns0:XmlNamespace Alias="xmlns" Namespace="http://schemas.xmlsoap.org/ws/2003/03/business-process/" />
+		<ns0:XmlNamespace Alias="tns" Namespace="http://tempuri.org/" />
+		<ns0:XmlNamespace Alias="xsd" Namespace="http://www.w3.org/2001/XMLSchema" />
+		<ns0:XmlNamespace Alias="bpws" Namespace="http://schemas.xmlsoap.org/ws/2003/03/business-process/" />
+		<ns0:XmlNamespace Alias="wsdl" Namespace="http://schemas.xmlsoap.org/wsdl/" />
+	</ns0:BpelProcess.XmlNamespaces>
+	<ns0:BpelProcess.Variables>
+		<ns0:Variable FieldName="ServiceIn" XmlType="{x:Null}" Category="WsdlMessageType" Namespace="ns0" FieldType="SendStringSoapIn" />
+		<ns0:Variable FieldName="ServiceOut" XmlType="{x:Null}" Category="WsdlMessageType" Namespace="ns0" FieldType="writeLineSoapIn" />
+	</ns0:BpelProcess.Variables>
+	<ns0:BpelSequence x:Name="Pick">
+		<ns0:BpelPick x:Name="MyPick" CreateInstance="True">
+			<ns0:BpelOnMessage Variable="ServiceIn" x:Name="OnMessage" Operation="SendString" PortType="ns0.PickServiceSoap" PartnerLink="external">
+				<ns0:BpelSequence x:Name="MySequence">
+					<ns0:BpelAssign x:Name="Assign">
+						<ns0:BpelCopy x:Name="CopyString">
+							<ns0:BpelCopy.From>
+								<ns0:From Part="parameters" Variable="ServiceIn" Query="/tns:parameters/tns:message" SelectFrom="VariablePartQuery">
+									<ns0:From.XmlNamespaces>
+										<ns0:XmlNamespace Alias="tns" Namespace="http://tempuri.org/" />
+									</ns0:From.XmlNamespaces>
+								</ns0:From>
+							</ns0:BpelCopy.From>
+							<ns0:BpelCopy.To>
+								<ns0:To Variable="ServiceOut" Query="/tns:parameters/tns:message" SelectTo="VariablePartQuery" Part="parameters">
+									<ns0:To.XmlNamespaces>
+										<ns0:XmlNamespace Alias="tns" Namespace="http://tempuri.org/" />
+									</ns0:To.XmlNamespaces>
+								</ns0:To>
+							</ns0:BpelCopy.To>
+						</ns0:BpelCopy>
+					</ns0:BpelAssign>
+					<ns0:BpelInvoke PortType="ns0.FileServiceSoap" x:Name="WriteLine" OutputVariable="" Operation="writeLine" InputVariable="ServiceOut" PartnerLink="file" />
+				</ns0:BpelSequence>
+			</ns0:BpelOnMessage>
+		</ns0:BpelPick>
+	</ns0:BpelSequence>
+</ns0:BpelProcess>

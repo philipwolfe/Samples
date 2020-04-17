@@ -1,0 +1,36 @@
+<!-- Copyright (c) Microsoft Corporation.  All rights reserved. -->
+<p:Activity x:Class="Microsoft.Samples.Activities.PowerShell.Process.GetProcesses" 
+            xmlns="clr-namespace:System.Activities.Design.Xaml;assembly=System.Activities.Design" 
+            xmlns:p="http://schemas.microsoft.com/netfx/2009/xaml/activities" 
+            xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" 
+            xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" 
+            xmlns:sd="clr-namespace:System.Diagnostics;assembly=System" 
+            xmlns:sma="clr-namespace:System.Management.Automation;assembly=System.Management.Automation" 
+            xmlns:smaa="clr-namespace:System.Management.Automation.Activities;assembly=System.Activities.Extended" 
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="Processes" Type="p:OutArgument(scg:ICollection(sd:Process))" />
+  </x:Members>
+  <smaa:InvokePowerShell x:TypeArguments="sd:Process" CommandText="get-process" Output="[Processes]">
+    <smaa:InvokePowerShell.InitializationAction>
+      <p:ActivityFunc x:TypeArguments="sma:PSObject, sd:Process">
+        <p:ActivityFunc.Argument>
+          <p:Variable x:TypeArguments="sma:PSObject" Name="Argument" />
+        </p:ActivityFunc.Argument>
+        <p:ActivityFunc.Result>
+          <p:Variable x:TypeArguments="sd:Process" Name="Result" />
+        </p:ActivityFunc.Result>
+        <p:Sequence>
+          <p:Assign>
+            <p:Assign.To>
+              <p:OutArgument x:TypeArguments="sd:Process">[Result]</p:OutArgument>
+            </p:Assign.To>
+            <p:Assign.Value>
+              <p:InArgument x:TypeArguments="sd:Process">[CType(Argument.BaseObject, System.Diagnostics.Process)]</p:InArgument>
+            </p:Assign.Value>
+          </p:Assign>
+        </p:Sequence>
+      </p:ActivityFunc>
+    </smaa:InvokePowerShell.InitializationAction>
+  </smaa:InvokePowerShell>
+</p:Activity>

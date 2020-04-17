@@ -1,0 +1,38 @@
+<VSTemplate Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Workflows</Name>
+    <Description>&lt;No description available&gt;</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Workflows</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="Workflows.csproj" File="Workflows.csproj" ReplaceParameters="true">
+      <ProjectItem ReplaceParameters="true" TargetFileName="App.config">App.config</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="ApprovedWorkItemWorkflow.cs">ApprovedWorkItemWorkflow.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="ApprovedWorkItemWorkflow.Designer.cs">ApprovedWorkItemWorkflow.Designer.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Helper.cs">Helper.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="IUserActivityService.cs">IUserActivityService.cs</ProjectItem>
+      <Folder Name="Properties" TargetFolderName="Properties">
+        <ProjectItem ReplaceParameters="true" TargetFileName="AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Settings.settings">Settings.settings</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Settings.Designer.cs">Settings.Designer.cs</ProjectItem>
+      </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="SaveWorkItems.cs">SaveWorkItems.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="SaveWorkItems.Designer.cs">SaveWorkItems.Designer.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="UserActivity.cs">UserActivity.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="UserActivity.Designer.cs">UserActivity.Designer.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="WorkItemsDataSet.xsd">WorkItemsDataSet.xsd</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="WorkItemsDataSet.Designer.cs">WorkItemsDataSet.Designer.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="false" TargetFileName="WorkItemsDataSet.xsc">WorkItemsDataSet.xsc</ProjectItem>
+      <ProjectItem ReplaceParameters="false" TargetFileName="WorkItemsDataSet.xss">WorkItemsDataSet.xss</ProjectItem>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

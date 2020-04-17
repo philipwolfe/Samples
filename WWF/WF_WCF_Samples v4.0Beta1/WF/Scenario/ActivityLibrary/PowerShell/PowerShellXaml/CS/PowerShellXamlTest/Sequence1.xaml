@@ -1,0 +1,47 @@
+<!-- Copyright (c) Microsoft Corporation.  All rights reserved. -->
+<p:Activity x:Class="Microsoft.Samples.Activities.PowerShellTest.Sequence1" 
+            xmlns="clr-namespace:System.Activities.Design.Xaml;assembly=System.Activities.Design" 
+            xmlns:msapc="clr-namespace:Microsoft.Samples.Activities.PowerShell.CustomActivities;assembly=Microsoft.Samples.Activities.PowerShell.CustomActivities" 
+            xmlns:msapf="clr-namespace:Microsoft.Samples.Activities.PowerShell.FileSystem;assembly=Microsoft.Samples.Activities.PowerShell" 
+            xmlns:msapf1="clr-namespace:Microsoft.Samples.Activities.PowerShell.Filesystem;assembly=Microsoft.Samples.Activities.PowerShell" 
+            xmlns:msapp="clr-namespace:Microsoft.Samples.Activities.PowerShell.Process;assembly=Microsoft.Samples.Activities.PowerShell" 
+            xmlns:p="http://schemas.microsoft.com/netfx/2009/xaml/activities" 
+            xmlns:s="clr-namespace:System;assembly=mscorlib" 
+            xmlns:sad="clr-namespace:System.Activities.Debugger;assembly=System.Activities" 
+            xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" 
+            xmlns:sd="clr-namespace:System.Diagnostics;assembly=System" 
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <p:Sequence>
+    <p:Sequence.Variables>
+      <p:Variable x:TypeArguments="scg:ICollection(s:Object)" Name="Content" />
+      <p:Variable x:TypeArguments="x:Boolean" Name="Exists" />
+      <p:Variable x:TypeArguments="scg:ICollection(sd:Process)" Name="Processes" />
+      <p:Variable x:TypeArguments="x:String" Name="Input" />
+    </p:Sequence.Variables>
+    <p:WriteLine>["Please enter the name of the process you wish to stop."]</p:WriteLine>
+    <p:WriteLine>["Hint: If there's no notepad running in the background. You can launch notepad manually and then type notepad on the console to terminate the proess."]</p:WriteLine>
+    <msapc:ReadLine BookmarkName="[&quot;Input&quot;]" Result="[Input]"/>
+    <p:WriteLine>["Stopping " &amp; Input]</p:WriteLine>
+    <msapp:StopProcess ProcessName="[Input]" />
+    <msapp:GetProcesses Processes="[Processes]" />
+    <p:WriteLine>[Input &amp; " stopped."]</p:WriteLine>
+    <msapc:PrintCollection x:TypeArguments="sd:Process" Collection="[Processes]"/>
+    <p:WriteLine>["All subsequent file operations will be performed under the application directory."]</p:WriteLine>
+    <p:WriteLine>["Creating a directory named Folder."]</p:WriteLine>
+    <msapf:MakeDir Name="[&quot;Folder&quot;]" Path="[&quot;.&quot;]" />
+    <p:WriteLine>["Creating a text file named Sample.txt with some content in it."]</p:WriteLine>
+    <msapf:CreateFile Path="[&quot;Sample.txt&quot;]" Value="[&quot;The fox jumps over the lazy dog.&quot;]" />
+    <p:WriteLine>["Copying Sample.txt to Sample2.txt."]</p:WriteLine>
+    <msapf:Copy Destination="[&quot;Sample2.txt&quot;]" Path="[&quot;Sample.txt&quot;]"/>
+    <p:WriteLine>["Deleting Sample.txt."]</p:WriteLine>
+    <msapf:Delete Recurse="{x:Null}" Path="[&quot;Sample.txt&quot;]"/>
+    <p:WriteLine>["Moving Sample2.txt to Sample.txt."]</p:WriteLine>
+    <msapf:Move Destination="[&quot;Sample.txt&quot;]" Path="[&quot;Sample2.txt&quot;]" />
+    <p:WriteLine>["The content of Sample.txt is:"]</p:WriteLine>
+    <msapf1:ReadFile Content="[Content]" Path="[&quot;Sample.txt&quot;]" />
+    <msapc:PrintCollection x:TypeArguments="s:Object" Collection="[Content]"/>
+    <p:WriteLine>["Does Sample2.txt exist?"]</p:WriteLine>
+    <msapf1:TestPath Exists="[Exists]" Path="[&quot;Sample2.txt&quot;]" />
+    <p:WriteLine>[CStr(Exists)]</p:WriteLine>
+  </p:Sequence>
+</p:Activity>

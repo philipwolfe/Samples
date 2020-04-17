@@ -1,0 +1,195 @@
+//-----------------------------------------------------------------------
+//  This file is part of the Microsoft .NET SDK Code Samples.
+// 
+//  Copyright (C) Microsoft Corporation.  All rights reserved.
+// 
+//This source code is intended only as a supplement to Microsoft
+//Development Tools and/or on-line documentation.  See these other
+//materials for detailed information regarding Microsoft code samples.
+// 
+//THIS CODE AND INFORMATION ARE PROVIDED AS IS WITHOUT WARRANTY OF ANY
+//KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+//IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+//PARTICULAR PURPOSE.
+//-----------------------------------------------------------------------
+package TableLayoutPanelSample;
+
+#region Import directives
+import System.*;
+import System.Collections.Generic.*;
+import System.ComponentModel.*;
+import System.Data.*;
+import System.Drawing.*;
+import System.Text.*;
+import System.Windows.Forms.*;
+#endregion
+
+class TwoPaneProp extends System.Windows.Forms.Form
+{
+    /// <summary>
+    /// Required designer variable.
+    /// </summary>
+    private System.ComponentModel.IContainer components = null;
+
+    public TwoPaneProp()
+    {
+        InitializeComponent();
+    } //TwoPaneProp
+
+    /// <summary>
+    /// Clean up any resources being used.
+    /// </summary>
+    protected void Dispose(boolean disposing)
+    {
+        if (disposing && components != null) {
+            components.Dispose();
+        }
+        super.Dispose(disposing);
+    } //Dispose
+
+    #region Windows Form Designer generated code
+    /// <summary>
+    /// Required method for Designer support - do not modify
+    /// the contents of this method with the code editor.
+    /// </summary>
+    private void InitializeComponent()
+    {
+		System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Thing One");
+		System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Thing Two");
+		System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Thing Three");
+		this.treeView1 = new System.Windows.Forms.TreeView();
+		this.listView1 = new System.Windows.Forms.ListView();
+		this.button1 = new System.Windows.Forms.Button();
+		this.button2 = new System.Windows.Forms.Button();
+		this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+		this.panel1 = new System.Windows.Forms.Panel();
+		this.button3 = new System.Windows.Forms.Button();
+		this.button4 = new System.Windows.Forms.Button();
+		this.tableLayoutPanel1.SuspendLayout();
+		this.panel1.SuspendLayout();
+		this.SuspendLayout();
+		// 
+		// treeView1
+		// 
+		this.treeView1.set_Dock(System.Windows.Forms.DockStyle.Fill);
+		this.treeView1.set_Location(new System.Drawing.Point(3, 3));
+		this.treeView1.set_Name("treeView1");
+		this.treeView1.set_Size(new System.Drawing.Size(78, 208));
+		this.treeView1.set_TabIndex(0);
+		// 
+		// listView1
+		// 
+		this.listView1.set_Dock(System.Windows.Forms.DockStyle.Fill);
+		this.listView1.get_Items().AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem1,
+            listViewItem2,
+            listViewItem3}
+		);
+		this.listView1.set_Location(new System.Drawing.Point(177, 3));
+		this.listView1.set_Name("listView1");
+		this.listView1.set_Size(new System.Drawing.Size(120, 208));
+		this.listView1.set_TabIndex(1);
+		// 
+		// button1
+		// 
+		this.button1.set_Location(new System.Drawing.Point(4, 81));
+		this.button1.set_Name("button1");
+		this.button1.set_Size(new System.Drawing.Size(75, 23));
+		this.button1.set_TabIndex(2);
+		this.button1.set_Text("Add >>");
+		// 
+		// button2
+		// 
+		this.button2.set_Location(new System.Drawing.Point(4, 111));
+		this.button2.set_Name("button2");
+		this.button2.set_Size(new System.Drawing.Size(75, 23));
+		this.button2.set_TabIndex(3);
+		this.button2.set_Text("<< Remove");
+		// 
+		// tableLayoutPanel1
+		// 
+		this.tableLayoutPanel1.set_Anchor(((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+					| System.Windows.Forms.AnchorStyles.Left)
+					| System.Windows.Forms.AnchorStyles.Right))));
+		this.tableLayoutPanel1.set_ColumnCount(3);
+		this.tableLayoutPanel1.get_ColumnStyles().Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+		this.tableLayoutPanel1.get_ColumnStyles().Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
+		this.tableLayoutPanel1.get_ColumnStyles().Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
+		this.tableLayoutPanel1.get_Controls().Add(this.panel1, 1, 0);
+		this.tableLayoutPanel1.get_Controls().Add(this.treeView1, 0, 0);
+		this.tableLayoutPanel1.get_Controls().Add(this.listView1, 2, 0);
+		this.tableLayoutPanel1.set_Location(new System.Drawing.Point(-2, 1));
+		this.tableLayoutPanel1.set_Name("tableLayoutPanel1");
+		this.tableLayoutPanel1.set_RowCount(1);
+		this.tableLayoutPanel1.get_RowStyles().Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 214F));
+		this.tableLayoutPanel1.get_RowStyles().Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 214F));
+		this.tableLayoutPanel1.set_Size(new System.Drawing.Size(300, 214));
+		this.tableLayoutPanel1.set_TabIndex(4);
+		// 
+		// panel1
+		// 
+		this.panel1.get_Controls().Add(this.button1);
+		this.panel1.get_Controls().Add(this.button2);
+		this.panel1.set_Dock(System.Windows.Forms.DockStyle.Fill);
+		this.panel1.set_Location(new System.Drawing.Point(87, 3));
+		this.panel1.set_Name("panel1");
+		this.panel1.set_Size(new System.Drawing.Size(84, 208));
+		this.panel1.set_TabIndex(5);
+		// 
+		// button3
+		// 
+		this.button3.set_Anchor(((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right))));
+		this.button3.set_Location(new System.Drawing.Point(220, 222));
+		this.button3.set_Name("button3");
+		this.button3.set_Size(new System.Drawing.Size(75, 23));
+		this.button3.set_TabIndex(5);
+		this.button3.set_Text("Cancel");
+		this.button3.add_Click(new System.EventHandler(this.button3_Click));
+		// 
+		// button4
+		// 
+		this.button4.set_Anchor(((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right))));
+		this.button4.set_Location(new System.Drawing.Point(138, 222));
+		this.button4.set_Name("button4");
+		this.button4.set_Size(new System.Drawing.Size(75, 23));
+		this.button4.set_TabIndex(6);
+		this.button4.set_Text("OK");
+		this.button4.add_Click(new System.EventHandler(this.button4_Click));
+		// 
+		// TwoPaneProp
+		// 
+		this.set_AutoScaleBaseSize(new System.Drawing.Size(5, 13));
+		this.set_ClientSize(new System.Drawing.Size(301, 250));
+		this.get_Controls().Add(this.button4);
+		this.get_Controls().Add(this.button3);
+		this.get_Controls().Add(this.tableLayoutPanel1);
+		this.set_Name("TwoPaneProp");
+		this.set_Padding(new System.Windows.Forms.Padding(9));
+		this.set_StartPosition(System.Windows.Forms.FormStartPosition.Manual);
+		this.set_Text("Two-Pane Proportional Form");
+		this.tableLayoutPanel1.ResumeLayout(false);
+		this.panel1.ResumeLayout(false);
+		this.ResumeLayout(false);
+
+    } //InitializeComponent 
+    #endregion
+
+    private System.Windows.Forms.TreeView treeView1;
+    private System.Windows.Forms.ListView listView1;
+    private System.Windows.Forms.Button button1;
+    private System.Windows.Forms.Button button2;
+    private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+    private System.Windows.Forms.Panel panel1;
+    private System.Windows.Forms.Button button3;
+    private System.Windows.Forms.Button button4;
+
+	private void button4_Click(Object sender, EventArgs e)
+	{
+		this.Close();
+	}
+
+	private void button3_Click(Object sender, EventArgs e)
+	{
+		this.Close();
+	}
+} //TwoPaneProp

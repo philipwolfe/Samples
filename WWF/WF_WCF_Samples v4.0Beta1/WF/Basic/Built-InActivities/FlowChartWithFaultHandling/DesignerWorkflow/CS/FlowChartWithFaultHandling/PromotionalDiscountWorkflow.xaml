@@ -1,0 +1,172 @@
+<p:Activity x:Class="Microsoft.Samples.PromotionalDiscountWorkflow" 
+	xmlns="clr-namespace:System.Activities.Design.Xaml;assembly=System.Activities.Design" 
+	xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+	xmlns:p="http://schemas.microsoft.com/netfx/2009/xaml/activities" 
+	xmlns:s="clr-namespace:System;assembly=mscorlib" 
+	xmlns:sad="clr-namespace:System.Activities.Debugger;assembly=System.Activities" 
+	xmlns:sadv="clr-namespace:System.Activities.Design.View;assembly=System.Activities.Design" 
+	xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="promoCode" Type="p:InArgument(x:String)" />
+    <x:Property Name="numberOfKids" Type="p:InArgument(x:Int32)" />
+    <x:Property Name="discount" Type="p:OutArgument(x:Double)" />
+  </x:Members>
+  <p:Flowchart sad:XamlDebuggerXmlReader.FileName="C:\_samplesHOLCheckin\FlowChartWithFaultHandling\DesignerWorkflow\CS\FlowChartWithFaultHandling\PromotionalDiscountWorkflow.xaml">
+    <p:Flowchart.StartNode>
+      <p:FlowSwitch x:Name="__ReferenceID0" Expression="[promoCode]">
+        <p:FlowSwitch.Default>
+          <p:FlowStep x:Name="__ReferenceID1">
+            <p:FlowStep.Next>
+              <p:FlowStep x:Name="__ReferenceID2">
+                <sadv:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, s:Object">
+                    <av:Point x:Key="ShapeLocation">225,468</av:Point>
+                    <av:Size x:Key="ShapeSize">160,35.96</av:Size>
+                  </scg:Dictionary>
+                </sadv:WorkflowViewStateService.ViewState>
+                <p:WriteLine>["Discount calculated = " &amp;discount]</p:WriteLine>
+              </p:FlowStep>
+            </p:FlowStep.Next>
+            <sadv:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, s:Object">
+                <av:Point x:Key="ShapeLocation">330,3</av:Point>
+                <av:Size x:Key="ShapeSize">228.21,71.9209375</av:Size>
+                <av:PointCollection x:Key="ConnectorLocation">553.21,38.96046875 563.21,38.96046875 563.21,485.98 385,485.98</av:PointCollection>
+              </scg:Dictionary>
+            </sadv:WorkflowViewStateService.ViewState>
+            <p:Assign>
+              <p:Assign.To>
+                <p:OutArgument x:TypeArguments="x:Double">[discount]</p:OutArgument>
+              </p:Assign.To>
+              <p:Assign.Value>
+                <p:InArgument x:TypeArguments="x:Double">[0.0R]</p:InArgument>
+              </p:Assign.Value>
+            </p:Assign>
+          </p:FlowStep>
+        </p:FlowSwitch.Default>
+        <sadv:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, s:Object">
+            <av:Point x:Key="ShapeLocation">195,75</av:Point>
+            <av:Size x:Key="ShapeSize">60,60</av:Size>
+            <av:PointCollection x:Key="DefaultConnector">225,75 225,65 215,65 215,38.96046875 335,38.96046875</av:PointCollection>
+            <av:PointCollection x:Key="Case1Connector">225,135 225,324.9209375 215,324.9209375 215,403.96 265,403.96</av:PointCollection>
+            <av:PointCollection x:Key="&quot;Single&quot;Connector">255,105 265,105 265,158.96046875 310,158.96046875</av:PointCollection>
+            <av:PointCollection x:Key="&quot;MNK&quot;Connector">255,105 265,105 265,283.96046875 295,283.96046875</av:PointCollection>
+            <av:PointCollection x:Key="SingleConnector">255,105 265,105 265,158.96046875 310,158.96046875</av:PointCollection>
+            <av:PointCollection x:Key="MNKConnector">255,105 265,105 265,283.96046875 295,283.96046875</av:PointCollection>
+            <av:PointCollection x:Key="MWKConnector">225,135 225,324.9209375 215,324.9209375 215,403.96 265,403.96</av:PointCollection>
+          </scg:Dictionary>
+        </sadv:WorkflowViewStateService.ViewState>
+        <p:FlowStep Next="{x:Reference Name=__ReferenceID2}" x:Name="__ReferenceID3">
+          <x:Key>
+            <x:String>Single</x:String>
+          </x:Key>
+          <sadv:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, s:Object">
+              <av:Point x:Key="ShapeLocation">305,123</av:Point>
+              <av:Size x:Key="ShapeSize">228.21,71.9209375</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">528.21,158.96046875 538.21,158.96046875 538.21,485.98 385,485.98</av:PointCollection>
+            </scg:Dictionary>
+          </sadv:WorkflowViewStateService.ViewState>
+          <p:Assign>
+            <p:Assign.To>
+              <p:OutArgument x:TypeArguments="x:Double">[discount]</p:OutArgument>
+            </p:Assign.To>
+            <p:Assign.Value>
+              <p:InArgument x:TypeArguments="x:Double">[10.0R]</p:InArgument>
+            </p:Assign.Value>
+          </p:Assign>
+        </p:FlowStep>
+        <p:FlowStep Next="{x:Reference Name=__ReferenceID2}" x:Name="__ReferenceID4">
+          <x:Key>
+            <x:String>MNK</x:String>
+          </x:Key>
+          <sadv:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, s:Object">
+              <av:Point x:Key="ShapeLocation">290,248</av:Point>
+              <av:Size x:Key="ShapeSize">228.21,71.9209375</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">513.21,283.96046875 523.21,283.96046875 523.21,485.98 385,485.98</av:PointCollection>
+            </scg:Dictionary>
+          </sadv:WorkflowViewStateService.ViewState>
+          <p:Assign>
+            <p:Assign.To>
+              <p:OutArgument x:TypeArguments="x:Double">[discount]</p:OutArgument>
+            </p:Assign.To>
+            <p:Assign.Value>
+              <p:InArgument x:TypeArguments="x:Double">[15.0R]</p:InArgument>
+            </p:Assign.Value>
+          </p:Assign>
+        </p:FlowStep>
+        <p:FlowStep Next="{x:Reference Name=__ReferenceID2}" x:Name="__ReferenceID5">
+          <x:Key>
+            <x:String>MWK</x:String>
+          </x:Key>
+          <sadv:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, s:Object">
+              <av:Point x:Key="ShapeLocation">260,373</av:Point>
+              <av:Size x:Key="ShapeSize">170,61.92</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">425,403.96 435,403.96 435,485.98 385,485.98</av:PointCollection>
+            </scg:Dictionary>
+          </sadv:WorkflowViewStateService.ViewState>
+          <p:TryCatch>
+            <p:TryCatch.Catches>
+              <p:Catch x:TypeArguments="s:DivideByZeroException">
+                <p:ActivityAction x:TypeArguments="s:DivideByZeroException">
+                  <p:Sequence>
+                    <p:WriteLine>["DivideByZeroException: Promo code is MWK - but number of kids = 0"]</p:WriteLine>
+                    <p:Assign>
+                      <p:Assign.To>
+                        <p:OutArgument x:TypeArguments="x:Double">[discount]</p:OutArgument>
+                      </p:Assign.To>
+                      <p:Assign.Value>
+                        <p:InArgument x:TypeArguments="x:Double">[0.0R]</p:InArgument>
+                      </p:Assign.Value>
+                    </p:Assign>
+                  </p:Sequence>
+                </p:ActivityAction>
+              </p:Catch>
+            </p:TryCatch.Catches>
+            <p:TryCatch.Try>
+              <p:If>
+                <p:If.Condition>
+                  <p:InArgument x:TypeArguments="x:Boolean">[numberOfKids = 0]</p:InArgument>
+                </p:If.Condition>
+                <p:If.Else>
+                  <p:Assign>
+                    <p:Assign.To>
+                      <p:OutArgument x:TypeArguments="x:Double">[discount]</p:OutArgument>
+                    </p:Assign.To>
+                    <p:Assign.Value>
+                      <p:InArgument x:TypeArguments="x:Double">[15 + (1 - 1 / numberOfKids) * 10]</p:InArgument>
+                    </p:Assign.Value>
+                  </p:Assign>
+                </p:If.Else>
+                <p:If.Then>
+                  <p:Throw>
+                    <p:Throw.Exception>
+                      <p:InArgument x:TypeArguments="s:Exception">[New System.DivideByZeroException&#xD;&#xA;        ()]</p:InArgument>
+                    </p:Throw.Exception>
+                  </p:Throw>
+                </p:If.Then>
+              </p:If>
+            </p:TryCatch.Try>
+          </p:TryCatch>
+        </p:FlowStep>
+      </p:FlowSwitch>
+    </p:Flowchart.StartNode>
+    <sadv:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, s:Object">
+        <av:PointCollection x:Key="ConnectorLocation">100,25 110,25 110,105 195,105</av:PointCollection>
+        <av:Point x:Key="ShapeLocation">50,0</av:Point>
+        <av:Size x:Key="ShapeSize">50,50</av:Size>
+      </scg:Dictionary>
+    </sadv:WorkflowViewStateService.ViewState>
+    <x:Reference>__ReferenceID0</x:Reference>
+    <x:Reference>__ReferenceID1</x:Reference>
+    <x:Reference>__ReferenceID3</x:Reference>
+    <x:Reference>__ReferenceID4</x:Reference>
+    <x:Reference>__ReferenceID5</x:Reference>
+    <x:Reference>__ReferenceID2</x:Reference>
+  </p:Flowchart>
+</p:Activity>

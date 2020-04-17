@@ -1,0 +1,525 @@
+package Microsoft.Samples.WinForms.DataGridView;
+
+//---------------------------------------------------------------------
+//  This file is part of the Microsoft .NET Framework SDK Code Samples.
+// 
+//  Copyright (C) Microsoft Corporation.  All rights reserved.
+// 
+//This source code is intended only as a supplement to Microsoft
+//Development Tools and/or on-line documentation.  See these other
+//materials for detailed information regarding Microsoft code samples.
+// 
+//THIS CODE AND INFORMATION ARE PROVIDED AS IS WITHOUT WARRANTY OF ANY
+//KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+//IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+//PARTICULAR PURPOSE.
+//---------------------------------------------------------------------
+
+import System.*;
+import System.Drawing.*;
+import System.Collections.*;
+import System.ComponentModel.*;
+import System.Windows.Forms.*;
+import System.Data.*;
+
+// Form to show the list of customers.
+class CustomerForm extends System.Windows.Forms.Form
+{
+    private System.ComponentModel.IContainer components = null;
+	private DataGridViewTextBoxColumn CustomerID;
+	private DataGridViewLinkColumn CustomerOrders;
+	private DataGridViewTextBoxColumn CompanyName;
+	private DataGridViewTextBoxColumn ContactName;
+	private DataGridViewTextBoxColumn ContactTitle;
+	private DataGridViewTextBoxColumn Address;
+	private DataGridViewTextBoxColumn City;
+	private DataGridViewTextBoxColumn Region;
+	private DataGridViewTextBoxColumn Country;
+	private DataGridViewTextBoxColumn Phone;
+	private DataGridViewTextBoxColumn Fax;
+    private DataSet northwindDS;
+
+    public CustomerForm()
+    {
+        // Setup the form.
+        InitializeComponent();
+    } //CustomerForm
+
+    /// <summary>
+    /// Required method for Designer support - do not modify
+    /// the contents of this method with the code editor.
+    /// </summary>
+    private void InitializeComponent()
+    {
+		System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+		this.CustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+		this.CustomerOrders = new System.Windows.Forms.DataGridViewLinkColumn();
+		this.CompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+		this.ContactName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+		this.ContactTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+		this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+		this.City = new System.Windows.Forms.DataGridViewTextBoxColumn();
+		this.Region = new System.Windows.Forms.DataGridViewTextBoxColumn();
+		this.Country = new System.Windows.Forms.DataGridViewTextBoxColumn();
+		this.Phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+		this.Fax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+		this.dataGridView1 = new System.Windows.Forms.DataGridView();
+		this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+		this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+		this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+		this.customerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+		this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+		this.viewOrdersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+		((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+		this.menuStrip1.SuspendLayout();
+		this.SuspendLayout();
+		// 
+		// CustomerID
+		// 
+		this.CustomerID.set_DataPropertyName("CustomerID");
+		this.CustomerID.set_HeaderText("ID");
+		this.CustomerID.set_Name("CustomerID");
+		this.CustomerID.set_ReadOnly(true);
+		this.CustomerID.set_Resizable(System.Windows.Forms.DataGridViewTriState.True);
+		this.CustomerID.set_Width(43);
+		// 
+		// CustomerOrders
+		// 
+		this.CustomerOrders.set_AutoSizeMode(System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells);
+		this.CustomerOrders.set_DataPropertyName("CustomerID");
+		this.CustomerOrders.set_HeaderText("Orders");
+		this.CustomerOrders.set_LinkBehavior(System.Windows.Forms.LinkBehavior.NeverUnderline);
+		this.CustomerOrders.set_Name("CustomerOrders");
+		this.CustomerOrders.set_Resizable(System.Windows.Forms.DataGridViewTriState.False);
+		this.CustomerOrders.set_Text("View Orders");
+		this.CustomerOrders.set_UseColumnTextForLinkValue(true);
+		this.CustomerOrders.set_Width(44);
+		// 
+		// CompanyName
+		// 
+		this.CompanyName.set_DataPropertyName("CompanyName");
+		this.CompanyName.set_HeaderText("Company Name");
+		this.CompanyName.set_Name("CompanyName");
+		this.CompanyName.set_Resizable(System.Windows.Forms.DataGridViewTriState.True);
+		this.CompanyName.set_Width(107);
+		// 
+		// ContactName
+		// 
+		this.ContactName.set_DataPropertyName("ContactName");
+		this.ContactName.set_HeaderText("Contact Name");
+		this.ContactName.set_Name("ContactName");
+		this.ContactName.set_Resizable(System.Windows.Forms.DataGridViewTriState.True);
+		// 
+		// ContactTitle
+		// 
+		this.ContactTitle.set_DataPropertyName("ContactTitle");
+		this.ContactTitle.set_HeaderText("Contact Title");
+		this.ContactTitle.set_Name("ContactTitle");
+		this.ContactTitle.set_Resizable(System.Windows.Forms.DataGridViewTriState.True);
+		this.ContactTitle.set_Width(92);
+		// 
+		// Address
+		// 
+		this.Address.set_DataPropertyName("Address");
+		this.Address.set_HeaderText("Address");
+		this.Address.set_Name("Address");
+		this.Address.set_Resizable(System.Windows.Forms.DataGridViewTriState.True);
+		this.Address.set_Width(70);
+		// 
+		// City
+		// 
+		this.City.set_DataPropertyName("City");
+		this.City.set_HeaderText("City");
+		this.City.set_Name("City");
+		this.City.set_Resizable(System.Windows.Forms.DataGridViewTriState.True);
+		this.City.set_Width(49);
+		// 
+		// Region
+		// 
+		this.Region.set_DataPropertyName("Region");
+		dataGridViewCellStyle2.set_NullValue("[Unknown]");
+		this.Region.set_DefaultCellStyle(dataGridViewCellStyle2);
+		this.Region.set_HeaderText("Region");
+		this.Region.set_Name("Region");
+		this.Region.set_Resizable(System.Windows.Forms.DataGridViewTriState.True);
+		this.Region.set_Width(66);
+		// 
+		// Country
+		// 
+		this.Country.set_DataPropertyName("Country");
+		this.Country.set_HeaderText("Country");
+		this.Country.set_Name("Country");
+		this.Country.set_Resizable(System.Windows.Forms.DataGridViewTriState.True);
+		this.Country.set_Width(68);
+		// 
+		// Phone
+		// 
+		this.Phone.set_DataPropertyName("Phone");
+		this.Phone.set_HeaderText("Phone");
+		this.Phone.set_Name("Phone");
+		this.Phone.set_Resizable(System.Windows.Forms.DataGridViewTriState.True);
+		this.Phone.set_Width(63);
+		// 
+		// Fax
+		// 
+		this.Fax.set_DataPropertyName("Fax");
+		this.Fax.set_HeaderText("Fax");
+		this.Fax.set_Name("Fax");
+		this.Fax.set_Resizable(System.Windows.Forms.DataGridViewTriState.True);
+		this.Fax.set_Width(49);
+		// 
+		// dataGridView1
+		// 
+		this.dataGridView1.set_AutoSizeColumnsMode(System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells);
+		this.dataGridView1.set_ColumnHeadersHeightSizeMode(System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing);
+		this.dataGridView1.get_Columns().AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CustomerID,
+            this.CustomerOrders,
+            this.CompanyName,
+            this.ContactName,
+            this.ContactTitle,
+            this.Address,
+            this.City,
+            this.Region,
+            this.Country,
+            this.Phone,
+            this.Fax}
+		);
+		this.dataGridView1.set_Dock(System.Windows.Forms.DockStyle.Fill);
+		this.dataGridView1.set_Location(new System.Drawing.Point(0, 24));
+		this.dataGridView1.set_Name("dataGridView1");
+		this.dataGridView1.set_RowHeadersWidthSizeMode(System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing);
+		this.dataGridView1.set_SelectionMode(System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect);
+		this.dataGridView1.set_Size(new System.Drawing.Size(676, 363));
+		this.dataGridView1.set_TabIndex(0);
+		this.dataGridView1.add_KeyDown(new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyDown));
+		this.dataGridView1.add_RowValidating(new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridView1_RowValidating));
+		this.dataGridView1.add_RowEnter(new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowEnter));
+		this.dataGridView1.add_CellValidating(new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridView1_CellValidating));
+		this.dataGridView1.add_DefaultValuesNeeded(new System.Windows.Forms.DataGridViewRowEventHandler(this.dataGridView1_DefaultValuesNeeded));
+		this.dataGridView1.add_DataError(new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView1_DataError));
+		this.dataGridView1.add_CellContentClick(new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick));
+		// 
+		// menuStrip1
+		// 
+		this.menuStrip1.get_Items().AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.customerToolStripMenuItem}
+		);
+		this.menuStrip1.set_Location(new System.Drawing.Point(0, 0));
+		this.menuStrip1.set_Name("menuStrip1");
+		this.menuStrip1.set_RenderMode(System.Windows.Forms.ToolStripRenderMode.Professional);
+		this.menuStrip1.set_Size(new System.Drawing.Size(676, 24));
+		this.menuStrip1.set_TabIndex(0);
+		this.menuStrip1.set_Text("menuStrip1");
+		// 
+		// fileToolStripMenuItem
+		// 
+		this.fileToolStripMenuItem.set_DoubleClickEnabled(true);
+		this.fileToolStripMenuItem.get_DropDownItems().AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exitToolStripMenuItem}
+		);
+		this.fileToolStripMenuItem.set_Name("fileToolStripMenuItem");
+		this.fileToolStripMenuItem.set_Size(new System.Drawing.Size(35, 20));
+		this.fileToolStripMenuItem.set_Text("&File");
+		// 
+		// exitToolStripMenuItem
+		// 
+		this.exitToolStripMenuItem.set_DoubleClickEnabled(true);
+		this.exitToolStripMenuItem.set_Name("exitToolStripMenuItem");
+		this.exitToolStripMenuItem.set_Size(new System.Drawing.Size(95, 22));
+		this.exitToolStripMenuItem.set_Text("E&xit");
+		this.exitToolStripMenuItem.add_Click(new System.EventHandler(this.exitToolStripMenuItem_Click));
+		// 
+		// customerToolStripMenuItem
+		// 
+		this.customerToolStripMenuItem.set_DoubleClickEnabled(true);
+		this.customerToolStripMenuItem.get_DropDownItems().AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newToolStripMenuItem,
+            this.viewOrdersToolStripMenuItem}
+		);
+		this.customerToolStripMenuItem.set_Name("customerToolStripMenuItem");
+		this.customerToolStripMenuItem.set_Size(new System.Drawing.Size(65, 20));
+		this.customerToolStripMenuItem.set_Text("&Customer");
+		// 
+		// newToolStripMenuItem
+		// 
+		this.newToolStripMenuItem.set_DoubleClickEnabled(true);
+		this.newToolStripMenuItem.set_Name("newToolStripMenuItem");
+		this.newToolStripMenuItem.set_ShortcutKeys(((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N))));
+		this.newToolStripMenuItem.set_Size(new System.Drawing.Size(186, 22));
+		this.newToolStripMenuItem.set_Text("New &Customer");
+		this.newToolStripMenuItem.add_Click(new System.EventHandler(this.newToolStripMenuItem_Click));
+		// 
+		// viewOrdersToolStripMenuItem
+		// 
+		this.viewOrdersToolStripMenuItem.set_DoubleClickEnabled(true);
+		this.viewOrdersToolStripMenuItem.set_Name("viewOrdersToolStripMenuItem");
+		this.viewOrdersToolStripMenuItem.set_Size(new System.Drawing.Size(186, 22));
+		this.viewOrdersToolStripMenuItem.set_Text("View &Orders...");
+		this.viewOrdersToolStripMenuItem.add_Click(new System.EventHandler(this.viewOrdersToolStripMenuItem_Click));
+		// 
+		// CustomerForm
+		// 
+		this.set_AutoScaleBaseSize(new System.Drawing.Size(5, 13));
+		this.set_ClientSize(new System.Drawing.Size(676, 387));
+		this.get_Controls().Add(this.dataGridView1);
+		this.get_Controls().Add(this.menuStrip1);
+		this.set_Name("CustomerForm");
+		this.set_SizeGripStyle(System.Windows.Forms.SizeGripStyle.Show);
+		this.set_Text("Customer Order Viewer");
+		this.add_Load(new System.EventHandler(this.Form1_Load));
+		((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+		this.menuStrip1.ResumeLayout(false);
+		this.menuStrip1.PerformLayout();
+		this.ResumeLayout(false);
+		this.PerformLayout();
+
+    } //InitializeComponent
+
+    /// <summary>
+    /// Clean up any resources being used.
+    /// </summary>
+    protected void Dispose(boolean disposing)
+    {
+        if (disposing) {
+            if (components != null) {
+                components.Dispose();
+            }
+        }
+        super.Dispose(disposing);
+    } //Dispose
+
+    private System.Windows.Forms.DataGridView dataGridView1;
+    private System.Windows.Forms.MenuStrip menuStrip1;
+    private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+    private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+    private System.Windows.Forms.ToolStripMenuItem customerToolStripMenuItem;
+    private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
+    private System.Windows.Forms.ToolStripMenuItem viewOrdersToolStripMenuItem;
+    private System.Windows.Forms.DataGridViewTextBoxColumn 
+        dataGridViewTextBoxColumn1;
+    private System.Windows.Forms.DataGridViewLinkColumn 
+        dataGridViewLinkColumn1;
+    private System.Windows.Forms.DataGridViewTextBoxColumn 
+        dataGridViewTextBoxColumn2;
+    private System.Windows.Forms.DataGridViewTextBoxColumn 
+        dataGridViewTextBoxColumn3;
+    private System.Windows.Forms.DataGridViewTextBoxColumn 
+        dataGridViewTextBoxColumn4;
+    private System.Windows.Forms.DataGridViewTextBoxColumn 
+        dataGridViewTextBoxColumn5;
+    private System.Windows.Forms.DataGridViewTextBoxColumn 
+        dataGridViewTextBoxColumn6;
+    private System.Windows.Forms.DataGridViewTextBoxColumn 
+        dataGridViewTextBoxColumn7;
+    private System.Windows.Forms.DataGridViewTextBoxColumn 
+        dataGridViewTextBoxColumn8;
+    private System.Windows.Forms.DataGridViewTextBoxColumn 
+        dataGridViewTextBoxColumn9;
+    private System.Windows.Forms.DataGridViewTextBoxColumn 
+        dataGridViewTextBoxColumn10;
+
+    private void ViewOrders(String customerId)
+    {
+        // Show the CustomerOrders dialog, passing in the customer ID.
+        CustomerOrdersForm co = new CustomerOrdersForm();
+        co.ShowDialog(customerId, this, northwindDS);
+    } //ViewOrders
+
+    private void Form1_Load(Object sender, EventArgs e)
+    {
+        // Load the DataSet that represents the offline version of the 
+        // Northwind database.
+        northwindDS = new DataSet("Northwind");
+        northwindDS.ReadXmlSchema(".\\NorthwindCustomerOrders.xsd");
+        northwindDS.ReadXml(".\\NorthwindCustomerOrders.xml", XmlReadMode.Auto);
+        northwindDS.set_Locale(System.Globalization.CultureInfo.get_CurrentUICulture());
+
+        dataGridView1.set_AutoGenerateColumns(false);
+        dataGridView1.set_DataSource(northwindDS);
+        dataGridView1.set_DataMember("Customers");
+
+		dataGridView1.set_AutoSizeColumnsMode(DataGridViewAutoSizeColumnsMode.ColumnHeader);
+
+    } //Form1_Load
+
+    private void dataGridView1_RowValidating(Object sender, 
+        DataGridViewCellCancelEventArgs e)
+    {
+        // Calculate the customer ID for offline mode. Currently this is done by 
+        // handling the RowValidating event, but note that this event fires 
+        // each time focus leaves a row. Currently the row index has to be 
+        // special cased to decide when to perform calculate the customerID.            
+        if (e.get_RowIndex() == dataGridView1.get_Rows().get_Count() - 2 
+            && dataGridView1.get_Rows().get_Item(e.get_RowIndex() + 1).
+            get_IsNewRow()) {
+
+            DataGridViewRow row = dataGridView1.get_Rows().
+                get_Item(e.get_RowIndex());
+            
+			// Only want to calculate the CustomerID if it hasn't been calculated.
+			if (row.get_Cells().get_Item("CustomerID").get_Value() != null)
+                {
+					if (row.get_Cells().get_Item("CustomerID").get_Value() ==
+						DBNull.Value || row.get_Cells().get_Item("CustomerID").
+						get_Value().ToString().Equals("<AUTO>"))
+					{
+						// CustomerID is calculated by taking the first 2 characters 
+						// of the CompanyName and appending the RowIndex. 
+						String coName = (String)row.get_Cells().get_Item("CompanyName").
+							get_Value();
+
+						if (coName != null)
+						{
+							String coId = coName.ToUpper().Substring(0,
+								System.Math.Min(2, coName.get_Length()));
+							row.get_Cells().get_Item("CustomerID").set_Value(coId + e.get_RowIndex());
+							e.set_Cancel(false);
+						}
+					}
+				}
+        }
+    } //dataGridView1_RowValidating
+
+    private void dataGridView1_DefaultValuesNeeded(Object sender, 
+        DataGridViewRowEventArgs e)
+    {
+        // Identify to the user that the CustomerID is auto-generated.
+        e.get_Row().get_Cells().get_Item("CustomerID").set_Value("<AUTO>");
+    } //dataGridView1_DefaultValuesNeeded
+
+    private void dataGridView1_DataError(Object sender, 
+        DataGridViewDataErrorEventArgs e)
+    {
+        // Show the row error text if data error occurs on commit of data.
+        if (e.get_Context().Equals(DataGridViewDataErrorContexts.Commit)) {
+            // if (e.get_RowIndex() == dataGridView1.Rows.Count - 2) {
+            //     error when committing new row
+            dataGridView1.get_Rows().get_Item(e.get_RowIndex()).get_ErrorText().
+                Equals(e.get_Exception().ToString());
+            e.set_Cancel(true);
+            // e.set_ThrowException(false);
+            // }
+        }
+    } //dataGridView1_DataError
+   
+    private void dataGridView1_CellContentClick(Object sender, 
+        DataGridViewCellEventArgs e)
+    {
+        // Show the customer order screen when the user clicks the link.
+        if (e.get_ColumnIndex() == 1 && !(dataGridView1.get_Rows().
+            get_Item(e.get_RowIndex()).get_IsNewRow())) {
+            String customerId = (String)dataGridView1.get_Rows().
+                get_Item(e.get_RowIndex()).get_Cells().get_Item("CustomerID")
+                .get_Value();
+            if (customerId != null) {
+                this.ViewOrders(customerId);
+            }
+        }
+    } //dataGridView1_CellContentClick
+
+    private void dataGridView1_RowEnter(Object sender, 
+        DataGridViewCellEventArgs e)
+    {
+        // Ensure that the row is selected when focus moves to a row except
+        // for the new row where selection should be cell based.
+        if (dataGridView1.get_Rows().get_Item(e.get_RowIndex()).get_IsNewRow()) {
+            dataGridView1.set_SelectionMode(DataGridViewSelectionMode.
+                CellSelect);
+            dataGridView1.get_Rows().get_Item(e.get_RowIndex()).
+                set_Selected(false);
+            if (!(dataGridView1.get_Rows().get_Item(e.get_RowIndex()).
+                get_Cells().get_Item(e.get_ColumnIndex()).get_Selected())) {
+                dataGridView1.get_Rows().get_Item(e.get_RowIndex()).get_Cells()
+                    .get_Item(e.get_ColumnIndex()).set_Selected(true);
+            }
+        }
+        else {
+            // Without this the first time the dialog is shown the first row 
+            // is not fully selected.
+            dataGridView1.set_SelectionMode(DataGridViewSelectionMode.
+                FullRowSelect);
+            if (!(dataGridView1.get_Rows().get_Item(e.get_RowIndex()).
+                get_Selected())) {
+                dataGridView1.get_Rows().get_Item(e.get_RowIndex()).
+                    set_Selected(true);
+            }
+        }
+    } //dataGridView1_RowEnter
+
+    private void dataGridView1_CellValidating(Object sender,
+        DataGridViewCellValidatingEventArgs e)
+    {
+        // Validate that the content length will fit into the DataSet.
+        if (dataGridView1.get_IsCurrentCellDirty())
+        {
+            int maxLength = northwindDS.get_Tables().get_Item("Customers").
+                get_Columns().get_Item(e.get_ColumnIndex()).get_MaxLength();
+            if (e.get_FormattedValue().ToString().get_Length() > maxLength)
+            {
+                // Show error icon/text since the value cannot fit.
+                dataGridView1.get_Rows().get_Item(e.get_RowIndex()).get_Cells().
+                    get_Item(e.get_ColumnIndex()).set_ErrorText(
+                    "Column value cannot exceed " + Convert.ToString(maxLength, 
+                    System.Globalization.CultureInfo.get_CurrentUICulture()) + " characters.");
+                e.set_Cancel(false);
+			}
+			else
+            {
+				// Clear the error icon/text.
+                DataGridViewCell c = dataGridView1.get_Rows().get_Item(e.get_RowIndex()).get_Cells().
+                    get_Item(e.get_ColumnIndex());
+									
+                if (c.get_ErrorText() != String.Empty)
+					c.set_ErrorText(String.Empty);
+			}
+        }
+    } //dataGridView1_CellValidating
+
+    private void dataGridView1_KeyDown(Object sender, KeyEventArgs e)
+    {
+        // Show the customer order screen when the user presses Enter 
+        // except for where the Customer ID is not yet known 
+        // (such as the New Row).
+        if (e.get_KeyData().Equals(Keys.Enter)) {
+            String customerID = (String)dataGridView1.get_Rows().
+                get_Item(dataGridView1.get_CurrentCellAddress().get_Y()).
+                get_Cells().get_Item("CustomerID").get_Value();
+            if (customerID != null) {
+                // Stop the DataGridView from processing the enter.
+                e.set_Handled(true);
+                this.ViewOrders(customerID);
+            }
+        }
+    } //dataGridView1_KeyDown
+
+    private void newToolStripMenuItem_Click(Object sender, EventArgs e)
+    {
+        // Move focus to the new row and start editing.
+        dataGridView1.set_CurrentCell(dataGridView1.get_Rows().
+            get_Item((dataGridView1.get_Rows().get_Count() - 1)).
+            get_Cells().get_Item("CompanyName"));
+    } //newToolStripMenuItem_Click
+
+    private void viewOrdersToolStripMenuItem_Click(Object sender, EventArgs e)
+    {
+        // Show the customer order screen when the user presses Enter 
+        // except for where the Customer ID is not yet known 
+        // (such as the New Row).
+        String customerId = (String)dataGridView1.get_Rows().
+            get_Item(dataGridView1.get_CurrentCellAddress().get_Y()).
+            get_Cells().get_Item("CustomerID").get_Value();
+        if (customerId != null) {
+            this.ViewOrders(customerId);
+        }
+    } //viewOrdersToolStripMenuItem_Click
+
+    private void exitToolStripMenuItem_Click(Object sender, EventArgs e)
+    {
+        // Close the form to exit the application.
+        this.Close();
+    } //exitToolStripMenuItem_Click
+} //CustomerForm 
+
+

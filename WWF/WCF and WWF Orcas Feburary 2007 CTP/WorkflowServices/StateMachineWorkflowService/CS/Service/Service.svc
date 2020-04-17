@@ -1,0 +1,12 @@
+<%@ServiceHost language=c# Debug="true" Service="Microsoft.WorkflowServices.Samples.StateMachineCalculatorService" Factory="System.ServiceModel.Activation.WorkflowServiceHostFactory" %>
+
+/******************************************************************************
+    Instructions for IIS Hosting (inetmgr)
+    1. Run the vrootsetup.bat script located in the sdk\Setup directory.
+    2. Enable "Windows Authentication" on the vroot "NetFx35Samples".
+    3. Project will build and copy to vroot NetFx35Samples.
+    
+    // To allow access to durable store
+    1. Run the createinstancestores.cmd script located in the sdk\Setup directory.
+    2. Make ASPNET User account a member of SQLServer User Group.
+******************************************************************************/

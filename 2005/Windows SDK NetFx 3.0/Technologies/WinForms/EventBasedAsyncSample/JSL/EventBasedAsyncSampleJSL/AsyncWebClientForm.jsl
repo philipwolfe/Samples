@@ -1,0 +1,411 @@
+package Microsoft.Samples.Windows.Forms.EventBasedAsync; 
+
+//---------------------------------------------------------------------
+//  This file is part of the Microsoft.NET Framework SDK Code Samples.
+// 
+//  Copyright (C) Microsoft Corporation.  All rights reserved.
+// 
+//This source code is intended only as a supplement to Microsoft
+//Development Tools and/or on-line documentation.  See these other
+//materials for detailed information regarding Microsoft code samples.
+// 
+//THIS CODE AND INFORMATION ARE PROVIDED AS IS WITHOUT WARRANTY OF ANY
+//KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+//IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+//PARTICULAR PURPOSE.
+//---------------------------------------------------------------------
+
+#region Import directives
+
+import System.*;
+import System.Collections.Generic.*;
+import System.ComponentModel.*;
+import System.Data.*;
+import System.Drawing.*;
+import System.Text.*;
+import System.Windows.Forms.*;
+import System.Net.*;
+import System.IO.*;
+
+#endregion
+
+class AsyncWebClientForm extends Form
+{
+    /// The WebClient component used to download a file
+    private WebClient myWebClient = new WebClient();
+	private StatusStrip statusStrip1;
+	private ToolStripStatusLabel webClientOperationToolStripTextProgressPanel;
+	private ToolStripProgressBar webClientOperationToolStripProgressBar;
+	
+	/// Store full file name
+	private String fullTargetFileName = "";
+	
+	public AsyncWebClientForm()
+    {
+        InitializeComponent();
+        //Handle the DownloadFileCompleted and DownloadProgressChanged events
+        myWebClient.add_DownloadFileCompleted(new AsyncCompletedEventHandler(
+            myWebClient_DownloadFileCompleted));
+        myWebClient.add_DownloadProgressChanged(new DownloadProgressChangedEventHandler(
+            myWebClient_DownloadProgressChanged));
+    } //AsyncWebClientForm
+
+    /// <summary>
+    /// Required designer variable.
+    /// </summary>
+    private System.ComponentModel.IContainer components = null;
+
+    /// <summary>
+    /// Clean up any resources being used.
+    /// </summary>
+    protected void Dispose(boolean disposing)
+    {
+        if (disposing && components != null) {
+            components.Dispose();
+        }
+        super.Dispose(disposing);
+    } //Dispose
+
+    #region Windows Form Designer generated code
+
+    /// <summary>
+    /// Required method for Designer support - do not modify
+    /// the contents of this method with the code editor.
+    /// </summary>
+    private void InitializeComponent()
+    {
+		System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(AsyncWebClientForm.class.ToType());
+		this.btnCancel = new System.Windows.Forms.Button();
+		this.groupBoxFileDownload = new System.Windows.Forms.GroupBox();
+		this.btnBrowse = new System.Windows.Forms.Button();
+		this.lblTo = new System.Windows.Forms.Label();
+		this.txtToLocation = new System.Windows.Forms.TextBox();
+		this.btnDownloadFile = new System.Windows.Forms.Button();
+		this.lblFrom = new System.Windows.Forms.Label();
+		this.txtFromLocation = new System.Windows.Forms.TextBox();
+		this.groupBoxInstructions = new System.Windows.Forms.GroupBox();
+		this.workaroundPanel = new System.Windows.Forms.Panel();
+		this.instructionsLinkLabel = new System.Windows.Forms.LinkLabel();
+		this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+		this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+		this.webClientOperationToolStripTextProgressPanel = new System.Windows.Forms.ToolStripStatusLabel();
+		this.webClientOperationToolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
+		this.groupBoxFileDownload.SuspendLayout();
+		this.groupBoxInstructions.SuspendLayout();
+		this.workaroundPanel.SuspendLayout();
+		this.statusStrip1.SuspendLayout();
+		this.SuspendLayout();
+		// 
+		// btnCancel
+		// 
+		this.btnCancel.set_DialogResult(System.Windows.Forms.DialogResult.Cancel);
+		this.btnCancel.set_Enabled(false);
+		this.btnCancel.set_Location(new System.Drawing.Point(128, 73));
+		this.btnCancel.set_Margin(new System.Windows.Forms.Padding(3, 1, 3, 3));
+		this.btnCancel.set_Name("btnCancel");
+		this.btnCancel.set_Size(new System.Drawing.Size(75, 23));
+		this.btnCancel.set_TabIndex(4);
+		this.btnCancel.set_Text("&Cancel");
+		this.btnCancel.add_Click(new System.EventHandler(this.btnCancel_Click));
+		// 
+		// groupBoxFileDownload
+		// 
+		this.groupBoxFileDownload.set_Anchor(((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+					| System.Windows.Forms.AnchorStyles.Right))));
+		this.groupBoxFileDownload.get_Controls().Add(this.btnBrowse);
+		this.groupBoxFileDownload.get_Controls().Add(this.lblTo);
+		this.groupBoxFileDownload.get_Controls().Add(this.btnCancel);
+		this.groupBoxFileDownload.get_Controls().Add(this.txtToLocation);
+		this.groupBoxFileDownload.get_Controls().Add(this.btnDownloadFile);
+		this.groupBoxFileDownload.get_Controls().Add(this.lblFrom);
+		this.groupBoxFileDownload.get_Controls().Add(this.txtFromLocation);
+		this.groupBoxFileDownload.set_Location(new System.Drawing.Point(13, 129));
+		this.groupBoxFileDownload.set_Margin(new System.Windows.Forms.Padding(1, 3, 1, 3));
+		this.groupBoxFileDownload.set_Name("groupBoxFileDownload");
+		this.groupBoxFileDownload.set_Padding(new System.Windows.Forms.Padding(5));
+		this.groupBoxFileDownload.set_Size(new System.Drawing.Size(418, 104));
+		this.groupBoxFileDownload.set_TabIndex(0);
+		this.groupBoxFileDownload.set_TabStop(false);
+		this.groupBoxFileDownload.set_Text("File download");
+		// 
+		// btnBrowse
+		// 
+		this.btnBrowse.set_Anchor(((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right))));
+		this.btnBrowse.set_Location(new System.Drawing.Point(335, 46));
+		this.btnBrowse.set_Name("btnBrowse");
+		this.btnBrowse.set_Size(new System.Drawing.Size(75, 23));
+		this.btnBrowse.set_TabIndex(2);
+		this.btnBrowse.set_Text("&Browse...");
+		this.btnBrowse.add_Click(new System.EventHandler(this.btnBrowse_Click));
+		// 
+		// lblTo
+		// 
+		this.lblTo.set_Anchor(((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+					| System.Windows.Forms.AnchorStyles.Left)
+					| System.Windows.Forms.AnchorStyles.Right))));
+		this.lblTo.set_AutoSize(true);
+		this.lblTo.set_Location(new System.Drawing.Point(7, 51));
+		this.lblTo.set_Margin(new System.Windows.Forms.Padding(2, 3, 2, 3));
+		this.lblTo.set_Name("lblTo");
+		this.lblTo.set_Size(new System.Drawing.Size(23, 13));
+		this.lblTo.set_TabIndex(11);
+		this.lblTo.set_Text("To:");
+		// 
+		// txtToLocation
+		// 
+		this.txtToLocation.set_Anchor(((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+					| System.Windows.Forms.AnchorStyles.Right))));
+		this.txtToLocation.set_Location(new System.Drawing.Point(45, 48));
+		this.txtToLocation.set_Margin(new System.Windows.Forms.Padding(3, 2, 3, 3));
+		this.txtToLocation.set_Name("txtToLocation");
+		this.txtToLocation.set_Size(new System.Drawing.Size(284, 20));
+		this.txtToLocation.set_TabIndex(1);
+		this.txtToLocation.set_Text("bigdownload.txt");
+		// 
+		// btnDownloadFile
+		// 
+		this.btnDownloadFile.set_Location(new System.Drawing.Point(45, 73));
+		this.btnDownloadFile.set_Margin(new System.Windows.Forms.Padding(3, 1, 3, 3));
+		this.btnDownloadFile.set_Name("btnDownloadFile");
+		this.btnDownloadFile.set_Size(new System.Drawing.Size(76, 23));
+		this.btnDownloadFile.set_TabIndex(3);
+		this.btnDownloadFile.set_Text("&Download");
+		this.btnDownloadFile.add_Click(new System.EventHandler(this.btnDownloadFile_Click));
+		// 
+		// lblFrom
+		// 
+		this.lblFrom.set_Anchor(((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+					| System.Windows.Forms.AnchorStyles.Left)
+					| System.Windows.Forms.AnchorStyles.Right))));
+		this.lblFrom.set_AutoSize(true);
+		this.lblFrom.set_Location(new System.Drawing.Point(7, 25));
+		this.lblFrom.set_Margin(new System.Windows.Forms.Padding(2, 3, 2, 3));
+		this.lblFrom.set_Name("lblFrom");
+		this.lblFrom.set_Size(new System.Drawing.Size(33, 13));
+		this.lblFrom.set_TabIndex(3);
+		this.lblFrom.set_Text("From:");
+		// 
+		// txtFromLocation
+		// 
+		this.txtFromLocation.set_Anchor(((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+					| System.Windows.Forms.AnchorStyles.Right))));
+		this.txtFromLocation.set_Location(new System.Drawing.Point(45, 22));
+		this.txtFromLocation.set_Margin(new System.Windows.Forms.Padding(2, 2, 3, 3));
+		this.txtFromLocation.set_Name("txtFromLocation");
+		this.txtFromLocation.set_Size(new System.Drawing.Size(284, 20));
+		this.txtFromLocation.set_TabIndex(0);
+		this.txtFromLocation.set_Text("http://localhost/big.txt");
+		// 
+		// groupBoxInstructions
+		// 
+		this.groupBoxInstructions.set_Anchor(((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+					| System.Windows.Forms.AnchorStyles.Right))));
+		this.groupBoxInstructions.get_Controls().Add(this.workaroundPanel);
+		this.groupBoxInstructions.set_Location(new System.Drawing.Point(8, 13));
+		this.groupBoxInstructions.set_Margin(new System.Windows.Forms.Padding(1, 3, 1, 3));
+		this.groupBoxInstructions.set_Name("groupBoxInstructions");
+		this.groupBoxInstructions.set_Padding(new System.Windows.Forms.Padding(9));
+		this.groupBoxInstructions.set_Size(new System.Drawing.Size(425, 104));
+		this.groupBoxInstructions.set_TabIndex(1);
+		this.groupBoxInstructions.set_TabStop(false);
+		this.groupBoxInstructions.set_Text("Instructions");
+		// 
+		// workaroundPanel
+		// 
+		this.workaroundPanel.get_Controls().Add(this.instructionsLinkLabel);
+		this.workaroundPanel.set_Dock(System.Windows.Forms.DockStyle.Fill);
+		this.workaroundPanel.set_Location(new System.Drawing.Point(9, 22));
+		this.workaroundPanel.set_Name("workaroundPanel");
+		this.workaroundPanel.set_Padding(new System.Windows.Forms.Padding(9));
+		this.workaroundPanel.set_Size(new System.Drawing.Size(407, 73));
+		this.workaroundPanel.set_TabIndex(0);
+		// 
+		// instructionsLinkLabel
+		// 
+		this.instructionsLinkLabel.set_Dock(System.Windows.Forms.DockStyle.Fill);
+		this.instructionsLinkLabel.set_LinkArea(new System.Windows.Forms.LinkArea(93, 96));
+		this.instructionsLinkLabel.set_Location(new System.Drawing.Point(9, 9));
+		this.instructionsLinkLabel.set_Name("instructionsLinkLabel");
+		this.instructionsLinkLabel.set_Size(new System.Drawing.Size(389, 55));
+		this.instructionsLinkLabel.set_TabIndex(5);
+		this.instructionsLinkLabel.set_TabStop(true);
+		this.instructionsLinkLabel.set_Text(resources.GetString("instructionsLinkLabel.Text"));
+		this.instructionsLinkLabel.set_UseCompatibleTextRendering(true);
+		this.instructionsLinkLabel.add_LinkClicked(new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.instructionsLinkLabel_LinkClicked));
+		// 
+		// saveFileDialog1
+		// 
+		this.saveFileDialog1.set_AddExtension(false);
+		// 
+		// statusStrip1
+		// 
+		this.statusStrip1.get_Items().AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.webClientOperationToolStripTextProgressPanel,
+            this.webClientOperationToolStripProgressBar}
+		);
+		this.statusStrip1.set_Location(new System.Drawing.Point(0, 248));
+		this.statusStrip1.set_Name("statusStrip1");
+		this.statusStrip1.set_Size(new System.Drawing.Size(443, 22));
+		this.statusStrip1.set_TabIndex(2);
+		this.statusStrip1.set_Text("statusStrip1");
+		// 
+		// webClientOperationToolStripTextProgressPanel
+		// 
+		this.webClientOperationToolStripTextProgressPanel.set_Name("webClientOperationToolStripTextProgressPanel");
+		this.webClientOperationToolStripTextProgressPanel.set_Size(new System.Drawing.Size(0, 17));
+		// 
+		// webClientOperationToolStripProgressBar
+		// 
+		this.webClientOperationToolStripProgressBar.set_Name("webClientOperationToolStripProgressBar");
+		this.webClientOperationToolStripProgressBar.set_Size(new System.Drawing.Size(100, 15));
+		// 
+		// AsyncWebClientForm
+		// 
+		this.set_AcceptButton(this.btnDownloadFile);
+		this.set_AutoScaleBaseSize(new System.Drawing.Size(5, 13));
+		this.set_CancelButton(this.btnCancel);
+		this.set_ClientSize(new System.Drawing.Size(443, 270));
+		this.get_Controls().Add(this.statusStrip1);
+		this.get_Controls().Add(this.groupBoxInstructions);
+		this.get_Controls().Add(this.groupBoxFileDownload);
+		this.set_MinimumSize(new System.Drawing.Size(451, 269));
+		this.set_Name("AsyncWebClientForm");
+		this.set_Text("Async WebClient Sample");
+		this.groupBoxFileDownload.ResumeLayout(false);
+		this.groupBoxFileDownload.PerformLayout();
+		this.groupBoxInstructions.ResumeLayout(false);
+		this.workaroundPanel.ResumeLayout(false);
+		this.statusStrip1.ResumeLayout(false);
+		this.statusStrip1.PerformLayout();
+		this.ResumeLayout(false);
+		this.PerformLayout();
+
+    } //InitializeComponent 
+
+    #endregion
+
+    private System.Windows.Forms.Button btnCancel;
+    private System.Windows.Forms.GroupBox groupBoxFileDownload;
+    private System.Windows.Forms.Button btnDownloadFile;
+    private System.Windows.Forms.Label lblFrom;
+    private System.Windows.Forms.TextBox txtFromLocation;
+    private System.Windows.Forms.GroupBox groupBoxInstructions;
+    private System.Windows.Forms.Panel workaroundPanel;
+    private System.Windows.Forms.LinkLabel instructionsLinkLabel;
+    private System.Windows.Forms.Label lblTo;
+    private System.Windows.Forms.TextBox txtToLocation;
+    private System.Windows.Forms.Button btnBrowse;
+    private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+ 
+    /// <summary>
+    /// Handle the Click event on btnBrowse. 
+    /// Allow the user to set the name of the file when it has been downloaded
+    /// </summary>
+    private void btnBrowse_Click(Object sender, System.EventArgs e)
+    {
+        if (saveFileDialog1.ShowDialog().Equals(DialogResult.OK)) {
+            txtToLocation.set_Text(saveFileDialog1.get_FileName());
+        }
+    } //btnBrowse_Click
+
+    /// <summary>
+    /// Handle the Click event on btnDownloadFile. 
+    /// Start the async download of the text file pointed to by txtFromLocation 
+    /// - this can be a file name or url.
+    ///  The file is downloaded to the name in txtToLocation
+    /// </summary>
+    private void btnDownloadFile_Click(Object sender, System.EventArgs e)
+    {
+        webClientOperationToolStripProgressBar.set_Value(0);
+        webClientOperationToolStripTextProgressPanel.set_Text("");
+        btnDownloadFile.set_Enabled(false);
+        btnCancel.set_Enabled(true);
+		fullTargetFileName = Path.GetFullPath(txtToLocation.get_Text());
+		myWebClient.DownloadFileAsync(new Uri(txtFromLocation.get_Text()), 
+            txtToLocation.get_Text());
+    } //btnDownloadFile_Click
+
+    /// <summary>
+    /// Handle the Click event on btnCancel.
+    /// Cancel the async loading of the text file
+    /// Note: It is possible that the load may have completed by the time cancel 
+    /// is processed - you will need to take this into account in your 
+    /// applications
+    /// </summary>
+    private void btnCancel_Click(Object sender, System.EventArgs e)
+    {
+        myWebClient.CancelAsync();
+		fullTargetFileName = "";
+	} //btnCancel_Click
+
+    /// <summary>
+    /// Handle the DownloadFileCompleted event. This event is raised when the 
+    /// WebClient component has finished async downloading the file.
+    /// The AsyncCompletedEventArgs contains information about the async 
+    /// operation - whether it was canceled, if there was an error and so on
+    /// </summary>
+    private void myWebClient_DownloadFileCompleted(Object sender, 
+        System.ComponentModel.AsyncCompletedEventArgs e)
+    {
+        btnCancel.set_Enabled(false);
+        btnDownloadFile.set_Enabled(true);
+        if (e.get_Error() != null) {
+            MessageBox.Show(e.get_Error().get_Message(), "Async Web Client Sample", 
+                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        }
+        else {
+            if (e.get_Cancelled() == true) {
+				MessageBox.Show("Download of file canceled", "Async Web Client Sample");
+            }
+            else {
+				MessageBox.Show(String.Format("Download of file completed. File is located at: {0}", fullTargetFileName), "Async Web Client Sample");
+			}
+        }
+    } //myWebClient_DownloadFileCompleted
+
+    /// <summary>
+    /// Handle the ProgressChanged event. This event is raised during the async 
+    /// download of the file. It can be used to give progress feedback to the 
+    /// user.The ProgressChangedEventArgs contains information about the 
+    /// progress of the async operation - the percentage complete, the number 
+    /// of bytes downloaded and so on
+    /// </summary>
+    private void myWebClient_DownloadProgressChanged(Object sender, 
+        System.Net.DownloadProgressChangedEventArgs e)
+    {
+        webClientOperationToolStripProgressBar.set_Value(
+            e.get_ProgressPercentage());
+        webClientOperationToolStripTextProgressPanel.set_Text("Downloaded " 
+            + Convert.ToString(e.get_BytesReceived()) + " bytes of " 
+            + Convert.ToString(e.get_TotalBytesToReceive()));
+    } //myWebClient_DownloadProgressChanged
+
+    /// <summary> 
+    /// Utility method that generates a 24MB text file for the sample
+    /// This should really be done asynchronously as well but to keep the sample
+    /// simple we'll simply do it in line
+    /// </summary>
+    private void instructionsLinkLabel_LinkClicked(Object sender,
+        System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+    {
+        WaitCursorManager objWait = new WaitCursorManager(this);
+        try {
+            StreamWriter sw = new StreamWriter("big.txt");
+            try {
+                for (int i = 1; i <= 300000; i++) {
+                    sw.Write(i);
+                    sw.WriteLine(" this is a line of text in a big file that " 
+                        + "we are generating for our sample");
+                }
+            }
+            finally {
+                sw.Dispose();
+            }
+        }
+        finally {
+            objWait.Dispose();
+        }
+    } //instructionsLinkLabel_LinkClicked
+} //AsyncWebClientForm
+
+

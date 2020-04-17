@@ -1,0 +1,41 @@
+﻿<SequentialWorkflowActivity x:Class="ExpenseWorkflows.SequentialWorkflow" x:Name="SequentialWorkflow" xmlns:ns0="clr-namespace:ExpenseActivities;Assembly=ExpenseActivities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow">
+	<HandleExternalEventActivity Invoked="ReportSubmitted_Invoked" x:Name="expenseReportSubmitted1" EventName="ExpenseReportSubmitted" InterfaceType="{x:Type p5:IExpenseLocalService}" xmlns:p5="clr-namespace:ExpenseLocalServices;Assembly=ExpenseLocalServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+		<HandleExternalEventActivity.ParameterBindings>
+			<WorkflowParameterBinding ParameterName="sender" />
+			<WorkflowParameterBinding ParameterName="e">
+				<WorkflowParameterBinding.Value>
+					<ActivityBind Name="SequentialWorkflow" Path="reportArgs" />
+				</WorkflowParameterBinding.Value>
+			</WorkflowParameterBinding>
+		</HandleExternalEventActivity.ParameterBindings>
+	</HandleExternalEventActivity>
+	<PolicyActivity x:Name="AutoApprovalPolicy">
+		<PolicyActivity.RuleSetReference>
+			<RuleSetReference RuleSetName="AutoApprovalRuleset" />
+		</PolicyActivity.RuleSetReference>
+	</PolicyActivity>
+	<IfElseActivity x:Name="EvaluateExpenseReport">
+		<IfElseBranchActivity x:Name="IfAutoApproveReport">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="AutoApprove" />
+			</IfElseBranchActivity.Condition>
+			<CallExternalMethodActivity x:Name="approveExpenseReport1" InterfaceType="{x:Type p9:IExpenseLocalService}" MethodName="ApproveExpenseReport" xmlns:p9="clr-namespace:ExpenseLocalServices;Assembly=ExpenseLocalServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+				<CallExternalMethodActivity.ParameterBindings>
+					<WorkflowParameterBinding ParameterName="report">
+						<WorkflowParameterBinding.Value>
+							<ActivityBind Name="SequentialWorkflow" Path="reportArgs.Report" />
+						</WorkflowParameterBinding.Value>
+					</WorkflowParameterBinding>
+				</CallExternalMethodActivity.ParameterBindings>
+			</CallExternalMethodActivity>
+		</IfElseBranchActivity>
+		<FaultHandlersActivity x:Name="faultHandlersActivity2" />
+		<CancellationHandlerActivity x:Name="cancellationHandlerActivity2" />
+		<IfElseBranchActivity x:Name="ElseManagerApproval">
+			<ns0:GetManager ReportEmployeeId="{ActivityBind SequentialWorkflow,Path=ReportEmployeeId}" x:Name="getManager" ManagerEmployeeId="{ActivityBind SequentialWorkflow,Path=ManagerEmployeeId}" ManagerEmail="" />
+			<ns0:ManagerApproval report="{ActivityBind SequentialWorkflow,Path=reportArgs.Report}" x:Name="managerApproval1" ManagerEmployeeId="{ActivityBind getManager,Path=ManagerEmployeeId}" />
+		</IfElseBranchActivity>
+	</IfElseActivity>
+	<CancellationHandlerActivity x:Name="cancellationHandlerActivity1" />
+	<FaultHandlersActivity x:Name="faultHandlersActivity1" />
+</SequentialWorkflowActivity>

@@ -1,0 +1,37 @@
+<p:Activity x:Class="Microsoft.Samples.Workflow.Expressions.SalaryCalculation" xmlns="clr-namespace:System.Activities.Design.Xaml;assembly=System.Activities.Design" xmlns:mswe="clr-namespace:Microsoft.Samples.Workflow.Expressions;assembly=Expressions" xmlns:p="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:sad="clr-namespace:System.Activities.Debugger;assembly=System.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <p:Sequence>
+    <p:Sequence.Variables>
+      <p:Variable x:TypeArguments="mswe:Employee" Name="Employee1" Default="[New Employee(&quot;John&quot;, &quot;Doe&quot;, 55000.0)]" />
+      <p:Variable x:TypeArguments="mswe:Employee" Name="Employee2" Default="[New Employee(&quot;Franek&quot;, &quot;Kimono&quot;, 89000.0)]" />
+      <p:Variable x:TypeArguments="mswe:SalaryStats" Name="SalaryStats" Default="[New SalaryStats()]" />
+      <p:Variable x:TypeArguments="x:Double" Name="variable1" />
+    </p:Sequence.Variables>
+    <p:WriteLine>[Employee1.FirstName &amp; " " &amp; Employee1.LastName &amp; " earns " &amp; Employee1.Salary.ToString("$0.00")]</p:WriteLine>
+    <p:WriteLine>[Employee2.FirstName &amp; " " &amp; Employee2.LastName &amp; " earns " &amp; Employee2.Salary.ToString("$0.00")]</p:WriteLine>
+    <p:Assign>
+      <p:Assign.To>
+        <p:OutArgument x:TypeArguments="x:Double">[SalaryStats.MinSalary]</p:OutArgument>
+      </p:Assign.To>
+      <p:Assign.Value>
+        <p:InArgument x:TypeArguments="x:Double">[Math.Min(Employee1.Salary, Employee2.Salary)]</p:InArgument>
+      </p:Assign.Value>
+    </p:Assign>
+    <p:Assign>
+      <p:Assign.To>
+        <p:OutArgument x:TypeArguments="x:Double">[SalaryStats.MaxSalary]</p:OutArgument>
+      </p:Assign.To>
+      <p:Assign.Value>
+        <p:InArgument x:TypeArguments="x:Double">[Math.Max(Employee1.Salary, Employee2.Salary)]</p:InArgument>
+      </p:Assign.Value>
+    </p:Assign>
+    <p:Assign>
+      <p:Assign.To>
+        <p:OutArgument x:TypeArguments="x:Double">[SalaryStats.AvgSalary]</p:OutArgument>
+      </p:Assign.To>
+      <p:Assign.Value>
+        <p:InArgument x:TypeArguments="x:Double">[(Employee1.Salary + Employee2.Salary) / 2.0]</p:InArgument>
+      </p:Assign.Value>
+    </p:Assign>
+    <p:WriteLine>[String.Format("Salary statistics: minimal salary is {0:$0.00},  maximal salary is {1:$0.00}, average salary is {2:$0.00}", SalaryStats.MinSalary, SalaryStats.MaxSalary, SalaryStats.AvgSalary)]</p:WriteLine>
+  </p:Sequence>
+</p:Activity>

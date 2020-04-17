@@ -1,0 +1,119 @@
+<Project DefaultTargets="DefaultBuild;Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<!-- 
+  This file is part of the Microsoft .NET Framework SDK Code Samples.
+ 
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+ 
+  This source code is intended only as a supplement to Microsoft
+  Development Tools and/or on-line documentation.  See these other
+  materials for detailed information regarding Microsoft code samples.
+ 
+  THIS CODE AND INFORMATION ARE PROVIDED AS IS WITHOUT WARRANTY OF ANY
+  KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+  IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+  PARTICULAR PURPOSE.
+  -->
+  <!--
+
+   Type msbuild to build Debug.
+
+   Type msbuild /p:Configuration=Release to build Release.
+
+   Type msbuild /t:Clean <sample.projectname> to execute the Clean target for this sample
+   
+   Type msbuild /? for further Usage options
+
+   In the .NET Framework SDK, sample directories above the <sample.sln> level contain one project file 
+   named Buildall.proj.  If there is only one .proj file in the directory, Msbuild defaults to building 
+   it.  Project extension conventions include .vbproj, .csproj, and .proj.  
+
+   For the <sample.sln> level, specify the .sln file on the command line:
+      msbuild Sample.sln
+
+   For the directories below the <sample.sln> level, specify the project file on the command line:
+      msbuild sample.csproj
+   or
+      msbuild sample.vbproj
+
+   Debug is the default configuration for MsBuild.
+
+   Examples:
+     msbuild /p:Configuration=Release MySampleCS.sln 
+     msbuild MySample.csproj
+     msbuild /t:Clean MySampleCS.csproj
+
+   -->
+
+  <PropertyGroup>
+    <ProjectGuid>{76DF404C-F8F9-4AB6-A63D-CD489D4A8E01}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <AssemblyName>customCulture</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DelaySign>false</DelaySign>
+    <OutputType>WinExe</OutputType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'">
+    <DebugInfo>true</DebugInfo>
+    <DEBUGSAMPLE>/debug+</DEBUGSAMPLE>
+    <OutputPath>.\bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <DebugInfo>false</DebugInfo>
+    <DEBUGSAMPLE>/debug-</DEBUGSAMPLE>
+    <OutputPath>.\bin\Release\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="customCulture.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSHARP.Targets" />
+  <Target Name="MakeDir">
+    <Exec Command="if not exist $(OutputPath)en-us md $(OutputPath)en-us" />
+    <Exec Command="if not exist $(OutputPath)en-us-xyz md $(OutputPath)en-us-xyz" />
+  </Target>
+  <Target Name="Resources">
+    <GenerateResource Sources="MainForm.resx" 
+		OutputResources="$(OutputPath)CustomCulture.MainForm.resources" />
+    <GenerateResource Sources="logo.resx" 
+		OutputResources="$(OutputPath)logo.resources" />
+    <GenerateResource Sources="logo.en-US.resx"
+		OutputResources="$(OutputPath)en-US\logo.en-US.resources" />
+    <GenerateResource Sources="logo.en-US-xyz.resx"
+	OutputResources="$(OutputPath)en-US-xyz\logo.en-US-xyz.resources" />
+  </Target>
+  <Target Name="DefaultBuild" DependsOnTargets="MakeDir;Resources">
+     <AL OutputAssembly="$(OutputPath)logo.dll" FileVersion="1.0.0.0" LinkResources="$(OutputPath)logo.resources" />
+     <AL OutputAssembly="$(OutputPath)en-US\logo.resources.dll" FileVersion="1.0.0.0" LinkResources="$(OutputPath)en-US\logo.en-US.resources" Culture="en-US" />
+     <AL OutputAssembly="$(OutputPath)en-US-xyz\logo.resources.dll" FileVersion="1.0.0.0" LinkResources="$(OutputPath)en-US-xyz\logo.en-US-xyz.resources" Culture="en-US-xyz" />
+  </Target>
+  <Target Name="Clean">
+    <Exec Command="del /s *.dll *.exe *.resources" />
+    <Exec Command="rd obj /s/q" />
+    <Exec Command="rd bin /s/q" />
+  </Target>
+</Project>

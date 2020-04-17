@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) Microsoft Corporation.  All rights reserved. -->
+<p:Activity x:Class="Microsoft.Samples.CorrelatedCalculator.CalculatorService.CalculatorService" xmlns="clr-namespace:System.Activities.Design.Xaml;assembly=System.Activities.Design" xmlns:p="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:p1="http://schemas.microsoft.com/netfx/2009/xaml/servicemodel" xmlns:sad="clr-namespace:System.Activities.Debugger;assembly=System.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <p:Sequence DisplayName="CorrelatedCalculator">
+    <p:Sequence.Variables>
+      <p:Variable x:TypeArguments="x:Boolean" Name="Running" Default="[True]"/>
+    </p:Sequence.Variables>
+    <p:While Condition="[Running]">
+      <p:While.Variables>
+        <p:Variable x:TypeArguments="p1:CorrelationHandle" Name="calculatorIdHandle" />
+        <p:Variable x:TypeArguments="x:Double" Name="InputValue" />
+        <p:Variable x:TypeArguments="x:Double" Name="CurrentValue" Default="[0.0]" />
+      </p:While.Variables>
+      <p:Pick>
+        <p:PickBranch>
+          <p:PickBranch.Trigger>
+            <p1:Receive CanCreateInstance="True" DisplayName="ReceiveAdd" OperationName="Add" ServiceContractName="ICalculator" ValueType="x:Double" CorrelatesWith="[calculatorIdHandle]">
+              <p1:Receive.CorrelationQuery>
+                <p1:CorrelationQuery>
+                  <p1:CorrelationQuery.Select>
+                    <p1:MessageQuerySet>
+                      <p1:XPathMessageQuery x:Key="CalcId">//*[local-name()='CalculatorId']</p1:XPathMessageQuery>
+                    </p1:MessageQuerySet>
+                  </p1:CorrelationQuery.Select>
+                  <p1:CorrelationQuery.Where>
+                    <p1:CorrelationActionMessageFilter Action="http://tempuri.org/ICalculator/Add" />
+                  </p1:CorrelationQuery.Where>
+                </p1:CorrelationQuery>
+              </p1:Receive.CorrelationQuery>
+              <p:OutArgument x:TypeArguments="x:Double">[InputValue]</p:OutArgument>
+            </p1:Receive>
+          </p:PickBranch.Trigger>
+          <p:Assign>
+            <p:Assign.To>
+              <p:OutArgument x:TypeArguments="x:Double">[CurrentValue]</p:OutArgument>
+            </p:Assign.To>
+            <p:Assign.Value>
+              <p:InArgument x:TypeArguments="x:Double">[CurrentValue + InputValue]</p:InArgument>
+            </p:Assign.Value>
+          </p:Assign>
+        </p:PickBranch>
+        <p:PickBranch>
+          <p:PickBranch.Trigger>
+            <p1:Receive CanCreateInstance="True" DisplayName="ReceiveSubtract" OperationName="Subtract" ServiceContractName="ICalculator" ValueType="x:Double" CorrelatesWith="[calculatorIdHandle]">
+              <p1:Receive.CorrelationQuery>
+                <p1:CorrelationQuery>
+                  <p1:CorrelationQuery.Select>
+                    <p1:MessageQuerySet>
+                      <p1:XPathMessageQuery x:Key="CalcId">//*[local-name()='CalculatorId']</p1:XPathMessageQuery>
+                    </p1:MessageQuerySet>
+                  </p1:CorrelationQuery.Select>
+                  <p1:CorrelationQuery.Where>
+                    <p1:CorrelationActionMessageFilter Action="http://tempuri.org/ICalculator/Subtract" />
+                  </p1:CorrelationQuery.Where>
+                </p1:CorrelationQuery>
+              </p1:Receive.CorrelationQuery>
+              <p:OutArgument x:TypeArguments="x:Double">[InputValue]</p:OutArgument>
+            </p1:Receive>
+          </p:PickBranch.Trigger>
+          <p:Assign>
+            <p:Assign.To>
+              <p:OutArgument x:TypeArguments="x:Double">[CurrentValue]</p:OutArgument>
+            </p:Assign.To>
+            <p:Assign.Value>
+              <p:InArgument x:TypeArguments="x:Double">[CurrentValue - InputValue]</p:InArgument>
+            </p:Assign.Value>
+          </p:Assign>
+        </p:PickBranch>
+        <p:PickBranch>
+          <p:PickBranch.Trigger>
+            <p1:Receive CanCreateInstance="True" CorrelatesWith="[calculatorIdHandle]" DisplayName="ReceiveMultiply" OperationName="Multiply" ServiceContractName="ICalculator" ValueType="x:Double">
+              <p1:Receive.CorrelationQuery>
+                <p1:CorrelationQuery>
+                  <p1:CorrelationQuery.Select>
+                    <p1:MessageQuerySet>
+                      <p1:XPathMessageQuery x:Key="CalcId">//*[local-name()='CalculatorId']</p1:XPathMessageQuery>
+                    </p1:MessageQuerySet>
+                  </p1:CorrelationQuery.Select>
+                  <p1:CorrelationQuery.Where>
+                    <p1:CorrelationActionMessageFilter Action="http://tempuri.org/ICalculator/Multiply" />
+                  </p1:CorrelationQuery.Where>
+                </p1:CorrelationQuery>
+              </p1:Receive.CorrelationQuery>
+              <p:OutArgument x:TypeArguments="x:Double">[InputValue]</p:OutArgument>
+            </p1:Receive>
+          </p:PickBranch.Trigger>
+          <p:Assign>
+            <p:Assign.To>
+              <p:OutArgument x:TypeArguments="x:Double">[CurrentValue]</p:OutArgument>
+            </p:Assign.To>
+            <p:Assign.Value>
+              <p:InArgument x:TypeArguments="x:Double">[CurrentValue * InputValue]</p:InArgument>
+            </p:Assign.Value>
+          </p:Assign>
+        </p:PickBranch>
+        <p:PickBranch>
+          <p:PickBranch.Trigger>
+            <p1:Receive CanCreateInstance="True" DisplayName="ReceiveDivide" OperationName="Divide" ServiceContractName="ICalculator" ValueType="x:Double" CorrelatesWith="[calculatorIdHandle]">
+              <p1:Receive.CorrelationQuery>
+                <p1:CorrelationQuery>
+                  <p1:CorrelationQuery.Select>
+                    <p1:MessageQuerySet>
+                      <p1:XPathMessageQuery x:Key="CalcId">//*[local-name()='CalculatorId']</p1:XPathMessageQuery>
+                    </p1:MessageQuerySet>
+                  </p1:CorrelationQuery.Select>
+                  <p1:CorrelationQuery.Where>
+                    <p1:CorrelationActionMessageFilter Action="http://tempuri.org/ICalculator/Divide" />
+                  </p1:CorrelationQuery.Where>
+                </p1:CorrelationQuery>
+              </p1:Receive.CorrelationQuery>
+              <p:OutArgument x:TypeArguments="x:Double">[InputValue]</p:OutArgument>
+            </p1:Receive>
+          </p:PickBranch.Trigger>
+          <p:Assign>
+            <p:Assign.To>
+              <p:OutArgument x:TypeArguments="x:Double">[CurrentValue]</p:OutArgument>
+            </p:Assign.To>
+            <p:Assign.Value>
+              <p:InArgument x:TypeArguments="x:Double">[CurrentValue / InputValue]</p:InArgument>
+            </p:Assign.Value>
+          </p:Assign>
+        </p:PickBranch>
+        <p:PickBranch Trigger="{x:Reference Name=__ReferenceID0}">
+          <p:PickBranch.Variables>
+            <p:Variable x:TypeArguments="p1:CorrelationHandle" Name="rrHandle" />
+          </p:PickBranch.Variables>
+          <p1:SendReply CorrelatesWith="[rrHandle]" DisplayName="SendReplyToReceiveEquals" ValueType="x:Double">
+            <p1:SendReply.Request>
+              <p1:Receive x:Name="__ReferenceID0" CanCreateInstance="True" DisplayName="ReceiveEquals" OperationName="Equals" ServiceContractName="ICalculator" CorrelatesWith="[calculatorIdHandle]">
+                <p1:Receive.AdditionalCorrelations>
+                  <p:InArgument x:TypeArguments="p1:CorrelationHandle" x:Key="ChannelBasedCorrelation">[rrHandle]</p:InArgument>
+                </p1:Receive.AdditionalCorrelations>
+                <p1:Receive.CorrelationQuery>
+                  <p1:CorrelationQuery>
+                    <p1:CorrelationQuery.Select>
+                      <p1:MessageQuerySet>
+                        <p1:XPathMessageQuery x:Key="CalcId">//*[local-name()='CalculatorId']</p1:XPathMessageQuery>
+                      </p1:MessageQuerySet>
+                    </p1:CorrelationQuery.Select>
+                    <p1:CorrelationQuery.Where>
+                      <p1:CorrelationActionMessageFilter Action="http://tempuri.org/ICalculator/Equals" />
+                    </p1:CorrelationQuery.Where>
+                  </p1:CorrelationQuery>
+                </p1:Receive.CorrelationQuery>
+                <x:Null />
+              </p1:Receive>
+            </p1:SendReply.Request>
+            <p:InArgument x:TypeArguments="x:Double">[CurrentValue]</p:InArgument>
+          </p1:SendReply>
+        </p:PickBranch>
+        <p:PickBranch>
+          <p:PickBranch.Trigger>
+            <p1:Receive CanCreateInstance="True" DisplayName="ReceiveReset" OperationName="Reset" ServiceContractName="ICalculator" CorrelatesWith="[calculatorIdHandle]">
+              <p1:Receive.CorrelationQuery>
+                <p1:CorrelationQuery>
+                  <p1:CorrelationQuery.Select>
+                    <p1:MessageQuerySet>
+                      <p1:XPathMessageQuery x:Key="CalcId">//*[local-name()='CalculatorId']</p1:XPathMessageQuery>
+                    </p1:MessageQuerySet>
+                  </p1:CorrelationQuery.Select>
+                  <p1:CorrelationQuery.Where>
+                    <p1:CorrelationActionMessageFilter Action="http://tempuri.org/ICalculator/Reset" />
+                  </p1:CorrelationQuery.Where>
+                </p1:CorrelationQuery>
+              </p1:Receive.CorrelationQuery>
+              <x:Null />
+            </p1:Receive>
+          </p:PickBranch.Trigger>
+          <p:Assign>
+            <p:Assign.To>
+              <p:OutArgument x:TypeArguments="x:Boolean">[Running]</p:OutArgument>
+            </p:Assign.To>
+            <p:Assign.Value>
+              <p:InArgument x:TypeArguments="x:Boolean">[False]</p:InArgument>
+            </p:Assign.Value>
+          </p:Assign>
+        </p:PickBranch>
+      </p:Pick>
+    </p:While>
+    <p:WriteLine>["Calculator Completed"]</p:WriteLine>
+  </p:Sequence>
+</p:Activity>

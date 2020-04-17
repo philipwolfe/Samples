@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) Microsoft Corporation.  All rights reserved. -->
+<Service xmlns="http://schemas.microsoft.com/netfx/2009/xaml/servicemodel" 
+xmlns:p="http://schemas.microsoft.com/netfx/2009/xaml/activities" 
+xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sad="clr-namespace:System.Activities.Debugger;assembly=System.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <WorkflowServiceImplementation ConfigurationName="SampleWorkflowService" 
+  Name="SampleWorkflowService">
+    <p:Sequence DisplayName="SampleWorkflowService">
+      <p:Sequence.Variables>
+        <p:Variable x:TypeArguments="CorrelationHandle" Name="handle" />
+        <p:Variable x:TypeArguments="x:Int32" Name="data" />
+      </p:Sequence.Variables>
+      <Receive x:Name="__ReferenceID0" CanCreateInstance="True" DisplayName="ReceiveRequest" OperationName="GetData" ServiceContractName="SampleWorkflowServiceContract" ValueType="x:Int32" CorrelatesWith="[handle]">
+        <Receive.KnownTypes>
+          <s:RuntimeType>x:Int32</s:RuntimeType>
+        </Receive.KnownTypes>
+        <p:OutArgument x:TypeArguments="x:Int32">[data]</p:OutArgument>
+      </Receive>
+      <p:Assign>
+        <p:Assign.To>
+          <p:OutArgument x:TypeArguments="x:Int32">[data]</p:OutArgument>
+        </p:Assign.To>
+        <p:Assign.Value>
+          <p:InArgument x:TypeArguments="x:Int32">[System.Convert.ToInt32(1/data)]</p:InArgument>
+        </p:Assign.Value>
+      </p:Assign>
+      <SendReply Request="{x:Reference Name=__ReferenceID0}" DisplayName="SendResponse" ValueType="x:String" CorrelatesWith="[handle]">
+        <p:InArgument x:TypeArguments="x:String">[data.ToString()]</p:InArgument>
+      </SendReply>
+    </p:Sequence>
+  </WorkflowServiceImplementation>
+</Service>

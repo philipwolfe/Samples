@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) Microsoft Corporation.  All rights reserved. -->
+<p:Activity mc:Ignorable="" 
+            x:Class="Microsoft.Sample.Transaction.NestedTransactionScopeActivitySample.ScenarioOne" 
+            xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities/design"
+            xmlns:ntsa="clr-namespace:Microsoft.Sample.Transaction.NestedTransactionScopeActivitySample;assembly=NestedTransactionScopeActivity"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+            xmlns:p="http://schemas.microsoft.com/netfx/2009/xaml/activities" 
+            xmlns:sad="clr-namespace:System.Activities.Debugger;assembly=System.Activities" 
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <p:Sequence sad:XamlDebuggerXmlReader.FileName="E:\dd\CDFDev10_3\src\ndp\cdf\sdk\NetFx40\public\WF\Basic\Transactions\NestedTransactionScopeActivity\DeclarativeWorkflow\ScenarioOne.xaml">
+    <p:WriteLine>["    Begin workflow"]</p:WriteLine>
+    <p:TransactionScopeActivity>
+      <p:Sequence>
+        <p:WriteLine>["    Begin TransactionScopeActivity"]</p:WriteLine>
+        <ntsa:PrintTransactionId/>
+        <ntsa:TransactionScopeTest/>
+        <p:WriteLine>["    End TransactionScopeActivity"]</p:WriteLine>
+      </p:Sequence>
+    </p:TransactionScopeActivity>
+    <p:WriteLine>["    End workflow"]</p:WriteLine>
+  </p:Sequence>
+</p:Activity>

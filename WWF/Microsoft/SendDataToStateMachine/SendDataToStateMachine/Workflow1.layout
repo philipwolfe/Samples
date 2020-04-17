@@ -1,0 +1,26 @@
+﻿<StateMachineWorkflowDesigner xmlns:ns0="clr-namespace:System.Drawing;Assembly=System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Name="Workflow1" Location="30, 30" Size="511, 319" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow">
+	<StateMachineWorkflowDesigner.DesignerConnectors>
+		<StateDesignerConnector TargetConnectionIndex="0" TargetStateName="stateActivity1" SourceConnectionIndex="0" TargetConnectionEdge="Top" SetStateName="setStateActivity1" SourceStateName="Workflow1InitialState" SourceConnectionEdge="Right" TargetActivity="stateActivity1" SourceActivity="Workflow1InitialState" EventHandlerName="eventDrivenActivity1">
+			<StateDesignerConnector.Segments>
+				<ns0:Point X="217" Y="111" />
+				<ns0:Point X="242" Y="111" />
+				<ns0:Point X="242" Y="76" />
+				<ns0:Point X="390" Y="76" />
+				<ns0:Point X="390" Y="84" />
+			</StateDesignerConnector.Segments>
+		</StateDesignerConnector>
+	</StateMachineWorkflowDesigner.DesignerConnectors>
+	<StateMachineWorkflowDesigner.Designers>
+		<StateDesigner Name="Workflow1InitialState" Location="70, 70" Size="160, 80">
+			<StateDesigner.Designers>
+				<EventDrivenDesigner Size="110, 222" Name="eventDrivenActivity1" Location="78, 101">
+					<EventDrivenDesigner.Designers>
+						<HandleExternalEventActivityDesigner Size="90, 40" Name="handleExternalEventActivity1" Location="88, 173" />
+						<SetStateDesigner Size="90, 50" Name="setStateActivity1" Location="88, 243" />
+					</EventDrivenDesigner.Designers>
+				</EventDrivenDesigner>
+			</StateDesigner.Designers>
+		</StateDesigner>
+		<StateDesigner Name="stateActivity1" Location="310, 84" Size="160, 80" />
+	</StateMachineWorkflowDesigner.Designers>
+</StateMachineWorkflowDesigner>

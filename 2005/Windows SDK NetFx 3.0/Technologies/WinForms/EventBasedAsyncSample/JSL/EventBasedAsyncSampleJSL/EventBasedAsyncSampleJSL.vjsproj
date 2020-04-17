@@ -1,0 +1,189 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50601</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BB621BB0-A675-4623-BA4C-A389E689223B}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>Microsoft.Samples.Windows.Forms.EventBasedAsync.Program</StartupObject>
+    <RootNamespace>Microsoft.Samples.Windows.Forms.EventBasedAsync</RootNamespace>
+    <NoStandardLibraries>false</NoStandardLibraries>
+    <AssemblyName>EventBasedAsyncSampleJSL</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualJSharp.Targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility" />
+    <Reference Include="System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>C:\WINDOWS\Microsoft.NET\Framework\v2.0.40301\System.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=x86">
+      <HintPath>C:\WINDOWS\Microsoft.NET\Framework\v2.0.40301\System.Data.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>C:\WINDOWS\Microsoft.NET\Framework\v2.0.40301\System.Drawing.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>C:\WINDOWS\Microsoft.NET\Framework\v2.0.40301\System.Web.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="System.Web.Services, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>C:\WINDOWS\Microsoft.NET\Framework\v2.0.40301\System.Web.Services.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>C:\WINDOWS\Microsoft.NET\Framework\v2.0.40301\System.Windows.Forms.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="System.Xml, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>C:\WINDOWS\Microsoft.NET\Framework\v2.0.40301\System.XML.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="vjslib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>C:\WINDOWS\Microsoft.NET\Framework\v2.0.40301\vjslib.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Configuration\Settings.Designer.jsl">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.jsl">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AsyncPictureBoxForm.jsl">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AsyncWebClientForm.jsl">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AsyncWebServiceForm.jsl">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.jsl">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Program.jsl">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.jsl">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Resources.jsl" />
+    <Compile Include="SupportingClasses\SampleCodeForm.jsl">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Properties\Settings.jsl">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SimpleBackgroundWorkerForm.jsl">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SupportingClasses\WaitCursorManager.jsl">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Web References\SimpleWebServices\Reference.jsl">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\SampleBitmap.bmp" />
+    <None Include="Web References\SimpleWebServices\simplewebservice.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Configuration\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.jsl</LastGenOutput>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.jsl</LastGenOutput>
+    </None>
+    <None Include="Web References\SimpleWebServices\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.jsl</LastGenOutput>
+    </None>
+    <None Include="Web References\SimpleWebServices\simplewebservice.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://localhost/samplewebservices/simplewebservice.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\SimpleWebServices\</RelPath>
+      <UpdateFromURL>http://localhost/samplewebservices/simplewebservice.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>EventBasedAsyncSampleJSL_SimpleWebServices_SimpleWebService</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AsyncPictureBoxForm.resx">
+      <DependentUpon>AsyncPictureBoxForm.jsl</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AsyncWebClientForm.resx">
+      <DependentUpon>AsyncWebClientForm.jsl</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AsyncWebServiceForm.resx">
+      <DependentUpon>AsyncWebServiceForm.jsl</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.jsl</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SimpleBackgroundWorkerForm.resx">
+      <DependentUpon>SimpleBackgroundWorkerForm.jsl</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupportingClasses\SampleCodeForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SampleCodeForm.jsl</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

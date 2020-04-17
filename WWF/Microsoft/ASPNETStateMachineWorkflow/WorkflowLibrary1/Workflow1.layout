@@ -1,0 +1,230 @@
+﻿<StateMachineWorkflowDesigner Name="Workflow1" xmlns:ns0="clr-namespace:System.Drawing;Assembly=System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow">
+	<StateMachineWorkflowDesigner.Location>
+		<ns0:Point X="30" Y="30" />
+	</StateMachineWorkflowDesigner.Location>
+	<StateMachineWorkflowDesigner.Designers>
+		<StateDesigner Name="WaitingForOrderState">
+			<StateDesigner.Location>
+				<ns0:Point X="70" Y="77" />
+			</StateDesigner.Location>
+			<StateDesigner.Designers>
+				<EventDrivenDesigner Name="OrderCreatedEvent">
+					<EventDrivenDesigner.Designers>
+						<HandleExternalEventActivityDesigner Name="handleExternalEventActivity1">
+							<HandleExternalEventActivityDesigner.Size>
+								<ns0:Size Width="90" Height="40" />
+							</HandleExternalEventActivityDesigner.Size>
+							<HandleExternalEventActivityDesigner.Location>
+								<ns0:Point X="88" Y="180" />
+							</HandleExternalEventActivityDesigner.Location>
+						</HandleExternalEventActivityDesigner>
+						<SetStateDesigner Name="setStateActivity1">
+							<SetStateDesigner.Size>
+								<ns0:Size Width="90" Height="50" />
+							</SetStateDesigner.Size>
+							<SetStateDesigner.Location>
+								<ns0:Point X="88" Y="250" />
+							</SetStateDesigner.Location>
+						</SetStateDesigner>
+					</EventDrivenDesigner.Designers>
+					<EventDrivenDesigner.Size>
+						<ns0:Size Width="110" Height="222" />
+					</EventDrivenDesigner.Size>
+					<EventDrivenDesigner.Location>
+						<ns0:Point X="78" Y="108" />
+					</EventDrivenDesigner.Location>
+				</EventDrivenDesigner>
+			</StateDesigner.Designers>
+			<StateDesigner.Size>
+				<ns0:Size Width="160" Height="80" />
+			</StateDesigner.Size>
+		</StateDesigner>
+		<StateDesigner Name="OrderOpenState">
+			<StateDesigner.Location>
+				<ns0:Point X="70" Y="173" />
+			</StateDesigner.Location>
+			<StateDesigner.Designers>
+				<EventDrivenDesigner Name="OrderUpdatedEvent">
+					<EventDrivenDesigner.Designers>
+						<HandleExternalEventActivityDesigner Name="handleExternalEventActivity2">
+							<HandleExternalEventActivityDesigner.Size>
+								<ns0:Size Width="90" Height="40" />
+							</HandleExternalEventActivityDesigner.Size>
+							<HandleExternalEventActivityDesigner.Location>
+								<ns0:Point X="88" Y="276" />
+							</HandleExternalEventActivityDesigner.Location>
+						</HandleExternalEventActivityDesigner>
+						<SetStateDesigner Name="setStateActivity2">
+							<SetStateDesigner.Size>
+								<ns0:Size Width="90" Height="50" />
+							</SetStateDesigner.Size>
+							<SetStateDesigner.Location>
+								<ns0:Point X="88" Y="346" />
+							</SetStateDesigner.Location>
+						</SetStateDesigner>
+					</EventDrivenDesigner.Designers>
+					<EventDrivenDesigner.Size>
+						<ns0:Size Width="110" Height="222" />
+					</EventDrivenDesigner.Size>
+					<EventDrivenDesigner.Location>
+						<ns0:Point X="78" Y="204" />
+					</EventDrivenDesigner.Location>
+				</EventDrivenDesigner>
+				<EventDrivenDesigner Name="OrderProcessedEvent">
+					<EventDrivenDesigner.Designers>
+						<HandleExternalEventActivityDesigner Name="handleExternalEventActivity3">
+							<HandleExternalEventActivityDesigner.Size>
+								<ns0:Size Width="90" Height="40" />
+							</HandleExternalEventActivityDesigner.Size>
+							<HandleExternalEventActivityDesigner.Location>
+								<ns0:Point X="88" Y="300" />
+							</HandleExternalEventActivityDesigner.Location>
+						</HandleExternalEventActivityDesigner>
+						<SetStateDesigner Name="setStateActivity3">
+							<SetStateDesigner.Size>
+								<ns0:Size Width="90" Height="50" />
+							</SetStateDesigner.Size>
+							<SetStateDesigner.Location>
+								<ns0:Point X="88" Y="370" />
+							</SetStateDesigner.Location>
+						</SetStateDesigner>
+					</EventDrivenDesigner.Designers>
+					<EventDrivenDesigner.Size>
+						<ns0:Size Width="110" Height="222" />
+					</EventDrivenDesigner.Size>
+					<EventDrivenDesigner.Location>
+						<ns0:Point X="78" Y="228" />
+					</EventDrivenDesigner.Location>
+				</EventDrivenDesigner>
+				<EventDrivenDesigner Name="eventDrivenActivity1">
+					<EventDrivenDesigner.Designers>
+						<DelayDesigner Name="delayActivity1">
+							<DelayDesigner.Size>
+								<ns0:Size Width="90" Height="40" />
+							</DelayDesigner.Size>
+							<DelayDesigner.Location>
+								<ns0:Point X="88" Y="324" />
+							</DelayDesigner.Location>
+						</DelayDesigner>
+						<SetStateDesigner Name="setStateActivity6">
+							<SetStateDesigner.Size>
+								<ns0:Size Width="90" Height="50" />
+							</SetStateDesigner.Size>
+							<SetStateDesigner.Location>
+								<ns0:Point X="88" Y="394" />
+							</SetStateDesigner.Location>
+						</SetStateDesigner>
+					</EventDrivenDesigner.Designers>
+					<EventDrivenDesigner.Size>
+						<ns0:Size Width="110" Height="222" />
+					</EventDrivenDesigner.Size>
+					<EventDrivenDesigner.Location>
+						<ns0:Point X="78" Y="252" />
+					</EventDrivenDesigner.Location>
+				</EventDrivenDesigner>
+			</StateDesigner.Designers>
+			<StateDesigner.Size>
+				<ns0:Size Width="160" Height="102" />
+			</StateDesigner.Size>
+		</StateDesigner>
+		<StateDesigner Name="OrderProcessedState">
+			<StateDesigner.Location>
+				<ns0:Point X="70" Y="283" />
+			</StateDesigner.Location>
+			<StateDesigner.Designers>
+				<EventDrivenDesigner Name="OrderUpdatedEvent2">
+					<EventDrivenDesigner.Designers>
+						<HandleExternalEventActivityDesigner Name="handleExternalEventActivity5">
+							<HandleExternalEventActivityDesigner.Size>
+								<ns0:Size Width="90" Height="40" />
+							</HandleExternalEventActivityDesigner.Size>
+							<HandleExternalEventActivityDesigner.Location>
+								<ns0:Point X="88" Y="386" />
+							</HandleExternalEventActivityDesigner.Location>
+						</HandleExternalEventActivityDesigner>
+						<SetStateDesigner Name="setStateActivity5">
+							<SetStateDesigner.Size>
+								<ns0:Size Width="90" Height="50" />
+							</SetStateDesigner.Size>
+							<SetStateDesigner.Location>
+								<ns0:Point X="88" Y="456" />
+							</SetStateDesigner.Location>
+						</SetStateDesigner>
+					</EventDrivenDesigner.Designers>
+					<EventDrivenDesigner.Size>
+						<ns0:Size Width="110" Height="222" />
+					</EventDrivenDesigner.Size>
+					<EventDrivenDesigner.Location>
+						<ns0:Point X="78" Y="314" />
+					</EventDrivenDesigner.Location>
+				</EventDrivenDesigner>
+				<EventDrivenDesigner Name="OrderCanceled">
+					<EventDrivenDesigner.Designers>
+						<HandleExternalEventActivityDesigner Name="handleExternalEventActivity4">
+							<HandleExternalEventActivityDesigner.Size>
+								<ns0:Size Width="90" Height="40" />
+							</HandleExternalEventActivityDesigner.Size>
+							<HandleExternalEventActivityDesigner.Location>
+								<ns0:Point X="88" Y="410" />
+							</HandleExternalEventActivityDesigner.Location>
+						</HandleExternalEventActivityDesigner>
+						<TerminateDesigner Name="terminateActivity1">
+							<TerminateDesigner.Size>
+								<ns0:Size Width="90" Height="40" />
+							</TerminateDesigner.Size>
+							<TerminateDesigner.Location>
+								<ns0:Point X="88" Y="480" />
+							</TerminateDesigner.Location>
+						</TerminateDesigner>
+					</EventDrivenDesigner.Designers>
+					<EventDrivenDesigner.Size>
+						<ns0:Size Width="110" Height="212" />
+					</EventDrivenDesigner.Size>
+					<EventDrivenDesigner.Location>
+						<ns0:Point X="78" Y="338" />
+					</EventDrivenDesigner.Location>
+				</EventDrivenDesigner>
+				<EventDrivenDesigner Name="OrderShippedEvent">
+					<EventDrivenDesigner.Designers>
+						<HandleExternalEventActivityDesigner Name="handleExternalEventActivity6">
+							<HandleExternalEventActivityDesigner.Size>
+								<ns0:Size Width="90" Height="40" />
+							</HandleExternalEventActivityDesigner.Size>
+							<HandleExternalEventActivityDesigner.Location>
+								<ns0:Point X="88" Y="434" />
+							</HandleExternalEventActivityDesigner.Location>
+						</HandleExternalEventActivityDesigner>
+						<SetStateDesigner Name="setStateActivity4">
+							<SetStateDesigner.Size>
+								<ns0:Size Width="90" Height="50" />
+							</SetStateDesigner.Size>
+							<SetStateDesigner.Location>
+								<ns0:Point X="88" Y="504" />
+							</SetStateDesigner.Location>
+						</SetStateDesigner>
+					</EventDrivenDesigner.Designers>
+					<EventDrivenDesigner.Size>
+						<ns0:Size Width="110" Height="222" />
+					</EventDrivenDesigner.Size>
+					<EventDrivenDesigner.Location>
+						<ns0:Point X="78" Y="362" />
+					</EventDrivenDesigner.Location>
+				</EventDrivenDesigner>
+			</StateDesigner.Designers>
+			<StateDesigner.Size>
+				<ns0:Size Width="160" Height="118" />
+			</StateDesigner.Size>
+		</StateDesigner>
+		<StateDesigner Name="OrderCompletedState">
+			<StateDesigner.Location>
+				<ns0:Point X="70" Y="417" />
+			</StateDesigner.Location>
+			<StateDesigner.Size>
+				<ns0:Size Width="160" Height="80" />
+			</StateDesigner.Size>
+		</StateDesigner>
+	</StateMachineWorkflowDesigner.Designers>
+	<StateMachineWorkflowDesigner.Size>
+		<ns0:Size Width="545" Height="497" />
+	</StateMachineWorkflowDesigner.Size>
+</StateMachineWorkflowDesigner>

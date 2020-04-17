@@ -1,0 +1,32 @@
+﻿<process name="HelloWorld"
+  targetNamespace="http://HelloWorld/"
+  xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+  xmlns:tns="http://HelloWorld/"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+  abstractProcess="no">
+
+  <partnerLinks>
+    <partnerLink name="file" partnerLinkType="tns:fileLinkType" myRole="application"/>
+  </partnerLinks>
+
+  <variables>
+    <variable name="HelloWorldOut" messageType="tns:writeLineSoapIn"/>
+  </variables>
+
+  <sequence name="Salutation">
+    <assign name="Copy">
+      <copy>
+        <from expression="'Hello World!'"/>
+        <to variable="HelloWorldOut" part="parameters" query="/tns:parameters/tns:message"/>
+      </copy>
+    </assign>
+    <invoke name="WriteLine"
+      partnerLink="file"
+      portType="tns:FileServiceSoap"
+      operation="writeLine"
+      inputVariable="HelloWorldOut">
+    </invoke>
+  </sequence>
+</process>

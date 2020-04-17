@@ -1,0 +1,27 @@
+<VSTemplate Version="2.0.0" Type="ProjectGroup"
+    xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+    <TemplateData>
+        <Name>Web Form Workflow Approvals Starter Kit</Name>
+        <Description>Web Form Workflow Approvals Starter Kit</Description>
+        <Icon>__TemplateIcon.ico</Icon>
+        <ProjectType>CSharp</ProjectType>
+	<DefaultName>WorkflowWebForm</DefaultName>
+	<ProvideDefaultName>true</ProvideDefaultName>
+    </TemplateData>
+    <TemplateContent>
+        <ProjectCollection>
+            <ProjectTemplateLink ProjectName="Web Form Workflow Approvals Website">
+                Approvals\MyTemplate.vstemplate
+            </ProjectTemplateLink>
+            <ProjectTemplateLink ProjectName="Controls">
+                Controls\MyTemplate.vstemplate
+            </ProjectTemplateLink>
+	    <ProjectTemplateLink ProjectName="WorkflowImageProvider">
+                WorkflowImageProvider\MyTemplate.vstemplate
+            </ProjectTemplateLink>
+	    <ProjectTemplateLink ProjectName="Workflows">
+                Workflows\MyTemplate.vstemplate
+            </ProjectTemplateLink>
+        </ProjectCollection>
+    </TemplateContent>
+</VSTemplate>

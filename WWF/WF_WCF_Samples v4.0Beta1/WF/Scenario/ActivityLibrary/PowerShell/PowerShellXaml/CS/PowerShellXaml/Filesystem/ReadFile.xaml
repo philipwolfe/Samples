@@ -1,0 +1,39 @@
+<!-- Copyright (c) Microsoft Corporation.  All rights reserved. -->
+<p:Activity x:Class="Microsoft.Samples.Activities.PowerShell.Filesystem.ReadFile" 
+            xmlns="clr-namespace:System.Activities.Design.Xaml;assembly=System.Activities.Design" 
+            xmlns:p="http://schemas.microsoft.com/netfx/2009/xaml/activities" 
+            xmlns:s="clr-namespace:System;assembly=mscorlib" 
+            xmlns:sad="clr-namespace:System.Activities.Debugger;assembly=System.Activities" 
+            xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" 
+            xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" 
+            xmlns:sma="clr-namespace:System.Management.Automation;assembly=System.Management.Automation" 
+            xmlns:smaa="clr-namespace:System.Management.Automation.Activities;assembly=System.Activities.Extended" 
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="Path" Type="p:InArgument(x:String)" />
+    <x:Property Name="Content" Type="p:OutArgument(scg:ICollection(s:Object))" />
+  </x:Members>
+  <smaa:InvokePowerShell x:TypeArguments="s:Object" CommandText="get-content"  Output="[Content]">
+    <smaa:InvokePowerShell.InitializationAction>
+      <p:ActivityFunc x:TypeArguments="sma:PSObject, s:Object">
+        <p:ActivityFunc.Argument>
+          <p:Variable x:TypeArguments="sma:PSObject" Name="Argument" />
+        </p:ActivityFunc.Argument>
+        <p:ActivityFunc.Result>
+          <p:Variable x:TypeArguments="s:Object" Name="Result" />
+        </p:ActivityFunc.Result>
+        <p:Sequence>
+          <p:Assign>
+            <p:Assign.To>
+              <p:OutArgument x:TypeArguments="s:Object">[Result]</p:OutArgument>
+            </p:Assign.To>
+            <p:Assign.Value>
+              <p:InArgument x:TypeArguments="s:Object">[CType(Argument.BaseObject, Object)]</p:InArgument>
+            </p:Assign.Value>
+          </p:Assign>
+        </p:Sequence>
+      </p:ActivityFunc>
+    </smaa:InvokePowerShell.InitializationAction>
+    <p:InArgument x:TypeArguments="x:String" x:Key="Path">[Path]</p:InArgument>
+  </smaa:InvokePowerShell>
+</p:Activity>

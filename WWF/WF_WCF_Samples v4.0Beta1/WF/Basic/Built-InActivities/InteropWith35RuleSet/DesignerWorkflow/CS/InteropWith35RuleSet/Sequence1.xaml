@@ -1,0 +1,21 @@
+<p:Activity x:Class="Microsoft.Samples.TestInteropInDesigner.Sequence1" xmlns="clr-namespace:System.Activities.Design.Xaml;assembly=System.Activities.Design" xmlns:mst="clr-namespace:Microsoft.Samples.TravelRuleLibrary;assembly=TravelRuleLibrary" xmlns:p="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:sad="clr-namespace:System.Activities.Debugger;assembly=System.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <p:Sequence sad:XamlDebuggerXmlReader.FileName="C:\_samplesCheckinFinal\InteropWith35RuleSet\DesignerWorkflow\CS\InteropWith35RuleSet\Sequence1.xaml">
+    <p:Sequence.Variables>
+      <p:Variable x:TypeArguments="x:String" Name="destination" Default="[&quot;London&quot;]" />
+      <p:Variable x:TypeArguments="x:Double" Name="price" Default="[1000.0R]" />
+      <p:Variable x:TypeArguments="x:Int32" Name="discountLevel" Default="[1]" />
+      <p:Variable x:TypeArguments="x:Double" Name="discountPoints" Default="[0.0R]" />
+    </p:Sequence.Variables>
+    <p:WriteLine>["Price before applying Discount Rules = " &amp;price]</p:WriteLine>
+    <p:WriteLine>["Invoking Discount Rules defined in .NET 3.5"]</p:WriteLine>
+    <p:Interop Body="mst:TravelRuleSet">
+      <p:Interop.Properties>
+        <p:InOutArgument x:TypeArguments="x:String" x:Key="Destination">[destination]</p:InOutArgument>
+        <p:InOutArgument x:TypeArguments="x:Int32" x:Key="DiscountLevel">[discountLevel]</p:InOutArgument>
+        <p:InOutArgument x:TypeArguments="x:Double" x:Key="DiscountPoints">[discountPoints]</p:InOutArgument>
+        <p:InOutArgument x:TypeArguments="x:Double" x:Key="Price">[price]</p:InOutArgument>
+      </p:Interop.Properties>
+    </p:Interop>
+    <p:WriteLine>["Discounted Price computed = " &amp;price]</p:WriteLine>
+  </p:Sequence>
+</p:Activity>

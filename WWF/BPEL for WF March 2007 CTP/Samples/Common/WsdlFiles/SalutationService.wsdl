@@ -1,0 +1,78 @@
+﻿<wsdl:definitions
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/"
+  xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+  xmlns:tns="http://tempuri.org/"
+  xmlns:s="http://www.w3.org/2001/XMLSchema"
+  xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+  targetNamespace="http://tempuri.org/"
+  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+  xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="sendSalutation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="sendSalutationResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="sendSalutationSoapIn">
+    <wsdl:part name="parameters" element="tns:sendSalutation" />
+  </wsdl:message>
+  <wsdl:message name="sendSalutationSoapOut">
+    <wsdl:part name="parameters" element="tns:sendSalutationResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SalutationServiceSoap">
+    <wsdl:operation name="sendSalutation">
+      <wsdl:input message="tns:sendSalutationSoapIn" />
+      <wsdl:output message="tns:sendSalutationSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SalutationServiceSoap" type="tns:SalutationServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="sendSalutation">
+      <soap:operation soapAction="http://tempuri.org/sendSalutation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SalutationServiceSoap12" type="tns:SalutationServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="sendSalutation">
+      <soap12:operation soapAction="http://tempuri.org/sendSalutation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SalutationService">
+    <wsdl:port name="SalutationServiceSoap" binding="tns:SalutationServiceSoap">
+      <soap:address location="http://localhost:8080/HelloWorldService/Salutation.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SalutationServiceSoap12" binding="tns:SalutationServiceSoap12">
+      <soap12:address location="http://localhost:8080/HelloWorldService/Salutation.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+  
+  <plnk:partnerLinkType name="salutationLinkType">
+    <plnk:role name="application">
+      <plnk:portType name="SalutationServiceSoap"/>
+    </plnk:role>
+  </plnk:partnerLinkType>
+
+</wsdl:definitions>

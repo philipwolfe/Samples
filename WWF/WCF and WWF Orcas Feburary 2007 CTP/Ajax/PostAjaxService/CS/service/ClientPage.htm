@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Sample AJAX Client</title>
+</head>
+<body>
+    <h1>AJAX client page</h1>
+    <h2>For the PostAjaxService sample</h2>
+    
+    <form name="sampleForm">
+        First Number: <input type="text" name="num1" /><br />
+        Second Number: <input type="text" name="num2" /><br />
+        <br /><br />
+        Mouse over the words below to perform a calculation
+        <br /><br />
+        <label onmousemove="makeCall('Add');">ADD</label>
+        <label onmousemove="makeCall('Subtract');">SUBTRACT</label>
+        <label onmousemove="makeCall('Multiply');">MULTIPLY</label>
+        <label onmousemove="makeCall('Divide');">DIVIDE</label>
+        <br /> <br />
+        Result: <input type="text" name="result" />
+    </form>
+
+<script type="text/javascript">
+function makeCall(operation)
+{
+ var xmlHttp;
+  try {xmlHttp=new XMLHttpRequest();}
+   catch (e) {try {xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");}
+    catch (e) {try {xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");}
+     catch (e) {alert("This sample only works in browsers with AJAX support"); return false;}}}
+ 
+ xmlHttp.onreadystatechange=function()
+ {
+  if(xmlHttp.readyState==4)
+  {
+   document.sampleForm.result.value=(eval(xmlHttp.responseText));
+  }
+ }
+ 
+ var url = "service.svc/ajaxEndpoint/";
+ url = url + operation;
+ var body = '{"n1":';
+ body = body + document.sampleForm.num1.value + ',"n2":';
+ body = body + document.sampleForm.num2.value + '}';
+ xmlHttp.open("POST",url,true);
+ xmlHttp.setRequestHeader("Content-type","application/json");
+ xmlHttp.send(body);
+ 
+}
+</script>
+
+    
+</body>
+</html>

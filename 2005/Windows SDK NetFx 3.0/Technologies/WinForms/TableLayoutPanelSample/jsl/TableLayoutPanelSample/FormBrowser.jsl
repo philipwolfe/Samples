@@ -1,0 +1,275 @@
+//-----------------------------------------------------------------------
+//  This file is part of the Microsoft .NET SDK Code Samples.
+// 
+//  Copyright (C) Microsoft Corporation.  All rights reserved.
+// 
+//This source code is intended only as a supplement to Microsoft
+//Development Tools and/or on-line documentation.  See these other
+//materials for detailed information regarding Microsoft code samples.
+// 
+//THIS CODE AND INFORMATION ARE PROVIDED AS IS WITHOUT WARRANTY OF ANY
+//KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+//IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+//PARTICULAR PURPOSE.
+//-----------------------------------------------------------------------
+package TableLayoutPanelSample;
+
+import System.*;
+import System.Drawing.*;
+import System.Collections.*;
+import System.ComponentModel.*;
+import System.Windows.Forms.*;
+import System.Data.*;
+
+/// <summary>
+/// Summary description for form.
+/// </summary>
+class FormBrowser extends System.Windows.Forms.Form
+{
+    /// <summary>
+    /// Required designer variable.
+    /// </summary>
+    private System.ComponentModel.IContainer components = null;
+    private Form pendingForm;
+
+    public FormBrowser()
+    {
+        Application.EnableVisualStyles();
+        InitializeComponent();
+    } //FormBrowser
+
+    private void buttonExit_Click(Object sender, EventArgs e)
+    {
+        Application.Exit();
+    } //buttonExit_Click
+
+    private void buttonViewForm_Click(Object sender, EventArgs e)
+    {
+        switch (comboSelectForm.get_SelectedIndex()) {
+            case 0:
+                pendingForm = new BasicDataEntry();
+                break;
+
+            case 1:
+                pendingForm = new TwoPaneProp();
+                break;
+
+            default:
+                pendingForm = new Form();
+                break;
+        }
+        // locate new form away from browser form
+        pendingForm.set_Location(new Point(this.get_Location().get_X() 
+            + this.get_Size().get_Width(), this.get_Location().get_Y()));
+        pendingForm.Show();
+    } //buttonViewForm_Click
+
+    private void formBrowser_Load(Object sender, EventArgs e)
+    {
+        // Populate list of available forms - buggy currently
+        // comboSelectForm.get_Items().Add(new BasicDataEntry());
+        comboSelectForm.get_Items().Add("Basic Data Entry Form");
+        comboSelectForm.get_Items().Add("Two-Paned Proportional Form");
+        // init combobox to basic data entry form
+        comboSelectForm.set_SelectedIndex(0);
+    } //formBrowser_Load
+
+    private void FormSelected(Object sender, EventArgs e)
+    {
+        switch (comboSelectForm.get_SelectedIndex()) {
+            case 0:
+                pictureThumbNail.set_Image(TableLayoutPanelSample.Resources.
+                    get_BasicDataEntry1());
+                textDescription.set_Text("A simple data entry form, "
+                    + "using the TableLayoutPanel to yield simple but "
+                    + "robust resizing behavior.\r\n\r\n");
+                textDescription.set_Text(textDescription.get_Text() 
+                    + "A single TableLayoutPanel encompasses all controls "
+                    + "except for the two Buttons at the bottom of "
+                    + "the Form.\r\n\r\n");
+                break;
+
+            case 1:
+                pictureThumbNail.set_Image(TableLayoutPanelSample.
+                    Resources.get_TwoPaneProp());
+                textDescription.set_Text("A basic two-pane form, supporting "
+                    + "proportional resizing of the two main panes, plus two "
+                    + "absolutely positioned buttons within a central column.");
+                break;
+			
+			default:
+				break;
+        }
+    } //FormSelected
+
+    /// <summary>
+    /// Required method for Designer support - do not modify
+    /// the contents of this method with the code editor.
+    /// </summary>
+    private void InitializeComponent()
+    {
+		System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(FormBrowser.class.ToType());
+		this.buttonViewForm = new System.Windows.Forms.Button();
+		this.groupBox1 = new System.Windows.Forms.GroupBox();
+		this.textDescription = new System.Windows.Forms.TextBox();
+		this.pictureThumbNail = new System.Windows.Forms.PictureBox();
+		this.comboSelectForm = new System.Windows.Forms.ComboBox();
+		this.label1 = new System.Windows.Forms.Label();
+		this.groupBox2 = new System.Windows.Forms.GroupBox();
+		this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+		this.groupBox1.SuspendLayout();
+		((System.ComponentModel.ISupportInitialize)(this.pictureThumbNail)).BeginInit();
+		this.groupBox2.SuspendLayout();
+		this.tableLayoutPanel1.SuspendLayout();
+		this.SuspendLayout();
+		// 
+		// buttonViewForm
+		// 
+		this.buttonViewForm.set_Anchor(((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right))));
+		this.buttonViewForm.set_AutoSize(true);
+		this.buttonViewForm.set_Location(new System.Drawing.Point(299, 10));
+		this.buttonViewForm.set_Name("buttonViewForm");
+		this.buttonViewForm.set_Size(new System.Drawing.Size(91, 23));
+		this.buttonViewForm.set_TabIndex(0);
+		this.buttonViewForm.set_Text("View Form");
+		this.buttonViewForm.add_Click(new System.EventHandler(this.buttonViewForm_Click));
+		// 
+		// groupBox1
+		// 
+		this.groupBox1.set_Anchor(((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+					| System.Windows.Forms.AnchorStyles.Left)
+					| System.Windows.Forms.AnchorStyles.Right))));
+		this.groupBox1.get_Controls().Add(this.textDescription);
+		this.groupBox1.set_Location(new System.Drawing.Point(3, 3));
+		this.groupBox1.set_Name("groupBox1");
+		this.groupBox1.set_Size(new System.Drawing.Size(369, 212));
+		this.groupBox1.set_TabIndex(2);
+		this.groupBox1.set_TabStop(false);
+		this.groupBox1.set_Text("Form Description");
+		// 
+		// textDescription
+		// 
+		this.textDescription.set_Anchor(((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+					| System.Windows.Forms.AnchorStyles.Left)
+					| System.Windows.Forms.AnchorStyles.Right))));
+		this.textDescription.set_Location(new System.Drawing.Point(10, 24));
+		this.textDescription.set_Multiline(true);
+		this.textDescription.set_Name("textDescription");
+		this.textDescription.set_ReadOnly(true);
+		this.textDescription.set_ScrollBars(System.Windows.Forms.ScrollBars.Vertical);
+		this.textDescription.set_Size(new System.Drawing.Size(356, 169));
+		this.textDescription.set_TabIndex(0);
+		// 
+		// pictureThumbNail
+		// 
+		this.pictureThumbNail.set_Anchor(((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+					| System.Windows.Forms.AnchorStyles.Left)
+					| System.Windows.Forms.AnchorStyles.Right))));
+		this.pictureThumbNail.set_Image(((System.Drawing.Image)(resources.GetObject("pictureThumbNail.Image"))));
+		this.pictureThumbNail.set_Location(new System.Drawing.Point(13, 26));
+		this.pictureThumbNail.set_Name("pictureThumbNail");
+		this.pictureThumbNail.set_Size(new System.Drawing.Size(342, 174));
+		this.pictureThumbNail.set_SizeMode(System.Windows.Forms.PictureBoxSizeMode.Zoom);
+		this.pictureThumbNail.set_TabIndex(3);
+		this.pictureThumbNail.set_TabStop(false);
+		// 
+		// comboSelectForm
+		// 
+		this.comboSelectForm.set_Anchor(((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+					| System.Windows.Forms.AnchorStyles.Right))));
+		this.comboSelectForm.set_DropDownStyle(System.Windows.Forms.ComboBoxStyle.DropDownList);
+		this.comboSelectForm.set_FormattingEnabled(true);
+		this.comboSelectForm.set_Location(new System.Drawing.Point(91, 10));
+		this.comboSelectForm.set_Margin(new System.Windows.Forms.Padding(2, 3, 3, 3));
+		this.comboSelectForm.set_Name("comboSelectForm");
+		this.comboSelectForm.set_Size(new System.Drawing.Size(201, 21));
+		this.comboSelectForm.set_TabIndex(5);
+		this.comboSelectForm.add_SelectedIndexChanged(new System.EventHandler(this.FormSelected));
+		// 
+		// label1
+		// 
+		this.label1.set_AutoSize(true);
+		this.label1.set_Location(new System.Drawing.Point(13, 13));
+		this.label1.set_Margin(new System.Windows.Forms.Padding(3, 3, 1, 3));
+		this.label1.set_Name("label1");
+		this.label1.set_Size(new System.Drawing.Size(71, 13));
+		this.label1.set_TabIndex(6);
+		this.label1.set_Text("Form to View:");
+		// 
+		// groupBox2
+		// 
+		this.groupBox2.set_Anchor(((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+					| System.Windows.Forms.AnchorStyles.Left)
+					| System.Windows.Forms.AnchorStyles.Right))));
+		this.groupBox2.get_Controls().Add(this.pictureThumbNail);
+		this.groupBox2.set_Location(new System.Drawing.Point(3, 221));
+		this.groupBox2.set_Name("groupBox2");
+		this.groupBox2.set_Size(new System.Drawing.Size(369, 212));
+		this.groupBox2.set_TabIndex(7);
+		this.groupBox2.set_TabStop(false);
+		this.groupBox2.set_Text("Form Preview");
+		// 
+		// tableLayoutPanel1
+		// 
+		this.tableLayoutPanel1.set_Anchor(((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+					| System.Windows.Forms.AnchorStyles.Left)
+					| System.Windows.Forms.AnchorStyles.Right))));
+		this.tableLayoutPanel1.set_ColumnCount(1);
+		this.tableLayoutPanel1.get_ColumnStyles().Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 375F));
+		this.tableLayoutPanel1.get_ColumnStyles().Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 0F));
+		this.tableLayoutPanel1.get_Controls().Add(this.groupBox1, 0, 0);
+		this.tableLayoutPanel1.get_Controls().Add(this.groupBox2, 0, 1);
+		this.tableLayoutPanel1.set_Location(new System.Drawing.Point(15, 37));
+		this.tableLayoutPanel1.set_Name("tableLayoutPanel1");
+		this.tableLayoutPanel1.set_RowCount(2);
+		this.tableLayoutPanel1.get_RowStyles().Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+		this.tableLayoutPanel1.get_RowStyles().Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+		this.tableLayoutPanel1.set_Size(new System.Drawing.Size(375, 436));
+		this.tableLayoutPanel1.set_TabIndex(8);
+		// 
+		// FormBrowser
+		// 
+		this.set_AutoScaleBaseSize(new System.Drawing.Size(5, 13));
+		this.set_ClientSize(new System.Drawing.Size(394, 479));
+		this.get_Controls().Add(this.tableLayoutPanel1);
+		this.get_Controls().Add(this.label1);
+		this.get_Controls().Add(this.comboSelectForm);
+		this.get_Controls().Add(this.buttonViewForm);
+		this.set_Location(new System.Drawing.Point(50, 50));
+		this.set_MinimumSize(new System.Drawing.Size(402, 513));
+		this.set_Name("FormBrowser");
+		this.set_StartPosition(System.Windows.Forms.FormStartPosition.Manual);
+		this.set_Text("Sample Form Browser");
+		this.add_Load(new System.EventHandler(this.formBrowser_Load));
+		this.groupBox1.ResumeLayout(false);
+		this.groupBox1.PerformLayout();
+		((System.ComponentModel.ISupportInitialize)(this.pictureThumbNail)).EndInit();
+		this.groupBox2.ResumeLayout(false);
+		this.tableLayoutPanel1.ResumeLayout(false);
+		this.ResumeLayout(false);
+		this.PerformLayout();
+
+    } //InitializeComponent
+
+    /// <summary>
+    /// Clean up any resources being used.
+    /// </summary>
+    protected void Dispose(boolean disposing)
+    {
+        if (disposing) {
+            if (components != null) {
+                components.Dispose();
+            }
+        }
+        super.Dispose(disposing);
+    } //Dispose
+
+    private System.Windows.Forms.Button buttonViewForm;
+    private System.Windows.Forms.GroupBox groupBox1;
+    private System.Windows.Forms.PictureBox pictureThumbNail;
+    private System.Windows.Forms.ComboBox comboSelectForm;
+    private System.Windows.Forms.Label label1;
+    private System.Windows.Forms.TextBox textDescription;
+    private System.Windows.Forms.GroupBox groupBox2;
+    private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+} //FormBrowser

@@ -1,0 +1,162 @@
+package Microsoft.Samples; 
+
+//---------------------------------------------------------------------
+//  This file is part of the Microsoft .NET Framework SDK Code Samples.
+// 
+//  Copyright (C) Microsoft Corporation.  All rights reserved.
+// 
+//This source code is intended only as a supplement to Microsoft
+//Development Tools and/or on-line documentation.  See these other
+//materials for detailed information regarding Microsoft code samples.
+// 
+//THIS CODE AND INFORMATION ARE PROVIDED AS IS WITHOUT WARRANTY OF ANY
+//KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+//IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+//PARTICULAR PURPOSE.
+//---------------------------------------------------------------------
+
+import System.*;
+import System.Globalization.*;
+
+/// <summary>
+/// Summary description for IPv5.
+/// </summary>
+public class IPv5
+{
+    // property fields
+    private int firstByteValue;
+    private int secondByteValue;
+    private int thirdByteValue;
+    private int fourthByteValue;
+
+    public IPv5()
+    {
+    } //IPv5
+
+    public IPv5(String ip)
+    {
+    } //IPv5
+
+    public IPv5(int firstByte, int secondByte, int thirdByte, int fourthByte)
+    {
+        firstByteValue = firstByte;
+        secondByteValue = secondByte;
+        thirdByteValue = thirdByte;
+        fourthByteValue = fourthByte;
+    } //IPv5
+
+    /** @property 
+     */
+    public static IPv5 get_InvalidIPv5()
+    {
+        return new IPv5(0, 0, 0, 0);
+    } //get_InvalidIPv5
+
+    // properties
+    /** @property 
+     */
+    public int get_FirstByteValue()
+    {
+        return firstByteValue;
+    } //get_FirstByteValue
+
+    /** @property 
+     */
+    public void set_FirstByteValue(int value)
+    {
+        firstByteValue = value;
+    } //set_FirstByteValue
+
+    /** @property 
+     */
+    public int get_SecondByteValue()
+    {
+        return secondByteValue;
+    } //get_SecondByteValue
+
+    /** @property 
+     */
+    public void set_SecondByteValue(int value)
+    {
+        secondByteValue = value;
+    } //set_SecondByteValue
+
+    /** @property 
+     */
+    public int get_ThirdByteValue()
+    {
+        return thirdByteValue;
+    } //get_ThirdByteValue
+
+    /** @property 
+     */
+    public void set_ThirdByteValue(int value)
+    {
+        thirdByteValue = value;
+    } //set_ThirdByteValue
+
+    /** @property 
+     */
+    public int get_FourthByteValue()
+    {
+        return fourthByteValue;
+    } //get_FourthByteValue
+
+    /** @property 
+     */
+    public void set_FourthByteValue(int value)
+    {
+        fourthByteValue = value;
+    } //set_FourthByteValue
+
+    // Methods
+    public static IPv5 Parse(String s)
+    {
+        int bytes[] = new int[4];
+        // Remove any spaces in the string
+        s = s.Replace(" ", "");
+        // Split the string into byte strings
+        String strBytes[] = s.Split(new char[] { '.' });
+        try {
+            int byteIndex = 0; 
+            //foreach (string strByte in strBytes)
+            for (int iCtr = 0; iCtr < strBytes.get_Length(); iCtr++) {
+                String strByte = strBytes[iCtr];
+                // Try to parse to an integer
+                bytes.set_Item(byteIndex, (Int32)Int32.Parse(strByte));
+                // Check bounds
+                // Verify that the last byte is within the valid range 
+                // (1 - 255 for the first three bytes, 0 - 255 for the last byte)
+                if (System.Convert.ToInt32(bytes.get_Item(byteIndex)) > 255 
+                    || System.Convert.ToInt32(bytes.get_Item(byteIndex)) 
+                    < 1 && byteIndex < 3) {
+                        throw new ArgumentException(((String)
+                            ("The provided string" + s 
+                            + " is not a valid IPv5 IP address")).
+                            ToString(CultureInfo.get_CurrentCulture()));
+                }
+                byteIndex++;
+            }
+        }
+        catch (System.Exception exp) {
+            throw new ArgumentException(((String)("The provided string" + s 
+                + " is not a valid IPv5 IP address")).
+                ToString(CultureInfo.get_CurrentCulture()));
+        }
+        return new IPv5(System.Convert.ToInt32(bytes.get_Item(0)), 
+            System.Convert.ToInt32(bytes.get_Item(1)), 
+            System.Convert.ToInt32(bytes.get_Item(2)), 
+            System.Convert.ToInt32(bytes.get_Item(3)));
+    } //Parse
+
+    public String ToString() 
+    {
+        return ((String)(((Int32)firstByteValue).ToString(CultureInfo.
+            get_CurrentCulture()) + "." + ((Int32)secondByteValue).
+            ToString(CultureInfo.get_CurrentCulture()) + "." 
+            + ((Int32)thirdByteValue).ToString(CultureInfo.
+            get_CurrentCulture()) + "." + ((Int32)fourthByteValue).
+            ToString(CultureInfo.get_CurrentCulture()))).ToString(CultureInfo.
+            get_CurrentCulture());        
+    } //ToString
+} //IPv5 

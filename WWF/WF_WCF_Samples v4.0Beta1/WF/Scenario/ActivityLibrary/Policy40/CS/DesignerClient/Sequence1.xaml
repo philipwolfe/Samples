@@ -1,0 +1,196 @@
+<p:Activity mc:Ignorable="" x:Class="Microsoft.Samples.Rules.Client.Sequence1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities/design" xmlns:__Sequence1="clr-namespace:Microsoft.Samples.Rules.Client;" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:msr="clr-namespace:Microsoft.Samples.Rules;assembly=Microsoft.Samples.Rules" xmlns:p="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:sad="clr-namespace:System.Activities.Debugger;assembly=System.Activities" xmlns:sc="clr-namespace:System.CodeDom;assembly=System" xmlns:swar="clr-namespace:System.Workflow.Activities.Rules;assembly=System.Workflow.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <p:Sequence sad:XamlDebuggerXmlReader.FileName="\\lwelicki-2nd\d$\dd\CDFDev10_1\src\ndp\cdf\sdk\NetFx40\public\WF\Scenario\ActivityLibrary\Policy40\DesignerClient\Sequence1.xaml">
+    <p:Sequence.Variables>
+      <p:Variable x:TypeArguments="x:String" Default="[&quot;books&quot;]" Name="productType" />
+    </p:Sequence.Variables>
+    <msr:Policy40Activity ValidationErrors="{x:Null}">
+      <msr:Policy40Activity.RuleSet>
+        <swar:RuleSet Description="{x:Null}" Name="{x:Null}" ChainingBehavior="Full">
+          <swar:RuleSet.Rules>
+            <swar:Rule Description="{x:Null}" Active="True" Name="Rule1" Priority="0" ReevaluationBehavior="Always">
+              <swar:Rule.Condition>
+                <swar:RuleExpressionCondition Name="{x:Null}">
+                  <swar:RuleExpressionCondition.Expression>
+                    <sc:CodeMethodInvokeExpression>
+                      <sc:CodeMethodInvokeExpression.Method>
+                        <sc:CodeMethodReferenceExpression MethodName="Equals">
+                          <sc:CodeMethodReferenceExpression.TargetObject>
+                            <sc:CodeThisReferenceExpression />
+                          </sc:CodeMethodReferenceExpression.TargetObject>
+                        </sc:CodeMethodReferenceExpression>
+                      </sc:CodeMethodInvokeExpression.Method>
+                      <sc:CodeMethodInvokeExpression.Parameters>
+                        <sc:CodePrimitiveExpression Value="books" />
+                      </sc:CodeMethodInvokeExpression.Parameters>
+                    </sc:CodeMethodInvokeExpression>
+                  </swar:RuleExpressionCondition.Expression>
+                </swar:RuleExpressionCondition>
+              </swar:Rule.Condition>
+              <swar:Rule.ThenActions>
+                <swar:RuleStatementAction>
+                  <swar:RuleStatementAction.CodeDomStatement>
+                    <sc:CodeExpressionStatement LinePragma="{x:Null}">
+                      <sc:CodeExpressionStatement.Expression>
+                        <sc:CodeMethodInvokeExpression>
+                          <sc:CodeMethodInvokeExpression.Method>
+                            <sc:CodeMethodReferenceExpression MethodName="WriteLine">
+                              <sc:CodeMethodReferenceExpression.TargetObject>
+                                <sc:CodeTypeReferenceExpression>
+                                  <sc:CodeTypeReferenceExpression.Type>
+                                    <sc:CodeTypeReference ArrayElementType="{x:Null}" ArrayRank="0" BaseType="System.Console" Options="0" />
+                                  </sc:CodeTypeReferenceExpression.Type>
+                                </sc:CodeTypeReferenceExpression>
+                              </sc:CodeMethodReferenceExpression.TargetObject>
+                            </sc:CodeMethodReferenceExpression>
+                          </sc:CodeMethodInvokeExpression.Method>
+                          <sc:CodeMethodInvokeExpression.Parameters>
+                            <sc:CodePrimitiveExpression Value="Delivery time: 2 days" />
+                          </sc:CodeMethodInvokeExpression.Parameters>
+                        </sc:CodeMethodInvokeExpression>
+                      </sc:CodeExpressionStatement.Expression>
+                    </sc:CodeExpressionStatement>
+                  </swar:RuleStatementAction.CodeDomStatement>
+                </swar:RuleStatementAction>
+              </swar:Rule.ThenActions>
+            </swar:Rule>
+            <swar:Rule Description="{x:Null}" Active="True" Name="Rule2" Priority="0" ReevaluationBehavior="Always">
+              <swar:Rule.Condition>
+                <swar:RuleExpressionCondition Name="{x:Null}">
+                  <swar:RuleExpressionCondition.Expression>
+                    <sc:CodeMethodInvokeExpression>
+                      <sc:CodeMethodInvokeExpression.Method>
+                        <sc:CodeMethodReferenceExpression MethodName="Equals">
+                          <sc:CodeMethodReferenceExpression.TargetObject>
+                            <sc:CodeThisReferenceExpression />
+                          </sc:CodeMethodReferenceExpression.TargetObject>
+                        </sc:CodeMethodReferenceExpression>
+                      </sc:CodeMethodInvokeExpression.Method>
+                      <sc:CodeMethodInvokeExpression.Parameters>
+                        <sc:CodePrimitiveExpression Value="magazines" />
+                      </sc:CodeMethodInvokeExpression.Parameters>
+                    </sc:CodeMethodInvokeExpression>
+                  </swar:RuleExpressionCondition.Expression>
+                </swar:RuleExpressionCondition>
+              </swar:Rule.Condition>
+              <swar:Rule.ThenActions>
+                <swar:RuleStatementAction>
+                  <swar:RuleStatementAction.CodeDomStatement>
+                    <sc:CodeExpressionStatement LinePragma="{x:Null}">
+                      <sc:CodeExpressionStatement.Expression>
+                        <sc:CodeMethodInvokeExpression>
+                          <sc:CodeMethodInvokeExpression.Method>
+                            <sc:CodeMethodReferenceExpression MethodName="WriteLine">
+                              <sc:CodeMethodReferenceExpression.TargetObject>
+                                <sc:CodeTypeReferenceExpression>
+                                  <sc:CodeTypeReferenceExpression.Type>
+                                    <sc:CodeTypeReference ArrayElementType="{x:Null}" ArrayRank="0" BaseType="System.Console" Options="0" />
+                                  </sc:CodeTypeReferenceExpression.Type>
+                                </sc:CodeTypeReferenceExpression>
+                              </sc:CodeMethodReferenceExpression.TargetObject>
+                            </sc:CodeMethodReferenceExpression>
+                          </sc:CodeMethodInvokeExpression.Method>
+                          <sc:CodeMethodInvokeExpression.Parameters>
+                            <sc:CodePrimitiveExpression Value="Delivery time: 4 days" />
+                          </sc:CodeMethodInvokeExpression.Parameters>
+                        </sc:CodeMethodInvokeExpression>
+                      </sc:CodeExpressionStatement.Expression>
+                    </sc:CodeExpressionStatement>
+                  </swar:RuleStatementAction.CodeDomStatement>
+                </swar:RuleStatementAction>
+              </swar:Rule.ThenActions>
+            </swar:Rule>
+            <swar:Rule Description="{x:Null}" Active="True" Name="Rule3" Priority="0" ReevaluationBehavior="Always">
+              <swar:Rule.Condition>
+                <swar:RuleExpressionCondition Name="{x:Null}">
+                  <swar:RuleExpressionCondition.Expression>
+                    <sc:CodeBinaryOperatorExpression Operator="BooleanAnd">
+                      <sc:CodeBinaryOperatorExpression.Left>
+                        <sc:CodeBinaryOperatorExpression Operator="ValueEquality">
+                          <sc:CodeBinaryOperatorExpression.Left>
+                            <sc:CodeMethodInvokeExpression>
+                              <sc:CodeMethodInvokeExpression.Method>
+                                <sc:CodeMethodReferenceExpression MethodName="Equals">
+                                  <sc:CodeMethodReferenceExpression.TargetObject>
+                                    <sc:CodeThisReferenceExpression />
+                                  </sc:CodeMethodReferenceExpression.TargetObject>
+                                </sc:CodeMethodReferenceExpression>
+                              </sc:CodeMethodInvokeExpression.Method>
+                              <sc:CodeMethodInvokeExpression.Parameters>
+                                <sc:CodePrimitiveExpression Value="books" />
+                              </sc:CodeMethodInvokeExpression.Parameters>
+                            </sc:CodeMethodInvokeExpression>
+                          </sc:CodeBinaryOperatorExpression.Left>
+                          <sc:CodeBinaryOperatorExpression.Right>
+                            <sc:CodePrimitiveExpression>
+                              <sc:CodePrimitiveExpression.Value>
+                                <x:Boolean>False</x:Boolean>
+                              </sc:CodePrimitiveExpression.Value>
+                            </sc:CodePrimitiveExpression>
+                          </sc:CodeBinaryOperatorExpression.Right>
+                        </sc:CodeBinaryOperatorExpression>
+                      </sc:CodeBinaryOperatorExpression.Left>
+                      <sc:CodeBinaryOperatorExpression.Right>
+                        <sc:CodeBinaryOperatorExpression Operator="ValueEquality">
+                          <sc:CodeBinaryOperatorExpression.Left>
+                            <sc:CodeMethodInvokeExpression>
+                              <sc:CodeMethodInvokeExpression.Method>
+                                <sc:CodeMethodReferenceExpression MethodName="Equals">
+                                  <sc:CodeMethodReferenceExpression.TargetObject>
+                                    <sc:CodeThisReferenceExpression />
+                                  </sc:CodeMethodReferenceExpression.TargetObject>
+                                </sc:CodeMethodReferenceExpression>
+                              </sc:CodeMethodInvokeExpression.Method>
+                              <sc:CodeMethodInvokeExpression.Parameters>
+                                <sc:CodePrimitiveExpression Value="magazines" />
+                              </sc:CodeMethodInvokeExpression.Parameters>
+                            </sc:CodeMethodInvokeExpression>
+                          </sc:CodeBinaryOperatorExpression.Left>
+                          <sc:CodeBinaryOperatorExpression.Right>
+                            <sc:CodePrimitiveExpression>
+                              <sc:CodePrimitiveExpression.Value>
+                                <x:Boolean>False</x:Boolean>
+                              </sc:CodePrimitiveExpression.Value>
+                            </sc:CodePrimitiveExpression>
+                          </sc:CodeBinaryOperatorExpression.Right>
+                        </sc:CodeBinaryOperatorExpression>
+                      </sc:CodeBinaryOperatorExpression.Right>
+                    </sc:CodeBinaryOperatorExpression>
+                  </swar:RuleExpressionCondition.Expression>
+                </swar:RuleExpressionCondition>
+              </swar:Rule.Condition>
+              <swar:Rule.ThenActions>
+                <swar:RuleStatementAction>
+                  <swar:RuleStatementAction.CodeDomStatement>
+                    <sc:CodeExpressionStatement LinePragma="{x:Null}">
+                      <sc:CodeExpressionStatement.Expression>
+                        <sc:CodeMethodInvokeExpression>
+                          <sc:CodeMethodInvokeExpression.Method>
+                            <sc:CodeMethodReferenceExpression MethodName="WriteLine">
+                              <sc:CodeMethodReferenceExpression.TargetObject>
+                                <sc:CodeTypeReferenceExpression>
+                                  <sc:CodeTypeReferenceExpression.Type>
+                                    <sc:CodeTypeReference ArrayElementType="{x:Null}" ArrayRank="0" BaseType="System.Console" Options="0" />
+                                  </sc:CodeTypeReferenceExpression.Type>
+                                </sc:CodeTypeReferenceExpression>
+                              </sc:CodeMethodReferenceExpression.TargetObject>
+                            </sc:CodeMethodReferenceExpression>
+                          </sc:CodeMethodInvokeExpression.Method>
+                          <sc:CodeMethodInvokeExpression.Parameters>
+                            <sc:CodePrimitiveExpression Value="Deliver time: 10 days" />
+                          </sc:CodeMethodInvokeExpression.Parameters>
+                        </sc:CodeMethodInvokeExpression>
+                      </sc:CodeExpressionStatement.Expression>
+                    </sc:CodeExpressionStatement>
+                  </swar:RuleStatementAction.CodeDomStatement>
+                </swar:RuleStatementAction>
+              </swar:Rule.ThenActions>
+            </swar:Rule>
+          </swar:RuleSet.Rules>
+        </swar:RuleSet>
+      </msr:Policy40Activity.RuleSet>
+      <msr:Policy40Activity.TargetObject>
+        <p:InOutArgument x:TypeArguments="x:String">[productType]</p:InOutArgument>
+      </msr:Policy40Activity.TargetObject>
+    </msr:Policy40Activity>
+  </p:Sequence>
+</p:Activity>

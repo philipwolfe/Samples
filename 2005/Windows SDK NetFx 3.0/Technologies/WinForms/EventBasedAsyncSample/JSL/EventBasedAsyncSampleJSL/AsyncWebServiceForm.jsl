@@ -1,0 +1,470 @@
+package Microsoft.Samples.Windows.Forms.EventBasedAsync; 
+
+//---------------------------------------------------------------------
+//  This file is part of the Microsoft.NET Framework SDK Code Samples.
+// 
+//  Copyright (C) Microsoft Corporation.  All rights reserved.
+// 
+//This source code is intended only as a supplement to Microsoft
+//Development Tools and/or on-line documentation.  See these other
+//materials for detailed information regarding Microsoft code samples.
+// 
+//THIS CODE AND INFORMATION ARE PROVIDED AS IS WITHOUT WARRANTY OF ANY
+//KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+//IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+//PARTICULAR PURPOSE.
+//---------------------------------------------------------------------
+
+#region Import directives
+
+import System.*;
+import System.Collections.Generic.*;
+import System.ComponentModel.*;
+import System.Data.*;
+import System.Drawing.*;
+import System.Text.*;
+import System.Windows.Forms.*;
+import Microsoft.Samples.Windows.Forms.EventBasedAsync.SimpleWebServices.*;
+import Microsoft.Samples.Windows.Forms.EventBasedAsync.*;
+
+#endregion
+
+class AsyncWebServiceForm extends Form
+{
+    private SampleCodeForm sampleCodeForm = null;
+
+    public AsyncWebServiceForm()
+    {
+        InitializeComponent();
+    }
+
+	private StatusStrip statusStrip1;
+	private ToolStripStatusLabel webServiceOperationToolStripTextProgressPanel;
+	private ToolStripProgressBar webServiceOperationToolStripProgressBar; //AsyncWebServiceForm
+
+    /// <summary>
+    /// Required designer variable.
+    /// </summary>
+    private System.ComponentModel.IContainer components = null;
+
+    /// <summary>
+    /// Clean up any resources being used.
+    /// </summary>
+    protected void Dispose(boolean disposing)
+    {
+        if (disposing && components != null) {
+            components.Dispose();
+        }
+        super.Dispose(disposing);
+    } //Dispose
+
+    #region Windows Form Designer generated code
+
+    /// <summary>
+    /// Required method for Designer support - do not modify
+    /// the contents of this method with the code editor.
+    /// </summary>
+    private void InitializeComponent()
+    {
+		this.components = new System.ComponentModel.Container();
+		System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(AsyncWebServiceForm.class.ToType());
+		this.btnCancel = new System.Windows.Forms.Button();
+		this.groupBoxWebServiceCall = new System.Windows.Forms.GroupBox();
+		this.lblAnswer = new System.Windows.Forms.Label();
+		this.txtAnswer = new System.Windows.Forms.TextBox();
+		this.cmbQuestion = new System.Windows.Forms.ComboBox();
+		this.lblQuestion = new System.Windows.Forms.Label();
+		this.btnAskTheQuestion = new System.Windows.Forms.Button();
+		this.lblUrl = new System.Windows.Forms.Label();
+		this.txtWebServiceUrl = new System.Windows.Forms.TextBox();
+		this.groupBoxInstructions = new System.Windows.Forms.GroupBox();
+		this.workaroundPanel = new System.Windows.Forms.Panel();
+		this.viewWebServiceSourceLinkLabel = new System.Windows.Forms.LinkLabel();
+		this.simulateProgressTimer = new System.Windows.Forms.Timer(this.components);
+		this.simpleWebService1 = new Microsoft.Samples.Windows.Forms.EventBasedAsync.SimpleWebServices.SimpleWebService();
+		this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+		this.webServiceOperationToolStripTextProgressPanel = new System.Windows.Forms.ToolStripStatusLabel();
+		this.webServiceOperationToolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
+		this.groupBoxWebServiceCall.SuspendLayout();
+		this.groupBoxInstructions.SuspendLayout();
+		this.workaroundPanel.SuspendLayout();
+		this.statusStrip1.SuspendLayout();
+		this.SuspendLayout();
+		// 
+		// btnCancel
+		// 
+		this.btnCancel.set_Anchor(((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right))));
+		this.btnCancel.set_DialogResult(System.Windows.Forms.DialogResult.Cancel);
+		this.btnCancel.set_Enabled(false);
+		this.btnCancel.set_Location(new System.Drawing.Point(333, 129));
+		this.btnCancel.set_Margin(new System.Windows.Forms.Padding(3, 1, 3, 3));
+		this.btnCancel.set_Name("btnCancel");
+		this.btnCancel.set_Size(new System.Drawing.Size(75, 23));
+		this.btnCancel.set_TabIndex(4);
+		this.btnCancel.set_Text("&Cancel");
+		this.btnCancel.add_Click(new System.EventHandler(this.btnCancel_Click));
+		// 
+		// groupBoxWebServiceCall
+		// 
+		this.groupBoxWebServiceCall.set_Anchor(((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+					| System.Windows.Forms.AnchorStyles.Right))));
+		this.groupBoxWebServiceCall.get_Controls().Add(this.lblAnswer);
+		this.groupBoxWebServiceCall.get_Controls().Add(this.txtAnswer);
+		this.groupBoxWebServiceCall.get_Controls().Add(this.cmbQuestion);
+		this.groupBoxWebServiceCall.get_Controls().Add(this.lblQuestion);
+		this.groupBoxWebServiceCall.get_Controls().Add(this.btnCancel);
+		this.groupBoxWebServiceCall.get_Controls().Add(this.btnAskTheQuestion);
+		this.groupBoxWebServiceCall.get_Controls().Add(this.lblUrl);
+		this.groupBoxWebServiceCall.get_Controls().Add(this.txtWebServiceUrl);
+		this.groupBoxWebServiceCall.set_Location(new System.Drawing.Point(13, 113));
+		this.groupBoxWebServiceCall.set_Margin(new System.Windows.Forms.Padding(1, 3, 1, 3));
+		this.groupBoxWebServiceCall.set_Name("groupBoxWebServiceCall");
+		this.groupBoxWebServiceCall.set_Padding(new System.Windows.Forms.Padding(5));
+		this.groupBoxWebServiceCall.set_Size(new System.Drawing.Size(418, 160));
+		this.groupBoxWebServiceCall.set_TabIndex(0);
+		this.groupBoxWebServiceCall.set_TabStop(false);
+		this.groupBoxWebServiceCall.set_Text("Web Service");
+		// 
+		// lblAnswer
+		// 
+		this.lblAnswer.set_Anchor(((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+					| System.Windows.Forms.AnchorStyles.Left)
+					| System.Windows.Forms.AnchorStyles.Right))));
+		this.lblAnswer.set_AutoSize(true);
+		this.lblAnswer.set_Location(new System.Drawing.Point(7, 107));
+		this.lblAnswer.set_Margin(new System.Windows.Forms.Padding(2, 3, 1, 3));
+		this.lblAnswer.set_Name("lblAnswer");
+		this.lblAnswer.set_Size(new System.Drawing.Size(45, 13));
+		this.lblAnswer.set_TabIndex(14);
+		this.lblAnswer.set_Text("Answer:");
+		// 
+		// txtAnswer
+		// 
+		this.txtAnswer.set_Anchor(((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+					| System.Windows.Forms.AnchorStyles.Right))));
+		this.txtAnswer.set_Location(new System.Drawing.Point(60, 104));
+		this.txtAnswer.set_Name("txtAnswer");
+		this.txtAnswer.set_ReadOnly(true);
+		this.txtAnswer.set_Size(new System.Drawing.Size(348, 20));
+		this.txtAnswer.set_TabIndex(3);
+		// 
+		// cmbQuestion
+		// 
+		this.cmbQuestion.set_Anchor(((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+					| System.Windows.Forms.AnchorStyles.Right))));
+		this.cmbQuestion.set_DropDownStyle(System.Windows.Forms.ComboBoxStyle.DropDownList);
+		this.cmbQuestion.set_FormattingEnabled(true);
+		this.cmbQuestion.get_Items().AddRange(new Object[] {
+            "What is the answer?",
+            "Who am I?",
+            "What am I doing here?",
+            "Is it better to ask for too much?"}
+		);
+		this.cmbQuestion.set_Location(new System.Drawing.Point(61, 46));
+		this.cmbQuestion.set_Margin(new System.Windows.Forms.Padding(0, 2, 3, 3));
+		this.cmbQuestion.set_Name("cmbQuestion");
+		this.cmbQuestion.set_Size(new System.Drawing.Size(347, 21));
+		this.cmbQuestion.set_TabIndex(1);
+		// 
+		// lblQuestion
+		// 
+		this.lblQuestion.set_Anchor(((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+					| System.Windows.Forms.AnchorStyles.Left)
+					| System.Windows.Forms.AnchorStyles.Right))));
+		this.lblQuestion.set_AutoSize(true);
+		this.lblQuestion.set_Location(new System.Drawing.Point(7, 49));
+		this.lblQuestion.set_Margin(new System.Windows.Forms.Padding(2, 3, 1, 3));
+		this.lblQuestion.set_Name("lblQuestion");
+		this.lblQuestion.set_Size(new System.Drawing.Size(52, 13));
+		this.lblQuestion.set_TabIndex(11);
+		this.lblQuestion.set_Text("Question:");
+		// 
+		// btnAskTheQuestion
+		// 
+		this.btnAskTheQuestion.set_Anchor(((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right))));
+		this.btnAskTheQuestion.set_Location(new System.Drawing.Point(278, 74));
+		this.btnAskTheQuestion.set_Name("btnAskTheQuestion");
+		this.btnAskTheQuestion.set_Size(new System.Drawing.Size(130, 23));
+		this.btnAskTheQuestion.set_TabIndex(2);
+		this.btnAskTheQuestion.set_Text("&Ask the Question");
+		this.btnAskTheQuestion.add_Click(new System.EventHandler(this.btnAskTheQuestion_Click));
+		// 
+		// lblUrl
+		// 
+		this.lblUrl.set_Anchor(((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+					| System.Windows.Forms.AnchorStyles.Left)
+					| System.Windows.Forms.AnchorStyles.Right))));
+		this.lblUrl.set_AutoSize(true);
+		this.lblUrl.set_Location(new System.Drawing.Point(7, 25));
+		this.lblUrl.set_Margin(new System.Windows.Forms.Padding(2, 3, 2, 3));
+		this.lblUrl.set_Name("lblUrl");
+		this.lblUrl.set_Size(new System.Drawing.Size(23, 13));
+		this.lblUrl.set_TabIndex(3);
+		this.lblUrl.set_Text("Url:");
+		// 
+		// txtWebServiceUrl
+		// 
+		this.txtWebServiceUrl.set_Anchor(((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+					| System.Windows.Forms.AnchorStyles.Right))));
+		this.txtWebServiceUrl.set_Location(new System.Drawing.Point(61, 22));
+		this.txtWebServiceUrl.set_Margin(new System.Windows.Forms.Padding(2, 2, 3, 2));
+		this.txtWebServiceUrl.set_Name("txtWebServiceUrl");
+		this.txtWebServiceUrl.set_Size(new System.Drawing.Size(347, 20));
+		this.txtWebServiceUrl.set_TabIndex(0);
+		this.txtWebServiceUrl.set_Text("http://localhost/samplewebservices/simplewebservice.asmx");
+		// 
+		// groupBoxInstructions
+		// 
+		this.groupBoxInstructions.set_Anchor(((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+					| System.Windows.Forms.AnchorStyles.Right))));
+		this.groupBoxInstructions.get_Controls().Add(this.workaroundPanel);
+		this.groupBoxInstructions.set_Location(new System.Drawing.Point(8, 13));
+		this.groupBoxInstructions.set_Margin(new System.Windows.Forms.Padding(1, 3, 1, 3));
+		this.groupBoxInstructions.set_Name("groupBoxInstructions");
+		this.groupBoxInstructions.set_Padding(new System.Windows.Forms.Padding(9));
+		this.groupBoxInstructions.set_Size(new System.Drawing.Size(425, 91));
+		this.groupBoxInstructions.set_TabIndex(2);
+		this.groupBoxInstructions.set_TabStop(false);
+		this.groupBoxInstructions.set_Text("Instructions");
+		// 
+		// workaroundPanel
+		// 
+		this.workaroundPanel.get_Controls().Add(this.viewWebServiceSourceLinkLabel);
+		this.workaroundPanel.set_Dock(System.Windows.Forms.DockStyle.Fill);
+		this.workaroundPanel.set_Location(new System.Drawing.Point(9, 22));
+		this.workaroundPanel.set_Name("workaroundPanel");
+		this.workaroundPanel.set_Padding(new System.Windows.Forms.Padding(9));
+		this.workaroundPanel.set_Size(new System.Drawing.Size(407, 60));
+		this.workaroundPanel.set_TabIndex(0);
+		// 
+		// viewWebServiceSourceLinkLabel
+		// 
+		this.viewWebServiceSourceLinkLabel.set_Dock(System.Windows.Forms.DockStyle.Fill);
+		this.viewWebServiceSourceLinkLabel.set_LinkArea(new System.Windows.Forms.LinkArea(0, 208));
+		this.viewWebServiceSourceLinkLabel.set_Location(new System.Drawing.Point(9, 9));
+		this.viewWebServiceSourceLinkLabel.set_Name("viewWebServiceSourceLinkLabel");
+		this.viewWebServiceSourceLinkLabel.set_Size(new System.Drawing.Size(389, 42));
+		this.viewWebServiceSourceLinkLabel.set_TabIndex(0);
+		this.viewWebServiceSourceLinkLabel.set_TabStop(true);
+		this.viewWebServiceSourceLinkLabel.set_Text(resources.GetString("viewWebServiceSourceLinkLabel.Text"));
+		this.viewWebServiceSourceLinkLabel.add_LinkClicked(new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.viewWebServiceSourceLinkLabel_LinkClicked));
+		// 
+		// simulateProgressTimer
+		// 
+		this.simulateProgressTimer.set_Interval(120);
+		this.simulateProgressTimer.add_Tick(new System.EventHandler(this.simulateProgressTimer_Tick));
+		// 
+		// simpleWebService1
+		// 
+		this.simpleWebService1.set_Credentials(null);
+		this.simpleWebService1.set_Url("http://localhost/samplewebservices/simplewebservice.asmx");
+		this.simpleWebService1.set_UseDefaultCredentials(false);
+		this.simpleWebService1.add_GetAnswerCompleted(new Microsoft.Samples.Windows.Forms.EventBasedAsync.SimpleWebServices.GetAnswerCompletedEventHandler(this.simpleWebService1_getAnswerCompleted));
+		// 
+		// statusStrip1
+		// 
+		this.statusStrip1.get_Items().AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.webServiceOperationToolStripTextProgressPanel,
+            this.webServiceOperationToolStripProgressBar}
+		);
+		this.statusStrip1.set_Location(new System.Drawing.Point(0, 284));
+		this.statusStrip1.set_Name("statusStrip1");
+		this.statusStrip1.set_Size(new System.Drawing.Size(443, 22));
+		this.statusStrip1.set_TabIndex(3);
+		this.statusStrip1.set_Text("statusStrip1");
+		// 
+		// webServiceOperationToolStripTextProgressPanel
+		// 
+		this.webServiceOperationToolStripTextProgressPanel.set_Name("webServiceOperationToolStripTextProgressPanel");
+		this.webServiceOperationToolStripTextProgressPanel.set_Size(new System.Drawing.Size(0, 17));
+		// 
+		// webServiceOperationToolStripProgressBar
+		// 
+		this.webServiceOperationToolStripProgressBar.set_Name("webServiceOperationToolStripProgressBar");
+		this.webServiceOperationToolStripProgressBar.set_Size(new System.Drawing.Size(100, 15));
+		// 
+		// AsyncWebServiceForm
+		// 
+		this.set_AcceptButton(this.btnAskTheQuestion);
+		this.set_AutoScaleBaseSize(new System.Drawing.Size(5, 13));
+		this.set_CancelButton(this.btnCancel);
+		this.set_ClientSize(new System.Drawing.Size(443, 306));
+		this.get_Controls().Add(this.statusStrip1);
+		this.get_Controls().Add(this.groupBoxInstructions);
+		this.get_Controls().Add(this.groupBoxWebServiceCall);
+		this.set_MinimumSize(new System.Drawing.Size(451, 327));
+		this.set_Name("AsyncWebServiceForm");
+		this.set_Text("Async WebService Sample");
+		this.add_Load(new System.EventHandler(this.AsyncWebServiceForm_Load));
+		this.groupBoxWebServiceCall.ResumeLayout(false);
+		this.groupBoxWebServiceCall.PerformLayout();
+		this.groupBoxInstructions.ResumeLayout(false);
+		this.workaroundPanel.ResumeLayout(false);
+		this.statusStrip1.ResumeLayout(false);
+		this.statusStrip1.PerformLayout();
+		this.ResumeLayout(false);
+		this.PerformLayout();
+
+	} //InitializeComponent 
+
+    #endregion
+
+    private System.Windows.Forms.Button btnCancel;
+    private System.Windows.Forms.GroupBox groupBoxWebServiceCall;
+    private System.Windows.Forms.Button btnAskTheQuestion;
+    private System.Windows.Forms.Label lblUrl;
+    private System.Windows.Forms.TextBox txtWebServiceUrl;
+    private System.Windows.Forms.GroupBox groupBoxInstructions;
+    private System.Windows.Forms.Panel workaroundPanel;
+    private System.Windows.Forms.LinkLabel viewWebServiceSourceLinkLabel;
+    private System.Windows.Forms.Label lblQuestion;
+    private System.Windows.Forms.ComboBox cmbQuestion;
+    private System.Windows.Forms.Label lblAnswer;
+    private System.Windows.Forms.TextBox txtAnswer;
+    private System.Windows.Forms.Timer simulateProgressTimer;
+    private SimpleWebService simpleWebService1;
+
+    /// <summary>
+    /// Handle the Form load event
+    /// Sets the default selected item in the ComboBox of questions
+    /// </summary>
+    private void AsyncWebServiceForm_Load(Object sender, System.EventArgs e)
+    {
+        cmbQuestion.set_SelectedIndex(0);
+    } //AsyncWebServiceForm_Load
+
+    /// <summary>
+    /// Handle the Click event on btnAskTheQuestion. 
+    /// Start the async web service call using the web service pointed to by 
+    /// txtWebServiceUrl
+    /// </summary>
+    private void btnAskTheQuestion_Click(Object sender, System.EventArgs e)
+    {
+        btnCancel.set_Enabled(true);
+        btnAskTheQuestion.set_Enabled(false);
+        txtAnswer.set_Text("");
+        simpleWebService1.set_Url(txtWebServiceUrl.get_Text());
+
+        StartProgress("Calling Web Service..."); 
+        //See StartProgress below for an explanation of this method
+
+        simpleWebService1.GetAnswerAsync(cmbQuestion.get_Text());
+    } //btnAskTheQuestion_Click
+
+    /// <summary>
+    /// Handle the Click event on btnCancel.
+    /// Cancel the async call of the webservice
+    /// Note: It is possible that the web service may have completed 
+    /// by the time cancel is processed
+    ///       - you will need to take this into account in your applications
+    /// </summary>
+    private void btnCancel_Click(Object sender, System.EventArgs e)
+    {
+        //More than one async request can be running at a time 
+        //So pass in the key that identifies this operation
+        //- in our case we only have one operation running at a time so 
+        //pass in null
+        simpleWebService1.CancelAsync(null);
+    } //btnCancel_Click
+
+    /// <summary>
+    /// Handle the LoadCompleted event. This event is raised when the web 
+    /// service has finished async execution
+    /// The AsyncCompletedEventArgs contains information about the async 
+    /// operation - the result, whether it was canceled, if there was an error 
+    /// and so on
+    /// </summary>
+    private void simpleWebService1_getAnswerCompleted(Object sender, 
+       GetAnswerCompletedEventArgs e)
+    {
+        btnCancel.set_Enabled(false);
+        btnAskTheQuestion.set_Enabled(true);
+        StopProgress("Ready"); 
+        //See StartProgress below for an explanation of this method
+
+        if (e.get_Cancelled() == true) {
+			MessageBox.Show("Web Service call canceled", "Async Web Service Sample");
+        }
+        else {
+            //
+            //Note: If the web service returned an error e.Result will throw the 
+            //exception associated with the error
+            //
+            //      You can also check for e.Error:
+            //
+            //           if (e.Error != null) {
+            //           }
+            //
+            try {
+                txtAnswer.set_Text(e.get_Result());
+				MessageBox.Show("Web Service completed", "Async Web Service Sample");
+            }
+            catch (System.Exception ex) {
+				MessageBox.Show("Web Service request error:" + ex.get_Message(), "Async Web Service Sample", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+    } //simpleWebService1_GetAnswerCompleted
+
+    /// <summary> 
+    /// Web Services do not return progress information and so we will simulate 
+    /// progress with a progress bar that slowly increments based on a timer
+    /// This method sets the status text and starts the timer
+    /// </summary>
+    private void StartProgress(String progressText)
+    {
+        webServiceOperationToolStripProgressBar.set_Value(0);
+        webServiceOperationToolStripProgressBar.set_Visible(true);
+        webServiceOperationToolStripTextProgressPanel.set_Text(progressText);
+        simulateProgressTimer.Start();
+    } //StartProgress
+
+    /// <summary> 
+    /// This method sets the status text and stops the timer by incrementing 
+    /// it quickly to the end 
+    /// </summary>
+    private void StopProgress(String status)
+    {
+        simulateProgressTimer.Stop();
+        int i;
+        for (i = webServiceOperationToolStripProgressBar.get_Value();
+            i <= webServiceOperationToolStripProgressBar.get_Maximum(); i++) {
+            webServiceOperationToolStripProgressBar.set_Value(i);
+            System.Threading.Thread.Sleep(5);
+        }
+        webServiceOperationToolStripProgressBar.set_Visible(false);
+        webServiceOperationToolStripTextProgressPanel.set_Text(status);
+    } //StopProgress
+
+    /// <summary> 
+    /// The timer tick event - used to increment the progress bar
+    /// </summary>
+    private void simulateProgressTimer_Tick(Object sender, System.EventArgs e)
+    {
+        if (webServiceOperationToolStripProgressBar.get_Value() == 
+            webServiceOperationToolStripProgressBar.get_Maximum()) {
+            webServiceOperationToolStripProgressBar.set_Value(0);
+        }
+        webServiceOperationToolStripProgressBar.set_Value(
+            webServiceOperationToolStripProgressBar.get_Value() + 1);
+    } //simulateProgressTimer_Tick
+
+    /// <summary> 
+    /// Utility method that displays the source code for the web service
+    /// </summary>
+    private void viewWebServiceSourceLinkLabel_LinkClicked(Object sender, 
+        System.Windows.Forms.LinkLabelLinkClickedEventArgs e)
+    {
+        if (Application.get_OpenForms().get_Item("SampleCodeForm") != null) {
+            sampleCodeForm.set_SampleCodeRtf(Microsoft.Samples.Windows.Forms.EventBasedAsync.
+                Resources.get_SimpleWebServiceSourceCode());
+            sampleCodeForm.BringToFront();
+        }
+        else {
+            sampleCodeForm = new SampleCodeForm();
+			sampleCodeForm.set_SampleCodeRtf(Microsoft.Samples.Windows.Forms.EventBasedAsync.
+				Resources.get_SimpleWebServiceSourceCode());
+            sampleCodeForm.Show();
+        }
+    } //viewWebServiceSourceLinkLabel_LinkClicked
+} //AsyncWebServiceForm

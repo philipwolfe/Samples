@@ -1,0 +1,172 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50617</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AEDE0923-FBFE-4D48-91F0-2621070BB81E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Microsoft.Samples.Windows.Forms.ToolStripSamples</RootNamespace>
+    <AssemblyName>ToolStripSamples</AssemblyName>
+    <WarningLevel>4</WarningLevel>
+    <StartupObject>Microsoft.Samples.Windows.Forms.ToolStripSamples.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DesignerVisibility.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DesignerVisibility.designer.cs">
+      <DependentUpon>DesignerVisibility.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicContextMenuStripForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DynamicContextMenuStripForm.Designer.cs">
+      <DependentUpon>DynamicContextMenuStripForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="VerticalToolTabs\BackColorWindow.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Configuration\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Configuration\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicOverflowForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DynamicOverflowForm.designer.cs">
+      <DependentUpon>DynamicOverflowForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VerticalToolTabs\FontWindow.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Configuration\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Configuration\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DynamicOverflowForm.resx">
+      <DependentUpon>DynamicOverflowForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesignerVisibility.resx">
+      <DependentUpon>DesignerVisibility.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RendererSwitcherForm.resx">
+      <DependentUpon>RendererSwitcherForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SampleLauncher.resx">
+      <DependentUpon>SampleLauncher.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ToolStripPropertyGridForm.resx">
+      <DependentUpon>ToolStripPropertyGridForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerticalToolTabs.resx">
+      <DependentUpon>VerticalToolTabs.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Configuration\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Properties\DataSources\System.Windows.Forms.ToolStripItem.datasource" />
+    <None Include="Properties\DataSources\ToolStripPropertyGridForm.datasource" />
+    <Compile Include="VerticalToolTabs\PropertyGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RendererSwitcherForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RendererSwitcherForm.designer.cs">
+      <DependentUpon>RendererSwitcherForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SampleLauncher.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SampleLauncher.Designer.cs">
+      <DependentUpon>SampleLauncher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SplitButtonColorPickerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SplitButtonColorPickerForm.designer.cs">
+      <DependentUpon>SplitButtonColorPickerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SplitButtonColorPickerToolStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ToolStripPropertyGridForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ToolStripPropertyGridForm.designer.cs">
+      <DependentUpon>ToolStripPropertyGridForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VerticalToolTabs\ToolWindowBase.cs" />
+    <Compile Include="VerticalToolTabs\toolwindoweventhandler.cs" />
+    <Compile Include="VerticalToolTabs\toolwindowhost.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="VerticalToolTabs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerticalToolTabs.designer.cs">
+      <DependentUpon>VerticalToolTabs.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DynamicContextMenuStripForm.resx">
+      <DependentUpon>DynamicContextMenuStripForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\CustomToolStripButton.bmp" />
+    <EmbeddedResource Include="Resources\CustomToolStripStatusLabel.bmp" />
+    <EmbeddedResource Include="Resources\CustomToolStripMenuItem.bmp" />
+    <None Include="Resources\Sample7.PNG" />
+    <Content Include="Resources\Sample1.PNG" />
+    <Content Include="Resources\Sample2.PNG" />
+    <Content Include="Resources\Sample3.PNG" />
+    <Content Include="Resources\Sample4.PNG" />
+    <None Include="Resources\Sample6.PNG" />
+    <None Include="Resources\Sample5.PNG" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSHARP.Targets" />
+</Project>

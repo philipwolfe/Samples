@@ -1,0 +1,59 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<!-- 
+  This file is part of the Microsoft .NET Framework SDK Code Samples.
+ 
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+ 
+  This source code is intended only as a supplement to Microsoft
+  Development Tools and/or on-line documentation.  See these other
+  materials for detailed information regarding Microsoft code samples.
+ 
+  THIS CODE AND INFORMATION ARE PROVIDED AS IS WITHOUT WARRANTY OF ANY
+  KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+  IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+  PARTICULAR PURPOSE.
+  -->
+  <!--
+
+   Type msbuild to build Debug.
+
+   Type msbuild /p:Configuration=Release to build Release.
+
+   Type msbuild /t:Clean <sample.projectname> to execute the Clean target for this sample
+   
+   Type msbuild /? for further Usage options
+
+   In the .NET Framework SDK, sample directories above the <sample.sln> level contain one project file 
+   named Buildall.proj.  If there is only one .proj file in the directory, Msbuild defaults to building 
+   it.  Project extension conventions include .vbproj, .csproj, and .proj.  
+
+   For the <sample.sln> level, specify the .sln file on the command line:
+      msbuild Sample.sln
+
+   For the directories below the <sample.sln> level, specify the project file on the command line:
+      msbuild sample.csproj
+   or
+      msbuild sample.vbproj
+
+   Debug is the default configuration for MsBuild.
+
+   Examples:
+     msbuild /p:Configuration=Release MySampleCS.sln 
+     msbuild MySample.csproj
+     msbuild /t:Clean MySampleCS.csproj
+
+   -->
+
+	<PropertyGroup>
+		<ProjectGuid>{BC54A8AE-9223-4245-9573-559A895E8E79}</ProjectGuid>
+		<Solution>CustomCulture</Solution>
+		<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+		<Target>.\CustomCulture\CustomCulture.proj</Target>
+	</PropertyGroup>
+	<Target Name="Build">
+		<MSBuild Projects="$(Target)" />
+	</Target>
+	<Target Name="Clean">
+		<MSBuild Projects="$(Target)" Targets="Clean" />
+	</Target>
+</Project>

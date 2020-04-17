@@ -1,0 +1,78 @@
+<p:Activity x:Class="Microsoft.Samples.StopWatchClient.StopWatchClientWorkflow" 
+	xmlns="clr-namespace:System.Activities.Design.Xaml;assembly=System.Activities.Design" 
+	xmlns:p="http://schemas.microsoft.com/netfx/2009/xaml/activities" 
+	xmlns:p1="http://schemas.microsoft.com/netfx/2009/xaml/servicemodel" 
+	xmlns:sad="clr-namespace:System.Activities.Debugger;assembly=System.Activities" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <p:Sequence sad:XamlDebuggerXmlReader.FileName="C:\_samplesHOLCheckin\StateMachineWithPick\CS\StopWatchClient\StopWatchClientWorkflow.xaml">
+    <p:Sequence.Variables>
+      <p:Variable x:TypeArguments="x:Int32" Name="currentState" Default="[0]" />
+      <p:Variable x:TypeArguments="p1:CorrelationHandle" Name="correlationHandle1" />
+      <p:Variable x:TypeArguments="p1:CorrelationHandle" Name="correlationHandle2" />
+      <p:Variable x:TypeArguments="p1:CorrelationHandle" Name="correlationHandle3" />
+    </p:Sequence.Variables>
+    <p1:Send x:Name="__ReferenceID0" OperationName="GetStart" ServiceContractName="StopWatchService" ValueType="x:Int32">
+      <p1:Send.CorrelatesWith>
+        <p:InArgument x:TypeArguments="p1:CorrelationHandle">[correlationHandle1]</p:InArgument>
+      </p1:Send.CorrelatesWith>
+      <p1:Send.Endpoint>
+        <p1:Endpoint Uri="http://localhost:8081/StopWatchService/StopWatchService">
+          <p1:Endpoint.Binding>
+            <p1:BasicHttpBinding Name="basicHttpBinding" />
+          </p1:Endpoint.Binding>
+        </p1:Endpoint>
+      </p1:Send.Endpoint>
+      <p:InArgument x:TypeArguments="x:Int32">[1]</p:InArgument>
+    </p1:Send>
+    <p:WriteLine>["Sent Start Event"]</p:WriteLine>
+    <p1:ReceiveReply Request="{x:Reference Name=__ReferenceID0}" DisplayName="ReceiveReplyForSend" ValueType="x:Int32">
+      <p1:ReceiveReply.CorrelatesWith>
+        <p:InArgument x:TypeArguments="p1:CorrelationHandle">[correlationHandle1]</p:InArgument>
+      </p1:ReceiveReply.CorrelatesWith>
+      <p:OutArgument x:TypeArguments="x:Int32">[currentState]</p:OutArgument>
+    </p1:ReceiveReply>
+    <p:WriteLine>["Current State set to " &amp;currentState]</p:WriteLine>
+    <p1:Send x:Name="__ReferenceID1" OperationName="GetStop" ServiceContractName="StopWatchService" ValueType="x:Int32">
+      <p1:Send.CorrelatesWith>
+        <p:InArgument x:TypeArguments="p1:CorrelationHandle">[correlationHandle2]</p:InArgument>
+      </p1:Send.CorrelatesWith>
+      <p1:Send.Endpoint>
+        <p1:Endpoint Uri="http://localhost:8081/StopWatchService/StopWatchService">
+          <p1:Endpoint.Binding>
+            <p1:BasicHttpBinding Name="basicHttpBinding" />
+          </p1:Endpoint.Binding>
+        </p1:Endpoint>
+      </p1:Send.Endpoint>
+      <p:InArgument x:TypeArguments="x:Int32">[1]</p:InArgument>
+    </p1:Send>
+    <p:WriteLine>["Sent Stop Event"]</p:WriteLine>
+    <p1:ReceiveReply Request="{x:Reference Name=__ReferenceID1}" DisplayName="ReceiveReplyForSend" ValueType="x:Int32">
+      <p1:ReceiveReply.CorrelatesWith>
+        <p:InArgument x:TypeArguments="p1:CorrelationHandle">[correlationHandle2]</p:InArgument>
+      </p1:ReceiveReply.CorrelatesWith>
+      <p:OutArgument x:TypeArguments="x:Int32">[currentState]</p:OutArgument>
+    </p1:ReceiveReply>
+    <p:WriteLine>["Current State set to " &amp;currentState]</p:WriteLine>
+    <p1:Send x:Name="__ReferenceID2" OperationName="GetOff" ServiceContractName="StopWatchService" ValueType="x:Int32">
+      <p1:Send.CorrelatesWith>
+        <p:InArgument x:TypeArguments="p1:CorrelationHandle">[correlationHandle3]</p:InArgument>
+      </p1:Send.CorrelatesWith>
+      <p1:Send.Endpoint>
+        <p1:Endpoint Uri="http://localhost:8081/StopWatchService/StopWatchService">
+          <p1:Endpoint.Binding>
+            <p1:BasicHttpBinding Name="basicHttpBinding" />
+          </p1:Endpoint.Binding>
+        </p1:Endpoint>
+      </p1:Send.Endpoint>
+      <p:InArgument x:TypeArguments="x:Int32">[1]</p:InArgument>
+    </p1:Send>
+    <p:WriteLine>["Sent Off Event"]</p:WriteLine>
+    <p1:ReceiveReply Request="{x:Reference Name=__ReferenceID2}" DisplayName="ReceiveReplyForSend" ValueType="x:Int32">
+      <p1:ReceiveReply.CorrelatesWith>
+        <p:InArgument x:TypeArguments="p1:CorrelationHandle">[correlationHandle3]</p:InArgument>
+      </p1:ReceiveReply.CorrelatesWith>
+      <p:OutArgument x:TypeArguments="x:Int32">[currentState]</p:OutArgument>
+    </p1:ReceiveReply>
+    <p:WriteLine>["Current State set to " &amp; currentState]</p:WriteLine>
+  </p:Sequence>
+</p:Activity>

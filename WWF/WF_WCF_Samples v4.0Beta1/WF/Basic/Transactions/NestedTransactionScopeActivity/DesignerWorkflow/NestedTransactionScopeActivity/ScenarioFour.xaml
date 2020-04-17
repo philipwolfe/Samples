@@ -1,0 +1,22 @@
+<p:Activity mc:Ignorable="" x:Class="Microsoft.Sample.Transaction.NestedTransactionScopeActivitySample.ScenarioFour" 
+            xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities/design" 
+            xmlns:ntsa="clr-namespace:Microsoft.Sample.Transaction.NestedTransactionScopeActivitySample;assembly=NestedTransactionScopeActivity" 
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+            xmlns:p="http://schemas.microsoft.com/netfx/2009/xaml/activities" 
+            xmlns:sad="clr-namespace:System.Activities.Debugger;assembly=System.Activities" 
+            xmlns:sadx="clr-namespace:System.Activities.Design.Xaml;assembly=System.Activities.Design" 
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <p:Sequence sad:XamlDebuggerXmlReader.FileName="E:\dd\CDFDev10_3\src\ndp\cdf\sdk\NetFx40\public\WF\Basic\Transactions\NestedTransactionScopeActivity\DeclarativeWorkflow\ScenarioFour.xaml">
+    <p:WriteLine>[" Begin workflow"]</p:WriteLine>
+    <p:TransactionScopeActivity AbortInstanceOnTransactionFailure="False">
+      <p:Sequence>
+        <p:WriteLine>[" Begin TransactionScopeActivity"]</p:WriteLine>
+        <p:TransactionScopeActivity AbortInstanceOnTransactionFailure="True">
+          <p:WriteLine>[" Inner TransactionScopeActivity"]</p:WriteLine>
+        </p:TransactionScopeActivity>
+        <p:WriteLine>[" End TransactionScopeActivity"]</p:WriteLine>
+      </p:Sequence>
+    </p:TransactionScopeActivity>
+    <p:WriteLine>[" End workflow"]</p:WriteLine>
+  </p:Sequence>
+</p:Activity>

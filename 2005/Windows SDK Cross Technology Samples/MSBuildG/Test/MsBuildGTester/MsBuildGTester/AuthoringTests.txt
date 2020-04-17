@@ -1,0 +1,64 @@
+﻿==========================================================================
+    Visual Studio Team System: Overview of Authoring and Running Tests    
+==========================================================================
+
+This file contains a summary of the test execution and test authoring features found in Visual Studio Team System and Visual Studio Team Test Edition. Use this file as a starting point for learning more about test execution and authoring. 
+
+Opening Tests  
+------------- 
+To open a test, open a test project or a metadata file (a file with extension ‘vsmdi’) that contains the definition of the test. You can find test projects and metadata files in Solution Explorer. 
+
+Viewing Tests  
+------------- 
+To see which tests are available to you, open the Test View window. Or, if you have installed Visual Studio Team Test, you can also open the Test Manager window to view tests. 
+
+To open the Test View window, click the Test menu and then click View and Author Tests. To open the Test Manager window (if you have installed Visual Studio Team Test), click Manage and Execute Tests on the Test menu. 
+
+Running Tests  
+------------- 
+Tests can be run from the Test View window and the Test Manager window. See Viewing Tests to learn how to open these windows. To run one or more tests displayed in the Test View window, first select the tests in that window; to select multiple tests, hold Shift or CTRL key while clicking tests. Then click the Run Tests button in the Test View window toolbar. 
+
+If you have installed Visual Studio Team Test, you can also use the Test Manager window to run tests. To run tests in Test Manager, click the checkbox next to each test that you want to run. Then click the Run Tests button in the Test Manager window toolbar. 
+
+Viewing Test Results  
+-------------------- 
+When you run a test or a series of tests, the results of the test run will be shown in the test results window. Each individual test in the run is shown on a separate line so that you can see the status of each test. The window contains an embedded status bar in the top half of the window that provides you with summary details of the test run. 
+
+If you want to see more detailed results for a particular test result, select that result in the test results window and double click on it. This will open a window that provides more information about the particular test result such as any specific error messages returned by that test. 
+
+Changing the way that tests are run  
+----------------------------------- 
+Each time you run one or more tests, a collection of settings is used to determine how those tests are run. These settings are contained in a “test run configuration” file. Among other things, you can do the following with a test run configuration file:  
+
+ - Change the naming scheme for each test run. 
+ - Change the test controller that the tests are run on so that you can run tests remotely.
+ - Gather code coverage data for the code being tested so that you can see which lines of code are covered by your tests.
+ - Change the location to which test files are deployed before tests are run.
+ - Select a different host (such as ASP.NET) to run your tests. 
+ - Set various properties for the test agents that run your tests.
+ - Run custom scripts at the start and end of each test run so that you can set up the test environment exactly as required each time tests are run.
+ - Set the browser mix and number of times to repeat Web tests in the test run.
+
+By default, a test run configuration file is created whenever you create a new test project. You make changes to this file by double-clicking it in Solution Explorer and then changing its settings. (Test run configuration files have the extension ‘testronconfig’.) 
+
+You can have more than one test run configuration in the solution at any time. Only one of those files – known as the “Active” test run configuration file, is used to determine the settings currently used for test runs. You select the active test run configuration through by using the 'Select Active Test Run Configuration' command from the Test menu. 
+
+///////////////////////////////////////////////////////////////////////////////
+
+Test Types  
+---------- 
+Visual Studio Team Test allows you to create a number of different test types:
+ 
+Generic test: A generic test is an existing program wrapped to function as a test in Visual Studio. Three examples of generic tests are the following:  
+ - Wrap an existing test that adheres to the Visual Studio return-code interface.
+ - Wrap an existing test harness that adheres to the Visual Studio result-data interface.
+ - Wrap a general program to obtain specific functionality during a test scenario.  
+
+Manual test: The Manual Test type is used when the test tasks are to be completed by a test engineer as opposed to an automated script. 
+
+Ordered test: Use an ordered test to execute a set of tests in an order you specify. 
+
+Unit test: Use a unit test to create a programmatic test in C++, Visual C# or Visual Basic that exercises source code. A unit test calls the methods of a class, passing suitable parameters, and verifies that the returned value is what you expect. 
+
+///////////////////////////////////////////////////////////////////////////////
+ 

@@ -1,0 +1,64 @@
+<p:Activity mc:Ignorable="" x:Class="Microsoft.Samples.GuessingGame.GuessingGameWF" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:msg="clr-namespace:Microsoft.Samples.GuessingGame;assembly=GuessingGame" xmlns:p="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sad="clr-namespace:System.Activities.Debugger;assembly=System.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <p:Sequence sad:XamlDebuggerXmlReader.FileName="D:\Code\SDK\Procedurals\DesignerWorkflow\CS\GuessingGame\Sequence1.xaml">
+    <p:Sequence.Variables>
+      <p:Variable x:TypeArguments="x:Int32" Name="numberToGuess" />
+      <p:Variable x:TypeArguments="x:Int32" Name="numberFromUser" />
+      <p:Variable x:TypeArguments="x:Int32" Default="[0]" Name="attempts" />
+      <p:Variable x:TypeArguments="x:Boolean" Default="[false]" Name="finished" />
+    </p:Sequence.Variables>
+    <p:Assign>
+      <p:Assign.To>
+        <p:OutArgument x:TypeArguments="x:Int32">[numberToGuess]</p:OutArgument>
+      </p:Assign.To>
+      <p:Assign.Value>
+        <p:InArgument x:TypeArguments="x:Int32">[New System.Random().Next(1, 100)]</p:InArgument>
+      </p:Assign.Value>
+    </p:Assign>
+    <p:While Condition="[not finished]">
+      <p:Sequence>
+        <p:Assign>
+          <p:Assign.To>
+            <p:OutArgument x:TypeArguments="x:Int32">[attempts]</p:OutArgument>
+          </p:Assign.To>
+          <p:Assign.Value>
+            <p:InArgument x:TypeArguments="x:Int32">[attempts + 1]</p:InArgument>
+          </p:Assign.Value>
+        </p:Assign>
+        <p:TryCatch>
+          <p:TryCatch.Catches>
+            <p:Catch x:TypeArguments="s:Exception">
+              <p:ActivityAction x:TypeArguments="s:Exception">
+                <p:WriteLine>["Hey! You must enter a integer number between 1 and 100."]</p:WriteLine>
+              </p:ActivityAction>
+            </p:Catch>
+          </p:TryCatch.Catches>
+          <p:TryCatch.Try>
+            <p:Sequence>
+              <msg:PromptInt Result="[numberFromUser]" Text="[&quot;What is your guess?&quot;]" />
+              <p:Switch x:TypeArguments="x:Int32" Expression="[numberFromUser.CompareTo(numberToGuess)]">
+                <p:WriteLine x:Key="1">[" Try a lower number number..."]</p:WriteLine>
+                <p:WriteLine x:Key="-1">[" Try a higher number"]</p:WriteLine>
+                <p:Assign x:Key="0">
+                  <p:Assign.To>
+                    <p:OutArgument x:TypeArguments="x:Boolean">[finished]</p:OutArgument>
+                  </p:Assign.To>
+                  <p:Assign.Value>
+                    <p:InArgument x:TypeArguments="x:Boolean">[true]</p:InArgument>
+                  </p:Assign.Value>
+                </p:Assign>
+              </p:Switch>
+            </p:Sequence>
+          </p:TryCatch.Try>
+        </p:TryCatch>
+      </p:Sequence>
+    </p:While>
+    <p:If Condition="[attempts &lt; 7]">
+      <p:If.Else>
+        <p:WriteLine>["You've found it in " &amp; attempts &amp; " attempts...You need more practice!"]</p:WriteLine>
+      </p:If.Else>
+      <p:If.Then>
+        <p:WriteLine>["Congratulations, you've found it in " &amp; attempts &amp; " attempts!!!"]</p:WriteLine>
+      </p:If.Then>
+    </p:If>
+  </p:Sequence>
+</p:Activity>

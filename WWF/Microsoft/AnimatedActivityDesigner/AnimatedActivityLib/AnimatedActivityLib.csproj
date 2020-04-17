@@ -1,0 +1,110 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{196FD443-EC20-41ED-AADB-2941A402DD52}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>AnimatedActivityLib</RootNamespace>
+    <AssemblyName>AnimatedActivityLib</AssemblyName>
+    <ProjectTypeGuids>{14822709-B5A1-4724-98CA-57A101D1B079};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Workflow.Activities" />
+    <Reference Include="System.Workflow.ComponentModel" />
+    <Reference Include="System.Workflow.Runtime" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AnimatedActivityDesigner.cs" />
+    <Compile Include="CurrencyConverterActivity.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CurrencyConverterActivity.Designer.cs">
+      <DependentUpon>CurrencyConverterActivity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DownloadFileActivity.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DownloadFileActivity.Designer.cs">
+      <DependentUpon>DownloadFileActivity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MoveFilesActivity.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MoveFilesActivity.Designer.cs">
+      <DependentUpon>MoveFilesActivity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="SendInternetFaxActivity.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SendInternetFaxActivity.Designer.cs">
+      <DependentUpon>SendInternetFaxActivity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SendSmsMessageActivity.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SendSmsMessageActivity.Designer.cs">
+      <DependentUpon>SendSmsMessageActivity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UploadFileActivity.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UploadFileActivity.Designer.cs">
+      <DependentUpon>UploadFileActivity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Workflow1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Workflow1.Designer.cs">
+      <DependentUpon>Workflow1.cs</DependentUpon>
+    </Compile>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\FileMove.gif">
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Money.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\download_FTP_00.gif" />
+    <EmbeddedResource Include="Resources\globeGIFanime.gif" />
+    <EmbeddedResource Include="Resources\to_FAX_00.gif" />
+    <EmbeddedResource Include="Resources\UPload_00.gif" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Windows Workflow Foundation\v3.0\Workflow.Targets" />
+</Project>

@@ -1,0 +1,181 @@
+package Microsoft.Samples.Windows.Forms.EventBasedAsync; 
+
+//---------------------------------------------------------------------
+//  This file is part of the Microsoft.NET Framework SDK Code Samples.
+// 
+//  Copyright (C) Microsoft Corporation.  All rights reserved.
+// 
+//This source code is intended only as a supplement to Microsoft
+//Development Tools and/or on-line documentation.  See these other
+//materials for detailed information regarding Microsoft code samples.
+// 
+//THIS CODE AND INFORMATION ARE PROVIDED AS IS WITHOUT WARRANTY OF ANY
+//KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+//IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+//PARTICULAR PURPOSE.
+//---------------------------------------------------------------------
+
+#region Import directives
+
+import System.*;
+import System.Collections.Generic.*;
+import System.ComponentModel.*;
+import System.Data.*;
+import System.Drawing.*;
+import System.Text.*;
+import System.Windows.Forms.*;
+
+#endregion
+
+class SampleCodeForm extends Form
+{
+    public SampleCodeForm()
+    {
+        InitializeComponent();
+    }
+
+	private MenuStrip menuStrip1;
+	private ToolStripMenuItem fileToolStripMenuItem;
+	private ToolStripMenuItem saveAsToolStripMenuItem;
+	private SaveFileDialog saveFileDialog1; //SampleCodeForm
+
+    /// <summary>
+    /// Required designer variable.
+    /// </summary>
+    private System.ComponentModel.IContainer components = null;
+
+    /// <summary>
+    /// Clean up any resources being used.
+    /// </summary>
+    protected void Dispose(boolean disposing)
+    {
+        if (disposing && components != null) {
+            components.Dispose();
+        }
+        super.Dispose(disposing);
+    } //Dispose
+
+    #region Windows Form Designer generated code
+
+    /// <summary>
+    /// Required method for Designer support - do not modify
+    /// the contents of this method with the code editor.
+    /// </summary>
+    private void InitializeComponent()
+    {
+		this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+		this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+		this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+		this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+		this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+		this.menuStrip1.SuspendLayout();
+		this.SuspendLayout();
+		// 
+		// richTextBox1
+		// 
+		this.richTextBox1.set_BorderStyle(System.Windows.Forms.BorderStyle.None);
+		this.richTextBox1.set_Location(new System.Drawing.Point(0, 26));
+		this.richTextBox1.set_Name("richTextBox1");
+		this.richTextBox1.set_ReadOnly(true);
+		this.richTextBox1.set_Size(new System.Drawing.Size(626, 442));
+		this.richTextBox1.set_TabIndex(4);
+		this.richTextBox1.set_Text("");
+		this.richTextBox1.set_WordWrap(false);
+		// 
+		// menuStrip1
+		// 
+		this.menuStrip1.get_Items().AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem}
+		);
+		this.menuStrip1.set_Location(new System.Drawing.Point(0, 0));
+		this.menuStrip1.set_Name("menuStrip1");
+		this.menuStrip1.set_Size(new System.Drawing.Size(626, 24));
+		this.menuStrip1.set_TabIndex(5);
+		this.menuStrip1.set_Text("menuStrip1");
+		// 
+		// fileToolStripMenuItem
+		// 
+		this.fileToolStripMenuItem.get_DropDownItems().AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveAsToolStripMenuItem}
+		);
+		this.fileToolStripMenuItem.set_Name("fileToolStripMenuItem");
+		this.fileToolStripMenuItem.set_Size(new System.Drawing.Size(35, 20));
+		this.fileToolStripMenuItem.set_Text("&File");
+		// 
+		// saveAsToolStripMenuItem
+		// 
+		this.saveAsToolStripMenuItem.set_Name("saveAsToolStripMenuItem");
+		this.saveAsToolStripMenuItem.set_Size(new System.Drawing.Size(152, 22));
+		this.saveAsToolStripMenuItem.set_Text("&Save As...");
+		this.saveAsToolStripMenuItem.add_Click(new System.EventHandler(this.saveAsToolStripMenuItem_Click));
+		// 
+		// SampleCodeForm
+		// 
+		this.set_AutoScaleBaseSize(new System.Drawing.Size(5, 13));
+		this.set_ClientSize(new System.Drawing.Size(626, 469));
+		this.get_Controls().Add(this.richTextBox1);
+		this.get_Controls().Add(this.menuStrip1);
+		this.set_MainMenuStrip(this.menuStrip1);
+		this.set_Name("SampleCodeForm");
+		this.set_Text("Sample Code");
+		this.menuStrip1.ResumeLayout(false);
+		this.menuStrip1.PerformLayout();
+		this.ResumeLayout(false);
+		this.PerformLayout();
+
+    } //InitializeComponent 
+
+    #endregion
+
+    
+    private System.Windows.Forms.RichTextBox richTextBox1;
+
+    public void ShowOrBringToFront()
+    {
+        if (this.get_Visible() == true) {
+            this.BringToFront();
+        }
+        else {
+            this.Show();
+        }
+    } //ShowOrBringToFront
+
+    /** @property 
+     */
+    public String get_SampleCodeRtf()
+    {
+        return richTextBox1.get_Rtf();
+    } //get_SampleCodeRtf
+
+    /** @property 
+     */
+    public void set_SampleCodeRtf(String value)
+    {
+        richTextBox1.set_Rtf(value);
+    } //set_SampleCodeRtf
+
+    /** @property 
+     */
+    public String get_SampleCodeText()
+    {
+        return richTextBox1.get_Text();
+    } //get_SampleCodeText
+
+    /** @property 
+     */
+    public void set_SampleCodeText(String value)
+    {
+        richTextBox1.set_Text(value);
+    } //set_SampleCodeText
+
+	private void saveAsToolStripMenuItem_Click(Object sender, EventArgs e)
+	{
+		if (saveFileDialog1.ShowDialog().Equals(DialogResult.OK))
+		{
+			richTextBox1.SaveFile(saveFileDialog1.get_FileName(),
+				RichTextBoxStreamType.PlainText);
+		}
+	} //saveToolStripMenuItem_Click
+} //SampleCodeForm
+
+

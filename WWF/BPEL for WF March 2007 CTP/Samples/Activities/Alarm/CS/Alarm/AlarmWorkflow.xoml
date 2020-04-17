@@ -1,0 +1,61 @@
+﻿<ns0:BpelProcess x:Class="Microsoft.Samples.Workflow.Bpel.Activities.Alarm.AlarmWorkflow" x:Name="AlarmWorkflow" TargetNamespace="http://tempuri.org/" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:Microsoft.Workflow.Bpel.Activities;Assembly=Microsoft.Workflow.Bpel.Activities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=71530258abd56239">
+	<ns0:BpelProcess.PartnerLinks>
+		<ns0:PartnerLink Name="file" MyRole="application" Namespace="ns0" LinkType="FileLinkType" />
+	</ns0:BpelProcess.PartnerLinks>
+	<ns0:BpelProcess.XmlNamespaces>
+		<ns0:XmlNamespace Alias="xmlns" Namespace="http://schemas.xmlsoap.org/ws/2003/03/business-process/" />
+		<ns0:XmlNamespace Alias="tns" Namespace="http://tempuri.org/" />
+		<ns0:XmlNamespace Alias="xsd" Namespace="http://www.w3.org/2001/XMLSchema" />
+		<ns0:XmlNamespace Alias="bpws" Namespace="http://schemas.xmlsoap.org/ws/2003/03/business-process/" />
+		<ns0:XmlNamespace Alias="wsdl" Namespace="http://schemas.xmlsoap.org/wsdl/" />
+	</ns0:BpelProcess.XmlNamespaces>
+	<ns0:BpelProcess.Variables>
+		<ns0:Variable FieldName="WriteLineOut" XmlType="{x:Null}" Category="WsdlMessageType" Namespace="ns0" FieldType="writeLineSoapIn" />
+	</ns0:BpelProcess.Variables>
+	<ns0:BpelWait x:Name="Wait_5_sec" IsWaitForPresent="True">
+		<ns0:BpelWait.For>
+			<ns0:BpelXpathExpression Expression="'PT5S'" />
+		</ns0:BpelWait.For>
+		<ns0:BpelWait.Until>
+			<ns0:BpelXpathExpression Expression="'2099-12-31T00:00:00'" />
+		</ns0:BpelWait.Until>
+	</ns0:BpelWait>
+	<ns0:BpelEventHandler x:Name="MyEventHandler">
+		<ns0:BpelOnAlarm x:Name="Alarm_1_sec">
+			<ns0:BpelOnAlarm.For>
+				<ns0:BpelXpathExpression Expression="'PT1S'" />
+			</ns0:BpelOnAlarm.For>
+			<ns0:BpelSequence x:Name="AlarmSequence">
+				<ns0:BpelAssign x:Name="Copy">
+					<ns0:BpelCopy x:Name="CopyString">
+						<ns0:BpelCopy.From>
+							<ns0:From Expression="'Alarm Fired'" SelectFrom="Expression">
+								<ns0:From.XmlNamespaces>
+									<ns0:XmlNamespace Alias="xml" Namespace="http://www.w3.org/XML/1998/namespace" />
+									<ns0:XmlNamespace Alias="" Namespace="http://schemas.xmlsoap.org/ws/2003/03/business-process/" />
+									<ns0:XmlNamespace Alias="tns" Namespace="http://HelloWorld/" />
+									<ns0:XmlNamespace Alias="xsd" Namespace="http://www.w3.org/2001/XMLSchema" />
+									<ns0:XmlNamespace Alias="bpws" Namespace="http://schemas.xmlsoap.org/ws/2003/03/business-process/" />
+									<ns0:XmlNamespace Alias="wsdl" Namespace="http://schemas.xmlsoap.org/wsdl/" />
+								</ns0:From.XmlNamespaces>
+							</ns0:From>
+						</ns0:BpelCopy.From>
+						<ns0:BpelCopy.To>
+							<ns0:To Variable="WriteLineOut" Query="/tns:parameters/tns:message" SelectTo="VariablePartQuery" Part="parameters">
+								<ns0:To.XmlNamespaces>
+									<ns0:XmlNamespace Alias="xml" Namespace="http://www.w3.org/XML/1998/namespace" />
+									<ns0:XmlNamespace Alias="" Namespace="http://schemas.xmlsoap.org/ws/2003/03/business-process/" />
+									<ns0:XmlNamespace Alias="tns" Namespace="http://tempuri.org/" />
+									<ns0:XmlNamespace Alias="xsd" Namespace="http://www.w3.org/2001/XMLSchema" />
+									<ns0:XmlNamespace Alias="bpws" Namespace="http://schemas.xmlsoap.org/ws/2003/03/business-process/" />
+									<ns0:XmlNamespace Alias="wsdl" Namespace="http://schemas.xmlsoap.org/wsdl/" />
+								</ns0:To.XmlNamespaces>
+							</ns0:To>
+						</ns0:BpelCopy.To>
+					</ns0:BpelCopy>
+				</ns0:BpelAssign>
+				<ns0:BpelInvoke PortType="ns0.FileServiceSoap" x:Name="WriteLine" OutputVariable="" Operation="writeLine" InputVariable="WriteLineOut" PartnerLink="file" />
+			</ns0:BpelSequence>
+		</ns0:BpelOnAlarm>
+	</ns0:BpelEventHandler>
+</ns0:BpelProcess>

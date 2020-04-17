@@ -1,0 +1,63 @@
+﻿<ns0:BpelProcess x:Class="Microsoft.Samples.Workflow.Bpel.QuickStart.HelloWorld.HelloWorldWorkflow" x:Name="HelloWorldWorkflow" TargetNamespace="http://tempuri.org/" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:Microsoft.Workflow.Bpel.Activities;Assembly=Microsoft.Workflow.Bpel.Activities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=71530258abd56239">
+	<ns0:BpelProcess.PartnerLinks>
+		<ns0:PartnerLink Name="file" MyRole="application" Namespace="ns0" LinkType="FileLinkType" />
+		<ns0:PartnerLink Name="external" MyRole="application" Namespace="ns0" LinkType="SalutationLinkType" />
+	</ns0:BpelProcess.PartnerLinks>
+	<ns0:BpelProcess.XmlNamespaces>
+		<ns0:XmlNamespace Alias="xmlns" Namespace="http://schemas.xmlsoap.org/ws/2003/03/business-process/" />
+		<ns0:XmlNamespace Alias="tns" Namespace="http://tempuri.org/" />
+		<ns0:XmlNamespace Alias="xsd" Namespace="http://www.w3.org/2001/XMLSchema" />
+		<ns0:XmlNamespace Alias="bpws" Namespace="http://schemas.xmlsoap.org/ws/2003/03/business-process/" />
+		<ns0:XmlNamespace Alias="wsdl" Namespace="http://schemas.xmlsoap.org/wsdl/" />
+	</ns0:BpelProcess.XmlNamespaces>
+	<ns0:BpelProcess.Variables>
+		<ns0:Variable FieldName="salutationMessage" XmlType="{x:Null}" Category="WsdlMessageType" Namespace="ns0" FieldType="SendSalutationSoapIn" />
+		<ns0:Variable FieldName="writeLineIn" XmlType="{x:Null}" Category="WsdlMessageType" Namespace="ns0" FieldType="writeLineSoapIn" />
+	</ns0:BpelProcess.Variables>
+	<ns0:BpelSequence x:Name="Salutation">
+		<ns0:BpelReceive Variable="salutationMessage" x:Name="ReceiveSalutation" Operation="SendSalutation" PortType="ns0.SalutationServiceSoap" PartnerLink="external" CreateInstance="True" />
+		<ns0:BpelSwitch x:Name="MySwitch">
+			<ns0:BpelCase x:Name="Case1">
+				<ns0:BpelCase.Condition>
+					<ns0:BpelXpathExpression Expression="getVariableData('salutationMessage','parameters','/tns:parameters/tns:message') = 'Hello' ">
+						<ns0:BpelXpathExpression.XmlNamespaces>
+							<ns0:XmlNamespace Alias="" Namespace="http://schemas.xmlsoap.org/ws/2003/03/business-process/" />
+							<ns0:XmlNamespace Alias="tns" Namespace="http://tempuri.org/" />
+						</ns0:BpelXpathExpression.XmlNamespaces>
+					</ns0:BpelXpathExpression>
+				</ns0:BpelCase.Condition>
+				<ns0:BpelAssign x:Name="Assign1">
+					<ns0:BpelCopy x:Name="Copy1">
+						<ns0:BpelCopy.From>
+							<ns0:From Expression="'Hello!'" SelectFrom="Expression" />
+						</ns0:BpelCopy.From>
+						<ns0:BpelCopy.To>
+							<ns0:To Variable="writeLineIn" Query="/hw:parameters/hw:message" SelectTo="VariablePartQuery" Part="parameters">
+								<ns0:To.XmlNamespaces>
+									<ns0:XmlNamespace Alias="hw" Namespace="http://tempuri.org/" />
+								</ns0:To.XmlNamespaces>
+							</ns0:To>
+						</ns0:BpelCopy.To>
+					</ns0:BpelCopy>
+				</ns0:BpelAssign>
+			</ns0:BpelCase>
+			<ns0:BpelCase x:Name="Case2" DefaultCase="True">
+				<ns0:BpelAssign x:Name="Assign2">
+					<ns0:BpelCopy x:Name="Copy2">
+						<ns0:BpelCopy.From>
+							<ns0:From Expression="'Goodbye!'" SelectFrom="Expression" />
+						</ns0:BpelCopy.From>
+						<ns0:BpelCopy.To>
+							<ns0:To Variable="writeLineIn" Query="/hw:parameters/hw:message" SelectTo="VariablePartQuery" Part="parameters">
+								<ns0:To.XmlNamespaces>
+									<ns0:XmlNamespace Alias="hw" Namespace="http://tempuri.org/" />
+								</ns0:To.XmlNamespaces>
+							</ns0:To>
+						</ns0:BpelCopy.To>
+					</ns0:BpelCopy>
+				</ns0:BpelAssign>
+			</ns0:BpelCase>
+		</ns0:BpelSwitch>
+		<ns0:BpelInvoke PortType="ns0.FileServiceSoap" x:Name="WriteLine" OutputVariable="" Operation="writeLine" InputVariable="writeLineIn" PartnerLink="file" />
+	</ns0:BpelSequence>
+</ns0:BpelProcess>

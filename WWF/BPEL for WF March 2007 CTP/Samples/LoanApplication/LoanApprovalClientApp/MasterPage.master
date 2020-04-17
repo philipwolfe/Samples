@@ -1,0 +1,108 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+
+<head runat="server">
+
+    <title>International Bank</title>
+    <link rel="stylesheet" href="Styles/StyleSheet.css" />
+
+    <script type="text/javascript"  language="javascript">
+
+        function CheckAddress(sender, args)
+        {
+            var addressLength = args.Value.length;
+            if(addressLength > 100)
+                args.IsValid = false;
+            else
+                args.IsValid = true;
+        }   
+
+
+    </script>    
+    
+</head>
+
+<body>
+    <form id="form1" runat="server">
+    <div>
+            <table border="0" width="800px"  cellpadding="0" style="height:500px;background-color:#F8F8F8" id="Table2">
+        
+                <tr style="height:50px">
+                    <td  colspan="2" valign="middle" class="PageHeader" style="filter:progid:DXImageTransform.Microsoft.Gradient(endColorstr='#6F93CF', startColorstr='#FFFFFF', gradientType='1');">
+                        International <span style="color:Red;">Bank</span>
+                    </td>
+                </tr>
+                
+                
+                 <tr>
+        
+                    <!--left navigation menu-->
+                    <td style="height:100%;width:150px;" valign="top" >
+                        
+                        <table width="100%" border="0"    style="vertical-align:top;border-color:Red;"  cellpadding="0" cellspacing="0"> 
+                          
+                            <tr>
+                                <td valign="top" style="height: 16px" class="HeaderLabel">Personal Banking</td>
+                            </tr>
+                            
+                            <tr>
+                                <td valign="top">
+                                 <table width="100%" border="0"  style="vertical-align:top"    cellpadding="0"> 
+                                      <tr>
+                                    <td valign="top">
+                                        <asp:Menu ID="menuMain" runat="server" Width="100%" BackColor="LightGray" 
+                                            DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="8pt" 
+                                            ForeColor="Navy" StaticSubMenuIndent="10px" OnMenuItemClick="menuMain_MenuItemClick">
+                                            <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                                            <DynamicHoverStyle BackColor="#7C6F57" ForeColor="White" />
+                                            <DynamicMenuStyle BackColor="#F7F6F3" />
+                                            <StaticSelectedStyle BackColor="#6F93CF" />
+                                            <DynamicSelectedStyle BackColor="#5D7B9D" />
+                                            <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                                            <Items>
+                                                <asp:MenuItem  NavigateUrl="~/Default.aspx" SeparatorImageUrl="~/Images/Separator.jpg"   Text="Loan Request" Value="Loan Request"></asp:MenuItem>
+                                                <asp:MenuItem  NavigateUrl="~/RequestStatus.aspx" Text="Request Status"   Value="RequestStatus"></asp:MenuItem>
+                                            </Items>
+                                            <StaticHoverStyle BackColor="#6F93CF" ForeColor="White" />
+                                          
+                                        </asp:Menu>
+                                        </td>
+                                    </tr>
+                                  </table>
+                                </td>
+                            </tr>
+                            
+                        
+                        </table>
+                            
+                    </td>
+                    
+                    <!--main content area-->
+                    <td style="height:100%;width:650px" valign="top" >
+                    
+                        <table width="100%" border="0"    style="vertical-align:top;border-color:blue;"  cellpadding="0" cellspacing="0"> 
+                        
+                            <tr>
+                                <td>
+                                    <asp:contentplaceholder id="mainPageContent" runat="server">
+                                        
+                                    </asp:contentplaceholder>
+                                </td>
+                            </tr>
+                        
+                        </table>
+                        
+                    </td>  
+        
+                  </tr>
+        
+            </table>
+            
+        
+      </div>
+    </form>
+</body>
+</html>

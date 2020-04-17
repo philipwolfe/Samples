@@ -1,0 +1,594 @@
+package Microsoft.Samples.WinForms.DataGridView; 
+
+//---------------------------------------------------------------------
+//  This file is part of the Microsoft .NET Framework SDK Code Samples.
+// 
+//  Copyright (C) Microsoft Corporation.  All rights reserved.
+// 
+//This source code is intended only as a supplement to Microsoft
+//Development Tools and/or on-line documentation.  See these other
+//materials for detailed information regarding Microsoft code samples.
+// 
+//THIS CODE AND INFORMATION ARE PROVIDED AS IS WITHOUT WARRANTY OF ANY
+//KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+//IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+//PARTICULAR PURPOSE.
+//---------------------------------------------------------------------
+
+import System.*;
+import System.Drawing.*;
+import System.Data.*;
+import System.Collections.*;
+import System.Collections.Generic.*;
+import System.Windows.Forms.*;
+
+// Form to show the order's for a customer.
+class CustomerOrdersForm extends System.Windows.Forms.Form
+{
+    private System.ComponentModel.IContainer components = null;
+	private DataGridViewTextBoxColumn OrderID;
+	private DataGridViewTextBoxColumn EmployeeID;
+	private DataGridViewTextBoxColumn OrderDate;
+	private DataGridViewTextBoxColumn RequiredDate;
+	private DataGridViewTextBoxColumn ShippedDate;
+	private DataGridViewTextBoxColumn ShipVia;
+	private DataGridViewTextBoxColumn Freight;
+	private DataGridViewTextBoxColumn ShipName;
+	private DataGridViewTextBoxColumn ShipAddress;
+	private DataGridViewTextBoxColumn ShipCity;
+	private DataGridViewTextBoxColumn ShipRegion;
+	private DataGridViewTextBoxColumn ShipPostalCode;
+	private DataGridViewTextBoxColumn ShipCountry;
+    private System.Collections.Generic.Dictionary<int,boolean> checkState;
+
+    public CustomerOrdersForm()
+    {
+        InitializeComponent();
+    } //CustomerOrdersForm
+
+    /// <summary>
+    /// Required method for Designer support - do not modify
+    /// the contents of this method with the code editor.
+    /// </summary>
+    private void InitializeComponent()
+    {
+		this.components = new System.ComponentModel.Container();
+		System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+		System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+		System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+		System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(CustomerOrdersForm.class.ToType());
+		this.OrderID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+		this.EmployeeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+		this.OrderDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+		this.RequiredDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+		this.ShippedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+		this.ShipVia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+		this.Freight = new System.Windows.Forms.DataGridViewTextBoxColumn();
+		this.ShipName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+		this.ShipAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+		this.ShipCity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+		this.ShipRegion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+		this.ShipPostalCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+		this.ShipCountry = new System.Windows.Forms.DataGridViewTextBoxColumn();
+		this.dataGridView1 = new System.Windows.Forms.DataGridView();
+		this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+		this.statusStripPanel1 = new System.Windows.Forms.ToolStripStatusLabel();
+		this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+		this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+		this.processToolStripButton = new System.Windows.Forms.ToolStripButton();
+		((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+		this.statusStrip1.SuspendLayout();
+		this.toolStrip1.SuspendLayout();
+		this.SuspendLayout();
+		// 
+		// OrderID
+		// 
+		this.OrderID.set_DataPropertyName("OrderID");
+		this.OrderID.set_HeaderText("OrderID");
+		this.OrderID.set_Name("OrderID");
+		this.OrderID.set_Resizable(System.Windows.Forms.DataGridViewTriState.True);
+		// 
+		// EmployeeID
+		// 
+		this.EmployeeID.set_DataPropertyName("EmployeeID");
+		this.EmployeeID.set_HeaderText("EmployeeID");
+		this.EmployeeID.set_Name("EmployeeID");
+		this.EmployeeID.set_Resizable(System.Windows.Forms.DataGridViewTriState.True);
+		// 
+		// OrderDate
+		// 
+		this.OrderDate.set_DataPropertyName("OrderDate");
+		this.OrderDate.set_HeaderText("OrderDate");
+		this.OrderDate.set_Name("OrderDate");
+		this.OrderDate.set_Resizable(System.Windows.Forms.DataGridViewTriState.True);
+		// 
+		// RequiredDate
+		// 
+		this.RequiredDate.set_DataPropertyName("RequiredDate");
+		dataGridViewCellStyle1.set_NullValue("[Unknown]");
+		this.RequiredDate.set_DefaultCellStyle(dataGridViewCellStyle1);
+		this.RequiredDate.set_HeaderText("RequiredDate");
+		this.RequiredDate.set_Name("RequiredDate");
+		this.RequiredDate.set_Resizable(System.Windows.Forms.DataGridViewTriState.True);
+		// 
+		// ShippedDate
+		// 
+		this.ShippedDate.set_DataPropertyName("ShippedDate");
+		dataGridViewCellStyle2.set_NullValue("[Not Shipped]");
+		this.ShippedDate.set_DefaultCellStyle(dataGridViewCellStyle2);
+		this.ShippedDate.set_HeaderText("ShippedDate");
+		this.ShippedDate.set_Name("ShippedDate");
+		this.ShippedDate.set_Resizable(System.Windows.Forms.DataGridViewTriState.True);
+		// 
+		// ShipVia
+		// 
+		this.ShipVia.set_DataPropertyName("ShipVia");
+		this.ShipVia.set_HeaderText("ShipVia");
+		this.ShipVia.set_Name("ShipVia");
+		this.ShipVia.set_Resizable(System.Windows.Forms.DataGridViewTriState.True);
+		// 
+		// Freight
+		// 
+		this.Freight.set_DataPropertyName("Freight");
+		this.Freight.set_HeaderText("Freight");
+		this.Freight.set_Name("Freight");
+		this.Freight.set_Resizable(System.Windows.Forms.DataGridViewTriState.True);
+		// 
+		// ShipName
+		// 
+		this.ShipName.set_DataPropertyName("ShipName");
+		this.ShipName.set_HeaderText("ShipName");
+		this.ShipName.set_Name("ShipName");
+		this.ShipName.set_Resizable(System.Windows.Forms.DataGridViewTriState.True);
+		// 
+		// ShipAddress
+		// 
+		this.ShipAddress.set_DataPropertyName("ShipAddress");
+		this.ShipAddress.set_HeaderText("ShipAddress");
+		this.ShipAddress.set_Name("ShipAddress");
+		this.ShipAddress.set_Resizable(System.Windows.Forms.DataGridViewTriState.True);
+		// 
+		// ShipCity
+		// 
+		this.ShipCity.set_DataPropertyName("ShipCity");
+		this.ShipCity.set_HeaderText("ShipCity");
+		this.ShipCity.set_Name("ShipCity");
+		this.ShipCity.set_Resizable(System.Windows.Forms.DataGridViewTriState.True);
+		// 
+		// ShipRegion
+		// 
+		this.ShipRegion.set_DataPropertyName("ShipRegion");
+		dataGridViewCellStyle3.set_NullValue("[Unknown]");
+		this.ShipRegion.set_DefaultCellStyle(dataGridViewCellStyle3);
+		this.ShipRegion.set_HeaderText("ShipRegion");
+		this.ShipRegion.set_Name("ShipRegion");
+		this.ShipRegion.set_Resizable(System.Windows.Forms.DataGridViewTriState.True);
+		// 
+		// ShipPostalCode
+		// 
+		this.ShipPostalCode.set_DataPropertyName("ShipPostalCode");
+		this.ShipPostalCode.set_HeaderText("ShipPostalCode");
+		this.ShipPostalCode.set_Name("ShipPostalCode");
+		this.ShipPostalCode.set_Resizable(System.Windows.Forms.DataGridViewTriState.True);
+		// 
+		// ShipCountry
+		// 
+		this.ShipCountry.set_DataPropertyName("ShipCountry");
+		this.ShipCountry.set_HeaderText("ShipCountry");
+		this.ShipCountry.set_Name("ShipCountry");
+		this.ShipCountry.set_Resizable(System.Windows.Forms.DataGridViewTriState.True);
+		// 
+		// dataGridView1
+		// 
+		this.dataGridView1.set_AllowUserToAddRows(false);
+		this.dataGridView1.set_AllowUserToDeleteRows(false);
+		this.dataGridView1.set_ColumnHeadersHeightSizeMode(System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing);
+		this.dataGridView1.get_Columns().AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.OrderID,
+            this.EmployeeID,
+            this.OrderDate,
+            this.RequiredDate,
+            this.ShippedDate,
+            this.ShipVia,
+            this.Freight,
+            this.ShipName,
+            this.ShipAddress,
+            this.ShipCity,
+            this.ShipRegion,
+            this.ShipPostalCode,
+            this.ShipCountry}
+		);
+		this.dataGridView1.set_Location(new System.Drawing.Point(0, 30));
+		this.dataGridView1.set_MultiSelect(false);
+		this.dataGridView1.set_Name("dataGridView1");
+		this.dataGridView1.set_RowHeadersWidthSizeMode(System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing);
+		this.dataGridView1.set_SelectionMode(System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect);
+		this.dataGridView1.set_Size(new System.Drawing.Size(612, 306));
+		this.dataGridView1.set_StandardTab(true);
+		this.dataGridView1.set_TabIndex(0);
+		this.dataGridView1.add_KeyDown(new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyDown));
+		this.dataGridView1.add_RowEnter(new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowEnter));
+		this.dataGridView1.add_DataBindingComplete(new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridView1_DataBindingComplete));
+		this.dataGridView1.add_CellValueNeeded(new System.Windows.Forms.DataGridViewCellValueEventHandler(this.dataGridView1_CellValueNeeded));
+		this.dataGridView1.add_CellFormatting(new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting));
+		this.dataGridView1.add_CellValueChanged(new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged));
+		this.dataGridView1.add_RowPostPaint(new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridView1_RowPostPaint));
+		this.dataGridView1.add_CellValuePushed(new System.Windows.Forms.DataGridViewCellValueEventHandler(this.dataGridView1_CellValuePushed));
+		this.dataGridView1.add_CellContentClick(new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick));
+		// 
+		// statusStrip1
+		// 
+		this.statusStrip1.set_BackColor(System.Drawing.SystemColors.get_Control());
+		this.statusStrip1.set_GripMargin(new System.Windows.Forms.Padding(-4, 0, 0, 0));
+		this.statusStrip1.get_Items().AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusStripPanel1}
+		);
+		this.statusStrip1.set_LayoutStyle(System.Windows.Forms.ToolStripLayoutStyle.Table);
+		this.statusStrip1.set_Location(new System.Drawing.Point(0, 339));
+		this.statusStrip1.set_Name("statusStrip1");
+		this.statusStrip1.set_RenderMode(System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode);
+		this.statusStrip1.set_Size(new System.Drawing.Size(612, 23));
+		this.statusStrip1.set_TabIndex(0);
+		this.statusStrip1.set_Text("statusStrip1");
+		// 
+		// statusStripPanel1
+		// 
+		this.statusStripPanel1.set_AutoSize(false);
+		this.statusStripPanel1.set_Name("statusStripPanel1");
+		this.statusStripPanel1.set_Size(new System.Drawing.Size(23, 18));
+		this.statusStripPanel1.set_Text("Number of orders selected: 0");
+		// 
+		// toolStrip1
+		// 
+		this.toolStrip1.set_GripStyle(System.Windows.Forms.ToolStripGripStyle.Hidden);
+		this.toolStrip1.set_ImageList(this.imageList1);
+		this.toolStrip1.get_Items().AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.processToolStripButton}
+		);
+		this.toolStrip1.set_Location(new System.Drawing.Point(0, 0));
+		this.toolStrip1.set_Name("toolStrip1");
+		this.toolStrip1.set_RenderMode(System.Windows.Forms.ToolStripRenderMode.Professional);
+		this.toolStrip1.set_Size(new System.Drawing.Size(612, 27));
+		this.toolStrip1.set_TabIndex(0);
+		// 
+		// imageList1
+		// 
+		this.imageList1.set_ImageStream(((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream"))));
+		this.imageList1.get_Images().SetKeyName(0, "ProcessOrders.ico");
+		// 
+		// processToolStripButton
+		// 
+		this.processToolStripButton.set_Image(((System.Drawing.Image)(resources.GetObject("processToolStripButton.Image"))));
+		this.processToolStripButton.set_ImageAlign(System.Drawing.ContentAlignment.MiddleLeft);
+		this.processToolStripButton.set_ImageScaling(System.Windows.Forms.ToolStripItemImageScaling.None);
+		this.processToolStripButton.set_Name("processToolStripButton");
+		this.processToolStripButton.set_Size(new System.Drawing.Size(116, 24));
+		this.processToolStripButton.set_Text("Process Orders...");
+		this.processToolStripButton.set_TextAlign(System.Drawing.ContentAlignment.MiddleRight);
+		this.processToolStripButton.add_Click(new System.EventHandler(this.processToolStripButton_Click));
+		// 
+		// CustomerOrdersForm
+		// 
+		this.set_AutoScaleBaseSize(new System.Drawing.Size(5, 13));
+		this.set_ClientSize(new System.Drawing.Size(612, 362));
+		this.get_Controls().Add(this.dataGridView1);
+		this.get_Controls().Add(this.statusStrip1);
+		this.get_Controls().Add(this.toolStrip1);
+		this.set_KeyPreview(true);
+		this.set_Name("CustomerOrdersForm");
+		this.set_SizeGripStyle(System.Windows.Forms.SizeGripStyle.Show);
+		this.set_Text("CustomerOrdersForm");
+		this.add_KeyUp(new System.Windows.Forms.KeyEventHandler(this.CustomerOrdersForm_KeyUp));
+		((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+		this.statusStrip1.ResumeLayout(false);
+		this.statusStrip1.PerformLayout();
+		this.toolStrip1.ResumeLayout(false);
+		this.toolStrip1.PerformLayout();
+		this.ResumeLayout(false);
+		this.PerformLayout();
+
+    } //InitializeComponent
+
+    /// <summary>
+    /// Clean up any resources being used.
+    /// </summary>
+    protected void Dispose(boolean disposing)
+    {
+        if (disposing) {
+            if (components != null) {
+                components.Dispose();
+            }
+        }
+        super.Dispose(disposing);
+    } //Dispose
+
+    private System.Windows.Forms.DataGridView dataGridView1;
+    private System.Windows.Forms.StatusStrip statusStrip1;
+    private System.Windows.Forms.ToolStripStatusLabel statusStripPanel1;
+    private System.Windows.Forms.DataGridViewTextBoxColumn 
+        dataGridViewTextBoxColumn1;
+    private System.Windows.Forms.DataGridViewTextBoxColumn 
+        dataGridViewTextBoxColumn2;
+    private System.Windows.Forms.DataGridViewTextBoxColumn 
+        dataGridViewTextBoxColumn3;
+    private System.Windows.Forms.DataGridViewTextBoxColumn 
+        dataGridViewTextBoxColumn4;
+    private System.Windows.Forms.DataGridViewTextBoxColumn 
+        dataGridViewTextBoxColumn5;
+    private System.Windows.Forms.DataGridViewTextBoxColumn 
+        dataGridViewTextBoxColumn6;
+    private System.Windows.Forms.DataGridViewTextBoxColumn 
+        dataGridViewTextBoxColumn7;
+    private System.Windows.Forms.DataGridViewTextBoxColumn 
+        dataGridViewTextBoxColumn8;
+    private System.Windows.Forms.DataGridViewTextBoxColumn 
+        dataGridViewTextBoxColumn9;
+    private System.Windows.Forms.DataGridViewTextBoxColumn 
+        dataGridViewTextBoxColumn10;
+    private System.Windows.Forms.DataGridViewTextBoxColumn 
+        dataGridViewTextBoxColumn11;
+    private System.Windows.Forms.DataGridViewTextBoxColumn 
+        dataGridViewTextBoxColumn12;
+    private System.Windows.Forms.DataGridViewTextBoxColumn 
+        dataGridViewTextBoxColumn13;
+    private System.Windows.Forms.ToolStrip toolStrip1;
+    private System.Windows.Forms.ImageList imageList1;
+    private System.Windows.Forms.ToolStripButton processToolStripButton;
+
+    public void ShowDialog(String customerId, IWin32Window parent, 
+        DataSet northwindDS)
+    {
+        statusStripPanel1.set_Width(150);
+        // Put the customer id in the window title.
+        this.set_Text("Orders for Customer ID: " + customerId);
+        // Create a DataView of the Orders table to filter on the 
+        // specified customerID.
+        DataView dv = new DataView(northwindDS.get_Tables().get_Item("Orders"));
+        dv.set_RowFilter("CustomerID = '" + customerId + "'");
+        dv.set_Sort("OrderID");
+
+        dataGridView1.set_AutoGenerateColumns(false);
+        dataGridView1.set_DataSource(dv);
+        // The check box column will be virtual.
+        dataGridView1.set_VirtualMode(true);
+        dataGridView1.get_Columns().Insert(0, new DataGridViewCheckBoxColumn());
+        // Don't allow the column to be resizable.
+        dataGridView1.get_Columns().get_Item(0).set_Resizable(
+            DataGridViewTriState.False);
+        // Make the check box column frozen so it is always visible.
+        dataGridView1.get_Columns().get_Item(0).set_Frozen(true);
+        // Put an extra border to make the frozen column more visible
+        dataGridView1.get_Columns().get_Item(0).set_DividerWidth(1);
+        for (int iCtr = 0; iCtr < dataGridView1.get_Columns().get_Count(); 
+            iCtr++) {
+            DataGridViewColumn c = (DataGridViewColumn)dataGridView1.
+                get_Columns().get_Item(iCtr);
+            // Make all get_Columns() except the first read only.
+            if (c.get_Index() != 0) {
+                c.set_ReadOnly(true);
+            }
+        }
+        // Initialize the dictionary that contains the boolean check state.
+        checkState = new Dictionary<int,boolean>();
+        // Show the dialog.
+        this.ShowDialog(parent);
+    } //ShowDialog
+
+    private void dataGridView1_CellValuePushed(Object sender, 
+        DataGridViewCellValueEventArgs e)
+    {
+        // Handle the notification that the value for a cell in the virtual 
+        // column needs to be pushed back to the dictionary.
+        if (e.get_ColumnIndex() == 0) {
+            // Get the orderID from the OrderId column.
+            int orderId = Convert.ToInt32(dataGridView1.get_Rows().
+                get_Item(e.get_RowIndex()).get_Cells().get_Item("OrderID").
+                get_Value());
+            // Add or update the checked value to the dictionary depending 
+            // on if the key (orderID) already exists.
+            if (!(checkState.ContainsKey(orderId))) {
+                checkState.Add(orderId, Convert.ToBoolean(e.get_Value()));
+            }
+            else {
+                checkState.set_Item(orderId, Convert.ToBoolean(e.get_Value()));
+            }
+        }
+    } //dataGridView1_CellValuePushed
+
+    private void dataGridView1_CellValueChanged(Object sender, 
+        DataGridViewCellEventArgs e)
+    {
+        // Update the status bar when the cell value changes.
+        if (e.get_ColumnIndex() == 0) {
+            // Get the orderID from the OrderId column.
+            int orderId = Convert.ToInt32(dataGridView1.get_Rows().
+                get_Item(e.get_RowIndex()).get_Cells().get_Item("OrderID").
+                get_Value());
+            checkState.set_Item(orderId, Convert.ToBoolean(dataGridView1.get_Rows().
+                get_Item(e.get_RowIndex()).get_Cells().get_Item(0).
+                get_Value()));
+
+            this.UpdateStatusBar();
+        }
+    } //dataGridView1_CellValueChanged
+
+    private void dataGridView1_CellValueNeeded(Object sender, 
+        DataGridViewCellValueEventArgs e)
+    {
+        // Handle the notification that the value for a cell in the virtual 
+        // column is needed. Get the value from the dictionary if the key exists.
+        if (e.get_ColumnIndex() == 0) {
+            int orderId = Convert.ToInt32(dataGridView1.get_Rows().
+                get_Item(e.get_RowIndex()).get_Cells().get_Item("OrderID").
+                get_Value());
+            if (checkState.ContainsKey(orderId)) {
+                e.set_Value((System.Boolean)checkState.get_Item(orderId));
+            }
+            else {
+                e.set_Value((System.Boolean)false);
+            }
+        }
+    } //dataGridView1_CellValueNeeded
+
+    private void dataGridView1_RowPostPaint(Object sender, 
+        DataGridViewRowPostPaintEventArgs e)
+    {
+        // Paint the row number on the row header.
+        // The using statement automatically disposes the brush.
+        SolidBrush b = new SolidBrush(dataGridView1.
+            get_RowHeadersDefaultCellStyle().get_ForeColor());
+        try {
+            e.get_Graphics().DrawString(Convert.ToString(e.get_RowIndex(), 
+                System.Globalization.CultureInfo.get_CurrentUICulture()), 
+                dataGridView1.get_DefaultCellStyle().get_Font(), b, e.get_RowBounds().
+                get_Location().get_X() + 20, e.get_RowBounds().get_Location().
+                get_Y() + 4);
+        }
+        finally {
+            b.Dispose();
+        }
+    } //dataGridView1_RowPostPaint
+
+    private void UpdateStatusBar()
+    {
+        // Calculate the number of checked values in the dictionary and 
+        // update the status bar.
+        int number = 0;
+        IEnumerator objEnum = checkState.get_Values().GetEnumerator();
+        while (objEnum.MoveNext()) {
+            boolean isChecked = Convert.ToBoolean(objEnum.get_Current());
+            if (isChecked) {
+                number++;
+            }
+        }
+        statusStripPanel1.set_Text("Number of orders selected: " 
+            + Convert.ToString(number, System.Globalization.CultureInfo.
+            get_CurrentUICulture()));
+    } //UpdateStatusBar
+
+    private void dataGridView1_CellFormatting(Object sender, 
+        DataGridViewCellFormattingEventArgs e)
+    {
+        // Format the RequirdDate and ShippedDate cells differently 
+        // if the shipped date was passed or near the required date.            
+        if (e.get_ColumnIndex() == dataGridView1.get_Columns().
+            get_Item("RequiredDate").get_Index() 
+            || e.get_ColumnIndex() == dataGridView1.get_Columns().
+            get_Item("ShippedDate").get_Index()) {
+
+            // Get the object value first to check for DBNull since DateTime 
+            // is a value type.
+            Object shippedDateObject = dataGridView1.get_Rows().
+                get_Item(e.get_RowIndex()).get_Cells().get_Item("ShippedDate").
+                get_Value();
+            Object requiredDateObject = dataGridView1.get_Rows().
+                get_Item(e.get_RowIndex()).get_Cells().get_Item("RequiredDate").
+                get_Value();
+            DateTime shippedDate;
+            DateTime requiredDate;
+
+            if (!shippedDateObject.Equals(System.DBNull.Value) 
+                && !requiredDateObject.Equals(System.DBNull.Value)) {
+                try {
+                    // DateTime.Parse((string)shippedDateString);
+                    shippedDate = (DateTime)shippedDateObject;
+                    // DateTime.Parse((string)requiredDateString);
+                    requiredDate = (DateTime)requiredDateObject; 
+                }
+                catch (InvalidCastException exp) {
+                    // Either the shipped date or the required date could not be
+                    // cast to a DateTime. Don't perform any more formatting of
+                    // the cell.
+                    return;
+                }
+                // Format the cells as red if the Shipped Date was past the 
+                // Required Date.
+                if (shippedDate.get_Date().CompareTo(requiredDate.get_Date()) 
+                    > 0) {
+                    e.get_CellStyle().set_BackColor(Color.get_Red());
+                    e.get_CellStyle().set_SelectionBackColor(Color.get_Red());
+                    e.get_CellStyle().set_SelectionForeColor(Color.get_Black());
+                }
+                // Format the cells as yellow if the Shipped Date was within 5 
+                // days of the Required Date.
+                else {
+                    if (System.Math.Abs(shippedDate.get_Date().
+                        Subtract(requiredDate.get_Date()).get_Days()) <= 5) {
+                        e.get_CellStyle().set_BackColor(Color.get_Yellow());
+                        e.get_CellStyle().set_SelectionBackColor(
+                            Color.get_Yellow());
+                        e.get_CellStyle().set_SelectionForeColor(
+                            Color.get_Black());
+                    }
+                }
+            }
+        }
+    } //dataGridView1_CellFormatting
+
+    private void dataGridView1_RowEnter(Object sender, 
+        DataGridViewCellEventArgs e)
+    {
+        // Ensure that the row is selected when focus moves to a row.
+        // Without this the first time the dialog is shown the first row is not
+        // fully selected.
+        if (!(dataGridView1.get_Rows().get_Item(e.get_RowIndex()).
+            get_Selected())) {
+            dataGridView1.get_Rows().get_Item(e.get_RowIndex()).
+                set_Selected(true);
+        }
+    } //dataGridView1_RowEnter
+
+    private void CustomerOrdersForm_KeyUp(Object sender, KeyEventArgs e)
+    {
+        // Close the dialog if the user presses Escape.
+        if (e.get_KeyCode().Equals(Keys.Escape)) {
+            this.Close();
+        }
+    } //CustomerOrdersForm_KeyUp
+
+    private void dataGridView1_KeyDown(Object sender, KeyEventArgs e)
+    {
+        // Pressing the space bar will toggle the checked state of the row.
+        if (dataGridView1.get_CurrentCellAddress().get_X() != 0) {
+            if (e.get_KeyCode().Equals(Keys.Space)) {
+                // Alternate the selected checked state of the current row.
+                boolean checkedValue = Convert.ToBoolean(dataGridView1.
+                    get_Rows().get_Item(dataGridView1.get_CurrentCellAddress().
+                    get_Y()).get_Cells().get_Item(0).get_Value());
+                dataGridView1.get_Rows().get_Item(dataGridView1.
+                    get_CurrentCellAddress().get_Y()).get_Cells().get_Item(0).
+                    set_Value((System.Boolean)(!checkedValue));
+            }
+        }
+    } //dataGridView1_KeyDown
+
+    private void dataGridView1_DataBindingComplete(Object sender, 
+        DataGridViewBindingCompleteEventArgs e)
+    {
+        // Auto size get_Columns() after the grid data binding is complete.
+		dataGridView1.set_AutoSizeColumnsMode(DataGridViewAutoSizeColumnsMode.AllCells);
+    } //dataGridView1_DataBindingComplete
+
+    private void dataGridView1_CellContentClick(Object sender, 
+        DataGridViewCellEventArgs e)
+    {
+        // Update the status bar when the cell value changes.
+        if (e.get_ColumnIndex() == 0) {
+            // Force the update of the value for the checkbox column.
+            // Without this, the value doens't get updated until you move off 
+            // from the cell.
+            dataGridView1.get_Rows().get_Item(e.get_RowIndex()).get_Cells().
+                get_Item(0).set_Value((System.Boolean)dataGridView1.get_Rows().
+                get_Item(e.get_RowIndex()).get_Cells().get_Item(0).
+                get_FormattedValue());
+        }
+    } //dataGridView1_CellContentClick
+
+    private void processToolStripButton_Click(Object sender, EventArgs e)
+    {
+        // Perform processing here.
+        MessageBox.Show("Process orders here...");
+    
+	} //processToolStripButton_Click
+
+} //CustomerOrdersForm

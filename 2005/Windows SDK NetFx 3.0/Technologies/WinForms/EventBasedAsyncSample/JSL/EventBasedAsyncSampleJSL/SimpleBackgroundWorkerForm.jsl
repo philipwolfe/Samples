@@ -1,0 +1,353 @@
+package Microsoft.Samples.Windows.Forms.EventBasedAsync; 
+
+//---------------------------------------------------------------------
+//  This file is part of the Microsoft.NET Framework SDK Code Samples.
+// 
+//  Copyright (C) Microsoft Corporation.  All rights reserved.
+// 
+//This source code is intended only as a supplement to Microsoft
+//Development Tools and/or on-line documentation.  See these other
+//materials for detailed information regarding Microsoft code samples.
+// 
+//THIS CODE AND INFORMATION ARE PROVIDED AS IS WITHOUT WARRANTY OF ANY
+//KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+//IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+//PARTICULAR PURPOSE.
+//---------------------------------------------------------------------
+
+#region Import directives
+
+import System.*;
+import System.Collections.Generic.*;
+import System.ComponentModel.*;
+import System.Data.*;
+import System.Drawing.*;
+import System.Text.*;
+import System.Windows.Forms.*;
+
+#endregion
+
+// Note: In order to support Cancellation and Progress reporting the following
+//      properties have been set to true on backgroundWorker1
+// 
+//      this.backgroundWorker1.set_WorkerReportsProgress(true);
+//      this.backgroundWorker1.set_WorkerSupportsCancellation(true);
+// 
+class SimpleBackgroundWorkerForm extends Form
+{
+    public SimpleBackgroundWorkerForm()
+    {
+        InitializeComponent();
+    }
+
+	private StatusStrip statusStrip1;
+	private ToolStripStatusLabel webServiceOperationToolStripTextProgressPanel;
+	private ToolStripProgressBar webServiceOperationToolStripProgressBar; //SimpleBackgroundWorkerForm
+
+    /// Required designer variable.
+    private System.ComponentModel.IContainer components = null;
+
+    /// Clean up any resources being used.
+    protected void Dispose(boolean disposing)
+    {
+        if (disposing && components != null) {
+            components.Dispose();
+        }
+        super.Dispose(disposing);
+    } //Dispose
+
+    #region Windows Form Designer generated code
+
+    /// <summary>
+    /// Required method for Designer support - do not modify
+    /// the contents of this method with the code editor.
+    /// </summary>
+    private void InitializeComponent()
+    {
+		this.btnStart = new System.Windows.Forms.Button();
+		this.btnCancel = new System.Windows.Forms.Button();
+		this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+		this.lblInput = new System.Windows.Forms.Label();
+		this.lblOutput = new System.Windows.Forms.Label();
+		this.txtOutput = new System.Windows.Forms.TextBox();
+		this.mTxtInput = new System.Windows.Forms.MaskedTextBox();
+		this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+		this.webServiceOperationToolStripTextProgressPanel = new System.Windows.Forms.ToolStripStatusLabel();
+		this.webServiceOperationToolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
+		this.statusStrip1.SuspendLayout();
+		this.SuspendLayout();
+		// 
+		// btnStart
+		// 
+		this.btnStart.set_Anchor(((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right))));
+		this.btnStart.set_Location(new System.Drawing.Point(267, 67));
+		this.btnStart.set_Name("btnStart");
+		this.btnStart.set_Size(new System.Drawing.Size(75, 23));
+		this.btnStart.set_TabIndex(2);
+		this.btnStart.set_Text("&Start");
+		this.btnStart.add_Click(new System.EventHandler(this.btnStart_Click));
+		// 
+		// btnCancel
+		// 
+		this.btnCancel.set_Anchor(((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right))));
+		this.btnCancel.set_DialogResult(System.Windows.Forms.DialogResult.Cancel);
+		this.btnCancel.set_Enabled(false);
+		this.btnCancel.set_Location(new System.Drawing.Point(349, 67));
+		this.btnCancel.set_Name("btnCancel");
+		this.btnCancel.set_Size(new System.Drawing.Size(75, 23));
+		this.btnCancel.set_TabIndex(3);
+		this.btnCancel.set_Text("&Cancel");
+		this.btnCancel.add_Click(new System.EventHandler(this.btnCancel_Click));
+		// 
+		// backgroundWorker1
+		// 
+		this.backgroundWorker1.set_WorkerReportsProgress(true);
+		this.backgroundWorker1.set_WorkerSupportsCancellation(true);
+		this.backgroundWorker1.add_DoWork(new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork));
+		this.backgroundWorker1.add_RunWorkerCompleted(new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted));
+		this.backgroundWorker1.add_ProgressChanged(new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged));
+		// 
+		// lblInput
+		// 
+		this.lblInput.set_AutoSize(true);
+		this.lblInput.set_Location(new System.Drawing.Point(18, 16));
+		this.lblInput.set_Name("lblInput");
+		this.lblInput.set_Size(new System.Drawing.Size(34, 13));
+		this.lblInput.set_TabIndex(18);
+		this.lblInput.set_Text("Input:");
+		// 
+		// lblOutput
+		// 
+		this.lblOutput.set_AutoSize(true);
+		this.lblOutput.set_Location(new System.Drawing.Point(18, 43));
+		this.lblOutput.set_Name("lblOutput");
+		this.lblOutput.set_Size(new System.Drawing.Size(42, 13));
+		this.lblOutput.set_TabIndex(19);
+		this.lblOutput.set_Text("Output:");
+		// 
+		// txtOutput
+		// 
+		this.txtOutput.set_Anchor(((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+					| System.Windows.Forms.AnchorStyles.Right))));
+		this.txtOutput.set_Location(new System.Drawing.Point(66, 40));
+		this.txtOutput.set_Name("txtOutput");
+		this.txtOutput.set_ReadOnly(true);
+		this.txtOutput.set_Size(new System.Drawing.Size(358, 20));
+		this.txtOutput.set_TabIndex(1);
+		// 
+		// mTxtInput
+		// 
+		this.mTxtInput.set_Anchor(((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+					| System.Windows.Forms.AnchorStyles.Right))));
+		this.mTxtInput.set_Location(new System.Drawing.Point(66, 13));
+		this.mTxtInput.set_Mask("00000");
+		this.mTxtInput.set_Name("mTxtInput");
+		this.mTxtInput.set_Size(new System.Drawing.Size(358, 20));
+		this.mTxtInput.set_TabIndex(0);
+		this.mTxtInput.set_TextMaskFormat(System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals);
+		// 
+		// statusStrip1
+		// 
+		this.statusStrip1.get_Items().AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.webServiceOperationToolStripTextProgressPanel,
+            this.webServiceOperationToolStripProgressBar}
+		);
+		this.statusStrip1.set_Location(new System.Drawing.Point(0, 109));
+		this.statusStrip1.set_Name("statusStrip1");
+		this.statusStrip1.set_Size(new System.Drawing.Size(443, 22));
+		this.statusStrip1.set_TabIndex(20);
+		this.statusStrip1.set_Text("statusStrip1");
+		// 
+		// webServiceOperationToolStripTextProgressPanel
+		// 
+		this.webServiceOperationToolStripTextProgressPanel.set_Name("webServiceOperationToolStripTextProgressPanel");
+		this.webServiceOperationToolStripTextProgressPanel.set_Size(new System.Drawing.Size(0, 17));
+		// 
+		// webServiceOperationToolStripProgressBar
+		// 
+		this.webServiceOperationToolStripProgressBar.set_Name("webServiceOperationToolStripProgressBar");
+		this.webServiceOperationToolStripProgressBar.set_Size(new System.Drawing.Size(100, 15));
+		// 
+		// SimpleBackgroundWorkerForm
+		// 
+		this.set_AcceptButton(this.btnStart);
+		this.set_AutoScaleBaseSize(new System.Drawing.Size(5, 13));
+		this.set_CancelButton(this.btnCancel);
+		this.set_ClientSize(new System.Drawing.Size(443, 131));
+		this.get_Controls().Add(this.statusStrip1);
+		this.get_Controls().Add(this.mTxtInput);
+		this.get_Controls().Add(this.txtOutput);
+		this.get_Controls().Add(this.lblOutput);
+		this.get_Controls().Add(this.lblInput);
+		this.get_Controls().Add(this.btnCancel);
+		this.get_Controls().Add(this.btnStart);
+		this.set_MinimumSize(new System.Drawing.Size(451, 158));
+		this.set_Name("SimpleBackgroundWorkerForm");
+		this.set_Text("Async Simple BackgroundWorker Sample");
+		this.add_Load(new System.EventHandler(this.SimpleBackgroundWorkerForm_Load));
+		this.statusStrip1.ResumeLayout(false);
+		this.statusStrip1.PerformLayout();
+		this.ResumeLayout(false);
+		this.PerformLayout();
+
+	} //InitializeComponent 
+
+    #endregion
+
+    private System.Windows.Forms.Button btnStart;
+    private System.Windows.Forms.Button btnCancel;
+    private System.ComponentModel.BackgroundWorker backgroundWorker1;
+    private System.Windows.Forms.Label lblInput;
+    private System.Windows.Forms.Label lblOutput;
+    private System.Windows.Forms.TextBox txtOutput;
+    private System.Windows.Forms.MaskedTextBox mTxtInput;
+
+    /// Handle the Form load event
+    /// Sets the default value of the masked text box
+    private void SimpleBackgroundWorkerForm_Load(Object sender, System.EventArgs e)
+    {
+        this.mTxtInput.set_Text("2");
+    } 
+
+    /// Handle the Click event on btnStart. 
+    /// Start the background worker task passing mTxtInput as the input 
+    /// to the task via RunWorkerAsync
+	private void btnStart_Click(Object sender, System.EventArgs e)
+	{
+		btnCancel.set_Enabled(true);
+		btnStart.set_Enabled(false);
+		webServiceOperationToolStripProgressBar.set_Value(0);
+		webServiceOperationToolStripProgressBar.set_Visible(true);
+		webServiceOperationToolStripTextProgressPanel.
+			set_Text("Calculating result");
+
+		try
+		{
+			int inputNumber = Int32.Parse(this.mTxtInput.get_Text());
+			backgroundWorker1.RunWorkerAsync((Int32)inputNumber);
+		}
+		catch (FormatException myE)
+		{
+			MessageBox.Show("You must enter only integers in the MaskedTextBox", "Async BackgroundWorker Sample");
+			btnStart.set_Enabled(true);
+		}
+
+	}
+
+    /// Handle the Click event on btnCancel.
+    /// Cancel the background worker task
+    /// Note: It is possible that the task may have completed by the time cancel 
+    /// is processed - you will need to take this into account in your applications
+    /// Note: This is only supported if 
+    ///     (1) you set WorkerSupportsCancellation = true 
+    ///     (2) you respond to CancellationPending in the DoWork event (see below)
+    private void btnCancel_Click(Object sender, System.EventArgs e)
+    {
+        backgroundWorker1.CancelAsync();
+    }
+
+    /// Handle the DoWork event on the BackgroundWorker.
+    /// Note: This event runs on a seperate thread not on the UI thread
+    ///     You put your long running task in this event handler and it is 
+    ///     invoked via RunWorkerAsync.
+    /// 
+    /// As this event runs on a background thread you should not directly access
+    /// controls in this event.
+    /// 
+    /// You can call ReportProgress to raise the progress event on the UI thread 
+    /// You can set the Result which is returned to the UI thread in the 
+    /// Completed event. You can use Control.Invoke/Control.BeginInvoke to 
+    /// set the state of controls on the UI thread
+    /// When this event handler exits the Completed event is raised on the 
+    /// UI thread
+    private void backgroundWorker1_DoWork(Object sender, 
+        System.ComponentModel.DoWorkEventArgs e)
+    {
+        //This method will run on a thread other than the UI thread.
+        //Be sure not to manipulate any Windows Forms controls created
+        //on the UI thread from this method.
+        //Get the input argument from the event args
+        int inputNumber = Convert.ToInt32(e.get_Argument());
+    
+		//Throw an exception if input is greater than 1000
+        //This causes the Completed event to be raised with e.Error containing
+        //this exception
+        if (inputNumber > 1000) {
+            throw new ArgumentException("We only support numbers up to 1000");
+        }
+        
+		//Do the operation - simply double the number
+        int result = inputNumber * 2;
+        
+		//Now simulate a long running task by looping for 2000 milliseconds
+        //If CancelAsync is called CancellationPending is true. Look for this and 
+        //terminate the task if CancellationPending is true
+        int i = 1;
+        while (i < 100 && !(backgroundWorker1.get_CancellationPending())) {
+            //Sleep for 5 milliseconds
+            System.Threading.Thread.Sleep(20);
+        
+			//Report progress back to the UI thread via ReportProgress
+            backgroundWorker1.ReportProgress(i);
+
+            i += 1;
+        }
+
+        //If the user canceled the task then set e.set_Cancel(true)
+        //so that in the Completed we can detect that the cancellation
+        //succeeded
+        if (backgroundWorker1.get_CancellationPending()) {
+            e.set_Cancel(true);
+        }
+
+        //Set the result into the event args to be picked up by Completed event
+        e.set_Result((Int32)result);
+    }
+
+    /// Handle the LoadCompleted event. This event is raised when the 
+    /// BackgroundWorker DoWork event handler has finished executing
+    /// The RunWorkerCompletedEventArgs contains information about the task
+    /// - the result, whether it was canceled, if there was an error and so on
+    private void backgroundWorker1_RunWorkerCompleted(Object sender, 
+        System.ComponentModel.RunWorkerCompletedEventArgs e)
+    {
+        btnCancel.set_Enabled(false);
+        btnStart.set_Enabled(true);
+        webServiceOperationToolStripProgressBar.set_Visible(false);
+        webServiceOperationToolStripTextProgressPanel.set_Text("Ready");
+
+        if (e.get_Cancelled() == true) {
+			MessageBox.Show("Background task canceled", "Async BackgroundWorker Sample");
+        }
+        else
+        {
+            // Note: If the web service returned an error, 
+			// e.get_Result() will throw the exception associated with the error
+            //      You can also check for e.get_Error():
+            //           if (e.get_Error() != null) {...}
+            try {
+                txtOutput.set_Text(e.get_Result().ToString());
+				MessageBox.Show("Background task completed", "Async BackgroundWorker Sample");
+            }
+            catch (System.Exception ex) {
+				MessageBox.Show(ex.get_Message(), "Async BackgroundWorker Sample", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+    } 
+
+    /// Handle the ProgressChanged event. This event is raised during the 
+    /// execution of DoWork is ReportProgress is called. 
+    /// It can be used to give progress feedback to the user.
+    /// 
+    /// The ProgressChangedEventArgs contains the percentage complete as 
+    /// reported by ReportProgress.
+    /// 
+    /// Note: This is only supported if you set WorkerReportsProgress = true 
+    private void backgroundWorker1_ProgressChanged(Object sender, 
+        System.ComponentModel.ProgressChangedEventArgs e)
+    {
+        webServiceOperationToolStripProgressBar.set_Value(
+            e.get_ProgressPercentage());
+    }
+} 

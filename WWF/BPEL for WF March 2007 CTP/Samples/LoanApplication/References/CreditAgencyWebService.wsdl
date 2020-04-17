@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/"
+                  xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+                  xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+                  xmlns:tns="http://tempuri.org/"
+                  xmlns:s="http://www.w3.org/2001/XMLSchema"
+                  xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+                  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+                  targetNamespace="http://tempuri.org/"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process"
+                  xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="CheckCreditDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RequestId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="socialSecurityNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckCreditDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CheckCreditDetailsResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="CheckCreditDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckCreditDetails" />
+  </wsdl:message>
+  <wsdl:message name="CheckCreditDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckCreditDetailsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="CreditAgencyWebServiceSoap">
+    <wsdl:operation name="CheckCreditDetails">
+      <wsdl:input message="tns:CheckCreditDetailsSoapIn" />
+      <wsdl:output message="tns:CheckCreditDetailsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CreditAgencyWebServiceSoap" type="tns:CreditAgencyWebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CheckCreditDetails">
+      <soap:operation soapAction="http://tempuri.org/CheckCreditDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CreditAgencyWebServiceSoap12" type="tns:CreditAgencyWebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CheckCreditDetails">
+      <soap12:operation soapAction="http://tempuri.org/CheckCreditDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CreditAgencyWebService">
+    <wsdl:port name="CreditAgencyWebServiceSoap" binding="tns:CreditAgencyWebServiceSoap">
+      <soap:address location="http://localhost:8082/CreditAgencyWebService/CreditAgencyWebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CreditAgencyWebServiceSoap12" binding="tns:CreditAgencyWebServiceSoap12">
+      <soap12:address location="http://localhost:8082/CreditAgencyWebService/CreditAgencyWebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+
+  <plnk:partnerLinkType name="CreditAgencyLink">
+    <plnk:role name="Borrower">
+      <plnk:portType name="CreditAgencyWebServiceSoap"/>
+    </plnk:role>
+  </plnk:partnerLinkType>
+
+  <bpws:property name="CreditProperty" type="xsd:string"/>
+
+  <bpws:propertyAlias propertyName="CreditProperty"
+                      messageType="CheckCreditDetailsSoapIn"
+                      part="parameters"
+                      query="/tns:parameters/tns:RequestId"/>
+
+</wsdl:definitions>

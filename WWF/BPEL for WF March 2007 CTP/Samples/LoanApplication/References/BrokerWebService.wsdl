@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/"
+                  xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+                  xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+                  xmlns:tns="http://tempuri.org/"
+                  xmlns:s="http://www.w3.org/2001/XMLSchema"
+                  xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+                  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+                  targetNamespace="http://tempuri.org/"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process"
+                  xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link">
+
+
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="StartLoanProcessing">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RequestId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StartLoanProcessingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="StartLoanProcessingResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="StartLoanProcessingSoapIn">
+    <wsdl:part name="parameters" element="tns:StartLoanProcessing" />
+  </wsdl:message>
+  <wsdl:message name="StartLoanProcessingSoapOut">
+    <wsdl:part name="parameters" element="tns:StartLoanProcessingResponse" />
+  </wsdl:message>
+  <wsdl:portType name="BrokerWebServiceSoap">
+    <wsdl:operation name="StartLoanProcessing">
+      <wsdl:input message="tns:StartLoanProcessingSoapIn" />
+      <wsdl:output message="tns:StartLoanProcessingSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BrokerWebServiceSoap" type="tns:BrokerWebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="StartLoanProcessing">
+      <soap:operation soapAction="http://tempuri.org/StartLoanProcessing" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BrokerWebServiceSoap12" type="tns:BrokerWebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="StartLoanProcessing">
+      <soap12:operation soapAction="http://tempuri.org/StartLoanProcessing" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BrokerWebService">
+    <wsdl:port name="BrokerWebServiceSoap" binding="tns:BrokerWebServiceSoap">
+      <soap:address location="http://localhost:8081/BrokerWebService/BrokerWebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="BrokerWebServiceSoap12" binding="tns:BrokerWebServiceSoap12">
+      <soap12:address location="http://localhost:8081/BrokerWebService/BrokerWebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+
+  <plnk:partnerLinkType name="LoanBrokerLink">
+    <plnk:role name="Requester">
+      <plnk:portType name="BrokerWebServiceSoap"/>
+    </plnk:role>
+  </plnk:partnerLinkType>
+
+  <bpws:property name="BrokerProperty" type="xsd:string"/>
+
+  <bpws:propertyAlias propertyName="BrokerProperty"
+                      messageType="StartLoanProcessingSoapIn"
+                      part="parameters"
+                      query="/tns:parameters/tns:RequestId"/>
+
+</wsdl:definitions>

@@ -1,0 +1,11 @@
+﻿<F:Flow x:Class="FlowTest.Workflow1" x:Name="Workflow1" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:F="http://schemas.com/FlowChart">
+	<F:Decision x:Name="decision1" FalseActivityName="action2" TrueActivityName="action1">
+		<F:Decision.Condition>
+			<RuleConditionReference ConditionName="Condition1" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" />
+		</F:Decision.Condition>
+	</F:Decision>
+	<F:Action x:Name="action1" NextActivityName="action3" />
+	<F:Action x:Name="action2" NextActivityName="" />
+	<F:Action x:Name="action3" NextActivityName="action4" />
+	<F:Action x:Name="action4" NextActivityName="{x:Null}" />
+</F:Flow>

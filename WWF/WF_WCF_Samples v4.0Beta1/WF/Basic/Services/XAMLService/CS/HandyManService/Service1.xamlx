@@ -1,0 +1,177 @@
+<Service xmlns="http://schemas.microsoft.com/netfx/2009/xaml/servicemodel" xmlns:p="http://tempuri.org" xmlns:p1="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:sad="clr-namespace:System.Activities.Debugger;assembly=System.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <WorkflowServiceImplementation ConfigurationName="Service1" Name="Service1">
+    <p1:Sequence DisplayName="Handy Man Service" sad:XamlDebuggerXmlReader.FileName="C:\Users\asadj\documents\visual studio 10\Projects\HandyManService\HandyManService\Service1.xamlx">
+      <p1:Parallel>
+        <p1:Sequence DisplayName="Starting Problems">
+          <p1:Sequence>
+            <p1:Sequence.Variables>
+              <p1:Variable x:TypeArguments="CorrelationHandle" Name="__Handle" />
+              <p1:Variable x:TypeArguments="x:String" Name="CarMsg1" Default="Try turning on the lights with key in on position. Do lights come on (Y/N)?" />
+              <p1:Variable x:TypeArguments="x:String" Name="CarMsg2" Default="Check the connectors on the battery and make sure they are not loose. Are the battery connections good (Y/N)?" />
+              <p1:Variable x:TypeArguments="x:String" Name="CarMsg3" Default="Diagnosis Complete: Unable to diagnose problem, please call a technician." />
+              <p1:Variable x:TypeArguments="x:String" Name="CarMsg4" Default="Diagnosis Complete: Fix the connections to the battery and try again." />
+            </p1:Sequence.Variables>
+            <Receive x:Name="__ReferenceID0" CanCreateInstance="True" OperationName="DiagnoseStart" ServiceContractName="p:IService" CorrelatesWith="[__Handle]">
+              <x:Null />
+            </Receive>
+            <SendReply Request="{x:Reference Name=__ReferenceID0}" ValueType="x:String" CorrelatesWith="[__Handle]">
+              <p1:InArgument x:TypeArguments="x:String">[CarMsg1]</p1:InArgument>
+            </SendReply>
+          </p1:Sequence>
+          <p1:Sequence>
+            <p1:Sequence.Variables>
+              <p1:Variable x:TypeArguments="CorrelationHandle" Name="__Handle" />
+              <p1:Variable x:TypeArguments="x:Boolean" Name="IsCharged" />
+              <p1:Variable x:TypeArguments="x:String" Name="Reply" />
+              <p1:Variable x:TypeArguments="x:Boolean" Name="IsConnectionGood" />
+            </p1:Sequence.Variables>
+            <Receive x:Name="__ReferenceID1" OperationName="NextStep" ServiceContractName="p:IService" ValueType="x:Boolean" CorrelatesWith="[__Handle]">
+              <p1:OutArgument x:TypeArguments="x:Boolean">[IsCharged]</p1:OutArgument>
+            </Receive>
+            <p1:If Condition="[IsCharged = True]">
+              <p1:If.Then>
+                <p1:Assign>
+                  <p1:Assign.To>
+                    <p1:OutArgument x:TypeArguments="x:String">[Reply]</p1:OutArgument>
+                  </p1:Assign.To>
+                  <p1:Assign.Value>
+                    <p1:InArgument x:TypeArguments="x:String">["Diagnosis complete: Unable to determine problem, call a qualified mechanic."]</p1:InArgument>
+                  </p1:Assign.Value>
+                </p1:Assign>
+              </p1:If.Then>
+              <p1:If.Else>
+                <p1:Assign>
+                  <p1:Assign.To>
+                    <p1:OutArgument x:TypeArguments="x:String">[Reply]</p1:OutArgument>
+                  </p1:Assign.To>
+                  <p1:Assign.Value>
+                    <p1:InArgument x:TypeArguments="x:String">["Make sure the battery coonectors are not loose. Are the battery connections tight? (Y/N)"]</p1:InArgument>
+                  </p1:Assign.Value>
+                </p1:Assign>
+              </p1:If.Else>
+            </p1:If>
+            <SendReply Request="{x:Reference Name=__ReferenceID1}" ValueType="x:String" CorrelatesWith="[__Handle]">
+              <p1:InArgument x:TypeArguments="x:String">[Reply]</p1:InArgument>
+            </SendReply>
+            <p1:Sequence>
+              <p1:Sequence.Variables>
+                <p1:Variable x:TypeArguments="CorrelationHandle" Name="__Handle" />
+              </p1:Sequence.Variables>
+              <Receive x:Name="__ReferenceID2" OperationName="NextStep" ServiceContractName="p:IService" ValueType="x:Boolean" CorrelatesWith="[__Handle]">
+                <p1:OutArgument x:TypeArguments="x:Boolean">[IsConnectionGood]</p1:OutArgument>
+              </Receive>
+              <p1:If Condition="[IsConnectionGood = True]">
+                <p1:If.Then>
+                  <p1:Assign>
+                    <p1:Assign.To>
+                      <p1:OutArgument x:TypeArguments="x:String">[Reply]</p1:OutArgument>
+                    </p1:Assign.To>
+                    <p1:Assign.Value>
+                      <p1:InArgument x:TypeArguments="x:String">["Diagnosis Complete: The battery needs to be charged. Jump start the car and get the battery inspected."]</p1:InArgument>
+                    </p1:Assign.Value>
+                  </p1:Assign>
+                </p1:If.Then>
+                <p1:If.Else>
+                  <p1:Assign>
+                    <p1:Assign.To>
+                      <p1:OutArgument x:TypeArguments="x:String">[Reply]</p1:OutArgument>
+                    </p1:Assign.To>
+                    <p1:Assign.Value>
+                      <p1:InArgument x:TypeArguments="x:String">["Diagnosis Complete: Fix the battery connections and retry."]</p1:InArgument>
+                    </p1:Assign.Value>
+                  </p1:Assign>
+                </p1:If.Else>
+              </p1:If>
+              <SendReply Request="{x:Reference Name=__ReferenceID2}" ValueType="x:String" CorrelatesWith="[__Handle]">
+                <p1:InArgument x:TypeArguments="x:String">[Reply]</p1:InArgument>
+              </SendReply>
+            </p1:Sequence>
+          </p1:Sequence>
+        </p1:Sequence>
+        <p1:Sequence DisplayName="AC problems">
+          <p1:Sequence>
+            <p1:Sequence.Variables>
+              <p1:Variable x:TypeArguments="CorrelationHandle" Name="__Handle" />
+            </p1:Sequence.Variables>
+            <Receive x:Name="__ReferenceID3" CanCreateInstance="True" OperationName="DiagnoseAC" ServiceContractName="p:IService" CorrelatesWith="[__Handle]">
+              <x:Null />
+            </Receive>
+            <SendReply Request="{x:Reference Name=__ReferenceID3}" ValueType="x:String" CorrelatesWith="[__Handle]">
+              <p1:InArgument x:TypeArguments="x:String">["Does the blower work when you turn on the AC? (Y/N)"]</p1:InArgument>
+            </SendReply>
+          </p1:Sequence>
+          <p1:Sequence>
+            <p1:Sequence.Variables>
+              <p1:Variable x:TypeArguments="CorrelationHandle" Name="__Handle" />
+              <p1:Variable x:TypeArguments="x:Boolean" Name="IsBlowing" />
+              <p1:Variable x:TypeArguments="x:String" Name="Reply" />
+            </p1:Sequence.Variables>
+            <Receive x:Name="__ReferenceID4" OperationName="NextStep" ServiceContractName="p:IService" ValueType="x:Boolean" CorrelatesWith="[__Handle]">
+              <p1:OutArgument x:TypeArguments="x:Boolean">[IsBlowing]</p1:OutArgument>
+            </Receive>
+            <p1:If Condition="[IsBlowing = True]">
+              <p1:If.Then>
+                <p1:Assign>
+                  <p1:Assign.To>
+                    <p1:OutArgument x:TypeArguments="x:String">[Reply]</p1:OutArgument>
+                  </p1:Assign.To>
+                  <p1:Assign.Value>
+                    <p1:InArgument x:TypeArguments="x:String">["Do you hear the compressor start when you swich on the AC? (Y/N)"]</p1:InArgument>
+                  </p1:Assign.Value>
+                </p1:Assign>
+              </p1:If.Then>
+              <p1:If.Else>
+                <p1:Assign>
+                  <p1:Assign.To>
+                    <p1:OutArgument x:TypeArguments="x:String">[Reply]</p1:OutArgument>
+                  </p1:Assign.To>
+                  <p1:Assign.Value>
+                    <p1:InArgument x:TypeArguments="x:String">["Diagnosis Complete: The fuse may have shorted, if so replace the fuse otherwise contact a qualified technician."]</p1:InArgument>
+                  </p1:Assign.Value>
+                </p1:Assign>
+              </p1:If.Else>
+            </p1:If>
+            <SendReply Request="{x:Reference Name=__ReferenceID4}" ValueType="x:String" CorrelatesWith="[__Handle]">
+              <p1:InArgument x:TypeArguments="x:String">[Reply]</p1:InArgument>
+            </SendReply>
+          </p1:Sequence>
+          <p1:Sequence>
+            <p1:Sequence.Variables>
+              <p1:Variable x:TypeArguments="CorrelationHandle" Name="__Handle" />
+              <p1:Variable x:TypeArguments="x:Boolean" Name="IsCompressing" />
+              <p1:Variable x:TypeArguments="x:String" Name="Reply" />
+            </p1:Sequence.Variables>
+            <Receive x:Name="__ReferenceID5" OperationName="NextStep" ServiceContractName="p:IService" ValueType="x:Boolean" CorrelatesWith="[__Handle]">
+              <p1:OutArgument x:TypeArguments="x:Boolean">[IsCompressing]</p1:OutArgument>
+            </Receive>
+            <p1:If Condition="[IsCompressing = True]">
+              <p1:If.Then>
+                <p1:Assign>
+                  <p1:Assign.To>
+                    <p1:OutArgument x:TypeArguments="x:String">[Reply]</p1:OutArgument>
+                  </p1:Assign.To>
+                  <p1:Assign.Value>
+                    <p1:InArgument x:TypeArguments="x:String">["Diagnosis complete: The compressor may have lost the coolant. Contact a qualified technician to refill."]</p1:InArgument>
+                  </p1:Assign.Value>
+                </p1:Assign>
+              </p1:If.Then>
+              <p1:If.Else>
+                <p1:Assign>
+                  <p1:Assign.To>
+                    <p1:OutArgument x:TypeArguments="x:String">[Reply]</p1:OutArgument>
+                  </p1:Assign.To>
+                  <p1:Assign.Value>
+                    <p1:InArgument x:TypeArguments="x:String">["Diagnosis complete: the compressor is failing to start. See a qualified technician to inspect the unit"]</p1:InArgument>
+                  </p1:Assign.Value>
+                </p1:Assign>
+              </p1:If.Else>
+            </p1:If>
+            <SendReply Request="{x:Reference Name=__ReferenceID5}" ValueType="x:String" CorrelatesWith="[__Handle]">
+              <p1:InArgument x:TypeArguments="x:String">[Reply]</p1:InArgument>
+            </SendReply>
+          </p1:Sequence>
+        </p1:Sequence>
+      </p1:Parallel>
+    </p1:Sequence>
+  </WorkflowServiceImplementation>
+</Service>

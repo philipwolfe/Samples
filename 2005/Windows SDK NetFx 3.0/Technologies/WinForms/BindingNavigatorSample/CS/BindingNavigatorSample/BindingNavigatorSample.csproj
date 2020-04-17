@@ -1,0 +1,78 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50517</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{24F4296F-ECC3-4CEF-BD0F-21A1BA36A4D9}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Microsoft.Samples.Windows.Forms.BindingNavigatorSample</RootNamespace>
+    <AssemblyName>BindingNavigatorSample</AssemblyName>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Flag.cs" />
+    <Compile Include="BindingNavigatorSample.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BindingNavigatorSample.designer.cs">
+      <DependentUpon>BindingNavigatorSample.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Configuration\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="BindingNavigatorSample.resx">
+      <DependentUpon>BindingNavigatorSample.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Flags\Argentina.gif" />
+    <EmbeddedResource Include="Flags\Austria.gif" />
+    <EmbeddedResource Include="Flags\Belgium.gif" />
+    <EmbeddedResource Include="Flags\Brazil.gif" />
+    <EmbeddedResource Include="Flags\Canada.gif" />
+    <EmbeddedResource Include="Flags\Denmark.gif" />
+    <EmbeddedResource Include="Flags\Finland.gif" />
+    <EmbeddedResource Include="Flags\France.gif" />
+    <EmbeddedResource Include="Flags\Germany.gif" />
+    <EmbeddedResource Include="Flags\Ireland.gif" />
+    <EmbeddedResource Include="Flags\Italy.gif" />
+    <EmbeddedResource Include="Flags\Mexico.gif" />
+    <EmbeddedResource Include="Flags\Norway.gif" />
+    <EmbeddedResource Include="Flags\Poland.gif" />
+    <EmbeddedResource Include="Flags\Portugal.gif" />
+    <EmbeddedResource Include="Flags\Spain.gif" />
+    <EmbeddedResource Include="Flags\Sweden.gif" />
+    <EmbeddedResource Include="Flags\Switzerland.gif" />
+    <EmbeddedResource Include="Flags\UK.gif" />
+    <EmbeddedResource Include="Flags\USA.gif" />
+    <EmbeddedResource Include="Flags\Venezuela.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSHARP.Targets" />
+</Project>

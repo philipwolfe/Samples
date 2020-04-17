@@ -1,0 +1,548 @@
+package Microsoft.Samples.Windows.Forms.SplitContainer;
+
+//---------------------------------------------------------------------
+//  This file is part of the Microsoft .NET Framework SDK Code Samples.
+// 
+//  Copyright (C) Microsoft Corporation.  All rights reserved.
+// 
+//This source code is intended only as a supplement to Microsoft
+//Development Tools and/or on-line documentation.  See these other
+//materials for detailed information regarding Microsoft code samples.
+// 
+//THIS CODE AND INFORMATION ARE PROVIDED AS IS WITHOUT WARRANTY OF ANY
+//KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+//IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+//PARTICULAR PURPOSE.
+//---------------------------------------------------------------------
+
+import System.*;
+import System.Drawing.*;
+import System.Collections.*;
+import System.ComponentModel.*;
+import System.Windows.Forms.*;
+import System.Data.*;
+import System.Security.Permissions.*;
+import System.Globalization.*;
+
+/// <summary>
+/// Summary description for form.
+/// </summary>
+class Form1 extends System.Windows.Forms.Form
+{
+    /// <summary>
+    /// Required designer variable.
+    /// </summary>
+    private System.ComponentModel.IContainer components = null;
+
+    public Form1()
+    {
+        InitializeComponent();
+    } //Form1
+
+	private void splitContainer1_SplitterMoved(Object sender, SplitterEventArgs e)
+	{
+		// This event will be fired every time the splitter is moved
+		// The 'sender' parameter will contain the actual splitter control 
+		// that raised the event We need to cast it to a SplitContainer since 
+		// it comes in as an 'object'
+		System.Windows.Forms.SplitContainer splitter
+			= (System.Windows.Forms.SplitContainer)sender;
+		// Populate the 'SplitterDistance' text box with the current value of 
+		// the SplitterDistance property of the splitter control.
+		this.splitterDistance.set_Text(GetSplitterDistance(splitter));
+	}
+
+    private void Form1_Load(Object sender, EventArgs e)
+    {
+        // On FormLoad we want to initialize our text box controls to have 
+        // the current values of the respective SplitContainer properties 
+        // (splitterDistance, splitterWidth and splitterIncrement)
+        InitializeTextBoxes();
+        // Give the picture box an actual image to display
+        this.pictureBox1.set_Image(Image.FromFile("..\\..\\Blue Hills.jpg"));
+		this.restorePanel2ToolStripMenuItem.set_Enabled(false);
+	} //Form1_Load
+
+    private void InitializeTextBoxes()
+    {
+        // Set the text property of the respective text boxes to their 
+        // corresponding SplitContainer property values
+        this.splitterDistance.
+            set_Text(GetSplitterDistance(this.splitContainer1));
+        this.splitterWidth.set_Text(GetSplitterWidth(this.splitContainer1));
+        this.splitterIncrement.
+            set_Text(GetSplitterIncrement(this.splitContainer1));
+		this.Panel1MinSize.set_Text(GetPanel1MinSize(this.splitContainer1));
+		this.Panel2MinSize.set_Text(GetPane21MinSize(this.splitContainer1));
+	} //InitializeTextBoxes
+
+    private String GetSplitterDistance(System.Windows.Forms.
+        SplitContainer splitter)
+    {
+        // Grab the splitterDistance property for the current splitter and 
+        // convert it to text
+        // (cause that's what the text box will need)
+        return ((Int32)splitter.get_SplitterDistance()).
+            ToString(CultureInfo.get_CurrentUICulture());
+    } //GetSplitterDistance
+
+    private String GetSplitterWidth(System.Windows.Forms.SplitContainer splitter)
+    {
+        // Grab the splitterWidth property for the current splitter and convert 
+        // it to text
+        // (cause that's what the text box will need)
+        return ((Int32)splitter.get_SplitterWidth()).
+            ToString(CultureInfo.get_CurrentUICulture());
+    } //GetSplitterWidth
+
+    private String GetSplitterIncrement(System.Windows.Forms.
+        SplitContainer splitter)
+    {
+        // Grab the splitterIncrement property for the current splitter and 
+        // convert it to text
+        // (cause that's what the text box will need)
+        return ((Int32)splitter.get_SplitterIncrement()).
+            ToString(CultureInfo.get_CurrentUICulture());
+    } //GetSplitterIncrement
+
+
+	private String GetPanel1MinSize(System.Windows.Forms.SplitContainer splitter)
+	{
+        // Grab the Panel1MinSize property for the current splitter and 
+        // convert it to text
+        // (cause that's what the text box will need)
+        return ((Int32)splitter.get_Panel1MinSize()).
+            ToString(CultureInfo.get_CurrentUICulture());
+
+	} //GetPanel1MinSize
+
+	private String GetPane21MinSize(System.Windows.Forms.SplitContainer splitter)
+	{
+        // Grab the Panel1MinSize property for the current splitter and 
+        // convert it to text
+        // (cause that's what the text box will need)
+        return ((Int32)splitter.get_Panel2MinSize()).
+            ToString(CultureInfo.get_CurrentUICulture());
+
+	} //GetPanel2MinSize
+
+	private void orientationButton_Click(Object sender, EventArgs e)
+    {
+        // This event fires every time the 'Orientation' button is clicked
+        // The idea is that each time the button is clicked, the orientation 
+        // of the SplitContainer will toggle between 'Vertical' and 'Horizontal' 
+        // orientation The sender parameter is the button that was clicked.  
+        // We need to cast is to Button
+        Button orientationButton = (Button)sender;
+        // Decide what the orientation should be based upon the current values
+        if (this.splitContainer1.get_Orientation().
+            Equals(Orientation.Vertical)) {
+            // Set the actual SplitContainer orientation property
+            this.splitContainer1.set_Orientation(Orientation.Horizontal);
+            // Change the text of the button to reflect the toggle
+            orientationButton.set_Text("Horizontal");
+			this.splitContainer1.set_SplitterDistance(150);
+		}
+        else {
+            // Set the actual SplitContainer orientation property
+            this.splitContainer1.set_Orientation(Orientation.Vertical);
+            // Change the text of the button to reflect the toggle
+            orientationButton.set_Text("Vertical");
+        }
+    } //orientationButton_Click
+
+    /// <summary>
+    /// Required method for Designer support - do not modify
+    /// the contents of this method with the code editor.
+    /// </summary>
+    private void InitializeComponent()
+    {
+		this.components = new System.ComponentModel.Container();
+		System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(Form1.class.ToType());
+		this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+		this.pictureBox1 = new System.Windows.Forms.PictureBox();
+		this.Panel2Collapsed = new System.Windows.Forms.CheckBox();
+		this.Panel1Collapsed = new System.Windows.Forms.CheckBox();
+		this.label2 = new System.Windows.Forms.Label();
+		this.Panel2MinSize = new System.Windows.Forms.TextBox();
+		this.label1 = new System.Windows.Forms.Label();
+		this.Panel1MinSize = new System.Windows.Forms.TextBox();
+		this.splitterWidth = new System.Windows.Forms.TextBox();
+		this.splitterDistance = new System.Windows.Forms.TextBox();
+		this.splitterIncrement = new System.Windows.Forms.TextBox();
+		this.splitterIncrementLabel = new System.Windows.Forms.Label();
+		this.splitterWidthLabel = new System.Windows.Forms.Label();
+		this.splitterDistanceLabel = new System.Windows.Forms.Label();
+		this.orientationLabel = new System.Windows.Forms.Label();
+		this.orientationButton = new System.Windows.Forms.Button();
+		this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+		this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+		this.restorePanel2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+		this.splitContainer1.get_Panel1().SuspendLayout();
+		this.splitContainer1.get_Panel2().SuspendLayout();
+		this.splitContainer1.SuspendLayout();
+		((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+		((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+		this.menuStrip1.SuspendLayout();
+		this.SuspendLayout();
+		// 
+		// splitContainer1
+		// 
+		this.splitContainer1.set_BorderStyle(System.Windows.Forms.BorderStyle.Fixed3D);
+		resources.ApplyResources(this.splitContainer1, "splitContainer1");
+		this.splitContainer1.set_Name("splitContainer1");
+		// 
+		// splitContainer1.Panel1
+		// 
+		this.splitContainer1.get_Panel1().get_Controls().Add(this.pictureBox1);
+		// 
+		// splitContainer1.Panel2
+		// 
+		resources.ApplyResources(this.splitContainer1.get_Panel2(), "splitContainer1.Panel2");
+		this.splitContainer1.get_Panel2().get_Controls().Add(this.Panel2Collapsed);
+		this.splitContainer1.get_Panel2().get_Controls().Add(this.Panel1Collapsed);
+		this.splitContainer1.get_Panel2().get_Controls().Add(this.label2);
+		this.splitContainer1.get_Panel2().get_Controls().Add(this.Panel2MinSize);
+		this.splitContainer1.get_Panel2().get_Controls().Add(this.label1);
+		this.splitContainer1.get_Panel2().get_Controls().Add(this.Panel1MinSize);
+		this.splitContainer1.get_Panel2().get_Controls().Add(this.splitterWidth);
+		this.splitContainer1.get_Panel2().get_Controls().Add(this.splitterDistance);
+		this.splitContainer1.get_Panel2().get_Controls().Add(this.splitterIncrement);
+		this.splitContainer1.get_Panel2().get_Controls().Add(this.splitterIncrementLabel);
+		this.splitContainer1.get_Panel2().get_Controls().Add(this.splitterWidthLabel);
+		this.splitContainer1.get_Panel2().get_Controls().Add(this.splitterDistanceLabel);
+		this.splitContainer1.get_Panel2().get_Controls().Add(this.orientationLabel);
+		this.splitContainer1.get_Panel2().get_Controls().Add(this.orientationButton);
+		this.splitContainer1.add_SplitterMoved(new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved));
+		// 
+		// pictureBox1
+		// 
+		resources.ApplyResources(this.pictureBox1, "pictureBox1");
+		this.pictureBox1.set_Name("pictureBox1");
+		this.pictureBox1.set_TabStop(false);
+		// 
+		// Panel2Collapsed
+		// 
+		resources.ApplyResources(this.Panel2Collapsed, "Panel2Collapsed");
+		this.Panel2Collapsed.set_Name("Panel2Collapsed");
+		this.Panel2Collapsed.add_CheckStateChanged(new System.EventHandler(this.Panel2Collapsed_CheckStateChanged));
+		// 
+		// Panel1Collapsed
+		// 
+		resources.ApplyResources(this.Panel1Collapsed, "Panel1Collapsed");
+		this.Panel1Collapsed.set_Name("Panel1Collapsed");
+		this.Panel1Collapsed.add_CheckStateChanged(new System.EventHandler(this.Panel1Collapsed_CheckStateChanged));
+		// 
+		// label2
+		// 
+		resources.ApplyResources(this.label2, "label2");
+		this.label2.set_Name("label2");
+		// 
+		// Panel2MinSize
+		// 
+		resources.ApplyResources(this.Panel2MinSize, "Panel2MinSize");
+		this.Panel2MinSize.set_Name("Panel2MinSize");
+		this.Panel2MinSize.add_Validated(new System.EventHandler(this.Panel2MinSize_Validated));
+		this.Panel2MinSize.add_Validating(new System.ComponentModel.CancelEventHandler(this.Panel2MinSize_Validating));
+		// 
+		// label1
+		// 
+		resources.ApplyResources(this.label1, "label1");
+		this.label1.set_Name("label1");
+		// 
+		// Panel1MinSize
+		// 
+		resources.ApplyResources(this.Panel1MinSize, "Panel1MinSize");
+		this.Panel1MinSize.set_Name("Panel1MinSize");
+		this.Panel1MinSize.add_Validated(new System.EventHandler(this.Panel1MinSize_Validated));
+		this.Panel1MinSize.add_Validating(new System.ComponentModel.CancelEventHandler(this.Panel1MinSize_Validating));
+		// 
+		// splitterWidth
+		// 
+		resources.ApplyResources(this.splitterWidth, "splitterWidth");
+		this.splitterWidth.set_Name("splitterWidth");
+		// 
+		// splitterDistance
+		// 
+		resources.ApplyResources(this.splitterDistance, "splitterDistance");
+		this.splitterDistance.set_Name("splitterDistance");
+		this.splitterDistance.set_ReadOnly(true);
+		// 
+		// splitterIncrement
+		// 
+		resources.ApplyResources(this.splitterIncrement, "splitterIncrement");
+		this.splitterIncrement.set_Name("splitterIncrement");
+		// 
+		// splitterIncrementLabel
+		// 
+		resources.ApplyResources(this.splitterIncrementLabel, "splitterIncrementLabel");
+		this.splitterIncrementLabel.set_Name("splitterIncrementLabel");
+		// 
+		// splitterWidthLabel
+		// 
+		resources.ApplyResources(this.splitterWidthLabel, "splitterWidthLabel");
+		this.splitterWidthLabel.set_Name("splitterWidthLabel");
+		// 
+		// splitterDistanceLabel
+		// 
+		resources.ApplyResources(this.splitterDistanceLabel, "splitterDistanceLabel");
+		this.splitterDistanceLabel.set_Name("splitterDistanceLabel");
+		// 
+		// orientationLabel
+		// 
+		resources.ApplyResources(this.orientationLabel, "orientationLabel");
+		this.orientationLabel.set_Name("orientationLabel");
+		// 
+		// orientationButton
+		// 
+		resources.ApplyResources(this.orientationButton, "orientationButton");
+		this.orientationButton.set_Name("orientationButton");
+		this.orientationButton.add_Click(new System.EventHandler(this.orientationButton_Click));
+		// 
+		// errorProvider1
+		// 
+		this.errorProvider1.set_ContainerControl(this);
+		// 
+		// menuStrip1
+		// 
+		this.menuStrip1.get_Items().AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.restorePanel2ToolStripMenuItem}
+		);
+		resources.ApplyResources(this.menuStrip1, "menuStrip1");
+		this.menuStrip1.set_Name("menuStrip1");
+		// 
+		// restorePanel2ToolStripMenuItem
+		// 
+		this.restorePanel2ToolStripMenuItem.set_Name("restorePanel2ToolStripMenuItem");
+		resources.ApplyResources(this.restorePanel2ToolStripMenuItem, "restorePanel2ToolStripMenuItem");
+		this.restorePanel2ToolStripMenuItem.add_Click(new System.EventHandler(this.restorePanel2ToolStripMenuItem_Click));
+		// 
+		// Form1
+		// 
+		resources.ApplyResources(this, "$this");
+		this.get_Controls().Add(this.splitContainer1);
+		this.get_Controls().Add(this.menuStrip1);
+		this.set_MainMenuStrip(this.menuStrip1);
+		this.set_Name("Form1");
+		this.add_Load(new System.EventHandler(this.Form1_Load));
+		this.splitContainer1.get_Panel1().ResumeLayout(false);
+		this.splitContainer1.get_Panel2().ResumeLayout(false);
+		this.splitContainer1.get_Panel2().PerformLayout();
+		this.splitContainer1.ResumeLayout(false);
+		((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+		((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+		this.menuStrip1.ResumeLayout(false);
+		this.menuStrip1.PerformLayout();
+		this.ResumeLayout(false);
+		this.PerformLayout();
+
+	} //InitializeComponent
+
+	/// <summary>
+    /// Clean up any resources being used.
+    /// </summary>
+    protected void Dispose(boolean disposing)
+    {
+        if (disposing) {
+            if (components != null) {
+                components.Dispose();
+            }
+        }
+        super.Dispose(disposing);
+    } //Dispose
+
+	private System.Windows.Forms.SplitContainer splitContainer1;
+	private ErrorProvider errorProvider1;
+	private CheckBox Panel2Collapsed;
+	private CheckBox Panel1Collapsed;
+	private Label label2;
+	private TextBox Panel2MinSize;
+	private Label label1;
+	private TextBox Panel1MinSize;
+	private TextBox splitterWidth;
+	private TextBox splitterDistance;
+	private TextBox splitterIncrement;
+	private Label splitterIncrementLabel;
+	private Label splitterWidthLabel;
+	private Label splitterDistanceLabel;
+	private Label orientationLabel;
+	private Button orientationButton;
+	private MenuStrip menuStrip1;
+	private ToolStripMenuItem restorePanel2ToolStripMenuItem;
+	private System.Windows.Forms.PictureBox pictureBox1;
+
+	private void splitterIncrement_Validating(Object sender, CancelEventArgs e)
+	{
+		try
+		{
+			int tryValue = Int32.Parse(this.splitterIncrement.get_Text());
+			if (tryValue > 0)
+				errorProvider1.SetError(this.splitterIncrement, "");
+			else
+			{
+				errorProvider1.SetError(this.splitterIncrement, "Invalid value for SplitterIncrement, must be a valid integer greater than zero");
+				e.set_Cancel(true);
+			}
+		}
+		catch (System.Exception ex)
+		{
+			errorProvider1.SetError(splitterIncrement, "Invalid value for SplitterIncrement, must be a valid integer greater than zero");
+			e.set_Cancel(true);
+		}
+	}
+
+	private void splitterIncrement_Validated(Object sender, EventArgs e)
+	{
+		// This event will fire when the user changes the Splitter Width
+
+		// The sender parameter will be the text box that fired the event
+		// We need to cast it to a TextBox type in order to use it as a TextBox
+		TextBox splitterIncrement = (TextBox)sender;
+
+		// First make sure that there is an actual value in text box.  This is especially important since
+		// as the user deletes characters in the text box this event will fire and when the last character
+		// is deleted the event fires with no string in the text box which would result in us trying to set
+		// the splitter width to a bogus value and we would cause a runtime exception to be thrown
+
+		// Need to convert the text to an integer
+		this.splitContainer1.set_SplitterIncrement(Convert.ToInt32(splitterIncrement.get_Text(), CultureInfo.get_CurrentUICulture()));
+	}
+
+	private void splitterWidth_Validating(Object sender, CancelEventArgs e)
+	{
+		try
+		{
+			int tryValue = Int32.Parse(this.splitterWidth.get_Text());
+			if (tryValue > 0)
+				errorProvider1.SetError(this.splitterWidth, "");
+			else
+			{
+				errorProvider1.SetError(this.splitterWidth, "Invalid value for SplitterWidth, must be a valid integer greater than zero");
+				e.set_Cancel(true);
+			}
+
+		}
+		catch (System.Exception ex)
+		{
+			errorProvider1.SetError(splitterWidth, "Invalid value for SplitterWidth, must be a valid integer greater than zero");
+			e.set_Cancel(true);
+		}
+	}
+
+	private void splitterWidth_Validated(Object sender, EventArgs e)
+	{
+		// This event will fire when the user changes the Splitter Width
+
+		// The sender parameter will be the text box that fired the event
+		// We need to cast it to a TextBox type in order to use it as a TextBox
+		TextBox splitterWidth = (TextBox)sender;
+
+		// First make sure that there is an actual value in text box.  This is especially important since
+		// as the user deletes characters in the text box this event will fire and when the last character
+		// is deleted the event fires with no string in the text box which would result in us trying to set
+		// the splitter width to a bogus value and we would cause a runtime exception to be thrown
+
+		// Need to convert the text to an integer
+		this.splitContainer1.set_SplitterWidth(Convert.ToInt32(splitterWidth.get_Text(), CultureInfo.get_CurrentUICulture()));
+	}
+
+
+	private void restorePanel2ToolStripMenuItem_Click(Object sender, EventArgs e)
+	{
+		this.splitContainer1.set_Panel2Collapsed(false);
+		this.Panel2Collapsed.set_Checked(false);
+		this.restorePanel2ToolStripMenuItem.set_Enabled(false);
+	}
+
+	private void Panel1MinSize_Validating(Object sender, CancelEventArgs e)
+	{
+		try
+		{
+			int tryValue = Int32.Parse(this.Panel1MinSize.get_Text());
+			if (tryValue > 0)
+				errorProvider1.SetError(this.Panel1MinSize, "");
+			else
+			{
+				errorProvider1.SetError(this.Panel1MinSize, "Invalid value for Panel1MinSize, must be a valid integer greater than zero");
+				e.set_Cancel(true);
+			}
+		}
+		catch (System.Exception ex)
+		{
+			errorProvider1.SetError(Panel1MinSize, "Invalid value for Panel1MinSize, must be a valid integer greater than zero");
+			e.set_Cancel(true);
+		}
+	}
+
+	private void Panel1MinSize_Validated(Object sender, EventArgs e)
+	{
+		// This event will fire when the user changes Panel1MinSize
+
+		// The sender parameter will be the text box that fired the event
+		// We need to cast it to a TextBox type in order to use it as a TextBox
+		TextBox panel1MinSize = (TextBox)sender;
+
+		// First make sure that there is an actual value in text box.  This is especially important since
+		// as the user deletes characters in the text box this event will fire and when the last character
+		// is deleted the event fires with no string in the text box which would result in us trying to set
+		// the splitter width to a bogus value and we would cause a runtime exception to be thrown
+
+		// Need to convert the text to an integer
+		this.splitContainer1.set_Panel1MinSize(Convert.ToInt32(panel1MinSize.get_Text(), CultureInfo.get_CurrentUICulture()));
+	}
+
+	private void Panel2MinSize_Validating(Object sender, CancelEventArgs e)
+	{
+		try
+		{
+			int tryValue = Int32.Parse(this.Panel2MinSize.get_Text());
+			if (tryValue > 0)
+				errorProvider1.SetError(this.Panel2MinSize, "");
+			else
+			{
+				errorProvider1.SetError(this.Panel2MinSize, "Invalid value for Panel2MinSize, must be a valid integer greater than zero");
+				e.set_Cancel(true);
+			}
+		}
+		catch (System.Exception ex)
+		{
+			errorProvider1.SetError(Panel2MinSize, "Invalid value for Panel2MinSize, must be a valid integer greater than zero");
+			e.set_Cancel(true);
+		}
+	}
+
+	private void Panel2MinSize_Validated(Object sender, EventArgs e)
+	{
+		// This event will fire when the user changes Panel2MinSize
+
+		// The sender parameter will be the text box that fired the event
+		// We need to cast it to a TextBox type in order to use it as a TextBox
+		TextBox panel2MinSize = (TextBox)sender;
+
+		// First make sure that there is an actual value in text box.  This is especially important since
+		// as the user deletes characters in the text box this event will fire and when the last character
+		// is deleted the event fires with no string in the text box which would result in us trying to set
+		// the splitter width to a bogus value and we would cause a runtime exception to be thrown
+
+		// Need to convert the text to an integer
+		this.splitContainer1.set_Panel2MinSize(Convert.ToInt32(panel2MinSize.get_Text(), CultureInfo.get_CurrentUICulture()));
+	}
+
+	private void Panel1Collapsed_CheckStateChanged(Object sender, EventArgs e)
+	{
+		// Toggle the Panel1Collapsed property based on the value of the check box
+		this.splitContainer1.set_Panel1Collapsed(Panel1Collapsed.get_Checked());
+	}
+
+	private void Panel2Collapsed_CheckStateChanged(Object sender, EventArgs e)
+	{
+		// Toggle the Panel2Collapsed property based on the value of the check box
+		this.splitContainer1.set_Panel2Collapsed(Panel2Collapsed.get_Checked());
+
+		if (this.splitContainer1.get_Panel2Collapsed())
+			restorePanel2ToolStripMenuItem.set_Enabled(true);
+
+	}
+
+}//Form1
+
