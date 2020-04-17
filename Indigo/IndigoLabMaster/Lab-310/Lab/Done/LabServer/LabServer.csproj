@@ -1,0 +1,63 @@
+<Project MSBuildVersion="1.0" DefaultTargets="Build">
+  <PropertyGroup>
+    <Property Configuration="Debug" Condition=" '$(Configuration)' == '' " />
+    <Property ProductVersion="8.0.30703" />
+    <Property SchemaVersion="2.0" />
+    <Property ProjectGuid="{E34C6900-6837-408C-8DB4-AB476C125597}" />
+    <Property OutputType="Exe" />
+    <Property StartupObject="" />
+    <Property RootNamespace="LabServer" />
+    <Property NoStandardLibraries="false" />
+    <Property AssemblyName="LabServer" />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <Property DebugSymbols="true" />
+    <Property Optimize="false" />
+    <Property OutputPath=".\bin\Debug\" />
+    <Property EnableUnmanagedDebugging="false" />
+    <Property DefineConstants="DEBUG;TRACE" />
+    <Property WarningLevel="4" />
+    <Property IncrementalBuild="false" />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <Property DebugSymbols="false" />
+    <Property Optimize="true" />
+    <Property OutputPath=".\bin\Release\" />
+    <Property EnableUnmanagedDebugging="false" />
+    <Property DefineConstants="TRACE" />
+    <Property WarningLevel="4" />
+    <Property IncrementalBuild="false" />
+  </PropertyGroup>
+  <ItemGroup>
+    <Item Type="Reference" Include="System" HintPath="..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.2.30703\System.dll" Name="System" />
+    <Item Type="Reference" Include="System.Data" HintPath="..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.2.30703\System.Data.dll" Name="System.Data" />
+    <Item Type="Reference" Include="System.MessageBus" HintPath="..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.2.30703\System.MessageBus.dll" Name="System.MessageBus" />
+    <Item Type="Reference" Include="System.Serialization" HintPath="..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.2.30703\System.Serialization.dll" Name="System.Serialization" />
+    <Item Type="Reference" Include="System.XML" HintPath="..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.2.30703\System.XML.dll" Name="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <Item Type="Compile" Include="AssemblyInfo.cs" SubType="Code" />
+    <Item Type="Compile" Include="Host.cs" SubType="Code" />
+    <Item Type="Compile" Include="QuestionService.cs" SubType="Code" />
+  </ItemGroup>
+  <ItemGroup>
+    <Item Type="None" Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Item Type="Resources" Include="app.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\CSHARP.Targets" />
+  <PropertyGroup>
+    <Property PreBuildEvent="" />
+    <Property PostBuildEvent="" />
+    <Property ApplicationIcon="App.ico" />
+  </PropertyGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <CommonProperties>
+        <FL_FAE04EC0_301F_11D3_BF4B_00C04F79EFBC />
+      </CommonProperties>
+      <UserProperties />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

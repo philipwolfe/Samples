@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab05 Exercise04 Task02 FactoringService</Title>
+      <Author>Serge Luca</Author>
+      <Shortcut>Lab05 Exercise04 Task02 FactoringService</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="VB"><![CDATA[
+<Serializable()> _
+Public Class FactoringService
+    Implements IPrimeFactoring
+
+
+
+    ' Events
+    Public Event FactoredPrimes As EventHandler(Of PrimeFactoringEventArgs) _
+ Implements IPrimeFactoring.FactoredPrimes
+
+
+    Public Sub FactorPrimes() Implements IPrimeFactoring.FactorPrimes 
+
+        ThreadPool.QueueUserWorkItem(New WaitCallback(AddressOf _
+ Me.FactorPrimes), WorkflowEnvironment.WorkflowInstanceId)
+    End Sub
+
+
+    Private Sub FactorPrimes(ByVal instanceId As Object)
+
+        Console.WriteLine("Beginning Factoring Prime Numbers")
+        Dim time1 As DateTime = DateTime.Now
+        Dim num1 As Integer = 100000000
+        Dim array1 As New BitArray(num1, True)
+        Dim num2 As Integer = 2
+        Do While (num2 < num1)
+            If array1.Item(num2) Then
+                Dim num3 As Integer = (num2 * 2)
+                Do While (num3 < num1)
+                    array1.Item(num3) = False
+                    num3 = (num3 + num2)
+                Loop
+            End If
+            num2 += 1
+        Loop
+        Dim num4 As Integer = 0
+        num2 = 1
+        Do While (num2 < num1)
+            If array1.Item(num2) Then
+                num4 += 1
+            End If
+            num2 += 1
+        Loop
+        Dim span1 As TimeSpan = DateTime.Now.Subtract(time1)
+        Console.WriteLine(("Finished Factoring Prime Numbers (" & _  
+         Math.Round(span1.TotalSeconds, 0) & " seconds)"))
+        If (Not Me.FactoredPrimesEvent Is Nothing) Then
+            Me.FactoredPrimesEvent.Invoke(Me, _
+         New PrimeFactoringEventArgs(DirectCast(instanceId, Guid), num4))
+        End If
+
+    End Sub
+End class
+
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

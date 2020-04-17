@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?><ns0:BaseWorkflow x:Name="BaseWorkflow" PersonName="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:ns1="clr-namespace:SimpleCommunication;Assembly=CustomWorkflowTypes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:CustomWorkflowTypes;Assembly=CustomWorkflowTypes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<InvokeWebServiceActivity ProxyClass="{x:Type WorkflowHost.LocalWS.Service}" Invoking="{ActivityBind BaseWorkflow,Path=WSInvoking" Invoked="{ActivityBind BaseWorkflow,Path=WSInvoked" MethodName="SayHello" x:Name="invokeWebServiceActivity1">
+		<InvokeWebServiceActivity.ParameterBindings>
+			<WorkflowParameterBinding ParameterName="PersonName">
+				<WorkflowParameterBinding.Value>
+					<ActivityBind Name="BaseWorkflow" Path="PersonName" />
+				</WorkflowParameterBinding.Value>
+			</WorkflowParameterBinding>
+			<WorkflowParameterBinding ParameterName="(ReturnValue)">
+				<WorkflowParameterBinding.Value>
+					<ActivityBind Name="BaseWorkflow" Path="WSResults" />
+				</WorkflowParameterBinding.Value>
+			</WorkflowParameterBinding>
+		</InvokeWebServiceActivity.ParameterBindings>
+	</InvokeWebServiceActivity>
+	<ns0:ConsoleWriteLineActivity Message="{ActivityBind BaseWorkflow,Path=WSResults}" x:Name="consoleWriteLineActivity1" />
+</ns0:BaseWorkflow>

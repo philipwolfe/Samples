@@ -1,0 +1,144 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPages_MasterPage" %>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>City Power and Light</title>
+	<asp:contentplaceholder id="head" runat="server">
+</asp:contentplaceholder>
+	<link rel="stylesheet" type="text/css" href="~/styles.css" />
+</head>
+<body>
+	<form id="form1" runat="server">
+		<table align="center" cellpadding="0" cellspacing="0" border="0" class="page">
+			<tr>
+				<td class="titleBar" style="width: 60%">
+					&nbsp;&nbsp;&nbsp;&nbsp; City Power &amp; Light - Task Approvals System</td>
+				<td class="titleBar" align="right" style="width: 40%">
+					<div class="navigation">
+						<strong>
+							<asp:MultiView ID="multiView" runat="server" ActiveViewIndex="0">
+								<asp:View ID="signInView" runat="server">
+									<asp:LoginView ID="loginView" runat="server">
+										<AnonymousTemplate>
+											<asp:Login ID="login" runat="server" RememberMeSet="true" DestinationPageUrl="~/default.aspx">
+												<LayoutTemplate>
+													<asp:Panel DefaultButton="LoginButton" runat="server" ID="LoginPanel">
+														<table border="0" cellpadding="0">
+															<tr>
+																<td align="right">
+																	<asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">U:</asp:Label>
+																	<asp:TextBox ID="UserName" runat="server" Width="80px"></asp:TextBox>
+																	<asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">P:</asp:Label>
+																	<asp:TextBox ID="Password" runat="server" TextMode="Password" Width="80px"></asp:TextBox>
+																	&nbsp;<asp:LinkButton ID="LoginButton" runat="server" CommandName="Login" Text="Log In" />&nbsp;|
+																	<asp:LinkButton ID="RegisterButton" runat="server" CommandName="CreateAccount" Text="Register"
+																		OnClick="RegisterButton_Click" />
+																</td>
+															</tr>
+															<tr>
+																<td align="left">
+																	<div class="errorText" style="padding-top: 6px; font-size: x-small">
+																		<asp:Literal ID="FailureText" runat="server" EnableViewState="False" />
+																	</div>
+																</td>
+															</tr>
+														</table>
+													</asp:Panel>
+												</LayoutTemplate>
+											</asp:Login>
+										</AnonymousTemplate>
+										<LoggedInTemplate>
+											<div style="padding-top: 6px">
+												You are logged in as&nbsp;<asp:LoginName ID="loginName" runat="server" />
+												&nbsp;[&nbsp;<asp:LoginStatus ID="loginStatus" runat="server" LogoutPageUrl="~/default.aspx"
+													LogoutAction="Redirect" />
+												&nbsp;]
+											</div>
+										</LoggedInTemplate>
+										<RoleGroups>
+											<asp:RoleGroup Roles="Administrator">
+												<ContentTemplate>
+													<div style="padding-top: 6px">
+														You are logged in as&nbsp;<asp:LoginName ID="loginName" runat="server" />
+														&nbsp;<asp:LoginStatus ID="loginStatus" runat="server" LogoutAction="Redirect" LogoutPageUrl="~/default.aspx" />
+														&nbsp;|&nbsp;<asp:HyperLink ID="administrationHyperLink" runat="server" NavigateUrl="~/Authenticated/Administration.aspx">Administration</asp:HyperLink>
+													</div>
+												</ContentTemplate>
+											</asp:RoleGroup>
+										</RoleGroups>
+									</asp:LoginView>
+								</asp:View>
+								<asp:View ID="registerView" runat="server">
+									<asp:CreateUserWizard ID="createUserWizard" runat="server" RequireEmail="False" ActiveStepIndex="0"
+										OnContinueButtonClick="createUserWizard_ContinueButtonClick" OnCreatedUser="createUserWizard_CreatedUser">
+										<WizardSteps>
+											<asp:CreateUserWizardStep ID="CreateUserWizardStep" runat="server">
+												<ContentTemplate>
+													<asp:Panel DefaultButton="CreateButton" runat="server" ID="RegisterPanel">
+														<table border="0" cellpadding="0">
+															<tr>
+																<td align="right">
+																	<asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">U:</asp:Label>
+																	<asp:TextBox ID="UserName" runat="server" Width="80px"></asp:TextBox>
+																	<asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">P:</asp:Label>
+																	<asp:TextBox ID="Password" runat="server" TextMode="Password" Width="80px"></asp:TextBox>
+																	&nbsp;<asp:LinkButton ID="CreateButton" runat="server" CommandName="MoveNext" Text="Create" />&nbsp;|
+																	<asp:LinkButton ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancel"
+																		OnClick="CancelButton_Click" />
+																</td>
+															</tr>
+															<tr>
+																<td align="left">
+																	<div class="errorText" style="padding-top: 6px; font-size: xx-small">
+																		<asp:Literal ID="ErrorMessage" runat="server" EnableViewState="False" />
+																	</div>
+																</td>
+															</tr>
+														</table>
+													</asp:Panel>
+												</ContentTemplate>
+												<CustomNavigationTemplate>
+													<!-- Hide the default navigation button as we want to use our own inline button, this is done by using the CommandName 'MoveNext' to create the new user -->
+												</CustomNavigationTemplate>
+											</asp:CreateUserWizardStep>
+											<asp:CompleteWizardStep ID="CompleteWizardStep" runat="server">
+												<ContentTemplate>
+													<table border="0">
+														<tr>
+															<td>
+																Your account has been created. &nbsp;<asp:LinkButton ID="ContinueButton" runat="server"
+																	CausesValidation="False" CommandName="Continue" Text="Continue" ValidationGroup="CreateUserWizard" />
+															</td>
+														</tr>
+													</table>
+												</ContentTemplate>
+											</asp:CompleteWizardStep>
+										</WizardSteps>
+									</asp:CreateUserWizard>
+								</asp:View>
+							</asp:MultiView>
+						</strong>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="breadCrumb">
+					<asp:SiteMapPath ID="siteMapPath" runat="server" />
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<asp:ContentPlaceHolder ID="bodyContentPlaceHolder" runat="server" />
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="footer">
+				</td>
+			</tr>
+		</table>
+	</form>
+	<p>
+		&nbsp;</p>
+</body>
+</html>

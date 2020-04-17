@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab02 Ex04 Task01 Initalize</Title>
+      <Author>MVP KenLin</Author>
+      <Shortcut>Lab02 Ex04 Task01 Initalize</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="VB"><![CDATA[
+    Dim parentActivity As SendMailActivity
+
+    Protected Overrides Sub Initialize(ByVal activity As Activity)
+        MyBase.Initialize(activity)
+        parentActivity = CType(activity, SendMailActivity)
+    End Sub
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

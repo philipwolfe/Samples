@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab03 Ex03 Task03 GetProfile</Title>
+      <Author>MVP KenLin</Author>
+      <Shortcut>Lab03 Ex03 Task03 GetProfile</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="VB"><![CDATA[
+    Private Overloads Shared Function GetProfile() As TrackingProfile
+        ' Create a Tracking Profile
+        Dim profile As TrackingProfile = New TrackingProfile
+        profile.Version = New Version("3.0.0")
+
+        ' Add a TrackPoint to cover all activity status events
+        Dim activityTrackPoint As ActivityTrackPoint = New ActivityTrackPoint
+        Dim activityLocation As ActivityTrackingLocation = New ActivityTrackingLocation(GetType(Activity))
+        activityLocation.MatchDerivedTypes = True
+        For Each status As ActivityExecutionStatus In System.Enum.GetValues(GetType(ActivityExecutionStatus))
+            activityLocation.ExecutionStatusEvents.Add(status)
+        Next
+        activityTrackPoint.MatchingLocations.Add(activityLocation)
+        profile.ActivityTrackPoints.Add(activityTrackPoint)
+
+        ' Add a TrackPoint to cover all workflow status events
+        Dim workflowTrackPoint As WorkflowTrackPoint = New WorkflowTrackPoint
+        workflowTrackPoint.MatchingLocation = New WorkflowTrackingLocation
+        For Each workflowEvent As TrackingWorkflowEvent In System.Enum.GetValues(GetType(TrackingWorkflowEvent))
+            workflowTrackPoint.MatchingLocation.Events.Add(workflowEvent)
+        Next
+        profile.WorkflowTrackPoints.Add(workflowTrackPoint)
+
+        ' Add a TrackPoint to cover all user track points
+        Dim userTrackPoint As UserTrackPoint = New UserTrackPoint
+        Dim userLocation As UserTrackingLocation = New UserTrackingLocation
+        userLocation.ActivityType = GetType(Activity)
+        userLocation.MatchDerivedActivityTypes = True
+        userLocation.ArgumentType = GetType(System.Object)
+        userLocation.MatchDerivedArgumentTypes = True
+        userTrackPoint.MatchingLocations.Add(userLocation)
+        profile.UserTrackPoints.Add(userTrackPoint)
+
+        Return profile
+    End Function
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

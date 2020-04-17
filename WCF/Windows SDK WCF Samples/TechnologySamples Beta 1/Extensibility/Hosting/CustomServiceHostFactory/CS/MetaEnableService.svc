@@ -1,0 +1,24 @@
+<%@ServiceHost Factory="Microsoft.Samples.Indigo.MetaEnableServiceHostFactory" Service="Microsoft.Samples.Indigo.EchoService" language="csharp" debug="true"%>
+using System;
+using System.ServiceModel;
+
+namespace Microsoft.Samples.Indigo
+{
+    [ServiceContract]
+    public interface IEchoService
+    {
+        [OperationContract(IsOneWay=false)]        
+        string echo(string s);
+    }
+
+
+    public class EchoService : IEchoService
+    {
+        public string echo(string s)
+        {
+            return s;
+        }
+
+    }
+
+}

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab04 Ex02 Task02 StartOrderWorkflow</Title>
+      <Author>Serge Luca</Author>
+      <Shortcut>Lab04 Ex02 Task02 StartOrderWorkflow</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="VB"><![CDATA[
+    Private Function StartOrderWorkflow(ByVal strOrderID As String) As System.Guid
+
+        ' Create a new GUID for the WorkflowInstanceId
+        Dim WorkflowInstanceId As System.Guid = System.Guid.NewGuid()
+
+
+        Dim stateMachineInstance As StateMachineInstance = _
+        stateMachineTrackingService.RegisterInstance(GetType(OrderWorkflows.Workflow1), WorkflowInstanceId)
+        AddHandler stateMachineInstance.StateChanged, AddressOf StateMachineInstance_StateChanged
+
+
+        stateMachineInstance.StartWorkflow()
+        stateMachineInstances.Add(WorkflowInstanceId.ToString(), _
+                                       stateMachineInstance)
+
+        
+
+        ' Return the WorkflowInstanceId
+        Return WorkflowInstanceId
+
+    End Function
+
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

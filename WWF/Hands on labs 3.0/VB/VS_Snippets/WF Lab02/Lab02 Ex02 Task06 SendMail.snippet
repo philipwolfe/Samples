@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab02 Ex02 Task06 SendMail</Title>
+      <Author>MVP KenLin</Author>
+      <Shortcut>Lab02 Ex02 Task06 SendMail</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="VB"><![CDATA[
+    Protected Overrides Function Execute(ByVal executionContext As ActivityExecutionContext) _
+                                As ActivityExecutionStatus
+        Dim toAddress As MailAddress = New MailAddress(MailTo)
+        Dim fromAddress As MailAddress = New MailAddress(MailFrom)
+
+        Dim addresses As MailAddressCollection = New MailAddressCollection
+        addresses.Add(toAddress)
+
+        Dim msg As MailMessage = New MailMessage(fromAddress, toAddress)
+
+        msg.Subject = Subject
+        msg.Body = Body
+
+        Dim mail As SmtpClient = New SmtpClient("localhost")
+
+        mail.Send(msg)
+        Return ActivityExecutionStatus.Closed
+    End Function
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

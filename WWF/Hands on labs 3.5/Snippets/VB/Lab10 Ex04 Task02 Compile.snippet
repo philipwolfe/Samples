@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab10_Ex04_Task02_Compile</Title>
+      <Author>Serge Luca</Author>
+      <Shortcut>WFLab10_Ex04_Task02_Compile</Shortcut>
+    </Header>
+    <Snippet>   <Code Language="VB"><![CDATA[
+
+Public Function Compile() As Boolean
+    Return Me.Compile(True)
+End Function
+
+Public Function Compile(ByVal showMessage As Boolean) As Boolean
+    If Not Me.Save(False) Then
+        Return False
+    End If
+    If Not File.Exists(Me.XomlFile) Then
+        MessageBox.Show(Me, ("Cannot locate xoml file: " & Path.Combine(Path.GetDirectoryName(MyBase.GetType.Assembly.Location), Me.XomlFile)), Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Hand)
+        Return False
+    End If
+    Dim compileOK As Boolean = True
+    Dim cursor As Cursor = Me.Cursor
+    Me.Cursor = Cursors.WaitCursor
+    Try 
+        Dim assemblyNames As String() = New String() { "ActivityLibrary.dll" }
+        Dim compiler As New WorkflowCompiler
+        Dim parameters As New WorkflowCompilerParameters(assemblyNames)
+        parameters.LibraryPaths.Add(Path.GetDirectoryName(GetType(ActivityLibrary.MessageActivity).Assembly.Location))
+        parameters.GenerateInMemory = True
+        Dim compilerResults As WorkflowCompilerResults = compiler.Compile(parameters, New String() { Me.XomlFile })
+        WorkflowDesignerControl.inMemoryAssembly = compilerResults.CompiledAssembly
+        Dim errors As New StringBuilder
+        Dim compilerError As CompilerError
+        For Each compilerError In compilerResults.Errors
+            errors.Append((compilerError.ToString & ChrW(10)))
+        Next
+        If (errors.Length <> 0) Then
+            MessageBox.Show(Me, errors.ToString, Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Hand)
+            compileOK = False
+        ElseIf showMessage Then
+            MessageBox.Show(Me, ("Workflow compiled successfully. Compiled assembly:" & ChrW(10) & compilerResults.CompiledAssembly.GetName.Tostring()), Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
+        End If
+    Finally
+        Me.Cursor = cursor
+    End Try
+    Return compileOK
+End Function
+
+
+
+
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

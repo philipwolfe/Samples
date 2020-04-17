@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab09 Ex03 Task03 WorkflowAddHandlersMethods</Title>
+      <Author>Serge Luca</Author>
+      <Shortcut>Lab09 Ex03 Task03 WorkflowAddHandlersMethods</Shortcut>
+    </Header>
+    <Snippet>   <Code Language="VB"><![CDATA[
+
+        Shared Sub OnWorkflowIdled(ByVal sender As Object, ByVal e As WorkflowEventArgs)
+            'idling this workflow so we can modify it
+            e.WorkflowInstance.Suspend("suspending to modify IfElse1")
+            changeRulesForWorkflow(e.WorkflowInstance)
+            e.WorkflowInstance.Resume()
+        End Sub
+        Shared Sub OnWorkflowSuspended(ByVal sender As Object, ByVal e As WorkflowSuspendedEventArgs)
+            Dim reason As String = e.Error
+            Dim workflowID As String = e.WorkflowInstance.InstanceId.ToString()
+            Console.WriteLine(vbTab & "Workflow '{0}' Suspended, reason '{1}'", workflowID, reason)
+        End Sub
+        Shared Sub OnWorkflowResumed(ByVal sender As Object, ByVal e As WorkflowEventArgs)
+            Dim workflowID As String = e.WorkflowInstance.InstanceId.ToString()
+            Console.WriteLine(vbTab & "Workflow '{0}' Resumed", workflowID)
+        End Sub
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

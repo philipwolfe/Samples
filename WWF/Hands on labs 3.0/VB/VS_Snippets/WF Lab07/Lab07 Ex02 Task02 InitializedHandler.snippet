@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab07 Ex02 Task02 InitializedHandler</Title>
+      <Author>Serge Luca</Author>
+      <Shortcut>Lab07 Ex02 Task02 InitializedHandler</Shortcut>
+    </Header>
+    <Snippet>   <Code Language="VB"><![CDATA[
+   Public Sub replicatorActivity1_Initialized(ByVal sender As Object, ByVal e As EventArgs)
+
+        ' Populate the data used for each instance of the Replicator's 
+        ' child instance that are created
+        Dim children As ArrayList = New ArrayList()
+        children.Add("Child Instance 1")
+        children.Add("Child Instance 2")
+        children.Add("Child Instance 3")
+        children.Add("Child Instance 4")
+        children.Add("Child Instance 5")
+        children.Add("Child Instance 6")
+        replicatorActivity1.InitialChildData = children
+
+        ' Specify how the child instances should be created - in parallel 
+        ' or in a sequence
+        replicatorActivity1.ExecutionType = ExecutionType.Parallel
+
+    End Sub
+
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

@@ -1,0 +1,47 @@
+<StackPanel  
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="SDKSample.Window1"
+>
+<Grid ShowGridLines ="false" Background ="White">
+<Grid.ColumnDefinitions>
+<ColumnDefinition Width="250"/>
+<ColumnDefinition Width="300"/>
+</Grid.ColumnDefinitions>
+<Grid.RowDefinitions>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+</Grid.RowDefinitions>
+<TextBlock Margin="10, 10, 5, 5" Grid.Column="0" Grid.Row="0" FontSize="24">Check Box Styles</TextBlock>
+<TextBlock Margin="10, 10, 5, 5" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" FontSize="14">The following 
+        check boxes are created using styles.</TextBlock>  
+<CheckBox Margin="10, 10, 5, 5" Grid.Column="0" Grid.Row="2" Style="{StaticResource SystemResStyle}">SystemResource Style
+</CheckBox>
+<TextBlock Margin="10, 10, 5, 5" Grid.Column="1" Grid.Row="2" FontSize="12" VerticalAlignment="Center" 
+        TextWrapping="WrapWithOverflow">Specifies the background and foreground colors using system resource 
+        brushes.
+</TextBlock>  
+<CheckBox Margin="10, 10, 5, 5" Grid.Column="0" Grid.Row="3" FontSize="12" Style="{StaticResource Triggers}">
+        Triggers Style
+</CheckBox>
+<TextBlock Margin="10, 10, 5, 5" Grid.Column="1" Grid.Row="3" FontSize="12" VerticalAlignment="Center" 
+        TextWrapping="WrapWithOverflow">Uses triggers to change the check box's appearance in response to an 
+        event.
+</TextBlock>
+<CheckBox Margin="10, 10, 5, 5" Grid.Column="0" Grid.Row="4" Style="{StaticResource Properties}">Properties 
+        Style
+</CheckBox>
+<TextBlock Margin="10, 10, 5, 5" Grid.Column="1" Grid.Row="4" FontSize="12" VerticalAlignment="Center" 
+        TextWrapping="WrapWithOverflow">Uses various properties to customize the check box.</TextBlock>
+</Grid>
+
+</StackPanel>

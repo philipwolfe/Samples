@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab09 Ex02 Task02 ModifyWorkflowFromHost</Title>
+      <Author>Serge Luca</Author>
+      <Shortcut>Lab09 Ex02 Task02 ModifyWorkflowFromHost</Shortcut>
+    </Header>
+    <Snippet>   <Code Language="VB"><![CDATA[
+    
+Shared Sub ModifyWorkflowFromHost(ByVal workflowInstance As WorkflowInstance)
+
+            If (Not workflowUpdated) Then
+
+                workflowUpdated = True
+
+                Dim workflowInstanceDefinition As Activity = workflowInstance.GetWorkflowDefinition()
+                Dim workflowChangesToMake As New WorkflowChanges(workflowInstanceDefinition)
+
+                ' remove ifelse
+                Console.WriteLine(vbTab & "Host change to always require approval for")
+                Console.WriteLine(vbTab & "InstanceId: " + workflowInstance.InstanceId.ToString())
+
+                Dim ifelse As CompositeActivity = CType(workflowChangesToMake.TransientWorkflow.Activities("ifElse1Activity"), CompositeActivity)
+                workflowChangesToMake.TransientWorkflow.Activities.Remove(ifelse)
+
+                ' setup to invoke NewStepWorkflow type
+                Dim invokeNewStepWorkflow As New InvokeWorkflowActivity()
+                invokeNewStepWorkflow.Name = "AddNewStepWorkflow"
+                invokeNewStepWorkflow.TargetWorkflow = GetType(DynamicUpdateInWorkflow.Workflow2)
+
+                ' insert approval workflow
+                workflowChangesToMake.TransientWorkflow.Activities.Insert(1, invokeNewStepWorkflow)
+
+                ' apply transient changes to instance
+                workflowInstance.ApplyWorkflowChanges(workflowChangesToMake)
+            Else
+                Console.WriteLine(vbTab & "Workflow has already been updated by the Host")
+            End If
+        End Sub
+
+
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

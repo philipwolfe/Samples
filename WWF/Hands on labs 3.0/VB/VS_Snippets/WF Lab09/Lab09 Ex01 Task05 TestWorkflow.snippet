@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab09 Ex01 Task05 TestWorkflow</Title>
+      <Author>Serge Luca</Author>
+      <Shortcut>Lab09 Ex01 Task05 TestWorkflow</Shortcut>
+    </Header>
+    <Snippet>   <Code Language="VB"><![CDATA[
+    
+                'start PO approval workflow with purchase less than $1000
+                Console.WriteLine("Workflow test 1 (purchase less than $1000) :")
+                Dim workflow1Amount As Integer = 750
+                Dim workflow1NamedValues As New Dictionary(Of String, Object)()
+                workflow1NamedValues.Add("Amount", workflow1Amount)
+                Dim workflow1Instance As WorkflowInstance = workflowRuntime.CreateWorkflow(GetType(DynamicUpdateInWorkflow.Workflow1), workflow1NamedValues)
+                workflow1Instance.Start()
+                WaitHandle.WaitOne()
+
+                'waiting for the workflow to complete so the console output makes sence
+                System.Threading.Thread.Sleep(New TimeSpan(0, 0, 0, 10, 0))
+                Console.Write("\r\n\r\n")
+
+                ' start PO approval workflow with purchase greater than $1000
+                Console.WriteLine("Workflow test 2 (purchase greater than $1000) :")
+                Dim workflow2Amount As Integer = 1200
+                Dim workflow2NamedValues As New Dictionary(Of String, Object)()
+                workflow2NamedValues.Add("Amount", workflow2Amount)
+                Dim workflow2Instance As WorkflowInstance = workflowRuntime.CreateWorkflow(GetType(DynamicUpdateInWorkflow.Workflow1), workflow2NamedValues)
+                workflow2Instance.Start()
+                WaitHandle.WaitOne()
+
+                'waiting for the workflow to complete so the console output makes sence
+                System.Threading.Thread.Sleep(New TimeSpan(0, 0, 0, 10, 0))
+                Console.Write("\r\n\r\n")
+                Console.WriteLine("press ENTER to continue")
+                Console.ReadLine()
+
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

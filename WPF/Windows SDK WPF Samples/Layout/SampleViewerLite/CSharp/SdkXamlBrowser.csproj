@@ -1,0 +1,37 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition="'$(Configuration)'==''">Debug</Configuration>
+    <AssemblyName>SdkXamlBrowser</AssemblyName>
+    <LAPIVersion>v6.0.4030</LAPIVersion>
+    <LAPI>$(windir)\Microsoft.NET\Windows\$(LAPIVersion)</LAPI>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <TargetType>Winexe</TargetType>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{750DF5CF-7497-49C4-B2AD-5553E4F9A91B}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildBinPath)\Microsoft.WinFX.targets" />
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Data" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="UIAutomationProvider" />
+    <ApplicationDefinition Include="Application.xaml" />
+    <Compile Include="Scene1.xaml.cs">
+      <DependsUpon>Scene1.xaml</DependsUpon>
+    </Compile>
+    <Page Include="Scene1.xaml">
+      <SubType>
+      </SubType>
+    </Page>
+    <Resource Include="Images\*.jpg" />
+    <Resource Include="Images\*.png" />
+    <Resource Include="Images\*.gif" />
+    <Resource Include="Samples.xml" />
+    <Reference Include="UIAutomationTypes" />
+  </ItemGroup>
+</Project>

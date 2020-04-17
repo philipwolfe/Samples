@@ -1,0 +1,30 @@
+<StackPanel  
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="ContextMenu_wcp.Pane1"
+>
+<!--  The namespace + class name in the codebehind file and the x:Class attribute in the root of this document, must stay identical.  You can change them, but you must keep them in sync. -->
+<StackPanel.Resources>
+
+<ContextMenu x:Key="MyContextMenu" x:Shared="true">
+    <MenuItem Header="This MenuItem is checkable" IsCheckable="true" />
+    <Separator/>
+    <MenuItem Header="This is a regular MenuItem" />
+</ContextMenu>
+
+</StackPanel.Resources>
+ 
+<TextBlock FontSize="24">Shared ContextMenu</TextBlock>
+<Button Background="LightBlue"
+    Content="This Button has a ContextMenu"
+    ContextMenu="{DynamicResource MyContextMenu}" />
+<Button Background="Pink"
+    Content="This Button has the same ContextMenu"
+    ContextMenu="{DynamicResource MyContextMenu}" />
+<CheckBox BorderBrush="Red"
+    Content="This Check Box has the same ContextMenu"
+    ContextMenu="{DynamicResource MyContextMenu}" />
+<CheckBox BorderBrush="Green" 
+    Content="This Check Box has the same ContextMenu"
+    ContextMenu="{DynamicResource MyContextMenu}" />
+</StackPanel>

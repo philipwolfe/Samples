@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab03_Ex03_Task02_TrackingChannel</Title>
+      <Author>MVP KenLin</Author>
+      <Shortcut>WFLab03_Ex03_Task02_TrackingChannel</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="VB"><![CDATA[Imports System
+Imports System.IO
+Imports System.Workflow.Runtime
+Imports System.Workflow.Runtime.Tracking
+Imports System.Workflow.ComponentModel
+Imports System.Workflow.Runtime.Hosting
+
+Public Class ConsoleTrackingChannel
+    Inherits TrackingChannel
+
+    Private parameters As TrackingParameters = Nothing
+
+    Protected Sub New()
+        MyBase.new()
+    End Sub
+
+    Public Sub New(ByVal parameters As TrackingParameters)
+        MyBase.New()
+        Me.parameters = parameters
+    End Sub
+
+End Class]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

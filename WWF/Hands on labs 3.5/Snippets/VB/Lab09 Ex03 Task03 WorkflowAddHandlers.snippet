@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab09_Ex03_Task03_WorkflowAddHandlers</Title>
+      <Author>Serge Luca</Author>
+      <Shortcut>WFLab09_Ex03_Task03_WorkflowAddHandlers</Shortcut>
+    </Header>
+    <Snippet>   <Code Language="VB"><![CDATA[
+
+                AddHandler workflowRuntime.WorkflowIdled, AddressOf OnWorkflowIdled
+                AddHandler workflowRuntime.WorkflowResumed, AddressOf OnWorkflowResumed
+                AddHandler workflowRuntime.WorkflowSuspended, AddressOf OnWorkflowSuspended
+
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

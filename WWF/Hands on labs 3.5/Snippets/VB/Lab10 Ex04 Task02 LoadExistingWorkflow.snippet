@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab10_Ex04_Task02_LoadExistingWorkflow</Title>
+      <Author>Serge Luca</Author>
+      <Shortcut>WFLab10_Ex04_Task02_LoadExistingWorkflow</Shortcut>
+    </Header>
+    <Snippet>   <Code Language="VB"><![CDATA[
+
+        Public Sub LoadExistingWorkflow()
+            Dim openFileDialog As New OpenFileDialog
+            openFileDialog.Filter = "xoml files (*.xoml)|*.xoml|All files (*.*)|*.*"
+            openFileDialog.FilterIndex = 1
+            openFileDialog.RestoreDirectory = True
+            If (openFileDialog.ShowDialog = DialogResult.OK) Then
+                Using xmlReader As XmlReader = XmlReader.Create(openFileDialog.FileName)
+                    Dim serializer As New WorkflowMarkupSerializer
+                    Me.workflow = DirectCast(serializer.Deserialize(xmlReader), SequentialWorkflowActivity)
+                    Me.LoadWorkflow()
+                    Me.XomlFile = openFileDialog.FileName
+                    Me.Text = ("Designer Hosting Sample -- [" & openFileDialog.FileName & "]")
+                End Using
+            End If
+        End Sub
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

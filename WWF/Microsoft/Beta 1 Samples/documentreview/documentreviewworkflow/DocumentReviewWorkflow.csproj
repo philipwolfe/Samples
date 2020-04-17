@@ -1,0 +1,149 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <ProductVersion>8.0.50215</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8BF9350A-B877-4C4E-B9F6-9BAA6FAA14B7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>DocumentReviewWorkflow</RootNamespace>
+    <AssemblyName>DocumentReviewWorkflow</AssemblyName>
+    <ProjectTypeGuids>{14822709-B5A1-4724-98CA-57A101D1B079};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Workflow.Activities, Version=3.0.00000.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\WINDOWS\Microsoft.NET\Framework\v2.0.50215\Windows Workflow Foundation\System.Workflow.Activities.dll</HintPath>
+      <Name>System.Workflow.Activities</Name>
+      <SpecificVersion>True</SpecificVersion>
+      <Aliases>global</Aliases>
+      <ExecutableExtension>.dll</ExecutableExtension>
+    </Reference>
+    <Reference Include="System.Workflow.ComponentModel, Version=3.0.00000.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\WINDOWS\Microsoft.NET\Framework\v2.0.50215\Windows Workflow Foundation\System.Workflow.ComponentModel.dll</HintPath>
+      <Name>System.Workflow.ComponentModel</Name>
+      <SpecificVersion>True</SpecificVersion>
+      <Aliases>global</Aliases>
+      <ExecutableExtension>.dll</ExecutableExtension>
+    </Reference>
+    <Reference Include="System.Workflow.Runtime, Version=3.0.00000.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\WINDOWS\Microsoft.NET\Framework\v2.0.50215\Windows Workflow Foundation\System.Workflow.Runtime.dll</HintPath>
+      <Name>System.Workflow.Runtime</Name>
+      <SpecificVersion>True</SpecificVersion>
+      <Aliases>global</Aliases>
+      <ExecutableExtension>.dll</ExecutableExtension>
+    </Reference>
+    <Reference Include="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\WINDOWS\Microsoft.NET\Framework\v2.0.40426\System.dll</HintPath>
+      <Name>System</Name>
+      <SpecificVersion>True</SpecificVersion>
+      <Aliases>global</Aliases>
+      <ExecutableExtension>.dll</ExecutableExtension>
+    </Reference>
+    <Reference Include="System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=x86">
+      <HintPath>..\..\..\WINDOWS\Microsoft.NET\Framework\v2.0.40426\System.Data.dll</HintPath>
+      <Name>System.Data</Name>
+      <SpecificVersion>True</SpecificVersion>
+      <Aliases>global</Aliases>
+      <ExecutableExtension>.dll</ExecutableExtension>
+    </Reference>
+    <Reference Include="System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\WINDOWS\Microsoft.NET\Framework\v2.0.40426\System.Design.dll</HintPath>
+      <Name>System.Design</Name>
+      <SpecificVersion>True</SpecificVersion>
+      <Aliases>global</Aliases>
+      <ExecutableExtension>.dll</ExecutableExtension>
+    </Reference>
+    <Reference Include="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\WINDOWS\Microsoft.NET\Framework\v2.0.40426\System.Drawing.dll</HintPath>
+      <Name>System.Drawing</Name>
+      <SpecificVersion>True</SpecificVersion>
+      <Aliases>global</Aliases>
+      <ExecutableExtension>.dll</ExecutableExtension>
+    </Reference>
+    <Reference Include="System.Drawing.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\WINDOWS\Microsoft.NET\Framework\v2.0.40426\System.Drawing.Design.dll</HintPath>
+      <Name>System.Drawing.Design</Name>
+      <SpecificVersion>True</SpecificVersion>
+      <Aliases>global</Aliases>
+      <ExecutableExtension>.dll</ExecutableExtension>
+    </Reference>
+    <Reference Include="System.Transactions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\WINDOWS\Microsoft.NET\Framework\v2.0.40426\System.Transactions.dll</HintPath>
+      <Name>System.Transactions</Name>
+      <SpecificVersion>True</SpecificVersion>
+      <Aliases>global</Aliases>
+      <ExecutableExtension>.dll</ExecutableExtension>
+    </Reference>
+    <Reference Include="System.Xml, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\WINDOWS\Microsoft.NET\Framework\v2.0.40426\System.XML.dll</HintPath>
+      <Name>System.XML</Name>
+      <SpecificVersion>True</SpecificVersion>
+      <Aliases>global</Aliases>
+      <ExecutableExtension>.dll</ExecutableExtension>
+    </Reference>
+    <Reference Include="System.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=x86">
+      <HintPath>..\..\..\WINDOWS\Microsoft.NET\Framework\v2.0.40426\System.Web.dll</HintPath>
+      <Name>System.Web</Name>
+      <SpecificVersion>True</SpecificVersion>
+      <Aliases>global</Aliases>
+      <ExecutableExtension>.dll</ExecutableExtension>
+    </Reference>
+    <Reference Include="System.Web.Services, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\WINDOWS\Microsoft.NET\Framework\v2.0.40426\System.Web.Services.dll</HintPath>
+      <Name>System.Web.Services</Name>
+      <SpecificVersion>True</SpecificVersion>
+      <Aliases>global</Aliases>
+      <ExecutableExtension>.dll</ExecutableExtension>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.cs</LastGenOutput>
+    </None>
+    <Compile Include="DocumentReviewWorkflow.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DocumentReviewWorkflow.designer.cs">
+      <DependentUpon>DocumentReviewWorkflow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CommunicationInterfaces\CommunicationInterfaces.csproj">
+      <Project>{F5EDD043-264D-480D-882D-76129C0BBC55}</Project>
+      <Name>CommunicationInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DocumentReviewTaskActivity\DocumentReviewTaskActivity.csproj">
+      <Project>{337BE906-8D3C-459A-A61A-7CAEF7EA678A}</Project>
+      <Name>DocumentReviewTaskActivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SubscriptionService\SubscriptionService.csproj">
+      <Project>{9445CBA4-9E55-4F0F-BF50-B55A0D25B8FF}</Project>
+      <Name>SubscriptionService</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Windows Workflow Foundation\v3.0\Workflow.Targets" />
+</Project>

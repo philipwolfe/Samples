@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab10 Ex02 Task02 ZoomMenuItem_Click</Title>
+      <Author>Serge Luca</Author>
+      <Shortcut>Lab10 Ex02 Task02 ZoomMenuItem_Click</Shortcut>
+    </Header>
+    <Snippet>   <Code Language="VB"><![CDATA[
+   Private Sub zoomDropDownMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs)
+
+        If TypeOf sender Is ToolStripMenuItem Then
+            Dim menuItem As ToolStripMenuItem = DirectCast(sender, ToolStripMenuItem)
+            Dim zoomFactor As Integer = 0
+            If Integer.TryParse(menuItem.Tag.ToString, zoomFactor) Then
+                Me.workflowDesignerControl.ProcessZoom(zoomFactor)
+            End If
+        End If
+    End Sub
+
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

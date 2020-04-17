@@ -1,0 +1,63 @@
+ 
+<StackPanel  
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="Checkbox2.Pane1"
+    Height="900"
+    >
+
+<Grid ShowGridLines ="false" Background ="White">
+<Grid.ColumnDefinitions>
+<ColumnDefinition Width="300px"/>
+<ColumnDefinition Width="250px"/>
+</Grid.ColumnDefinitions>
+<Grid.RowDefinitions>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+</Grid.RowDefinitions>
+<TextBlock Margin="10, 10, 3, 3" Grid.Column="0" Grid.Row="0" FontSize="20">Check Boxes</TextBlock>
+<TextBlock Margin="10, 10, 3, 3" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" FontSize="14">The following 
+      check box examples demonstrate:</TextBlock>
+<CheckBox Margin="10, 10, 3, 3" Grid.Column="0" Grid.Row="2" Name="cb1" FontSize="12" 
+Checked="HandleChange">Check Box</CheckBox>
+<TextBlock Margin="10, 10, 3, 3" Grid.Column="1" Grid.Row="2" FontSize="12" VerticalAlignment="Center" 
+      TextWrapping="WrapWithOverflow">Single check box. Clicking the box toggles its state from checked 
+      to unchecked.
+</TextBlock>
+<DockPanel Margin="10, 10, 3, 3" Grid.Column="0" Grid.Row="3" Grid.RowSpan="2">
+<CheckBox Name="cb2" FontSize="12" DockPanel.Dock="Top">Yes</CheckBox>
+<CheckBox Name="cb3" FontSize="12" DockPanel.Dock="Top">No</CheckBox>
+<CheckBox Name="cb4" FontSize="12" DockPanel.Dock="Top">Maybe</CheckBox>
+<CheckBox Name="cb5" FontSize="12" DockPanel.Dock="Top">I have no opinion.</CheckBox>  
+</DockPanel>
+<TextBlock Margin="10, 10, 3, 3" Grid.Column="1" Grid.Row="3" Grid.RowSpan="2" FontSize="12" 
+      VerticalAlignment="Center" TextWrapping="WrapWithOverflow">Group of check boxes. You may choose as 
+      many items as you wish in a group of check boxes.
+</TextBlock> 
+<DockPanel Margin="10, 10, 3, 3" Grid.Column="0" Grid.Row="5">
+<CheckBox Name="cb6" Checked="HandleChange1"><Image Source="data\flower.jpg" Height="30" Width="30"/>
+</CheckBox>
+<TextBlock Name="txt" VerticalAlignment="Center">Click the check box.</TextBlock>
+</DockPanel>
+<TextBlock Margin="10, 10, 3, 3" Grid.Column="1" Grid.Row="5" Name="txt2" FontSize="12" 
+     VerticalAlignment="Center" TextWrapping="WrapWithOverflow">Check box with an image.
+</TextBlock> 
+<CheckBox  Name="cb7" Checked="HandleChange2" Margin="10, 10, 3, 3" Grid.Column="0" Grid.Row="6" FontSize="12">
+<DockPanel>
+    <Image Source="data\flower.jpg" Height="30" Width="30"/>
+    <TextBlock Name="txt3" VerticalAlignment="Center">Click the check box.</TextBlock>
+</DockPanel>
+</CheckBox>
+<TextBlock Margin="10, 10, 3, 3" Grid.Column="1" Grid.Row="6" FontSize="12" VerticalAlignment="Center" 
+      TextWrapping="WrapWithOverflow">Check box with complex content, the check box contains a DockPanel 
+      with an image and some text.
+</TextBlock> 
+</Grid>
+ 
+</StackPanel>

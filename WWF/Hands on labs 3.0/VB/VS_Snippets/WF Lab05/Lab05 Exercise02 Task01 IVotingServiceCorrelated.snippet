@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab05 Exercise02 Task01 IVotingServiceCorrelated</Title>
+      <Author>Serge Luca</Author>
+      <Shortcut>Lab05 Exercise02 Task01 IVotingServiceCorrelated</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="VB"><![CDATA[
+<ExternalDataExchange(), CorrelationParameter("alias")> _
+Public Interface IVotingServiceCorrelated
+
+    <CorrelationAlias("alias", "e.Alias")> _
+    Event ApproveProposal As EventHandler(Of VotingEventArgs)
+    <CorrelationAlias("alias", "e.Alias")> _
+    Event RejectProposal As EventHandler(Of VotingEventArgs)
+    <CorrelationInitializer> _
+    Sub CreateBallot(ByVal [alias] As String)
+End Interface
+
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

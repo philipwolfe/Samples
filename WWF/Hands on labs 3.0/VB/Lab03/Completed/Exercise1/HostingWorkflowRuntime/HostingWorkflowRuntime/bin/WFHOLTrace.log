@@ -1,0 +1,172 @@
+Runtime Start: 0 : Workflow Runtime tracer is alive!
+Host Information: 0 : WorkflowRuntime: Created WorkflowRuntime 5f31b7a5-5d36-4b11-b504-41f5883345ac
+Host Information: 0 : WorkflowRuntime: Starting WorkflowRuntime 5f31b7a5-5d36-4b11-b504-41f5883345ac
+Host Information: 0 : SharedConnectionWorkflowTransactionService: Starting
+Host Information: 0 : SqlWorkflowPersistenceService(00000000-0000-0000-0000-000000000000): Starting, LoadInternalSeconds=120
+Host Information: 0 : WorkflowRuntime: Started WorkflowRuntime 5f31b7a5-5d36-4b11-b504-41f5883345ac
+Host Information: 0 : WorkflowRuntime dispensing resource, instanceId: fad06ae4-6f04-49ff-969b-7079d6ae2c38
+Host Information: 0 : Creating instance fad06ae4-6f04-49ff-969b-7079d6ae2c38
+Runtime Information: 0 : Adding context 1:SimpleWorkflow
+Host Information: 0 : TimerEventSubscriptionQueue: fad06ae4-6f04-49ff-969b-7079d6ae2c38 Created
+Host Information: 0 : WorkflowRuntime:: replacing unusable executor for key fad06ae4-6f04-49ff-969b-7079d6ae2c38 with new one
+Host Information: 0 : SqlTrackingService.ExecuteReaderRetried ExecuteReader start: 11/14/2006 07:29:09
+Host Information: 0 : SqlTrackingService.ExecuteReaderRetried ExecuteReader end: 11/14/2006 07:29:10
+Runtime Information: 0 : pending work hc 33420276 added workItem hc 32347029
+Host Information: 0 : WorkflowRuntime dispensing resource instanceId: fad06ae4-6f04-49ff-969b-7079d6ae2c38, hc: 22687807
+Runtime Information: 0 : pending work hc 33420276 added workItem hc 2863675
+Runtime Information: 0 : Activity Status Change - Activity: SimpleWorkflow Old:Initialized; New:Executing
+Tracking Information: 0 : TrackingListener::ActivityStatusChange - Received Activity Status Change Event for activity SimpleWorkflow
+Runtime Information: 0 : pending work hc 33420276 added workItem hc 25773083
+Runtime Information: 1 : Workflow Runtime: Scheduler: InstanceId: fad06ae4-6f04-49ff-969b-7079d6ae2c38 : Scheduling entry: ActivityOperation((1)SimpleWorkflow, Execute)
+Host Information: 0 : Scheduling work for instance fad06ae4-6f04-49ff-969b-7079d6ae2c38
+Runtime Information: 0 : Workflow Runtime: WorkflowExecutor: Got a suspend request for instance fad06ae4-6f04-49ff-969b-7079d6ae2c38
+Host Information: 0 : Running workflow fad06ae4-6f04-49ff-969b-7079d6ae2c38
+Runtime Information: 0 : pending work hc 33420276 added workItem hc 49972132
+Runtime Information: 0 : Workflow Runtime: WorkflowExecutor: Suspending instance fad06ae4-6f04-49ff-969b-7079d6ae2c38
+Host Information: 0 : WorkflowRuntime:ScheduleSuspension event raised for instance Id fad06ae4-6f04-49ff-969b-7079d6ae2c38
+Runtime Information: 0 : Workflow Runtime: WorkflowExecutor: Got a resume request for instance fad06ae4-6f04-49ff-969b-7079d6ae2c38
+Runtime Information: 0 : pending work hc 33420276 added workItem hc 47096010
+Runtime Information: 0 : Workflow Runtime: WorkflowExecutor: Resuming instance fad06ae4-6f04-49ff-969b-7079d6ae2c38
+Host Information: 0 : Scheduling work for instance fad06ae4-6f04-49ff-969b-7079d6ae2c38
+Host Information: 0 : WorkflowRuntime:ScheduleResumed event raised for instance Id fad06ae4-6f04-49ff-969b-7079d6ae2c38
+Host Information: 0 : Running workflow fad06ae4-6f04-49ff-969b-7079d6ae2c38
+Runtime Information: 1 : Workflow Runtime: Scheduler: InstanceId: fad06ae4-6f04-49ff-969b-7079d6ae2c38 : Running scheduled entry: ActivityOperation((1)SimpleWorkflow, Execute)
+Runtime Information: 0 : Activity Status Change - Activity: working Old:Initialized; New:Executing
+Tracking Information: 0 : TrackingListener::ActivityStatusChange - Received Activity Status Change Event for activity working
+Runtime Information: 0 : pending work hc 33420276 added workItem hc 25741178
+Runtime Information: 1 : Workflow Runtime: Scheduler: InstanceId: fad06ae4-6f04-49ff-969b-7079d6ae2c38 : Scheduling entry: ActivityOperation((1)working, Execute)
+Runtime Information: 1 : Workflow Runtime: Scheduler: InstanceId: fad06ae4-6f04-49ff-969b-7079d6ae2c38 : Done with running scheduled entry: ActivityOperation((1)SimpleWorkflow, Execute)
+Runtime Information: 1 : Workflow Runtime: Scheduler: InstanceId: fad06ae4-6f04-49ff-969b-7079d6ae2c38 : Running scheduled entry: ActivityOperation((1)working, Execute)
+Runtime Information: 0 : Activity Status Change - Activity: working Old:Executing; New:Closed
+Runtime Information: 1 : Workflow Runtime: Scheduler: InstanceId: fad06ae4-6f04-49ff-969b-7079d6ae2c38 : Scheduling entry: SubscriptionEvent((1)SimpleWorkflow, ActivityStatusChange('(1)working', Closed, Succeeded))
+Tracking Information: 0 : TrackingListener::ActivityStatusChange - Received Activity Status Change Event for activity working
+Runtime Information: 0 : pending work hc 33420276 added workItem hc 47177506
+Runtime Information: 1 : Workflow Runtime: Scheduler: InstanceId: fad06ae4-6f04-49ff-969b-7079d6ae2c38 : Done with running scheduled entry: ActivityOperation((1)working, Execute)
+Runtime Information: 1 : Workflow Runtime: Scheduler: InstanceId: fad06ae4-6f04-49ff-969b-7079d6ae2c38 : Running scheduled entry: SubscriptionEvent((1)SimpleWorkflow, ActivityStatusChange('(1)working', Closed, Succeeded))
+Runtime Information: 1 : Workflow Runtime: Scheduler: InstanceId: fad06ae4-6f04-49ff-969b-7079d6ae2c38 : Scheduling entry: SubscriptionEvent((1)SimpleWorkflow, ActivityStatusChange('(1)SimpleWorkflow', Executing, Succeeded))
+Runtime Information: 1 : Workflow Runtime: Scheduler: InstanceId: fad06ae4-6f04-49ff-969b-7079d6ae2c38 : Done with running scheduled entry: SubscriptionEvent((1)SimpleWorkflow, ActivityStatusChange('(1)working', Closed, Succeeded))
+Runtime Information: 1 : Workflow Runtime: Scheduler: InstanceId: fad06ae4-6f04-49ff-969b-7079d6ae2c38 : Running scheduled entry: SubscriptionEvent((1)SimpleWorkflow, ActivityStatusChange('(1)SimpleWorkflow', Executing, Succeeded))
+Runtime Information: 0 : Activity Status Change - Activity: SimpleWorkflow Old:Executing; New:Closed
+Tracking Information: 0 : TrackingListener::ActivityStatusChange - Received Activity Status Change Event for activity SimpleWorkflow
+Runtime Information: 0 : pending work hc 33420276 added workItem hc 40604079
+Runtime Information: 0 : pending work hc 33420276 added workItem hc 46179913
+Runtime Information: 0 : pending work hc 33420276 added workItem hc 58439947
+Host Information: 0 : SqlWorkflowPersistenceService(00000000-0000-0000-0000-000000000000):Committing instance fad06ae4-6f04-49ff-969b-7079d6ae2c38, Blocked=0, Unlocked=True, NextTimer=12/31/9999 23:59:59
+Runtime Information: 0 : pending work hc 53955017 added workItem hc 44820063
+Host Information: 0 : AddToConnectionInfoTable 1 in table of count 1
+Host Information: 0 : SqlWorkflowPersistenceService(00000000-0000-0000-0000-000000000000): inserting instance: fad06ae4-6f04-49ff-969b-7079d6ae2c38, unlocking: True database: TrackingStore
+Host Information: 0 : TransactionCompleted 1
+Runtime Information: 1 : Workflow Runtime: Scheduler: InstanceId: fad06ae4-6f04-49ff-969b-7079d6ae2c38 : Done with running scheduled entry: SubscriptionEvent((1)SimpleWorkflow, ActivityStatusChange('(1)SimpleWorkflow', Executing, Succeeded))
+Host Information: 0 : WorkflowRuntime:SchedulePersisted event raised for instance Id fad06ae4-6f04-49ff-969b-7079d6ae2c38
+Host Information: 0 : SqlTrackingService.ExecuteNonQueryWithTxRetried ExecuteNonQuery start: 11/14/2006 07:29:15
+Host Information: 0 : SqlTrackingService.ExecuteNonQueryWithTxRetried ExecuteNonQuery end: 11/14/2006 07:29:15
+Host Information: 0 : WorkflowRuntime:ScheduleCompleted event raised for instance Id fad06ae4-6f04-49ff-969b-7079d6ae2c38
+Host Information: 0 : WorkflowRuntime::_removeInstance, instance:fad06ae4-6f04-49ff-969b-7079d6ae2c38, hc:22687807
+Host Information: 0 : SqlTrackingService.ExecuteReaderRetried ExecuteReader start: 11/14/2006 07:30:06
+Host Information: 0 : SqlTrackingService.ExecuteReaderRetried ExecuteReader end: 11/14/2006 07:30:07
+Host Information: 0 : SqlTrackingService.ExecuteReaderRetried ExecuteReader start: 11/14/2006 07:31:07
+Host Information: 0 : SqlTrackingService.ExecuteReaderRetried ExecuteReader end: 11/14/2006 07:31:07
+Host Information: 0 : SqlTrackingService.ExecuteReaderRetried ExecuteReader start: 11/14/2006 07:32:07
+Host Information: 0 : SqlTrackingService.ExecuteReaderRetried ExecuteReader end: 11/14/2006 07:32:07
+Runtime Start: 0 : Workflow Runtime tracer is alive!
+Host Information: 0 : WorkflowRuntime: Created WorkflowRuntime aa5828f6-2de5-4e66-b119-0f7f77afbff7
+Host Information: 0 : WorkflowRuntime: Starting WorkflowRuntime aa5828f6-2de5-4e66-b119-0f7f77afbff7
+Host Information: 0 : SharedConnectionWorkflowTransactionService: Starting
+Host Information: 0 : SqlWorkflowPersistenceService(00000000-0000-0000-0000-000000000000): Starting, LoadInternalSeconds=120
+Runtime Start: 0 : Workflow Runtime tracer is alive!
+Host Information: 0 : WorkflowRuntime: Created WorkflowRuntime 8b2166d7-1ca1-4224-a572-2d9c677c1a21
+Host Information: 0 : WorkflowRuntime: Starting WorkflowRuntime 8b2166d7-1ca1-4224-a572-2d9c677c1a21
+Host Information: 0 : SharedConnectionWorkflowTransactionService: Starting
+Host Information: 0 : SqlWorkflowPersistenceService(00000000-0000-0000-0000-000000000000): Starting, LoadInternalSeconds=120
+Runtime Start: 0 : Workflow Runtime tracer is alive!
+Host Information: 0 : WorkflowRuntime: Created WorkflowRuntime 18d30b6a-4986-4392-abd3-97659b70e80d
+Host Information: 0 : WorkflowRuntime: Starting WorkflowRuntime 18d30b6a-4986-4392-abd3-97659b70e80d
+Host Information: 0 : SharedConnectionWorkflowTransactionService: Starting
+Host Information: 0 : SqlWorkflowPersistenceService(00000000-0000-0000-0000-000000000000): Starting, LoadInternalSeconds=120
+Runtime Start: 0 : Workflow Runtime tracer is alive!
+Host Information: 0 : WorkflowRuntime: Created WorkflowRuntime 9a30bdbd-7973-4d5b-9b9f-07d4ec630235
+Host Information: 0 : WorkflowRuntime: Starting WorkflowRuntime 9a30bdbd-7973-4d5b-9b9f-07d4ec630235
+Host Information: 0 : SharedConnectionWorkflowTransactionService: Starting
+Runtime Start: 0 : Workflow Runtime tracer is alive!
+Host Information: 0 : WorkflowRuntime: Created WorkflowRuntime 19743867-17db-430d-8e4a-da966ba3a455
+Host Information: 0 : WorkflowRuntime: Starting WorkflowRuntime 19743867-17db-430d-8e4a-da966ba3a455
+Host Information: 0 : SharedConnectionWorkflowTransactionService: Starting
+Host Information: 0 : SqlWorkflowPersistenceService(00000000-0000-0000-0000-000000000000): Starting, LoadInternalSeconds=120
+Host Information: 0 : WorkflowRuntime: Started WorkflowRuntime 19743867-17db-430d-8e4a-da966ba3a455
+Host Information: 0 : WorkflowRuntime dispensing resource, instanceId: ac5f4c88-9f55-494c-9d0b-d02f0884a4c2
+Host Information: 0 : Creating instance ac5f4c88-9f55-494c-9d0b-d02f0884a4c2
+Runtime Information: 0 : Adding context 1:SimpleWorkflow
+Host Information: 0 : TimerEventSubscriptionQueue: ac5f4c88-9f55-494c-9d0b-d02f0884a4c2 Created
+Host Information: 0 : WorkflowRuntime:: replacing unusable executor for key ac5f4c88-9f55-494c-9d0b-d02f0884a4c2 with new one
+Host Information: 0 : SqlTrackingService.ExecuteReaderRetried ExecuteReader start: 11/14/2006 07:41:59
+Host Information: 0 : SqlTrackingService.ExecuteReaderRetried ExecuteReader end: 11/14/2006 07:41:59
+Host Error: 0 : WorkflowRuntime dispensing resource, can't create service due to unexpected exception!(2), instance, ac5f4c88-9f55-494c-9d0b-d02f0884a4c2, exception, System.ArgumentException: An item with the same key has already been added.
+   at System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
+   at System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
+   at System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)
+   at System.Workflow.Runtime.TrackingListenerBroker.AddService(Type trackingServiceType, Version profileVersionId)
+   at System.Workflow.Runtime.TrackingListenerFactory.GetChannels(Activity schedule, WorkflowExecutor exec, Guid instanceID, Type workflowType, TrackingListenerBroker& broker)
+   at System.Workflow.Runtime.TrackingListenerFactory.GetListener(Activity sked, WorkflowExecutor skedExec, TrackingListenerBroker broker)
+   at System.Workflow.Runtime.TrackingListenerFactory.WorkflowExecutorInitializing(Object sender, WorkflowExecutorInitializingEventArgs e)
+   at System.EventHandler`1.Invoke(Object sender, TEventArgs e)
+   at System.Workflow.Runtime.WorkflowRuntime.WorkflowExecutorCreated(WorkflowExecutor workflowExecutor, Boolean loaded)
+   at System.Workflow.Runtime.WorkflowExecutor.RegisterWithRuntime(WorkflowRuntime workflowRuntime)
+   at System.Workflow.Runtime.WorkflowRuntime.RegisterExecutor(Boolean isActivation, WorkflowExecutor executor)
+   at System.Workflow.Runtime.WorkflowRuntime.Load(Guid key, CreationContext context, WorkflowInstance workflowInstance)
+   at System.Workflow.Runtime.WorkflowRuntime.GetWorkflowExecutor(Guid instanceId, CreationContext context)
+Runtime Start: 0 : Workflow Runtime tracer is alive!
+Host Information: 0 : WorkflowRuntime: Created WorkflowRuntime 53fb14b5-9552-40e9-927f-99144b51c73a
+Host Information: 0 : WorkflowRuntime: Starting WorkflowRuntime 53fb14b5-9552-40e9-927f-99144b51c73a
+Host Information: 0 : DefaultWorkflowCommitWorkBatchService: Starting
+Host Information: 0 : WorkflowRuntime: Started WorkflowRuntime 53fb14b5-9552-40e9-927f-99144b51c73a
+Host Information: 0 : WorkflowRuntime dispensing resource, instanceId: bbd1138e-7497-4978-86fb-bd75168add56
+Host Information: 0 : Creating instance bbd1138e-7497-4978-86fb-bd75168add56
+Runtime Information: 0 : Adding context 1:SimpleWorkflow
+Host Information: 0 : TimerEventSubscriptionQueue: bbd1138e-7497-4978-86fb-bd75168add56 Created
+Host Information: 0 : WorkflowRuntime:: replacing unusable executor for key bbd1138e-7497-4978-86fb-bd75168add56 with new one
+Host Information: 0 : SqlTrackingService.ExecuteReaderRetried ExecuteReader start: 11/14/2006 07:44:13
+Host Information: 0 : SqlTrackingService.ExecuteReaderRetried ExecuteReader end: 11/14/2006 07:44:14
+Runtime Information: 0 : pending work hc 33420276 added workItem hc 32347029
+Host Information: 0 : WorkflowRuntime dispensing resource instanceId: bbd1138e-7497-4978-86fb-bd75168add56, hc: 22687807
+Runtime Information: 0 : pending work hc 33420276 added workItem hc 2863675
+Runtime Information: 0 : Activity Status Change - Activity: SimpleWorkflow Old:Initialized; New:Executing
+Tracking Information: 0 : TrackingListener::ActivityStatusChange - Received Activity Status Change Event for activity SimpleWorkflow
+Runtime Information: 0 : pending work hc 33420276 added workItem hc 25773083
+Runtime Information: 1 : Workflow Runtime: Scheduler: InstanceId: bbd1138e-7497-4978-86fb-bd75168add56 : Scheduling entry: ActivityOperation((1)SimpleWorkflow, Execute)
+Host Information: 0 : Scheduling work for instance bbd1138e-7497-4978-86fb-bd75168add56
+Runtime Information: 0 : Workflow Runtime: WorkflowExecutor: Got a suspend request for instance bbd1138e-7497-4978-86fb-bd75168add56
+Host Information: 0 : Running workflow bbd1138e-7497-4978-86fb-bd75168add56
+Runtime Information: 0 : pending work hc 33420276 added workItem hc 49972132
+Runtime Information: 0 : Workflow Runtime: WorkflowExecutor: Suspending instance bbd1138e-7497-4978-86fb-bd75168add56
+Host Information: 0 : WorkflowRuntime:ScheduleSuspension event raised for instance Id bbd1138e-7497-4978-86fb-bd75168add56
+Runtime Information: 0 : Workflow Runtime: WorkflowExecutor: Got a resume request for instance bbd1138e-7497-4978-86fb-bd75168add56
+Runtime Information: 0 : pending work hc 33420276 added workItem hc 47096010
+Runtime Information: 0 : Workflow Runtime: WorkflowExecutor: Resuming instance bbd1138e-7497-4978-86fb-bd75168add56
+Host Information: 0 : Scheduling work for instance bbd1138e-7497-4978-86fb-bd75168add56
+Host Information: 0 : WorkflowRuntime:ScheduleResumed event raised for instance Id bbd1138e-7497-4978-86fb-bd75168add56
+Host Information: 0 : Running workflow bbd1138e-7497-4978-86fb-bd75168add56
+Runtime Information: 1 : Workflow Runtime: Scheduler: InstanceId: bbd1138e-7497-4978-86fb-bd75168add56 : Running scheduled entry: ActivityOperation((1)SimpleWorkflow, Execute)
+Runtime Information: 0 : Activity Status Change - Activity: working Old:Initialized; New:Executing
+Tracking Information: 0 : TrackingListener::ActivityStatusChange - Received Activity Status Change Event for activity working
+Runtime Information: 0 : pending work hc 33420276 added workItem hc 25741178
+Runtime Information: 1 : Workflow Runtime: Scheduler: InstanceId: bbd1138e-7497-4978-86fb-bd75168add56 : Scheduling entry: ActivityOperation((1)working, Execute)
+Runtime Information: 1 : Workflow Runtime: Scheduler: InstanceId: bbd1138e-7497-4978-86fb-bd75168add56 : Done with running scheduled entry: ActivityOperation((1)SimpleWorkflow, Execute)
+Runtime Information: 1 : Workflow Runtime: Scheduler: InstanceId: bbd1138e-7497-4978-86fb-bd75168add56 : Running scheduled entry: ActivityOperation((1)working, Execute)
+Runtime Information: 0 : Activity Status Change - Activity: working Old:Executing; New:Closed
+Runtime Information: 1 : Workflow Runtime: Scheduler: InstanceId: bbd1138e-7497-4978-86fb-bd75168add56 : Scheduling entry: SubscriptionEvent((1)SimpleWorkflow, ActivityStatusChange('(1)working', Closed, Succeeded))
+Tracking Information: 0 : TrackingListener::ActivityStatusChange - Received Activity Status Change Event for activity working
+Runtime Information: 0 : pending work hc 33420276 added workItem hc 47177506
+Runtime Information: 1 : Workflow Runtime: Scheduler: InstanceId: bbd1138e-7497-4978-86fb-bd75168add56 : Done with running scheduled entry: ActivityOperation((1)working, Execute)
+Runtime Information: 1 : Workflow Runtime: Scheduler: InstanceId: bbd1138e-7497-4978-86fb-bd75168add56 : Running scheduled entry: SubscriptionEvent((1)SimpleWorkflow, ActivityStatusChange('(1)working', Closed, Succeeded))
+Runtime Information: 1 : Workflow Runtime: Scheduler: InstanceId: bbd1138e-7497-4978-86fb-bd75168add56 : Scheduling entry: SubscriptionEvent((1)SimpleWorkflow, ActivityStatusChange('(1)SimpleWorkflow', Executing, Succeeded))
+Runtime Information: 1 : Workflow Runtime: Scheduler: InstanceId: bbd1138e-7497-4978-86fb-bd75168add56 : Done with running scheduled entry: SubscriptionEvent((1)SimpleWorkflow, ActivityStatusChange('(1)working', Closed, Succeeded))
+Runtime Information: 1 : Workflow Runtime: Scheduler: InstanceId: bbd1138e-7497-4978-86fb-bd75168add56 : Running scheduled entry: SubscriptionEvent((1)SimpleWorkflow, ActivityStatusChange('(1)SimpleWorkflow', Executing, Succeeded))
+Runtime Information: 0 : Activity Status Change - Activity: SimpleWorkflow Old:Executing; New:Closed
+Tracking Information: 0 : TrackingListener::ActivityStatusChange - Received Activity Status Change Event for activity SimpleWorkflow
+Runtime Information: 0 : pending work hc 33420276 added workItem hc 40604079
+Runtime Information: 0 : pending work hc 33420276 added workItem hc 46179913
+Runtime Information: 1 : Workflow Runtime: Scheduler: InstanceId: bbd1138e-7497-4978-86fb-bd75168add56 : Done with running scheduled entry: SubscriptionEvent((1)SimpleWorkflow, ActivityStatusChange('(1)SimpleWorkflow', Executing, Succeeded))
+Host Information: 0 : SqlTrackingService.ExecuteNonQueryWithTxRetried ExecuteNonQuery start: 11/14/2006 07:44:17
+Host Information: 0 : SqlTrackingService.ExecuteNonQueryWithTxRetried ExecuteNonQuery end: 11/14/2006 07:44:17
+Host Information: 0 : WorkflowRuntime:ScheduleCompleted event raised for instance Id bbd1138e-7497-4978-86fb-bd75168add56
+Host Information: 0 : WorkflowRuntime::_removeInstance, instance:bbd1138e-7497-4978-86fb-bd75168add56, hc:22687807

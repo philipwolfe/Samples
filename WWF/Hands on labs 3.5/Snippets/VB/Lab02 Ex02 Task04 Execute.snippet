@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab02_Ex02_Task04_Execute</Title>
+      <Author>MVP KenLin</Author>
+      <Shortcut>WFLab02_Ex02_Task04_Execute</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="VB"><![CDATA[
+    Protected Overrides Function Execute(ByVal executionContext As ActivityExecutionContext) _
+                                As ActivityExecutionStatus
+		Console.WriteLine(MailTo)
+        Return ActivityExecutionStatus.Closed
+    End Function
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

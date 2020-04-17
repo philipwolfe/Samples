@@ -1,0 +1,106 @@
+﻿<StateMachineWorkflowDesigner xmlns:ns0="clr-namespace:System.Drawing;Assembly=System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" Name="Workflow1" Location="30, 30" Size="562, 524" AutoSize="False" AutoSizeMargin="16, 24" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow">
+	<StateMachineWorkflowDesigner.DesignerConnectors>
+		<StateDesignerConnector TargetConnectionIndex="0" TargetStateName="OrderOpenState" SourceConnectionIndex="0" TargetConnectionEdge="Top" SetStateName="setStateActivity1" SourceStateName="WaitingForOrderState" SourceConnectionEdge="Right" TargetActivity="OrderOpenState" SourceActivity="WaitingForOrderState" EventHandlerName="OrderCreatedEvent">
+			<StateDesignerConnector.Segments>
+				<ns0:Point X="188" Y="110" />
+				<ns0:Point X="312" Y="110" />
+				<ns0:Point X="312" Y="151" />
+			</StateDesignerConnector.Segments>
+		</StateDesignerConnector>
+		<StateDesignerConnector TargetConnectionIndex="0" TargetStateName="OrderOpenState" SourceConnectionIndex="0" TargetConnectionEdge="Top" SetStateName="setStateActivity2" SourceStateName="OrderOpenState" SourceConnectionEdge="Right" TargetActivity="OrderOpenState" SourceActivity="OrderOpenState" EventHandlerName="OrderUpdatedEvent">
+			<StateDesignerConnector.Segments>
+				<ns0:Point X="377" Y="192" />
+				<ns0:Point X="400" Y="192" />
+				<ns0:Point X="400" Y="143" />
+				<ns0:Point X="312" Y="143" />
+				<ns0:Point X="312" Y="151" />
+			</StateDesignerConnector.Segments>
+		</StateDesignerConnector>
+		<StateDesignerConnector TargetConnectionIndex="0" TargetStateName="OrderOpenState" SourceConnectionIndex="0" TargetConnectionEdge="Top" SetStateName="setStateActivity3" SourceStateName="OrderOpenState" SourceConnectionEdge="Right" TargetActivity="OrderOpenState" SourceActivity="OrderOpenState" EventHandlerName="OrderUpdatedEvent">
+			<StateDesignerConnector.Segments>
+				<ns0:Point X="377" Y="192" />
+				<ns0:Point X="400" Y="192" />
+				<ns0:Point X="400" Y="143" />
+				<ns0:Point X="312" Y="143" />
+				<ns0:Point X="312" Y="151" />
+			</StateDesignerConnector.Segments>
+		</StateDesignerConnector>
+		<StateDesignerConnector TargetConnectionIndex="0" TargetStateName="OrderProcessedState" SourceConnectionIndex="1" TargetConnectionEdge="Top" SetStateName="setStateActivity6" SourceStateName="OrderOpenState" SourceConnectionEdge="Right" TargetActivity="OrderProcessedState" SourceActivity="OrderOpenState" EventHandlerName="OrderProcessedEvent">
+			<StateDesignerConnector.Segments>
+				<ns0:Point X="388" Y="216" />
+				<ns0:Point X="420" Y="216" />
+				<ns0:Point X="420" Y="258" />
+			</StateDesignerConnector.Segments>
+		</StateDesignerConnector>
+		<StateDesignerConnector TargetConnectionIndex="0" TargetStateName="OrderOpenState" SourceConnectionIndex="0" TargetConnectionEdge="Top" SetStateName="setStateActivity4" SourceStateName="OrderProcessedState" SourceConnectionEdge="Right" TargetActivity="OrderOpenState" SourceActivity="OrderProcessedState" EventHandlerName="OrderUpdatedEvent2">
+			<StateDesignerConnector.Segments>
+				<ns0:Point X="491" Y="299" />
+				<ns0:Point X="512" Y="299" />
+				<ns0:Point X="512" Y="143" />
+				<ns0:Point X="312" Y="143" />
+				<ns0:Point X="312" Y="151" />
+			</StateDesignerConnector.Segments>
+		</StateDesignerConnector>
+		<StateDesignerConnector TargetConnectionIndex="0" TargetStateName="OrderCompletedState" SourceConnectionIndex="2" TargetConnectionEdge="Top" SetStateName="setStateActivity5" SourceStateName="OrderProcessedState" SourceConnectionEdge="Right" TargetActivity="OrderCompletedState" SourceActivity="OrderProcessedState" EventHandlerName="OrderShippedEvent">
+			<StateDesignerConnector.Segments>
+				<ns0:Point X="484" Y="347" />
+				<ns0:Point X="507" Y="347" />
+				<ns0:Point X="507" Y="393" />
+				<ns0:Point X="147" Y="393" />
+				<ns0:Point X="147" Y="405" />
+			</StateDesignerConnector.Segments>
+		</StateDesignerConnector>
+	</StateMachineWorkflowDesigner.DesignerConnectors>
+	<StateMachineWorkflowDesigner.Designers>
+		<StateDesigner Name="WaitingForOrderState" Location="46, 69" Size="160, 80" AutoSize="False" AutoSizeMargin="16, 24">
+			<StateDesigner.Designers>
+				<EventDrivenDesigner Size="110, 222" Name="OrderCreatedEvent" Location="256, 148">
+					<EventDrivenDesigner.Designers>
+						<HandleExternalEventActivityDesigner Size="90, 40" Name="handleExternalEventActivity1" Location="266, 220" />
+						<SetStateDesigner Size="90, 50" Name="setStateActivity1" Location="266, 290" />
+					</EventDrivenDesigner.Designers>
+				</EventDrivenDesigner>
+			</StateDesigner.Designers>
+		</StateDesigner>
+		<StateDesigner Name="OrderOpenState" Location="232, 151" Size="160, 80" AutoSizeMargin="16, 24">
+			<StateDesigner.Designers>
+				<EventDrivenDesigner Size="110, 302" Name="OrderUpdatedEvent" Location="240, 182">
+					<EventDrivenDesigner.Designers>
+						<HandleExternalEventActivityDesigner Size="90, 40" Name="handleExternalEventActivity2" Location="250, 254" />
+						<SetStateDesigner Size="90, 50" Name="setStateActivity2" Location="250, 324" />
+						<SetStateDesigner Size="90, 50" Name="setStateActivity3" Location="250, 404" />
+					</EventDrivenDesigner.Designers>
+				</EventDrivenDesigner>
+				<EventDrivenDesigner Size="110, 222" Name="OrderProcessedEvent" Location="240, 206">
+					<EventDrivenDesigner.Designers>
+						<HandleExternalEventActivityDesigner Size="90, 40" Name="handleExternalEventActivity4" Location="250, 278" />
+						<SetStateDesigner Size="90, 50" Name="setStateActivity6" Location="250, 348" />
+					</EventDrivenDesigner.Designers>
+				</EventDrivenDesigner>
+			</StateDesigner.Designers>
+		</StateDesigner>
+		<StateDesigner Name="OrderCompletedState" Location="67, 405" Size="160, 80" AutoSizeMargin="16, 24" />
+		<StateDesigner Name="OrderProcessedState" Location="340, 258" Size="160, 102" AutoSizeMargin="16, 24">
+			<StateDesigner.Designers>
+				<EventDrivenDesigner Size="110, 222" Name="OrderUpdatedEvent2" Location="348, 289">
+					<EventDrivenDesigner.Designers>
+						<HandleExternalEventActivityDesigner Size="90, 40" Name="handleExternalEventActivity3" Location="358, 361" />
+						<SetStateDesigner Size="90, 50" Name="setStateActivity4" Location="358, 431" />
+					</EventDrivenDesigner.Designers>
+				</EventDrivenDesigner>
+				<EventDrivenDesigner Size="110, 212" Name="OrderCanceledEvent" Location="348, 313">
+					<EventDrivenDesigner.Designers>
+						<HandleExternalEventActivityDesigner Size="90, 40" Name="handleExternalEventActivity5" Location="358, 385" />
+						<TerminateDesigner Size="90, 40" Name="terminateActivity1" Location="358, 455" />
+					</EventDrivenDesigner.Designers>
+				</EventDrivenDesigner>
+				<EventDrivenDesigner Size="110, 222" Name="OrderShippedEvent" Location="348, 337">
+					<EventDrivenDesigner.Designers>
+						<HandleExternalEventActivityDesigner Size="90, 40" Name="handleExternalEventActivity6" Location="358, 409" />
+						<SetStateDesigner Size="90, 50" Name="setStateActivity5" Location="358, 479" />
+					</EventDrivenDesigner.Designers>
+				</EventDrivenDesigner>
+			</StateDesigner.Designers>
+		</StateDesigner>
+	</StateMachineWorkflowDesigner.Designers>
+</StateMachineWorkflowDesigner>

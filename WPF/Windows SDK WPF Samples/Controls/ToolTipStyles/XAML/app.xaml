@@ -1,0 +1,19 @@
+<Application
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="ToolTipStyles.app"
+    StartupUri="Pane1.xaml"
+    >
+    <!-- Resources & Styles defined in this section will 
+         impact the entire application.  -->
+    <Application.Resources>
+      <Style x:Key="Simple" TargetType="{x:Type ToolTip}">
+          <Setter Property = "HorizontalOffset" Value="50"/>
+          <Setter Property = "VerticalOffset" Value="50"/>
+          <Setter Property = "Background" Value="LightBlue"/>
+          <Setter Property = "Foreground" Value="Purple"/>
+          <Setter Property = "FontSize" Value="20"/>
+          <Setter Property = "FontWeight" Value="Bold"/>
+       </Style>
+    </Application.Resources>
+</Application>

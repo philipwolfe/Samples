@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab05_Exercise01_Task02_ProgramClass</Title>
+      <Author>Serge Luca</Author>
+      <Shortcut>Exercise01_Task02_ProgramClas_</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="VB"><![CDATA[
+         Dim WaitHandle As New AutoResetEvent(False)
+
+        Sub Main()
+            Using workflowRuntime As New WorkflowRuntime()
+
+                AddHandler workflowRuntime.WorkflowCompleted, AddressOf OnWorkflowCompleted
+                AddHandler workflowRuntime.WorkflowCreated, AddressOf OnWorkflowCreated
+                Dim dataService As New ExternalDataExchangeService()
+                workflowRuntime.AddService(dataService)
+                Dim votingService As New VotingService()
+                dataService.AddService(votingService)
+                Dim workflowInstance As WorkflowInstance
+                workflowInstance = workflowRuntime.CreateWorkflow(GetType(Workflow1))
+                workflowInstance.Start()
+                WaitHandle.WaitOne()
+                Console.WriteLine("Press any key to exit...")
+                Console.Read()
+            End Using
+        End Sub
+
+        Sub OnWorkflowCompleted(ByVal sender As Object, ByVal e As WorkflowCompletedEventArgs)
+            WaitHandle.Set()
+            Console.WriteLine("Workflow " + e.WorkflowInstance.InstanceId.ToString() + " completed.")
+
+        End Sub
+	Sub OnWorkflowCreated(ByVal sender As Object, ByVal e As WorkflowEventArgs)
+            WaitHandle.Set()
+            Console.WriteLine("Workflow " + e.WorkflowInstance.InstanceId.ToString() + " created.")
+
+        End Sub
+
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

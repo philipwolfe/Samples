@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?><ns0:BaseWorkflow x:Name="BaseWorkflow" PersonName="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:ns1="clr-namespace:SimpleCommunication;Assembly=CustomWorkflowTypes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:CustomWorkflowTypes;Assembly=CustomWorkflowTypes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+	<CodeActivity x:Name="codeActivity1" ExecuteCode="{ActivityBind BaseWorkflow,Path=WriteName}" />
+	<CallExternalMethodActivity x:Name="callExternalMethodActivity1" InterfaceType="{x:Type p6:ILocalService}" MethodName="GetResult" xmlns:p6="clr-namespace:SimpleCommunication;Assembly=LocalServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+	<HandleExternalEventActivity Invoked="{ActivityBind BaseWorkflow,Path=EventReceived}" x:Name="handleExternalEventActivity1" EventName="WorkComplete" InterfaceType="{x:Type p6:ILocalService}" xmlns:p6="clr-namespace:SimpleCommunication;Assembly=LocalServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+	<ns1:GetResult x:Name="getResult1" />
+	<ns1:WorkComplete Value="{x:Null}" Invoked="{ActivityBind BaseWorkflow,Path=EventReceived}" x:Name="workComplete1" />
+</ns0:BaseWorkflow>

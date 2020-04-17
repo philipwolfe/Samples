@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="POSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" xmlns="http://tempuri.org/POSchema.xsd" targetNamespace="http://tempuri.org/POSchema.xsd" xmlns:mstns="http://tempuri.org/POSchema.xsd">
+    <xs:element name="PO">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="history" minOccurs="1" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="status" minOccurs="0" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:attribute name="poStatus" type="xs:string" />
+                                    <xs:attribute name="timestamp" type="xs:dateTime" />
+                                    <xs:attribute name="contact" type="xs:string" />
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="items" minOccurs="1" maxOccurs="1">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="item" minOccurs="0" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:attribute name="sku" type="xs:string" />
+                                    <xs:attribute name="amount" type="xs:double" />
+                                    <xs:attribute name="price" type="xs:double" />
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="PONumber" type="xs:string" />
+            <xs:attribute name="orderTotal" type="xs:double" />
+            <xs:attribute name="fulfillerTrackingNumber" type="xs:string" />
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

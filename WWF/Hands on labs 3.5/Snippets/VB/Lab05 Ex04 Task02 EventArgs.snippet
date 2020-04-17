@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab05_Exercise04_Task02_EventArgs</Title>
+      <Author>Serge Luca</Author>
+      <Shortcut>WFLab05_Exercise04_Task02_EventArgs</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="VB"><![CDATA[
+<Serializable()> _
+Public Class PrimeFactoringEventArgs
+    Inherits ExternalDataEventArgs
+
+    Public Sub New(ByVal instanceId As Guid, ByVal primeCount As Integer)
+        MyBase.New(instanceId)
+        Me._primeCount = primeCount
+    End Sub
+
+
+    Public ReadOnly Property PrimeCount() As Integer
+        Get
+            Return Me._primeCount
+        End Get
+    End Property
+
+    Private _primeCount As Integer
+
+
+End Class
+
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

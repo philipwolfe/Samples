@@ -1,0 +1,1 @@
+Custom TCP transport for interop with WSE

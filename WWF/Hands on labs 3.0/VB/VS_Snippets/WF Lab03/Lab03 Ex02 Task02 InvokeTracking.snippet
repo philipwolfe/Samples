@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab03 Ex02 Task02 InvokeTracking</Title>
+      <Author>MVP KenLin</Author>
+      <Shortcut>Lab03 Ex02 Task02 InvokeTracking</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="VB"><![CDATA[
+                workflowInstance.Suspend("Reason we are suspending the workflow.")
+                workflowInstance.Resume()
+
+                WaitHandle.WaitOne()
+
+                GetInstanceTrackingEvents(workflowInstance.InstanceId)
+
+                Console.WriteLine("Workflow Completed - press ENTER to continue")
+                Console.Read()
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

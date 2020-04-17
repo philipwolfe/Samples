@@ -1,0 +1,40 @@
+﻿<html DIR="LTR"><head><META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8" /><META NAME="save" CONTENT="history" /><title>DocumentViewer with Annotations XML-Store Sample</title><META NAME="Description" CONTENT="DocViewerAnnotationsXml shows how to read an XML Paper Specification (XPS) document into a DocumentViewer control and then enable support for adding user-created text note, ink note, and highlight annotations. In this example, user annotations are stored in an XML file separate from the XPS document."></META><META NAME="MS.LOCALE" CONTENT="en-us" /><style>
+body
+{font-family:Verdana;font-size:medium;}
+div#mainSection, div#header
+{font-size:70%;width: 100%;}
+div#mainBody
+{font-size:90%;}
+div#mainSection div table
+{font-size: 100%;text-align: left;}
+span#nsrTitle
+{color:#003399;font-size:90%;font-weight:600;}
+div#header
+{background-color:#D4DFFF;}
+.heading
+{font-size:120%;color:#003399;}
+.subHeading
+{font-size:100%;margin-bottom:4;}
+li
+{margin-top:-2;margin-bottom:3;}
+p
+{margin-top:10;margin-bottom:5;}
+div.tableSection p
+{margin-top:1;margin-bottom:4;}	
+div#mainSection table th
+{background-color:#EFEFF7;color:#000066;text-align:left;}
+div#mainSection table td
+{background-color:#F7F7FF;}
+div#mainSection table
+{margin-top:5px;margin-bottom: px;}
+			</style></head><body><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">DocumentViewer with Annotations XML-Store Sample</span></td></tr></table></div><div id="mainSection"><div id="mainBody"><br /><font color="DarkGray">[This readme is a partial copy of the sample's topic in the SDK documentation.]</font><br /><p><i>DocViewerAnnotationsXml</i> shows how to read an XML Paper Specification (XPS) document into a DocumentViewer control and then enable support for adding user-created text note, ink note, and highlight annotations.  In this example, user annotations are stored in an XML file separate from the XPS document.    </p><p>When executed, the sample displays a menu bar with a "File | Open..." option.  When "Open..." is selected, a "File Open..." dialog is displayed allowing the user to browse and choose an XpsDocument container file to open (a sample XML Paper Specification (XPS) document file is provided).</p><p>When a document is opened, its content is displayed in the <b>DocumentViewer</b> control within the main application window.  Within the <b>DocumentViewer</b> control you can select a block text for adding comments and annotations.  Right-clicking on the selected text displays the Annotations context menu allowing you to choose the type of annotation to create: "Highlight", "Text Note", or "Ink Note" annotation.  Once the annotation type is selected the annotation highlight or form displays on the <b>DocumentViewer</b> control.  You can add personal comments to text note or ink note annotations.  In the <i>DocViewerAnnotationsXml</i> sample, user annotations are stored in a separate annotations.xml file in the same folder with the XML Paper Specification (XPS) document.</p><p>The <i>DocViewerAnnotationsXml</i> sample source code consists of four files:</p><ul><li><p>MyApp.xaml - Extensible Application Markup Language (XAML) resources for the application (none in this sample).</p></li><li><p>MyApp.xaml.cs - Code-behind for creating and displaying the application window.</p></li><li><p>Window1.xaml -  declarations defining the elements of the application window: main menu, menu commands, <b>DocumentViewer</b> control, <b>DocumentViewer</b> annotations context menu, and context menu commands.</p></li><li><p>Window1.xaml.cs - Code-behind supporting the user interface for the main menu and context menu commands.</p></li></ul><p>A project file and sample XPS document are also provided.  To examine the contents of the XPS document and the files contained within, simply change the document file extension from .xps to .zip and then open the file with the Zip utility.</p><p>This sample demonstrates a specific feature of the Windows Presentation Foundation and, consequently, does not follow application development best practices. For comprehensive coverage of Windows Presentation Foundation (WPF) and Microsoft .NET Framework application development best practices, refer to the following as appropriate:</p><p>Accessibility - Accessibility Best Practices</p><p>Security - WPF Security</p><p>Localization - WPF Globalization and Localization Overview</p><h1 class="heading">Building the Sample</h1><div id="sectionSection0" class="seeAlsoNoToggleSection"><h3 class="subHeading">Procedure Title</h3><div class="subSection"><ol><li><p>
+                Install the Windows Software Development Kit (SDK) and open its build environment command window. On the Start menu, point to All Programs, Microsoft Windows SDK, and then click CMD Shell.
+              </p></li><li><p>
+                Download the sample, usually from the software development kit (SDK) documentation, to your hard disk drive.
+              </p></li><li><p>
+                To build the sample from the build environment command window, go to the source directory of the sample. At the command prompt, type MSBUILD.
+              </p></li><li><p>
+                To build the sample in Microsoft Visual Studio 2005, load the sample solution or project file and then press CTRL+SHIFT+B.
+              </p></li></ol></div></div><h1 class="heading">Running the Sample</h1><div id="sectionSection1" class="seeAlsoNoToggleSection"><ul><li><p>
+            To run the compiled sample with debugging in Visual Studio 2005, press F5.
+          </p></li><li><p>To run the sample from a CMD Shell command window, execute the .exe file located in the source folder of the sample.</p></li></ul></div><h1 class="heading">See Also</h1><div id="seeAlsoSection" class="seeAlsoNoToggleSection"><h4 class="subHeading">Tasks</h4><a href="a7736471-4322-40ea-8580-34c8eb0dbb3e.htm">Creating an XPS Document Sample</a><br /><a href="de7a15ea-dc6f-4395-b730-09a8dacce290.htm">Saving an XPS Document Sample</a><br /><a href="849555c8-0c4e-48c0-86bc-a5494c69b36c.htm">Printing an XPS Document</a><br /><h4 class="subHeading">Other Resources</h4>Documents in Windows Presentation Foundation<br /><br /></div><UscDataIsland></UscDataIsland></div></div></body></html>

@@ -1,0 +1,43 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<PropertyGroup>
+		<AssemblyName>ClipExample</AssemblyName>
+		<TargetType>winexe</TargetType>
+		<Configuration>Release</Configuration>
+		<ApplicationIcon>App.ico</ApplicationIcon>
+		<ProductVersion>8.0.31010</ProductVersion>
+		<SchemaVersion>2.0</SchemaVersion>
+		<RootNamespace>SDKSample</RootNamespace>
+		<OutputPath>bin\$(Configuration)\</OutputPath>
+	</PropertyGroup>
+	<Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets"/>
+	<Import Project="$(MSBuildBinPath)\Microsoft.WinFX.targets"/>
+	<ItemGroup>
+		<ApplicationDefinition Include="app.xaml"/>
+		<Page Include="ClipExample.xaml"/>
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="App.ico"/>
+		<Resource Include="sampleImages/*.*"/>
+	</ItemGroup>
+	<ItemGroup>
+		<Reference Include="System"/>
+		<Reference Include="System.Xml"/>
+		<Reference Include="System.Data"/>
+		<Reference Include="WindowsBase"/>
+		<Reference Include="PresentationCore"/>
+		<Reference Include="PresentationFramework"/>
+		<Reference Include="UIAutomationProvider"/>
+		<Reference Include="UIAutomationTypes"/>
+	</ItemGroup>
+</Project>
+<!-- 
+    This project gets built by MSBuild on the commmand line.
+    Visual Studio "Whidbey" can also compile a project using only this data.
+
+    The build steps of a project are defined in the .target file referenced in the <Import>.
+    You can modify the steps involved in build.
+
+    You can also "execute" other targets besides the defaulttarget of build.
+    From a command prompt: msbuild myproj.csproj /t:TARGETNAME
+    Examples of TARGETNAME include: Build, Clean, CleanBuild, Run
+-->

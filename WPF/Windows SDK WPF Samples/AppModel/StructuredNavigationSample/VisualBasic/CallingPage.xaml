@@ -1,0 +1,22 @@
+﻿<Page 
+    x:Class="CallingPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    WindowTitle="Calling Page" WindowWidth="250" WindowHeight="150" Loaded="callingPage_Loaded">
+
+  <TextBlock Margin="10">
+
+    <!-- Task page hyperlink - Unstructured Navigation -->
+    <Hyperlink Name="startTaskUNHyperlink" Click="startTaskUNHyperlink_Click">Start Task (Unstructured Navigation)</Hyperlink>
+    <LineBreak />
+
+    <!-- Task page hyperlink - Structured Navigation -->
+    <Hyperlink Name="startTaskSNHyperlink" Click="startTaskSNHyperlink_Click">Start Task (Structured Navigation)</Hyperlink>
+    <LineBreak />
+    
+    <!-- Task results display -->
+    <TextBlock Name="taskResultsTextBlock" Visibility="Hidden" />
+
+  </TextBlock>
+
+</Page>

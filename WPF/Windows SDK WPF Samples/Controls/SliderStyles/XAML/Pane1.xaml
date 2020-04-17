@@ -1,0 +1,73 @@
+<StackPanel  
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="Slider_wcp.Pane1"
+>
+  <!--  The namespace + class name in the codebehind file and the 
+       x:Class attribute in the root of this document, must stay identical.  
+       You can change them, but you must keep them in sync. -->
+
+  <Grid ShowGridLines ="false" Background ="White" >
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="300"/>
+      <ColumnDefinition Width="250"/>
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition/>
+      <RowDefinition/>
+      <RowDefinition/>
+      <RowDefinition/>
+      <RowDefinition/>
+      <RowDefinition/>
+      <RowDefinition/>
+      <RowDefinition/>
+      <RowDefinition/>
+      <RowDefinition/>
+      <RowDefinition/>
+      <RowDefinition/>
+      <RowDefinition/>
+    </Grid.RowDefinitions>
+    <TextBlock Margin="10, 10, 3, 3" Grid.Column="0" Grid.Row="0" 
+    FontSize="24">Slider Styles</TextBlock>
+    <TextBlock Margin="10, 10, 3, 3" Grid.Column="0" Grid.Row="1" 
+    FontSize="14" Grid.ColumnSpan="2">
+      The following sliders are
+      created using styles.
+    </TextBlock>
+
+    <Slider Margin="10, 10, 3, 3" Grid.Column="0" Grid.Row="2" 
+    Width="100" Value="0" Orientation="Horizontal" HorizontalAlignment="Left" 
+    Style="{StaticResource Horizontal}"/>
+    <TextBlock Margin="10, 10, 3, 3" Grid.Column="1" Grid.Row="2" 
+    FontSize="12" VerticalAlignment="Center" 
+    TextWrapping="WrapWithOverflow">
+      Horizontal slider style that
+      changes the background, adds tick marks,
+      and a tooltip that shows the value of the slider.
+    </TextBlock>
+
+    <Slider Margin="10, 10, 3, 3" Grid.Column="0" Grid.Row="4" 
+    Height="50" Width="30" Orientation="Vertical" HorizontalAlignment="Left" 
+    Style="{StaticResource Vertical}"/>
+    <TextBlock Margin="10, 10, 3, 3" Grid.Column="1" Grid.Row="4" 
+    FontSize="12" VerticalAlignment="Center" 
+    TextWrapping="WrapWithOverflow">
+      Vertical slider style that changes the
+      background, adds tick marks, and a tooltip that shows the value
+      of the slider.
+    </TextBlock>
+
+    <Slider Margin="10, 10, 3, 3" Grid.Column="0" Grid.Row="6" 
+     Width="100" Value="50" Orientation="Horizontal" HorizontalAlignment="Left" 
+    Style="{StaticResource Triggers}"/>
+    <TextBlock Margin="10, 10, 3, 3" Grid.Column="1" Grid.Row="6" 
+    FontSize="12" VerticalAlignment="Center" 
+    TextWrapping="WrapWithOverflow">
+      Horizontal slider style that changes
+      the appearance of the slider in response to a mouse over event.
+    </TextBlock>
+
+
+  </Grid>
+
+</StackPanel>

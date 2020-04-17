@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab06 Exercise02 Task03 webServiceResponsePO</Title>
+      <Author>Serge Luca</Author>
+      <Shortcut>Lab06 Exercise02 Task03 webServiceResponsePO</Shortcut>
+    </Header>
+    <Snippet>   <Code Language="VB"><![CDATA[
+         POSchema.PO.GenerateResponseHeader(receivedPO, returnedPO, "Fabrikam_")
+        POSchema.PO.CopyHistoryAndChangeStatus(receivedPO, returnedPO, "Accepted")
+        POSchema.PO.CopyPOItems(receivedPO, returnedPO)
+
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

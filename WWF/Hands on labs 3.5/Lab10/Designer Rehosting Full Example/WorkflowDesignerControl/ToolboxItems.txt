@@ -1,0 +1,51 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; NOTE: The names after the class names below are
+;       assembly file names, NOT assembly names.
+;       Toolbox items must have an embedded SDK
+;       path in them, so we are tied to the SDK
+;       that is currently installed.  We match
+;       this name with the appropriate file in
+;       the SDK directory.  The actual assembly
+;       is then loaded via the GAC by using
+;       the version stamp within the file.
+;
+;       There are also suites (Events1 and Properties1)
+;       that rely on this file.  Suites don't use
+;       the SDK path, but use reflection to locate
+;       the fully qualified assembly name out
+;       of the AssemblyRefs file.  This relies on
+;       the string used in AssemblyRefs to match
+;       the string below if you remove the dots.
+; 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+System.Workflow.Activities.CallExternalMethodActivity, System.Workflow.Activities
+System.Workflow.Activities.CodeActivity, System.Workflow.Activities
+System.Workflow.ComponentModel.CompensateActivity, System.Workflow.ComponentModel
+System.Workflow.Activities.CompensatableSequenceActivity, System.Workflow.Activities
+System.Workflow.Activities.ConditionedActivityGroup, System.Workflow.Activities
+System.Workflow.Activities.DelayActivity, System.Workflow.Activities
+System.Workflow.Activities.EventDrivenActivity, System.Workflow.Activities
+System.Workflow.Activities.EventHandlingScopeActivity, System.Workflow.Activities
+System.Workflow.ComponentModel.FaultHandlerActivity, System.Workflow.ComponentModel
+System.Workflow.Activities.HandleExternalEventActivity, System.Workflow.Activities
+System.Workflow.Activities.IfElseActivity, System.Workflow.Activities
+System.Workflow.Activities.InvokeWebServiceActivity, System.Workflow.Activities
+System.Workflow.Activities.InvokeWorkflowActivity, System.Workflow.Activities
+System.Workflow.Activities.ListenActivity, System.Workflow.Activities
+System.Workflow.Activities.ParallelActivity, System.Workflow.Activities
+System.Workflow.Activities.PolicyActivity, System.Workflow.Activities
+System.Workflow.Activities.ReplicatorActivity, System.Workflow.Activities
+System.Workflow.Activities.SequenceActivity, System.Workflow.Activities
+System.Workflow.ComponentModel.SuspendActivity, System.Workflow.ComponentModel
+System.Workflow.ComponentModel.SynchronizationScopeActivity, System.Workflow.ComponentModel
+System.Workflow.ComponentModel.TerminateActivity, System.Workflow.ComponentModel
+System.Workflow.ComponentModel.ThrowActivity, System.Workflow.ComponentModel
+System.Workflow.ComponentModel.TransactionScopeActivity, System.Workflow.ComponentModel
+System.Workflow.ComponentModel.CompensatableTransactionScopeActivity, System.Workflow.ComponentModel
+System.Workflow.Activities.WebServiceInputActivity, System.Workflow.Activities
+System.Workflow.Activities.WebServiceOutputActivity, System.Workflow.Activities
+System.Workflow.Activities.WebServiceFaultActivity, System.Workflow.Activities
+System.Workflow.Activities.WhileActivity, System.Workflow.Activities
+System.Workflow.Activities.StateActivity, System.Workflow.Activities

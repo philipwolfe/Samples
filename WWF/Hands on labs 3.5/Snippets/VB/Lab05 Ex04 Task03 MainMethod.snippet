@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab05_Exercise04_Task03_MainMethod</Title>
+      <Author>Serge Luca</Author>
+      <Shortcut>WFLab05_Exercise04_Task03_MainMethod</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="VB"><![CDATA[
+Shared Sub Main()
+       
+Using workflowRuntime As New WorkflowRuntime()
+
+         AddHandler workflowRuntime.WorkflowCompleted, AddressOf _
+     OnWorkflowCompleted
+   AddHandler workflowRuntime.WorkflowTerminated, AddressOf _  
+           OnWorkflowTerminated
+
+         Dim dataService As ExternalDataExchangeService = New _
+     ExternalDataExchangeService()
+   workflowRuntime.AddService(dataService)
+
+   dataService.AddService(New FactoringService())
+
+
+         Dim workflowInstance As WorkflowInstance
+         workflowInstance = _
+         workflowRuntime.CreateWorkflow(GetType(Workflow1))
+         workflowInstance.Start()
+         WaitHandle.WaitOne()
+         Console.WriteLine("press any key to continue")
+         Console.ReadLine()
+
+      End Using
+
+End Sub
+
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

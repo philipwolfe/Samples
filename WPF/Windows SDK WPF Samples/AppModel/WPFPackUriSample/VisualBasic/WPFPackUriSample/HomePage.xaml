@@ -1,0 +1,35 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    WindowTitle="WPF Pack URI Sample HomePage"
+    >
+    <StackPanel>
+
+        <GroupBox Header="Absolute Pack URIs">
+            <StackPanel>
+                <Frame Source="pack://application:,,,/ResourceFileInLocalAssembly.xaml" />
+                <Frame Source="pack://application:,,,/Subfolder/ResourceFileInLocalAssembly.xaml" />
+                <Frame Source="pack://application:,,,/ReferencedAssembly;component/ResourceFileInReferencedAssembly.xaml" />
+                <Frame Source="pack://application:,,,/ReferencedAssembly;component/Subfolder/ResourceFileInReferencedAssembly.xaml" />
+                <Frame Source="pack://application:,,,/ContentFile.xaml" />
+                <Frame Source="pack://application:,,,/Subfolder/ContentFile.xaml" />
+                <Frame Source="pack://siteoforigin:,,,/SiteOfOriginFile.xaml" />
+                <Frame Source="pack://siteoforigin:,,,/Subfolder/SiteOfOriginFile.xaml" />
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Header="Relative Pack URIs">
+            <StackPanel>
+                <Frame Source="/ResourceFileInLocalAssembly.xaml" />
+                <Frame Source="/Subfolder/ResourceFileInLocalAssembly.xaml" />
+                <Frame Source="/ReferencedAssembly;component/ResourceFileInReferencedAssembly.xaml" />
+                <Frame Source="/ReferencedAssembly;component/Subfolder/ResourceFileInReferencedAssembly.xaml" />
+                <Frame Source="/ContentFile.xaml" />
+                <Frame Source="/Subfolder/ContentFile.xaml" />
+                <Frame Source="pack://siteoforigin:,,,/SiteOfOriginFile.xaml" />
+                <Frame Source="pack://siteoforigin:,,,/Subfolder/SiteOfOriginFile.xaml" />
+            </StackPanel>
+        </GroupBox>
+
+    </StackPanel>
+</Page>

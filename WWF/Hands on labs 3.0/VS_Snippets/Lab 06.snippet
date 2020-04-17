@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab06 Ex01 Task03 afterWSFabrikamEx</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab06 Ex01 Task03 afterWSFabrikamEx</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[// Initialize it to a time where electronic PO processing was not invented.	DateTime statusDate = new DateTime(1900, 1, 1);	Fabrikam.POStatus lastStatus = null;	//Find the last status by looping over the history items	foreach (Fabrikam.POStatus stat in POResponsefromFabrikam.History)	{		if (stat.Timestamp > statusDate)		{			statusDate = stat.Timestamp;			lastStatus = stat;		}	}	System.Console.WriteLine("Your PO has been {0} on {1} by Fabrikam", lastStatus.PoStatus, lastStatus.Timestamp);]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab06 Ex01 Task03 afterWSNorthwindEx</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab06 Ex01 Task03 afterWSNorthwindEx</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[// Initialize it to a time where electronic PO processing was not invented.	DateTime statusDate = new DateTime(1900, 1, 1);	Northwind.POStatus lastStatus = null;	//Find the last status by looping over the history items	foreach (Northwind.POStatus stat in POResponsefromNorthwind.History)	{		if (stat.Timestamp > statusDate)		{			statusDate = stat.Timestamp;			lastStatus = stat;		}	}	System.Console.WriteLine("Your PO has been {0} on {1} by Northwind", lastStatus.PoStatus, lastStatus.Timestamp);]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab06 Ex01 Task03 invokePOWSFabrikam</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab06 Ex01 Task03 invokePOWSFabrikam</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[POHelpers.CopyPOHeader(newPO, outgoingPOforFabrikam);      POHelpers.CopyPOHistory(newPO, outgoingPOforFabrikam);      POHelpers.CopyPOItems(newPO, outgoingPOforFabrikam);]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab06 Ex01 Task03 invokePOWSNorthwind</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab06 Ex01 Task03 invokePOWSNorthwind</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[outgoingPOforNorthwind = new Northwind.PO();      POHelpers.CopyPOHeader(newPO, outgoingPOforNorthwind);      POHelpers.CopyPOHistory(newPO, outgoingPOforNorthwind);      POHelpers.CopyPOItems(newPO, outgoingPOforNorthwind);]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab06 Ex02 InterfaceDefinition</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab06 Ex02 InterfaceDefinition</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[//Webservice interface definition for the workflowpublic interface IProcessReceivedPO{    POSchema.PO ReceiveAndProcessPO(POSchema.PO aPO);}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+<CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab06 Exercise02 Task03 webServiceResponsePO</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab06 Exercise02 Task03 webServiceResponsePO </Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[POSchema.PO.GenerateResponseHeader(receivedPO, returnedPO, "Fabrikam_");
+            POSchema.PO.CopyHistoryAndChangeStatus(receivedPO, returnedPO, "Accepted");
+            POSchema.PO.CopyPOItems(receivedPO, returnedPO);]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

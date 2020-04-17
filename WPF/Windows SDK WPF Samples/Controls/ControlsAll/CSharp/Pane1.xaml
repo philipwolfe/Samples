@@ -1,0 +1,50 @@
+ 
+<StackPanel  
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="ControlsAll.Pane1"
+    Width="500"
+    Name="spanel"
+    >
+<TextBlock FontSize="24" Margin="0,0,0,10">Controls</TextBlock>
+<TextBlock TextWrapping="WrapWithOverflow" Margin="0,0,0,10" FontSize="12">This sample displays various controls. Right click the button below to see a list. Choose a control to see its appearance and function.</TextBlock>
+      
+        <Button Name="Button1" Width="200">Right click here for a list of controls.
+        <Button.ContextMenu>
+        <ContextMenu>
+              <MenuItem Header="Button" Click="ChangeButton">
+              </MenuItem>    
+              <MenuItem Header="CheckBox" Click="ChangeCheckBox">
+              </MenuItem>
+              <MenuItem Header="ComboBox" Click="ChangeComboBox">
+              </MenuItem>
+              <MenuItem Header="ContextMenu" Click="ChangeContextMenu">
+              </MenuItem>
+              <MenuItem Header="ListBox" Click="ChangeListBox">
+              </MenuItem>
+              <MenuItem Header="Menu" Click="ChangeMenu">
+              </MenuItem>
+              <MenuItem Header="RadioButton" Click="ChangeRadioButton">
+              </MenuItem>
+              <MenuItem Header="RepeatButton" Click="ChangeRepeatButton">
+              </MenuItem>
+              <MenuItem Header="ScrollBar" Click="ChangeScrollBar">
+              </MenuItem>
+              <MenuItem Header="Slider" Click="ChangeSlider">
+              </MenuItem>
+              <MenuItem Header="TextBox" Click="ChangeTextBox">
+              </MenuItem>
+              <MenuItem Header="Thumb" Click="ChangeThumb">
+              </MenuItem>
+              <MenuItem Header="ToolBar" Click="ChangeToolBar">
+              </MenuItem>
+              <MenuItem Header="ToolTip" Click="ChangeToolTip">
+              </MenuItem>
+        </ContextMenu>
+</Button.ContextMenu>
+</Button>
+
+<StackPanel Name="spanel2" Margin="0, 0, 50, 0">
+</StackPanel>
+
+</StackPanel>

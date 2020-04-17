@@ -1,0 +1,41 @@
+<StackPanel  
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="ToolTipStyles.Pane1"
+>
+  
+<Grid ShowGridLines ="false" Background ="White" >
+  <Grid.ColumnDefinitions>
+     <ColumnDefinition Width="300"/>
+     <ColumnDefinition Width="250"/>
+  </Grid.ColumnDefinitions>
+  <Grid.RowDefinitions>
+     <RowDefinition/>
+     <RowDefinition/>
+     <RowDefinition/>
+  </Grid.RowDefinitions>
+
+
+  <TextBlock Margin="10, 10, 3, 3" Grid.Column="0" Grid.Row="0" 
+    FontSize="24">ToolTip</TextBlock>
+  <TextBlock Margin="10, 10, 3, 3" Grid.Column="0" Grid.Row="1" 
+    FontSize="14" Grid.ColumnSpan="2">The following tooltip is 
+                                    created using styles.</TextBlock>
+  <DockPanel Margin="10, 10, 3, 3" Grid.Column="0" Grid.Row="2">
+  <TextBox HorizontalAlignment="Left">TextBox with ToolTip
+    <TextBox.ToolTip>
+       <ToolTip Style="{StaticResource Simple}">
+         <TextBlock>useful information goes here</TextBlock>
+       </ToolTip>
+    </TextBox.ToolTip>
+  </TextBox>
+  </DockPanel>
+  <TextBlock Margin="10, 10, 3, 3" Grid.Column="1" Grid.Row="2" 
+    FontSize="12" VerticalAlignment="Center" TextWrapping="WrapWithOverflow">
+           Style changes the background, foreground, 
+           font size, font weight, and placement of 
+           the tooltip.
+  </TextBlock> 
+</Grid>
+
+</StackPanel>

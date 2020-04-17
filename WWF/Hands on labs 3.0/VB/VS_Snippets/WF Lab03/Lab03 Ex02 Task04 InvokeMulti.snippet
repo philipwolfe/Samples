@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab03 Ex02 Task04 InvokeMulti</Title>
+      <Author>MVP KenLin</Author>
+      <Shortcut>Lab03 Ex02 Task04 InvokeMulti</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="VB"><![CDATA[
+                Dim workflowCount As Integer = 0
+                Do While (workflowCount < 5)
+                    Dim simpleWorkflowInstance As WorkflowInstance = _
+                        workflowRuntime.CreateWorkflow(GetType(DefaultSQLServices.SimpleWorkflow))
+                    simpleWorkflowInstance.Start()
+                    workflowCount = (workflowCount + 1)
+                Loop
+
+                System.Threading.Thread.Sleep(New TimeSpan(0, 0, 20))
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

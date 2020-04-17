@@ -1,0 +1,453 @@
+<RuleDefinitions xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow">
+    <RuleDefinitions.Conditions>
+        <RuleExpressionCondition Name="noCouponsCondition">
+            <RuleExpressionCondition.Expression>
+                <ns0:CodeBinaryOperatorExpression Operator="ValueEquality" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+                    <ns0:CodeBinaryOperatorExpression.Left>
+                        <ns0:CodePropertyReferenceExpression PropertyName="Count">
+                            <ns0:CodePropertyReferenceExpression.TargetObject>
+                                <ns0:CodePropertyReferenceExpression PropertyName="Coupons">
+                                    <ns0:CodePropertyReferenceExpression.TargetObject>
+                                        <ns0:CodeThisReferenceExpression />
+                                    </ns0:CodePropertyReferenceExpression.TargetObject>
+                                </ns0:CodePropertyReferenceExpression>
+                            </ns0:CodePropertyReferenceExpression.TargetObject>
+                        </ns0:CodePropertyReferenceExpression>
+                    </ns0:CodeBinaryOperatorExpression.Left>
+                    <ns0:CodeBinaryOperatorExpression.Right>
+                        <ns0:CodePrimitiveExpression>
+                            <ns0:CodePrimitiveExpression.Value>
+                                <ns1:Int32 xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">0</ns1:Int32>
+                            </ns0:CodePrimitiveExpression.Value>
+                        </ns0:CodePrimitiveExpression>
+                    </ns0:CodeBinaryOperatorExpression.Right>
+                </ns0:CodeBinaryOperatorExpression>
+            </RuleExpressionCondition.Expression>
+        </RuleExpressionCondition>
+        <RuleExpressionCondition Name="couponsRemaining">
+            <RuleExpressionCondition.Expression>
+                <ns0:CodeBinaryOperatorExpression Operator="GreaterThan" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+                    <ns0:CodeBinaryOperatorExpression.Left>
+                        <ns0:CodePropertyReferenceExpression PropertyName="Count">
+                            <ns0:CodePropertyReferenceExpression.TargetObject>
+                                <ns0:CodePropertyReferenceExpression PropertyName="Coupons">
+                                    <ns0:CodePropertyReferenceExpression.TargetObject>
+                                        <ns0:CodeThisReferenceExpression />
+                                    </ns0:CodePropertyReferenceExpression.TargetObject>
+                                </ns0:CodePropertyReferenceExpression>
+                            </ns0:CodePropertyReferenceExpression.TargetObject>
+                        </ns0:CodePropertyReferenceExpression>
+                    </ns0:CodeBinaryOperatorExpression.Left>
+                    <ns0:CodeBinaryOperatorExpression.Right>
+                        <ns0:CodePrimitiveExpression>
+                            <ns0:CodePrimitiveExpression.Value>
+                                <ns1:Int32 xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">0</ns1:Int32>
+                            </ns0:CodePrimitiveExpression.Value>
+                        </ns0:CodePrimitiveExpression>
+                    </ns0:CodeBinaryOperatorExpression.Right>
+                </ns0:CodeBinaryOperatorExpression>
+            </RuleExpressionCondition.Expression>
+        </RuleExpressionCondition>
+    </RuleDefinitions.Conditions>
+    <RuleDefinitions.RuleSets>
+        <RuleSet Name="RuleSet1" ChainingBehavior="Full" Description="Coupon RuleSet">
+            <RuleSet.Rules>
+                <Rule Name="getFreeItem" ReevaluationBehavior="Always" Priority="0" Description="{p5:Null}" Active="True" xmlns:p5="http://schemas.microsoft.com/winfx/2006/xaml">
+                    <Rule.ThenActions>
+                        <RuleStatementAction>
+                            <RuleStatementAction.CodeDomStatement>
+                                <ns0:CodeAssignStatement LinePragma="{p5:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+                                    <ns0:CodeAssignStatement.Left>
+                                        <ns0:CodePropertyReferenceExpression PropertyName="Discount">
+                                            <ns0:CodePropertyReferenceExpression.TargetObject>
+                                                <ns0:CodeThisReferenceExpression />
+                                            </ns0:CodePropertyReferenceExpression.TargetObject>
+                                        </ns0:CodePropertyReferenceExpression>
+                                    </ns0:CodeAssignStatement.Left>
+                                    <ns0:CodeAssignStatement.Right>
+                                        <ns0:CodeBinaryOperatorExpression Operator="Add">
+                                            <ns0:CodeBinaryOperatorExpression.Left>
+                                                <ns0:CodePropertyReferenceExpression PropertyName="Discount">
+                                                    <ns0:CodePropertyReferenceExpression.TargetObject>
+                                                        <ns0:CodeThisReferenceExpression />
+                                                    </ns0:CodePropertyReferenceExpression.TargetObject>
+                                                </ns0:CodePropertyReferenceExpression>
+                                            </ns0:CodeBinaryOperatorExpression.Left>
+                                            <ns0:CodeBinaryOperatorExpression.Right>
+                                                <ns0:CodeFieldReferenceExpression FieldName="price">
+                                                    <ns0:CodeFieldReferenceExpression.TargetObject>
+                                                        <ns0:CodeIndexerExpression>
+                                                            <ns0:CodeIndexerExpression.Indices>
+                                                                <ns0:CodePrimitiveExpression>
+                                                                    <ns0:CodePrimitiveExpression.Value>
+                                                                        <ns1:Int32 xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">0</ns1:Int32>
+                                                                    </ns0:CodePrimitiveExpression.Value>
+                                                                </ns0:CodePrimitiveExpression>
+                                                            </ns0:CodeIndexerExpression.Indices>
+                                                            <ns0:CodeIndexerExpression.TargetObject>
+                                                                <ns0:CodePropertyReferenceExpression PropertyName="Items">
+                                                                    <ns0:CodePropertyReferenceExpression.TargetObject>
+                                                                        <ns0:CodeThisReferenceExpression />
+                                                                    </ns0:CodePropertyReferenceExpression.TargetObject>
+                                                                </ns0:CodePropertyReferenceExpression>
+                                                            </ns0:CodeIndexerExpression.TargetObject>
+                                                        </ns0:CodeIndexerExpression>
+                                                    </ns0:CodeFieldReferenceExpression.TargetObject>
+                                                </ns0:CodeFieldReferenceExpression>
+                                            </ns0:CodeBinaryOperatorExpression.Right>
+                                        </ns0:CodeBinaryOperatorExpression>
+                                    </ns0:CodeAssignStatement.Right>
+                                </ns0:CodeAssignStatement>
+                            </RuleStatementAction.CodeDomStatement>
+                        </RuleStatementAction>
+                    </Rule.ThenActions>
+                    <Rule.Condition>
+                        <RuleExpressionCondition Name="{p5:Null}">
+                            <RuleExpressionCondition.Expression>
+                                <ns0:CodeBinaryOperatorExpression Operator="BooleanAnd" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+                                    <ns0:CodeBinaryOperatorExpression.Left>
+                                        <ns0:CodeBinaryOperatorExpression Operator="ValueEquality">
+                                            <ns0:CodeBinaryOperatorExpression.Left>
+                                                <ns0:CodeFieldReferenceExpression FieldName="type">
+                                                    <ns0:CodeFieldReferenceExpression.TargetObject>
+                                                        <ns0:CodeMethodInvokeExpression>
+                                                            <ns0:CodeMethodInvokeExpression.Method>
+                                                                <ns0:CodeMethodReferenceExpression MethodName="Peek">
+                                                                    <ns0:CodeMethodReferenceExpression.TargetObject>
+                                                                        <ns0:CodePropertyReferenceExpression PropertyName="Coupons">
+                                                                            <ns0:CodePropertyReferenceExpression.TargetObject>
+                                                                                <ns0:CodeThisReferenceExpression />
+                                                                            </ns0:CodePropertyReferenceExpression.TargetObject>
+                                                                        </ns0:CodePropertyReferenceExpression>
+                                                                    </ns0:CodeMethodReferenceExpression.TargetObject>
+                                                                </ns0:CodeMethodReferenceExpression>
+                                                            </ns0:CodeMethodInvokeExpression.Method>
+                                                        </ns0:CodeMethodInvokeExpression>
+                                                    </ns0:CodeFieldReferenceExpression.TargetObject>
+                                                </ns0:CodeFieldReferenceExpression>
+                                            </ns0:CodeBinaryOperatorExpression.Left>
+                                            <ns0:CodeBinaryOperatorExpression.Right>
+                                                <ns0:CodeFieldReferenceExpression FieldName="FreeItem">
+                                                    <ns0:CodeFieldReferenceExpression.TargetObject>
+                                                        <ns0:CodeTypeReferenceExpression Type="Microsoft.Samples.Workflow.Tutorials.RulesAndConditions.DiscountWorkflow+CouponType" />
+                                                    </ns0:CodeFieldReferenceExpression.TargetObject>
+                                                </ns0:CodeFieldReferenceExpression>
+                                            </ns0:CodeBinaryOperatorExpression.Right>
+                                        </ns0:CodeBinaryOperatorExpression>
+                                    </ns0:CodeBinaryOperatorExpression.Left>
+                                    <ns0:CodeBinaryOperatorExpression.Right>
+                                        <ns0:CodeBinaryOperatorExpression Operator="GreaterThanOrEqual">
+                                            <ns0:CodeBinaryOperatorExpression.Left>
+                                                <ns0:CodePropertyReferenceExpression PropertyName="Count">
+                                                    <ns0:CodePropertyReferenceExpression.TargetObject>
+                                                        <ns0:CodePropertyReferenceExpression PropertyName="Items">
+                                                            <ns0:CodePropertyReferenceExpression.TargetObject>
+                                                                <ns0:CodeThisReferenceExpression />
+                                                            </ns0:CodePropertyReferenceExpression.TargetObject>
+                                                        </ns0:CodePropertyReferenceExpression>
+                                                    </ns0:CodePropertyReferenceExpression.TargetObject>
+                                                </ns0:CodePropertyReferenceExpression>
+                                            </ns0:CodeBinaryOperatorExpression.Left>
+                                            <ns0:CodeBinaryOperatorExpression.Right>
+                                                <ns0:CodePrimitiveExpression>
+                                                    <ns0:CodePrimitiveExpression.Value>
+                                                        <ns1:Int32 xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">5</ns1:Int32>
+                                                    </ns0:CodePrimitiveExpression.Value>
+                                                </ns0:CodePrimitiveExpression>
+                                            </ns0:CodeBinaryOperatorExpression.Right>
+                                        </ns0:CodeBinaryOperatorExpression>
+                                    </ns0:CodeBinaryOperatorExpression.Right>
+                                </ns0:CodeBinaryOperatorExpression>
+                            </RuleExpressionCondition.Expression>
+                        </RuleExpressionCondition>
+                    </Rule.Condition>
+                </Rule>
+                <Rule Name="applyPercentageOffHighest" ReevaluationBehavior="Always" Priority="0" Description="{p5:Null}" Active="True" xmlns:p5="http://schemas.microsoft.com/winfx/2006/xaml">
+                    <Rule.ThenActions>
+                        <RuleStatementAction>
+                            <RuleStatementAction.CodeDomStatement>
+                                <ns0:CodeAssignStatement LinePragma="{p5:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+                                    <ns0:CodeAssignStatement.Left>
+                                        <ns0:CodePropertyReferenceExpression PropertyName="Discount">
+                                            <ns0:CodePropertyReferenceExpression.TargetObject>
+                                                <ns0:CodeThisReferenceExpression />
+                                            </ns0:CodePropertyReferenceExpression.TargetObject>
+                                        </ns0:CodePropertyReferenceExpression>
+                                    </ns0:CodeAssignStatement.Left>
+                                    <ns0:CodeAssignStatement.Right>
+                                        <ns0:CodeBinaryOperatorExpression Operator="Add">
+                                            <ns0:CodeBinaryOperatorExpression.Left>
+                                                <ns0:CodePropertyReferenceExpression PropertyName="Discount">
+                                                    <ns0:CodePropertyReferenceExpression.TargetObject>
+                                                        <ns0:CodeThisReferenceExpression />
+                                                    </ns0:CodePropertyReferenceExpression.TargetObject>
+                                                </ns0:CodePropertyReferenceExpression>
+                                            </ns0:CodeBinaryOperatorExpression.Left>
+                                            <ns0:CodeBinaryOperatorExpression.Right>
+                                                <ns0:CodeBinaryOperatorExpression Operator="Multiply">
+                                                    <ns0:CodeBinaryOperatorExpression.Left>
+                                                        <ns0:CodeFieldReferenceExpression FieldName="price">
+                                                            <ns0:CodeFieldReferenceExpression.TargetObject>
+                                                                <ns0:CodeIndexerExpression>
+                                                                    <ns0:CodeIndexerExpression.Indices>
+                                                                        <ns0:CodeBinaryOperatorExpression Operator="Subtract">
+                                                                            <ns0:CodeBinaryOperatorExpression.Left>
+                                                                                <ns0:CodePropertyReferenceExpression PropertyName="Count">
+                                                                                    <ns0:CodePropertyReferenceExpression.TargetObject>
+                                                                                        <ns0:CodePropertyReferenceExpression PropertyName="Items">
+                                                                                            <ns0:CodePropertyReferenceExpression.TargetObject>
+                                                                                                <ns0:CodeThisReferenceExpression />
+                                                                                            </ns0:CodePropertyReferenceExpression.TargetObject>
+                                                                                        </ns0:CodePropertyReferenceExpression>
+                                                                                    </ns0:CodePropertyReferenceExpression.TargetObject>
+                                                                                </ns0:CodePropertyReferenceExpression>
+                                                                            </ns0:CodeBinaryOperatorExpression.Left>
+                                                                            <ns0:CodeBinaryOperatorExpression.Right>
+                                                                                <ns0:CodePrimitiveExpression>
+                                                                                    <ns0:CodePrimitiveExpression.Value>
+                                                                                        <ns1:Int32 xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">1</ns1:Int32>
+                                                                                    </ns0:CodePrimitiveExpression.Value>
+                                                                                </ns0:CodePrimitiveExpression>
+                                                                            </ns0:CodeBinaryOperatorExpression.Right>
+                                                                        </ns0:CodeBinaryOperatorExpression>
+                                                                    </ns0:CodeIndexerExpression.Indices>
+                                                                    <ns0:CodeIndexerExpression.TargetObject>
+                                                                        <ns0:CodePropertyReferenceExpression PropertyName="Items">
+                                                                            <ns0:CodePropertyReferenceExpression.TargetObject>
+                                                                                <ns0:CodeThisReferenceExpression />
+                                                                            </ns0:CodePropertyReferenceExpression.TargetObject>
+                                                                        </ns0:CodePropertyReferenceExpression>
+                                                                    </ns0:CodeIndexerExpression.TargetObject>
+                                                                </ns0:CodeIndexerExpression>
+                                                            </ns0:CodeFieldReferenceExpression.TargetObject>
+                                                        </ns0:CodeFieldReferenceExpression>
+                                                    </ns0:CodeBinaryOperatorExpression.Left>
+                                                    <ns0:CodeBinaryOperatorExpression.Right>
+                                                        <ns0:CodePrimitiveExpression>
+                                                            <ns0:CodePrimitiveExpression.Value>
+                                                                <ns1:Double xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">0.1</ns1:Double>
+                                                            </ns0:CodePrimitiveExpression.Value>
+                                                        </ns0:CodePrimitiveExpression>
+                                                    </ns0:CodeBinaryOperatorExpression.Right>
+                                                </ns0:CodeBinaryOperatorExpression>
+                                            </ns0:CodeBinaryOperatorExpression.Right>
+                                        </ns0:CodeBinaryOperatorExpression>
+                                    </ns0:CodeAssignStatement.Right>
+                                </ns0:CodeAssignStatement>
+                            </RuleStatementAction.CodeDomStatement>
+                        </RuleStatementAction>
+                    </Rule.ThenActions>
+                    <Rule.Condition>
+                        <RuleExpressionCondition Name="{p5:Null}">
+                            <RuleExpressionCondition.Expression>
+                                <ns0:CodeBinaryOperatorExpression Operator="ValueEquality" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+                                    <ns0:CodeBinaryOperatorExpression.Left>
+                                        <ns0:CodeFieldReferenceExpression FieldName="type">
+                                            <ns0:CodeFieldReferenceExpression.TargetObject>
+                                                <ns0:CodeMethodInvokeExpression>
+                                                    <ns0:CodeMethodInvokeExpression.Method>
+                                                        <ns0:CodeMethodReferenceExpression MethodName="Peek">
+                                                            <ns0:CodeMethodReferenceExpression.TargetObject>
+                                                                <ns0:CodePropertyReferenceExpression PropertyName="Coupons">
+                                                                    <ns0:CodePropertyReferenceExpression.TargetObject>
+                                                                        <ns0:CodeThisReferenceExpression />
+                                                                    </ns0:CodePropertyReferenceExpression.TargetObject>
+                                                                </ns0:CodePropertyReferenceExpression>
+                                                            </ns0:CodeMethodReferenceExpression.TargetObject>
+                                                        </ns0:CodeMethodReferenceExpression>
+                                                    </ns0:CodeMethodInvokeExpression.Method>
+                                                </ns0:CodeMethodInvokeExpression>
+                                            </ns0:CodeFieldReferenceExpression.TargetObject>
+                                        </ns0:CodeFieldReferenceExpression>
+                                    </ns0:CodeBinaryOperatorExpression.Left>
+                                    <ns0:CodeBinaryOperatorExpression.Right>
+                                        <ns0:CodeFieldReferenceExpression FieldName="PercentageOffHighest">
+                                            <ns0:CodeFieldReferenceExpression.TargetObject>
+                                                <ns0:CodeTypeReferenceExpression Type="Microsoft.Samples.Workflow.Tutorials.RulesAndConditions.DiscountWorkflow+CouponType" />
+                                            </ns0:CodeFieldReferenceExpression.TargetObject>
+                                        </ns0:CodeFieldReferenceExpression>
+                                    </ns0:CodeBinaryOperatorExpression.Right>
+                                </ns0:CodeBinaryOperatorExpression>
+                            </RuleExpressionCondition.Expression>
+                        </RuleExpressionCondition>
+                    </Rule.Condition>
+                </Rule>
+                <Rule Name="applyPercentageOffLowest" ReevaluationBehavior="Always" Priority="0" Description="{p5:Null}" Active="True" xmlns:p5="http://schemas.microsoft.com/winfx/2006/xaml">
+                    <Rule.ThenActions>
+                        <RuleStatementAction>
+                            <RuleStatementAction.CodeDomStatement>
+                                <ns0:CodeAssignStatement LinePragma="{p5:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+                                    <ns0:CodeAssignStatement.Left>
+                                        <ns0:CodePropertyReferenceExpression PropertyName="Discount">
+                                            <ns0:CodePropertyReferenceExpression.TargetObject>
+                                                <ns0:CodeThisReferenceExpression />
+                                            </ns0:CodePropertyReferenceExpression.TargetObject>
+                                        </ns0:CodePropertyReferenceExpression>
+                                    </ns0:CodeAssignStatement.Left>
+                                    <ns0:CodeAssignStatement.Right>
+                                        <ns0:CodeBinaryOperatorExpression Operator="Add">
+                                            <ns0:CodeBinaryOperatorExpression.Left>
+                                                <ns0:CodePropertyReferenceExpression PropertyName="Discount">
+                                                    <ns0:CodePropertyReferenceExpression.TargetObject>
+                                                        <ns0:CodeThisReferenceExpression />
+                                                    </ns0:CodePropertyReferenceExpression.TargetObject>
+                                                </ns0:CodePropertyReferenceExpression>
+                                            </ns0:CodeBinaryOperatorExpression.Left>
+                                            <ns0:CodeBinaryOperatorExpression.Right>
+                                                <ns0:CodeBinaryOperatorExpression Operator="Multiply">
+                                                    <ns0:CodeBinaryOperatorExpression.Left>
+                                                        <ns0:CodeFieldReferenceExpression FieldName="price">
+                                                            <ns0:CodeFieldReferenceExpression.TargetObject>
+                                                                <ns0:CodeIndexerExpression>
+                                                                    <ns0:CodeIndexerExpression.Indices>
+                                                                        <ns0:CodePrimitiveExpression>
+                                                                            <ns0:CodePrimitiveExpression.Value>
+                                                                                <ns1:Int32 xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">0</ns1:Int32>
+                                                                            </ns0:CodePrimitiveExpression.Value>
+                                                                        </ns0:CodePrimitiveExpression>
+                                                                    </ns0:CodeIndexerExpression.Indices>
+                                                                    <ns0:CodeIndexerExpression.TargetObject>
+                                                                        <ns0:CodePropertyReferenceExpression PropertyName="Items">
+                                                                            <ns0:CodePropertyReferenceExpression.TargetObject>
+                                                                                <ns0:CodeThisReferenceExpression />
+                                                                            </ns0:CodePropertyReferenceExpression.TargetObject>
+                                                                        </ns0:CodePropertyReferenceExpression>
+                                                                    </ns0:CodeIndexerExpression.TargetObject>
+                                                                </ns0:CodeIndexerExpression>
+                                                            </ns0:CodeFieldReferenceExpression.TargetObject>
+                                                        </ns0:CodeFieldReferenceExpression>
+                                                    </ns0:CodeBinaryOperatorExpression.Left>
+                                                    <ns0:CodeBinaryOperatorExpression.Right>
+                                                        <ns0:CodePrimitiveExpression>
+                                                            <ns0:CodePrimitiveExpression.Value>
+                                                                <ns1:Double xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">0.15</ns1:Double>
+                                                            </ns0:CodePrimitiveExpression.Value>
+                                                        </ns0:CodePrimitiveExpression>
+                                                    </ns0:CodeBinaryOperatorExpression.Right>
+                                                </ns0:CodeBinaryOperatorExpression>
+                                            </ns0:CodeBinaryOperatorExpression.Right>
+                                        </ns0:CodeBinaryOperatorExpression>
+                                    </ns0:CodeAssignStatement.Right>
+                                </ns0:CodeAssignStatement>
+                            </RuleStatementAction.CodeDomStatement>
+                        </RuleStatementAction>
+                    </Rule.ThenActions>
+                    <Rule.Condition>
+                        <RuleExpressionCondition Name="{p5:Null}">
+                            <RuleExpressionCondition.Expression>
+                                <ns0:CodeBinaryOperatorExpression Operator="ValueEquality" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+                                    <ns0:CodeBinaryOperatorExpression.Left>
+                                        <ns0:CodeFieldReferenceExpression FieldName="type">
+                                            <ns0:CodeFieldReferenceExpression.TargetObject>
+                                                <ns0:CodeMethodInvokeExpression>
+                                                    <ns0:CodeMethodInvokeExpression.Method>
+                                                        <ns0:CodeMethodReferenceExpression MethodName="Peek">
+                                                            <ns0:CodeMethodReferenceExpression.TargetObject>
+                                                                <ns0:CodePropertyReferenceExpression PropertyName="Coupons">
+                                                                    <ns0:CodePropertyReferenceExpression.TargetObject>
+                                                                        <ns0:CodeThisReferenceExpression />
+                                                                    </ns0:CodePropertyReferenceExpression.TargetObject>
+                                                                </ns0:CodePropertyReferenceExpression>
+                                                            </ns0:CodeMethodReferenceExpression.TargetObject>
+                                                        </ns0:CodeMethodReferenceExpression>
+                                                    </ns0:CodeMethodInvokeExpression.Method>
+                                                </ns0:CodeMethodInvokeExpression>
+                                            </ns0:CodeFieldReferenceExpression.TargetObject>
+                                        </ns0:CodeFieldReferenceExpression>
+                                    </ns0:CodeBinaryOperatorExpression.Left>
+                                    <ns0:CodeBinaryOperatorExpression.Right>
+                                        <ns0:CodeFieldReferenceExpression FieldName="PercentageOffLowest">
+                                            <ns0:CodeFieldReferenceExpression.TargetObject>
+                                                <ns0:CodeTypeReferenceExpression Type="Microsoft.Samples.Workflow.Tutorials.RulesAndConditions.DiscountWorkflow+CouponType" />
+                                            </ns0:CodeFieldReferenceExpression.TargetObject>
+                                        </ns0:CodeFieldReferenceExpression>
+                                    </ns0:CodeBinaryOperatorExpression.Right>
+                                </ns0:CodeBinaryOperatorExpression>
+                            </RuleExpressionCondition.Expression>
+                        </RuleExpressionCondition>
+                    </Rule.Condition>
+                </Rule>
+                <Rule Name="applyPercentageOffTotal" ReevaluationBehavior="Always" Priority="0" Description="{p5:Null}" Active="True" xmlns:p5="http://schemas.microsoft.com/winfx/2006/xaml">
+                    <Rule.ThenActions>
+                        <RuleStatementAction>
+                            <RuleStatementAction.CodeDomStatement>
+                                <ns0:CodeAssignStatement LinePragma="{p5:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+                                    <ns0:CodeAssignStatement.Left>
+                                        <ns0:CodePropertyReferenceExpression PropertyName="Discount">
+                                            <ns0:CodePropertyReferenceExpression.TargetObject>
+                                                <ns0:CodeThisReferenceExpression />
+                                            </ns0:CodePropertyReferenceExpression.TargetObject>
+                                        </ns0:CodePropertyReferenceExpression>
+                                    </ns0:CodeAssignStatement.Left>
+                                    <ns0:CodeAssignStatement.Right>
+                                        <ns0:CodeBinaryOperatorExpression Operator="Add">
+                                            <ns0:CodeBinaryOperatorExpression.Left>
+                                                <ns0:CodePropertyReferenceExpression PropertyName="Discount">
+                                                    <ns0:CodePropertyReferenceExpression.TargetObject>
+                                                        <ns0:CodeThisReferenceExpression />
+                                                    </ns0:CodePropertyReferenceExpression.TargetObject>
+                                                </ns0:CodePropertyReferenceExpression>
+                                            </ns0:CodeBinaryOperatorExpression.Left>
+                                            <ns0:CodeBinaryOperatorExpression.Right>
+                                                <ns0:CodeBinaryOperatorExpression Operator="Multiply">
+                                                    <ns0:CodeBinaryOperatorExpression.Left>
+                                                        <ns0:CodePropertyReferenceExpression PropertyName="SubTotal">
+                                                            <ns0:CodePropertyReferenceExpression.TargetObject>
+                                                                <ns0:CodeThisReferenceExpression />
+                                                            </ns0:CodePropertyReferenceExpression.TargetObject>
+                                                        </ns0:CodePropertyReferenceExpression>
+                                                    </ns0:CodeBinaryOperatorExpression.Left>
+                                                    <ns0:CodeBinaryOperatorExpression.Right>
+                                                        <ns0:CodePrimitiveExpression>
+                                                            <ns0:CodePrimitiveExpression.Value>
+                                                                <ns1:Double xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">0.2</ns1:Double>
+                                                            </ns0:CodePrimitiveExpression.Value>
+                                                        </ns0:CodePrimitiveExpression>
+                                                    </ns0:CodeBinaryOperatorExpression.Right>
+                                                </ns0:CodeBinaryOperatorExpression>
+                                            </ns0:CodeBinaryOperatorExpression.Right>
+                                        </ns0:CodeBinaryOperatorExpression>
+                                    </ns0:CodeAssignStatement.Right>
+                                </ns0:CodeAssignStatement>
+                            </RuleStatementAction.CodeDomStatement>
+                        </RuleStatementAction>
+                    </Rule.ThenActions>
+                    <Rule.Condition>
+                        <RuleExpressionCondition Name="{p5:Null}">
+                            <RuleExpressionCondition.Expression>
+                                <ns0:CodeBinaryOperatorExpression Operator="ValueEquality" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+                                    <ns0:CodeBinaryOperatorExpression.Left>
+                                        <ns0:CodeFieldReferenceExpression FieldName="type">
+                                            <ns0:CodeFieldReferenceExpression.TargetObject>
+                                                <ns0:CodeMethodInvokeExpression>
+                                                    <ns0:CodeMethodInvokeExpression.Method>
+                                                        <ns0:CodeMethodReferenceExpression MethodName="Peek">
+                                                            <ns0:CodeMethodReferenceExpression.TargetObject>
+                                                                <ns0:CodePropertyReferenceExpression PropertyName="Coupons">
+                                                                    <ns0:CodePropertyReferenceExpression.TargetObject>
+                                                                        <ns0:CodeThisReferenceExpression />
+                                                                    </ns0:CodePropertyReferenceExpression.TargetObject>
+                                                                </ns0:CodePropertyReferenceExpression>
+                                                            </ns0:CodeMethodReferenceExpression.TargetObject>
+                                                        </ns0:CodeMethodReferenceExpression>
+                                                    </ns0:CodeMethodInvokeExpression.Method>
+                                                </ns0:CodeMethodInvokeExpression>
+                                            </ns0:CodeFieldReferenceExpression.TargetObject>
+                                        </ns0:CodeFieldReferenceExpression>
+                                    </ns0:CodeBinaryOperatorExpression.Left>
+                                    <ns0:CodeBinaryOperatorExpression.Right>
+                                        <ns0:CodeFieldReferenceExpression FieldName="PercentageOffTotal">
+                                            <ns0:CodeFieldReferenceExpression.TargetObject>
+                                                <ns0:CodeTypeReferenceExpression Type="Microsoft.Samples.Workflow.Tutorials.RulesAndConditions.DiscountWorkflow+CouponType" />
+                                            </ns0:CodeFieldReferenceExpression.TargetObject>
+                                        </ns0:CodeFieldReferenceExpression>
+                                    </ns0:CodeBinaryOperatorExpression.Right>
+                                </ns0:CodeBinaryOperatorExpression>
+                            </RuleExpressionCondition.Expression>
+                        </RuleExpressionCondition>
+                    </Rule.Condition>
+                </Rule>
+            </RuleSet.Rules>
+        </RuleSet>
+    </RuleDefinitions.RuleSets>
+</RuleDefinitions>

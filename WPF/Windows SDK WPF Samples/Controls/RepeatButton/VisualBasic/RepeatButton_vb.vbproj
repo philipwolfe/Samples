@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<PropertyGroup>
+		<AssemblyName>RepeatButton_vb</AssemblyName>
+		<TargetType>winexe</TargetType>
+		<Configuration Condition="'$(Configuration)'==''">Debug</Configuration>
+		<ApplicationIcon>App.ico</ApplicationIcon>
+		<ProductVersion>8.0.40209</ProductVersion>
+		<SchemaVersion>2.0</SchemaVersion>
+		<RootNamespace>RepeatButton_vb</RootNamespace>
+		<ProjectGuid>{5F7EE1B7-AE0A-44B8-B505-C73EFFE669D9}</ProjectGuid>
+		<OutputPath>bin\$(Configuration)\</OutputPath>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+		<DocumentationFile>RepeatButton_vb.xml</DocumentationFile>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+		<DocumentationFile>RepeatButton_vb.xml</DocumentationFile>
+	</PropertyGroup>
+	<Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets"/>
+	<Import Project="$(MSBuildBinPath)\Microsoft.WinFX.targets"/>
+	
+	<ItemGroup>
+		<AppDesigner Include="My Application\"/>
+	</ItemGroup>
+	<ItemGroup>
+		<ApplicationDefinition Include="app.xaml"/>
+		<Page Include="Pane1.xaml">
+			<SubType>Code</SubType>
+		</Page>
+	</ItemGroup>
+	<ItemGroup>
+		<Compile Include="app.xaml.vb">
+			<DependentUpon>app.xaml</DependentUpon>
+			<SubType>Code</SubType>
+		</Compile>
+		<Compile Include="Pane1.xaml.vb">
+			<DependentUpon>Pane1.xaml</DependentUpon>
+			<SubType>Code</SubType>
+		</Compile>
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="app.ico"/>
+		<Resource Include="data\downarrow.PNG"/>
+		<Resource Include="data\uparrow.PNG"/>
+	</ItemGroup>
+	<ItemGroup>
+		<Folder Include="My Application\"/>
+	</ItemGroup>
+	<ItemGroup>
+		<Reference Include="System"/>
+		<Reference Include="System.Xml"/>
+		<Reference Include="System.Data"/>
+		<Reference Include="WindowsBase"/>
+		<Reference Include="PresentationCore"/>
+		<Reference Include="PresentationFramework"/>
+		<Reference Include="UIAutomationProvider"/>
+		<Reference Include="UIAutomationTypes"/>
+	</ItemGroup>
+</Project>
+<!--
+    This project gets built by MSBuild on the commmand line.
+    Visual Studio "Whidbey" can also compile a project using only this data.
+
+    The build steps of a project are defined in the .target file referenced in the <Import>.
+    You can modify the steps involved in build.
+
+    You can also "execute" other targets besides the defaulttarget of build.
+    From a command prompt: msbuild myproj.vbproj /t:TARGETNAME
+    Examples of TARGETNAME include: Build, Clean, CleanBuild, Run
+-->

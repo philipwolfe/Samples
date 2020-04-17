@@ -1,0 +1,47 @@
+﻿<ns0:SequentialNumbersWorkflowBase x:Name="SequentialNumbersWorkflow"  Turns="0" MaxRange="0" Initialized="GetStarted" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:NumberGuessWorkflowLibrary;Assembly=NumberGuessWorkflowLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=53eab8040280fcb1">
+	<CallExternalMethodActivity x:Name="callExternalMethodActivity2" InterfaceType="{x:Type p5:ILocalService}" MethodInvoking="SetInitialMessage" MethodName="SetMessage" xmlns:p5="clr-namespace:NumberGuessWorkflowLibrary;Assembly=NumberGuessLocalServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=53eab8040280fcb1">
+		<CallExternalMethodActivity.ParameterBindings>
+			<WorkflowParameterBinding ParameterName="msg">
+				<WorkflowParameterBinding.Value>
+					<ActivityBind Name="SequentialNumbersWorkflowBase" Path="Msg" />
+				</WorkflowParameterBinding.Value>
+			</WorkflowParameterBinding>
+		</CallExternalMethodActivity.ParameterBindings>
+	</CallExternalMethodActivity>
+	<WhileActivity x:Name="whileActivity1">
+		<WhileActivity.Condition>
+			<RuleConditionReference ConditionName="Condition1" />
+		</WhileActivity.Condition>
+		<SequenceActivity x:Name="sequenceActivity1">
+			<HandleExternalEventActivity Invoked="GuessEnteredInvoked" x:Name="handleExternalEventActivity1" EventName="GuessEntered" InterfaceType="{x:Type p9:ILocalService}" xmlns:p9="clr-namespace:NumberGuessWorkflowLibrary;Assembly=NumberGuessLocalServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=53eab8040280fcb1" />
+			<IfElseActivity x:Name="ifElseActivity1">
+				<IfElseBranchActivity x:Name="ifElseBranchActivity1">
+					<IfElseBranchActivity.Condition>
+						<RuleConditionReference ConditionName="TooLowCondition" />
+					</IfElseBranchActivity.Condition>
+					<CodeActivity x:Name="codeActivity2" ExecuteCode="codeActivity2_ExecuteCode" />
+				</IfElseBranchActivity>
+				<IfElseBranchActivity x:Name="ifElseBranchActivity2">
+					<IfElseBranchActivity.Condition>
+						<RuleConditionReference ConditionName="TooHighCondition" />
+					</IfElseBranchActivity.Condition>
+					<CodeActivity x:Name="codeActivity3" ExecuteCode="codeActivity3_ExecuteCode" />
+				</IfElseBranchActivity>
+				<IfElseBranchActivity x:Name="ifElseBranchActivity3">
+					<CodeActivity x:Name="codeActivity4" ExecuteCode="codeActivity4_ExecuteCode" />
+				</IfElseBranchActivity>
+			</IfElseActivity>
+			<CallExternalMethodActivity x:Name="callExternalMethodActivity1" InterfaceType="{x:Type p9:ILocalService}" MethodInvoking="SendingMessage" MethodName="SetMessage" xmlns:p9="clr-namespace:NumberGuessWorkflowLibrary;Assembly=NumberGuessLocalServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=53eab8040280fcb1">
+				<CallExternalMethodActivity.ParameterBindings>
+					<WorkflowParameterBinding ParameterName="msg">
+						<WorkflowParameterBinding.Value>
+							<ActivityBind Name="SequentialNumbersWorkflowBase" Path="Msg" />
+						</WorkflowParameterBinding.Value>
+					</WorkflowParameterBinding>
+				</CallExternalMethodActivity.ParameterBindings>
+			</CallExternalMethodActivity>
+			<ns0:WriteLineActivity x:Name="writeLineActivity1" Msg="Turn Over" />
+		</SequenceActivity>
+		<FaultHandlersActivity x:Name="faultHandlersActivity1" />
+	</WhileActivity>
+</ns0:SequentialNumbersWorkflowBase>

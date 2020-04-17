@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab07_Ex01_Task03_CodeConditions</Title>
+      <Author>Serge Luca</Author>
+      <Shortcut>WFLab07_Ex01_Task03_CodeConditions</Shortcut>
+    </Header>
+    <Snippet>   <Code Language="VB"><![CDATA[
+    'used to control execution of codeActivity1_ExecuteCode1
+    Public Sub oddCondition(ByVal sender As Object, ByVal args As ConditionalEventArgs)
+
+        args.Result = ((currentNumber = NumberIs.Odd))
+
+    End Sub
+
+    'used to control execution of codeActivity2_ExecuteCode1
+    Public Sub evenCondition(ByVal sender As Object, ByVal args As ConditionalEventArgs)
+
+        args.Result = ((currentNumber = NumberIs.Even))
+
+    End Sub
+
+    'used to control execution of the ConditionedActivityGroup
+    Public Sub timeToExit(ByVal sender As Object, ByVal args As ConditionalEventArgs)
+
+        args.Result = userRequestsExit
+
+    End Sub
+
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

@@ -1,0 +1,1 @@
+xsd /n:POSchema /c POSchema.xsd

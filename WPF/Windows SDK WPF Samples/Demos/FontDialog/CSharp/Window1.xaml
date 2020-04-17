@@ -1,0 +1,87 @@
+﻿<Window x:Class="FontDialog.Window1"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"    
+    Title="RichEditing"
+    >
+
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="25" />
+        <RowDefinition />
+      </Grid.RowDefinitions>
+        <Menu Grid.Column="0" Grid.Row="0"  AllowDrop="false" ClipToBounds="true" Name="font">
+            <MenuItem Header="Edit">
+                <MenuItem Header="Font..." Click="ShowDialog"/>
+            </MenuItem>
+        </Menu>
+
+        <RichTextBox Grid.Column="0" Grid.Row="1" Name="RichTextEditor" AcceptsReturn="false" Background="wheat">
+           <RichTextBox.ContextMenu>
+               <ContextMenu>    
+               <MenuItem Header="Font..." Click="ShowDialog"></MenuItem>
+               </ContextMenu>
+           </RichTextBox.ContextMenu>
+          <FlowDocument>
+            <Paragraph FontSize="20">
+              <Bold>Instructions</Bold>
+            </Paragraph>
+            <List>
+              <ListItem>
+                <Paragraph>Type some text in this window.</Paragraph>
+              </ListItem>
+              <ListItem>
+                <Paragraph>Select the text that you wish to change.</Paragraph>
+              </ListItem>
+              <ListItem>
+                <Paragraph>Right click on the editing area to bring up the FontDialog window.</Paragraph>
+              </ListItem>
+            </List>
+            <Paragraph FontSize="20">
+              <Bold>Features of the FontDialog window.</Bold>
+            </Paragraph>
+            <List >
+              <ListItem>
+                <Paragraph>Select Font Family</Paragraph>
+              </ListItem>
+              <ListItem>
+                <Paragraph>Select Font Style</Paragraph>
+              </ListItem>
+              <ListItem>
+                <Paragraph>Select Font Weight</Paragraph>
+              </ListItem>
+              <ListItem>
+                <Paragraph>Select Font Stretch</Paragraph>
+              </ListItem>
+              <ListItem>
+                <Paragraph>Select Font Size</Paragraph>
+              </ListItem>
+              <ListItem>
+                <Paragraph>Select Font Color</Paragraph>
+              </ListItem>
+              <ListItem>
+                <Paragraph>Draw UnderLine</Paragraph>
+              </ListItem>
+              <ListItem>
+                <Paragraph>Draw Strike</Paragraph>
+              </ListItem>
+              <ListItem>
+                <Paragraph>Draw BaseLine</Paragraph>
+              </ListItem>
+              <ListItem>
+                <Paragraph>Draw OverLine</Paragraph>
+              </ListItem>
+              <ListItem>
+                <Paragraph>Font changes can be applied on an empty selection or one containing text.</Paragraph>
+              </ListItem>
+              <ListItem>
+                <Paragraph>When Font dialog is launched, it will load the values of the currently selected text.</Paragraph>
+              </ListItem>
+              <ListItem>
+                <Paragraph>Once a change is made, an instant updated will be appeared in the sample area. A user can re-choose the values if he does not like the appearance in the sample box before clicking the OK button.</Paragraph>
+              </ListItem>
+            </List>
+          </FlowDocument>
+        </RichTextBox>
+    </Grid>
+
+</Window>

@@ -1,0 +1,31 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- MSBUILD Project File -->
+  <PropertyGroup>
+    <RootNamespace>SDKSample</RootNamespace>
+    <AssemblyName>GridSplitterRowColumn</AssemblyName>
+    <TargetType>winexe</TargetType>
+    <Configuration>Debug</Configuration>
+    <BuildSystem>MSBuild</BuildSystem>
+    <HostInBrowser>False</HostInBrowser>
+    <OutputType>WinExe</OutputType>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <SchemaVersion>2.0</SchemaVersion>
+  </PropertyGroup>
+  <!--Import the target file that contains all the common targets -->
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <Import Project="$(MSBuildBinPath)\Microsoft.WinFX.targets"/>
+  <ItemGroup>
+    <Reference Include="System"/>
+    <Reference Include="System.Xml"/>
+    <Reference Include="System.Data"/>
+    <Reference Include="WindowsBase"/>
+    <Reference Include="PresentationCore"/>
+    <Reference Include="PresentationFramework"/>
+    <Reference Include="UIAutomationProvider"/>
+    <Reference Include="UIAutomationTypes"/>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="app.xaml" />
+    <Page Include="Window1.xaml" />
+  </ItemGroup>
+</Project>

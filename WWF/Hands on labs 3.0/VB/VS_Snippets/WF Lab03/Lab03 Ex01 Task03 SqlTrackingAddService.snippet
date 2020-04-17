@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab03 Ex01 Task03 SqlTrackingAddService</Title>
+      <Author>MVP KenLin</Author>
+      <Shortcut>Lab03 Ex01 Task03 SqlTrackingAddService</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="VB"><![CDATA[
+                Dim connectionString As String = "Initial Catalog=TrackingStore; " & _
+						"Data Source=localhost\\SQLEXPRESS; " & "Integrated Security=SSPI;"
+                workflowRuntime.AddService(New System.Workflow.Runtime.Tracking.SqlTrackingService(connectionString))
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

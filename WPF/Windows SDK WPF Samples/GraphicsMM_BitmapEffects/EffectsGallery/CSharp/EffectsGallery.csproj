@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <AssemblyName>SDKSample</AssemblyName>
+    <TargetType>winexe</TargetType>
+    <Configuration Condition="'$(Configuration)'==''">Debug</Configuration>
+    <ApplicationIcon>App.ico</ApplicationIcon>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <CLRDefaultNamespace>SDKSample</CLRDefaultNamespace>
+    <ProjectGuid>{32AAFFC0-6E41-44E8-87FA-D82F6C1601E7}</ProjectGuid>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildBinPath)\Microsoft.WinFX.targets" />
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Data" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="app.xaml" />
+    <Page Include="SampleViewer.xaml" />
+    <Page Include="OuterGlowSimpleExample.xaml" />
+    <Page Include="OuterGlowAnimationExample.xaml" />
+    <page Include="OuterGlowInteractiveExample.xaml" />
+    <Page Include="DropShadowSimpleExample.xaml" />
+    <Page Include="DropShadowAnimationExample.xaml" />
+    <page Include="DropShadowInteractiveExample.xaml" />
+    <page Include="BlurSimpleExample.xaml" />
+    <page Include="BlurAnimationExample.xaml" />
+    <page Include="BlurInteractiveExample.xaml" />
+    <page Include="BevelSimpleExample.xaml" />
+    <page Include="BevelAnimationExample.xaml" />
+    <page Include="BevelInteractiveExample.xaml" />
+    <page Include="EmbossSimpleExample.xaml" />
+    <page Include="EmbossAnimationExample.xaml" />
+    <page Include="EmbossInteractiveExample.xaml" />
+    <page Include="MultipleEffectExample.xaml" />
+    <page Include="MultipleEffectAnimationExample.xaml" />
+    <page Include="BitmapEffectInputExample.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="app.xaml.cs">
+      <DependentUpon>app.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SampleViewer.xaml.cs">
+      <DependentUpon>SampleViewer.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BlurInteractiveExample.cs">
+      <DependentUpon>BlurInteractiveExample.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BevelInteractiveExample.cs">
+      <DependentUpon>BevelInteractiveExample.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="images\WaterLilies.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+</Project>

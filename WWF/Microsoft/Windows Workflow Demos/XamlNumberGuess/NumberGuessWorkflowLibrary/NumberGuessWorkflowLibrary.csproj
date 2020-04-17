@@ -1,0 +1,91 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BDFA645D-D1E9-4F4F-A94D-70D9678E1D31}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>NumberGuessWorkflowLibrary</RootNamespace>
+    <AssemblyName>NumberGuessWorkflowLibrary</AssemblyName>
+    <ProjectTypeGuids>{14822709-B5A1-4724-98CA-57A101D1B079};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>NumberGuessKey.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Workflow.Activities" />
+    <Reference Include="System.Workflow.ComponentModel" />
+    <Reference Include="System.Workflow.Runtime" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="NumberGuessKey.snk" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="SequentialNumbersWorkflowBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SequentialNumbersWorkflowBase.designer.cs">
+      <DependentUpon>SequentialNumbersWorkflowBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StateMachineNumbersWorkflow.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="StateMachineNumbersWorkflow.designer.cs">
+      <DependentUpon>StateMachineNumbersWorkflow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WriteLineActivity.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WriteLineActivity.Designer.cs">
+      <DependentUpon>WriteLineActivity.cs</DependentUpon>
+    </Compile>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="StateMachineNumbersWorkflow.layout">
+      <DependentUpon>StateMachineNumbersWorkflow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StateMachineNumbersWorkflow.rules">
+      <DependentUpon>StateMachineNumbersWorkflow.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NumberGuessLocalServices\NumberGuessLocalServices.csproj">
+      <Project>{228405C4-E7A8-4E93-B2A8-39A06369D8D3}</Project>
+      <Name>NumberGuessLocalServices</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Windows Workflow Foundation\v3.0\Workflow.Targets" />
+</Project>

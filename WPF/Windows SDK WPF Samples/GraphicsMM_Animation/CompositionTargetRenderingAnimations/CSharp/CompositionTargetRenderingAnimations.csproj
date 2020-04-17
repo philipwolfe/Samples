@@ -1,0 +1,111 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D1A002DF-5519-4596-AB75-FD87FA595144}</ProjectGuid>
+    <RootNamespace>Microsoft.Samples.PerFrameAnimations</RootNamespace>
+    <AssemblyName>PerFrameAnimationsExample</AssemblyName>
+    <WarningLevel>4</WarningLevel>
+    <OutputType>winexe</OutputType>
+    <ApplicationVersion>1.0.0.*</ApplicationVersion>
+    
+    <!-- Most people will use Publish dialog in Visual Studio to increment this -->
+    <ProductVersion>8.0.50215</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="app.xaml" />
+    <Page Include="SampleViewer.xaml" />
+    <Page Include="SimpleExample\SimpleExample.xaml" />
+    <Page Include="FollowExample\FollowExample.xaml" />
+    <Page Include="FrameIndependentFollowExample\FrameIndependentFollowExample.xaml" />
+    <Page Include="ReusableFollowExample\ReusableFollowExample.xaml" />
+    <Page Include="ParticleEffectExamples\ParticleEffectExamples.xaml" />
+    
+
+  </ItemGroup>
+  <ItemGroup>
+ 
+    
+    <Compile Include="app.xaml.cs">
+      <DependentUpon>app.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    
+    <Compile Include="SampleViewer.xaml.cs">
+      <DependentUpon>SampleViewer.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>    
+
+    <Compile Include="SimpleExample\SimpleExample.xaml.cs">
+      <DependentUpon>SimpleExample\SampleViewer.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile> 
+    
+    <Compile Include="FollowExample\FollowExample.xaml.cs">
+      <DependentUpon>FollowExample\FollowExample.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+
+    <Compile Include="FrameIndependentFollowExample\FrameIndependentFollowExample.xaml.cs">
+      <DependentUpon>FrameIndependentFollowExample\FrameIndependentFollowExample.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+
+    <Compile Include="ReusableFollowExample\ReusableFollowExample.xaml.cs">
+      <DependentUpon>ReusableFrameIndependentFollowExample\ReusableFrameIndependentFollowExample.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+
+    <Compile Include="ReusableFollowExample\FollowMouseCanvas.cs">
+      <SubType>Code</SubType>
+    </Compile> 
+
+    <Compile Include="ParticleEffectExamples\ParticleEffectExamples.xaml.cs">
+      <DependentUpon>ParticleEffectExamples\ParticleEffectExamples.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    
+    <Compile Include="ParticleEffectExamples\FireworkEffect.cs">
+      <SubType>Code</SubType>
+    </Compile>     
+     <Compile Include="ParticleEffectExamples\MagnetismCanvas.cs">
+       <SubType>Code</SubType>
+    </Compile> 
+    <Compile Include="ParticleEffectExamples\OverlayRenderDecorator.cs">
+      <SubType>Code</SubType>
+    </Compile>  
+    <Compile Include="ParticleEffectExamples\SonicEffect.cs">
+      <SubType>Code</SubType>
+    </Compile> 
+    <Compile Include="ParticleEffectExamples\TimeTracker.cs">
+      <SubType>Code</SubType>
+    </Compile> 
+    
+  </ItemGroup>
+
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildBinPath)\Microsoft.WinFX.targets" />
+</Project>

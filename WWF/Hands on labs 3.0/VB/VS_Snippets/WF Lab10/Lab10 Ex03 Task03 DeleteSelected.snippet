@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab10 Ex03 Task03 DeleteSelected</Title>
+      <Author>Serge Luca</Author>
+      <Shortcut>Lab10 Ex03 Task03 DeleteSelected</Shortcut>
+    </Header>
+    <Snippet>   <Code Language="VB"><![CDATA[
+
+Public Sub DeleteSelected()
+    Dim selectionService As ISelectionService = DirectCast(Me.GetService(GetType(ISelectionService)), ISelectionService)
+    If ((Not selectionService Is Nothing) AndAlso TypeOf selectionService.PrimarySelection Is Activity) Then
+        Dim activity As Activity = DirectCast(selectionService.PrimarySelection, Activity)
+        If (Not activity.Name Is Me.WorkflowName) Then
+            activity.Parent.Activities.Remove(activity)
+            Me.workflowView.Update
+        End If
+    End If
+End Sub
+
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

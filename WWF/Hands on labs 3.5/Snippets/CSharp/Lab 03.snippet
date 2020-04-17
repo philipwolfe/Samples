@@ -1,0 +1,536 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab03_Ex01_Task01_PauseExecute</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>WFLab03_Ex01_Task01_PauseExecute</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[Console.WriteLine("Workflow Completed - press ENTER to continue");
+Console.Read();
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab03_Ex01_Task02_Delegates1</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>WFLab03_Ex01_Task02_Delegates1</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[workflowRuntime.Started += new EventHandler<WorkflowRuntimeEventArgs>(workflowRuntime_Started);
+workflowRuntime.Stopped += new EventHandler<WorkflowRuntimeEventArgs>(workflowRuntime_Stopped);
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab03_Ex01_Task02_Delegates2</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>WFLab03_Ex01_Task02_Delegates2</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[workflowRuntime.WorkflowResumed += new
+  EventHandler<WorkflowEventArgs>(workflowRuntime_WorkflowResumed);
+workflowRuntime.WorkflowSuspended += new
+  EventHandler<WorkflowSuspendedEventArgs>(workflowRuntime_WorkflowSuspended);
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab03_Ex01_Task02_EventHandler1</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>WFLab03_Ex01_Task02_EventHandler1</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[static void workflowRuntime_Stopped(object sender, WorkflowRuntimeEventArgs e)
+{
+	Console.WriteLine("Runtime stopped event.");
+}
+
+static void workflowRuntime_Started(object sender, WorkflowRuntimeEventArgs e)
+{
+	WorkflowRuntime w = (WorkflowRuntime)sender;
+	ICollection<object> services = w.GetAllServices(typeof(object));
+	foreach (object o in services)
+	{
+		Console.WriteLine("Service of type " + o.ToString() + " started.");
+	}
+}
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab03_Ex01_Task02_EventHandler2</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>WFLab03_Ex01_Task02_EventHandler2</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[static void workflowRuntime_WorkflowSuspended(object sender,
+                                              WorkflowSuspendedEventArgs e)
+{
+	Console.WriteLine("In WorkflowSuspended, reason: " + e.Error);
+}
+
+static void workflowRuntime_WorkflowResumed(object sender, WorkflowEventArgs e)
+{
+	Console.WriteLine("In WorkflowResumed");
+}
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab03_Ex01_Task02_SuspendResume</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>WFLab03_Ex01_Task02_SuspendResume</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[instance.Suspend("Reason we are suspending the workflow.");
+instance.Resume();
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab03_Ex01_Task03_SqlTrackingAddService</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>WFLab03_Ex01_Task03_SqlTrackingAddService</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[string connectionString = "Initial Catalog=TrackingStore; "+
+			"Data Source=localhost\\SQLEXPRESS; "+
+			"Integrated Security=SSPI;";
+workflowRuntime.AddService(new System.Workflow.Runtime.Tracking.SqlTrackingService(connectionString));
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab03_Ex02_Task02_InstanceTracking</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>WFLab03_Ex02_Task02_InstanceTracking</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[static void GetInstanceTrackingEvents(Guid instanceId)
+{
+	Console.WriteLine("\r\nInstance Tracking Events :");
+
+	SqlTrackingQuery sqlTrackingQuery = new SqlTrackingQuery(connectionString);
+	SqlTrackingWorkflowInstance sqlTrackingWorkflowInstance;
+	sqlTrackingQuery.TryGetWorkflow(instanceId, out sqlTrackingWorkflowInstance);
+
+	try
+	{
+		foreach (WorkflowTrackingRecord workflowTrackingRecord in sqlTrackingWorkflowInstance.WorkflowEvents)
+		{
+			Console.WriteLine("EventDescription : {0}  DateTime : {1}", workflowTrackingRecord.TrackingWorkflowEvent, workflowTrackingRecord.EventDateTime);
+		}
+	}
+	catch (Exception)
+	{
+		Console.WriteLine("No Instance Tracking Events Found");
+	}
+} ]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab03_Ex02_Task02_InvokeTracking</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>WFLab03_Ex02_Task02_InvokeTracking</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[instance.Suspend("Reason we are suspending the workflow.");
+instance.Resume();
+
+waitHandle.WaitOne();
+
+GetInstanceTrackingEvents(instance.InstanceId);
+
+Console.WriteLine("Workflow Completed - press ENTER to continue");
+Console.Read();
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab03_Ex02_Task02_Usings</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>WFLab03_Ex02_Task02_Usings</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[using System.Workflow.Runtime.Tracking;
+using System.Data;
+using System.Data.SqlClient;
+using System.Data.SqlTypes;
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab03_Ex02_Task03_Delegates</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>WFLab03_Ex02_Task03_Delegates</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[workflowRuntime.WorkflowLoaded += new EventHandler<WorkflowEventArgs>(workflowRuntime_WorkflowLoaded);
+workflowRuntime.WorkflowIdled += new EventHandler<WorkflowEventArgs>(workflowRuntime_WorkflowIdled);
+workflowRuntime.WorkflowPersisted += new EventHandler<WorkflowEventArgs>(workflowRuntime_WorkflowPersisted);
+workflowRuntime.WorkflowUnloaded += new EventHandler<WorkflowEventArgs>(workflowRuntime_WorkflowUnloaded);
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab03_Ex02_Task03_EventHandlers</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>WFLab03_Ex02_Task03_EventHandlers</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[static void workflowRuntime_WorkflowIdled(object sender, WorkflowEventArgs e) {
+Console.WriteLine("Workflow {0} idled", e.WorkflowInstance.InstanceId);
+ThreadPool.QueueUserWorkItem(UnloadInstance, e.WorkflowInstance);
+}
+static void workflowRuntime_WorkflowUnloaded(object sender, WorkflowEventArgs e) {
+Console.WriteLine("Workflow {0} unloaded", e.WorkflowInstance.InstanceId);
+}
+static void workflowRuntime_WorkflowPersisted(object sender, WorkflowEventArgs e) {
+Console.WriteLine("Workflow {0} persisted", e.WorkflowInstance.InstanceId);
+}
+static void workflowRuntime_WorkflowLoaded(object sender, WorkflowEventArgs e) {
+Console.WriteLine("Workflow {0} loaded", e.WorkflowInstance.InstanceId);
+}
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab03_Ex02_Task03_UnloadInstance</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>WFLab03_Ex02_Task03_UnloadInstance</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[static void UnloadInstance(object workflowInstance)
+{
+	WorkflowInstance instance = (WorkflowInstance)workflowInstance;
+
+	try
+	{
+		Console.WriteLine("UnloadInstance: attempting to unload \'{0}\'", instance.InstanceId);
+		instance.Unload();
+	}
+	catch (Exception ex)
+	{
+		Console.WriteLine("UnloadInstance: failed \r\n{0}", ex);
+	}
+}
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab03_Ex02_Task04_InvokeMulti</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>WFLab03_Ex02_Task04_InvokeMulti</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[for (int workflowCount = 0; workflowCount < 5; workflowCount++)
+{
+	WorkflowInstance simpleWorkflowInstance = workflowRuntime.CreateWorkflow(typeof(DefaultSQLServices.SimpleWorkflow));
+	simpleWorkflowInstance.Start();
+}
+
+System.Threading.Thread.Sleep(new TimeSpan(0, 0, 20));
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab03_Ex03_Task02_CompleteTerminated</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>WFLab03_Ex03_Task02_CompleteTerminated</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[protected override void InstanceCompletedOrTerminated()
+{
+WriteTitle("Workflow Instance Completed or Terminated");
+}
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab03_Ex03_Task02_SendLogic</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>WFLab03_Ex03_Task02_SendLogic</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[protected override void Send(TrackingRecord record)
+{
+	// filter on record type
+	if (record is WorkflowTrackingRecord)
+	{
+		WriteWorkflowTrackingRecord((WorkflowTrackingRecord)record);
+	}
+	if (record is ActivityTrackingRecord)
+	{
+		WriteActivityTrackingRecord((ActivityTrackingRecord)record);
+	}
+	if (record is UserTrackingRecord)
+	{
+		WriteUserTrackingRecord((UserTrackingRecord)record);
+	}
+}
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab03_Ex03_Task02_Support</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>WFLab03_Ex03_Task02_Support</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[#region support-code
+private static void WriteTitle (string title)
+{
+	Console.WriteLine("\n******************************************");
+	Console.WriteLine("\t" + title);
+	Console.WriteLine("******************************************");
+}
+private static void WriteWorkflowTrackingRecord(WorkflowTrackingRecord workflowTrackingRecord)
+{
+	WriteTitle("Workflow Tracking Record");
+	Console.WriteLine("EventDateTime: " + workflowTrackingRecord.EventDateTime.ToString());
+	Console.WriteLine("Status: " + workflowTrackingRecord.TrackingWorkflowEvent.ToString());        
+}
+private static void WriteActivityTrackingRecord(ActivityTrackingRecord activityTrackingRecord)
+{
+	WriteTitle("Activity Tracking Record");
+	Console.WriteLine("EventDateTime: " + activityTrackingRecord.EventDateTime.ToString());
+	Console.WriteLine("QualifiedName: " + activityTrackingRecord.QualifiedName.ToString());
+	Console.WriteLine("Type: " + activityTrackingRecord.ActivityType);
+	Console.WriteLine("Status: " + activityTrackingRecord.ExecutionStatus.ToString());
+}
+private static void WriteUserTrackingRecord(UserTrackingRecord userTrackingRecord)
+{
+	WriteTitle("User Activity Record"); 
+	Console.WriteLine("EventDateTime: " + userTrackingRecord.EventDateTime.ToString());
+	Console.WriteLine("QualifiedName: " + userTrackingRecord.QualifiedName.ToString());
+	Console.WriteLine("ActivityType: " + userTrackingRecord.ActivityType.FullName.ToString());
+	Console.WriteLine("Args: " + userTrackingRecord.UserData.ToString());
+}
+#endregion
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab03_Ex03_Task02_TrackingChannel</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>WFLab03_Ex03_Task02_TrackingChannel</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[using System;
+using System.IO;
+using System.Workflow.Runtime;
+using System.Workflow.Runtime.Tracking;
+using System.Workflow.ComponentModel;
+using System.Workflow.Runtime.Hosting;
+
+namespace ConsoleTrackingServiceSample
+{
+    public class ConsoleTrackingChannel: TrackingChannel
+    {
+        private TrackingParameters parameters = null;
+
+        protected ConsoleTrackingChannel ()
+        {
+        }
+
+        public ConsoleTrackingChannel (TrackingParameters parameters)
+        {
+            this.parameters = parameters;
+        }
+    }
+}
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab03_Ex03_Task03_GetProfile</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>WFLab03_Ex03_Task03_GetProfile</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[private static TrackingProfile GetProfile()
+{
+	// Create a Tracking Profile
+	TrackingProfile profile = new TrackingProfile();
+	profile.Version = new Version("3.0.0");
+
+	// Add a TrackPoint to cover all activity status events
+	ActivityTrackPoint activityTrackPoint = new ActivityTrackPoint();
+	ActivityTrackingLocation activityLocation = new ActivityTrackingLocation(typeof(Activity));
+	activityLocation.MatchDerivedTypes = true;
+	foreach (ActivityExecutionStatus status in Enum.GetValues(typeof(ActivityExecutionStatus)))
+	{
+		activityLocation.ExecutionStatusEvents.Add(status);
+	}
+	activityTrackPoint.MatchingLocations.Add(activityLocation);
+	profile.ActivityTrackPoints.Add(activityTrackPoint);
+
+	// Add a TrackPoint to cover all workflow status events
+	WorkflowTrackPoint workflowTrackPoint = new WorkflowTrackPoint();
+	workflowTrackPoint.MatchingLocation = new WorkflowTrackingLocation();
+	foreach (TrackingWorkflowEvent workflowEvent in Enum.GetValues(typeof(TrackingWorkflowEvent)))
+	{
+		workflowTrackPoint.MatchingLocation.Events.Add(workflowEvent);
+	}
+	profile.WorkflowTrackPoints.Add(workflowTrackPoint);
+	
+	// Add a TrackPoint to cover all user track points
+	UserTrackPoint userTrackPoint = new UserTrackPoint();
+	UserTrackingLocation userLocation = new UserTrackingLocation();
+	userLocation.ActivityType = typeof(Activity);
+	userLocation.MatchDerivedActivityTypes = true;
+	userLocation.ArgumentType = typeof(object);
+	userLocation.MatchDerivedArgumentTypes = true;
+	userTrackPoint.MatchingLocations.Add(userLocation);
+	profile.UserTrackPoints.Add(userTrackPoint);
+
+	return profile;
+ }
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab03_Ex03_Task03_TrackingService</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>WFLab03_Ex03_Task03_TrackingService</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[using System;
+using System.IO;
+using System.Workflow.Runtime;
+using System.Workflow.Runtime.Tracking;
+using System.Workflow.ComponentModel;
+using System.Workflow.Runtime.Hosting;
+
+namespace ConsoleTrackingServiceSample
+{
+	public class ConsoleTrackingService : TrackingService
+	{
+
+	}
+}
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

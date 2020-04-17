@@ -1,0 +1,77 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <RootNamespace>PuzzleProject</RootNamespace>
+    <AssemblyName>SDKSample</AssemblyName>
+    <OutputType>winexe</OutputType>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ApplicationVersion>1.0.0.*</ApplicationVersion>
+    <ProjectGuid>{7AC181B6-82B2-47AD-921D-EC7D29D31CCE}</ProjectGuid>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Runtime.Serialization" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="app.xaml" />
+    <Page Include="Document.xaml" />
+    <Page Include="FormContent.xaml">
+      <SubType>
+      </SubType>
+    </Page>
+    <Page Include="Puzzle.xaml" />
+    <Page Include="PuzzleGrid.xaml" />
+    <Page Include="SpinningCube.xaml" />
+    <Page Include="VectorContent.xaml" />
+    <Compile Include="app.xaml.cs">
+      <DependentUpon>app.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FormContent.xaml.cs">
+      <DependentUpon>FormContent.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Document.xaml.cs" />
+    <Compile Include="PuzzleGrid.xaml.cs" />
+    <Compile Include="PuzzleLogic.cs" />
+    <Compile Include="Puzzle.xaml.cs" />
+    <Compile Include="SpinningCube.xaml.cs" />
+    <Compile Include="VectorContent.xaml.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="flower.jpg" />
+    <Resource Include="table-bowl.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Intro.wmv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildBinPath)\Microsoft.WinFX.targets" />
+</Project>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab03 Ex02 Task03 UnloadInstance</Title>
+      <Author>MVP KenLin</Author>
+      <Shortcut>Lab03 Ex02 Task03 UnloadInstance</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="VB"><![CDATA[
+        Shared Sub UnloadInstance(ByVal workflowInstance As Object)
+            Dim instance As WorkflowInstance = CType(workflowInstance, WorkflowInstance)
+
+            Try
+                Console.WriteLine("UnloadInstance: attempting to unload \'{0}\'", instance.InstanceId)
+                instance.Unload()
+            Catch ex As Exception
+                Console.WriteLine("UnloadInstance: failed " & vbCrLf & "{0}", ex)
+            End Try
+        End Sub
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?><SequentialWorkflowActivity x:Name="seq1" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow">
+	<ParallelActivity x:Name="parallel1">
+		<SequenceActivity x:Name="sequence1">
+			<SuspendActivity x:Name="suspend1" />
+		</SequenceActivity>
+		<SequenceActivity x:Name="sequence2">
+			<DelayActivity TimeoutDuration="00:00:05" x:Name="delay1" />
+		</SequenceActivity>
+	</ParallelActivity>
+</SequentialWorkflowActivity>

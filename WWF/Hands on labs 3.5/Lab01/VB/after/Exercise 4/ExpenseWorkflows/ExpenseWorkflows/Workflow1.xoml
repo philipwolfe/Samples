@@ -1,0 +1,99 @@
+﻿<SequentialWorkflowActivity x:Class="ExpenseWorkflows.Workflow1" x:Name="Workflow1" xmlns:ns0="clr-namespace:ExpenseActivities;Assembly=ExpenseActivities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow">
+	<HandleExternalEventActivity Invoked="ReportSubmitted_Invoked" x:Name="expenseReportSubmitted1" EventName="ExpenseReportSubmitted" InterfaceType="{x:Type p5:IExpenseService}" xmlns:p5="clr-namespace:ExpenseLocalServices;Assembly=ExpenseLocalServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+		<HandleExternalEventActivity.ParameterBindings>
+			<WorkflowParameterBinding ParameterName="e">
+				<WorkflowParameterBinding.Value>
+					<ActivityBind Name="Workflow1" Path="reportArgs" />
+				</WorkflowParameterBinding.Value>
+			</WorkflowParameterBinding>
+		</HandleExternalEventActivity.ParameterBindings>
+	</HandleExternalEventActivity>
+	<ns0:AutoApprove Approved="False" x:Name="autoApprove1" Amount="{ActivityBind Workflow1,Path=Amount}" />
+	<IfElseActivity x:Name="EvaluateExpenseReport">
+		<IfElseBranchActivity x:Name="IfAutoApproveReport">
+			<IfElseBranchActivity.Condition>
+				<RuleConditionReference ConditionName="AutoApproveCondition" />
+			</IfElseBranchActivity.Condition>
+			<CallExternalMethodActivity x:Name="approveExpenseReport1" InterfaceType="{x:Type p9:IExpenseService}" MethodName="ApproveExpenseReport" xmlns:p9="clr-namespace:ExpenseLocalServices;Assembly=ExpenseLocalServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+				<CallExternalMethodActivity.ParameterBindings>
+					<WorkflowParameterBinding ParameterName="report">
+						<WorkflowParameterBinding.Value>
+							<ActivityBind Name="Workflow1" Path="reportArgs.Report" />
+						</WorkflowParameterBinding.Value>
+					</WorkflowParameterBinding>
+				</CallExternalMethodActivity.ParameterBindings>
+			</CallExternalMethodActivity>
+		</IfElseBranchActivity>
+		<IfElseBranchActivity x:Name="ElseManagerApproval">
+			<ns0:GetManager ReportEmployeeId="{ActivityBind Workflow1,Path=ReportEmployeeId}" x:Name="getManager1" ManagerEmployeeId="{ActivityBind Workflow1,Path=ManagerEmployeeId}" />
+			<CallExternalMethodActivity x:Name="requestManagerApproval1" InterfaceType="{x:Type p9:IExpenseService}" MethodInvoking="requestManagerApproval1_MethodInvoking" MethodName="RequestManagerApproval" xmlns:p9="clr-namespace:ExpenseLocalServices;Assembly=ExpenseLocalServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+				<CallExternalMethodActivity.ParameterBindings>
+					<WorkflowParameterBinding ParameterName="report">
+						<WorkflowParameterBinding.Value>
+							<ActivityBind Name="Workflow1" Path="reportArgs.Report" />
+						</WorkflowParameterBinding.Value>
+					</WorkflowParameterBinding>
+					<WorkflowParameterBinding ParameterName="ManagerEmployeeId">
+						<WorkflowParameterBinding.Value>
+							<ActivityBind Name="Workflow1" Path="ManagerEmployeeId" />
+						</WorkflowParameterBinding.Value>
+					</WorkflowParameterBinding>
+				</CallExternalMethodActivity.ParameterBindings>
+			</CallExternalMethodActivity>
+			<ListenActivity x:Name="ListenforManagerApproval">
+				<EventDrivenActivity x:Name="ManagerReviewed">
+					<HandleExternalEventActivity x:Name="expenseReportReviewed1" EventName="ExpenseReportReviewed" InterfaceType="{x:Type p13:IExpenseService}" xmlns:p13="clr-namespace:ExpenseLocalServices;Assembly=ExpenseLocalServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+						<HandleExternalEventActivity.ParameterBindings>
+							<WorkflowParameterBinding ParameterName="e">
+								<WorkflowParameterBinding.Value>
+									<ActivityBind Name="Workflow1" Path="reviewArgs" />
+								</WorkflowParameterBinding.Value>
+							</WorkflowParameterBinding>
+						</HandleExternalEventActivity.ParameterBindings>
+					</HandleExternalEventActivity>
+					<IfElseActivity x:Name="EvaluateReview">
+						<IfElseBranchActivity x:Name="IfApproved">
+							<IfElseBranchActivity.Condition>
+								<CodeCondition Condition="IfReportApproved_Condition" />
+							</IfElseBranchActivity.Condition>
+							<CallExternalMethodActivity x:Name="approveExpenseReport2" InterfaceType="{x:Type p17:IExpenseService}" MethodName="ApproveExpenseReport" xmlns:p17="clr-namespace:ExpenseLocalServices;Assembly=ExpenseLocalServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+								<CallExternalMethodActivity.ParameterBindings>
+									<WorkflowParameterBinding ParameterName="report">
+										<WorkflowParameterBinding.Value>
+											<ActivityBind Name="Workflow1" Path="reportArgs.Report" />
+										</WorkflowParameterBinding.Value>
+									</WorkflowParameterBinding>
+								</CallExternalMethodActivity.ParameterBindings>
+							</CallExternalMethodActivity>
+						</IfElseBranchActivity>
+						<IfElseBranchActivity x:Name="ElseDeclined">
+							<CallExternalMethodActivity x:Name="rejectExpenseReport1" InterfaceType="{x:Type p17:IExpenseService}" MethodName="RejectExpenseReport" xmlns:p17="clr-namespace:ExpenseLocalServices;Assembly=ExpenseLocalServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+								<CallExternalMethodActivity.ParameterBindings>
+									<WorkflowParameterBinding ParameterName="report">
+										<WorkflowParameterBinding.Value>
+											<ActivityBind Name="Workflow1" Path="reportArgs.Report" />
+										</WorkflowParameterBinding.Value>
+									</WorkflowParameterBinding>
+								</CallExternalMethodActivity.ParameterBindings>
+							</CallExternalMethodActivity>
+						</IfElseBranchActivity>
+					</IfElseActivity>
+				</EventDrivenActivity>
+				<EventDrivenActivity x:Name="ReviewTimeout">
+					<DelayActivity TimeoutDuration="00:00:30" x:Name="delayActivity1" />
+					<CallExternalMethodActivity x:Name="rejectExpenseReport2" InterfaceType="{x:Type p13:IExpenseService}" MethodName="RejectExpenseReport" xmlns:p13="clr-namespace:ExpenseLocalServices;Assembly=ExpenseLocalServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+						<CallExternalMethodActivity.ParameterBindings>
+							<WorkflowParameterBinding ParameterName="report">
+								<WorkflowParameterBinding.Value>
+									<ActivityBind Name="Workflow1" Path="reportArgs.Report" />
+								</WorkflowParameterBinding.Value>
+							</WorkflowParameterBinding>
+						</CallExternalMethodActivity.ParameterBindings>
+					</CallExternalMethodActivity>
+				</EventDrivenActivity>
+			</ListenActivity>
+		</IfElseBranchActivity>
+	</IfElseActivity>
+	<CancellationHandlerActivity x:Name="cancellationHandlerActivity1" />
+	<FaultHandlersActivity x:Name="faultHandlersActivity1" />
+</SequentialWorkflowActivity>

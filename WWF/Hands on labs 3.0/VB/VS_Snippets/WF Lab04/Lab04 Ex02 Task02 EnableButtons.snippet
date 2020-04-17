@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab04 Ex02 Task02 EnableButtons</Title>
+      <Author>Serge Luca</Author>
+      <Shortcut>Lab04 Ex02 Task02 EnableButtons</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="VB"><![CDATA[
+Private Sub EnableButtons()
+
+If Me.lstvwOrders.SelectedItems.Count = 0 Then
+      Return
+End If
+
+Dim workflowStatus As String = _
+Me.lstvwOrders.SelectedItems(0).SubItems(3).Text()
+
+If (workflowStatus.Equals("Completed") Or 
+_ workflowStatus.Equals("Terminated")) Then
+       Return
+End If
+
+
+' Return the StateMachineInstance object 
+Dim stateMachineInstance As StateMachineInstance = _
+        Me.GetSelectedStateMachineInstance()
+
+If StateMachineInstance.CurrentState Is Nothing Then
+       Return
+End If
+
+
+If StateMachineInstance.MessagesAllowed.Contains("OrderCanceled") Then
+        Me.btnOrderCanceled.Enabled = True
+End If
+
+If StateMachineInstance.MessagesAllowed.Contains("OrderProcessed") Then
+        Me.btnOrderProcessed.Enabled = True
+End If
+
+If StateMachineInstance.MessagesAllowed.Contains("OrderShipped") Then
+        Me.btnOrderShipped.Enabled = True
+End If
+
+If StateMachineInstance.MessagesAllowed.Contains("OrderUpdated") Then
+        Me.btnOrderUpdated.Enabled = True
+End If
+
+End Sub
+
+
+
+
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

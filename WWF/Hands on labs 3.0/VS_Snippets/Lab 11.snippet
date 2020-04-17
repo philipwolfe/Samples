@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab01 Ex01 Task1 ISmtpCommunication</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab01 Ex01 Task1 ISmtpCommunication</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[    [ExternalDataExchange]    [CorrelationParameter("MessageId")]    public interface ISmtpCommunication    {        [CorrelationInitializer]        void SendEmail(Guid MessageId, string To, string From,            string Subject, string Body, SmtpEMailType MailType);        [CorrelationAlias("MessageId", "e.MessageId")]        event EventHandler<SmtpMailEventArgs> SmtpMailReceived;    }]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab11 Ex01 Task1 SmtpEmailTypeEnum</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab11 Ex01 Task1 SmtpEmailTypeEnum</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[public enum SmtpEMailType{    PlainText=0,    HtmlText=1}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab11 Ex01 Task1 SmtpMailEventArgs</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab11 Ex01 Task1 SmtpMailEventArgs</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[[Serializable]    public class SmtpMailEventArgs : ExternalDataEventArgs    {        private Guid messageId;        public Guid MessageId        {            get { return messageId; }        }        private string to;        public string To        {            get { return to; }        }        private string from;        public string From        {            get { return from; }        }        private string subject;        public string Subject        {            get { return subject; }        }        private string body;        public string Body        {            get { return body; }        }        private SmtpEMailType mailType;        public SmtpEMailType MailType        {            get { return mailType; }        }                        public SmtpMailEventArgs(Guid InstId,Guid MessageId, string To, string From, string Subject, string Body, SmtpEMailType MailType)            :base(InstId)        {            this.messageId = MessageId;            this.to = To;            this.from = From;            this.subject = Subject;            this.body = Body;            this.mailType = MailType;        }    }]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab11 Ex01 Task1 UsingStatements</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab11 Ex01 Task1 UsingStatements</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[using System.Workflow.Activities;using System.Workflow.ComponentModel;using System.Workflow.Runtime;using System.IO;using System.Xml;]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab11 Ex01 Task3 ReceiveMailActivity</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab11 Ex01 Task3 ReceiveMailActivity</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[namespace ISmtpCommunication_Activities{    using System;    using System.Workflow.Activities;    using System.Workflow.ComponentModel;    using System.ComponentModel;    using System.Text.RegularExpressions;    using System.Workflow.ComponentModel.Design;    using System.Drawing;    using System.Workflow.ComponentModel.Compiler;    [DefaultProperty("To")]    [ToolboxBitmapAttribute(typeof(SmtpMailReceived), "Resources.EmailMessage.png")]    public partial class SmtpMailReceived : HandleExternalEventActivity    {        public static DependencyProperty RegexProperty = DependencyProperty.Register("Regex", typeof(string), typeof(SmtpMailReceived));        public static DependencyProperty RegexMatchedProperty = DependencyProperty.Register("RegexMatched", typeof(bool), typeof(SmtpMailReceived));                [ValidationOption(ValidationOption.Optional)]        public string Regex        {            get            {                return ((string)(this.GetValue(SmtpMailReceived.RegexProperty)));            }            set            {                this.SetValue(SmtpMailReceived.RegexProperty, value);            }        }        [ValidationOption(ValidationOption.None)]        public bool RegexMatched        {            get            {                                Regex rgx;                if (this.Body == null || this.Regex == null || this.Body.Length == 0 || this.Regex.Length == 0)                {                    return false;                }                else                {                    rgx = new Regex(this.Regex);                    return rgx.IsMatch(this.Body);                 }                                            }        }             }}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab11 Ex01 Task3 SendMailActivity</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab11 Ex01 Task3 SendMailActivity</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[namespace ISmtpCommunication_Activities{    using System;    using System.Workflow.Activities;    using System.Workflow.ComponentModel;    using System.ComponentModel;    using System.Text.RegularExpressions;    using System.Workflow.ComponentModel.Design;    using System.Drawing;    using System.Xml.XPath;    using System.Xml;    using System.Text;    using System.Workflow.ComponentModel.Compiler;    [ToolboxBitmapAttribute(typeof(SendEmail), "Resources.EmailMessage.png")]    public partial class SendEmail : CallExternalMethodActivity    {        public static DependencyProperty XmlDataProperty = DependencyProperty.Register("XmlData", typeof(IXPathNavigable), typeof(SendEmail));        [ValidationOption(ValidationOption.Optional)]        public IXPathNavigable XmlData        {            get            {                return ((IXPathNavigable)(this.GetValue(SendEmail.XmlDataProperty)));            }            set            {                this.SetValue(SendEmail.XmlDataProperty, value);            }        }        protected override void OnMethodInvoking(System.EventArgs e)        {            string msgBodyParsed = this.Body;            //Prepare a navigator arond the XmlData so we can retrieve information from it            if (XmlData != null)            {                XPathNavigator xpn = XmlData.CreateNavigator();                //Parse the Message body looking for replacement tags                Regex rex = new Regex("<%(?'xpath'[^%]*)%>", RegexOptions.Compiled);                foreach (Match match in rex.Matches(this.Body))                {                    string xpath = match.Groups["xpath"].Value;                    XPathNavigator nodeValue = xpn.SelectSingleNode(xpath);                    if (nodeValue != null)                    {                        Regex rexReplace = new Regex("<%" + xpath + "%>");                        msgBodyParsed = rexReplace.Replace(msgBodyParsed, nodeValue.Value.ToString());                    }                }            }            this.ParameterBindings["MessageId"].Value = this.MessageId;            this.ParameterBindings["To"].Value = this.To;            this.ParameterBindings["From"].Value = this.From;            this.ParameterBindings["Subject"].Value = this.Subject;            this.ParameterBindings["Body"].Value = msgBodyParsed;            this.ParameterBindings["MailType"].Value = this.MailType;        }                   }}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab11 Ex02 Task1 ADActivityEnums</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab11 Ex02 Task1 ADActivityEnums</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[    public enum ADActivityLookupSource    {        ActiveDirectory = 0,        XmlFile = 1    }    public enum ADActivityLookupType    {        Manager = 0,        Subordinates = 1,        Peers = 3,        GroupExpansion = 4    }]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab11 Ex02 Task1 EventsRegion</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab11 Ex02 Task1 EventsRegion</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[#region Events        public static DependencyProperty QueryingEvent =            DependencyProperty.Register("Querying", typeof(EventHandler), typeof(DirectoryLookupActivity));        [DescriptionAttribute("Use this Handler to do any pre-processing or to set query parameters at run time.")]        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]        [ValidationOption(ValidationOption.Optional)]        [BrowsableAttribute(true)]        [Category("Handlers")]        public event EventHandler Querying        {            add            {                base.AddHandler(DirectoryLookupActivity.QueryingEvent, value);            }            remove            {                base.RemoveHandler(DirectoryLookupActivity.QueryingEvent, value);            }        }        public static DependencyProperty QueriedEvent =            DependencyProperty.Register("Queried", typeof(EventHandler), typeof(DirectoryLookupActivity));        [DescriptionAttribute("This event is raised when the query has completed.")]        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]        [ValidationOption(ValidationOption.Optional)]        [BrowsableAttribute(true)]        [Category("Handlers")]        public event EventHandler Queried        {            add            {                base.AddHandler(DirectoryLookupActivity.QueriedEvent, value);            }            remove            {                base.RemoveHandler(DirectoryLookupActivity.QueriedEvent, value);            }        }        #endregion]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab11 Ex02 Task2 ExecutionRegion</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab11 Ex02 Task2 ExecutionRegion</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[private static List<string> GetUsersFromAD(string objectName, string directoryUri, ADActivityLookupType lookupType)        {            ADHelper adh = new ADHelper(directoryUri);            switch (lookupType)            {                case ADActivityLookupType.GroupExpansion:                    return adh.GetADGroupUsers(objectName);                case ADActivityLookupType.Manager:                    string manager = adh.GetUsersManager(objectName);                    List<string> managers = new List<string>();                    managers.Add(manager);                    return managers;                case ADActivityLookupType.Peers:                    return adh.GetUsersPeers(objectName);                case ADActivityLookupType.Subordinates:                    return adh.GetUsersDirectReports(objectName);                default:                    throw new NotImplementedException("Cannot lookup. No implementation for that LookupType.");            }        }        public class ADQueryFinishedEventArgs : EventArgs        {            public List<string> queryResults;            public ADQueryFinishedEventArgs(List<string> queryResults)            {                this.queryResults = queryResults;            }        }]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab11 Ex02 Task2 OverrideExecute</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab11 Ex02 Task2 OverrideExecute</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[protected override ActivityExecutionStatus Execute(ActivityExecutionContext context)        {            //Raise the QueryingEvent            this.RaiseEvent(QueryingEvent, this, new EventArgs());            switch (this.QuerySource)            {                case ADActivityLookupSource.XmlFile:                    throw new NotImplementedException("Xml file lookup not implemented in this version.");                case ADActivityLookupSource.ActiveDirectory:                    QueryResults = GetUsersFromAD(this.Query, this.DirectoryUri, this.QueryType);                    break;            }            //Raise the Query finsihed event            ADQueryFinishedEventArgs queryFinishedEventArgs = new ADQueryFinishedEventArgs(QueryResults);            this.RaiseEvent(QueriedEvent, this, queryFinishedEventArgs);            return ActivityExecutionStatus.Closed;        }]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

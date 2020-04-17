@@ -1,0 +1,175 @@
+<Canvas 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Background="White"
+    >
+<Grid ShowGridLines ="false" Background ="White" >
+<Grid.Resources>
+<Style x:Key="Simple" TargetType="{x:Type Button}">
+    <Setter Property = "FontFamily" Value= "{DynamicResource 
+          {x:Static SystemFonts.MessageFontFamilyKey}}"/>
+    <Setter Property = "FontSize" Value= "{DynamicResource 
+          {x:Static  SystemFonts.MessageFontSizeKey}}"/>
+    <Setter Property = "FontStyle" Value= "{DynamicResource 
+          {x:Static SystemFonts.MessageFontStyleKey}}"/>
+    <Setter Property = "FontWeight" Value= "{DynamicResource 
+          {x:Static SystemFonts.MessageFontWeightKey}}"/>
+    <Setter Property = "Foreground" Value= "{DynamicResource 
+          {x:Static SystemColors.ControlTextBrushKey}}"/>
+</Style>
+
+<Style x:Key="Separator" TargetType="{x:Type StackPanel}">
+    <Setter Property = "Margin" Value= "4"/>
+    <Setter Property = "Width" Value= "2"/>
+    <Setter Property = "Height" Value= "12"/>
+    <Setter Property = "Background" Value= "Gray"/>
+</Style>
+
+<Style x:Key="TBButton" TargetType="{x:Type Button}">
+    <Setter Property = "Width" Value= "30"/>
+    <Setter Property = "Height" Value= "30"/>
+    <Setter Property = "Background" Value= "LightBlue"/>
+</Style>
+
+<Style x:Key="Tray" TargetType="{x:Type ToolBarTray}">
+    <Setter Property = "Orientation" Value= "Horizontal"/>
+    <Setter Property = "HorizontalAlignment" Value= "Left"/>
+    <Setter Property = "Background" Value= "LightBlue"/>
+</Style>
+
+<Style x:Key="Triggers" TargetType="{x:Type ToolBar}">
+    <Style.Triggers>
+    <Trigger Property="Button.IsMouseOver" Value="true">
+        <Setter Property = "Background" Value="Red"/>
+        <Setter Property = "BorderBrush" Value="Green"/>
+    </Trigger>
+    </Style.Triggers>
+</Style>
+</Grid.Resources>
+
+<Grid.ColumnDefinitions>
+<ColumnDefinition Width="300"/>
+<ColumnDefinition Width="250"/>
+</Grid.ColumnDefinitions>
+<Grid.RowDefinitions>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+</Grid.RowDefinitions>
+
+<TextBlock Margin="10, 10, 3, 3" Grid.Column="0" Grid.Row="0" FontSize="24">Tool Bars
+</TextBlock>
+<TextBlock Margin="10, 10, 3, 3" Grid.Column="0" Grid.Row="1" FontSize="14" 
+      Grid.ColumnSpan="2">The following tool bars have styles applied.
+</TextBlock>
+
+<DockPanel Margin="10, 10, 3, 3" Grid.Column="0" Grid.Row="2">     
+        <ToolBarTray>
+            <ToolBar Band="1" BandIndex="1">
+                <Button Style="{StaticResource Simple}">
+                     <Image Source="toolbargraphics\new.bmp" /></Button>
+                <Button Style="{StaticResource Simple}">
+                     <Image Source="toolbargraphics\open.bmp" /></Button>
+                <Button Style="{StaticResource Simple}">
+                     <Image Source="toolbargraphics\save.bmp" /></Button>
+            </ToolBar>
+        </ToolBarTray>
+</DockPanel>
+
+<TextBlock Margin="10, 10, 3, 3" Grid.Column="1" Grid.Row="2" FontSize="12" 
+      VerticalAlignment="Center" TextWrapping="WrapWithOverflow">Style using system 
+      resources is applied to the buttons on the tool bar.
+</TextBlock>
+
+<DockPanel Margin="10, 10, 3, 3" Grid.Column="0" Grid.Row="3">     
+        <ToolBarTray>
+            <ToolBar Band="1" BandIndex="1">
+                <Button Style="{StaticResource TBButton}">
+                     <Image Source="toolbargraphics\new.bmp" /></Button>
+                <Button Style="{StaticResource TBButton}">
+                     <Image Source="toolbargraphics\open.bmp" /></Button>
+                <Button Style="{StaticResource TBButton}">
+                     <Image Source="toolbargraphics\save.bmp" /></Button>
+                <StackPanel Style="{StaticResource Separator}"/>
+                <Button Style="{StaticResource TBButton}">
+                     <Image Source="toolbargraphics\cut.bmp" /></Button>
+                <Button Style="{StaticResource TBButton}">
+                     <Image Source="toolbargraphics\copy.bmp" /></Button>
+                <Button Style="{StaticResource TBButton}">
+                     <Image Source="toolbargraphics\paste.bmp" /></Button>
+                <StackPanel Style="{StaticResource Separator}"/>
+                <Button Style="{StaticResource TBButton}">
+                     <Image Source="toolbargraphics\redo.bmp" /></Button>
+                <Button Style="{StaticResource TBButton}">
+                     <Image Source="toolbargraphics\undo.bmp" /></Button>
+                <StackPanel Style="{StaticResource Separator}"/>
+                <Button Style="{StaticResource TBButton}">
+                     <Image Source="toolbargraphics\preview.bmp" /></Button>
+                <Button Style="{StaticResource TBButton}">
+                     <Image Source="toolbargraphics\print.bmp" /></Button>
+            </ToolBar>
+        </ToolBarTray>
+</DockPanel>
+
+<TextBlock Margin="10, 10, 3, 3" Grid.Column="1" Grid.Row="3" FontSize="12" 
+      VerticalAlignment="Center" TextWrapping="WrapWithOverflow">Style is applied to 
+      the buttons, the separators are a user defined style and the tool bar has 
+      overflow items. 
+</TextBlock>
+
+<DockPanel Margin="10, 10, 3, 3" Grid.Column="0" Grid.Row="4">     
+<ToolBarTray Style="{StaticResource Tray}" Width="250">          
+<ToolBar Band="1" BandIndex="1">
+                <Expander HorizontalAlignment="Left" Header="Choose">
+                  <StackPanel>
+                    <RadioButton>Yes</RadioButton>
+                    <RadioButton>No</RadioButton>
+                    <RadioButton>Maybe</RadioButton>
+                  </StackPanel>
+                </Expander>
+                <Separator/>
+                <ComboBox Width="160"> 
+                    <ComboBoxItem FontFamily="Times New Roman"                         
+                          IsSelected="true">Times New Roman</ComboBoxItem>
+                    <ComboBoxItem FontFamily="Arial">Arial</ComboBoxItem>
+                    <ComboBoxItem FontFamily="Arial Rounded MT Bold">Arial 
+                          Rounded MT Bold</ComboBoxItem>
+                </ComboBox>
+              </ToolBar> 
+</ToolBarTray>
+</DockPanel>
+<TextBlock Margin="10, 10, 3, 3" Grid.Column="1" Grid.Row="4" FontSize="12" 
+      VerticalAlignment="Center" TextWrapping="WrapWithOverflow">Style is applied 
+      to the tool bar tray.
+</TextBlock>
+
+<DockPanel Margin="10, 10, 3, 3" Grid.Column="0" Grid.Row="5">     
+        <ToolBarTray>
+            <ToolBar Band="1" BandIndex="1" Style="{StaticResource Triggers}">
+                <Button><Image Source="toolbargraphics\new.bmp" /></Button>
+                <Button><Image Source="toolbargraphics\open.bmp" /></Button>
+                <Button><Image Source="toolbargraphics\save.bmp" /></Button>
+                <Separator/>
+                <Button><Image Source="toolbargraphics\cut.bmp" /></Button>
+                <Button><Image Source="toolbargraphics\copy.bmp" /></Button>
+                <Button><Image Source="toolbargraphics\paste.bmp" /></Button>
+            </ToolBar>
+        </ToolBarTray>
+</DockPanel>
+
+<TextBlock Margin="10, 10, 3, 3" Grid.Column="1" Grid.Row="5" FontSize="12" 
+      VerticalAlignment="Center" TextWrapping="WrapWithOverflow">Style is applied 
+      to the tool bar that changes its appearance in response to a mouse over event.
+</TextBlock>
+</Grid>   
+</Canvas>

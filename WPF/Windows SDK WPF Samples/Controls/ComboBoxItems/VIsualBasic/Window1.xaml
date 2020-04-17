@@ -1,0 +1,48 @@
+﻿
+<Window Background="cornsilk"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="Window1"
+>
+
+<Grid ShowGridLines="false">
+<Grid.ColumnDefinitions>
+<ColumnDefinition/>
+<ColumnDefinition/>
+</Grid.ColumnDefinitions>
+<Grid.RowDefinitions>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+<RowDefinition/>
+</Grid.RowDefinitions>
+
+<TextBlock Margin="10,10,0,5" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" TextWrapping="WrapWithOverflow" FontSize="20">Retrieve the Content of a Combo Box Item By Using Its Index
+</TextBlock>
+
+<TextBlock Margin="10,0,0,5" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" TextWrapping="WrapWithOverflow" FontSize="12">This example gets the combo box item at a specified index. The combo box is open to show the contents of the combo box items. Choose the corresponding index number. When the item at the specified index is retrieved a message is printed below.
+</TextBlock>
+
+<ComboBox Name="cb" Margin="10,10,3,3" Width="200" Height="30" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" 
+             IsEditable="true" Text="Open Combo Box" IsReadOnly="true" 
+             StaysOpenOnEdit="true" IsDropDownOpen="true">
+        <ComboBoxItem>Spain - Item 0</ComboBoxItem>
+        <ComboBoxItem>France - Item 1</ComboBoxItem>
+        <ComboBoxItem>Peru - Item 2</ComboBoxItem>
+        <ComboBoxItem>Mexico - Item 3</ComboBoxItem>
+</ComboBox>
+
+<Menu Margin="10,10,3,3" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Grid.Row="2" Height="30" Width="150">
+    <MenuItem Header="Choose an Index Number" Height="25.2766666666667" Width="137.703333333333">
+          <MenuItem Header="0" Click="GetIndex0"/>
+          <MenuItem Header="1" Click="GetIndex1"/>
+          <MenuItem Header="2" Click="GetIndex2"/>
+          <MenuItem Header="3" Click="GetIndex3"/>
+   </MenuItem>
+</Menu>
+
+
+<Button Margin="10,0,0,5" Height="50" Grid.Column="0" Grid.Row="4" Name="Item"></Button>
+</Grid>
+</Window>

@@ -1,0 +1,83 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <AssemblyName>BrushesIntroduction</AssemblyName>
+    <TargetType>$(OutputType)</TargetType>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>App.ico</ApplicationIcon>
+    <RootNamespace>BrushesIntroduction</RootNamespace>
+    <BuildSystem>MSBuild</BuildSystem>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9D37563A-C550-4347-9EEF-942BF2330B79}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>BrushesIntroduction.app</StartupObject>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <CodeAnalysisRules>
+    </CodeAnalysisRules>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildBinPath)\Microsoft.WinFX.targets" />
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.xml" />
+    <Reference Include="System.Data" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="UIAutomationTypes" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="app.xaml" />
+    <Page Include="SampleViewer.xaml" />
+    <Page Include="BrushTypesExample.xaml" />
+    <Page Include="SolidColorBrushSyntax.xaml" />
+    <Page Include="PredefinedBrushes.xaml" />
+    <Page Include="AnimatingSolidColorBrushExample.xaml" />
+    <Page Include="GradientBrushesExample.xaml" />
+    <Page Include="RadialGradientBrushExample.xaml" />
+    <Page Include="GradientSpreadExample.xaml" />
+    <Page Include="RadialGradientBrushAnimationExample.xaml" />
+    <Page Include="LinearGradientBrushAnimationExample.xaml" />
+    <Page Include="InteractiveLinearGradientBrushExample.xaml" />
+    <Page Include="BrushOpacityExample.xaml" />
+    <Page Include="BrushTransformExample.xaml" />
+    <Page Include="DashExample.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GradientBrushesExample.xaml.cs">
+      <DependentUpon>GradientBrushesExample.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SampleViewer.xaml.cs">
+      <DependentUpon>SampleViewer.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="app.xaml.cs">
+      <DependentUpon>app.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="InteractiveLinearGradientBrushExample.xaml.cs">
+      <DependentUpon>InteractiveLinearGradientBrushExample.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="App.ico" />
+    <Resource Include="sampleImages\*.*" />
+    <Resource Include="sampleResources\TOC.xml" />
+  </ItemGroup>
+</Project>

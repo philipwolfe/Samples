@@ -1,0 +1,118 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8EF2A7E2-E05C-43C7-939B-312A725A885F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Activities</RootNamespace>
+    <AssemblyName>Activities</AssemblyName>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Workflow.Activities" />
+    <Reference Include="System.Workflow.ComponentModel" />
+    <Reference Include="System.Workflow.Runtime" />
+    <Reference Include="System" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CompensatableInterleave.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CompensatableSequence.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controller.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DoWhile.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\FilePersistence.cs" />
+    <Compile Include="GetCurrentTime.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Graph.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Interleave.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="InterleavedForEach.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Navigator.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Pick.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\ProgramLoader.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ReadLine.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\SchedulerService.cs" />
+    <Compile Include="Sequence.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\Timer.cs" />
+    <Compile Include="Services\Writer.cs" />
+    <Compile Include="Snippet.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ThrowException.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ThrowTypedException.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Wait.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="While.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WriteLine.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

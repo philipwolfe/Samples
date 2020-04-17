@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab03_Ex02_Task02_InstanceTracking</Title>
+      <Author>MVP KenLin</Author>
+      <Shortcut>WFLab03_Ex02_Task02_InstanceTracking</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="VB"><![CDATA[
+        Shared Sub GetInstanceTrackingEvents(ByVal instanceId As Guid)
+            Console.WriteLine("" & vbCrLf & "Instance Tracking Events :")
+            Dim sqlTrackingQuery1 As SqlTrackingQuery = New SqlTrackingQuery(connectionString)
+            Dim sqlTrackingWorkflowInstance1 As SqlTrackingWorkflowInstance
+            sqlTrackingQuery1.TryGetWorkflow(instanceId, sqlTrackingWorkflowInstance1)
+
+            Try
+                For Each workflowTrackingRecord As WorkflowTrackingRecord In _
+                                            sqlTrackingWorkflowInstance1.WorkflowEvents
+                    Console.WriteLine("EventDescription : {0}  DateTime : {1}", _
+                                            workflowTrackingRecord.TrackingWorkflowEvent, _
+                                            workflowTrackingRecord.EventDateTime)
+                Next
+            Catch e As Exception
+                Console.WriteLine("No Instance Tracking Events Found")
+            End Try
+        End Sub
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab06 Ex01 Task03 afterWSNorthwindEx</Title>
+      <Author>Serge Luca</Author>
+      <Shortcut>Lab06 Ex01 Task03 afterWSNorthwindEx</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="VB"><![CDATA[
+
+         'Initialize it to a time where electronic PO processing was not invented.
+        Dim statusDate As DateTime = New DateTime(1900, 1, 1)
+        Dim lastStatus As Northwind.POStatus = Nothing
+
+        'Find the last status by looping over the history items
+        For Each stat As Northwind.POStatus In POResponsefromNorthwind.History
+
+            If (stat.Timestamp > statusDate) Then
+
+                statusDate = stat.Timestamp
+                lastStatus = stat
+            End If
+
+        Next
+        System.Console.WriteLine("Your PO has been {0} on {1} by Northwind", lastStatus.PoStatus, lastStatus.Timestamp)
+
+
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

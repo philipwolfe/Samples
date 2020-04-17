@@ -1,0 +1,86 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E626E481-0B95-4C90-B01D-348CD667B346}</ProjectGuid>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <RootNamespace>FixedHierarchicalTopologySample</RootNamespace>
+    <AssemblyName>FixedHierarchicalTopologySample</AssemblyName>
+    <WarningLevel>4</WarningLevel>
+    <OutputType>winexe</OutputType>
+    <EnableSecurityDebugging>false</EnableSecurityDebugging>
+    <ApplicationVersion>1.0.0.*</ApplicationVersion>
+    <!-- Most people will use Publish dialog in Visual Studio to increment this -->
+    <MapFileExtensions>False</MapFileExtensions>
+    <HostInBrowser>True</HostInBrowser>
+    <Install>False</Install>
+    <TargetZone>Internet</TargetZone>
+    <StartAction>Program</StartAction>
+    <StartProgram>$(WINDIR)\System32\PresentationHost.exe</StartProgram>
+    <ApplicationExtension>.xbap</ApplicationExtension>
+    <StartArguments>-debug "$(MSBuildProjectDirectory)\bin\$(Configuration)\$(AssemblyName)$(ApplicationExtension)"</StartArguments>
+    <SignManifests>True</SignManifests>
+    <BootstrapperEnabled>false</BootstrapperEnabled>
+    <MinFrameworkVersionRequired>3.0</MinFrameworkVersionRequired>
+    <ManifestKeyFile>FixedHierarchicalTopologySample_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestCertificateThumbprint>F9046DA1742DF8CED3DC21C7168C1143E7A80430</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CallingPage.xaml.cs">
+      <DependentUpon>CallingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TaskContext.cs" />
+    <Compile Include="TaskPage4.xaml.cs">
+      <DependentUpon>TaskPage4.xaml</DependentUpon>
+    </Compile>
+    <None Include="FixedHierarchicalTopologySample_TemporaryKey.pfx" />
+    <None Include="Properties\app.manifest" />
+    <Compile Include="TaskData.cs" />
+    <Compile Include="TaskPage1.xaml.cs">
+      <DependentUpon>TaskPage1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TaskPage2.xaml.cs">
+      <DependentUpon>TaskPage2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TaskPage3.xaml.cs">
+      <DependentUpon>TaskPage3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TaskResult.cs" />
+    <Compile Include="TaskLauncher.cs" />
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="CallingPage.xaml" />
+    <Page Include="TaskPage4.xaml" />
+    <Page Include="TaskPage1.xaml" />
+    <Page Include="TaskPage2.xaml" />
+    <Page Include="TaskPage3.xaml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildBinPath)\Microsoft.WinFX.targets" />
+</Project>

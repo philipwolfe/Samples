@@ -1,0 +1,55 @@
+'--------------------------------------------------------------------------------
+' This file is a "Sample" as from Windows Workflow Foundation
+' Hands on Labs RC
+'
+' Copyright (c) Microsoft Corporation. All rights reserved.
+'
+' This source code is intended only as a supplement to Microsoft
+' Development Tools and/or on-line documentation.  See these other
+' materials for detailed information regarding Microsoft code samples.
+' 
+' THIS CODE AND INFORMATION ARE PROVIDED AS IS WITHOUT WARRANTY OF ANY
+' KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+' IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+' PARTICULAR PURPOSE.
+'--------------------------------------------------------------------------------
+
+Public Class DesignerShell
+
+
+
+    Private Sub zoomDropDownMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles mni25PercentZoom.Click, mni200PercentZoom.Click, mni100PercentZoom.Click
+
+        If TypeOf sender Is ToolStripMenuItem Then
+            Dim menuItem As ToolStripMenuItem = DirectCast(sender, ToolStripMenuItem)
+            Dim zoomFactor As Integer = 0
+            If Integer.TryParse(menuItem.Tag.ToString, zoomFactor) Then
+                Me.workflowDesignerControl.ProcessZoom(zoomFactor)
+            End If
+        End If
+    End Sub
+
+
+    Private Sub btnSave_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnSave.Click
+        Me.workflowDesignerControl.Save()
+    End Sub
+
+    Private Sub btnCompile_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnCompile.Click
+        Me.workflowDesignerControl.Compile()
+    End Sub
+
+    Private Sub btnRun_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnRun.Click
+        Me.workflowDesignerControl.Run()
+    End Sub
+
+
+    Private Sub btnOpen_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnOpen.Click
+        Me.workflowDesignerControl.LoadExistingWorkflow()
+    End Sub
+
+    Private Sub btnDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDelete.Click
+        Me.workflowDesignerControl.DeleteSelected()
+    End Sub
+
+
+End Class

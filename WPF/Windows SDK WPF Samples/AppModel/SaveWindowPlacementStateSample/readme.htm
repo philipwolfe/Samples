@@ -1,0 +1,42 @@
+﻿<html DIR="LTR"><head><META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8" /><META NAME="save" CONTENT="history" /><title>Save Window Placement State Sample</title><META NAME="Description" CONTENT="This sample illustrates how to save the size, location, and state of a Window so the Window opens in the same position it was closed. Furthermore, this sample is multi-monitor aware."></META><META NAME="MS.LOCALE" CONTENT="en-us" /><style>
+body
+{font-family:Verdana;font-size:medium;}
+div#mainSection, div#header
+{font-size:70%;width: 100%;}
+div#mainBody
+{font-size:90%;}
+div#mainSection div table
+{font-size: 100%;text-align: left;}
+span#nsrTitle
+{color:#003399;font-size:90%;font-weight:600;}
+div#header
+{background-color:#D4DFFF;}
+.heading
+{font-size:120%;color:#003399;}
+.subHeading
+{font-size:100%;margin-bottom:4;}
+li
+{margin-top:-2;margin-bottom:3;}
+p
+{margin-top:10;margin-bottom:5;}
+div.tableSection p
+{margin-top:1;margin-bottom:4;}	
+div#mainSection table th
+{background-color:#EFEFF7;color:#000066;text-align:left;}
+div#mainSection table td
+{background-color:#F7F7FF;}
+div#mainSection table
+{margin-top:5px;margin-bottom: px;}
+			</style></head><body><div id="header"><table width="100%" id="topTable"><tr id="headerTableRow2"><td align="left"><span id="nsrTitle">Save Window Placement State Sample</span></td></tr></table></div><div id="mainSection"><div id="mainBody"><br /><font color="DarkGray">[This readme is a partial copy of the sample's topic in the SDK documentation.]</font><br /><p>This sample illustrates how to save the size, location, and state of a Window so the <b>Window</b> opens in the same position it was closed. Furthermore, this sample is multi-monitor aware.</p><a name="bestpractices"></a><h1 class="heading">Best Practices</h1><div id="sectionSection0" class="seeAlsoNoToggleSection"><p>This sample demonstrates a specific feature of the Windows Presentation Foundation and, consequently, does not follow application development best practices. For comprehensive coverage of Windows Presentation Foundation (WPF) and Microsoft .NET Framework application development best practices, refer to the following as appropriate:</p><p>Accessibility - Accessibility Best Practices</p><p>Security - WPF Security</p><p>Localization - WPF Globalization and Localization Overview</p></div><a name="sample_build_instructions"></a><h1 class="heading">Building the Sample</h1><div id="sectionSection1" class="seeAlsoNoToggleSection"><ul><li><p>
+            Install the Windows Software Development Kit (SDK) and open its build environment command window. On the Start menu, point to All Programs, Microsoft Windows SDK, and then click CMD Shell.
+          </p></li><li><p>
+            Download the sample, usually from the software development kit (SDK) documentation, to your hard disk drive.
+          </p></li><li><p>
+            To build the sample from the build environment command window, go to the source directory of the sample. At the command prompt, type MSBUILD.
+          </p></li><li><p>
+            To build the sample in Microsoft Visual Studio 2005, load the sample solution or project file and then press CTRL+SHIFT+B.
+          </p></li></ul></div><a name="sample_run_instructions"></a><h1 class="heading">Running the Sample</h1><div id="sectionSection2" class="seeAlsoNoToggleSection"><ul><li><p>
+            To run the compiled sample from the build environment command window, execute the .exe file in the Bin\Debug or Bin\Release folder contained under the sample source code folder.
+          </p></li><li><p>
+            To run the compiled sample with debugging in Visual Studio 2005, press F5.
+          </p></li></ul></div><a name="remarks"></a><h1 class="heading">Remarks</h1><div id="sectionSection3" class="seeAlsoNoToggleSection"><p>This sample illustrates how to save the size, location, and state of a <b>Window</b> so the <b>Window</b> opens in the same position it was closed. Furthermore, this sample is multi-monitor aware, which means that if the monitor on which the <b>Window</b> was closed is disconnected, the <b>Window</b> is shown on a connected monitor instead.</p><p>This requires using the following Win32 APIs (from User32.dll):</p><p><b>WINDOWPLACEMENT</b>: To store window size, location, and state (see <a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/winui/winui/windowsuserinterface/windowing/windows/windowreference/windowstructures/windowplacement.asp">WINDOWPLACEMENT Structure</a>).</p><p><b>GetWindowPlacement</b>: To retrieve the current WINDOWPLACEMENT data for the window before it closes (see <a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/winui/winui/windowsuserinterface/windowing/windows/windowreference/windowfunctions/getwindowplacement.asp">GetWindowPlacement</a>).</p><p><b>SetWindowPlacement</b>: To restore the WINDOWPLACEMENT data when the window opens (see <a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/winui/winui/windowsuserinterface/windowing/windows/windowreference/windowfunctions/getwindowplacement.asp">SetWindowPlacement</a>).</p><p>The <b>WINDOWPLACEMENT</b> structure is physically stored on disk using the Microsoft .NET Framework version 3.0 support for strongly-typed application settings (see <a href="http://msdn2.microsoft.com/en-us/library/k4s6c3a0.aspx">Application Settings Overview</a>).</p></div><UscDataIsland></UscDataIsland></div></div></body></html>

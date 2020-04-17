@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab09 Ex03 Task02 MainLogic</Title>
+      <Author>Serge Luca</Author>
+      <Shortcut>Lab09 Ex03 Task02 MainLogic</Shortcut>
+    </Header>
+    <Snippet>   <Code Language="VB"><![CDATA[
+    
+                ' The "Amount" parameter is used to determine which branch of the IfElse should be executed
+                ' a value less than 10,000 will execute branch 1 - Get Manager Approval; any other value will execute branch 2 - Get VP Approval
+                Dim workflowAmount As Integer = 9000
+                Dim workflowNamedValues As New Dictionary(Of String, Object)()
+                workflowNamedValues.Add("Amount", workflowAmount)
+                Dim workflowInstance As WorkflowInstance = workflowRuntime.CreateWorkflow(GetType(DynamicUpdateChangingRules.DynamicRulesWorkflow), workflowNamedValues)
+                workflowInstance.Start()
+                WaitHandle.WaitOne()
+                Console.WriteLine("press ENTER to continue")
+                Console.ReadLine()
+
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

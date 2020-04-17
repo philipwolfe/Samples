@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab03_Ex01_Task02_EventHandler1</Title>
+      <Author>MVP KenLin</Author>
+      <Shortcut>WFLab03_Ex01_Task02_EventHandler1</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="VB"><![CDATA[
+        Shared Sub workflowRuntime_Stopped(ByVal sender As Object, ByVal e As WorkflowRuntimeEventArgs)
+            Console.WriteLine("Runtime stopped event.")
+        End Sub
+
+        Shared Sub workflowRuntime_Started(ByVal sender As Object, ByVal e As WorkflowRuntimeEventArgs)
+            Dim w As WorkflowRuntime = CType(sender, WorkflowRuntime)
+            Dim services As ICollection = w.GetAllServices(GetType(System.Object))
+            For Each o As Object In services
+                Console.WriteLine("Service of type " & o.ToString & " started.")
+            Next
+        End Sub
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

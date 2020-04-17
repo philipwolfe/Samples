@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<PropertyGroup>
+		<AssemblyName>NavWindow_Events_VB</AssemblyName>
+		<TargetType>winexe</TargetType>
+		<Configuration Condition="'$(Configuration)'==''">Debug</Configuration>
+		<ApplicationIcon>App.ico</ApplicationIcon>
+		<SchemaVersion>2.0</SchemaVersion>
+		<DefaultCLRNamespace>NavWindow_Events_VB</DefaultCLRNamespace>
+		<ProjectGuid>{234B2D3A-5A7A-4C39-8CF2-AB2A22715104}</ProjectGuid>
+		<OutputPath>bin\$(Configuration)\</OutputPath>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+		<DocumentationFile>NavWindow_Events_VB.xml</DocumentationFile>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+		<DocumentationFile>NavWindow_Events_VB.xml</DocumentationFile>
+	</PropertyGroup>
+	<Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets"/>
+	<Import Project="$(MSBuildBinPath)\Microsoft.WinFX.targets"/>
+	<ItemGroup>
+		<ApplicationDefinition Include="app.xaml"/>
+		<Page Include="content.xaml"/>
+		<Page Include="Frame1.xaml">
+			<SubType>Code</SubType>
+		</Page>
+		<Page Include="Frame2.xaml">
+			<SubType>Code</SubType>
+		</Page>
+		<Page Include="Frame3.xaml">
+			<SubType>Code</SubType>
+		</Page>
+		<Page Include="MyWindow.xaml">
+			<SubType>Code</SubType>
+		</Page>
+		<Page Include="Page1.xaml">
+			<SubType>Code</SubType>
+		</Page>
+		<Page Include="Page2.xaml">
+			<SubType>Code</SubType>
+		</Page>
+	</ItemGroup>
+	<ItemGroup>
+		<Compile Include="Frame1.xaml.vb">
+			<DependentUpon>Frame1.xaml</DependentUpon>
+			<SubType>Code</SubType>
+		</Compile>
+		<Compile Include="Frame2.xaml.vb">
+			<DependentUpon>Frame2.xaml</DependentUpon>
+			<SubType>Code</SubType>
+		</Compile>
+		<Compile Include="Frame3.xaml.vb">
+			<DependentUpon>Frame3.xaml</DependentUpon>
+			<SubType>Code</SubType>
+		</Compile>
+		<Compile Include="app.xaml.vb">
+			<DependentUpon>app.xaml</DependentUpon>
+			<SubType>Code</SubType>
+		</Compile>
+		<Compile Include="MyWindow.xaml.vb">
+			<DependentUpon>MyWindow.xaml</DependentUpon>
+			<SubType>Code</SubType>
+		</Compile>
+		<Compile Include="Page1.xaml.vb">
+			<DependentUpon>Page1.xaml</DependentUpon>
+			<SubType>Code</SubType>
+		</Compile>
+		<Compile Include="Page2.xaml.vb">
+			<DependentUpon>Page2.xaml</DependentUpon>
+			<SubType>Code</SubType>
+		</Compile>
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="app.ico"/>
+	</ItemGroup>
+	<ItemGroup>
+		<Reference Include="System"/>
+		<Reference Include="System.Xml"/>
+		<Reference Include="System.Data"/>
+		<Reference Include="UIAutomationTypes"/>
+		<Reference Include="WindowsBase"/>
+		<Reference Include="PresentationCore"/>
+		<Reference Include="PresentationFramework"/>
+		<Reference Include="UIAutomationProvider"/>
+	</ItemGroup>
+</Project>

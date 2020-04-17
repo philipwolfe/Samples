@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab03_Ex02_Task03_Delegates</Title>
+      <Author>MVP KenLin</Author>
+      <Shortcut>WFLab03_Ex02_Task03_Delegates</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="VB"><![CDATA[
+                AddHandler workflowRuntime.WorkflowLoaded, AddressOf OnWorkflowLoaded
+                AddHandler workflowRuntime.WorkflowIdled, AddressOf OnWorkflowIdled
+                AddHandler workflowRuntime.WorkflowPersisted, AddressOf OnWorkflowPersisted
+                AddHandler workflowRuntime.WorkflowUnloaded, AddressOf OnWorkflowUnloaded
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

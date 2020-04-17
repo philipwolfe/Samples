@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab05 Exercise01 Task01 ProgramClass</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab05 Exercise01 Task01 ProgramClass</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[static AutoResetEvent waitHandle = new AutoResetEvent(false);        static VotingService votingService;        static void Main(string[] args)        {            WorkflowRuntime workflowRuntime = new WorkflowRuntime();            ExternalDataExchangeService dataService = new ExternalDataExchangeService();            workflowRuntime.AddService(dataService);            votingService = new VotingService();            dataService.AddService(votingService);            workflowRuntime.WorkflowCreated += new EventHandler<WorkflowEventArgs>(workflowRuntime_WorkflowCreated);            workflowRuntime.WorkflowCompleted += new EventHandler<WorkflowCompletedEventArgs>(workflowRuntime_WorkflowCompleted);            Type type = typeof(VotingWorkflow);            workflowRuntime.CreateWorkflow(type).Start();            waitHandle.WaitOne();                        Console.WriteLine("Press any key to exit...");            Console.Read();        }        static void workflowRuntime_WorkflowCompleted(object sender, WorkflowCompletedEventArgs e)        {            Console.WriteLine("Workflow " + e.WorkflowInstance.InstanceId.ToString() + " completed.");            waitHandle.Set();        }        static void workflowRuntime_WorkflowCreated(object sender, WorkflowEventArgs e)        {            Console.WriteLine("Workflow " + e.WorkflowInstance.InstanceId.ToString() + " created.");        }]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab05 Exercise01 Task01 UsingStatements</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab05 Exercise01 Task01 UsingStatements</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[using System;using System.Collections.Generic;using System.Threading;using System.Workflow.Runtime;using System.Workflow.Activities;]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab05 Exercise01 Task02 VotingService</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab05 Exercise01 Task02 VotingService</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[using System;using System.Threading;using System.Workflow.ComponentModel;using System.Workflow.Runtime;using System.Workflow.Activities;using System.Windows.Forms;namespace CommunicationsWorkflow{    [Serializable]    public class VotingEventArgs : ExternalDataEventArgs    {        private string alias;        public VotingEventArgs(Guid InstanceID, string alias) : base(InstanceID)        {            this.alias = alias;        }        public string Alias        {            get { return this.alias; }            set { this.alias = value; }        }    }    [ExternalDataExchange]    internal interface IVotingService    {        event EventHandler<VotingEventArgs> ApproveProposal;        event EventHandler<VotingEventArgs> RejectProposal;        void CreateBallot(string alias);    }    internal class VotingService : IVotingService    {        public event EventHandler<VotingEventArgs> ApproveProposal;        public event EventHandler<VotingEventArgs> RejectProposal;        public void CreateBallot(string alias)        {            Console.WriteLine("Ballot created for " + alias + ".");            ThreadPool.QueueUserWorkItem(ShowVotingDialog, new VotingEventArgs(WorkflowEnvironment.WorkflowInstanceId, alias));        }        public void ShowVotingDialog(object o)        {            DialogResult result;            VotingEventArgs votingEventArgs = o as VotingEventArgs;            Guid instanceId = votingEventArgs.InstanceId;            string alias = votingEventArgs.Alias;            result = MessageBox.Show("Approve Proposal, " + alias + "?", alias + " Ballot", MessageBoxButtons.YesNo);            if (result == DialogResult.Yes)            {                if (ApproveProposal != null)                    ApproveProposal(null, votingEventArgs);            }            else            {                if (RejectProposal != null)                    RejectProposal(null, votingEventArgs);            }        }    }}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab05 Exercise01 Task03 OnRejected</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab05 Exercise01 Task03 OnRejected</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[private void OnRejected(object sender, ExternalDataEventArgs e)	{	    Console.WriteLine("Proposal Rejected");	}		private void OnApproved(object sender, ExternalDataEventArgs e)	{	    Console.WriteLine("Proposal Approved");	}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab05 Exercise02 Task01 IVotingServiceCorrelated</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab05 Exercise02 Task01 IVotingServiceC</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[[ExternalDataExchange][CorrelationParameter("alias")]internal interface IVotingServiceCorrelated{    [CorrelationAlias("alias", "e.Alias")]    event EventHandler<VotingEventArgs> ApproveProposal;    [CorrelationAlias("alias", "e.Alias")]    event EventHandler<VotingEventArgs> RejectProposal;    [CorrelationInitializer]    void CreateBallot(string alias);}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab05 Exercise03 Task02 POInitiators</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab05 Exercise03 Task02 POInitiators</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[WebWorkflowRole poInitiatorsRole = new WebWorkflowRole("Clerk");// Add the role to the RoleCollection representing the POInitiatorspoInitiators.Add(poInitiatorsRole);]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab05 Exercise04 Task02 EventArgs</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab05 Exercise04 Task02 EventArgs</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[[Serializable]    public class PrimeFactoringEventArgs : ExternalDataEventArgs    {        private int primeCount;        public int PrimeCount        {            get { return primeCount; }        }        public PrimeFactoringEventArgs(Guid instanceId, int primeCount) : base(instanceId)        {            this.primeCount = primeCount;        }    }]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab05 Exercise04 Task02 FactoringService</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab05 Exercise04 Task02 FactoringService</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[[Serializable]    public class FactoringService : IPrimeFactoring    {        #region IPrimeFactoring Members        public void FactorPrimes()        {            ThreadPool.QueueUserWorkItem(FactorPrimes, WorkflowEnvironment.WorkflowInstanceId);        }        public event EventHandler<PrimeFactoringEventArgs> FactoredPrimes;        #endregion        private void FactorPrimes(object instanceId)        {            Console.WriteLine("Beginning Factoring Prime Numbers");            DateTime start = DateTime.Now;            int topNumber = 100000000;            BitArray numbers = new BitArray(topNumber, true);            for (int i = 2; i < topNumber; i++)            {                if (numbers[i])                {                    for (int j = i * 2; j < topNumber; j += i)                    {                        numbers[j] = false;                    }                }            }            int primes = 0;            for (int i = 1; i < topNumber; i++)            {                if (numbers[i])                {                    primes++;                }            }            Console.WriteLine("Finished Factoring Prime Numbers (" + Math.Round(DateTime.Now.Subtract(start).TotalSeconds, 0) + " seconds)");            if (FactoredPrimes != null)            {                this.FactoredPrimes(this, new PrimeFactoringEventArgs((Guid)instanceId, primes));            }        }    }]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab05 Exercise04 Task02 IPrimeFactoring</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab05 Exercise04 Task02 IPrimeFactoring</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[[ExternalDataExchange]    public interface IPrimeFactoring    {        void FactorPrimes();        event EventHandler<PrimeFactoringEventArgs> FactoredPrimes;    }]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab05 Exercise04 Task02 UsingStatements</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab05 Exercise04 Task02 UsingStatements</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[using System;using System.Collections;using System.Collections.Generic;using System.Text;using System.Threading;using System.Workflow.Activities;using System.Workflow.Runtime;namespace LongRunningWorkflow{    }]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab05 Exercise04 Task03 EventHandlers</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab05 Exercise04 Task03 EventHandlers</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[private void BeforeDelay_Execute(object sender, EventArgs e)        {            Console.WriteLine("Beginning Delay");        }        private void AfterDelay_Execute(object sender, EventArgs e)        {            Console.WriteLine(string.Format("Finished Delay ({0} seconds)", this.delayActivity1.TimeoutDuration.Seconds));        }        private void AfterBranch_Execute(object sender, EventArgs e)        {            Console.WriteLine("Finished Branch");        }        private void BeforeBranch_Execute(object sender, EventArgs e)        {            Console.WriteLine("Beginning Branch");        }]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab05 Exercise04 Task03 MainMethod</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab05 Exercise04 Task03 MainMethod</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[    ExternalDataExchangeService dataService = new ExternalDataExchangeService();    workflowRuntime.AddService(dataService);    dataService.AddService(new FactoringService());]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

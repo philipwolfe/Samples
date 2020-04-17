@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab04 Ex02 Task02 ItemSelectionChanged</Title>
+      <Author>Serge Luca</Author>
+      <Shortcut>Lab04 Ex02 Task02 ItemSelectionChanged</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="VB"><![CDATA[
+      Private Sub lstvwOrders_ItemSelectionChanged(ByVal sender As System.Object, _
+    ByVal e As System.Windows.Forms.ListViewItemSelectionChangedEventArgs) Handles lstvwOrders.ItemSelectionChanged
+        If e.Item.Selected Then
+            Me.UpdateButtonStatus()
+        Else
+            Me.DisableButtons()
+        End If
+
+    End Sub
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

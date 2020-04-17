@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab03 Ex03 Task03 TrackingService</Title>
+      <Author>MVP KenLin</Author>
+      <Shortcut>Lab03 Ex03 Task03 TrackingService</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="VB"><![CDATA[
+Imports System
+Imports System.IO
+Imports System.Workflow.Runtime
+Imports System.Workflow.Runtime.Tracking
+Imports System.Workflow.ComponentModel
+Imports System.Workflow.Runtime.Hosting
+
+Public Class ConsoleTrackingService
+    Inherits TrackingService
+
+    Protected Overloads Overrides Function GetProfile(ByVal workflowInstanceId As System.Guid) As System.Workflow.Runtime.Tracking.TrackingProfile
+
+    End Function
+
+    Protected Overloads Overrides Function GetProfile(ByVal workflowType As System.Type, ByVal profileVersionId As System.Version) As System.Workflow.Runtime.Tracking.TrackingProfile
+
+    End Function
+
+    Protected Overrides Function GetTrackingChannel(ByVal parameters As System.Workflow.Runtime.Tracking.TrackingParameters) As System.Workflow.Runtime.Tracking.TrackingChannel
+
+    End Function
+
+    Protected Overrides Function TryGetProfile(ByVal workflowType As System.Type, ByRef profile As System.Workflow.Runtime.Tracking.TrackingProfile) As Boolean
+
+    End Function
+
+    Protected Overrides Function TryReloadProfile(ByVal workflowType As System.Type, ByVal workflowInstanceId As System.Guid, ByRef profile As System.Workflow.Runtime.Tracking.TrackingProfile) As Boolean
+
+    End Function
+End Class
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

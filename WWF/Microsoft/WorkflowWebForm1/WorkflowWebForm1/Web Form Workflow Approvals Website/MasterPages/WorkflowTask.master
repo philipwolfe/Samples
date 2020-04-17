@@ -1,0 +1,48 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="WorkflowTask.master.cs"
+	Inherits="MasterPages_WorkflowTask" MasterPageFile="~/MasterPages/MasterPage.master" %>
+<%@ Register Src="../Controls/AssignAnotherUser.ascx" TagName="AssignAnotherUser"
+	TagPrefix="uc1" %>
+<asp:Content ID="content" runat="server" ContentPlaceHolderID="bodyContentPlaceHolder">
+	<table width="100%" cellpadding="5" cellspacing="5" border="0">
+		<tr>
+			<td colspan="2">
+				<h1>
+					Task:<asp:Label runat="server" ID="taskNameLabel" />
+				</h1>
+				<h4>
+					<asp:Label runat="server" ID="taskTipLabel" Text="[Tip]" />
+				</h4>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div class="tabPage">
+					<table width="100%" cellpadding="5" cellspacing="5" border="1">
+						<tr>
+							<td>
+								<!-- Custom activity fields will go here -->
+								<asp:ContentPlaceHolder ID="taskFieldsContentPlaceHolder" runat="server" />
+							</td>
+						</tr>
+						<tr>
+							<td class="taskButtonList">
+								<asp:ImageButton ID="cancelImageButton" runat="server" ImageUrl="~/Images/button_cancel.jpg"
+									OnClick="Cancel" />&nbsp;
+								<asp:HyperLink runat="server" ID="detailsHyperLink" Target="WorkflowDetails">
+									<asp:Image ID="Image1" ImageUrl="~/Images/details1.gif" runat="server" BorderStyle="None" />
+								</asp:HyperLink>&nbsp;
+								<asp:ImageButton runat="server" ID="saveImageButton" ImageUrl="~/Images/save1.gif"
+									OnClick="Save" CausesValidation="true" ValidationGroup="TaskFields" />&nbsp;
+								<asp:ImageButton ID="submitImageButton" runat="server" CausesValidation="true" ImageUrl="~/Images/submit1.gif"
+									OnClick="Submit" ValidationGroup="TaskFields" />&nbsp;
+							</td>
+						</tr>
+					</table>
+				</div>
+			</td>
+			<td style="width: 300px;">
+				<uc1:AssignAnotherUser ID="assignAnotherUser" runat="server" />
+			</td>
+		</tr>
+	</table>
+</asp:Content>

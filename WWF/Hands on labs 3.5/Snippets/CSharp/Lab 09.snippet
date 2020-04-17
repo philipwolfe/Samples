@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab09_Ex01_Task02_AddApproval</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>WFLab09_Ex01_Task02_AddApproval</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[InvokeWorkflowActivity invokeNewStepWorkflow = new InvokeWorkflowActivity();// use WorkflowChanges class to author dynamic changeWorkflowChanges changes = new WorkflowChanges(this);// setup to invoke NewStepWorkflow typeType type = typeof(DynamicUpdateInWorkflow.Workflow2);invokeNewStepWorkflow.Name = "Workflow2";invokeNewStepWorkflow.TargetWorkflow = type;// insert invokeNewStepWorkflow in ifElseApproval // transient activity collectionCompositeActivity ifElse = changes.TransientWorkflow.Activities["ifElseActivity1"] as CompositeActivity;CompositeActivity branch1 = ifElse.Activities["ifElseBranchActivity1"] as CompositeActivity;branch1.Activities.Add(invokeNewStepWorkflow);// apply transient changes to instancethis.ApplyWorkflowChanges(changes);Console.WriteLine("\tAdded a new step from within workflow");]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab09_Ex01_Task02_CheckAmount</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>WFLab09_Ex01_Task02_CheckAmount</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[	if (Amount >= 1000)		e.Result = true;	else		e.Result = false;	Console.WriteLine("\tCheckAmount : amount \'{0}\' result \'{1}\'", Amount, e.Result);]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab09_Ex01_Task05_TestWorkflow</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>WFLab09_Ex01_Task05_TestWorkflow</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[//start PO approval workflow with purchase less than $1000Console.WriteLine("Workflow test 1 (purchase less than $1000) :");int workflow1Amount = 750;Dictionary<string, object> workflow1NamedValues = new Dictionary<string, object>();workflow1NamedValues.Add("Amount", workflow1Amount);WorkflowInstance workflow1Instance = workflowRuntime.CreateWorkflow(typeof(DynamicUpdateInWorkflow.Workflow1), workflow1NamedValues);workflow1Instance.Start();waitHandle.WaitOne();//waiting for the workflow to complete so the console output makes senceSystem.Threading.Thread.Sleep(new TimeSpan(0, 0, 0, 10, 0));Console.Write("\r\n\r\n");// start PO approval workflow with purchase greater than $1000Console.WriteLine("Workflow test 2 (purchase greater than $1000) :");int workflow2Amount = 1200;Dictionary<string, object> workflow2NamedValues = new Dictionary<string, object>();workflow2NamedValues.Add("Amount", workflow2Amount);WorkflowInstance workflow2Instance = workflowRuntime.CreateWorkflow(typeof(DynamicUpdateInWorkflow.Workflow1), workflow2NamedValues);workflow2Instance.Start();waitHandle.WaitOne();//waiting for the workflow to complete so the console output makes senceSystem.Threading.Thread.Sleep(new TimeSpan(0,0,0,10,0));Console.Write("\r\n\r\n");Console.WriteLine("press ENTER to continue");Console.ReadLine(); ]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab09_Ex02_Task02_ModifyWorkflowFromHost</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>WFLab09_Ex02_Task02_ModifyWorkflowFromHost</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[static void modifyWorkflowFromHost(WorkflowInstance workflowInstance){	if (!workflowUpdated)	{		workflowUpdated = true;		Activity workflowInstanceDefinition = workflowInstance.GetWorkflowDefinition();		WorkflowChanges workflowChangesToMake = new WorkflowChanges(workflowInstanceDefinition);		// remove ifelse		Console.WriteLine("\tHost change to always require approval for");		Console.WriteLine("\tInstanceId: " + workflowInstance.InstanceId);		CompositeActivity ifelse = workflowChangesToMake.TransientWorkflow.Activities["ifElse1Activity"] as CompositeActivity;		workflowChangesToMake.TransientWorkflow.Activities.Remove(ifelse);		// setup to invoke NewStepWorkflow type		InvokeWorkflowActivity invokeNewStepWorkflow = new InvokeWorkflowActivity();		invokeNewStepWorkflow.Name = "AddNewStepWorkflow";		invokeNewStepWorkflow.TargetWorkflow = typeof(DynamicUpdateInWorkflow.Workflow2);		// insert approval workflow		workflowChangesToMake.TransientWorkflow.Activities.Insert(1, invokeNewStepWorkflow);		// apply transient changes to instance		workflowInstance.ApplyWorkflowChanges(workflowChangesToMake);	} else {		Console.WriteLine("\tWorkflow has already been updated by the Host");	}}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab09_Ex02_Task02_UsingStatements</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>WFLab09_Ex02_Task02_UsingStatements</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[using System.Workflow.ComponentModel;using System.Workflow.Activities;]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab09_Ex02_Task02_WorkflowDelegates</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>WFLab09_Ex02_Task02_WorkflowDelegates</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[workflowRuntime.WorkflowIdled +=	delegate(object sender, WorkflowEventArgs e) {		//idling this workflow so we can modify it		e.WorkflowInstance.Suspend("suspending to modify workflow");		modifyWorkflowFromHost(e.WorkflowInstance);		e.WorkflowInstance.Resume();		};workflowRuntime.WorkflowSuspended +=	delegate(object sender, WorkflowSuspendedEventArgs e) {		string reason = e.ErrorReason;		string workflowID = e.WorkflowInstance.InstanceId.ToString();		Console.WriteLine("\tWorkflow \'{0}\' Suspended, reason \'{1}\'", workflowID, reason);		};workflowRuntime.WorkflowResumed +=	delegate(object sender, WorkflowEventArgs e) {		string workflowID = e.WorkflowInstance.InstanceId.ToString();		Console.WriteLine("\tWorkflow \'{0}\' Resumed", workflowID);};]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab09_Ex03_Task02_MainLogic</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>WFLab09_Ex03_Task02_MainLogic</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[// The "Amount" parameter is used to determine which branch of the IfElse should be executed// a value less than 10,000 will execute branch 1 - Get Manager Approval; any other value will execute branch 2 - Get VP Approvalint workflowAmount = 9000;Dictionary<string, object> workflowNamedValues = new Dictionary<string, object>();workflowNamedValues.Add("Amount", workflowAmount);WorkflowInstance workflowInstance = workflowRuntime.CreateWorkflow(typeof(DynamicUpdateChangingRules.DynamicRulesWorkflow), workflowNamedValues);workflowInstance.Start();waitHandle.WaitOne();Console.Write("\r\n\r\n");Console.WriteLine("press ENTER to continue");Console.ReadLine();]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab09_Ex03_Task03_ChangeRules</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>WFLab09_Ex03_Task03_ChangeRules</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[static void changeRulesForWorkflow(WorkflowInstance workflowInstance){	if (!rulesChanged) {		rulesChanged = true;		// our new validation amount		Int32 newAmount = 8000;		Console.WriteLine("\tDynamically change approved amount to {0}", newAmount);		// Dynamic update of order rule		WorkflowChanges workflowchanges = new WorkflowChanges(workflowInstance.GetWorkflowDefinition());		CompositeActivity transient = workflowchanges.TransientWorkflow;		RuleDefinitions ruleDefinitions = (RuleDefinitions)transient.GetValue(RuleDefinitions.RuleDefinitionsProperty);		RuleConditionCollection conditions = ruleDefinitions.Conditions;		RuleExpressionCondition condition1 = (RuleExpressionCondition)conditions["Condition1"];		(condition1.Expression as CodeBinaryOperatorExpression).Right = new CodePrimitiveExpression(newAmount);		// Apply our changes to the workflow		workflowInstance.ApplyWorkflowChanges(workflowchanges);	} else {		Console.WriteLine("\tRules for Workflow already changed");	}}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab09_Ex03_Task03_UsingStatements</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>WFLab09_Ex03_Task03_UsingStatements</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[using System.Workflow.ComponentModel;using System.Workflow.Activities.Rules;using System.CodeDom;]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab09_Ex03_Task03_WorkflowDelegates</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>WFLab09_Ex03_Task03_WorkflowDelegates</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[workflowRuntime.WorkflowIdled +=	delegate(object sender, WorkflowEventArgs e) {		//idling this workflow so we can modify it		e.WorkflowInstance.Suspend("suspending to modify IfElse1");		changeRulesForWorkflow(e.WorkflowInstance);		e.WorkflowInstance.Resume();	};workflowRuntime.WorkflowSuspended +=	delegate(object sender, WorkflowSuspendedEventArgs e) {		string reason = e.ErrorReason;		string workflowID = e.WorkflowInstance.InstanceId.ToString();		Console.WriteLine("\tWorkflow \'{0}\' Suspended, reason \'{1}\'", workflowID, reason);	};workflowRuntime.WorkflowResumed +=	delegate(object sender, WorkflowEventArgs e) {		string workflowID = e.WorkflowInstance.InstanceId.ToString();		Console.WriteLine("\tWorkflow \'{0}\' Resumed", workflowID);	};]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

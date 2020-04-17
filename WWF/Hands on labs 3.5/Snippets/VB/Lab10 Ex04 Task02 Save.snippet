@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab10_Ex04_Task02_Save</Title>
+      <Author>Serge Luca</Author>
+      <Shortcut>WFLab10_Ex04_Task02_Save</Shortcut>
+    </Header>
+    <Snippet>   <Code Language="VB"><![CDATA[
+
+Private Sub SaveFile()
+    If (Me.XomlFile.Length <> 0) Then
+        Me.SaveExistingWorkflow(Me.XomlFile)
+    Else
+        Dim saveFileDialog As New SaveFileDialog
+        saveFileDialog.Filter = "xoml files (*.xoml)|*.xoml|All files (*.*)|*.*"
+        saveFileDialog.FilterIndex = 1
+        saveFileDialog.RestoreDirectory = True
+        If (saveFileDialog.ShowDialog = DialogResult.OK) Then
+            Me.SaveExistingWorkflow(saveFileDialog.FileName)
+            Me.Text = ("Designer Hosting Sample -- [" & saveFileDialog.FileName & "]")
+        End If
+    End If
+End Sub
+
+Friend Sub SaveExistingWorkflow(ByVal filePath As String)
+    If ((Not Me.designSurface Is Nothing) AndAlso (Not Me.loader Is Nothing)) Then
+        Me.XomlFile = filePath
+        Me.loader.PerformFlush
+    End If
+End Sub
+
+Public Function Save() As Boolean
+    Return Me.Save(True)
+End Function
+
+ 
+Public Function Save(ByVal showMessage As Boolean) As Boolean
+    Dim cursor As Cursor = Me.Cursor
+    Me.Cursor = Cursors.WaitCursor
+    Dim saveOK As Boolean = True
+    Try 
+        Try 
+            Me.SaveFile
+            Dim doc As New XmlDocument
+            doc.Load(Me.XomlFile)
+            Dim attrib As XmlAttribute = doc.CreateAttribute("x", "Class", "http://schemas.microsoft.com/winfx/2006/xaml")
+            attrib.Value = String.Format("{0}.{1}", MyBase.GetType.Namespace, Me.WorkflowName)
+            doc.DocumentElement.Attributes.Append(attrib)
+            doc.Save(Me.XomlFile)
+            If showMessage Then
+                MessageBox.Show(Me, ("Workflow generated successfully. Generated xoml file:" & ChrW(10) & Path.Combine(Path.GetDirectoryName(MyBase.GetType.Assembly.Location), Me.XomlFile)), Me.Text, MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
+            End If
+        Catch ex As  Exception
+            MessageBox.Show(ex.ToString)
+            saveOK = False
+        End Try
+    Finally
+        Me.Cursor = cursor
+    End Try
+    Return saveOK
+End Function
+
+
+ 
+
+ 
+
+
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

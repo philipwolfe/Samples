@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab02 Ex04 Task01 RoundedRect</Title>
+      <Author>MVP KenLin</Author>
+      <Shortcut>Lab02 Ex04 Task01 RoundedRect</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="VB"><![CDATA[
+    Private Function RoundedRect(ByVal frame As Rectangle) As GraphicsPath
+        Dim path As GraphicsPath = New GraphicsPath
+        Dim radius As Integer = 7
+        Dim diameter As Integer = (radius * 2)
+
+        Dim arc As Rectangle = New Rectangle(frame.Left, frame.Top, diameter, diameter)
+
+        path.AddArc(arc, 180, 90)
+
+        arc.X = (frame.Right - diameter)
+        path.AddArc(arc, 270, 90)
+
+        arc.Y = (frame.Bottom - diameter)
+        path.AddArc(arc, 0, 90)
+
+        arc.X = frame.Left
+        path.AddArc(arc, 90, 90)
+
+        path.CloseFigure()
+
+        Return path
+    End Function
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

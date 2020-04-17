@@ -1,0 +1,54 @@
+
+Note: The Hands On Lab machines at PDC are already setup to run Indigo labs. The following steps are only needed if you want to run Indigo labs on your own machine.
+
+* Setup
+1. Longhorn
+2. Visual Studio Whidbey
+3. Longhorn SDK
+4. SQL Server 2000 or Yukon (NOTE: install with mixed security and set the sa password to pass@word1)
+
+* Copy files to target machine
+1. Create a folder called Indigo on the root of the target machine.  This should be on the c: drive.  This will be the path c:\indigo\.
+2. Copy contents lab folder into the c:\indigo\ folder.
+
+* Configure machine
+1. Run sn.bat from c:\indigo\setup\.
+2. Copy machine.config from c:\indigo\setup\config\ to c:\WINDOWS\Microsoft.NET\Framework\v1.2.30703\config\.
+3. Run attach_serverdb.bat from c:\indigo\setup\.
+4. Run attach_clientdb.bat from c:\indigo\setup\.
+
+* Install certificates
+1.	Open up a new instance of the Certificate Manager MMC.  Use start run MMC.  Add the Certificates MMC and choose My User Account.  Make sure you choose My User Account for this step.  Note: there maybe no certificates folder if the node is empty – add the certificate to the personal node.
+a.	Open the tree to Certificates - Current User/Personal/Certificates.
+b.	Right click on the certificates node and choose All Tasks -> Import.
+c.	Click Next.
+d.	For the file name browse to C:\Indigo\Setup\Certs and choose LabClient.pfx.  You may have to change the Files of Type filter to see this file.
+e.	For the Password screen use is pass@word1.
+f.	For the Certificate Store screen make sure “Place all certificates in the following store” is chosen.  Click next.
+g.	Click finish.
+h.	You should now see the LabClient certificate in the list.
+i.	Close the MMC.
+
+Note: This certificate will be used by the client to prove identity and sign messages.
+
+2.	Open up a new instance of the Certificate Manager MMC.  Use start run MMC.  Add the Certificates MMC and choose Computer Account.  Make sure you choose Computer Account for this step.
+a.	Open the tree to Certificates - Local Computer/Personal/Certificates.
+b.	Right click on the certificates node and choose All Tasks -> Import.
+c.	Click Next.
+d.	For the file name browse to C:\Indigo\Setup\Certs and choose LabServer.pfx.  You may have to change the Files of Type filter to see this file.
+e.	For the Password screen use is pass@word1.
+f.	For the Certificate Store screen make sure “Place all certificates in the following store” is chosen.  Click next.
+g.	Click finish.
+h.	You should now see the LabServer certificate in the list.
+i.	Leave this MMC open.
+
+Note: This certificate will be used by the server to sign messages.
+
+3.	Using the MMC for the Local Computer navigate to the Trusted Root Certificate Authorities/Certificates node.
+a.	Right click and choose All Tasks -> import.
+b.	Click Next.
+c.	For the file name browse to C:\Indigo\Setup\Certs and choose CA_Root.cer.  You may have to change the Files of Type filter to see this file.
+d.	For the Certificate Store screen make sure “Place all certificates in the following store” is chosen.  Click next.
+e.	You should now see the INDIGOSERVERLAB certificate in this list.
+f.	Click Finish.
+g.	Close the MMC.

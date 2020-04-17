@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab02 Ex03 Task01 ValidateProperties</Title>
+      <Author>MVP KenLin</Author>
+      <Shortcut>Lab02 Ex03 Task01 ValidateProperties</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="VB"><![CDATA[
+    Public Overrides Function ValidateProperties(ByVal manager As ValidationManager, _
+                        ByVal obj As Object) As ValidationErrorCollection
+
+        Dim validationErrors As ValidationErrorCollection = _
+                        New ValidationErrorCollection(MyBase.ValidateProperties(manager, obj))
+
+        Dim sendMailActivityToBeValidated As SendMailActivity = CType(obj, SendMailActivity)
+        If IsNothing(sendMailActivityToBeValidated) Then
+            Throw New InvalidOperationException("Parameter obj is not of type SendMailActivity")
+        End If
+
+        If Not IsValidEmailAddress(sendMailActivityToBeValidated.MailTo) Then
+            Dim CustomActivityValidationError As ValidationError = _
+                New ValidationError(String.Format("'{0}' is an Invalid destination e-mail address", _
+                                sendMailActivityToBeValidated.MailTo), 1)
+
+            validationErrors.Add(CustomActivityValidationError)
+        End If
+
+        If Not IsValidEmailAddress(sendMailActivityToBeValidated.MailFrom) Then
+            Dim CustomActivityValidationError As ValidationError = _
+                New ValidationError(String.Format("'{0}' is an Invalid source e-mail address", _
+                                sendMailActivityToBeValidated.MailFrom), 1)
+
+            validationErrors.Add(CustomActivityValidationError)
+        End If
+
+        Return validationErrors
+    End Function
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

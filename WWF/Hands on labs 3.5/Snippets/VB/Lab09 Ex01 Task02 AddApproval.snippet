@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab09_Ex01_Task02_AddApproval</Title>
+      <Author>Serge Luca</Author>
+      <Shortcut>WFLab09_Ex01_Task02_AddApproval</Shortcut>
+    </Header>
+    <Snippet>   <Code Language="VB"><![CDATA[
+    
+        Dim invokeNewStepWorkflow As New InvokeWorkflowActivity()
+
+        'use WorkflowChanges class to author dynamic change
+        Dim changes As New WorkflowChanges(Me)
+
+        'setup to invoke NewStepWorkflow type
+        Dim type2 As Type = GetType(DynamicUpdateInWorkflow.Workflow2)
+
+        invokeNewStepWorkflow.Name = "Workflow2"
+        invokeNewStepWorkflow.TargetWorkflow = type2
+
+        'insert invokeNewStepWorkflow in ifElseApproval 
+        'transient activity collection
+
+        Dim ifElse As CompositeActivity = CType(changes.TransientWorkflow.Activities("ifElseActivity1"), CompositeActivity)
+        Dim branch1 As CompositeActivity = CType(ifElse.Activities("ifElseBranchActivity1"), CompositeActivity)
+        branch1.Activities.Add(invokeNewStepWorkflow)
+
+        ' apply transient changes to instance
+        Me.ApplyWorkflowChanges(changes)
+        Console.WriteLine(vbTab & "Added a new step from within workflow")
+
+
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

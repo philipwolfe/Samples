@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab07 Ex01 Task02 CodeHandlers</Title>
+      <Author>Serge Luca</Author>
+      <Shortcut>Lab07 Ex01 Task02 CodeHandlers</Shortcut>
+    </Header>
+    <Snippet>   <Code Language="VB"><![CDATA[
+    Public Enum NumberIs
+        Odd = 0
+        Even = 1
+    End Enum
+    Private currentNumber As NumberIs = NumberIs.Even
+    Private userRequestsExit As Boolean
+
+    'number entered is odd
+    Public Sub codeActivity1_ExecuteCode(ByVal sender As Object, ByVal e As EventArgs)
+
+        Console.WriteLine("the number is odd")
+        GetNextNumber()
+
+    End Sub
+
+    'number entered is even
+    Public Sub codeActivity2_ExecuteCode(ByVal sender As Object, ByVal e As EventArgs)
+
+        Console.WriteLine("the number is even")
+        GetNextNumber()
+    End Sub
+
+
+    'evaluate number entered by user and set currentNumber variable
+    Private Sub GetNextNumber()
+
+        Dim numIn As Integer
+
+        Console.WriteLine("enter a number.")
+        Dim charIn As String = Console.ReadLine()
+
+        If Int32.TryParse(charIn, numIn) Then
+
+            If ((numIn Mod 2) = 0) Then
+
+                currentNumber = NumberIs.Even
+
+            Else
+
+                currentNumber = NumberIs.Odd
+            End If
+
+        ElseIf (charIn.Contains("x")) Then
+
+            userRequestsExit = True
+
+        Else
+
+            GetNextNumber()
+        End If
+    End Sub
+
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

@@ -1,0 +1,79 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<PropertyGroup>
+		<AssemblyName>GeometryExamples</AssemblyName>
+		<TargetType>winexe</TargetType>
+		<Configuration>Release</Configuration>
+		<ApplicationIcon>App.ico</ApplicationIcon>
+		<ProductVersion>8.0.31010</ProductVersion>
+		<SchemaVersion>2.0</SchemaVersion>
+		<RootNamespace>Microsoft.Samples.Graphics.Geometries</RootNamespace>
+		<ProjectGuid>{B299BB49-5042-49A7-903D-A1547AA69DBE}</ProjectGuid>
+		<OutputPath>bin\$(Configuration)\</OutputPath>
+	</PropertyGroup>
+	<Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets"/>
+	<Import Project="$(MSBuildBinPath)\Microsoft.WinFX.targets"/>
+	<ItemGroup>
+		<ApplicationDefinition Include="app.xaml"/>
+		<Page Include="PathGeometryExample.xaml"/>
+		<Page Include="GeometryAttributeSyntaxExample.xaml"/>
+		<Page Include="ShapeGeometriesExample.xaml"/>
+		<Page Include="GeometryUsageExample.xaml"/>
+		<Page Include="CombiningGeometriesExample.xaml"/>
+		<Page Include="SampleViewer.xaml"/>
+	</ItemGroup>
+	<ItemGroup>
+		<Compile Include="app.xaml.cs">
+			<DependentUpon>app.xaml</DependentUpon>
+			<SubType>Code</SubType>
+		</Compile>
+		<Compile Include="SampleViewer.xaml.cs">
+			<DependentUpon>SampleViewer.xaml</DependentUpon>
+			<SubType>Code</SubType>
+		</Compile>
+		<Compile Include="PathGeometryExample.xaml.cs">
+			<DependentUpon>PathGeometryExample.xaml</DependentUpon>
+			<SubType>Code</SubType>
+		</Compile>
+		<Compile Include="GeometryAttributeSyntaxExample.xaml.cs">
+			<DependentUpon>GeometryAttributeSyntaxExample.xaml</DependentUpon>
+			<SubType>Code</SubType>
+		</Compile>
+		<Compile Include="ShapeGeometriesExample.xaml.cs">
+			<DependentUpon>ShapeGeometriesExample.xaml</DependentUpon>
+			<SubType>Code</SubType>
+		</Compile>
+		<Compile Include="GeometryUsageExample.xaml.cs">
+			<DependentUpon>GeometryUsageExample.xaml</DependentUpon>
+			<SubType>Code</SubType>
+		</Compile>
+		<Compile Include="CombiningGeometriesExample.xaml.cs">
+			<DependentUpon>CombiningGeometriesExample.xaml</DependentUpon>
+			<SubType>Code</SubType>
+		</Compile>
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="App.ico"/>
+		<Resource Include="sampleImages\*.*"/>
+	</ItemGroup>
+	<ItemGroup>
+		<Reference Include="System"/>
+		<Reference Include="System.Xml"/>
+		<Reference Include="System.Data"/>
+		<Reference Include="WindowsBase"/>
+		<Reference Include="PresentationCore"/>
+		<Reference Include="PresentationFramework"/>
+		<Reference Include="UIAutomationProvider"/>
+		<Reference Include="UIAutomationTypes"/>
+	</ItemGroup>
+</Project>
+<!-- 
+    This project gets built by MSBuild on the commmand line.
+    Visual Studio "Whidbey" can also compile a project using only this data.
+
+    The build steps of a project are defined in the .target file referenced in the <Import>.
+    You can modify the steps involved in build.
+
+    You can also "execute" other targets besides the defaulttarget of build.
+    From a command prompt: msbuild myproj.csproj /t:TARGETNAME
+    Examples of TARGETNAME include: Build, Clean, CleanBuild, Run
+-->

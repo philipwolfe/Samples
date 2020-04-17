@@ -1,0 +1,94 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<PropertyGroup>
+		<AssemblyName>ShapeElements</AssemblyName>
+		<TargetType>winexe</TargetType>
+		<Configuration>Release</Configuration>
+		<SchemaVersion>2.0</SchemaVersion>
+		<RootNamespace>SDKSample</RootNamespace>
+		<OutputPath>bin\$(Configuration)\</OutputPath>
+	</PropertyGroup>
+	<Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets"/>
+	<Import Project="$(MSBuildBinPath)\Microsoft.WinFX.targets"/>
+	<ItemGroup>
+		<ApplicationDefinition Include="app.xaml"/>
+		<Page Include="SampleViewer.xaml"/>
+		<Page Include="EllipseExample.xaml"/>
+		<Page Include="FillRuleExample.xaml"/>
+		<Page Include="LineCapsAndJoinsExample.xaml"/>
+		<Page Include="LineExample.xaml"/>
+		<Page Include="MiterLimitExample.xaml"/>
+		<Page Include="PathExample.xaml"/>
+		<Page Include="PolygonExample.xaml"/>
+		<Page Include="PolylineExample.xaml"/>
+		<Page Include="RectangleExample.xaml"/>
+		<Page Include="ShapeTypes.xaml"/>
+		<Page Include="StretchExample.xaml"/>
+	</ItemGroup>
+	<ItemGroup>
+		<Compile Include="app.xaml.cs">
+			<DependentUpon>app.xaml</DependentUpon>
+			<SubType>Code</SubType>
+		</Compile>
+		<Compile Include="SampleViewer.xaml.cs">
+			<DependentUpon>SampleViewer.xaml</DependentUpon>
+			<SubType>Code</SubType>
+		</Compile>
+		<Compile Include="EllipseExample.xaml.cs">
+			<DependentUpon>EllipseExample.xaml</DependentUpon>
+			<SubType>Code</SubType>
+		</Compile>
+		<Compile Include="FillRuleExample.xaml.cs">
+			<DependentUpon>FillRuleExample.xaml</DependentUpon>
+			<SubType>Code</SubType>
+		</Compile>
+		<Compile Include="LineCapsAndJoinsExample.xaml.cs">
+			<DependentUpon>LineCapsAndJoinsExample.xaml</DependentUpon>
+			<SubType>Code</SubType>
+		</Compile>
+		<Compile Include="MiterLimitExample.xaml.cs">
+			<DependentUpon>MiterLimitExample.xaml</DependentUpon>
+			<SubType>Code</SubType>
+		</Compile>
+		<Compile Include="LineExample.xaml.cs">
+			<DependentUpon>LineExample.xaml</DependentUpon>
+			<SubType>Code</SubType>
+		</Compile>
+		<Compile Include="PathExample.xaml.cs">
+			<DependentUpon>PathExample.xaml</DependentUpon>
+			<SubType>Code</SubType>
+		</Compile>
+		<Compile Include="PolygonExample.xaml.cs">
+			<DependentUpon>PolygonExample.xaml</DependentUpon>
+			<SubType>Code</SubType>
+		</Compile>
+		<Compile Include="PolylineExample.xaml.cs">
+			<DependentUpon>PolylineExample.xaml</DependentUpon>
+			<SubType>Code</SubType>
+		</Compile>
+		<Compile Include="RectangleExample.xaml.cs">
+			<DependentUpon>RectangleExample.xaml</DependentUpon>
+			<SubType>Code</SubType>
+		</Compile>
+		<Compile Include="ShapeTypes.xaml.cs">
+			<DependentUpon>ShapeTypes.xaml</DependentUpon>
+			<SubType>Code</SubType>
+		</Compile>
+		<Compile Include="StretchExample.xaml.cs">
+			<DependentUpon>StretchExample.xaml</DependentUpon>
+			<SubType>Code</SubType>
+		</Compile>
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="sampleImages\*.*"/>
+	</ItemGroup>
+	<ItemGroup>
+		<Reference Include="System"/>
+		<Reference Include="System.Xml"/>
+		<Reference Include="System.Data"/>
+		<Reference Include="WindowsBase"/>
+		<Reference Include="PresentationCore"/>
+		<Reference Include="PresentationFramework"/>
+		<Reference Include="UIAutomationProvider"/>
+		<Reference Include="UIAutomationTypes"/>
+	</ItemGroup>
+</Project>

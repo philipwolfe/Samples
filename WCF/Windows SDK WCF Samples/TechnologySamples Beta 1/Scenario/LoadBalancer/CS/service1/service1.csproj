@@ -1,0 +1,64 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{033F50F2-1FCF-4357-8BB4-43843D744183}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>service1</RootNamespace>
+    <AssemblyName>service1</AssemblyName>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="service1.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="service.svc" />
+    <None Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\library\library.csproj">
+      <Project>{ED6B5942-E5D3-445E-B7B2-FBD10CCF26A5}</Project>
+      <Name>library</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+        if not exist %SystemDrive%\inetpub\wwwroot\servicemodelsamples\bin mkdir %SystemDrive%\inetpub\wwwroot\servicemodelsamples\bin
+        copy /y "$(ProjectDir)service.svc" %SystemDrive%\inetpub\wwwroot\servicemodelsamples\.
+        copy /y "$(ProjectDir)Web.config" %SystemDrive%\inetpub\wwwroot\servicemodelsamples\.
+        copy "$(TargetDir)library.dll" %SystemDrive%\inetpub\wwwroot\servicemodelsamples\bin
+        copy "$(TargetDir)service1.dll" %SystemDrive%\inetpub\wwwroot\servicemodelsamples\bin
+        copy "$(TargetDir)service1.pdb" %SystemDrive%\inetpub\wwwroot\servicemodelsamples\bin
+</PostBuildEvent>
+  </PropertyGroup>
+</Project>

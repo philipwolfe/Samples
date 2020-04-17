@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab04_Ex02_Task02_GetSelectedStateMachineInstance</Title>
+      <Author>Serge Luca</Author>
+      <Shortcut>WFLab04_Ex02_Task02_GetSelectedStateMachineInstance</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="VB"><![CDATA[
+    Private Function GetSelectedStateMachineInstance() As StateMachineInstance
+        ' Get the WorkflowInstanceId for the selected item
+        Dim workflowInstanceId As String = Me.lstvwOrders.SelectedItems(0).Text
+
+        ' Return the StateMachineInstance object 
+        Return stateMachineInstances(workflowInstanceId)
+    End Function
+
+
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

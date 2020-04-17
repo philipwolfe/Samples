@@ -1,0 +1,23 @@
+<definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:gxa="http://schemas.xmlsoap.org/wsdl/gxa/2003/01/extensions" xmlns:i0="uri:labserver" xmlns:i1="uri:LabServer:Types" xmlns:tns="uri:labserver" targetNamespace="uri:labserver" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <import namespace="uri:labserver" />
+  <import namespace="uri:LabServer:Types" />
+  <types />
+  <message name="AskQuestionRequest">
+    <part element="tns:AskQuestionRequest" name="parameters" />
+  </message>
+  <message name="AskQuestionResponse">
+    <part element="tns:AskQuestionResponse" name="parameters" />
+  </message>
+  <portType gxa:correlation="session" name="QuestionService" gxa:usingName="QuestionServiceClient">
+    <operation name="AskQuestion" gxa:parameterOrder="tns:emailAddress tns:question" gxa:transaction="mandatory">
+      <input message="tns:AskQuestionRequest" name="AskQuestionRequest" />
+      <output message="tns:AskQuestionResponse" name="AskQuestionResponse" />
+    </operation>
+  </portType>
+  <portType gxa:correlation="response" name="RegistrationService" gxa:usingName="RegistrationServiceClient">
+    <operation name="Register" gxa:transaction="reject">
+      <input message="i1:RegisterType" name="RegisterRequest" />
+      <output message="i1:RegisterResponseType" name="RegisterResponse" />
+    </operation>
+  </portType>
+</definitions>

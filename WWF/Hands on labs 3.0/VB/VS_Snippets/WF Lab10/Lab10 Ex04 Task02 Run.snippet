@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab10 Ex04 Task02 Run</Title>
+      <Author>Serge Luca</Author>
+      <Shortcut>Lab10 Ex04 Task02 Run</Shortcut>
+    </Header>
+    <Snippet>   <Code Language="VB"><![CDATA[
+
+Public Function Run() As Boolean
+    If ((WorkflowDesignerControl.inMemoryAssembly Is Nothing) AndAlso Not Me.Compile(False)) Then
+        Return False
+    End If
+    If (Me.workflowRuntime Is Nothing) Then
+        Me.workflowRuntime = New WorkflowRuntime
+        Me.workflowRuntime.StartRuntime
+    End If
+    AddHandler Me.workflowRuntime.WorkflowCompleted, New EventHandler(Of WorkflowCompletedEventArgs)(AddressOf Me.workflowRuntime_WorkflowCompleted)
+    Dim typeName As String = String.Format("{0}.{1}", MyBase.GetType.Namespace, Me.WorkflowName)
+    Me.workflowRuntime.CreateWorkflow(AppDomain.CurrentDomain.CreateInstanceAndUnwrap(WorkflowDesignerControl.inMemoryAssembly.FullName, typeName).GetType).Start
+    Return True
+End Function
+
+Private Sub workflowRuntime_WorkflowCompleted(ByVal sender As Object, ByVal e As WorkflowCompletedEventArgs)
+    MessageBox.Show("Workflow complete")
+End Sub
+
+
+
+
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

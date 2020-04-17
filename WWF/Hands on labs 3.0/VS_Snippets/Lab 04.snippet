@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab04 Ex01 Task3 Variable</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab04 Ex01 Task3 Variable</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[private string orderCanceledError = "Order has been canceled";public string OrderCanceledError{    get { return orderCanceledError; }}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab04 Ex02 Task2 DisableButtons</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab04 Ex02 Task2 DisableButtons</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[	private void DisableButtons()	{		this.btnOrderCanceled.Enabled = false;		this.btnOrderProcessed.Enabled = false;		this.btnOrderShipped.Enabled = false;		this.btnOrderUpdated.Enabled = false; 	}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab04 Ex02 Task2 EnableButtons</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab04 Ex02 Task2 EnableButtons</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[private void EnableButtons(){	if (this.lstvwOrders.SelectedItems.Count == 0)	{		return;	}	string workflowStatus =                        this.lstvwOrders.SelectedItems[0].SubItems[3].Text;	if ((workflowStatus.Equals("Completed"))		|| (workflowStatus.Equals("Terminated")))	{		return;	}	// Return the StateMachineInstance object 	StateMachineInstance stateMachineInstance =                                   this.GetSelectedStateMachineInstance();	if (stateMachineInstance.CurrentState == null)	{		return;	}	if (stateMachineInstance.MessagesAllowed.Contains("OrderCanceled"))		this.btnOrderCanceled.Enabled = true;	if (stateMachineInstance.MessagesAllowed.Contains("OrderProcessed"))		this.btnOrderProcessed.Enabled = true;	if (stateMachineInstance.MessagesAllowed.Contains("OrderShipped"))		this.btnOrderShipped.Enabled = true;	if (stateMachineInstance.MessagesAllowed.Contains("OrderUpdated"))		this.btnOrderUpdated.Enabled = true;}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab04 Ex02 Task2 GetSelectedStateMachine</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab04 Ex02 Task2 GetSelectedStateMachine</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[private StateMachineInstance GetSelectedStateMachineInstance(){	// Get the WorkflowInstanceId for the selected item	string workflowInstanceId = this.lstvwOrders.SelectedItems[0].Text;	// Return the StateMachineInstance object 	return stateMachineInstances[workflowInstanceId];} ]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab04 Ex02 Task2 ItemSelectionChanged</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab04 Ex02 Task2 ItemSelectionChanged</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[	if (e.Item.Selected)	{		this.UpdateButtonStatus();	}	else	{		this.DisableButtons();	}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab04 Ex02 Task2 StartOrderWorkflow</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab04 Ex02 Task2 StartOrderWorkflow</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[	StateMachineInstance stateMachineInstance =		stateMachineTrackingService.RegisterInstance(			typeof(OrderWorkflows.Workflow1), WorkflowInstanceId);	stateMachineInstance.StateChanged +=       new EventHandler<ActivityEventArgs>(StateMachineInstance_StateChanged);	stateMachineInstance.StartWorkflow();	stateMachineInstances.Add(WorkflowInstanceId.ToString(),                                 stateMachineInstance);]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab04 Ex02 Task2 StateChanged</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab04 Ex02 Task2 StateChanged</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[protected void StateMachineInstance_StateChanged(object sender,                                                 ActivityEventArgs e){	StateMachineInstance stateMachineInstance =                                            (StateMachineInstance)sender;	if (e.QualifiedId != stateMachineInstance.CompletedState)	{		WorkflowInstance workflowInstance =                                    stateMachineInstance.WorkflowInstance;		this.UpdateListItem(workflowInstance,                               e.QualifiedId.ToString(), "Running");		this.UpdateButtonStatus();	}} ]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab04 Ex02 Task2 UpdateButtonStatus</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab04 Ex02 Task2 UpdateButtonStatus</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[private void UpdateButtonStatus(){	if (this.InvokeRequired)	{		UpdateButtonStatusDelegate updateButtonStatus =			new UpdateButtonStatusDelegate(this.UpdateButtonStatus);		this.Invoke(updateButtonStatus);	}	else	{		DisableButtons();		EnableButtons();	}} ]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

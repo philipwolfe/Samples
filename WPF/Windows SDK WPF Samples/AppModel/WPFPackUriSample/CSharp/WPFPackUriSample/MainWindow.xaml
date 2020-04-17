@@ -1,0 +1,46 @@
+﻿<Window x:Class="WPFPackUriSample.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="WPFPackUriSample" Height="450" Width="350"
+    >
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top">
+
+            <GroupBox Header="Absolute Pack URIs">
+                <StackPanel>
+                    <Frame Source="pack://application:,,,/ResourceFile.xaml" />
+                    <Frame Source="pack://application:,,,/Subfolder/ResourceFile.xaml" />
+                    <Frame Source="pack://application:,,,/ReferencedAssembly;component/ResourceFile.xaml" />
+                    <Frame Source="pack://application:,,,/ReferencedAssembly;component/Subfolder/ResourceFile.xaml" />
+                    <Frame Source="pack://application:,,,/ContentFile.xaml" />
+                    <Frame Source="pack://application:,,,/Subfolder/ContentFile.xaml" />
+                    <Frame Source="pack://siteoforigin:,,,/SiteOfOriginFile.xaml" />
+                    <Frame Source="pack://siteoforigin:,,,/Subfolder/SiteOfOriginFile.xaml" />
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Header="Relative Pack URIs">
+                <StackPanel>
+                    <Frame Source="/ResourceFile.xaml" />
+                    <Frame Source="/Subfolder/ResourceFile.xaml" />
+                    <Frame Source="/ReferencedAssembly;component/ResourceFile.xaml" />
+                    <Frame Source="/ReferencedAssembly;component/Subfolder/ResourceFile.xaml" />
+                    <Frame Source="/ContentFile.xaml" />
+                    <Frame Source="/Subfolder/ContentFile.xaml" />
+                    <Frame Source="pack://siteoforigin:,,,/SiteOfOriginFile.xaml" />
+                    <Frame Source="pack://siteoforigin:,,,/Subfolder/SiteOfOriginFile.xaml" />
+                </StackPanel>
+            </GroupBox>
+
+        </StackPanel>
+
+        <GroupBox Header="Version-Specified Pack URIs">
+            <DockPanel>
+                <Button DockPanel.Dock="Top" Click="click0">Get Resource File in Reference Assembly v1.0.0.0</Button>
+                <Button DockPanel.Dock="Top" Click="click1">Get Resource File in Reference Assembly v1.0.0.1</Button>
+                <Frame Name="frame" NavigationUIVisibility="Hidden" />
+            </DockPanel>
+        </GroupBox>
+
+    </DockPanel>
+</Window>

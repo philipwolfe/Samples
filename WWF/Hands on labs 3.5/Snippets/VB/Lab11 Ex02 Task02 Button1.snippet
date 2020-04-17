@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab11_Ex02_Task02_Button1</Title>
+      <Author>David Starr</Author>
+      <Shortcut>WFLab11_Ex02_Task02_Button1</Shortcut>
+    </Header>
+    <Snippet>   <Code Language="VB">
+  <![CDATA[
+        Try
+            Dim reader As XmlReader
+            reader = XmlReader.Create("http://localhost:8899/sysinfo/atom/")
+            Dim feed As SyndicationFeed
+            feed = SyndicationFeed.Load(reader)
+            Dim c As XmlSyndicationContent = Nothing
+            Dim si As SystemInfo = Nothing
+            For Each i As SyndicationItem In feed.Items
+                c = CType(i.Content, XmlSyndicationContent)
+                si = c.ReadContent(Of SystemInfo)()
+
+                ListBox1.Items.Add(i.Title.Text)
+                ListBox1.Items.Add(si.ToString())
+                ListBox1.Items.Add("* " & si.ProcessorCount)
+                ListBox1.Items.Add("* " & si.OSVersion)
+                ListBox1.Items.Add("* " & si.Version)
+
+                MsgBox(si.ToString(), MsgBoxStyle.Information, _
+                   si.MachineName)
+            Next
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Exclamation, ex.Source)
+        End Try
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

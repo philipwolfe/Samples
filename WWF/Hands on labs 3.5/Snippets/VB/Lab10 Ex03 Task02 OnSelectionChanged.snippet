@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab10_Ex03_Task02_OnSelectionChanged</Title>
+      <Author>Serge Luca</Author>
+      <Shortcut>WFLab10_Ex03_Task02_OnSelectionChanged</Shortcut>
+    </Header>
+    <Snippet>   <Code Language="VB"><![CDATA[
+
+        Private Sub OnSelectionChanged(ByVal sender As Object, ByVal e As EventArgs)
+            Dim selectionService As ISelectionService = TryCast(Me.GetService(GetType(ISelectionService)), ISelectionService)
+            If (Not selectionService Is Nothing) Then
+                Me.PropertyGrid.SelectedObjects = New ArrayList(selectionService.GetSelectedComponents).ToArray
+            End If
+        End Sub
+
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

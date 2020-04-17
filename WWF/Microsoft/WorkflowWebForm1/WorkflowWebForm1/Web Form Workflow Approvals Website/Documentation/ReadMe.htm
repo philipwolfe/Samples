@@ -1,0 +1,474 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:m="http://schemas.microsoft.com/office/2004/12/omml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Web Workflow Approvals Starter Kit</title>
+<style type="text/css">
+<!--
+BODY {
+	background: url(images/top-vc.gif) repeat-x;
+	font-family: Verdana;
+	font-size: 67%;
+}
+.maindiv {
+	background: url(images/side-vc.gif) repeat-y;
+	padding-left: 55px;
+	padding-top: 5px;
+	position: relative;
+	height: 50px;
+}
+P {
+	margin-top: 0;
+	margin-bottom: 6px;
+	line-height: 130%;
+}
+H1 {
+	margin-top: 20px;
+	margin-bottom: 12px;
+	font-size: 190%;
+}
+H2 {
+	color: #585F56;
+	left: -55px;
+	position: relative;
+	margin-top: 21px;
+	margin-bottom: 9px;
+	font-size: 170%;
+}
+H3 {
+	margin-top: 21px;
+	margin-bottom: 9px;
+	font-size: 140%;
+	font-weight: bold;
+}
+H4 {
+	margin-top: 18px;
+	margin-bottom: 9px;
+	font-size: 140%;
+	font-weight: bold;
+}
+OL {
+	margin-top: 0;
+	margin-bottom: 9px;
+	line-height: 130%;
+}
+UL {
+	margin-top: 0;
+	margin-bottom: 9px;
+	line-height: 130%;
+}
+LI {
+	margin-top: 0;
+	margin-bottom: 6px;
+}
+BLOCKQUOTE {
+	margin-left: 20px;
+}
+TABLE {
+	padding: 4px;
+	BACKGROUND: #f8f7ef;
+	BORDER: #DDDCD6 1px solid;
+	BORDER-COLLAPSE: collapse;
+	margin-bottom: 9px;
+}
+TR {
+	vertical-align: top;
+}
+TD {
+	padding: 4px;
+	font-family: Verdana;
+	font-size: 67%;
+	line-height: 130%;
+}
+.contents {
+	line-height: 150%;
+}
+DIV.CodeBlock {
+	font-family: "Courier New";
+	font-size: 100%;
+	margin-bottom: 6px;
+	BACKGROUND: #f8f7ef;
+	BORDER: #eeede6 1px solid;
+	padding: 10px;
+	color: #0000FF;
+}
+.CodeInline {
+	font-family: "Courier New";
+}
+.ProcedureLabel {
+	margin-top: 12px;
+	font-style: italic;
+	font-weight: bold;
+	color: #0D4CC3;
+}
+.FileNameCol {
+	padding: 6px;
+	BACKGROUND: #eeede6;
+	width= 220px;
+	font-weight: bold;
+}
+div.Section1 {
+	page: Section1;
+}
+.todo {
+	color: #000000;
+	background-color: #FFFF00;
+}
+-->
+</style>
+</head>
+
+<body topmargin="0" leftmargin="0" rightmargin="20" text="#000000">
+
+<div class="maindiv">
+	<!-- MAIN CONTENT BEGINS -->
+	<!-- CONTENTS -->
+	<p><a name="top">Workflow Starter Kit</a></p>
+	<h1>Starter Kit: Web Workflow Approvals</h1>
+	<p class="contents"><font color="#003300"><strong>Contents:</strong><br>
+	</font><font color="#003300"><a href="#Installing">Installing this Starter Kit</a><br>
+	<a href="#BeforeYouStart">Before you Get Started</a><br>
+	<a href="#KnownIssues">Known Issues</a><br>
+	<a href="#Introduction">Introduction</a><br>
+	<a href="#SolutionStructure">Solution Structure</a><br>
+	<a href="#Dependancies">Dependencies</a><br>
+	<a href="#FirstProject">Your first Web Workflow Approvals project</a><br>
+	<a href="#WalkthruNoExcelation">Walkthrough – No Escalation</a><br>
+	<a href="#WalkthruWithExcelation">Walkthrough – With Escalation</a><br>
+	<a href="#AdminAccess">Administrative Access</a></font></p>
+	<!-- / CONTENTS -->
+	<!-- Before you get started -->
+	<h2><a href="#top"><img src="images/topjump-vc.gif" border="0"></a><a name="Installing">Installing 
+	this Starter Kit</a> </h2>
+	<p><strong>Note</strong>: This starter kit requires Microsoft Visual Studio 
+	2005 Standard or higher.</p>
+	<p>To install this starter kit please extract the contents of the zip file to 
+	your hard drive and double click on setup.exe.</p>
+	<p>The installer will copy the starter kit to the &quot;Starter Kits&quot; folder within 
+	Visual Studio. You can create a project based upon the starter kit by following 
+	the instructions outlined in the <a href="#FirstProject">Your First Web Workflows 
+	Approvals project</a> section.</p>
+	<p>The installer will also notify you of any <a href="#Dependancies">dependencies</a> 
+	that are not installed on your computer. Please ensure that these missing dependencies 
+	are installed on your machine <strong>before</strong> you create a project based 
+	upon the starter kit.</p>
+	<!-- Before you get started -->
+	<h2><a href="#top"><img src="images/topjump-vc.gif" border="0"></a><a name="BeforeYouStart">Before 
+	you Get Started</a> </h2>
+	<p>If you don't want to step through this readme please read through the <a href="#KnownIssues">Known Issues</a> 
+	section, and take note of the following two steps. </p>
+	<p>Otherwise jump to the
+	<a href="#KnownIssues">next section</a> to continue learning about this starter 
+	kit.</p>
+	<p><strong>Start-up Projects</strong></p>
+	<p>Go to the <a href="#SetStartupProjects">&#39;Set Start-up Projects&#39;</a> section 
+	to set the correct starter kit project start up order. </p>
+	<p><strong>Debugging the Starter Kit</strong></p>
+	<p>Please read the section <a href="#DebugSolution">A note about project references 
+	and debugging the solution</a>. This section describes how to prepare your
+	<em>Web Workflow Approval Starter Kit</em> for debugging. </p>
+	<!-- Known Issues -->
+	<h2><a href="#top"><img src="images/topjump-vc.gif" border="0"></a><a name="KnownIssues">Known 
+	Issues</a> </h2>
+	<p><strong>SQLExpress</strong></p>
+	<p>This project will attempt to load a ‘User Instance’ of the database into 
+	SQLExpress. Please make sure SQLExpress is running prior to running the project. 
+	On occasion, the first time you run the application you will get an error similar 
+	to ‘Timeout expired. The timeout period elapsed prior to completion of the operation 
+	or the server is not responding.’. This is because SQLExpress is taking a while 
+	to load the User Instance database. Simply restart debugging and try again.
+	</p>
+	<p><strong>Remote Desktop</strong></p>
+	<p>If you are running this starter kit on a computer through Remote Desktop 
+	you may encounter an error similar to ‘Failed to generate a user instance of 
+	SQL Server due to a failure in starting the process for the user instance. The 
+	connection will be closed.’. This is a known issue with windows : </p>
+	<ul>
+		<li><a href="http://support.microsoft.com/?id=896613">http://support.microsoft.com/?id=896613</a></li>
+	</ul>
+	<p><strong>New workflow instances don’t show in administrative view</strong></p>
+	<p>When you create a workflow instance (an instance without user assignment 
+	or data) and then login as a user with Administrative privileges to view Current 
+	Workflows the workflow you just created is not listed.</p>
+	<p>This is a known issue and will be addressed in a future build. </p>
+	<p><strong>Can&#39;t debug or set breakpoints in libraries</strong></p>
+	<p>You need to prepare your solution for debugging, follow the instructions 
+	in the <a href="#DebugSolution">A note about project references and debugging 
+	the solution</a> section.</p>
+	<!-- Introduction -->
+	<h2><a href="#top"><img src="images/topjump-vc.gif" border="0"></a><a name="Introduction">Introduction</a></h2>
+	<img align="right" src="images/aspMain.jpg" width="421" height="257">
+	<p>The Web Workflow Approvals Starter Kit presents a developer-oriented sample 
+	for a simple induction into the basics of real-world workflow and workflow tracking.</p>
+	<p>The sample has four projects, the web site, workflows, ASP.NET controls and 
+	workflow designer. The workflow builds a simple and obvious workflow business 
+	model with minimal code, making it a perfect place to demonstrate the workflow 
+	logic of an application. The web site provides implementations of the services 
+	the workflows interface to and presents information and a user interface to 
+	workflow data.</p>
+	<p>The workflows in this sample are pure business logic, stripped of any knowledge 
+	of the resource and IT infrastructure involved in implementing them. This is 
+	possible because communication with the outside world is handled via a construct 
+	called “<em>User Activities</em>”. These are <strong>IEventActivities</strong> 
+	with configurable data, typing, security roles and an external interface (implemented 
+	in the website) that manages their assignment to users and any progress made 
+	on them.</p>
+	<p>The user activities are a vessel for asking a user of a given role for data 
+	input to a given target. In the sample, work items are the data that the sample 
+	workflow needs. The user activities take a <strong>WorkItemDataSet</strong> 
+	as their data argument and send this to the <strong>ActivityDataInterface</strong> 
+	to be initialised for use with the user activity.</p>
+	<p>The website serves up the tasks to users and provides verification of user 
+	activity permissions and assignment. The interface it provides for entering 
+	the data tasks require is determined by the task type. Each type has a separate 
+	interface, all of which use a master page for common user activity/task oriented 
+	functions.</p>
+	<p>Workflow tracking information is also provided; Users may review progress 
+	and user activity data regarding workflows if they have been assigned to the 
+	workflow or have administrative privileges.</p>
+	<p><strong>User Accounts</strong></p>
+	<p>This sample uses a user / role system whereby different users are assigned 
+	different roles or even multiple roles. Below you will find a list of users, 
+	passwords and their assigned default roles.</p>
+	<table border="0" cellpadding="0" cellspacing="0">
+		<tr>
+			<td valign="top" width="205"><strong>User Name </strong></td>
+			<td valign="top" width="205"><strong>Password </strong></td>
+			<td valign="top" width="205"><strong>Assigned Role(s) </strong></td>
+		</tr>
+		<tr>
+			<td valign="top" width="205">Charles </td>
+			<td valign="top" width="205">password </td>
+			<td valign="top" width="205">Administrator </td>
+		</tr>
+		<tr>
+			<td valign="top" width="205">Jane </td>
+			<td valign="top" width="205">password </td>
+			<td valign="top" width="205">Manager </td>
+		</tr>
+		<tr>
+			<td valign="top" width="205">Rachel </td>
+			<td valign="top" width="205">password </td>
+			<td valign="top" width="205">EnterResolution, RequestApproval </td>
+		</tr>
+	</table>
+	<p><strong>Description of Roles</strong></p>
+	<ul>
+		<li><em>RequestApproval</em> is able to enter the details of a given<em> 
+		approval request</em> instance. People within this role can enter the specifics 
+		about a given workflow instance, and hand over control of the workflow instance 
+		to a person within the <em>Manager</em> role. </li>
+		<li><em>Manager</em> is able to determine whether a given <em>approval request</em> 
+		can be approved or not. When people within this role complete this portion 
+		of the workflow instance, control of the workflow instance is handed over 
+		to a person within the <em>EnterResolution</em> role. </li>
+		<li><em>EnterResolution</em> is able to enter the results of the <em>approval 
+		request</em>. When people within this role complete this portion of the 
+		workflow instance, the workflow instance is complete and finishes. </li>
+	</ul>
+	<!-- Solution Structure -->
+	<h2><a href="#top"><img src="images/topjump-vc.gif" border="0"></a><a name="SolutionStructure">Solution 
+	Structure</a></h2>
+	<p><strong>Web Form Workflow Approvals Website</strong></p>
+	<p>The website hosts the workflows and WorkflowRuntime, tracks workflows and 
+	provides a user interface for users to interact with the user activities workflows 
+	create.</p>
+	<p>The UserActivities code folder provides the implementation of the workflow’s 
+	IUserActivityService that is used to create user activities. UserActivitiesDataSet 
+	is the corresponding data source for this service. The ActivityDataInterface 
+	is used by the rest of the website to save and load user activity data. Finally, 
+	the UserActivitiesHelper creates and configures the WorkflowRuntime, as well 
+	as providing helper methods for common user activity tasks. </p>
+
+	<p><strong>Controls</strong></p>
+	<p>FieldControl is a simple ASP.Net server control which produces the familiar label/field layout. Two important properties of the control are the DataSource and DataTextField, the DataSource is the DataRow that will be used to load and save the data, DataTextField is the name of the column that we wish to edit. Depending on the data type of the column the editable field rendered will be either a TextBox, CheckBox or Calendar. In the case when the field is flagged as a lookup a DropDownList will be used, values for the DropDownList are loaded from the OptionDataSource property.</p>
+	<p><strong>Workflows</strong></p>
+	<p>The main points of interest in this project are the sample workflow and the two activities that support its operation. UserActivity is the IEventActivity the workflow uses to drive user input. SaveWorkItems allows a workflow to save changes it makes internally to work items.</p>
+	<p>In addition to this, WorkItemsDataSet models the business data the workflows use, IUserActivityService is the contract workflows use to create user activities and Helper is an intermediary that hosts can use to pass the WorkflowRuntime and implementation of IUserActivityService to the workflows and their supporting classes.</p>
+	<p><strong>WorkflowImageProvider</strong></p>
+	<p>The main point of this library is to provide a class implementing a IHttpAsyncHandler 
+	to generate a image of the workflow highlighting the currently executing 
+	activity.</p>
+	<!-- Dependancies -->
+	<h2><a href="#top"><img src="images/topjump-vc.gif" border="0"></a><a name="Dependancies">Dependencies</a></h2>
+	<p>Welcome to the Windows Workflow Business Logic Starter Kit. So you have installed 
+	the starter kit, “what’s next?” you ask. </p>
+	<p><strong>Prerequisites</strong></p>
+	<p>First of all there are a couple of things you need to remember, this starter 
+	kit has some prerequisites. </p>
+	<p>You will need to make sure that the prerequisites the installer informed 
+	you of are in fact installed on your machine before you attempt to launch this 
+	starter kit. If you didn’t get around to getting the prerequisites during install, 
+	don’t worry here is a list of prerequisites and their download links so you 
+	can go and get them now: </p>
+	<table border="0" cellpadding="0" cellspacing="0">
+		<tr>
+			<td valign="top" width="283"><strong>Prerequisite </strong></td>
+			<td valign="top" width="246"><strong>Download link </strong></td>
+		</tr>
+		<tr>
+			<td valign="top" width="283">Microsoft® Windows® Software Development 
+			Kit for Windows Vista™ and .NET Framework 3.0 Runtime Components
+			</td>
+			<td valign="top" width="246">http://go.microsoft.com/?linkid=6405323</td>
+		</tr>
+		<tr>
+			<td valign="top" width="283">Microsoft .NET Framework 3.0 
+			Redistributable Package</td>
+			<td valign="top" width="246">http://go.microsoft.com/?linkid=6405324</td>
+		</tr>
+		<tr>
+			<td valign="top" width="283">SQL Express (or any other edition of SQL 
+			2005) </td>
+			<td valign="top" width="246">http://go.microsoft.com/?linkid=6405325</td>
+		</tr>
+		<tr>
+			<td valign="top" width="283">Visual Studio 2005 extensions for .NET 
+			Framework 3.0 (Windows Workflow Foundation)</td>
+			<td valign="top" width="246">http://go.microsoft.com/?linkid=6405326</td>
+		</tr>
+	</table>
+	<!-- First Project -->
+	<h2><a href="#top"><img src="images/topjump-vc.gif" border="0"></a><a name="FirstProject">Your 
+	first Web Workflow Approvals project</a></h2>
+	<p>So you have created a project based upon the starter kit, what is next ?</p>
+	<p class="ProcedureLabel">Create a Project</p>
+	<p>In order to create a project based upon the Web Form Workflow Approvals Starter 
+	Kit you must go through the following steps. Note if you have already done this 
+	then you can <a href="#SetStartupProjects">move on</a> to the next task.</p>
+	<ol>
+		<li>Open Visual Studio 2005 by going to <strong>Start Menu</strong> |
+		<strong>Programs</strong> | <strong>Microsoft Visual Studio 2005
+		</strong>| <strong>Microsoft Visual Studio 2005 </strong></li>
+		<li>In Visual Studio 2005, select the <strong>File</strong> | <strong>New</strong> 
+		| <strong>Project</strong> menu command. </li>
+		<li>Select Visual <strong>C# </strong>| <strong>Starter Kits</strong> |
+		<strong>Web Form Workflow Approvals Starter Kit</strong></li>
+		<li>Keep the rest of the defaults and click Ok to create a solution based 
+		on the starter kit template.</li>
+	</ol>
+	<img alt="create-project" src="images/aspCreateProject.jpg" width="456" height="349">
+	<p class="ProcedureLabel"><a name="SetStartupProjects">Set Start-up projects.</a></p>
+	<p>Before we can do anything else we must first define the start-up projects 
+	for the solution.</p>
+	<ol>
+		<li><strong>Right Click</strong> on the <strong>Web Form Workflow Approvals 
+		Website</strong> project.</li>
+		<li>Select <strong>Set As StartUp Project</strong> from the <em>Context 
+		Menu</em>.</li>
+	</ol>
+	<p>
+	<img alt="set startup project" src="images/aspStartupProject.gif" height="548"></p>
+	<a class="ProcedureLabel" name="DebugSolution"><strong>A note about project 
+	references and debugging the solution.</strong></a>
+	<p>Before you can set breakpoints or step through calls to logic within any 
+	of the dependent libraries, you must first set the necessary project references.</p>
+	<p>This process involves two steps. First you must remove the dependent libraries 
+	binaries from the web-project bin folder; second you must set the necessary 
+	project references.</p>
+	<p><strong>NOTE:</strong> It is not required for you to do this in order to 
+	continue with the walk through, however keep this in mind when you start digging 
+	deeper into how the starter kit is constructed by stepping through code.</p>
+	<p class="ProcedureLabel">Remove binary files.</p>
+	<ol>
+		<li><strong>Open</strong> <em>Solution Explorer</em>.</li>
+		<li><strong>Expand</strong> the <em>Web Project</em> (by default this will 
+		be &#39;<em>Web Form Workflow Approvals Website</em>’).</li>
+		<li>Expand the ‘Bin’ folder.</li>
+		<li><strong>Right-Click</strong> on <em>each</em> of the items in the bin 
+		folder, and <strong>select</strong> <em>Delete</em>.</li>
+	</ol>
+	<p><img src="images/aspDeleteBins.jpg" width="315" height="220"></p>
+	<p class="ProcedureLabel">Set project references.</p>
+	<ol>
+		<li><strong>Open</strong> Solution Explorer.</li>
+		<li><strong>Right-Click</strong> the W<em>eb Form Project</em> (by default 
+		this will be &#39;<em>Web Form Workflow Approvals Website</em>&#39;)</li>
+		<li>Select Add Reference.</li>
+		<li>On the <strong>Projects</strong> tab select all projects listed and
+		<strong>press</strong> <em>Ok</em>.</li>
+	</ol>
+	<p><img src="images/aspSetReferences.jpg" width="314" height="308"></p>
+	<p>Make sure that you have SQLExpress running (by default it will be), hit
+	<strong>F5</strong> an run the solution. </p>
+	<h2><a href="#top"><img src="images/topjump-vc.gif" border="0"></a><a name="WalkthruNoExcelation">Walkthrough 
+	– No Escalation</a></h2>
+	<ol>
+		<li>Start a new workflow: <strong>click</strong> <em>Start Approval Request</em>.</li>
+		<li><strong>Login </strong>as <em>‘Rachel’</em> (password = “password”). 
+		You will be able to see the work item Work Item Approval Request.
+		<strong>Click </strong>it and a page will load where you can enter the details 
+		about the Approval Request. </li>
+		<li>Pressing Submit will complete this phase of the workflow; pressing Save 
+		will simply save the current state of the workflow to the database.</li>
+		<li>Once the fields are filled <strong>click</strong> <em>Submit</em> to 
+		move the workflow instance to its next phase ‘<em>for Approval</em>’, you 
+		will be notified that this phase of the workflow is complete.</li>
+		<li>Pressing Details (opens in a new browser window) will enable you to 
+		see the current executing part of the workflow, as you can see by the Sequential 
+		Workflow diagram that is displayed we are currently executing <em>ApprovalForWorkItems</em> 
+		(displayed with a box around it).</li>
+		<li><strong>Close</strong> the browser window that has the instance details 
+		within it, and <strong>click</strong> Logout on the <em>Enter Approval Request</em> 
+		page.</li>
+		<li><strong>Login</strong> as ‘<em>Jane</em>’ (password = “password”), you 
+		will be able to see the work item <em>Work Item Request for Approval</em>. 
+		Click it and a page will load where you can approve or decline the <em>approval 
+		request</em>.</li>
+		<li><strong>Tick</strong> <em>Approved</em>, and <strong>click</strong>
+		<em>Submit</em> to move the workflow instance to its next phase of the workflow 
+		(&#39;<em>await resolution</em>&#39;).</li>
+		<li>Pressing Details (opens in a new browser window) will enable you to 
+		see the current executing part of the workflow. As you can see by the Sequential 
+		Workflow diagram that is displayed we are currently executing <em>WaitForResolution</em> 
+		(displayed with a box around it).</li>
+		<li><strong>Close</strong> the browser window that has the instance details 
+		within it, and <strong>click</strong> <em>Logout</em> on the <em>Manager 
+		Approval</em> page.</li>
+		<li><strong>Login</strong> as ‘<em>Rachel</em>’ (password = “password”), 
+		you will be able to see the work item <em>Work Item Awaiting Resolution</em>.
+		<strong>Click</strong> it and a page will load where you can enter details 
+		about the resolution.</li>
+		<li><strong>Enter</strong> the <em>resolution</em> details and <strong>click</strong>
+		<em>Submit</em>. This will complete this workflow instance.</li>
+		<li>Clicking Details (opens in a new browser window) will enable you to 
+		see that there are no current executing portions of the workflow, as it 
+		is now complete.</li>
+	</ol>
+	<h2><a href="#top"><img src="images/topjump-vc.gif" border="0"></a><a name="WalkthruWithExcelation">Walkthrough 
+	– With Escalation</a></h2>
+	<p>Complete steps 1 through 4. Leave the application running and wait 5 minutes 
+	while the workflow escalation process automatically declines the Approval Request.</p>
+	<p>When 5 minutes is up click Refresh Task List on the Home page. You will see 
+	a new Work Item Awaiting Resolution. Open it to enter a resolution. You can 
+	see that this work item was automatically declined by the workflow without any 
+	intervention.</p>
+	<h2><a href="#top"><img src="images/topjump-vc.gif" border="0"></a><a name="AdminAccess">Administrative 
+	Access</a></h2>
+	<p><strong>Login</strong> as ‘<em>Charles</em>’ (password = ‘password’), you 
+	will see a new button ‘Administration’ beside ‘Logout’. <strong>Click</strong> 
+	it and a page will load where you can view Current and Complete workflow instances. 
+	You also have a user interface to manage users and their roles.</p>
+	<p>Clicking on a Current workflow instance will display a page where you can 
+	see the current execution status plus execution history, and the ability to 
+	assign this workflow instance to a specific user or role.</p>
+	<p>Clicking on a Completed workflow will display a page where you can see the 
+	complete execution history of the workflow instance in question.</p>
+	<!-- footer -->
+	<h3>For more information</h3>
+	<ul>
+		<li>Other Visual C# Starter Kits are available
+		<a href="http://go.microsoft.com/fwlink/?linkid=29243&amp;clcid=0x409">here</a>.</li>
+		<li>Get further details on Visual C# Express Edition
+		<a href="http://go.microsoft.com/fwlink/?LinkId=40165">here</a>.</li>
+	</ul>
+	<p><a href="http://www.microsoft.com/info/cpyright.mspx">© 2000 Microsoft Corporation 
+	and/or its suppliers. All rights reserved. Terms of Use.</a> </p>
+	<!-- DONT EDIT BELOW THIS LINE  -->
+	<p>&nbsp;</p>
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+﻿<SequentialWorkflowActivity x:Class="WorkflowLibrary1.Workflow1" x:Name="Workflow1" xmlns:ns0="clr-namespace:CustomWorkflowTypes;Assembly=CustomWorkflowTypes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow">
+	<InvokeWebServiceActivity Invoking="WSInvoking" ProxyClass="{x:Type WorkflowLibrary1.LocalWS.Service}" Invoked="WSInvoked" MethodName="SayHello" x:Name="invokeWebServiceActivity1">
+		<InvokeWebServiceActivity.ParameterBindings>
+			<WorkflowParameterBinding ParameterName="PersonName">
+				<WorkflowParameterBinding.Value>
+					<ActivityBind Name="Workflow1" Path="PersonName" />
+				</WorkflowParameterBinding.Value>
+			</WorkflowParameterBinding>
+			<WorkflowParameterBinding ParameterName="(ReturnValue)">
+				<WorkflowParameterBinding.Value>
+					<ActivityBind Name="Workflow1" Path="WSResults" />
+				</WorkflowParameterBinding.Value>
+			</WorkflowParameterBinding>
+		</InvokeWebServiceActivity.ParameterBindings>
+	</InvokeWebServiceActivity>
+	<ns0:ConsoleWriteLineActivity Message="{ActivityBind Workflow1,Path=WSResults}" x:Name="consoleWriteLineActivity1" />
+</SequentialWorkflowActivity>

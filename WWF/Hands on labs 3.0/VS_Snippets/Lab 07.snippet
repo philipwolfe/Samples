@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab07 Ex01 Task02 CodeHandlers</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab07 Ex01 Task02 CodeHandlers</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[	  public enum NumberIs { Odd = 0, Even = 1}	  private NumberIs currentNumber = NumberIs.Even;                private bool userRequestsExit;        //number entered is odd	  public void codeActivity1_ExecuteCode(object sender, EventArgs e)	  {		Console.WriteLine("the number is odd");            GetNextNumber();	  }        //number entered is even	  public void codeActivity2_ExecuteCode(object sender, EventArgs e)	  {		Console.WriteLine("the number is even");           	GetNextNumber();	  } 	  //evaluate number entered by user and set currentNumber variable        private void GetNextNumber()        {            int numIn;            Console.WriteLine("enter a number.");            string charIn = Console.ReadLine();            if (Int32.TryParse(charIn, out numIn))            {                if ((numIn % 2) == 0)                {                    currentNumber = NumberIs.Even;                }                else                {                    currentNumber = NumberIs.Odd;                }            }            else if (charIn.Contains("x"))            {                userRequestsExit = true;            }            else            {                GetNextNumber();            }        }]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab07 Ex01 Task03 CodeConditions</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab07 Ex01 Task03 CodeConditions</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[//used to control execution of codeActivity1_ExecuteCode1public void oddCondition(object sender, ConditionalEventArgs args){	args.Result = ((currentNumber == NumberIs.Odd));}//used to control execution of codeActivity2_ExecuteCode1public void evenCondition(object sender, ConditionalEventArgs args){	args.Result = ((currentNumber == NumberIs.Even));}//used to control execution of the ConditionedActivityGrouppublic void timeToExit(object sender, ConditionalEventArgs args){	args.Result = userRequestsExit; }]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab07 Ex02 Task02 ChildEvents</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab07 Ex02 Task02 ChildEvents</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[        private void childCompleted(object sender, ReplicatorChildEventArgs e)        {	        Console.WriteLine("Completed {0}", e.InstanceData.ToString());        }        private void childInitialized(object sender, ReplicatorChildEventArgs e)        {	        Console.WriteLine("Initialized {0}", e.InstanceData.ToString());  	     }]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab07 Ex02 Task02 ExecuteCode</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab07 Ex02 Task02 ExecuteCode</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[		public void codeActivity1_ExecuteCode(object sender, EventArgs e)		{			Console.WriteLine("In codeActivity1_ExecuteCode");		}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab07 Ex02 Task02 InitializedHandler</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab07 Ex02 Task02 InitializedHandler</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[public void replicatorActivity1_Initialized(object sender, EventArgs e){      // Populate the data used for each instance of the Replicator's       // child instance that are created	ArrayList children = new ArrayList();	children.Add("Child Instance 1");	children.Add("Child Instance 2");	children.Add("Child Instance 3");	children.Add("Child Instance 4");	children.Add("Child Instance 5");	children.Add("Child Instance 6");	replicatorActivity1.InitialChildData = children;            // Specify how the child instances should be created - in parallel       // or in a sequence	replicatorActivity1.ExecutionType = ExecutionType.Parallel;  }]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab07 Ex02 Task02 WorkflowCompleted</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab07 Ex02 Task02 WorkflowCompleted</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[		private void workflowCompleted(object sender, EventArgs e)		{			Console.WriteLine("Workflow finished");		}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

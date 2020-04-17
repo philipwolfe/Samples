@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab02 Ex03 Task01 IsValidEmailAddress</Title>
+      <Author>MVP KenLin</Author>
+      <Shortcut>Lab02 Ex03 Task01 IsValidEmailAddress</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="VB"><![CDATA[
+    Public Function IsValidEmailAddress(ByVal address As String) As Boolean
+        ' must only proceed with validation if we have data to validate
+        If ((address = Nothing) OrElse (address.Length = 0)) Then
+            Return True
+        End If
+
+        Dim rx As Regex = New Regex("[^A-Za-z0-9@\-_.]", RegexOptions.Compiled)
+        Dim matches As MatchCollection = rx.Matches(address)
+
+        If (matches.Count > 0) Then
+            Return False
+        End If
+
+        ' Must have an '@' character
+        Dim i As Integer = address.IndexOf(Microsoft.VisualBasic.ChrW(64))
+
+        ' Must be at least three chars after the @
+        If ((i <= 0) OrElse (i >= (address.Length - 3))) Then
+            Return False
+        End If
+
+        ' Must only be one '@' character
+        If (address.IndexOf(Microsoft.VisualBasic.ChrW(64), (i + 1)) >= 0) Then
+            Return False
+        End If
+
+        ' Find the last . in the address
+        Dim j As Integer = address.LastIndexOf(Microsoft.VisualBasic.ChrW(46))
+
+        ' The dot can't be before or immediately after the @ char
+        If ((j >= 0) AndAlso (j <= (i + 1))) Then
+            Return False
+        End If
+
+        Return True
+    End Function
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

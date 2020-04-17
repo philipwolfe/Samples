@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="POSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" xmlns="http://tempuri.org/POSchema.xsd" targetNamespace="http://tempuri.org/POSchema.xsd" xmlns:mstns="http://tempuri.org/POSchema.xsd">
+
+  <xs:element name="PO">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="OrderTotal" type="xs:string" minOccurs="0" />
+        <xs:element name="history" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="status" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="name" type="xs:string" />
+                  <xs:attribute name="timestamp" type="xs:string" />
+                  <xs:attribute name="contact" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="items" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="item" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="amount" type="xs:string" minOccurs="0" />
+                    <xs:element name="price" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                  <xs:attribute name="sku" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="PONumber" type="xs:string" />
+      <xs:attribute name="fulfillerTrackingNumber" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

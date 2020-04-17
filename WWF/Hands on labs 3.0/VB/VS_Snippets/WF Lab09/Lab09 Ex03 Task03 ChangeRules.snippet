@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab09 Ex03 Task03 ChangeRules</Title>
+      <Author>Serge Luca</Author>
+      <Shortcut>Lab09 Ex03 Task03 ChangeRules</Shortcut>
+    </Header>
+    <Snippet>   <Code Language="VB"><![CDATA[
+
+Shared Sub changeRulesForWorkflow(ByVal workflowInstance As WorkflowInstance)
+
+            If (Not rulesChanged) Then
+                rulesChanged = True
+
+                ' our new validation amount
+                Dim newAmount As Integer = 8000
+                Console.WriteLine(vbTab & "Dynamically change approved amount to {0}", newAmount)
+
+                'Dynamic update of order rule
+                Dim workflowchanges As New WorkflowChanges(workflowInstance.GetWorkflowDefinition())
+
+                Dim transient As CompositeActivity = workflowchanges.TransientWorkflow
+                Dim ruleDefinitions As RuleDefinitions = CType(transient.GetValue(ruleDefinitions.RuleDefinitionsProperty), RuleDefinitions)
+                Dim conditions As RuleConditionCollection = ruleDefinitions.Conditions
+                Dim condition1 As RuleExpressionCondition = CType(conditions("Condition1"), RuleExpressionCondition)
+                CType(condition1.Expression, CodeBinaryOperatorExpression).Right = New CodePrimitiveExpression(newAmount)
+
+
+                'Apply our changes to the workflow
+
+                workflowInstance.ApplyWorkflowChanges(workflowchanges)
+
+            Else
+                Console.WriteLine(vbTab & "Rules for Workflow already changed")
+            End If
+        End Sub
+
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

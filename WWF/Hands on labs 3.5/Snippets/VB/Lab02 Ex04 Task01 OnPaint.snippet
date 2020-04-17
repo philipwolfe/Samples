@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab02_Ex04_Task01_OnPaint</Title>
+      <Author>MVP KenLin</Author>
+      <Shortcut>WFLab02_Ex04_Task01_OnPaint</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="VB"><![CDATA[
+    Protected Overrides Sub OnPaint(ByVal e As ActivityDesignerPaintEventArgs)
+        Dim frameRect As Rectangle = New Rectangle(Me.Location.X, Me.Location.Y, _
+                                            (Me.Size.Width - 5), (Me.Size.Height - 5))
+        Dim shadowRect As Rectangle = New Rectangle((frameRect.X + 5), (frameRect.Y + 5), _
+                                            frameRect.Width, frameRect.Height)
+        Dim pageRect As Rectangle = New Rectangle((frameRect.X + 4), (frameRect.Y + 24), _
+                                            (frameRect.Width - 8), (frameRect.Height - 28))
+        Dim titleRect As Rectangle = New Rectangle((frameRect.X + 15), (frameRect.Y + 4), _
+                                            (frameRect.Width / 2), 20)
+
+        Dim frameBrush As Brush = New LinearGradientBrush(frameRect, Color.DarkBlue, Color.LightBlue, 45)
+        e.Graphics.FillPath(Brushes.LightGray, RoundedRect(shadowRect))
+        e.Graphics.FillPath(frameBrush, RoundedRect(frameRect))
+        e.Graphics.FillPath(New LinearGradientBrush(pageRect, Color.White, Color.WhiteSmoke, 45), RoundedRect(pageRect))
+        e.Graphics.DrawString(Activity.QualifiedName, New Font("Segoe UI", 9), Brushes.White, titleRect)
+        frameRect.Inflate(20, 20)
+        Dim textToDisplay As String = String.Format("To : '{0}'" & vbCrLf & "From : '{1}'" & vbCrLf _
+                                        & "Subject : '{2}'" & vbCrLf, parentActivity.MailTo, _
+                                        parentActivity.MailFrom, parentActivity.Subject)
+        e.Graphics.DrawString(String.Format(textToDisplay, parentActivity.Subject), _
+            New Font("Segoe UI", 8), Brushes.Black, pageRect.X, (pageRect.Y + 15))
+    End Sub
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

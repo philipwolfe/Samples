@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab10 Ex03 Task01 ToolBox</Title>
+      <Author>Serge Luca</Author>
+      <Shortcut>Lab10 Ex03 Task01 ToolBox</Shortcut>
+    </Header>
+    <Snippet>   <Code Language="VB"><![CDATA[
+            Dim toolbox As New Toolbox(Me)
+            Me.propertyGridSplitter.Panel1.Controls.Add(toolbox)
+            toolbox.Dock = DockStyle.Fill
+            toolbox.BackColor = Me.BackColor
+            toolbox.Font = WorkflowTheme.CurrentTheme.AmbientTheme.Font
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

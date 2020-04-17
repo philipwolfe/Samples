@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab03_Ex03_Task02_Support</Title>
+      <Author>MVP KenLin</Author>
+      <Shortcut>WFLab03_Ex03_Task02_Support</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="VB"><![CDATA[
+#Region "support-code"
+
+    Private Shared Sub WriteTitle(ByVal title As String)
+        Console.WriteLine(vbLf & "******************************************")
+        Console.WriteLine(vbTab & title)
+        Console.WriteLine("******************************************")
+    End Sub
+
+    Private Shared Sub WriteWorkflowTrackingRecord(ByVal workflowTrackingRecord As WorkflowTrackingRecord)
+        WriteTitle("Workflow Tracking Record")
+        Console.WriteLine("EventDateTime: " & workflowTrackingRecord.EventDateTime.ToString)
+        Console.WriteLine("Status: " & workflowTrackingRecord.TrackingWorkflowEvent.ToString)
+    End Sub
+
+    Private Shared Sub WriteActivityTrackingRecord(ByVal activityTrackingRecord As ActivityTrackingRecord)
+        WriteTitle("Activity Tracking Record")
+        Console.WriteLine("EventDateTime: " & activityTrackingRecord.EventDateTime.ToString)
+        Console.WriteLine("QualifiedName: " & activityTrackingRecord.QualifiedName.ToString)
+        Console.WriteLine("Type: " & activityTrackingRecord.ActivityType.ToString)
+        Console.WriteLine("Status: " & activityTrackingRecord.ExecutionStatus.ToString)
+    End Sub
+
+    Private Shared Sub WriteUserTrackingRecord(ByVal userTrackingRecord As UserTrackingRecord)
+        WriteTitle("User Activity Record")
+        Console.WriteLine("EventDateTime: " & userTrackingRecord.EventDateTime.ToString)
+        Console.WriteLine("QualifiedName: " & userTrackingRecord.QualifiedName.ToString)
+        Console.WriteLine("ActivityType: " & userTrackingRecord.ActivityType.FullName.ToString)
+        Console.WriteLine("Args: " & userTrackingRecord.UserData.ToString)
+    End Sub
+
+#End Region
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

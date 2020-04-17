@@ -1,0 +1,38 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- MSBUILD Project File -->
+  <PropertyGroup>
+    <RootNamespace>SDKSample</RootNamespace>
+    <AssemblyName>SimpleBindingSample_VB</AssemblyName>
+    <TargetType>winexe</TargetType>
+    <Configuration>Debug</Configuration>
+    <HostInBrowser>False</HostInBrowser>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3447A641-461E-4F6C-8B11-587AF8B98760}</ProjectGuid>
+  </PropertyGroup>
+  <!--Import the target file that contains all the common targets -->
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <Import Project="$(MSBuildBinPath)\Microsoft.WinFX.targets" />
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Data" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- Aplication Definition Markup File -->
+    <ApplicationDefinition Include="app.xaml" />
+    <!-- Compiled Xaml Files -->
+    <Page Include="Page1.xaml" />
+    <!-- Compiled Code Files -->
+    <Compile Include="Person.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="My Project\" />
+  </ItemGroup>
+</Project>

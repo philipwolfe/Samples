@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab10 Ex02 Task01 ProcessZoom</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab10 Ex02 Task01 ProcessZoom</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[public void ProcessZoom(int zoomFactor){    this.workflowView.Zoom = zoomFactor;    this.workflowView.Update();}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab10 Ex02 Task02 ZoomMenuItem Click</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab10 Ex02 Task02 ZoomMenuItem Click</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[private void zoomDropDownMenuItem_Click(object sender, EventArgs e)        {            if (sender is ToolStripMenuItem)            {                ToolStripMenuItem menuItem = (ToolStripMenuItem)sender;                int zoomFactor = 0;                bool result = Int32.TryParse(menuItem.Tag.ToString(), out zoomFactor);                if (result)                {                    this.workflowDesignerControl.ProcessZoom(zoomFactor);                }            } }]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab10 Ex03 Task01 ToolBox</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab10 Ex03 Task01 ToolBox</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[Toolbox toolbox = new Toolbox(this);this.propertyGridSplitter.Panel1.Controls.Add(toolbox);toolbox.Dock = DockStyle.Fill;toolbox.BackColor = BackColor;toolbox.Font = WorkflowTheme.CurrentTheme.AmbientTheme.Font; ]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab10 Ex03 Task02 OnSelectionChanged</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab10 Ex03 Task02 OnSelectionChanged</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[private void OnSelectionChanged(object sender, EventArgs e)        {            ISelectionService selectionService = GetService(typeof(ISelectionService)) as ISelectionService;            if (selectionService != null)            {                this.propertyGrid.SelectedObjects = new ArrayList(selectionService.GetSelectedComponents()).ToArray();            }}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab10 Ex03 Task02 SelectionChanged</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab10 Ex03 Task02 SelectionChanged</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[ISelectionService selectionService = GetService(typeof(ISelectionService)) as ISelectionService;                    if (selectionService != null)                    {                        selectionService.SelectionChanged += new EventHandler(OnSelectionChanged);                    }]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab10 Ex03 Task03 DeleteSelected</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab10 Ex03 Task03 DeleteSelected</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[public void DeleteSelected()        {            ISelectionService selectionService = (ISelectionService) this.GetService(typeof(ISelectionService));            if (selectionService != null)            {                if (selectionService.PrimarySelection is Activity)                {                    Activity activity = (Activity)selectionService.PrimarySelection;                    if (activity.Name != this.WorkflowName)                    {                        activity.Parent.Activities.Remove(activity);                        this.workflowView.Update();                    }                }            }}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab10 Ex04 Task02 Compile</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab10 Ex04 Task02 Compile</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[public bool Compile()        {            return this.Compile(true);        }        public bool Compile(bool showMessage)        {            if (!this.Save(false))            {                return false;            }            if (!File.Exists(this.XomlFile))            {                MessageBox.Show(this, "Cannot locate xoml file: " + Path.Combine(Path.GetDirectoryName(this.GetType().Assembly.Location), XomlFile), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);                return false;            }            bool compileOK = true;            Cursor cursor = this.Cursor;            this.Cursor = Cursors.WaitCursor;            try            {                // Compile the workflow                String[] assemblyNames = { AdditionalAssembies };                WorkflowCompiler compiler = new WorkflowCompiler();                WorkflowCompilerParameters parameters = new WorkflowCompilerParameters(assemblyNames);                parameters.LibraryPaths.Add(Path.GetDirectoryName(typeof(ActivityLibrary.MessageActivity).Assembly.Location));                parameters.GenerateInMemory = true;                WorkflowCompilerResults compilerResults = compiler.Compile(parameters, this.XomlFile);                inMemoryAssembly = compilerResults.CompiledAssembly;                StringBuilder errors = new StringBuilder();                               foreach (CompilerError compilerError in compilerResults.Errors)                {                    errors.Append(compilerError.ToString() + '\n');                }                if (errors.Length != 0)                {                    MessageBox.Show(this, errors.ToString(), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);                    compileOK = false;                }                else if (showMessage)                {                    MessageBox.Show(this, "Workflow compiled successfully. Compiled assembly:\n" + compilerResults.CompiledAssembly.GetName(), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);                }            }            finally            {                this.Cursor = cursor;            }            return compileOK;        }]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab10 Ex04 Task02 EventHandlers</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab10 Ex04 Task02 EventHandlers</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[private void btnSave_Click(object sender, EventArgs e)        {            this.workflowDesignerControl.Save();        }        private void btnCompile_Click(object sender, EventArgs e)        {            this.workflowDesignerControl.Compile();        }        private void btnRun_Click(object sender, EventArgs e)        {           this.workflowDesignerControl.Run();        }        private void btnOpen_Click(object sender, EventArgs e)        {            this.workflowDesignerControl.LoadExistingWorkflow();        } ]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab10 Ex04 Task02 LoadExistingWorkflow</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab10 Ex04 Task02 LoadExistingWorkflow</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[public void LoadExistingWorkflow()        {            OpenFileDialog openFileDialog = new OpenFileDialog();            openFileDialog.Filter = "xoml files (*.xoml)|*.xoml|All files (*.*)|*.*";            openFileDialog.FilterIndex = 1;            openFileDialog.RestoreDirectory = true;            if (openFileDialog.ShowDialog() == DialogResult.OK)            {                using (XmlReader xmlReader = XmlReader.Create(openFileDialog.FileName))                {                    WorkflowMarkupSerializer serializer = new WorkflowMarkupSerializer();                    this.workflow = (SequentialWorkflowActivity)serializer.Deserialize(xmlReader);                    this.LoadWorkflow();                    this.XomlFile = openFileDialog.FileName;                    this.Text = "Designer Hosting Sample -- [" + openFileDialog.FileName + "]";                }            }}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab10 Ex04 Task02 Run</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab10 Ex04 Task02 Run</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[public bool Run()
+        {
+            if (inMemoryAssembly == null)
+            {
+                if (!this.Compile(false))
+                {
+                    return false;
+                }
+            }
+
+            // Start the runtime engine
+            if (this.workflowRuntime == null)
+            {
+                this.workflowRuntime = new WorkflowRuntime();
+                this.workflowRuntime.StartRuntime();
+            }
+
+            this.workflowRuntime.WorkflowCompleted += new EventHandler<WorkflowCompletedEventArgs>(workflowRuntime_WorkflowCompleted);
+            string typeName = string.Format("{0}.{1}", this.GetType().Namespace, this.WorkflowName);
+            this.workflowRuntime.CreateWorkflow(AppDomain.CurrentDomain.CreateInstanceAndUnwrap(inMemoryAssembly.FullName, typeName).GetType()).Start();
+
+            return true;
+        }
+
+        void workflowRuntime_WorkflowCompleted(object sender, WorkflowCompletedEventArgs e)
+        {
+            MessageBox.Show("Workflow complete");
+        }]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab10 Ex04 Task02 Save</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab10 Ex04 Task02 Save</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[private void SaveFile()        {            if (this.XomlFile.Length != 0)            {                this.SaveExistingWorkflow(this.XomlFile);            }            else            {                SaveFileDialog saveFileDialog = new SaveFileDialog();                saveFileDialog.Filter = "xoml files (*.xoml)|*.xoml|All files (*.*)|*.*";                saveFileDialog.FilterIndex = 1;                saveFileDialog.RestoreDirectory = true;                if (saveFileDialog.ShowDialog() == DialogResult.OK)                {                    this.SaveExistingWorkflow(saveFileDialog.FileName);                    this.Text = "Designer Hosting Sample -- [" + saveFileDialog.FileName + "]";                }            }        }        internal void SaveExistingWorkflow(string filePath)        {            if (this.designSurface != null && this.loader != null)            {                this.XomlFile = filePath;                this.loader.PerformFlush();            }        }        public bool Save()        {            return this.Save(true);        }        public bool Save(bool showMessage)        {            Cursor cursor = this.Cursor;            this.Cursor = Cursors.WaitCursor;            bool saveOK = true;            try            {                // Save the workflow first, and capture the filePath of the workflow                this.SaveFile();                XmlDocument doc = new XmlDocument();                doc.Load(this.XomlFile);                XmlAttribute attrib = doc.CreateAttribute("x", "Class", "http://schemas.microsoft.com/winfx/2006/xaml");                attrib.Value = string.Format("{0}.{1}", this.GetType().Namespace, this.WorkflowName);                doc.DocumentElement.Attributes.Append(attrib);                doc.Save(this.XomlFile);                if (showMessage)                {                    MessageBox.Show(this, "Workflow generated successfully. Generated xoml file:\n" + Path.Combine(Path.GetDirectoryName(this.GetType().Assembly.Location), this.XomlFile), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);                }            }            catch (Exception ex)            {                MessageBox.Show(ex.ToString());                saveOK = false;            }            finally            {                this.Cursor = cursor;            }            return saveOK;}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Lab10 Ex04 Task03 MessageProperty</Title>
+      <Author>Microsoft</Author>
+      <Shortcut>Lab10 Ex04 Task03 MessageProperty</Shortcut>
+      <Description>
+      </Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Code Language="CSharp"><![CDATA[public static DependencyProperty MessageProperty = System.Workflow.ComponentModel.DependencyProperty.Register("Message", typeof(string), typeof(MessageActivity));        [Description("The Message to display in the MessageBox")]        [Browsable(true)]        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]        public string Message        {            get            {                return ((string)(base.GetValue(MessageActivity.MessageProperty)));            }            set            {                base.SetValue(MessageActivity.MessageProperty, value);            }}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

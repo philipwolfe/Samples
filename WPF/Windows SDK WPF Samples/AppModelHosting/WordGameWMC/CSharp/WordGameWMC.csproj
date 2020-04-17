@@ -1,0 +1,110 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3FDCFADA-1B61-4F76-9148-E7CC02040F2B}</ProjectGuid>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <RootNamespace>WordGameWMC</RootNamespace>
+    <AssemblyName>WordGameWMC</AssemblyName>
+    <WarningLevel>4</WarningLevel>
+    <OutputType>winexe</OutputType>
+    <EnableSecurityDebugging>false</EnableSecurityDebugging>
+    <Install>False</Install>
+    <TargetZone>Internet</TargetZone>
+    <StartAction>Program</StartAction>
+    <StartProgram>$(WINDIR)\System32\PresentationHost.exe</StartProgram>
+    <ApplicationExtension>.xbap</ApplicationExtension>
+    <StartArguments>-debug "$(MSBuildProjectDirectory)\bin\$(Configuration)\$(AssemblyName)$(ApplicationExtension)"</StartArguments>
+    <SignManifests>True</SignManifests>
+    <MinFrameworkVersionRequired>3.0</MinFrameworkVersionRequired>
+    <HostInBrowser>true</HostInBrowser>
+    <InstallFrom>Web</InstallFrom>
+    <MapFileExtensions>false</MapFileExtensions>
+    <ApplicationVersion>1.0.0.*</ApplicationVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <PublishUrl>Publish\</PublishUrl>
+    <ManifestKeyFile>WordGameWMC_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestCertificateThumbprint>40B20383B5F540280DAAAAF80C656825AB9A6411</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Keyboard, Version=1.0.2419.34060, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\Keyboard.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.MediaCenter, Version=6.0.6000.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\Microsoft.MediaCenter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.MediaCenter.UI, Version=6.0.6000.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\Microsoft.MediaCenter.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml" />
+    <Page Include="HomePage.xaml" />
+    <Page Include="MediaCenterTheme.xaml" />
+    <None Include="Readme.txt" />
+    <Compile Include="HomePage.xaml.cs">
+      <DependentUpon>HomePage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\app.manifest" />
+    <None Include="WordGameWMC_TemporaryKey.pfx" />
+    <Compile Include="GameEndState.cs" />
+    <Compile Include="PlayerScore.cs" />
+    <Compile Include="Game.cs" />
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="DefaultWordList.txt">
+    </Resource>
+    <None Include="WordList.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildBinPath)\Microsoft.WinFX.targets" />
+  <!-- This builds the .MCL Media Center shortcut -->
+  <PropertyGroup>
+    <BuildDependsOn>
+      $(BuildDependsOn);CreateMediaCenterShortcutTarget
+    </BuildDependsOn>
+  </PropertyGroup>
+  <Target Name="CreateMediaCenterShortcutTarget">
+    <CreateProperty Value="&#xD;&#xA;    &lt;application&#xD;&#xA;    Title= &quot;$(AssemblyName)&quot; &#xD;&#xA;    id              = &quot;$(ProjectGuid)&quot; &#xD;&#xA;    url             = &quot;$(AssemblyName)$(ApplicationExtension)&quot; &#xD;&#xA;    bgColor         = &quot;RGB(89,157,204)&quot;&#xD;&#xA;    name            = &quot;$(AssemblyName)&quot;&#xD;&#xA;    companyName     = &quot;&quot;&#xD;&#xA;    startImage      = &quot;&quot;&#xD;&#xA;    thumbnailImage  = &quot;&quot;&#xD;&#xA;    sharedViewport  = &quot;open&quot;&#xD;&#xA;    description     = &quot;&quot;&#xD;&#xA;    companyLogoUrl  = &quot;&quot;/&gt;">
+      <Output TaskParameter="Value" ItemName="NewFile" />
+    </CreateProperty>
+    <CreateItem Include="@(NewFile)">
+      <Output ItemName="MCEItem" TaskParameter="Include" />
+    </CreateItem>
+    <WriteLinesToFile Condition="!Exists('$(MSBuildProjectDirectory)\bin\$(Configuration)\$(AssemblyName).mcl')" File="$(MSBuildProjectDirectory)\bin\$(Configuration)\$(AssemblyName).mcl" Overwrite="true" Lines="@(MCEItem)" />
+  </Target>
+</Project>

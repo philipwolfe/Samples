@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>WFLab06_Exercise02_Task03_webServiceResponsePO</Title>
+      <Author>Serge Luca</Author>
+      <Shortcut>WFLab06_Exercise02_Task03_webServiceResponsePO</Shortcut>
+    </Header>
+    <Snippet>   <Code Language="VB"><![CDATA[
+         POSchema.PO.GenerateResponseHeader(receivedPO, returnedPO, "Fabrikam_")
+        POSchema.PO.CopyHistoryAndChangeStatus(receivedPO, returnedPO, "Accepted")
+        POSchema.PO.CopyPOItems(receivedPO, returnedPO)
+
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

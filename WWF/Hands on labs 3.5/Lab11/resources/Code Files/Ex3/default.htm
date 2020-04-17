@@ -1,0 +1,51 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title></title>
+	</head>
+
+	<body>
+    <h1>AJAX to WCF Service</h1>
+    <h2>Please enter a check amount:</h2>
+    
+    <form name="dataEntry">
+        <input type="text" name="checkAmount"  
+        onkeyup="convertToWords();" /><br />
+        <div id="msg"></div>
+    </form>
+
+    <script type="text/javascript">
+    function convertToWords()
+    {
+     var xmlHttp;
+      try {xmlHttp=new XMLHttpRequest();}
+       catch (e) 
+        {try {xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");}
+        catch (e) 
+          {try {xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");}
+          catch (e) {
+          var msg = "This sample only works";
+          msg = msg + "in browsers with AJAX support.";
+          alert(msg); 
+          return false;}}}
+     
+     xmlHttp.onreadystatechange=function()
+     {
+      if(xmlHttp.readyState==4)
+      {
+      var mdiv = document.getElementById("msg");
+      var obj = eval("("+xmlHttp.responseText+")");
+       mdiv.innerHTML = obj.d;
+      }
+     }
+     
+     var url = "CheckWriter.svc/";
+     url = url + "Write?checkAmount=";
+     url = url + document.dataEntry.checkAmount.value;
+     
+     xmlHttp.open("GET",url,true);
+     xmlHttp.send('');
+    }
+    </script>
+	</body>
+</html>
