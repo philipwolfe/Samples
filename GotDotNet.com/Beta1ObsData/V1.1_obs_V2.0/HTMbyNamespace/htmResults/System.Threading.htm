@@ -1,0 +1,23 @@
+<p><center><font size="5" face="Arial" color="#000000"><b>System.Threading Namespace Obsoletion List</b></font></center></p>
+<center><font face="Arial"> <table width="800"><tr><td><ul><li>The member count represents the number of obsoleted members NOT in obsoleted types. </li></ul></td></tr><tr><td> <ul><li>The type count represents the number of obsoleted types. </li></ul></td></tr></table></font></center><br><center><table width = "800" border="0"><tr> <td width="40%"><font face="Arial"><b>Total Members Obsoleted: 7</b></font></td></tr> <tr><td><font face="Arial"><b>Total Types Obsoleted: 0</b></font></td> </tr></table><br>
+<html><head><meta http-equiv="Content-Language" content="en-us"><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><title>New Page 1</title></head><body><center>
+<center><table border="1" width="800" id="table1" cellspacing="0">
+<tr><td colspan="2" bgcolor="#B0B0B0"><font face="Arial" color="#FFFFFF"><b>System.Threading.Overlapped </b></font></td></tr>
+<tr><td width="40%"><font face="Arial"><b>Pack</b>(IOCompletionCallback iocb)</font></td>
+<td><font face="Arial"><b>Message:</b> This method is not safe.  Use Pack (iocb, userData) instead.</font></tr>
+<tr><td width="40%"><font face="Arial"><b>UnsafePack</b>(IOCompletionCallback iocb)</font></td>
+<td><font face="Arial"><b>Message:</b> This method is not safe.  Use UnsafePack (iocb, userData) instead.</font></tr>
+<tr><td width="40%"><font face="Arial"><b>Overlapped</b>(Int32 offsetLo,Int32 offsetHi,Int32 hEvent,IAsyncResult ar)</font></td>
+<td><font face="Arial"><b>Message:</b> This constructor is not 64-bit compatible.  Use the constructor that takes an IntPtr for the event handle.</font></tr>
+<tr><td width="40%"><font face="Arial"><b>EventHandle</b></font></td>
+<td><font face="Arial"><b>Message:</b> This property is not 64-bit compatible.  Use EventHandleIntPtr instead.</font></tr>
+<tr><td colspan="2">&nbsp </td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font face="Arial" color="#FFFFFF"><b>System.Threading.Thread </b></font></td></tr>
+<tr><td width="40%"><font face="Arial"><b>Suspend</b>()</font></td>
+<td><font face="Arial"><b>Message:</b> Thread.Suspend has been deprecated because code that uses it is very deadlock-prone. Synchronization of threads or mutually-exclusive access to protected resources should be accomplished using other classes in System.Threading, such as Monitor, Mutex, Event, and Semaphore.</font></tr>
+<tr><td width="40%"><font face="Arial"><b>Resume</b>()</font></td>
+<td><font face="Arial"><b>Message:</b> Thread.Resume has been deprecated because code that uses it is very deadlock-prone. Synchronization of threads or mutually-exclusive access to protected resources should be accomplished using other classes in System.Threading, such as Monitor, Mutex, Event, and Semaphore.</font></tr>
+<tr><td width="40%"><font face="Arial"><b>ApartmentState</b></font></td>
+<td><font face="Arial"><b>Message:</b> The ApartmentState property has been deprecated.  Use GetApartmentState, SetApartmentState or TrySetApartmentState instead.</font></tr>
+<tr><td colspan="2">&nbsp </td></tr>
+</table></center><b></center></body></html>

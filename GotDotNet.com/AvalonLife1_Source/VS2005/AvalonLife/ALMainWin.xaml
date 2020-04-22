@@ -1,0 +1,168 @@
+﻿<!--
+/* ****************************************************************************
+ * AvalonLife 1.0
+ * 
+ * ALMainWin.xaml
+ * 
+ * Provides the XAML markup for the AvalonLife main window.
+ * 
+ * Written by Mark Betz - http://www.markbetz.net
+ * 
+ * This application and related source code is released to the public domain.
+ * If you modify and redistribute this source or executable please indicate
+ * the version in the application window title, and include a readme file
+ * listing the changes you have made.
+ * 
+*/
+-->
+<Window x:Class="AvalonLife.ALMainWin"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="AvalonLife 1.0" Height="600" Width="600" Name="ALMainWindow" Background="#FFFFFFFF"
+    Loaded="ALMainWin_OnLoaded" >
+    <Window.Resources>
+        <Style x:Key="RunSpeedSliderStyle" TargetType="{x:Type Slider}">
+            <Setter Property="Width" Value="120" />
+            <Setter Property="Value" Value="{Binding Path=TimerInterval, Mode=TwoWay}" />
+            <Setter Property="Orientation" Value="Horizontal" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="IsSnapToTickEnabled" Value="True" />
+            <Setter Property="Minimum" Value="100" />
+            <Setter Property="Maximum" Value="1000" />
+            <Setter Property="TickPlacement" Value="BottomRight" />
+            <Setter Property="TickFrequency" Value="100" />
+            <Setter Property="IsDirectionReversed" Value="True" />
+            <Setter Property="IsMoveToPointEnabled" Value="True" />
+        </Style>
+        <Style x:Key="GenCountStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="Foreground" Value="Blue" />
+            <Setter Property="Text" Value="{Binding Path=Generation}" />
+        </Style>
+        <Style x:Key="BirthCountStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="Foreground" Value="Blue" />
+            <Setter Property="Text" Value="{Binding Path=CellBirths}" />
+        </Style>
+        <Style x:Key="DeathCountStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="Foreground" Value="Blue" />
+            <Setter Property="Text" Value="{Binding Path=CellDeaths}" />
+        </Style>
+        <Style x:Key="PopulationCountStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="Foreground" Value="Blue" />
+            <Setter Property="Text" Value="{Binding Path=Population}" />
+        </Style>
+        <Style x:Key="PeakPopulationCountStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="Foreground" Value="Blue" />
+            <Setter Property="Text" Value="{Binding Path=PeakPopulation}" />
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <DockPanel>
+            <DockPanel DockPanel.Dock="Top" LastChildFill="False"  
+                Background="{DynamicResource {x:Static SystemColors.MenuBarBrushKey}}">
+                <Menu Margin="0,5,5,2" DockPanel.Dock="Left" Width="Auto" HorizontalAlignment="Left" 
+                    Background="{DynamicResource {x:Static SystemColors.MenuBarBrushKey}}" >
+                    <MenuItem Header="Game">
+                        <MenuItem Name="MenuGameNew" Header="New" Click="Menu_OnGameNew" />
+                        <MenuItem Name="MenuGameReset" Header="Reset" Click="Menu_OnGameReset" />
+                        <MenuItem Name="MenuGameSave" Header="Save..." Click="Menu_OnGameSave" />
+                        <MenuItem Name="MenuGameSaveAs" Header="Save as..." Click="Menu_OnGameSaveAs" />
+                        <MenuItem Name="MenuGameLoad" Header="Load..." Click="Menu_OnGameLoad" />
+                        <Separator />
+                        <MenuItem Header="Exit" Click="Menu_OnGameExit" />
+                    </MenuItem>
+                    <MenuItem Header="Settings">
+                        <MenuItem Name="MenuSettingsGridLines" Header="Show Grid" Click="Menu_OnSettingsGridLines" />
+                        <MenuItem Name="MenuSettingsReticle" Header="Show Reticle" Click="Menu_OnSettingsReticle" />
+                        <MenuItem Name="MenuSettingsHaltStable" Header="Halt Stable Model" Click="Menu_OnSettingsHaltStable" />
+                        <Separator />
+                        <MenuItem Name="MenuSettingsGridBkgColor" Header="Grid Background..." Click="Menu_OnSettingsGridBackground" />
+                        <MenuItem Name="MenuSettingsReticleColor" Header="Reticle Color..." Click="Menu_OnSettingsReticleColor" />
+                        <MenuItem Name="MenuSettingsCellBrush" Header="Cell Color..." Click="Menu_OnSettingsCellBrush" />
+                        <Separator />
+                        <MenuItem Header="Grid Type">
+                            <MenuItem Name="MenuSettingsGridTorus" Header="Torus" Click="Menu_OnSettingsGridType" />
+                            <MenuItem Name="MenuSettingsGridXCyl" Header="X Cylinder" Click="Menu_OnSettingsGridType" />
+                            <MenuItem Name="MenuSettingsGridYCyl" Header="Y Cylinder" Click="Menu_OnSettingsGridType" />
+                            <MenuItem Name="MenuSettingsGridFinite" Header="Finite" Click="Menu_OnSettingsGridType" />
+                        </MenuItem>
+                        <MenuItem Header="Grid Size">
+                            <MenuItem Name="MenuSettingsGrid40x40" Header="40 x 40" Click="Menu_OnSettingsGridSize" />
+                            <MenuItem Name="MenuSettingsGrid50x50" Header="50 x 50" Click="Menu_OnSettingsGridSize" />
+                            <MenuItem Name="MenuSettingsGrid60x60" Header="60 x 60" Click="Menu_OnSettingsGridSize" />
+                            <MenuItem Name="MenuSettingsGrid70x70" Header="70 x 70" Click="Menu_OnSettingsGridSize" />
+                            <Separator />
+                            <MenuItem Name="MenuSettingsGridCustom" Header="Custom..." Click="Menu_OnSettingsGridSizeCustom" />
+                            <Separator />
+                            <MenuItem Name="MenuSettingsGridShrink" Header="Shrink to Model" Click="Menu_OnSettingsGridSizeShrink" />
+                        </MenuItem>
+                        <MenuItem Name="MenuSettingsGridSettings" Header="Grid Settings..." Click="Menu_OnSettingsGridSettings" />
+                        <Separator />
+                        <MenuItem Name="MenuSettingsModelName" Header="Model Name..." Click="Menu_OnSettingsModelName" />
+                    </MenuItem>
+                    <MenuItem Header="Help">
+                        <MenuItem Name="MenuHelpHowTo" Header="How to Play..." Click="Menu_OnHelpHowTo" />
+                        <MenuItem Name="MenuHelpAbout" Header="About AvalonLife..." Click="Menu_OnHelpAbout" />
+                        <MenuItem Name="MenuHelpAboutLife" Header="About the Game of Life..." Click="Menu_OnHelpAboutLife" />
+                    </MenuItem>
+                </Menu>
+                <Button Margin="10,5,5,2" DockPanel.Dock="Right" Name="RunButton" VerticalAlignment="Center" HorizontalAlignment="Right" 
+                    Click="RunButton_OnClick" Height="20" Width="60" Content="Run" />
+                <TextBlock Margin="0,5,5,2" VerticalAlignment="Center" Width="60" Foreground="Blue" Name="MenuGridSizeText" DockPanel.Dock="Right" />
+                <TextBlock Margin="0,5,5,2" VerticalAlignment="Center" Width="50" Text="Grid Size:" DockPanel.Dock="Right" />
+            </DockPanel>
+            <Canvas Name="TopWrapIndicator" Height="5" Width="Auto" DockPanel.Dock="Top" HorizontalAlignment="Stretch" Background="Gray" />
+            <StatusBar Background="{DynamicResource {x:Static SystemColors.MenuBarBrushKey}}" 
+                Height="30" DockPanel.Dock="Bottom" Padding="4,0,4,0">
+                <StatusBarItem>
+                    <TextBlock Width="Auto" Text="Time:" />
+                </StatusBarItem>
+                <StatusBarItem>
+                    <TextBlock Name="StatusGenCount" Width="30" Style="{StaticResource GenCountStyle}" />
+                </StatusBarItem>
+                <StatusBarItem>
+                    <TextBlock Width="Auto" Text="Census:" />
+                </StatusBarItem>
+                <StatusBarItem>
+                    <TextBlock Name="PopulationCount" Width="30" Style="{StaticResource PopulationCountStyle}" />
+                </StatusBarItem>
+                <StatusBarItem>
+                    <TextBlock Width="Auto" Text="Peak:" />
+                </StatusBarItem>
+                <StatusBarItem>
+                    <TextBlock Name="PeakPopulationCount" Width="30" Style="{StaticResource PeakPopulationCountStyle}" />
+                </StatusBarItem>
+                <StatusBarItem>
+                    <TextBlock Width="Auto" Text="Born:" />
+                </StatusBarItem>
+                <StatusBarItem>
+                    <TextBlock Name="CellBirthCount" Width="40" Style="{StaticResource BirthCountStyle}" />
+                </StatusBarItem>
+                <StatusBarItem>
+                    <TextBlock Width="Auto" Text="Died:" />
+                </StatusBarItem>
+                <StatusBarItem>
+                    <TextBlock Name="CellDeathCount" Width="40" Style="{StaticResource DeathCountStyle}" />
+                </StatusBarItem>
+                <StatusBarItem>
+                    <TextBlock Width="Auto" Padding="10,0,0,0">Speed:</TextBlock>
+                </StatusBarItem>
+                <StatusBarItem>
+                    <Slider Name="RunSpeedSlider" Style="{StaticResource RunSpeedSliderStyle}" />
+                </StatusBarItem>
+            </StatusBar>
+            <Canvas Name="BottomWrapIndicator" Height="5" Width="Auto" DockPanel.Dock="Bottom" HorizontalAlignment="Stretch" Background="Gray" />
+            <Canvas Name="LeftWrapIndicator" Height="Auto" Width="4" DockPanel.Dock="Left" VerticalAlignment="Stretch" Background="Gray" />
+            <Canvas Name="RightWrapIndicator" Height="Auto" Width="4" DockPanel.Dock="Right" VerticalAlignment="Stretch" Background="Gray" />
+            <Grid Name="LifeGrid" Background="White" ForceCursor="True" AllowDrop="True" >
+                <Grid.Resources>
+                    <Style TargetType="{x:Type Rectangle}">
+                        <Setter Property="Opacity" Value="{Binding Path=IsAlive}" />
+                    </Style>
+                    <Style BasedOn="{StaticResource {x:Type Rectangle}}" TargetType="{x:Type Rectangle}" x:Key="RectStyle" >
+                        <Setter Property="Fill" Value="Red" />
+                    </Style>
+                </Grid.Resources>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,59 @@
+<HTML>
+<HEAD>
+<script>
+var updateInterval;
+
+	function Update()
+	{
+		var bool = TankClientControl.GameStarted;
+		if (bool == true)
+		{						
+			var gamestate = TankClientControl.GetGameState()
+			var html = "";
+			var playerInfo = new Enumerator(gamestate.split(';'));						
+			
+			for (;!playerInfo.atEnd(); playerInfo.moveNext())
+			{				
+				var items = playerInfo.item().split(',');
+				
+				html += '<tr><td>';
+				html += items[0];
+				html += '</td><td>';
+				html += items[1];
+				html += '</td><td>';
+				html += items[2];			
+				html += '</td><td>';
+				html += items[3];			
+				html += '</td></tr>';						
+			}
+			scoreboard.innerHTML = html;				
+		}
+	}
+</script>
+
+<script for=document event=onstop>
+	alert("done");
+	window.clearInterval(updateInterval);
+</script>
+
+<TITLE>ATL 7.0 test page for object TankClientControl</TITLE>
+</HEAD>
+<BODY bgcolor="white">
+<table border=1>
+<tr><td>Player</td><td>Score</td><td>IP</td><td>Host</td></tr>
+<tr><td colspan=3 id="scoreboard"></td><tr>
+</table>
+<OBJECT ID="TankClientControl" 
+		CLASSID="CLSID:858A114C-5BAD-4DFD-9748-97830E14CDEC" 
+		WIDTH=300
+		HEIGHT=300
+		BORDER=1></OBJECT>		
+<script>
+	TankClientControl.UserName 		  = "ericlee";
+	TankClientControl.TankServiceURL  = "http://localhost/tanksvr/tanksvr.dll?Handler=Default";		
+	TankClientControl.CanShoot		  = true;		
+	TankClientControl.Start();
+	updateInterval = window.setInterval(Update, 500);
+</script>
+</BODY>
+</HTML>

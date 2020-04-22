@@ -1,0 +1,1 @@
+"C:\Projects\Unit Test Patterns\Tools\nDepend\NDepend.Console.exe" "C:\Projects\Unit Test Patterns\Test Subject\nDependConfig.xml"

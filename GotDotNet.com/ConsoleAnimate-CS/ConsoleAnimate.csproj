@@ -1,0 +1,131 @@
+<Project MSBuildVersion="2.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <ProductVersion>8.0.40427</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A62D15EB-501F-44E1-8776-56515A252B0D}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <StartupObject>
+    </StartupObject>
+    <RootNamespace>ConsoleAnimate</RootNamespace>
+    <NoStandardLibraries>false</NoStandardLibraries>
+    <AssemblyName>ConsoleAnimate</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <PublishUrl>http://localhost/ConsoleAnimate</PublishUrl>
+    <PublishMode>Install</PublishMode>
+    <InstallFrom>Web</InstallFrom>
+    <Culture>default</Culture>
+    <FallbackCulture>en-US</FallbackCulture>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <UpdateUrlEnabled>false</UpdateUrlEnabled>
+    <ApplicationVersion>1.0.0.*</ApplicationVersion>
+    <ApplicationRevision>0</ApplicationRevision>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+    <IncrementalBuild>false</IncrementalBuild>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <WarningLevel>4</WarningLevel>
+    <IncrementalBuild>false</IncrementalBuild>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <HintPath>..\..\WINDOWS\Microsoft.NET\Framework\v1.2.30703\System.dll</HintPath>
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <HintPath>..\..\WINDOWS\Microsoft.NET\Framework\v1.2.30703\System.Data.dll</HintPath>
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <HintPath>..\..\WINDOWS\Microsoft.NET\Framework\v1.2.30703\System.Drawing.dll</HintPath>
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.XML">
+      <HintPath>..\..\WINDOWS\Microsoft.NET\Framework\v1.2.30703\System.XML.dll</HintPath>
+      <Name>System.XML</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Class1.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Resources Include="App.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="ConsoleFunLibrary\ConsoleFunLibrary.csproj">
+      <Project>{C73787B8-3094-4C49-9F4F-F447905EB1D0}</Project>
+      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+      <Name>ConsoleFunLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Project\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Project\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PublishingFiles Include="ConsoleAnimate">
+      <InProject>False</InProject>
+      <Group>
+      </Group>
+      <Install>true</Install>
+      <FileType>ApplicationFile</FileType>
+      <FusionName>ConsoleAnimate, Version=1.0.1622.15549, Culture=neutral, ProcessorArchitecture=Neutral</FusionName>
+      <Optional>False</Optional>
+    </PublishingFiles>
+    <PublishingFiles Include="ConsoleFunLibrary">
+      <InProject>False</InProject>
+      <Group>
+      </Group>
+      <Install>true</Install>
+      <FileType>ApplicationFile</FileType>
+      <FusionName>ConsoleFunLibrary, Version=1.0.1622.15547, Culture=neutral, ProcessorArchitecture=Neutral</FusionName>
+      <Optional>False</Optional>
+    </PublishingFiles>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperFile Include="Microsoft.Net.Framework.2.0">
+      <InProject>False</InProject>
+      <ProductName>Microsoft .NET Framework 2.0</ProductName>
+      <Install>true</Install>
+    </BootstrapperFile>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\CSHARP.Targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+    <ApplicationIcon>App.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

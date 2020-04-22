@@ -1,0 +1,1 @@
+cl /Od  /EHsc /MTd  /c  /clr  t.cpp

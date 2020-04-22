@@ -1,0 +1,119 @@
+<p><center><font size="5" face="Arial" color="#000000"><b>System.Design.dll Obsoletion List</b></font></center></p>
+<center><font face="Arial"> <table width="800"><tr><td><ul><li>The member count represents the number of obsoleted members NOT in obsoleted types. </li></ul> </td></tr><tr><td> <ul><li>The type count represents the number of obsoleted types. </li></ul></td></tr></table></font></center><br><center><table width = "800" border="0"><tr> <td width="40%"><font face="Arial"><b>Total Members Obsoleted: 34</b></font></td></tr><tr><td><font face="Arial"><b>Total Types Obsoleted: 10</b></font></td></tr></table><br>
+<html><head><meta http-equiv="Content-Language" content="en-us"><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><title>New Page 1</title></head><body><center>
+<center><table border="1" width="800" id="table1" cellspacing="0">
+<tr><td colspan="2" bgcolor="#B0B0B0"><font face="Arial" color="#FFFFFF"><b>System.ComponentModel.Design.Serialization.CodeDomSerializer </b></font></td></tr>
+<tr><td width="40%"><font face="Arial"><b>SerializeToReferenceExpression</b>(IDesignerSerializationManager manager,Object value)</font></td>
+<td><font face="Arial"><b>Message:</b> Just call SerializeToExpression</font></tr>
+<tr><td colspan="2">&nbsp </td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font face="Arial" color="#FFFFFF"><b>System.ComponentModel.Design.ComponentDesigner </b></font></td></tr>
+<tr><td width="40%"><font face="Arial"><b>InitializeNonDefault</b>()</font></td>
+<td><font face="Arial"><b>Message:</b> This method is obsolete.  Instead, override the InitializeExistingComponent method</font></tr>
+<tr><td width="40%"><font face="Arial"><b>OnSetComponentDefaults</b>()</font></td>
+<td><font face="Arial"><b>Message:</b> This method is obsolete.  Instead, override the InitializeNewComponent method</font></tr>
+<tr><td colspan="2">&nbsp </td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.ComponentModel.Design.LocalizationExtenderProvider (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> This class is obsolete.  Localization is now accomplished by adding an instance of CodeDomLocalizationProvider to your serialization manager.</font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font face="Arial" color="#FFFFFF"><b>System.Web.UI.Design.HtmlControlDesigner </b></font></td></tr>
+<tr><td width="40%"><font face="Arial"><b>OnBehaviorAttached</b>()</font></td>
+<td><font face="Arial"><b>Message:</b> Use Tag property instead. </font></tr>
+<tr><td width="40%"><font face="Arial"><b>OnBehaviorDetaching</b>()</font></td>
+<td><font face="Arial"><b>Message:</b> Use Tag property instead. </font></tr>
+<tr><td width="40%"><font face="Arial"><b>OnBindingsCollectionChanged</b>(String propName)</font></td>
+<td><font face="Arial"><b>Message:</b> Handle the Changed event on the DataBindings collection instead. </font></tr>
+<tr><td width="40%"><font face="Arial"><b>DesignTimeElement</b></font></td>
+<td><font face="Arial"><b>Message:</b> There is no replacement for this feature. </font></tr>
+<tr><td width="40%"><font face="Arial"><b>Behavior</b></font></td>
+<td><font face="Arial"><b>Message:</b> Use the Tag property on ControlDesigner instead. </font></tr>
+<tr><td width="40%"><font face="Arial"><b>ShouldCodeSerialize</b></font></td>
+<td><font face="Arial"><b>Message:</b> There is no replacement for this feature. </font></tr>
+<tr><td colspan="2">&nbsp </td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font face="Arial" color="#FFFFFF"><b>System.Web.UI.Design.ControlDesigner </b></font></td></tr>
+<tr><td width="40%"><font face="Arial"><b>GetPersistInnerHtml</b>()</font></td>
+<td><font face="Arial"><b>Message:</b> Use GetPersistenceContent() instead. </font></tr>
+<tr><td width="40%"><font face="Arial"><b>IsPropertyBound</b>(String propName)</font></td>
+<td><font face="Arial"><b>Message:</b> Use DataBindings.Contains(string) instead. </font></tr>
+<tr><td width="40%"><font face="Arial"><b>OnBehaviorAttached</b>()</font></td>
+<td><font face="Arial"><b>Message:</b> Use the Tag property instead. </font></tr>
+<tr><td width="40%"><font face="Arial"><b>OnBindingsCollectionChanged</b>(String propName)</font></td>
+<td><font face="Arial"><b>Message:</b> Handle the Changed event on the DataBindings collection instead. </font></tr>
+<tr><td width="40%"><font face="Arial"><b>OnControlResize</b>()</font></td>
+<td><font face="Arial"><b>Message:</b> Use OnComponentChanged() instead. </font></tr>
+<tr><td width="40%"><font face="Arial"><b>RaiseResizeEvent</b>()</font></td>
+<td><font face="Arial"><b>Message:</b> There is no replacement for this feature. </font></tr>
+<tr><td width="40%"><font face="Arial"><b>IsDirty</b></font></td>
+<td><font face="Arial"><b>Message:</b> Use Tag.SetDirty() and Tag.IsDirty instead. </font></tr>
+<tr><td width="40%"><font face="Arial"><b>ReadOnly</b></font></td>
+<td><font face="Arial"><b>Message:</b> Derive the designer from ContainerControlDesigner instead. </font></tr>
+<tr><td width="40%"><font face="Arial"><b>DesignTimeElementView</b></font></td>
+<td><font face="Arial"><b>Message:</b> There is no replacement for this feature. </font></tr>
+<tr><td colspan="2">&nbsp </td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Web.UI.Design.DataBindingCollectionConverter (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> There is no replacement for this feature.  DataBindings editing is launched via a DesignerActionList. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Web.UI.Design.DataBindingCollectionEditor (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> There is no replacement for this feature.  DataBindings editing is launched via a DesignerActionList. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Web.UI.Design.IHtmlControlDesignerBehavior (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use IControlDesignerTag and IControlDesignerView instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Web.UI.Design.IControlDesignerBehavior (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use IControlDesignerTag and IControlDesignerView instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Web.UI.Design.IWebFormReferenceManager (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use WebFormReferenceManager instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Web.UI.Design.IWebFormsDocumentService (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use WebFormsRootDesigner instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Web.UI.Design.ReadWriteControlDesigner (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use ContainerControlDesigner instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font face="Arial" color="#FFFFFF"><b>System.Web.UI.Design.TemplatedControlDesigner </b></font></td></tr>
+<tr><td width="40%"><font face="Arial"><b>EnterTemplateMode</b>(ITemplateEditingFrame newTemplateEditingFrame)</font></td>
+<td><font face="Arial"><b>Message:</b> Do not use EnterTemplateMode.</font></tr>
+<tr><td width="40%"><font face="Arial"><b>ExitTemplateMode</b>(Boolean fSwitchingTemplates,Boolean fNested,Boolean fSave)</font></td>
+<td><font face="Arial"><b>Message:</b> Do not use ExitTemplateMode.</font></tr>
+<tr><td width="40%"><font face="Arial"><b>GetCachedTemplateEditingVerbs</b>()</font></td>
+<td><font face="Arial"><b>Message:</b> There is no replacement for this feature.  Templates should be exposed through the TemplateGroups property on ControlDesigner. </font></tr>
+<tr><td width="40%"><font face="Arial"><b>GetTemplateContainerDataItemProperty</b>(String templateName)</font></td>
+<td><font face="Arial"><b>Message:</b> There is no replacement for this feature. Template metadata is exposed by TemplateDefinition. </font></tr>
+<tr><td width="40%"><font face="Arial"><b>GetTemplateContainerDataSource</b>(String templateName)</font></td>
+<td><font face="Arial"><b>Message:</b> There is no replacement for this feature. </font></tr>
+<tr><td width="40%"><font face="Arial"><b>GetTemplatePropertyParentType</b>(String templateName)</font></td>
+<td><font face="Arial"><b>Message:</b> There is no replacement for this feature. Template metadata is exposed by TemplateDefinition. </font></tr>
+<tr><td width="40%"><font face="Arial"><b>OnBehaviorAttached</b>()</font></td>
+<td><font face="Arial"><b>Message:</b> Use the Tag property instead. </font></tr>
+<tr><td width="40%"><font face="Arial"><b>ActiveTemplateEditingFrame</b></font></td>
+<td><font face="Arial"><b>Message:</b> There is no replacement for this feature.  Templates should be exposed through the TemplateGroups property on ControlDesigner. </font></tr>
+<tr><td width="40%"><font face="Arial"><b>InTemplateMode</b></font></td>
+<td><font face="Arial"><b>Message:</b> Use InTemplateMode on ControlDesigner instead. </font></tr>
+<tr><td colspan="2">&nbsp </td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Web.UI.Design.TemplateEditingService (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> There is no replacement for this feature.  Template editing is handled by the tool. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font face="Arial" color="#FFFFFF"><b>System.Web.UI.Design.WebControls.BaseDataListDesigner </b></font></td></tr>
+<tr><td width="40%"><font face="Arial"><b>GetTemplateContainerDataSource</b>(String templateName)</font></td>
+<td><font face="Arial"><b>Message:</b> There is no replacement for this feature. </font></tr>
+<tr><td width="40%"><font face="Arial"><b>OnAutoFormat</b>(Object sender,EventArgs e)</font></td>
+<td><font face="Arial"><b>Message:</b> There is no replacement for this feature.  AutoFormats are exposed on ControlDesigner. </font></tr>
+<tr><td colspan="2">&nbsp </td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font face="Arial" color="#FFFFFF"><b>System.Web.UI.Design.WebControls.DataGridDesigner </b></font></td></tr>
+<tr><td width="40%"><font face="Arial"><b>GetCachedTemplateEditingVerbs</b>()</font></td>
+<td><font face="Arial"><b>Message:</b> There is no replacement for this feature.  Templates should be exposed through the TemplateGroups property on ControlDesigner. </font></tr>
+<tr><td width="40%"><font face="Arial"><b>GetTemplateContainerDataItemProperty</b>(String templateName)</font></td>
+<td><font face="Arial"><b>Message:</b> There is no replacement for this feature. Template metadata is exposed by TemplateDefinition. </font></tr>
+<tr><td width="40%"><font face="Arial"><b>GetTemplatePropertyParentType</b>(String templateName)</font></td>
+<td><font face="Arial"><b>Message:</b> There is no replacement for this feature. Template metadata is exposed by TemplateDefinition. </font></tr>
+<tr><td colspan="2">&nbsp </td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font face="Arial" color="#FFFFFF"><b>System.Web.UI.Design.WebControls.DataListDesigner </b></font></td></tr>
+<tr><td width="40%"><font face="Arial"><b>GetCachedTemplateEditingVerbs</b>()</font></td>
+<td><font face="Arial"><b>Message:</b> There is no replacement for this feature.  Templates should be exposed through the TemplateGroups property on ControlDesigner. </font></tr>
+<tr><td width="40%"><font face="Arial"><b>GetTemplateContainerDataItemProperty</b>(String templateName)</font></td>
+<td><font face="Arial"><b>Message:</b> There is no replacement for this feature. Template metadata is exposed by TemplateDefinition. </font></tr>
+<tr><td colspan="2">&nbsp </td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Web.UI.Design.WebControls.PanelDesigner (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use PanelContainerDesigner instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+</table></center><b></center></body></html>

@@ -1,0 +1,13 @@
+{{handler TankOnline.dll/Contacts}}
+<table width="100%" height="100%" cellpadding="0" cellspacing="0" border="0">
+{{while HasMoreContacts}}
+	<tr valign="top">		
+		<td align="left">		
+			<img src="Online.gif" height="11" width="10" alt="Online" style="margin-right:2px;">
+			<span class="regulartext">{{GetContactNameGivenName}}</span>
+		</td>	
+		<td align="left"><a href="mailto:{{GetContactEmail}}" class="regulartext">Invite</a></td>
+		<td align="left"><a href='javascript:OnDelete("deletecontact.srf", "{{GetContactID}}", "contacts.srf", "contactsBody")' class="regulartext">Delete</a></td>	
+	</tr>
+{{endwhile}}	
+</table>	

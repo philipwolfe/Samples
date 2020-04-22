@@ -1,0 +1,22 @@
+<p><center><font size="5" face="Arial" color="#000000"><b>System.ComponentModel.Design.Serialization Namespace Obsoletion List</b></font></center></p>
+<center><font face="Arial"> <table width="800"><tr><td><ul><li>The member count represents the number of obsoleted members NOT in obsoleted types. </li></ul></td></tr><tr><td> <ul><li>The type count represents the number of obsoleted types. </li></ul></td></tr></table></font></center><br><center><table width = "800" border="0"><tr> <td width="40%"><font face="Arial"><b>Total Members Obsoleted: 4</b></font></td></tr> <tr><td><font face="Arial"><b>Total Types Obsoleted: 1</b></font></td> </tr></table><br>
+<html><head><meta http-equiv="Content-Language" content="en-us"><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><title>New Page 1</title></head><body><center>
+<center><table border="1" width="800" id="table1" cellspacing="0">
+<tr><td colspan="2" bgcolor="#B0B0B0"><font face="Arial" color="#FFFFFF"><b>System.ComponentModel.Design.Serialization.CodeDomSerializer </b></font></td></tr>
+<tr><td width="40%"><font face="Arial"><b>SerializeProperty</b>(IDesignerSerializationManager manager,Object value,PropertyDescriptor propertyToSerialize,CodeStatementCollection statements)</font></td>
+<td><font face="Arial"><b>Message:</b> This method is obsolete and will be removed on 10/17.  Use SerializeProperty with the statements parameter after manager.</font></tr>
+<tr><td width="40%"><font face="Arial"><b>SerializeToReferenceExpression</b>(IDesignerSerializationManager manager,Object value)</font></td>
+<td><font face="Arial"><b>Message:</b> Just call SerializeToExpression</font></tr>
+<tr><td colspan="2">&nbsp </td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font face="Arial" color="#FFFFFF"><b>System.ComponentModel.Design.Serialization.BasicDesignerLoader </b></font></td></tr>
+<tr><td width="40%"><font face="Arial"><b>ReloadSupported</b></font></td>
+<td><font face="Arial"><b>Message:</b> This will be removed at the end of 3.2.  All designer loaders now support reload.</font></tr>
+<tr><td colspan="2">&nbsp </td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font face="Arial" color="#FFFFFF"><b>System.ComponentModel.Design.Serialization.DesignerSerializationManager </b></font></td></tr>
+<tr><td width="40%"><font face="Arial"><b>GetRootSerializer</b>(Type objectType,Type serializerType)</font></td>
+<td><font face="Arial"><b>Message:</b> Root serializers are obsolete.  For CodeDom, use GetSerializer with a base type of TypeCodeDomSerializer.  This will be removed after M3.2 stabilization.</font></tr>
+<tr><td colspan="2">&nbsp </td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.ComponentModel.Design.Serialization.RootDesignerSerializerAttribute (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Root designer serializers are now characterized by a different serializer base type.  For example, to specify a root designer for CodeDom, use DesignerAttribute(...,typeof(TypeCodeDomSerializer))</font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+</table></center><b></center></body></html>

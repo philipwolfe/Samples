@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<NDepend>
+  <ReportInfo AppName="NDepend V1.2.0" NDependDate="10/6/2005 8:51:56 PM" />
+  <AssemblyDependencies>
+    <Dependencies_For Assembly="Test Subject" />
+  </AssemblyDependencies>
+  <TypeReferencement>
+    <Type Name="TestSubject.InventoryItem" InAssembly="Test Subject">
+      <UsedBy>
+        <Name>TestSubject.IWarehouse</Name>
+        <Name>TestSubject.Order</Name>
+        <Name>TestSubject.Warehouse</Name>
+      </UsedBy>
+    </Type>
+    <Type Name="TestSubject.IWarehouse" InAssembly="Test Subject">
+      <Use>
+        <Name>TestSubject.InventoryItem</Name>
+      </Use>
+      <UsedBy>
+        <Name>TestSubject.Order</Name>
+        <Name>TestSubject.Warehouse</Name>
+      </UsedBy>
+    </Type>
+    <Type Name="TestSubject.Order" InAssembly="Test Subject">
+      <Use>
+        <Name>TestSubject.InventoryItem</Name>
+        <Name>TestSubject.IWarehouse</Name>
+      </Use>
+    </Type>
+    <Type Name="TestSubject.Warehouse" InAssembly="Test Subject">
+      <Use>
+        <Name>TestSubject.IWarehouse</Name>
+        <Name>TestSubject.InventoryItem</Name>
+      </Use>
+    </Type>
+  </TypeReferencement>
+  <AssemblySortForCompilOrObfusk>
+    <Assembly Name="Test Subject">1</Assembly>
+  </AssemblySortForCompilOrObfusk>
+  <AssembliesMetrics>
+    <Assembly Assembly="Test Subject" NTypes="4" NAbstractTypes="1" NILInstructionInAsm="209" AfferentCoupling="0" EfferentCoupling="0" RelationalCohesion="1.5" Instability="0" Abstractness="0.25" DistFrMainSeq="0.53" NormDistFrMainSeq="0.75" />
+  </AssembliesMetrics>
+  <TypesMetrics>
+    <TypeMetric TypeName="InventoryItem" TypeNamespace="TestSubject" NInstanceMethods="9" IsBadNInstanceMethods="True" NStaticMethods="0" IsBadNStaticMethods="False" NProperties="1" IsBadNProperties="False" NFields="1" IsBadNFields="False" NILInstructionOnType="50" IsBadNILInstructionOnType="True" AfferentCoupling="3" IsBadAfferentCoupling="True" EfferentCoupling="0" IsBadEfferentCoupling="False" AssociationBetweenClasses="0" IsBadAssociationBetweenClasses="False" LackOfCohesionOfMethods="0.71" IsBadLackOfCohesionOfMethods="True" LackOfCohesionOfMethods_HS="0.83" IsBadLackOfCohesionOfMethods_HS="True" CyclomaticComplexity="0" IsBadCyclomaticComplexity="False" ResponseForAType_Method="8" IsBadResponseForAType_Method="True" ResponseForAType_ILInst="50" IsBadResponseForAType_ILInst="True" ResponseForAType_PercentageApp="23.92" NChildren="0" IsBadNChildren="False" DepthOfInheritanceTree="1" IsBadDepthOfInheritanceTree="False" />
+    <TypeMetric TypeName="IWarehouse" TypeNamespace="TestSubject" NInstanceMethods="3" IsBadNInstanceMethods="True" NStaticMethods="-" IsBadNStaticMethods="False" NProperties="0" IsBadNProperties="False" NFields="-" IsBadNFields="False" NILInstructionOnType="-" IsBadNILInstructionOnType="False" AfferentCoupling="2" IsBadAfferentCoupling="True" EfferentCoupling="1" IsBadEfferentCoupling="True" AssociationBetweenClasses="-" IsBadAssociationBetweenClasses="False" LackOfCohesionOfMethods="-" IsBadLackOfCohesionOfMethods="False" LackOfCohesionOfMethods_HS="-" IsBadLackOfCohesionOfMethods_HS="False" CyclomaticComplexity="-" IsBadCyclomaticComplexity="False" ResponseForAType_Method="3" IsBadResponseForAType_Method="True" ResponseForAType_ILInst="0" IsBadResponseForAType_ILInst="False" ResponseForAType_PercentageApp="0" NChildren="1" IsBadNChildren="False" DepthOfInheritanceTree="-" IsBadDepthOfInheritanceTree="False" />
+    <TypeMetric TypeName="Order" TypeNamespace="TestSubject" NInstanceMethods="13" IsBadNInstanceMethods="True" NStaticMethods="0" IsBadNStaticMethods="False" NProperties="3" IsBadNProperties="True" NFields="3" IsBadNFields="True" NILInstructionOnType="60" IsBadNILInstructionOnType="True" AfferentCoupling="0" IsBadAfferentCoupling="False" EfferentCoupling="2" IsBadEfferentCoupling="True" AssociationBetweenClasses="2" IsBadAssociationBetweenClasses="True" LackOfCohesionOfMethods="0.75" IsBadLackOfCohesionOfMethods="True" LackOfCohesionOfMethods_HS="0.86" IsBadLackOfCohesionOfMethods_HS="True" CyclomaticComplexity="1" IsBadCyclomaticComplexity="False" ResponseForAType_Method="13" IsBadResponseForAType_Method="True" ResponseForAType_ILInst="60" IsBadResponseForAType_ILInst="True" ResponseForAType_PercentageApp="28.71" NChildren="0" IsBadNChildren="False" DepthOfInheritanceTree="1" IsBadDepthOfInheritanceTree="False" />
+    <TypeMetric TypeName="Warehouse" TypeNamespace="TestSubject" NInstanceMethods="11" IsBadNInstanceMethods="True" NStaticMethods="0" IsBadNStaticMethods="False" NProperties="1" IsBadNProperties="False" NFields="1" IsBadNFields="False" NILInstructionOnType="100" IsBadNILInstructionOnType="True" AfferentCoupling="0" IsBadAfferentCoupling="False" EfferentCoupling="2" IsBadEfferentCoupling="True" AssociationBetweenClasses="0" IsBadAssociationBetweenClasses="False" LackOfCohesionOfMethods="0.5" IsBadLackOfCohesionOfMethods="True" LackOfCohesionOfMethods_HS="0.6" IsBadLackOfCohesionOfMethods_HS="True" CyclomaticComplexity="8" IsBadCyclomaticComplexity="True" ResponseForAType_Method="7" IsBadResponseForAType_Method="True" ResponseForAType_ILInst="100" IsBadResponseForAType_ILInst="True" ResponseForAType_PercentageApp="47.85" NChildren="0" IsBadNChildren="False" DepthOfInheritanceTree="1" IsBadDepthOfInheritanceTree="False" />
+  </TypesMetrics>
+  <ApplicationMetrics NAsm="1" NType="4" NClass="3" NAbstractClass="1" NInterface="1" NValueType="0" NExceptionType="0" NAttributeType="0" NDelegateType="0" NEnumType="0" NILInstruction="209" PercentPublicType="100" PercentPublicMethod="77.78" PercentClassWithAtLeastOnePublicField="0">
+    <PropertyOnInterface Occ="1" Avg="0" StdDev="0" MaxVal="0" MaxName="Asm:Test Subject  Interface:TestSubject.IWarehouse" />
+    <MethodOnInterface Occ="1" Avg="3" StdDev="0" MaxVal="3" MaxName="Asm:Test Subject  Interface:TestSubject.IWarehouse" />
+    <ArgOnMethodOnInterface Occ="3" Avg="2" StdDev="0" MaxVal="2" MaxName="Asm:Test Subject  Interface:TestSubject.IWarehouse  Method:Add" />
+    <PublicPropertyOnClass Occ="3" Avg="1.33" StdDev="1.25" MaxVal="3" MaxName="Asm:Test Subject  Class:TestSubject.Order" />
+    <PublicMethodOnClass Occ="3" Avg="8.33" StdDev="1.89" MaxVal="11" MaxName="Asm:Test Subject  Class:TestSubject.Order" />
+    <ArgOnPublicMethodOnClass Occ="25" Avg="0.6" StdDev="0.69" MaxVal="2" MaxName="Asm:Test Subject  Class:TestSubject.Warehouse  Method:Add" />
+    <ILInstructionInNonAbstractMethods Occ="21" Avg="10" StdDev="8.61" MaxVal="36" MaxName="Asm:Test Subject  Class:TestSubject.Warehouse Method:Remove(TestSubject.InventoryItem,System.Int32)" />
+    <TypeWithTheMostILInstruction Occ="3" Avg="70" StdDev="21.6" MaxVal="100" MaxName="Asm:Test Subject  Type:TestSubject.Warehouse" />
+    <MethodCC Occ="21" Avg="0.43" StdDev="1" MaxVal="4" MaxName="Asm:Test Subject  Type:TestSubject.Warehouse  Method:Remove(TestSubject.InventoryItem,System.Int32)" />
+    <ResponseForType Occ="4" Avg="52.5" StdDev="35.62" MaxVal="100" MaxName="Asm:Test Subject  Type:TestSubject.Warehouse" />
+  </ApplicationMetrics>
+  <InfoWarnings>
+    <Info>INFO:    10/6/2005 8:51:56 PM Retrieve dependencies of your application.</Info>
+    <Info>INFO:    All 1 assemblies found and loaded once and only once.</Info>
+    <Info>INFO:    10/6/2005 8:51:56 PM Analyse dependencies of your application.</Info>
+    <Info>INFO:    No cycle detected.</Info>
+    <WarningByType TypeName="TestSubject.Warehouse">
+      <Warning>WARNING: In the context of this application, the property setter {TestSubject.Warehouse.set_Inventory(System.Collections.Hashtable)} is never used.</Warning>
+      <Warning>WARNING: In the context of this application, the type {TestSubject.Warehouse} is never used.</Warning>
+    </WarningByType>
+    <WarningByType TypeName="TestSubject.IWarehouse">
+      <Warning>WARNING: In the context of this application, the type {TestSubject.IWarehouse} could have the visibility {internal} instead of the visibility {public}.</Warning>
+    </WarningByType>
+    <WarningByType TypeName="TestSubject.Order">
+      <Warning>WARNING: In the context of this application, the property getter {TestSubject.Order.get_Item()} could have the visibility {private} instead of the visibility {public}.</Warning>
+      <Warning>WARNING: In the context of this application, the property setter {TestSubject.Order.set_Item(TestSubject.InventoryItem)} could have the visibility {private} instead of the visibility {public}.</Warning>
+      <Warning>WARNING: In the context of this application, the property getter {TestSubject.Order.get_IsFilled()} is never used.</Warning>
+      <Warning>WARNING: In the context of this application, the method {TestSubject.Order.Fill(TestSubject.IWarehouse)} is never used.</Warning>
+      <Warning>WARNING: In the context of this application, the property getter {TestSubject.Order.get_Amount()} could have the visibility {private} instead of the visibility {public}.</Warning>
+      <Warning>WARNING: In the context of this application, the property setter {TestSubject.Order.set_IsFilled(System.Boolean)} could have the visibility {private} instead of the visibility {public}.</Warning>
+      <Warning>WARNING: In the context of this application, the property setter {TestSubject.Order.set_Amount(System.Int32)} could have the visibility {private} instead of the visibility {public}.</Warning>
+      <Warning>WARNING: In the context of this application, the type {TestSubject.Order} is never used.</Warning>
+    </WarningByType>
+    <WarningByType TypeName="TestSubject.InventoryItem">
+      <Warning>WARNING: In the context of this application, the property getter {TestSubject.InventoryItem.get_Name()} could have the visibility {private} instead of the visibility {public}.</Warning>
+      <Warning>WARNING: In the context of this application, the property setter {TestSubject.InventoryItem.set_Name(System.String)} could have the visibility {private} instead of the visibility {public}.</Warning>
+      <Warning>WARNING: In the context of this application, the type {TestSubject.InventoryItem} could have the visibility {internal} instead of the visibility {public}.</Warning>
+    </WarningByType>
+  </InfoWarnings>
+</NDepend>

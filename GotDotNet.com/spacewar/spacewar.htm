@@ -1,0 +1,163 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>SpaceWar&nbsp; SpaceWar was one of the first</title>
+</head>
+
+<body>
+
+<h1>Spacewar!</h1>
+<h2>Eric Gunnerson <a href="mailto:(EricGu@Microsoft.Com">(EricGu@Microsoft.Com</a>)</h2>
+<p>2/5/2002</p>
+<h2>Introduction</h2>
+<p>Spacewar! was one of the first, if not *the* first video game ever created, 
+written on a DEC PDP 1 at MIT in 1960. By the standards of the day,
+it was an incredible achievement. By the standards of today, it has very 
+primitive graphics, but the gameplay is still good.</p>
+<p>I first read about Spacewar! in an <a href="http://www.wheels.org/spacewar/">article</a> in Creative Computing 
+magazine (long since gone) in 1981. The hardware requirements for 
+hosting Spacewar! are pretty simple; all you need is a display you can draw 
+vectors on, and a keyboard that has sufficient rollover support (the number of 
+keys you can hold down and still get a new event). My first implementation ran 
+on Decwindows, and communicated with other players over DECNET.</p>
+<p>I've written several other graphical programs in C#, and I wanted to do a 
+game. I also wanted to learn a bit about how to do low-level networking in C#, 
+so another Spacewar! version was in the cards. I've tried to be honest to the 
+original implementation where it made sense (ie it was easy to implement), but I 
+have changed a few of the details.</p>
+<p>This version supports multiplayer. I've tested it on two players, but it 
+should successfully support more, though there may be network issues with more 
+players. </p>
+<h2>Gameplay</h2>
+<p>Run Spacewar!, and you'll see a sun in the middle of the screen. The sun has 
+gravity, and if you are pulled into the sun, you will die. You can fly around 
+all you want, but there's no scoring in single-player mode, so it's really 
+pretty boring. To play multi-player, both of you need to be running pacewar. 
+One player then hits F1 and enters the name of the remote computer. You'll then 
+be flying around in the same universe, and can battle.</p>
+<h3>Game Controls</h3>
+<table border="1" cellpadding="2" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber1">
+  <tr>
+    <th>Key</th>
+    <th>Function</th>
+  </tr>
+  <tr>
+    <td align="center">Z</td>
+    <td align="center">Rotate Ship Left</td>
+  </tr>
+  <tr>
+    <td align="center">X</td>
+    <td align="center">Rotate Ship Right</td>
+  </tr>
+  <tr>
+    <td align="center">Period</td>
+    <td align="center">Thrust</td>
+  </tr>
+  <tr>
+    <td align="center">?</td>
+    <td align="center">Fire</td>
+  </tr>
+  <tr>
+    <td align="center">Space</td>
+    <td align="center">Hyperspace</td>
+  </tr>
+  <tr>
+    <td align="center">Escape</td>
+    <td align="center">Exit</td>
+  </tr>
+  <tr>
+    <td align="center">F5-F10</td>
+    <td align="center">Taunts</td>
+  </tr>
+</table>
+<p>Most of these are self-explanatory if you've ever played Asteroids. 
+Hyperspace allows you to escape to some other place on the screen. There are two 
+caveats to using hyperspace:</p>
+<ol>
+  <li>It takes a few seconds for your hyperspace engines to charge.</li>
+  <li>Hyperspace engines don't always work, and they degrade over time.</li>
+</ol>
+<h3>Scoring</h3>
+<p>Ever time you kill an opponent, you get 2 points. Every time you fall into 
+the sun - and you'll do this a lot - all other players get 1 point. </p>
+<h3>Strategy and Ethics</h3>
+<p>The &quot;arcade game&quot; instructions for Spacewar! would say something like &quot;Avoid 
+the sun, shoot opponents&quot;. Your goal is to remain in control and learn how to 
+shoot your opponent while not running into the sun. A common maneuver is to kill 
+the opponent, and then hang out near his appearance point and shoot him right 
+when he shows up. While the uninitiated may consider this to be poor 
+sportsmanship, it is in fact expected under the code of the SpaceWarrior. Just 
+make sure you press F5 after you shoot them...</p>
+<h2>Implementation</h2>
+<p>Here are some random notes about the implementation.</p>
+<h3>Dynamics</h3>
+<p>The dynamics of the ships are handled with a nice Vector class that I wrote, 
+and a bit of simple gravity code. Though the original game didn't include it, 
+I've allowed the shots to be influenced by gravity, as it makes for better 
+gameplay.</p>
+<h3>Drawing</h3>
+<p>Spacewar! started as a GDI+ application using System.Drawing. A while back, I 
+switched it to DirectX (used through COM interop), more as an exercise in doing 
+it than anything else. I'm fairly sure the DirectX code is suboptimal, so I 
+don't recommend it as an example of how to do DirectX.</p>
+<p>I try to precompute wherever possible, so the ship outlines are stored in 
+shape tables, and the words and score outlines are also precomputed. </p>
+<h3>Key Handling</h3>
+<p>There's a neat little KeyboardState class that manages the keyboard. 
+DirectInput would be another option</p>
+<h3>Network and MultiPlayer</h3>
+<p>The network handling has gone through a fair bit of evolution. I could have 
+used DirectPlay to do this, but I chose to write the code myself.</p>
+<p>Initially, I used .NET serialization to pass data from one machine to 
+another. This worked okay, but because I was using TCP/IP as the protocol (using 
+the TcpClient class), there was a fair bit of effort setting up the 
+communication. This only got worse when I tried supporting more than two 
+players.</p>
+<p>I then switched from TCP to UDP. UDP is a lot nicer for games, as I could 
+receive all player data over a single port, and rather than requiring code to 
+create and manage connections, as soon as a player writes to a port, they show 
+up as part of the game. This simplified the code considerably.</p>
+<p>I then decided to try to reduce the overhead of communication. Serialization 
+is a wonderful, general-purpose mechanism, and those are exactly the kinds of 
+mechanisms that you don't want in games. In games, you want specialized and fast 
+mechanisms. I therefore wrote my own custom serialization mechanism using unsafe 
+code. The PtrHolder class encapsulates a pointer and provides a few methods to 
+read and write data from it.</p>
+<p>The code to handle receiving ship data runs in a separate thread. Whenever a 
+new piece of ship data arrives, it is deserialized to a ship record for each 
+remote player. If no data has arrived in 5 seconds, the player disappears. </p>
+<p>Keeping track of player scoring was a challenge. Each ship keeps track of 
+when other ships hit it, so it needs to have a way to tell the correct player 
+when it was hit. It also needs to tell all ships when a ship has hit the sun.</p>
+<p>After a while, I decided that each ship would keep track of how many points 
+it owed to each other player. When passing a ship's data to the other ships, it 
+patches in the points that it owes that ship, with a cool bit of unsafe code, 
+and then sends it to the other player.</p>
+<p>The score of a player is simply the sum of the number of points that all the 
+other players owe that player. This is computed whenever the score is displayed. 
+A nice byproduct of this approach is that when a player quits, their scores are 
+automatically removed for all other players. </p>
+<h3>Sounds</h3>
+<p>Sound is implementing using DirectSound. Finding appropriate sounds was an 
+interesting challenge. I did a bunch of searching, and found decent sound for 
+firing, explosions, and hyperspace. I modified the sound for firing so that the 
+opponents sound a bit silly. </p>
+<p>To get the thrust sound, I wanted the sound of a real rocket. After trying a 
+few model rocket sounds, I finally found a recording of the launch of Apollo 16. 
+The thrust sound is taken a few seconds after the liftoff. If you have a decent 
+subwoofer, I'd recommend turning the sound up.</p>
+<p>The taunts are also taken from the net.</p>
+<h3>Future Improvements</h3>
+<p>If I get around to making any modifications, I'd like to explore using 
+DirectInput and DirectPlay, and getting rid of the WinForms shell. This might 
+improve the frame rate. There also needs to be some network throttling to 
+control how much data is being handled.</p>
+<p>&nbsp;</p>
+
+</body>
+
+</html>

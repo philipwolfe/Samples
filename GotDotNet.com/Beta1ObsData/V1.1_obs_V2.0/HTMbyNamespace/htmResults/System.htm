@@ -1,0 +1,119 @@
+<p><center><font size="5" face="Arial" color="#000000"><b>System Namespace Obsoletion List</b></font></center></p>
+<center><font face="Arial"> <table width="800"><tr><td><ul><li>The member count represents the number of obsoleted members NOT in obsoleted types. </li></ul></td></tr><tr><td> <ul><li>The type count represents the number of obsoleted types. </li></ul></td></tr></table></font></center><br><center><table width = "800" border="0"><tr> <td width="40%"><font face="Arial"><b>Total Members Obsoleted: 44</b></font></td></tr> <tr><td><font face="Arial"><b>Total Types Obsoleted: 2</b></font></td> </tr></table><br>
+<html><head><meta http-equiv="Content-Language" content="en-us"><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><title>New Page 1</title></head><body><center>
+<center><table border="1" width="800" id="table1" cellspacing="0">
+<tr><td colspan="2" bgcolor="#B0B0B0"><font face="Arial" color="#FFFFFF"><b>System.Enum </b></font></td></tr>
+<tr><td width="40%"><font face="Arial"><b>ToString</b>(String format,IFormatProvider provider)</font></td>
+<td><font face="Arial"><b>Message:</b> The provider argument is not used. Please use ToString(String).</font></tr>
+<tr><td width="40%"><font face="Arial"><b>ToString</b>(IFormatProvider provider)</font></td>
+<td><font face="Arial"><b>Message:</b> The provider argument is not used. Please use ToString().</font></tr>
+<tr><td colspan="2">&nbsp </td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font face="Arial" color="#FFFFFF"><b>System.String </b></font></td></tr>
+<tr><td width="40%"><font face="Arial"><b>Split</b>(Char[] separator,Boolean omitEmptyEntries)</font></td>
+<td><font face="Arial"><b>Message:</b> This method will be removed soon. Please use Split(char[], StringSplitOptions).</font></tr>
+<tr><td width="40%"><font face="Arial"><b>Split</b>(Char[] separator,Int32 count,Boolean omitEmptyEntries)</font></td>
+<td><font face="Arial"><b>Message:</b> This method will be removed soon. Please use Split(char[], int, StringSplitOptions).</font></tr>
+<tr><td width="40%"><font face="Arial"><b>Split</b>(String[] separator,Boolean omitEmptyEntries)</font></td>
+<td><font face="Arial"><b>Message:</b> This method will be removed soon. Please use Split(string[], StringSplitOptions).</font></tr>
+<tr><td width="40%"><font face="Arial"><b>Split</b>(String[] separator,Int32 count,Boolean omitEmptyEntries)</font></td>
+<td><font face="Arial"><b>Message:</b> This method will be removed soon. Please use Split(string[], int, StringSplitOptions).</font></tr>
+<tr><td colspan="2">&nbsp </td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font face="Arial" color="#FFFFFF"><b>System.AppDomain </b></font></td></tr>
+<tr><td width="40%"><font face="Arial"><b>GetCurrentThreadId</b>()</font></td>
+<td><font face="Arial"><b>Message:</b> AppDomain.GetCurrentThreadId has been deprecated because it does not provide a stable Id when managed threads are running on fibers (aka lightweight threads). To get a stable identifier for a managed thread, use the Thread object returned from Thread.CurrentThread.</font></tr>
+<tr><td width="40%"><font face="Arial"><b>ExecuteManifest</b>(IApplicationDescription appDescription,IHostContext hostContext)</font></td>
+<td><font face="Arial"><b>Message:</b> Will be removed before we ship Whidbey. Please use Activator.CreateInstance(ActivationContext) instead.</font></tr>
+<tr><td width="40%"><font face="Arial"><b>AppendPrivatePath</b>(String path)</font></td>
+<td><font face="Arial"><b>Message:</b> AppDomain.AppendPrivatePath has been deprecated. Please investigate the use of AppDomainSetup.PrivateBinPath instead.</font></tr>
+<tr><td width="40%"><font face="Arial"><b>ClearPrivatePath</b>()</font></td>
+<td><font face="Arial"><b>Message:</b> AppDomain.ClearPrivatePath has been deprecated. Please investigate the use of AppDomainSetup.PrivateBinPath instead.</font></tr>
+<tr><td width="40%"><font face="Arial"><b>ApplicationDescription</b></font></td>
+<td><font face="Arial"><b>Message:</b> Will be removed before we ship Whidbey. Please use the ActivationContext property.</font></tr>
+<tr><td width="40%"><font face="Arial"><b>ProvideAssemblyEvidence</b></font></td>
+<td><font face="Arial"><b>Message:</b> Will be removed before we ship Whidbey. Please use AppDomainManager and HostSecurityManager to provide an assembly evidence.</font></tr>
+<tr><td colspan="2">&nbsp </td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font face="Arial" color="#FFFFFF"><b>System.AppDomainManager </b></font></td></tr>
+<tr><td width="40%"><font face="Arial"><b>Activate</b>(IApplicationDescription applicationIdentity)</font></td>
+<td><font face="Arial"><b>Message:</b> Will be removed before we ship Whidbey. Please use Activator.CreateInstance(ActivationContext) instead.</font></tr>
+<tr><td width="40%"><font face="Arial"><b>RegisterWithHost</b>()</font></td>
+<td><font face="Arial"><b>Message:</b> This method will become private soon. Please use InitializeNewDomain or the constructor to set DomainManagerInitializationFlags.</font></tr>
+<tr><td colspan="2">&nbsp </td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font face="Arial" color="#FFFFFF"><b>System.AppDomainSetup </b></font></td></tr>
+<tr><td width="40%"><font face="Arial"><b>AppDomainSetup</b>(IApplicationDescription applicationIdentity)</font></td>
+<td><font face="Arial"><b>Message:</b> Will be removed before we ship Whidbey. Please use the constructor that takes an ActivationContext.</font></tr>
+<tr><td colspan="2">&nbsp </td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font face="Arial" color="#FFFFFF"><b>System.ConsoleCancelEventArgs </b></font></td></tr>
+<tr><td width="40%"><font face="Arial"><b>SpecialKeys</b></font></td>
+<td><font face="Arial"><b>Message:</b> Use the SpecialKey property instead.  This property will be removed before Whidbey Beta 2.</font></tr>
+<tr><td colspan="2">&nbsp </td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.ConsoleSpecialKeys (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> ConsoleSpecialKeys is being renamed to ConsoleSpecialKey.  This enum will be removed before Whidbey Beta 2.</font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.ContextMarshalException (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> ContextMarshalException is obsolete.</font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font face="Arial" color="#FFFFFF"><b>System.Convert </b></font></td></tr>
+<tr><td width="40%"><font face="Arial"><b>ToBase64String</b>(Byte[] inArray,Boolean insertLineBreaks)</font></td>
+<td><font face="Arial"><b>Message:</b> This method will be removed soon. Please use ToBase64String(byte[], Base64FormattingOptions).</font></tr>
+<tr><td width="40%"><font face="Arial"><b>ToBase64String</b>(Byte[] inArray,Int32 offset,Int32 length,Boolean insertLineBreaks)</font></td>
+<td><font face="Arial"><b>Message:</b> This method will be removed soon. Please use ToBase64String(byte[], int, int, Base64FormattingOptions).</font></tr>
+<tr><td width="40%"><font face="Arial"><b>ToBase64CharArray</b>(Byte[] inArray,Int32 offsetIn,Int32 length,Char[] outArray,Int32 offsetOut,Boolean insertLineBreaks)</font></td>
+<td><font face="Arial"><b>Message:</b> This method will be removed soon. Please use ToBase64CharArray(byte[], int, int, char[], int, Base64FormattingOptions).</font></tr>
+<tr><td colspan="2">&nbsp </td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font face="Arial" color="#FFFFFF"><b>System.ModuleHandle </b></font></td></tr>
+<tr><td width="40%"><font face="Arial"><b>GetRuntimeTypeHandleFromMetadataToken</b>(Int32 typeToken)</font></td>
+<td><font face="Arial"><b>Message:</b> Please use ResolveTypeHandle instead.</font></tr>
+<tr><td width="40%"><font face="Arial"><b>GetRuntimeMethodHandleFromMetadataToken</b>(Int32 methodToken)</font></td>
+<td><font face="Arial"><b>Message:</b> Please use ResolvedMethodHandle instead.</font></tr>
+<tr><td width="40%"><font face="Arial"><b>GetRuntimeFieldHandleFromMetadataToken</b>(Int32 fieldToken)</font></td>
+<td><font face="Arial"><b>Message:</b> Please use ResolveFieldHandle instead.</font></tr>
+<tr><td colspan="2">&nbsp </td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font face="Arial" color="#FFFFFF"><b>System.Nullable`1 </b></font></td></tr>
+<tr><td width="40%"><font face="Arial"><b>CompareTo</b>(Object other)</font></td>
+<td><font face="Arial"><b>Message:</b> This method will be removed in future. Please use the static version: Nullable.Compare.</font></tr>
+<tr><td width="40%"><font face="Arial"><b>CompareTo</b>(Nullable`1 other)</font></td>
+<td><font face="Arial"><b>Message:</b> This method will be removed in future. Please use the static version Nullable.Compare.</font></tr>
+<tr><td width="40%"><font face="Arial"><b>FromObject</b>(Object value)</font></td>
+<td><font face="Arial"><b>Message:</b> This method will be removed in future. Please use the static version Nullable.FromObject.</font></tr>
+<tr><td width="40%"><font face="Arial"><b>GetValueOrDefault</b>()</font></td>
+<td><font face="Arial"><b>Message:</b> This method will be removed in future. Please use the static version: Nullable.GetValueOrDefault.</font></tr>
+<tr><td width="40%"><font face="Arial"><b>GetValueOrDefault</b>(T defaultValue)</font></td>
+<td><font face="Arial"><b>Message:</b> This method will be removed in future. Please use the static version: Nullable.GetValueOrDefault.</font></tr>
+<tr><td width="40%"><font face="Arial"><b>ToObject</b>()</font></td>
+<td><font face="Arial"><b>Message:</b> This method will be removed in future. Please use the static version: Nullable.ToObject.</font></tr>
+<tr><td width="40%"><font face="Arial"><b>ToString</b>(String format)</font></td>
+<td><font face="Arial"><b>Message:</b> This method will be removed in future. Please use String.Format.</font></tr>
+<tr><td width="40%"><font face="Arial"><b>ToString</b>(IFormatProvider provider)</font></td>
+<td><font face="Arial"><b>Message:</b> This method will be removed in future. Please use String.Format.</font></tr>
+<tr><td width="40%"><font face="Arial"><b>ToString</b>(String format,IFormatProvider provider)</font></td>
+<td><font face="Arial"><b>Message:</b> This method will be removed in future. Please use String.Format.</font></tr>
+<tr><td colspan="2">&nbsp </td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font face="Arial" color="#FFFFFF"><b>System.Uri </b></font></td></tr>
+<tr><td width="40%"><font face="Arial"><b>Parse</b>()</font></td>
+<td><font face="Arial"><b>Message:</b> This method is not used and will be removed soon.</font></tr>
+<tr><td width="40%"><font face="Arial"><b>Canonicalize</b>()</font></td>
+<td><font face="Arial"><b>Message:</b> This method is not used and will be removed soon.</font></tr>
+<tr><td width="40%"><font face="Arial"><b>Escape</b>()</font></td>
+<td><font face="Arial"><b>Message:</b> This method is not used and will be removed soon.</font></tr>
+<tr><td width="40%"><font face="Arial"><b>Unescape</b>(String path)</font></td>
+<td><font face="Arial"><b>Message:</b> Use Uri.GetComponents() or Uri extensibility API to unescape.</font></tr>
+<tr><td width="40%"><font face="Arial"><b>EscapeString</b>(String str)</font></td>
+<td><font face="Arial"><b>Message:</b> Use Uri.GetComponents() or Uri extensibility API to escape.</font></tr>
+<tr><td width="40%"><font face="Arial"><b>CheckSecurity</b>()</font></td>
+<td><font face="Arial"><b>Message:</b> This method is not used and will be removed soon.</font></tr>
+<tr><td width="40%"><font face="Arial"><b>IsReservedCharacter</b>(Char character)</font></td>
+<td><font face="Arial"><b>Message:</b> This method is not used and will be removed soon.</font></tr>
+<tr><td width="40%"><font face="Arial"><b>IsExcludedCharacter</b>(Char character)</font></td>
+<td><font face="Arial"><b>Message:</b> This method is not used and will be removed soon.</font></tr>
+<tr><td width="40%"><font face="Arial"><b>IsBadFileSystemCharacter</b>(Char character)</font></td>
+<td><font face="Arial"><b>Message:</b> This method is not used and will be removed soon.</font></tr>
+<tr><td width="40%"><font face="Arial"><b>TryParse</b>(String uriString,Boolean dontEscape,Boolean allowRelative,Uri& result)</font></td>
+<td><font face="Arial"><b>Message:</b> Please change the calling method name on Uri.TryCreate, "dontEscape" is deprecated and assumed to be false</font></tr>
+<tr><td width="40%"><font face="Arial"><b>Uri</b>(String uriString,Boolean dontEscape)</font></td>
+<td><font face="Arial"><b>Message:</b> Please use Uri.Create(string) or new Uri(string). The dontEscape parameter is deprecated and is always false</font></tr>
+<tr><td width="40%"><font face="Arial"><b>Uri</b>(String uriString,Boolean dontEscape,Boolean allowRelativeUri)</font></td>
+<td><font face="Arial"><b>Message:</b> This method will be removed SOON! Uri.Create(string, bool) or Uri(bool, string)</font></tr>
+<tr><td width="40%"><font face="Arial"><b>Uri</b>(Uri baseUri,String relativeUri,Boolean dontEscape)</font></td>
+<td><font face="Arial"><b>Message:</b> Please use Uri.Create(Uri, string) or new Uri(Uri, string). The dontEscape parameter is deprecated and is always false</font></tr>
+<tr><td colspan="2">&nbsp </td></tr>
+</table></center><b></center></body></html>

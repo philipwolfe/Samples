@@ -1,0 +1,69 @@
+Imports System.Windows.Forms
+Imports System.EnterpriseServices
+
+<Transaction(TransactionOption.Required)> _
+Public Class HelloTx
+    Inherits ServicedComponent
+
+    Public Sub SayHello(ByVal Name As String)
+        Dim txId As Guid
+        txId = ContextUtil.TransactionId
+        Select Case MessageBox.Show(String.Format( _
+                    "Hello {0} - Should I commit transaction {1}?", Name, txId), _
+                    "Transaction", MessageBoxButtons.YesNo)
+            Case DialogResult.Yes
+                ContextUtil.SetComplete()
+            Case DialogResult.No
+                ContextUtil.SetAbort()
+        End Select
+    End Sub
+
+    Private Function RandomCommit(ByRef Message As String)
+        Dim Commit As Boolean
+        Dim r As New Random(DateTime.Now.Millisecond)
+        ' Commit if an even number is returned from the random generator
+        Commit = ((r.Next() Mod 2) = 0)
+        Message = String.Format("RandomOutcome Result: {0} Transaction ID: {1}", IIf(Commit, "commit", "abort"), ContextUtil.TransactionId)
+        Return Commit
+    End Function
+
+    <AutoComplete()> _
+    Public Sub RandomOutcome()
+        Dim Message As String
+        If Not RandomCommit(Message) Then
+            Throw New Exception(Message)
+        Else
+            Console.WriteLine(Message)
+        End If
+    End Sub
+End Class
+
+<ObjectPooling(True, 1, 5), JustInTimeActivation()> _
+Public Class StuffCache
+    Inherits ServicedComponent
+
+    Const MAX_CACHE_SIZE As Integer = 5000
+    Private _stuff As New Hashtable(MAX_CACHE_SIZE)
+
+    Sub New()
+        Dim start As DateTime
+        start = DateTime.Now
+        ' Populate our stuff with lots of data
+        Dim i As Integer
+        Dim r As New Random(DateTime.Now.Millisecond)
+        For i = 1 To MAX_CACHE_SIZE
+            _stuff.Add(i, String.Format("Value {0}", r.Next()))
+        Next
+        Debug.WriteLine(String.Format("Stuff Cache Construct Duration {0} ", DateTime.Now.Subtract(start)))
+    End Sub
+
+    Protected Overrides Function CanBePooled() As Boolean
+        Return True
+    End Function
+
+    Public ReadOnly Property Stuff()
+        Get
+            Return _stuff
+        End Get
+    End Property
+End Class

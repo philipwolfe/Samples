@@ -1,0 +1,46 @@
+{{handler TankOnline.dll/Settings}}
+
+<script>
+	function warn()
+	{
+		return confirm("This will restart your game, is that OK?");
+	}
+</script>
+
+<form method="post" onsubmit="return warn();">
+<table border="0" width=100% cellspacing=0>
+<tr>
+	<td class="regulartext">Turn Right:</td>
+	<td><input class="regulartext" name="MoveRight" value="{{GetMoveRight}}"></td>
+</tr>
+
+<tr>
+	<td class="regulartext">Turn Left:</td>
+	<td><input class="regulartext" name="MoveLeft" value="{{GetMoveLeft}}"></td>
+</tr>
+
+<tr>
+	<td class="regulartext">Move Forward:</td>
+	<td><input name="MoveForward" value="{{GetMoveForward}}"></td>
+</tr>
+
+<tr>
+	<td>Shoot:</td>
+	<td><input class="regulartext" name="Shoot" value="{{GetShoot}}"></td>
+</tr>
+
+<tr>
+	<td>Tank Service Location:</td>
+	<td><input class="regulartext" name="TankService" value="{{GetTankService}}"></td>
+</tr>
+
+<tr>
+	<td>
+	<input class="regulartext" type="submit" name="submit" value="apply">
+	</td>
+	<td>
+	<input class="regulartext" type="button" name="cancel" value="cancel" onclick="this.document.body.all['settingsBody'].style.display='none'">
+	</td>
+</tr>
+</table>
+</form>

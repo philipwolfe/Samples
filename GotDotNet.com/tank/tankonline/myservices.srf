@@ -1,0 +1,27 @@
+{{handler TankOnline.dll/MyServices}}
+<html>
+<head>
+	<link rel="stylesheet" href="Style.css">		
+</head>
+<body>
+In order for this sample to work, you need to have access to a installation of Microsoft .NET My Services and provide
+the following information:
+<form>
+<table border=0 width=75%>
+<tr>
+	<td>Endpoint to your My Services server (ie. http://myserver):</td>
+	<td><input name="server"></td>
+</tr>
+<tr>
+	<td>Your My Services user name (you can obtain this value by running hspost -v):</td>
+	<td><input name="username"></td>
+</tr>
+<tr>
+	<td>Your PUID (you can obtain this value by running hspost -v):</td>
+	<td><input name="puid"></td>
+</tr>
+</table>
+<input type="submit" name="submit" value="submit">
+</form>
+</body>
+</html>

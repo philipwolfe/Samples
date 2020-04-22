@@ -1,0 +1,22 @@
+{{handler TankOnline.dll/Wallet}}
+
+<table width="100%" height="100%" cellpadding="0" cellspacing="0" border="0">
+{{while HasMoreCards}}
+	<tr valign="top">		
+		<td align="left">					
+			<span class="regulartext">{{GetBrandNetwork}}</span>			
+		</td>			
+		<td align="left">					
+			<span class="regulartext">{{GetCardNumber}}</span>			
+		</td>			
+		<td align="left">
+			<a href='javascript:OkToShoot()' class="regulartext">
+				Pay
+			</a>
+		</td>				
+		<td align="left">
+			<a href='javascript:OnDelete("deletecard.srf", "{{GetCardID}}", "wallet.srf", "walletBody")' class="regulartext">Delete</a>
+		</td>	
+	</tr>	
+{{endwhile}}
+</table>	

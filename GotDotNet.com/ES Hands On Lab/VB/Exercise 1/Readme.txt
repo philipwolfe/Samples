@@ -1,0 +1,1 @@
+Start by creating a blank class library object

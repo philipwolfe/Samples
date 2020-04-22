@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<TypeReferencement>
+  <Type Name="TestSubject.InventoryItem" InAssembly="Test Subject">
+    <UsedBy>
+      <Name>TestSubject.IWarehouse</Name>
+      <Name>TestSubject.Order</Name>
+      <Name>TestSubject.Warehouse</Name>
+    </UsedBy>
+  </Type>
+  <Type Name="TestSubject.IWarehouse" InAssembly="Test Subject">
+    <Use>
+      <Name>TestSubject.InventoryItem</Name>
+    </Use>
+    <UsedBy>
+      <Name>TestSubject.Order</Name>
+      <Name>TestSubject.Warehouse</Name>
+    </UsedBy>
+  </Type>
+  <Type Name="TestSubject.Order" InAssembly="Test Subject">
+    <Use>
+      <Name>TestSubject.InventoryItem</Name>
+      <Name>TestSubject.IWarehouse</Name>
+    </Use>
+  </Type>
+  <Type Name="TestSubject.Warehouse" InAssembly="Test Subject">
+    <Use>
+      <Name>TestSubject.IWarehouse</Name>
+      <Name>TestSubject.InventoryItem</Name>
+    </Use>
+  </Type>
+</TypeReferencement>

@@ -1,0 +1,44 @@
+{{handler TankOnline.dll/AddContact}}
+<html>
+	<title>ADD CONTACT</title>
+	<link rel="stylesheet" href="Style.css">		
+<body>
+<form method="post">
+<script>
+function OnSubmit()
+{
+	var firstNameValue	= "firstName="	+ this.document.body.all["firstName"].value;	
+	var lastNameValue	= "lastName="	+ this.document.body.all["lastName"].value;
+	var emailValue		= "email="		+ this.document.body.all["email"].value;
+	
+	var xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");	
+	
+	var url = "addcontact.srf?submit=yes&" + firstNameValue + "&" + lastNameValue + "&" + emailValue;
+	
+	xmlHttp.Open("GET", url, false);
+	xmlHttp.Send("nothing");	
+	
+	window.close();			
+}
+</script>
+
+<table border=0 width=75%> 
+	<tr>
+		<td>First Name:</td>
+		<td><input id="firstName" name="firstName"></td>		
+	</tr>
+	
+	<tr>
+		<td>Last Name: </td>
+		<td><input id="lastName" name="lastName"></td>		
+	</tr>
+	
+	<tr>
+		<td>Email Address: </td>
+		<td><input id="email" name="email"></td>		
+	</tr>			
+</table>
+<br><input type="button" name="submit" value="Add Contact" onclick="OnSubmit()">
+</form>	
+</body>
+</html>

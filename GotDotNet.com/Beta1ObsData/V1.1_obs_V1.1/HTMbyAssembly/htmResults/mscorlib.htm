@@ -1,0 +1,200 @@
+<p><center><font size="5" face="Arial" color="#000000"><b>mscorlib.dll Obsoletion List</b></font></center></p>
+<center><font face="Arial"> <table width="800"><tr><td><ul><li>The member count represents the number of obsoleted members NOT in obsoleted types. </li></ul> </td></tr><tr><td> <ul><li>The type count represents the number of obsoleted types. </li></ul></td></tr></table></font></center><br><center><table width = "800" border="0"><tr> <td width="40%"><font face="Arial"><b>Total Members Obsoleted: 24</b></font></td></tr><tr><td><font face="Arial"><b>Total Types Obsoleted: 43</b></font></td></tr></table><br>
+<html><head><meta http-equiv="Content-Language" content="en-us"><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><title>New Page 1</title></head><body><center>
+<center><table border="1" width="800" id="table1" cellspacing="0">
+<tr><td colspan="2" bgcolor="#B0B0B0"><font face="Arial" color="#FFFFFF"><b>System.AppDomain </b></font></td></tr>
+<tr><td width="40%"><font face="Arial"><b>GetCurrentThreadId</b>()</font></td>
+<td><font face="Arial"><b>Message:</b> AppDomain.GetCurrentOSThreadID has been deprecated because it does not provide a stable ID when managed threads are running on fibers (aka lightweight threads). To get a stable identifier for a managed thread, use the Thread object returned from Thread.CurrentThread.</font></tr>
+<tr><td colspan="2">&nbsp </td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font face="Arial" color="#FFFFFF"><b>System.Threading.Overlapped </b></font></td></tr>
+<tr><td width="40%"><font face="Arial"><b>Pack</b>(IOCompletionCallback iocb)</font></td>
+<td><font face="Arial"><b>Message:</b> This method is not safe.  Use Pack (iocb, userData) instead.</font></tr>
+<tr><td width="40%"><font face="Arial"><b>UnsafePack</b>(IOCompletionCallback iocb)</font></td>
+<td><font face="Arial"><b>Message:</b> This method is not safe.  Use UnsafePack (iocb, userData) instead.</font></tr>
+<tr><td width="40%"><font face="Arial"><b>Overlapped</b>(Int32 offsetLo,Int32 offsetHi,Int32 hEvent,IAsyncResult ar)</font></td>
+<td><font face="Arial"><b>Message:</b> This constructor is not 64-bit compatible.  Use the constructor that takes an IntPtr for the event handle.</font></tr>
+<tr><td width="40%"><font face="Arial"><b>EventHandle</b></font></td>
+<td><font face="Arial"><b>Message:</b> This property is not 64-bit compatible.  Use EventHandleIntPtr instead.</font></tr>
+<tr><td colspan="2">&nbsp </td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font face="Arial" color="#FFFFFF"><b>System.Threading.Thread </b></font></td></tr>
+<tr><td width="40%"><font face="Arial"><b>Suspend</b>()</font></td>
+<td><font face="Arial"><b>Message:</b> Thread.Suspend has been deprecated because code that uses it is very deadlock-prone. Synchronization of threads or mutually-exclusive access to protected resources should be accomplished using other classes in System.Threading, such as Monitor, Mutex, Event, and Semaphore.</font></tr>
+<tr><td width="40%"><font face="Arial"><b>Resume</b>()</font></td>
+<td><font face="Arial"><b>Message:</b> Thread.Resume has been deprecated because code that uses it is very deadlock-prone. Synchronization of threads or mutually-exclusive access to protected resources should be accomplished using other classes in System.Threading, such as Monitor, Mutex, Event, and Semaphore.</font></tr>
+<tr><td colspan="2">&nbsp </td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font face="Arial" color="#FFFFFF"><b>System.Diagnostics.SymbolStore.ISymbolBinder </b></font></td></tr>
+<tr><td width="40%"><font face="Arial"><b>GetReader</b>(Int32 importer,String filename,String searchPath)</font></td>
+<td><font face="Arial"><b>Message:</b> This method is not 64-bit compatible.  Use the one on ISymbolBinder2 that takes in IntPtr instead.</font></tr>
+<tr><td colspan="2">&nbsp </td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font face="Arial" color="#FFFFFF"><b>System.Reflection.Assembly </b></font></td></tr>
+<tr><td width="40%"><font face="Arial"><b>LoadWithPartialName</b>(String partialName)</font></td>
+<td><font face="Arial"><b>Message:</b> Please use Assembly.Load() instead.</font></tr>
+<tr><td width="40%"><font face="Arial"><b>LoadWithPartialName</b>(String partialName,Evidence securityEvidence)</font></td>
+<td><font face="Arial"><b>Message:</b> Please use Assembly.Load() instead.</font></tr>
+<tr><td colspan="2">&nbsp </td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font face="Arial" color="#FFFFFF"><b>System.Reflection.AssemblyFlagsAttribute </b></font></td></tr>
+<tr><td width="40%"><font face="Arial"><b>AssemblyFlagsAttribute</b>(UInt32 flags)</font></td>
+<td><font face="Arial"><b>Message:</b> This non-typed constructor will be removed.</font></tr>
+<tr><td width="40%"><font face="Arial"><b>AssemblyFlagsAttribute</b>(Int32 assemblyFlags)</font></td>
+<td><font face="Arial"><b>Message:</b> This non-typed constructor will be removed.</font></tr>
+<tr><td width="40%"><font face="Arial"><b>Flags</b></font></td>
+<td><font face="Arial"><b>Message:</b> This non-typed accessor will be removed.</font></tr>
+<tr><td colspan="2">&nbsp </td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font face="Arial" color="#FFFFFF"><b>System.Runtime.InteropServices.Marshal </b></font></td></tr>
+<tr><td width="40%"><font face="Arial"><b>GetTypeLibName</b>(UCOMITypeLib pTLB)</font></td>
+<td><font face="Arial"><b>Message:</b> Use System.Runtime.InteropServices.Marshal.GetTypeLibName(ITypeLib pTLB) instead. </font></tr>
+<tr><td width="40%"><font face="Arial"><b>GetTypeLibGuid</b>(UCOMITypeLib pTLB)</font></td>
+<td><font face="Arial"><b>Message:</b> Use System.Runtime.InteropServices.Marshal.GetTypeLibGuid(ITypeLib pTLB) instead. </font></tr>
+<tr><td width="40%"><font face="Arial"><b>GetTypeLibLcid</b>(UCOMITypeLib pTLB)</font></td>
+<td><font face="Arial"><b>Message:</b> Use System.Runtime.InteropServices.Marshal.GetTypeLibLcid(ITypeLib pTLB) instead. </font></tr>
+<tr><td width="40%"><font face="Arial"><b>GetTypeInfoName</b>(UCOMITypeInfo pTI)</font></td>
+<td><font face="Arial"><b>Message:</b> Use System.Runtime.InteropServices.Marshal.GetTypeInfoName(ITypeInfo pTLB) instead. </font></tr>
+<tr><td width="40%"><font face="Arial"><b>ReleaseThreadCache</b>()</font></td>
+<td><font face="Arial"><b>Message:</b> This API did not perform any operation and will be removed in future versions of the CLR.</font></tr>
+<tr><td colspan="2">&nbsp </td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Runtime.InteropServices.BIND_OPTS (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use System.Runtime.InteropServices.ComTypes.BIND_OPTS instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Runtime.InteropServices.UCOMIBindCtx (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use System.Runtime.InteropServices.ComTypes.IBindCtx instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Runtime.InteropServices.UCOMIConnectionPointContainer (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use System.Runtime.InteropServices.ComTypes.IConnectionPointContainer instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Runtime.InteropServices.UCOMIConnectionPoint (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use System.Runtime.InteropServices.ComTypes.IConnectionPoint instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Runtime.InteropServices.UCOMIEnumMoniker (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use System.Runtime.InteropServices.ComTypes.IEnumMoniker instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Runtime.InteropServices.CONNECTDATA (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use System.Runtime.InteropServices.ComTypes.CONNECTDATA instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Runtime.InteropServices.UCOMIEnumConnections (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use System.Runtime.InteropServices.ComTypes.IEnumConnections instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Runtime.InteropServices.UCOMIEnumConnectionPoints (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use System.Runtime.InteropServices.ComTypes.IEnumConnectionPoints instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Runtime.InteropServices.UCOMIEnumString (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use System.Runtime.InteropServices.ComTypes.IEnumString instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Runtime.InteropServices.UCOMIEnumVARIANT (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use System.Runtime.InteropServices.ComTypes.IEnumVARIANT instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Runtime.InteropServices.FILETIME (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use System.Runtime.InteropServices.ComTypes.FILETIME instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Runtime.InteropServices.UCOMIMoniker (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use System.Runtime.InteropServices.ComTypes.IMoniker instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Runtime.InteropServices.UCOMIRunningObjectTable (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use System.Runtime.InteropServices.ComTypes.IRunningObjectTable instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Runtime.InteropServices.STATSTG (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use System.Runtime.InteropServices.ComTypes.STATSTG instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Runtime.InteropServices.UCOMIStream (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use System.Runtime.InteropServices.ComTypes.IStream instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Runtime.InteropServices.DESCKIND (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use System.Runtime.InteropServices.ComTypes.DESCKIND instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Runtime.InteropServices.BINDPTR (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use System.Runtime.InteropServices.ComTypes.BINDPTR instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Runtime.InteropServices.UCOMITypeComp (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use System.Runtime.InteropServices.ComTypes.ITypeComp instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Runtime.InteropServices.TYPEKIND (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use System.Runtime.InteropServices.ComTypes.TYPEKIND instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Runtime.InteropServices.TYPEFLAGS (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use System.Runtime.InteropServices.ComTypes.TYPEFLAGS instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Runtime.InteropServices.IMPLTYPEFLAGS (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use System.Runtime.InteropServices.ComTypes.IMPLTYPEFLAGS instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Runtime.InteropServices.TYPEATTR (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use System.Runtime.InteropServices.ComTypes.TYPEATTR instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Runtime.InteropServices.FUNCDESC (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use System.Runtime.InteropServices.ComTypes.FUNCDESC instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Runtime.InteropServices.IDLFLAG (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use System.Runtime.InteropServices.ComTypes.IDLFLAG instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Runtime.InteropServices.IDLDESC (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use System.Runtime.InteropServices.ComTypes.IDLDESC instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Runtime.InteropServices.PARAMFLAG (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use System.Runtime.InteropServices.ComTypes.PARAMFLAG instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Runtime.InteropServices.PARAMDESC (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use System.Runtime.InteropServices.ComTypes.PARAMDESC instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Runtime.InteropServices.TYPEDESC (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use System.Runtime.InteropServices.ComTypes.TYPEDESC instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Runtime.InteropServices.ELEMDESC (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use System.Runtime.InteropServices.ComTypes.ELEMDESC instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Runtime.InteropServices.VARDESC (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use System.Runtime.InteropServices.ComTypes.VARDESC instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Runtime.InteropServices.DISPPARAMS (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use System.Runtime.InteropServices.ComTypes.DISPPARAMS instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Runtime.InteropServices.EXCEPINFO (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use System.Runtime.InteropServices.ComTypes.EXCEPINFO instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Runtime.InteropServices.FUNCKIND (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use System.Runtime.InteropServices.ComTypes.FUNCKIND instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Runtime.InteropServices.INVOKEKIND (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use System.Runtime.InteropServices.ComTypes.INVOKEKIND instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Runtime.InteropServices.CALLCONV (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use System.Runtime.InteropServices.ComTypes.CALLCONV instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Runtime.InteropServices.FUNCFLAGS (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use System.Runtime.InteropServices.ComTypes.FUNCFLAGS instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Runtime.InteropServices.VARFLAGS (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use System.Runtime.InteropServices.ComTypes.VARFLAGS instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Runtime.InteropServices.UCOMITypeInfo (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use System.Runtime.InteropServices.ComTypes.ITypeInfo instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Runtime.InteropServices.SYSKIND (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use System.Runtime.InteropServices.ComTypes.SYSKIND instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Runtime.InteropServices.LIBFLAGS (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use System.Runtime.InteropServices.ComTypes.LIBFLAGS instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Runtime.InteropServices.TYPELIBATTR (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use System.Runtime.InteropServices.ComTypes.TYPELIBATTR instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Runtime.InteropServices.UCOMITypeLib (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> Use System.Runtime.InteropServices.ComTypes.ITypeLib instead. </font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font face="Arial" color="#FFFFFF"><b>System.IO.FileStream </b></font></td></tr>
+<tr><td width="40%"><font face="Arial"><b>FileStream</b>(IntPtr handle,FileAccess access)</font></td>
+<td><font face="Arial"><b>Message:</b> Use the FileStream constructor family that takes a SafeFileHandle instead.</font></tr>
+<tr><td width="40%"><font face="Arial"><b>FileStream</b>(IntPtr handle,FileAccess access,Boolean ownsHandle)</font></td>
+<td><font face="Arial"><b>Message:</b> Use the FileStream constructor family that takes a SafeFileHandle instead.  Note SafeFileHandle will allow you to specify whether it owns this handle.</font></tr>
+<tr><td width="40%"><font face="Arial"><b>FileStream</b>(IntPtr handle,FileAccess access,Boolean ownsHandle,Int32 bufferSize)</font></td>
+<td><font face="Arial"><b>Message:</b> Use the FileStream constructor family that takes a SafeFileHandle instead.  Note SafeFileHandle will allow you to specify whether it owns this handle.</font></tr>
+<tr><td width="40%"><font face="Arial"><b>FileStream</b>(IntPtr handle,FileAccess access,Boolean ownsHandle,Int32 bufferSize,Boolean isAsync)</font></td>
+<td><font face="Arial"><b>Message:</b> Use the FileStream constructor family that takes a SafeFileHandle instead.  Note SafeFileHandle will allow you to specify whether it owns this handle.</font></tr>
+<tr><td width="40%"><font face="Arial"><b>Handle</b></font></td>
+<td><font face="Arial"><b>Message:</b> Please use FileStream's SafeFileHandle property instead.</font></tr>
+<tr><td colspan="2">&nbsp </td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font face="Arial" color="#FFFFFF"><b>System.IO.IsolatedStorage.IsolatedStorageFileStream </b></font></td></tr>
+<tr><td width="40%"><font face="Arial"><b>Handle</b></font></td>
+<td><font face="Arial"><b>Message:</b> Please use IsolatedStorageFileStream's SafeFileHandle property instead.</font></tr>
+<tr><td colspan="2">&nbsp </td></tr>
+<tr><td colspan="2" bgcolor="#B0B0B0"><font color="#FFFFFF" face="Arial"><b>System.Configuration.Assemblies.AssemblyHash (Type Obsoleted)</b></font></td></tr>
+<td colspan="2"><font face="Arial"><b>Message:</b> The AssemblyHash class is scheduled to be removed.</font></td></tr>
+<tr><td colspan="2">&nbsp</td></tr>
+</table></center><b></center></body></html>

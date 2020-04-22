@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tns="http://www.themindelectric.com/wsdl/net.xmethods.services.stockquote.StockQuote/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:electric="http://www.themindelectric.com/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/wsdl/" name="net.xmethods.services.stockquote.StockQuote" targetNamespace="http://www.themindelectric.com/wsdl/net.xmethods.services.stockquote.StockQuote/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types />
+  <wsdl:message name="getQuoteResponse1">
+    <wsdl:part name="Result" type="xsd:float" />
+  </wsdl:message>
+  <wsdl:message name="getQuoteRequest1">
+    <wsdl:part name="symbol" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:portType name="net.xmethods.services.stockquote.StockQuotePortType">
+    <wsdl:operation name="getQuote" parameterOrder="symbol">
+      <wsdl:input message="tns:getQuoteRequest1" />
+      <wsdl:output message="tns:getQuoteResponse1" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="net.xmethods.services.stockquote.StockQuoteBinding" type="tns:net.xmethods.services.stockquote.StockQuotePortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="getQuote">
+      <soap:operation soapAction="urn:xmethods-delayed-quotes#getQuote" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:xmethods-delayed-quotes" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:xmethods-delayed-quotes" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="net.xmethods.services.stockquote.StockQuoteService">
+    <documentation>net.xmethods.services.stockquote.StockQuote web service</documentation>
+    <wsdl:port name="net.xmethods.services.stockquote.StockQuotePort" binding="tns:net.xmethods.services.stockquote.StockQuoteBinding">
+      <soap:address location="http://64.124.140.30:9090/soap" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,51 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+using CodeWar;
+
+[AIMachine("Test Scripted AI")]
+public class SampleRobotBb: CodeWar.SpeedRobot
+{
+    
+    public override string RobotName
+    {
+        get
+        {
+            return "The ANNAHILATOR2";
+        }
+    }
+    
+    public override void VibrationSensor(int level)
+        {
+            if (level > 0)
+            {
+
+            }
+            else if (level > 1)
+            {
+
+            }
+            
+        }
+    
+        
+    public override void Tick(MachineContext context)
+    {
+        if(!this.IsRecharging){
+			if (this.CurrentEnergy < 10)
+			{
+				context.Recharge();           
+			}
+			else
+			{
+				context.StopRecharge();
+				context.Move();
+			}
+        }
+        else
+        {
+			context.Recharge();
+        }
+    }
+}
+

@@ -1,0 +1,80 @@
+{{handler TankOnline.dll/Default}}
+
+<script>
+function OkToShoot()
+{
+	{{if Passport_IsAuthenticated}}
+	if (confirm("Do you want to purchase a Tank license with this card?"))
+	{
+		TankClientControl.CanShoot = true;
+	}
+	{{else}}
+		alert("Please sign in with your Passport account first!");
+	{{endif}}
+}
+
+function OnDelete(deleteURL, deleteItemName, refreshURL, refreshBody)
+{		
+	var xmlHttp		= new ActiveXObject("Microsoft.XMLHTTP");
+	var url			= deleteURL;
+			
+	if (this.document.body.all[deleteItemName].length > 0)
+	{	
+		// get all the selected checkboxes and delete them
+		var allItems = new Enumerator(this.document.body.all[deleteItemName]);
+	
+		for (;!allItems.atEnd(); allItems.moveNext())
+		{			
+			var item = allItems.item();
+			if (item.checked == true)
+			{				
+				xmlHttp.Open("GET", url + "?id=" + item.value, false);
+				xmlHttp.Send("nothing");				
+			}
+		}
+	}
+	else
+	{
+		url += "?id=";
+		url += this.document.body.all[deleteItemName].value;
+		
+		xmlHttp.Open("GET", url, false);
+		xmlHttp.Send("nothing");							
+	}
+	
+	Refresh(refreshURL, refreshBody);
+}		
+
+function OnAdd(addURL, refreshURL, refreshBody)
+{	
+	showModalDialog(addURL);
+	
+	// refresh this page
+	Refresh(refreshURL, refreshBody);
+}
+
+function Refresh(refreshURL, refreshBody)
+{	
+	var xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");	
+	xmlHttp.Open("GET", refreshURL, false);
+	xmlHttp.Send("nothing");				
+	this.document.body.all[refreshBody].innerHTML = xmlHttp.responseText;
+}
+
+function SelectAll(cb, collection)
+{					
+	if (this.document.body.all[collection].length > 0)
+	{		
+		var allItems = new Enumerator(this.document.body.all[collection]);
+		for (;!allItems.atEnd(); allItems.moveNext())
+		{			
+			var contact = allItems.item();			
+			contact.checked = cb.checked;
+		}
+	}
+	else
+	{
+		this.document.body.all[collection].checked = cb.checked;
+	}
+}
+</script>	

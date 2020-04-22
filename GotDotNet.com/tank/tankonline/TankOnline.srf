@@ -1,0 +1,445 @@
+{{handler TankOnline.dll/Default}}
+{{subhandler MySettings TankOnline.dll/Settings}}
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>T A N K</title>
+		<link rel="stylesheet" href="Style.css">		
+		<script>
+		var IsAuthenticated = false;
+		var UpdateInterval;
+		
+		function ShowSettings()
+		{
+			// show the settings div just beside the icon						
+			var settingsBody = this.document.body.all["settingsBody"];
+			var top  = event.clientY;			
+			var left = event.clientX - 200;
+						
+			settingsBody.style.top     = top;
+			settingsBody.style.left    = left;
+			settingsBody.style.display = "";
+		}
+
+		function ChatWith(playerID)
+		{
+			alert("chat with: " + playerID);
+		}
+
+		function Toggle(bodyName)
+		{ 
+			var body = this.document.body.all[bodyName];
+			
+			if (body.style.display == "none")
+			{
+				body.style.display = "";
+			}
+			else
+			{
+				body.style.display = "none"
+			}		
+		}
+		
+		function Update()
+		{
+			var bool = TankClientControl.GameStarted;
+			if (bool == true)
+			{						
+				var gamestate = TankClientControl.GetGameState()
+				
+				var html = "<table height='100%' width='100%' cellpadding='0' cellspacing='0' border='0'><col width='2%'><col width='24%'><col width='22%'>";
+				var playerInfo = new Enumerator(gamestate.split(';'));						
+				
+				for (;!playerInfo.atEnd(); playerInfo.moveNext())
+				{				
+					var items = playerInfo.item().split(',');
+					var textClass = "regulartext";
+					
+					if (items[0] == "{{GetUserName}}")
+					{
+						textClass = "boldregulartext";					
+					}
+										
+					html += "<tr valign='top'><td align='left'>&nbsp;</td><td align='left'><span style='cursor:hand' class='";
+					html += textClass;
+					html += "' onclick=\"ChatWith('";
+					html += items[2];
+					html += "')\" >";						
+					html += items[0];					
+					html += "</span></td><td align='left'><span class='";
+					html += textClass;								
+					html += "' >";
+					html += items[1];
+					html += "pts</span></td></tr>";											
+				}
+				html += "</table>";
+				
+				scoreboard.innerHTML = html;				
+			}
+		}
+
+		function OkToShoot()
+		{	
+			if (IsAuthenticated)
+			{
+				if (confirm("Do you want to purchase a Tank license with this card?"))
+				{
+					TankClientControl.CanShoot = true;
+				}
+			}
+			else
+			{
+				alert("Please sign in with your Passport account first!");
+			}
+		}
+
+		function OnDelete(deleteURL, deleteID, refreshURL, refreshBody)
+		{		
+			var xmlHttp		= new ActiveXObject("Microsoft.XMLHTTP");
+			var url			= deleteURL + "?id=" + deleteID;
+					
+			xmlHttp.Open("GET", url, false);
+			xmlHttp.Send("nothing");				
+				
+			Refresh(refreshURL, refreshBody);
+		}		
+
+		function OnAdd(addURL, refreshURL, refreshBody)
+		{	
+			showModalDialog(addURL);
+			
+			// refresh this page
+			Refresh(refreshURL, refreshBody);
+		}
+
+		function Refresh(refreshURL, refreshBody)
+		{	
+			var xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");	
+			xmlHttp.Open("GET", refreshURL, false);
+			xmlHttp.Send("nothing");				
+			this.document.body.all[refreshBody].innerHTML = xmlHttp.responseText;
+		}
+
+		function SelectAll(cb, collection)
+		{					
+			if (this.document.body.all[collection].length > 0)
+			{		
+				var allItems = new Enumerator(this.document.body.all[collection]);
+				for (;!allItems.atEnd(); allItems.moveNext())
+				{			
+					var contact = allItems.item();			
+					contact.checked = cb.checked;
+				}
+			}
+			else
+			{
+				this.document.body.all[collection].checked = cb.checked;
+			}
+		}
+	</script>	
+
+	<script for=document event=onstop>		
+		window.clearInterval(UpdateInterval);
+	</script>
+
+	</head>	
+<body id="body" bgcolor="ececd4" topmargin="0" leftmargin="0" rightmargin="0" bottommargin="0">
+  <table height="100%" width="100%" cellpadding="0" cellspacing="0" border="0">
+    <col width="395"><col>
+	<tr height="100%" valign="top">
+	  <td width="395" align="left">
+		<table height="100%" width="100%" cellpadding="0" cellspacing="0" border="0">
+		<col width="7">
+		<col width="388">
+		  <tr valign="top" height="100">
+			<td width="395" colspan="2"><img src="Tank.gif" height="100" width="395" alt=""></td>
+		  </tr>
+		  <tr valign="top">
+			<td width="7" align="left">
+			<td width="388" align="center">
+			  <table height="100%" width="367" cellpadding="0" cellspacing="0" border="0">
+			    <tr valign="top" height="100%">
+			      <td width="367" align="center">
+			        <table height="100%" width="100%" cellpadding="0" cellspacing="0" border="0">
+			          <colgroup>
+						<col width="4">
+						<col>
+						<col width="4">
+					  </colgroup>
+			          <tr valign="middle" height="11">
+			            <td colspan="3" align="center" width="367" style="background:url(TankGameTop.gif);"><span class="smalltext">&nbsp;</span></td>
+			          </tr>
+			          <tr valign="top" height="1">
+			            <td colspan="3" align="center" width="367" bgcolor="#ececd4"></td>
+			          </tr>
+			          <tr valign="top" height="4">
+			            <td colspan="3" align="center" width="367" bgcolor="#cccc98"></td>
+			          </tr>
+			          <tr valign="top">
+			            <td align="left" width="4" bgcolor="#cccc98"></td>
+			            <td align="center" width="359">
+							<div valign="middle" style="width:100%; height:100%; border:solid 1px #ffffff; background-color:#ececd4;" id="GameGoesHere">
+							{{if Passport_IsAuthenticated}}
+								<OBJECT NAME="TankClientControl" 
+										ID="TankClientControl" 
+										CLASSID="CLSID:858A114C-5BAD-4DFD-9748-97830E14CDEC" 
+										WIDTH="100%" 
+										HEIGHT="100%">
+								</OBJECT>																					
+								<script>						
+									TankClientControl.UserName 		  = "{{GetUserName}}";
+									TankClientControl.TankServiceURL  = "{{MySettings.GetTankService}}";						
+									TankClientControl.MoveRight		  = "{{MySettings.GetMoveRight}}";
+									TankClientControl.MoveLeft		  = "{{MySettings.GetMoveLeft}}";
+									TankClientControl.MoveForward	  = "{{MySettings.GetMoveForward}}";
+									TankClientControl.Shoot			  = "{{MySettings.GetShoot}}";
+									TankClientControl.Start();								
+									
+									IsAuthenticated = true;
+									UpdateInterval = window.setInterval(Update, 500);
+								</script>
+							{{else}}
+									<center>
+									Please sign-in with your Passport account to start playing Tank!
+									</center>
+							{{endif}}						  
+							</div>													
+						</td>
+			            <td align="right" width="4" bgcolor="#cccc98"></td>
+			          </tr>
+			          <tr valign="top" height="4">
+			            <td colspan="3" align="center" width="367" bgcolor="#cccc98"></td>
+			          </tr>
+			        </table>
+			      </td>
+			    </tr>
+			    <tr valign="top">
+			      <td width="360" align="center">&nbsp;</td>
+			    </tr>
+			  </table>
+			</td>
+		  </tr>
+		</table>
+	  </td>
+	  <td align="left">
+		<table height="100%" width="100%" cellpadding="0" cellspacing="0" border="0">
+		  <colgroup>
+		    <col width="7">
+		    <col width="350">
+		    <col width="17">
+		  </colgroup>
+		  <tr valign="top" height="34">
+			<td width="374" colspan="3" style="background:url(TankRight.gif);">
+			  <table height="100%" width="100%" cellpadding="0" cellspacing="0" border="0">
+				<tr valign="middle">				  
+				  <td align="right">&nbsp;</td>				  				  
+				  <td align="right" width="17"><img onclick="ShowSettings()" style="cursor:hand" id="viewMenuImage" src="Settings.gif" height="18" width="17" alt="Settings" border="0"></td>
+				  <td align="right" width="7">&nbsp;</td>				  				  
+				  <td align="right" width="66">{{Passport_LogoTag}}</a></td>
+				  <td align="right" width="8">&nbsp;</td>
+				</tr>
+				<tr valign="bottom" height="4">
+				  <td align="right"></td>
+				</tr>
+			  </table>
+			</td>
+		  </tr>
+		  <tr valign="top" height="100%">
+			<td width="7">&nbsp;</td>
+			<td width="350">
+			  <table height="100%" width="100%" cellpadding="0" cellspacing="0" border="0">
+			    <col>
+			    <col width="17">
+			    <col>
+			    <tr valign="top" height="6">
+				  <td align="left" colspan="3"></td>
+				</tr>
+				<tr valign="bottom">
+				  <td align="left" colspan="3"><span class="title">SCOREBOARD</span></td>
+				</tr>
+			    <tr valign="top" height="2">
+				  <td align="left" colspan="3" bgcolor="cccc98"></td>
+				</tr>
+			    <tr valign="top" height="4">
+				  <td align="left" colspan="3"></td>
+				</tr>
+				<tr valign="top">
+				  <td align="left" colspan="3" id="scoreboard">
+				    <div id="MyHighScores" style="height:45px;" id="scoreboard">				    
+					</div>
+				  </td>
+				</tr>
+			    <tr valign="top" height="6">
+				  <td align="left" colspan="3"></td>
+				</tr>
+				
+				<tr valign="bottom">
+				  <td align="left"><span class="title" title="Built using Microsoft .NET MyContacts!">CONTACTS</span><a href="addcontact.srf" target="_blank"><img src="Add.gif" border="0" alt="Add" hspace="20"></a></span></td>
+				  <td align="left" width="17"><span class="title">&nbsp;</span></td>
+				  <td align="left"><span class="title" title="Built using Microsoft .NET MyWallet!">BUY A LICENSE</span><a href="addcard.srf" target="_blank"><img src="Add.gif" border="0" alt="Add" hspace="20"></a></span></td>
+				</tr>
+							
+			    <tr valign="top" height="2">
+				  <td align="left" bgcolor="cccc98"></td>
+				  <td align="left" width="17"></td>
+				  <td align="left" bgcolor="cccc98"></td>
+				</tr>
+			    <tr valign="top" height="4">
+				  <td align="left" colspan="3"></td>
+				</tr>
+				<tr valign="top">
+				  <td align="left" colspan="3" height=100%>				    
+				    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+					  <col width="2%">  					  
+					  <tr valign="top">
+						<td align="left">&nbsp;</td>												
+						<td id="contactsBody">
+						{{include contacts.srf}}				
+						</td>					
+						<td align="left" width="13"><span class="title">&nbsp;</span></td>
+						
+						<td id="walletBody">
+							{{include wallet.srf}}
+						</td>
+					  </tr>
+					  
+					  <tr valign="top" height="6">
+						<td align="left" colspan="3"></td>
+					  </tr>					  
+					</table>					
+				  </td>
+				</tr>
+			    <tr valign="top" height="100%">
+				  <td align="left" colspan="3"></td>
+				</tr>
+			  </table>
+			</td>
+			<td width="17">&nbsp;</td>
+		  </tr>
+		  <tr valign="top" height="17">
+			<td width="374" colspan="3">&nbsp;</td>
+		  </tr>
+		  <tr valign="top" height="76">
+			<td width="7">&nbsp;</td>
+			<td width="350">
+			  <table height="100%" width="100%" cellpadding="0" cellspacing="0" border="0">
+			    <colgroup>
+				  <col width="4">
+				  <col>
+				  <col width="4">
+				</colgroup>
+			    <tr valign="middle" height="11">
+			      <td colspan="3" align="center" width="350" style="background:url(TankGameTop3.gif);"><span class="smalltext">&nbsp;</span></td>
+			    </tr>
+			    <tr valign="top" height="1">
+			      <td colspan="3" align="center" width="350" bgcolor="#ececd4"></td>
+			    </tr>
+			    <tr valign="top" height="4">
+			      <td colspan="3" align="center" width="350" bgcolor="#cccc98"></td>
+			    </tr>
+			    <tr valign="top">
+			      <td align="left" width="4" bgcolor="#cccc98"></td>
+			      <td align="center" width="342">
+					<div style="width:100%; height:25%; border:solid 1px #ffffff; background-color:#ececd4; overflow:hidden; padding-left:2px; padding-right:2px;" id="MessageInput"></div>
+					<div style="width:100%; height:5%; background-color:#cccc98; overflow:hidden;"></div>
+				  	<div style="width:100%; height:70%; border:solid 1px #ffffff; background-color:#ececd4; padding-left:2px; padding-right:2px;" id="Div1"></div>
+				  </td>
+			      <td align="right" width="4" bgcolor="#cccc98"></td>
+			    </tr>
+			    <tr valign="top" height="4">
+			      <td colspan="3" align="center" width="350" bgcolor="#cccc98"></td>
+			    </tr>
+			  </table>
+			</td>
+			<td width="17">&nbsp;</td>
+		  </tr>
+		  <tr valign="top" height="17">
+			<td width="374" colspan="3">&nbsp;</td>
+		  </tr>
+		  <tr valign="top" height="166">
+			<td width="7">&nbsp;</td>
+			<td width="350">
+			  <table height="100%" width="100%" cellpadding="0" cellspacing="0" border="0">
+			  <colgroup>
+			    <col width="166">
+			    <col>
+			    <col width="166">
+			  </colgroup>
+			    <tr valign="top">
+			      <td align="left" width="166">
+			        <table height="100%" width="100%" cellpadding="0" cellspacing="0" border="0">
+			          <colgroup>
+						<col width="4">
+						<col>
+						<col width="4">
+					  </colgroup>
+			          <tr valign="middle" height="11">
+			            <td colspan="3" align="center" width="166" style="background:url(TankGameTop2.gif);"><span class="smalltext">&nbsp;</span></td>
+			          </tr>
+			          <tr valign="top" height="1">
+			            <td colspan="3" align="center" width="166" bgcolor="#ececd4"></td>
+			          </tr>
+			          <tr valign="top" height="4">
+			            <td colspan="3" align="center" width="166" bgcolor="#cccc98"></td>
+			          </tr>
+			          <tr valign="top">
+			            <td align="left" width="4" bgcolor="#cccc98"></td>
+			            <td align="center" width="158">
+						  <div style="width:100%; height:100%; border:solid 1px #ffffff; background-color:#ececd4;" id="RedPlayerImage""></div>
+						  <div style="width:10; height:10; position:relative; top:-146px;right:-74px; z-index:2;"><a href="javascript:alert('Red Player');"><img src="Red.gif" height="10" width="10" alt="Red Player" border="0"></a></div>
+						</td>
+			            <td align="right" width="4" bgcolor="#cccc98"></td>
+			          </tr>
+			          <tr valign="top" height="4">
+			            <td colspan="3" align="center" width="166" bgcolor="#cccc98"></td>
+			          </tr>
+			        </table>
+			      </td>
+			      <td>&nbsp;</td>
+			      <td align="right" width="166">
+			        <table height="100%" width="100%" cellpadding="0" cellspacing="0" border="0">
+			          <colgroup>
+						<col width="4">
+						<col>
+						<col width="4">
+					  </colgroup>
+			          <tr valign="middle" height="11">
+			            <td colspan="3" align="center" width="166" style="background:url(TankGameTop2.gif);"><span class="smalltext">&nbsp;</span></td>
+			          </tr>
+			          <tr valign="top" height="1">
+			            <td colspan="3" align="center" width="166" bgcolor="#ececd4"></td>
+			          </tr>
+			          <tr valign="top" height="4">
+			            <td colspan="3" align="center" width="166" bgcolor="#cccc98"></td>
+			          </tr>
+			          <tr valign="top">
+			            <td align="left" width="4" bgcolor="#cccc98"></td>
+			            <td align="center" width="158">
+						  <div style="width:100%; height:100%; border:solid 1px #ffffff; background-color:#ececd4;" id="BluePlayerImage"></div>
+						  <div style="width:10; height:10; position:relative; top:-146px;right:-74px; z-index:2;"><a href="javascript:alert('Blue Player');"><img src="Blue.gif" height="10" width="10" alt="Blue Player" border="0"></a></div>
+						</td>
+			            <td align="right" width="4" bgcolor="#cccc98"></td>
+			          </tr>
+			          <tr valign="top" height="4">
+			            <td colspan="3" align="center" width="166" bgcolor="#cccc98"></td>
+			          </tr>
+			        </table>
+			      </td>
+			    </tr>
+			  </table>
+			</td>
+			<td width="17">&nbsp;</td>
+		  </tr>
+		  <tr valign="top">
+			<td width="374" colspan="3">&nbsp;</td>
+		  </tr>
+		</table>
+	  </td>
+	</tr>
+  </table>  
+  <div id="settingsBody" style="border:solid 1px #585819; background-color:#ececd4; overflow:hidden; width:220px;height:145px;position:absolute;display:hidden">
+	{{include settings.srf}}
+  </div>
+</body>
+</html>

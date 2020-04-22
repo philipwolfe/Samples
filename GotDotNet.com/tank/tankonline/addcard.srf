@@ -1,0 +1,58 @@
+{{handler TankOnline.dll/AddCard}}
+<html>
+	<title>ADD CARD</title>
+	<link rel="stylesheet" href="Style.css">		
+<body>
+<form method="post">
+<script>
+function OnSubmit()
+{
+	var cardTypeValue	 = "cardType="	  + this.document.body.all["cardType"].value;	
+	var cardNumberValue	 = "cardNumber="  + this.document.body.all["cardNumber"].value;
+	var descriptionValue = "description=" + this.document.body.all["description"].value;
+	
+	var xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");	
+	
+	var url = "addcard.srf?submit=yes&" + cardTypeValue + "&" + cardNumberValue + "&" + descriptionValue;
+	
+	xmlHttp.Open("GET", url, false);
+	xmlHttp.Send("nothing");	
+	
+	window.close();			
+}
+</script>
+
+<STYLE>
+	body
+	{
+		font-family:tahoma;
+		background-color:Cornsilk;			
+	}
+</STYLE>	
+
+<table border=0> 	
+	<tr>
+		<td>Card Type:</td>
+		<td>
+		<select id="cardType" name="cardType">
+			<option value="Visa">Visa</option>
+			<option value="MasterCard">MasterCard</option>
+			<option value="American Express">American Express</option>
+			<option value="Discover">Discover</option>
+			<option value="Diners Club">Diners Club</option>
+		</select>
+		</td>
+	</tr>
+		<td>Card Number:</td>
+		<td><input id="cardNumber" name="cardNumber"></td>
+	</tr>
+		
+	<tr>
+		<td>Description</td>		
+		<td><input id="description" name="description"></td>
+	</tr>	
+</table>
+<br><input type="button" name="submit" value="Add Card" onclick="OnSubmit()">
+</form>	
+</body>
+</html>
