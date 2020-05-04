@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="BiztalkWscfDemoSrvcMsgs" targetNamespace="http://BizTalkWscfDemoService/BiztalkWscfDemoSrvcMsgs.xsd"
+	elementFormDefault="qualified" xmlns="http://BizTalkWscfDemoService/BiztalkWscfDemoSrvcMsgs.xsd"
+	xmlns:mstns="http://BizTalkWscfDemoService/BiztalkWscfDemoSrvcMsgs.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:person="http://BizTalkWscfDemoService/Person.xsd" xmlns:company="http://BizTalkWscfDemoService/Company.xsd">
+	<xs:import namespace="http://BizTalkWscfDemoService/Person.xsd" id="person" schemaLocation="../Schemas/Person.xsd" />
+	<xs:import namespace="http://BizTalkWscfDemoService/Company.xsd" id="company" schemaLocation="../Schemas/Company.xsd" />
+	<xs:element name="getCompanyForPerson">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="xs:int" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="getCompanyForPersonResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="company" type="company:company" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

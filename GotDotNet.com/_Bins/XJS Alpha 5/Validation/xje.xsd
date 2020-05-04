@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="XJE" type="XJEType"/>
+	<xs:complexType name="XJEType">
+		<xs:sequence>
+			<xs:element name="DateTime" type="xs:string" />
+			<xs:element name="Subject" type="xs:string" />
+			<xs:element name="Category" type="xs:string" />
+			<xs:element name="Image" type="ImageType" />
+			<xs:element name="Body" type="xs:string" minOccurs="0" />
+			<xs:element name="Attachments" type="AttachmentsType" />
+		</xs:sequence>
+		<xs:attribute name="Value" type="xs:string" use="required" />
+		<xs:attribute name="Protected" type="xs:string" use="required" />
+	</xs:complexType>
+	<xs:complexType name="AttachmentsType">
+		<xs:sequence>
+			<xs:element name="Attachment" type="AttachmentType" />
+		</xs:sequence>
+		<xs:attribute name="Value" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:pattern value="Yes|No"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="AttachmentType">
+		<xs:attribute name="Dir" type="xs:string" use="required" />
+	</xs:complexType>
+	<xs:complexType name="ImageType">
+		<xs:attribute name="Loc" type="xs:string" />
+		<xs:attribute name="Encoding" type="xs:string" />
+		<xs:attribute name="Bytes" type="xs:positiveInteger" />
+		<xs:attribute name="Height" type="xs:positiveInteger" />
+		<xs:attribute name="Width" type="xs:positiveInteger" />
+		<xs:attribute name="Type" type="xs:string" />
+		<xs:attribute name="Exists" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:pattern value="Yes|No"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+</xs:schema>

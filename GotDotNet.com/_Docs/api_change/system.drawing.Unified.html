@@ -1,0 +1,1352 @@
+<font face="Arial" size="1">
+
+<html>
+<head>
+<title>Changes in system.drawing from EVERTM (Version 1.1.4322.573)<br> to WHI40607.03 (Version 2.0.40607.3)</title>
+
+<style type="text/css">
+dt      { font-weight: Bold; }
+.big    { font-size: 150%; font-weight: Bold; }
+.small  { font-size:  75%; font-weight: Normal; }
+.endNav { font-size:  75%; font-weight: Normal; margin: 20; }
+</style>
+
+</head>
+
+<body>
+<a name="top" id="top"></a>
+<h2><center>Changes in system.drawing from EVERTM (Version 1.1.4322.573)<br> to WHI40607.03 (Version 2.0.40607.3)</center></h2>
+
+
+<table width="90%" align="center" border="1" cellspacing="0" bordercolor="A0000" style=background-color: #F0F0F0; border-style: solid;>
+<thead>
+ <tr>
+  <th width="50%" align="left">Removed</td>
+  <th width="50%" align="left">Added</td>
+ </tr>
+</thead>
+<tbody>
+
+ <tr>
+  <a name="System.Drawing Bitmap"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public sealed class <b><span title="Base Type: System.Drawing.Image; Interfaces: System.Runtime.Serialization.ISerializable, System.ICloneable, System.IDisposable">System.Drawing.Bitmap</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method: public <span title="System.Drawing.Imaging">BitmapData</span> <b>LockBits</b> (<span title="System.Drawing">Rectangle</span> <i>rect</i>, <span title="System.Drawing.Imaging">ImageLockMode</span> <i>flags</i>, <span title="System.Drawing.Imaging">PixelFormat</span> <i>format</i>, <span title="System.Drawing.Imaging">BitmapData</span> <i>bitmapData</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Property: <span title="System">object</span> <b>Tag</b> { public get; public set; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Drawing Brush"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public abstract class <b><span title="Base Type: System.MarshalByRefObject; Interfaces: System.ICloneable, System.IDisposable">System.Drawing.Brush</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Constructor: protected <b>Brush</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method: ProtectedInternal <span title="System">void</span> <b>SetNativeBrush</b> (<span title="System">IntPtr</span> <i>brush</i>)</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Drawing BufferedGraphics"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>System.Drawing BufferedGraphics</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed class <b><span title="Base Type: System.Object; Interfaces: System.IDisposable">System.Drawing.BufferedGraphics</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>Dispose</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">bool</span> <b>Equals</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected virtual <span title="System">void</span> <b>Finalize</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">int</span> <b>GetHashCode</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method: public <span title="System">void</span> <b>Render</b> ()</font></li>
+    <li><font color="black">Method: public <span title="System">void</span> <b>Render</b> (<span title="System">IntPtr</span> <i>targetDC</i>)</font></li>
+    <li><font color="black">Method: public <span title="System">void</span> <b>Render</b> (<span title="System.Drawing">Graphics</span> <i>target</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">string</span> <b>ToString</b> ()</font></li>
+    <li><font color="black">Property: <span title="System.Drawing">Graphics</span> <b>Graphics</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Drawing BufferedGraphicsContext"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>System.Drawing BufferedGraphicsContext</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed class <b><span title="Base Type: System.Object; Interfaces: System.IDisposable">System.Drawing.BufferedGraphicsContext</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Constructor: public <b>BufferedGraphicsContext</b> ()</font></li>
+    <li><font color="black">Method: public <span title="System.Drawing">BufferedGraphics</span> <b>Allocate</b> (<span title="System">IntPtr</span> <i>targetDC</i>, <span title="System.Drawing">Rectangle</span> <i>targetRectangle</i>)</font></li>
+    <li><font color="black">Method: public <span title="System.Drawing">BufferedGraphics</span> <b>Allocate</b> (<span title="System.Drawing">Graphics</span> <i>targetGraphics</i>, <span title="System.Drawing">Rectangle</span> <i>targetRectangle</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>Dispose</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">bool</span> <b>Equals</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method: protected override <span title="System">void</span> <b>Finalize</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">int</span> <b>GetHashCode</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Method: public <span title="System">void</span> <b>Invalidate</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">string</span> <b>ToString</b> ()</font></li>
+    <li><font color="black">Property: <span title="System.Drawing">Size</span> <b>MaximumBuffer</b> { public get; public set; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Drawing BufferedGraphicsManager"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>System.Drawing BufferedGraphicsManager</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed class <b><span title="Base Type: System.Object">System.Drawing.BufferedGraphicsManager</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">bool</span> <b>Equals</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected virtual <span title="System">void</span> <b>Finalize</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">int</span> <b>GetHashCode</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">string</span> <b>ToString</b> ()</font></li>
+    <li><font color="black">Property: static <span title="System.Drawing">BufferedGraphicsContext</span> <b>Current</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Drawing.Drawing2D AdjustableArrowCap"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public sealed class <b><span title="Base Type: System.Drawing.Drawing2D.CustomLineCap; Interfaces: System.ICloneable, System.IDisposable">System.Drawing.Drawing2D.AdjustableArrowCap</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Drawing CharacterRange"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public sealed struct <b><span title="Base Type: System.ValueType">System.Drawing.CharacterRange</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.ValueType">(i)</i></font>: public virtual <span title="System">bool</span> <b>Equals</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.ValueType">(i)</i></font>: public virtual <span title="System">int</span> <b>GetHashCode</b> ()</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method: public override <span title="System">bool</span> <b>Equals</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method: public override <span title="System">int</span> <b>GetHashCode</b> ()</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name=" CopyPixelOperation"><td colspan="2" align="center" style="font:100%;"><b><font color='black'> CopyPixelOperation</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed enum <b><span title="Base Type: System.Enum; Interfaces: System.IComparable, System.IFormattable, System.IConvertible">System.Drawing.CopyPixelOperation</span>
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspBlackness = 66,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspNotSourceErase = 1114278,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspNotSourceCopy = 3342344,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSourceErase = 4457256,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDestinationInvert = 5570569,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspPatInvert = 5898313,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSourceInvert = 6684742,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSourceAnd = 8913094,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMergePaint = 12255782,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMergeCopy = 12583114,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSourceCopy = 13369376,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSourcePaint = 15597702,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspPatCopy = 15728673,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspPatPaint = 16452105,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspWhiteness = 16711778,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCaptureBlt = 1073741824,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspNoMirrorBitmap = -2147483648,
+<br></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">--> NONE <--
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Drawing.Drawing2D CustomLineCap"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public class <b><span title="Base Type: System.MarshalByRefObject; Interfaces: System.ICloneable, System.IDisposable">System.Drawing.Drawing2D.CustomLineCap</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Drawing Font"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public sealed class <b><span title="Base Type: System.MarshalByRefObject; Interfaces: System.ICloneable, System.Runtime.Serialization.ISerializable, System.IDisposable">System.Drawing.Font</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Drawing FontConverter"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public class <b><span title="Base Type: System.ComponentModel.TypeConverter">System.Drawing.FontConverter</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected virtual <span title="System">void</span> <b>Finalize</b> ()</font></li>
+    <li><font color="B0000">Nested Type: public sealed class <b><span title="Base Type: System.ComponentModel.TypeConverter">FontNameConverter</span></b><br></font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method: protected override <span title="System">void</span> <b>Finalize</b> ()</font></li>
+    <li><font color="B0000">Nested Type: public sealed class <b><span title="Base Type: System.ComponentModel.TypeConverter; Interfaces: System.IDisposable">FontNameConverter</span></b><br></font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Drawing FontFamily"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public sealed class <b><span title="Base Type: System.MarshalByRefObject; Interfaces: System.IDisposable">System.Drawing.FontFamily</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Drawing Graphics"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>System.Drawing Graphics</font> () </b></td>
+ </tr>
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left"><font color='black'>public sealed class <b><span title="Base Type: System.MarshalByRefObject; Interfaces: System.IDisposable">System.Drawing.Graphics</span></b></font>
+  <br><font color=blue size=2>(Please hover your mouse over the type to see the inheritance signatures)</font></td>
+  <td width="50%" align="left"><font color='black'>public sealed class <b><span title="Base Type: System.MarshalByRefObject; Interfaces: System.Drawing.IDeviceContext; System.IDisposable">System.Drawing.Graphics</span></b></font>
+  <br><font color=blue size=2>(Please hover your mouse over the type to see the inheritance signatures)</font></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method: public <span title="System">IntPtr</span> <b>GetHdc</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method: public <span title="System">void</span> <b>CopyFromScreen</b> (<span title="System">int</span> <i>xSource</i>, <span title="System">int</span> <i>ySource</i>, <span title="System">int</span> <i>xDest</i>, <span title="System">int</span> <i>yDest</i>, <span title="System.Drawing">Size</span> <i>blockRegionSize</i>)</font></li>
+    <li><font color="black">Method: public <span title="System">void</span> <b>CopyFromScreen</b> (<span title="System">int</span> <i>xSource</i>, <span title="System">int</span> <i>ySource</i>, <span title="System">int</span> <i>xDest</i>, <span title="System">int</span> <i>yDest</i>, <span title="System.Drawing">Size</span> <i>blockRegionSize</i>, <span title="System.Drawing">CopyPixelOperation</span> <i>copyPixelOperation</i>)</font></li>
+    <li><font color="black">Method: public <span title="System">void</span> <b>CopyFromScreen</b> (<span title="System.Drawing">Point</span> <i>upperLeftSource</i>, <span title="System.Drawing">Point</span> <i>upperLeftDest</i>, <span title="System.Drawing">Size</span> <i>blockRegionSize</i>)</font></li>
+    <li><font color="black">Method: public <span title="System">void</span> <b>CopyFromScreen</b> (<span title="System.Drawing">Point</span> <i>upperLeftSource</i>, <span title="System.Drawing">Point</span> <i>upperLeftDest</i>, <span title="System.Drawing">Size</span> <i>blockRegionSize</i>, <span title="System.Drawing">CopyPixelOperation</span> <i>copyPixelOperation</i>)</font></li>
+    <li><font color="black">Method: public <span title="System">void</span> <b>DrawImageUnscaledAndClipped</b> (<span title="System.Drawing">Image</span> <i>image</i>, <span title="System.Drawing">Rectangle</span> <i>rect</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">IntPtr</span> <b>GetHdc</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>ReleaseHdc</b> ()</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Drawing Icon"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public sealed class <b><span title="Base Type: System.MarshalByRefObject; Interfaces: System.Runtime.Serialization.ISerializable, System.ICloneable, System.IDisposable">System.Drawing.Icon</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method: public static <span title="System.Drawing">Icon</span> <b>ExtractAssociatedIcon</b> (<span title="System">string</span> <i>filePath</i>)</font></li>
+    <li><font color="black">Method: public static <span title="System.Drawing">Icon</span> <b>ExtractAssociatedIcon</b> (<span title="System">string</span> <i>filePath</i>, <span title="System">int</span> <i>index</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Drawing IDeviceContext"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>System.Drawing IDeviceContext</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public interface <b><span title="Base Type: none; Interfaces: System.IDisposable">System.Drawing.IDeviceContext</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method: <span title="System">IntPtr</span> <b>GetHdc</b> ()</font></li>
+    <li><font color="black">Method: <span title="System">void</span> <b>ReleaseHdc</b> ()</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Drawing Image"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public abstract class <b><span title="Base Type: System.MarshalByRefObject; Interfaces: System.Runtime.Serialization.ISerializable, System.ICloneable, System.IDisposable">System.Drawing.Image</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method: public static <span title="System.Drawing">Image</span> <b>FromStream</b> (<span title="System.IO">Stream</span> <i>stream</i>, <span title="System">bool</span> <i>useEmbeddedColorManagement</i>, <span title="System">bool</span> <i>validateImageData</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Property: <span title="System">object</span> <b>Tag</b> { public get; public set; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Drawing.Design IToolboxItemProvider"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>System.Drawing.Design IToolboxItemProvider</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public interface <b><span title="Base Type: none">System.Drawing.Design.IToolboxItemProvider</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Property: <span title="System.Drawing.Design">ToolboxItemCollection</span> <b>Items</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Drawing.Drawing2D GraphicsContainer"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public sealed class <b><span title="Base Type: System.MarshalByRefObject">System.Drawing.Drawing2D.GraphicsContainer</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Drawing.Drawing2D GraphicsPath"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public sealed class <b><span title="Base Type: System.MarshalByRefObject; Interfaces: System.ICloneable, System.IDisposable">System.Drawing.Drawing2D.GraphicsPath</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Drawing.Drawing2D GraphicsPathIterator"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public sealed class <b><span title="Base Type: System.MarshalByRefObject; Interfaces: System.IDisposable">System.Drawing.Drawing2D.GraphicsPathIterator</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Drawing.Drawing2D GraphicsState"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public sealed class <b><span title="Base Type: System.MarshalByRefObject">System.Drawing.Drawing2D.GraphicsState</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Drawing.Drawing2D HatchBrush"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public sealed class <b><span title="Base Type: System.Drawing.Brush; Interfaces: System.ICloneable, System.IDisposable">System.Drawing.Drawing2D.HatchBrush</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Drawing.Brush">(i)</i></font>: ProtectedInternal <span title="System">void</span> <b>SetNativeBrush</b> (<span title="System">IntPtr</span> <i>brush</i>)</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Drawing.Printing InvalidPrinterException"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>System.Drawing.Printing InvalidPrinterException</font> () </b></td>
+ </tr>
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left"><font color='black'>public class <b><span title="Base Type: System.SystemException; Interfaces: System.Runtime.Serialization.ISerializable">System.Drawing.Printing.InvalidPrinterException</span></b></font>
+  <br><font color=blue size=2>(Please hover your mouse over the type to see the inheritance signatures)</font></td>
+  <td width="50%" align="left"><font color='black'>public class <b><span title="Base Type: System.SystemException; Interfaces: System.Runtime.Serialization.ISerializable, System.Runtime.InteropServices._Exception">System.Drawing.Printing.InvalidPrinterException</span></b></font>
+  <br><font color=blue size=2>(Please hover your mouse over the type to see the inheritance signatures)</font></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Property: <span title="System">Exception</span> <b>InnerException</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System.Reflection">MethodBase</span> <b>TargetSite</b> { public get; }</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Exception">(i)</i></font>: public virtual <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Property: virtual <span title="System.Collections">IDictionary</span> <b>Data</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">Exception</span> <b>InnerException</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System.Reflection">MethodBase</span> <b>TargetSite</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name=" KnownColor"><td colspan="2" align="center" style="font:100%;"><b><font color='black'> KnownColor</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left"><font color='black'>public sealed enum <b><span title="Base Type: System.Enum; Interfaces: System.IComparable, System.IFormattable, System.IConvertible">System.Drawing.KnownColor</span>
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspActiveBorder = 1,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspActiveCaption = 2,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspActiveCaptionText = 3,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspAppWorkspace = 4,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspControl = 5,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspControlDark = 6,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspControlDarkDark = 7,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspControlLight = 8,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspControlLightLight = 9,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspControlText = 10,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDesktop = 11,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspGrayText = 12,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspHighlight = 13,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspHighlightText = 14,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspHotTrack = 15,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspInactiveBorder = 16,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspInactiveCaption = 17,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspInactiveCaptionText = 18,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspInfo = 19,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspInfoText = 20,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMenu = 21,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMenuText = 22,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspScrollBar = 23,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspWindow = 24,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspWindowFrame = 25,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspWindowText = 26,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTransparent = 27,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspAliceBlue = 28,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspAntiqueWhite = 29,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspAqua = 30,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspAquamarine = 31,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspAzure = 32,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspBeige = 33,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspBisque = 34,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspBlack = 35,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspBlanchedAlmond = 36,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspBlue = 37,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspBlueViolet = 38,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspBrown = 39,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspBurlyWood = 40,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCadetBlue = 41,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspChartreuse = 42,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspChocolate = 43,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCoral = 44,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCornflowerBlue = 45,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCornsilk = 46,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCrimson = 47,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCyan = 48,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDarkBlue = 49,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDarkCyan = 50,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDarkGoldenrod = 51,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDarkGray = 52,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDarkGreen = 53,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDarkKhaki = 54,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDarkMagenta = 55,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDarkOliveGreen = 56,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDarkOrange = 57,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDarkOrchid = 58,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDarkRed = 59,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDarkSalmon = 60,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDarkSeaGreen = 61,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDarkSlateBlue = 62,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDarkSlateGray = 63,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDarkTurquoise = 64,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDarkViolet = 65,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDeepPink = 66,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDeepSkyBlue = 67,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDimGray = 68,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDodgerBlue = 69,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspFirebrick = 70,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspFloralWhite = 71,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspForestGreen = 72,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspFuchsia = 73,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspGainsboro = 74,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspGhostWhite = 75,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspGold = 76,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspGoldenrod = 77,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspGray = 78,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspGreen = 79,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspGreenYellow = 80,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspHoneydew = 81,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspHotPink = 82,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIndianRed = 83,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIndigo = 84,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIvory = 85,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspKhaki = 86,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLavender = 87,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLavenderBlush = 88,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLawnGreen = 89,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLemonChiffon = 90,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLightBlue = 91,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLightCoral = 92,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLightCyan = 93,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLightGoldenrodYellow = 94,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLightGray = 95,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLightGreen = 96,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLightPink = 97,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLightSalmon = 98,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLightSeaGreen = 99,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLightSkyBlue = 100,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLightSlateGray = 101,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLightSteelBlue = 102,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLightYellow = 103,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLime = 104,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLimeGreen = 105,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLinen = 106,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMagenta = 107,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMaroon = 108,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMediumAquamarine = 109,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMediumBlue = 110,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMediumOrchid = 111,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMediumPurple = 112,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMediumSeaGreen = 113,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMediumSlateBlue = 114,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMediumSpringGreen = 115,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMediumTurquoise = 116,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMediumVioletRed = 117,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMidnightBlue = 118,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMintCream = 119,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMistyRose = 120,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMoccasin = 121,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspNavajoWhite = 122,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspNavy = 123,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspOldLace = 124,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspOlive = 125,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspOliveDrab = 126,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspOrange = 127,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspOrangeRed = 128,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspOrchid = 129,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspPaleGoldenrod = 130,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspPaleGreen = 131,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspPaleTurquoise = 132,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspPaleVioletRed = 133,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspPapayaWhip = 134,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspPeachPuff = 135,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspPeru = 136,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspPink = 137,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspPlum = 138,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspPowderBlue = 139,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspPurple = 140,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspRed = 141,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspRosyBrown = 142,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspRoyalBlue = 143,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSaddleBrown = 144,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSalmon = 145,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSandyBrown = 146,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSeaGreen = 147,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSeaShell = 148,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSienna = 149,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSilver = 150,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSkyBlue = 151,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSlateBlue = 152,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSlateGray = 153,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSnow = 154,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSpringGreen = 155,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSteelBlue = 156,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTan = 157,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTeal = 158,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspThistle = 159,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTomato = 160,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTurquoise = 161,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspViolet = 162,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspWheat = 163,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspWhite = 164,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspWhiteSmoke = 165,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspYellow = 166,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspYellowGreen = 167,
+<br></b></font>
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed enum <b><span title="Base Type: System.Enum; Interfaces: System.IComparable, System.IFormattable, System.IConvertible">System.Drawing.KnownColor</span>
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspActiveBorder = 1,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspActiveCaption = 2,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspActiveCaptionText = 3,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspAppWorkspace = 4,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspControl = 5,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspControlDark = 6,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspControlDarkDark = 7,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspControlLight = 8,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspControlLightLight = 9,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspControlText = 10,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDesktop = 11,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspGrayText = 12,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspHighlight = 13,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspHighlightText = 14,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspHotTrack = 15,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspInactiveBorder = 16,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspInactiveCaption = 17,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspInactiveCaptionText = 18,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspInfo = 19,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspInfoText = 20,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMenu = 21,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMenuText = 22,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspScrollBar = 23,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspWindow = 24,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspWindowFrame = 25,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspWindowText = 26,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTransparent = 27,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspAliceBlue = 28,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspAntiqueWhite = 29,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspAqua = 30,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspAquamarine = 31,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspAzure = 32,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspBeige = 33,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspBisque = 34,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspBlack = 35,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspBlanchedAlmond = 36,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspBlue = 37,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspBlueViolet = 38,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspBrown = 39,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspBurlyWood = 40,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCadetBlue = 41,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspChartreuse = 42,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspChocolate = 43,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCoral = 44,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCornflowerBlue = 45,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCornsilk = 46,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCrimson = 47,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCyan = 48,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDarkBlue = 49,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDarkCyan = 50,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDarkGoldenrod = 51,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDarkGray = 52,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDarkGreen = 53,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDarkKhaki = 54,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDarkMagenta = 55,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDarkOliveGreen = 56,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDarkOrange = 57,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDarkOrchid = 58,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDarkRed = 59,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDarkSalmon = 60,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDarkSeaGreen = 61,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDarkSlateBlue = 62,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDarkSlateGray = 63,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDarkTurquoise = 64,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDarkViolet = 65,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDeepPink = 66,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDeepSkyBlue = 67,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDimGray = 68,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDodgerBlue = 69,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspFirebrick = 70,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspFloralWhite = 71,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspForestGreen = 72,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspFuchsia = 73,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspGainsboro = 74,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspGhostWhite = 75,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspGold = 76,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspGoldenrod = 77,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspGray = 78,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspGreen = 79,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspGreenYellow = 80,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspHoneydew = 81,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspHotPink = 82,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIndianRed = 83,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIndigo = 84,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIvory = 85,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspKhaki = 86,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLavender = 87,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLavenderBlush = 88,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLawnGreen = 89,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLemonChiffon = 90,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLightBlue = 91,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLightCoral = 92,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLightCyan = 93,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLightGoldenrodYellow = 94,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLightGray = 95,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLightGreen = 96,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLightPink = 97,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLightSalmon = 98,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLightSeaGreen = 99,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLightSkyBlue = 100,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLightSlateGray = 101,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLightSteelBlue = 102,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLightYellow = 103,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLime = 104,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLimeGreen = 105,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLinen = 106,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMagenta = 107,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMaroon = 108,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMediumAquamarine = 109,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMediumBlue = 110,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMediumOrchid = 111,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMediumPurple = 112,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMediumSeaGreen = 113,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMediumSlateBlue = 114,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMediumSpringGreen = 115,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMediumTurquoise = 116,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMediumVioletRed = 117,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMidnightBlue = 118,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMintCream = 119,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMistyRose = 120,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMoccasin = 121,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspNavajoWhite = 122,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspNavy = 123,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspOldLace = 124,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspOlive = 125,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspOliveDrab = 126,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspOrange = 127,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspOrangeRed = 128,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspOrchid = 129,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspPaleGoldenrod = 130,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspPaleGreen = 131,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspPaleTurquoise = 132,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspPaleVioletRed = 133,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspPapayaWhip = 134,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspPeachPuff = 135,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspPeru = 136,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspPink = 137,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspPlum = 138,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspPowderBlue = 139,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspPurple = 140,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspRed = 141,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspRosyBrown = 142,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspRoyalBlue = 143,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSaddleBrown = 144,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSalmon = 145,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSandyBrown = 146,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSeaGreen = 147,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSeaShell = 148,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSienna = 149,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSilver = 150,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSkyBlue = 151,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSlateBlue = 152,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSlateGray = 153,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSnow = 154,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSpringGreen = 155,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSteelBlue = 156,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTan = 157,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTeal = 158,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspThistle = 159,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTomato = 160,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTurquoise = 161,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspViolet = 162,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspWheat = 163,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspWhite = 164,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspWhiteSmoke = 165,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspYellow = 166,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspYellowGreen = 167,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspButtonFace = 168,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspButtonHighlight = 169,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspButtonShadow = 170,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspGradientActiveCaption = 171,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspGradientInactiveCaption = 172,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMenuBar = 173,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMenuHighlight = 174,
+<br></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">--> NONE <--
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Drawing.Drawing2D LinearGradientBrush"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public sealed class <b><span title="Base Type: System.Drawing.Brush; Interfaces: System.ICloneable, System.IDisposable">System.Drawing.Drawing2D.LinearGradientBrush</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Drawing.Brush">(i)</i></font>: ProtectedInternal <span title="System">void</span> <b>SetNativeBrush</b> (<span title="System">IntPtr</span> <i>brush</i>)</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Drawing Pen"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public sealed class <b><span title="Base Type: System.MarshalByRefObject; Interfaces: System.Drawing.Internal.ISystemColorTracker, System.ICloneable, System.IDisposable">System.Drawing.Pen</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Drawing.Drawing2D Matrix"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public sealed class <b><span title="Base Type: System.MarshalByRefObject; Interfaces: System.IDisposable">System.Drawing.Drawing2D.Matrix</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Drawing.Drawing2D PathGradientBrush"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public sealed class <b><span title="Base Type: System.Drawing.Brush; Interfaces: System.ICloneable, System.IDisposable">System.Drawing.Drawing2D.PathGradientBrush</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Drawing.Brush">(i)</i></font>: ProtectedInternal <span title="System">void</span> <b>SetNativeBrush</b> (<span title="System">IntPtr</span> <i>brush</i>)</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Drawing.Imaging Metafile"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public sealed class <b><span title="Base Type: System.Drawing.Image; Interfaces: System.Runtime.Serialization.ISerializable, System.ICloneable, System.IDisposable">System.Drawing.Imaging.Metafile</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Property: <span title="System">object</span> <b>Tag</b> { public get; public set; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Drawing.Printing PaperSize"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public class <b><span title="Base Type: System.Object">System.Drawing.Printing.PaperSize</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Constructor: public <b>PaperSize</b> ()</font></li>
+    <li><font color="black">Property: <span title="System">int</span> <b>RawKind</b> { public get; public set; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Drawing.Printing PaperSource"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public class <b><span title="Base Type: System.Object">System.Drawing.Printing.PaperSource</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Constructor: public <b>PaperSource</b> ()</font></li>
+    <li><font color="black">Property: <span title="System">int</span> <b>RawKind</b> { public get; public set; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Drawing Region"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public sealed class <b><span title="Base Type: System.MarshalByRefObject; Interfaces: System.IDisposable">System.Drawing.Region</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method: public <span title="System">void</span> <b>ReleaseHRgn</b> (<span title="System">IntPtr</span> <i>regionHandle</i>)</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name=" PrintAction"><td colspan="2" align="center" style="font:100%;"><b><font color='black'> PrintAction</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed enum <b><span title="Base Type: System.Enum; Interfaces: System.IComparable, System.IFormattable, System.IConvertible">System.Drawing.Printing.PrintAction</span>
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspPrintToFile = 0,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspPrintToPreview = 1,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspPrintToPrinter = 2,
+<br></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">--> NONE <--
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Drawing.Printing PrintDocument"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public class <b><span title="Base Type: System.ComponentModel.Component; Interfaces: System.IDisposable, System.ComponentModel.IComponent">System.Drawing.Printing.PrintDocument</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Property: protected virtual <span title="System">bool</span> <b>CanRaiseEvents</b> { }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Drawing.Printing PrinterResolution"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public class <b><span title="Base Type: System.Object">System.Drawing.Printing.PrinterResolution</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Constructor: public <b>PrinterResolution</b> ()</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Drawing.Printing PrinterSettings"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public class <b><span title="Base Type: System.Object; Interfaces: System.ICloneable">System.Drawing.Printing.PrinterSettings</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method: public <span title="System.Drawing">Graphics</span> <b>CreateMeasurementGraphics</b> (<span title="System">bool</span> <i>honorOriginAtMargins</i>)</font></li>
+    <li><font color="black">Method: public <span title="System">bool</span> <b>IsDirectPrintingSupported</b> (<span title="System.Drawing">Image</span> <i>image</i>)</font></li>
+    <li><font color="black">Property: <span title="System">float</span> <b>HardMarginX</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System">float</span> <b>HardMarginY</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System.Drawing">RectangleF</span> <b>PrintableArea</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>PrintFileName</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">bool</span> <b>SupportsBorderlessPageSize</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Drawing.Printing PrintEventArgs"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public class <b><span title="Base Type: System.ComponentModel.CancelEventArgs">System.Drawing.Printing.PrintEventArgs</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Property: <span title="System.Drawing.Printing">PrintAction</span> <b>PrintAction</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Drawing.Printing PrintingPermission"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public sealed class <b><span title="Base Type: System.Security.CodeAccessPermission; Interfaces: System.Security.Permissions.IUnrestrictedPermission; System.Security.ISecurityEncodable, System.Security.IPermission, System.Security.IStackWalk">System.Drawing.Printing.PrintingPermission</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Security.CodeAccessPermission">(i)</i></font>: public virtual <span title="System">bool</span> <b>CheckAssert</b> (<span title="System.Security">CodeAccessPermission</span> <i>asserted</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Security.CodeAccessPermission">(i)</i></font>: public virtual <span title="System">bool</span> <b>CheckDemand</b> (<span title="System.Security">CodeAccessPermission</span> <i>grant</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Security.CodeAccessPermission">(i)</i></font>: public virtual <span title="System">bool</span> <b>CheckDeny</b> (<span title="System.Security">CodeAccessPermission</span> <i>denied</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Security.CodeAccessPermission">(i)</i></font>: public virtual <span title="System">bool</span> <b>CheckPermitOnly</b> (<span title="System.Security">CodeAccessPermission</span> <i>permitted</i>)</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Drawing.Printing QueryPageSettingsEventArgs"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public class <b><span title="Base Type: System.Drawing.Printing.PrintEventArgs">System.Drawing.Printing.QueryPageSettingsEventArgs</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Property: <span title="System.Drawing.Printing">PrintAction</span> <b>PrintAction</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Drawing SolidBrush"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public sealed class <b><span title="Base Type: System.Drawing.Brush; Interfaces: System.Drawing.Internal.ISystemColorTracker; System.ICloneable, System.IDisposable">System.Drawing.SolidBrush</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Drawing.Brush">(i)</i></font>: ProtectedInternal <span title="System">void</span> <b>SetNativeBrush</b> (<span title="System">IntPtr</span> <i>brush</i>)</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Drawing StringFormat"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public sealed class <b><span title="Base Type: System.MarshalByRefObject; Interfaces: System.ICloneable, System.IDisposable">System.Drawing.StringFormat</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Drawing SystemBrushes"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public sealed class <b><span title="Base Type: System.Object">System.Drawing.SystemBrushes</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Property: static <span title="System.Drawing">Brush</span> <b>ButtonFace</b> { public get; }</font></li>
+    <li><font color="black">Property: static <span title="System.Drawing">Brush</span> <b>ButtonHighlight</b> { public get; }</font></li>
+    <li><font color="black">Property: static <span title="System.Drawing">Brush</span> <b>ButtonShadow</b> { public get; }</font></li>
+    <li><font color="black">Property: static <span title="System.Drawing">Brush</span> <b>GradientActiveCaption</b> { public get; }</font></li>
+    <li><font color="black">Property: static <span title="System.Drawing">Brush</span> <b>GradientInactiveCaption</b> { public get; }</font></li>
+    <li><font color="black">Property: static <span title="System.Drawing">Brush</span> <b>GrayText</b> { public get; }</font></li>
+    <li><font color="black">Property: static <span title="System.Drawing">Brush</span> <b>InactiveCaptionText</b> { public get; }</font></li>
+    <li><font color="black">Property: static <span title="System.Drawing">Brush</span> <b>InfoText</b> { public get; }</font></li>
+    <li><font color="black">Property: static <span title="System.Drawing">Brush</span> <b>MenuBar</b> { public get; }</font></li>
+    <li><font color="black">Property: static <span title="System.Drawing">Brush</span> <b>MenuHighlight</b> { public get; }</font></li>
+    <li><font color="black">Property: static <span title="System.Drawing">Brush</span> <b>MenuText</b> { public get; }</font></li>
+    <li><font color="black">Property: static <span title="System.Drawing">Brush</span> <b>WindowFrame</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Drawing SystemColors"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public sealed class <b><span title="Base Type: System.Object">System.Drawing.SystemColors</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Property: static <span title="System.Drawing">Color</span> <b>ButtonFace</b> { public get; }</font></li>
+    <li><font color="black">Property: static <span title="System.Drawing">Color</span> <b>ButtonHighlight</b> { public get; }</font></li>
+    <li><font color="black">Property: static <span title="System.Drawing">Color</span> <b>ButtonShadow</b> { public get; }</font></li>
+    <li><font color="black">Property: static <span title="System.Drawing">Color</span> <b>GradientActiveCaption</b> { public get; }</font></li>
+    <li><font color="black">Property: static <span title="System.Drawing">Color</span> <b>GradientInactiveCaption</b> { public get; }</font></li>
+    <li><font color="black">Property: static <span title="System.Drawing">Color</span> <b>MenuBar</b> { public get; }</font></li>
+    <li><font color="black">Property: static <span title="System.Drawing">Color</span> <b>MenuHighlight</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Drawing SystemFonts"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>System.Drawing SystemFonts</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed class <b><span title="Base Type: System.Object">System.Drawing.SystemFonts</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">bool</span> <b>Equals</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected virtual <span title="System">void</span> <b>Finalize</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">int</span> <b>GetHashCode</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">string</span> <b>ToString</b> ()</font></li>
+    <li><font color="black">Property: static <span title="System.Drawing">Font</span> <b>CaptionFont</b> { public get; }</font></li>
+    <li><font color="black">Property: static <span title="System.Drawing">Font</span> <b>IconTitleFont</b> { public get; }</font></li>
+    <li><font color="black">Property: static <span title="System.Drawing">Font</span> <b>MenuFont</b> { public get; }</font></li>
+    <li><font color="black">Property: static <span title="System.Drawing">Font</span> <b>MessageBoxFont</b> { public get; }</font></li>
+    <li><font color="black">Property: static <span title="System.Drawing">Font</span> <b>SmallCaptionFont</b> { public get; }</font></li>
+    <li><font color="black">Property: static <span title="System.Drawing">Font</span> <b>StatusFont</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Drawing SystemPens"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public sealed class <b><span title="Base Type: System.Object">System.Drawing.SystemPens</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Property: static <span title="System.Drawing">Pen</span> <b>ActiveBorder</b> { public get; }</font></li>
+    <li><font color="black">Property: static <span title="System.Drawing">Pen</span> <b>ActiveCaption</b> { public get; }</font></li>
+    <li><font color="black">Property: static <span title="System.Drawing">Pen</span> <b>AppWorkspace</b> { public get; }</font></li>
+    <li><font color="black">Property: static <span title="System.Drawing">Pen</span> <b>ButtonFace</b> { public get; }</font></li>
+    <li><font color="black">Property: static <span title="System.Drawing">Pen</span> <b>ButtonHighlight</b> { public get; }</font></li>
+    <li><font color="black">Property: static <span title="System.Drawing">Pen</span> <b>ButtonShadow</b> { public get; }</font></li>
+    <li><font color="black">Property: static <span title="System.Drawing">Pen</span> <b>Desktop</b> { public get; }</font></li>
+    <li><font color="black">Property: static <span title="System.Drawing">Pen</span> <b>GradientActiveCaption</b> { public get; }</font></li>
+    <li><font color="black">Property: static <span title="System.Drawing">Pen</span> <b>GradientInactiveCaption</b> { public get; }</font></li>
+    <li><font color="black">Property: static <span title="System.Drawing">Pen</span> <b>HotTrack</b> { public get; }</font></li>
+    <li><font color="black">Property: static <span title="System.Drawing">Pen</span> <b>InactiveBorder</b> { public get; }</font></li>
+    <li><font color="black">Property: static <span title="System.Drawing">Pen</span> <b>InactiveCaption</b> { public get; }</font></li>
+    <li><font color="black">Property: static <span title="System.Drawing">Pen</span> <b>Info</b> { public get; }</font></li>
+    <li><font color="black">Property: static <span title="System.Drawing">Pen</span> <b>Menu</b> { public get; }</font></li>
+    <li><font color="black">Property: static <span title="System.Drawing">Pen</span> <b>MenuBar</b> { public get; }</font></li>
+    <li><font color="black">Property: static <span title="System.Drawing">Pen</span> <b>MenuHighlight</b> { public get; }</font></li>
+    <li><font color="black">Property: static <span title="System.Drawing">Pen</span> <b>ScrollBar</b> { public get; }</font></li>
+    <li><font color="black">Property: static <span title="System.Drawing">Pen</span> <b>Window</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Drawing TextureBrush"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public sealed class <b><span title="Base Type: System.Drawing.Brush; Interfaces: System.ICloneable, System.IDisposable">System.Drawing.TextureBrush</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Drawing.Brush">(i)</i></font>: ProtectedInternal <span title="System">void</span> <b>SetNativeBrush</b> (<span title="System">IntPtr</span> <i>brush</i>)</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Drawing.Design ToolboxItem"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public class <b><span title="Base Type: System.Object; Interfaces: System.Runtime.Serialization.ISerializable">System.Drawing.Design.ToolboxItem</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method: public <span title="System">void</span> <b>Lock</b> ()</font></li>
+    <li><font color="black">Property: protected <span title="System">bool</span> <b>Locked</b> { }</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method: public <span title="System.ComponentModel">IComponent[]</span> <b>CreateComponents</b> (<span title="System.ComponentModel.Design">IDesignerHost</span> <i>host</i>, <span title="System.Collections">IDictionary</span> <i>defaultValues</i>)</font></li>
+    <li><font color="black">Method: protected virtual <span title="System.ComponentModel">IComponent[]</span> <b>CreateComponentsCore</b> (<span title="System.ComponentModel.Design">IDesignerHost</span> <i>host</i>, <span title="System.Collections">IDictionary</span> <i>defaultValues</i>)</font></li>
+    <li><font color="black">Method: protected virtual <span title="System">object</span> <b>FilterPropertyValue</b> (<span title="System">string</span> <i>propertyName</i>, <span title="System">object</span> <i>value</i>)</font></li>
+    <li><font color="black">Method: public <span title="System">Type</span> <b>GetType</b> (<span title="System.ComponentModel.Design">IDesignerHost</span> <i>host</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>Lock</b> ()</font></li>
+    <li><font color="black">Method: protected <span title="System">void</span> <b>ValidatePropertyType</b> (<span title="System">string</span> <i>propertyName</i>, <span title="System">object</span> <i>value</i>, <span title="System">Type</span> <i>expectedType</i>, <span title="System">bool</span> <i>allowNull</i>)</font></li>
+    <li><font color="black">Method: protected virtual <span title="System">object</span> <b>ValidatePropertyValue</b> (<span title="System">string</span> <i>propertyName</i>, <span title="System">object</span> <i>value</i>)</font></li>
+    <li><font color="black">Property: <span title="System.Reflection">AssemblyName[]</span> <b>DependentAssemblies</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">bool</span> <b>IsTransient</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">bool</span> <b>Locked</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System.Collections">IDictionary</span> <b>Properties</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Drawing.Design UITypeEditor"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public class <b><span title="Base Type: System.Object">System.Drawing.Design.UITypeEditor</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Property: virtual <span title="System">bool</span> <b>IsDropDownResizable</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+</tbody>
+</table>
+
+<p class="endNav"><font size=2><a href="#top">Top</a> &bull; <a href="..\APIChangesEVERTMtoWHI40607.03.html" target=_top>Summary</a></font></p>
+
+</body>
+</html>
+

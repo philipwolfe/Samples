@@ -1,0 +1,114 @@
+// Package Command Bar Definition
+//
+
+#include "stdidcmd.h"
+#include "vsshlids.h"
+#include "msobtnid.h"
+#include "virtkeys.h"
+#include "PkgCmdID.h"
+#include "Resource.h"
+
+#define _CTC_GUIDS_
+#include "Guids.h"
+
+// shorthand macros for a more compact and manageable table
+
+#define OI_NOID         guidOfficeIcon:msotcidNoIcon
+#define DIS_DEF         DEFAULTDISABLED | DEFAULTINVISIBLE | DYNAMICVISIBILITY
+#define VIS_DEF         COMMANDWELLONLY
+
+
+CMDS_SECTION guidVsPackagePkg
+
+    MENUS_BEGIN
+        // NewMenu                              Relative to Group                       Priority    Type        Name                    Text
+       guidVsPackageCmdSet:IDM_SYN_MAIN		 guidSHLMainMenu:IDG_VS_MM_TOOLSADDINS,		0x0000,		,		"&Reports",			"&Reports"; 
+       guidVsPackageCmdSet:IDM_SYN_PAGE,		guidVsPackageCmdSet:IDG_SYN_MAIN,		0x0000,		,		"&Page",			"&Page"; 
+       guidVsPackageCmdSet:IDM_SYN_CELLS,		guidVsPackageCmdSet:IDG_SYN_MAIN,		0x0000,		,		"&Cells",			"&Cells"; 
+       guidVsPackageCmdSet:IDM_SYN_BANDS,		guidVsPackageCmdSet:IDG_SYN_MAIN,		0x0000,		,		"&Bands",			"&Bands";    
+
+    MENUS_END
+
+    NEWGROUPS_BEGIN
+        // NewGroup                             Parent Group                            Priority
+       guidVsPackageCmdSet:IDG_SYN_MAIN ,		guidVsPackageCmdSet:IDM_SYN_MAIN,				0x0000;		// flag not used
+       guidVsPackageCmdSet:IDG_SYN_PAGE ,		guidVsPackageCmdSet:IDM_SYN_PAGE,				0x0000;		// flag not used
+       guidVsPackageCmdSet:IDG_SYN_CELLS ,		guidVsPackageCmdSet:IDM_SYN_CELLS,				0x0000;		// flag not used
+       guidVsPackageCmdSet:IDG_SYN_BANDS ,		guidVsPackageCmdSet:IDM_SYN_BANDS,				0x0000;		// flag not used
+       guidVsPackageCmdSet:IDG_SYN_CELLMOVE ,	guidVsPackageCmdSet:IDM_SYN_CELLS,				0x0000;		// flag not used
+       guidVsPackageCmdSet:IDG_SYN_CELLSPLIT ,	guidVsPackageCmdSet:IDM_SYN_CELLS,				0x0000;		// flag not used
+       guidVsPackageCmdSet:IDG_SYN_CELLSHAPE ,	guidVsPackageCmdSet:IDM_SYN_CELLS,				0x0000;		// flag not used
+       guidVsPackageCmdSet:IDG_SYN_CELLPRO ,	guidVsPackageCmdSet:IDM_SYN_CELLS,				0x0000;		// flag not used
+       guidVsPackageCmdSet:IDG_SYN_STYLE	 ,	guidVsPackageCmdSet:IDM_SYN_MAIN,				0x0000;		// flag not used
+       guidVsPackageCmdSet:IDG_SYN_PREVIEW	 ,	guidVsPackageCmdSet:IDM_SYN_MAIN,				0x0000;		// flag not used
+       
+    NEWGROUPS_END
+
+    BUTTONS_BEGIN
+    // Command                    Parent Group                Priority    Image            Type    Visibility        
+    guidVsPackageCmdSet:icmd_PageColor,		    guidVsPackageCmdSet:IDG_SYN_PAGE,		0x0000,		guidOfficeIcon:msotcidNoIcon,	BUTTON, DEFAULTDISABLED | DEFAULTINVISIBLE | DYNAMICVISIBILITY	,		"Page &color";
+    guidVsPackageCmdSet:icmd_PageBackground,	guidVsPackageCmdSet:IDG_SYN_PAGE,		0x0000,		guidOfficeIcon:msotcidNoIcon,	BUTTON, DEFAULTDISABLED | DEFAULTINVISIBLE | DYNAMICVISIBILITY	,		"Page &background";
+    guidVsPackageCmdSet:icmd_AddCell,			guidVsPackageCmdSet:IDG_SYN_CELLMOVE,	0x0000,		guidOfficeIcon:msotcidNoIcon,	BUTTON, DEFAULTDISABLED | DEFAULTINVISIBLE | DYNAMICVISIBILITY	,		"&Add cell";
+    guidVsPackageCmdSet:icmd_DeleteCell,		guidVsPackageCmdSet:IDG_SYN_CELLMOVE,	0x0000,		guidOfficeIcon:msotcidNoIcon,	BUTTON, DEFAULTDISABLED | DEFAULTINVISIBLE | DYNAMICVISIBILITY	,		"&Delete cell";
+    guidVsPackageCmdSet:icmd_CellMoveLeft,		guidVsPackageCmdSet:IDG_SYN_CELLMOVE,	0x0000,		guidOfficeIcon:msotcidNoIcon,	BUTTON, DEFAULTDISABLED | DEFAULTINVISIBLE | DYNAMICVISIBILITY	,		"Cell move &left";
+    guidVsPackageCmdSet:icmd_CellMoveRight,	    guidVsPackageCmdSet:IDG_SYN_CELLMOVE,	0x0000,		guidOfficeIcon:msotcidNoIcon,	BUTTON, DEFAULTDISABLED | DEFAULTINVISIBLE | DYNAMICVISIBILITY	,		"Cell move &right";
+    guidVsPackageCmdSet:icmd_SplitCell,		    guidVsPackageCmdSet:IDG_SYN_CELLSPLIT,	0x0000,		guidOfficeIcon:msotcidNoIcon,	BUTTON, DEFAULTDISABLED | DEFAULTINVISIBLE | DYNAMICVISIBILITY	,		"&Split cell";
+    guidVsPackageCmdSet:icmd_MergeCellsHor,	    guidVsPackageCmdSet:IDG_SYN_CELLSPLIT,	0x0000,		guidOfficeIcon:msotcidNoIcon,	BUTTON, DEFAULTDISABLED | DEFAULTINVISIBLE | DYNAMICVISIBILITY	,		"Merge cells by &horizontally";
+    guidVsPackageCmdSet:icmd_MergeCellsVer,	    guidVsPackageCmdSet:IDG_SYN_CELLSPLIT,	0x0000,		guidOfficeIcon:msotcidNoIcon,	BUTTON, DEFAULTDISABLED | DEFAULTINVISIBLE | DYNAMICVISIBILITY	,		"Merge cells by &vertically";
+    guidVsPackageCmdSet:icmd_CellShape,		    guidVsPackageCmdSet:IDG_SYN_CELLSHAPE,	0x0000,		guidOfficeIcon:msotcidNoIcon,	BUTTON, DEFAULTDISABLED | DEFAULTINVISIBLE | DYNAMICVISIBILITY	,		"Sh&ape";
+    guidVsPackageCmdSet:icmd_CellProperties,	guidVsPackageCmdSet:IDG_SYN_CELLPRO,	0x0000,		guidOfficeIcon:msotcidNoIcon,	BUTTON, DEFAULTDISABLED | DEFAULTINVISIBLE | DYNAMICVISIBILITY	,		"Cell &properties";
+    guidVsPackageCmdSet:icmd_AddBand,			guidVsPackageCmdSet:IDG_SYN_BANDS,		0x0000,		guidOfficeIcon:msotcidNoIcon,	BUTTON, DEFAULTDISABLED | DEFAULTINVISIBLE | DYNAMICVISIBILITY	,		"&Add band";
+    guidVsPackageCmdSet:icmd_Deleteband,		guidVsPackageCmdSet:IDG_SYN_BANDS,		0x0000,		guidOfficeIcon:msotcidNoIcon,	BUTTON, DEFAULTDISABLED | DEFAULTINVISIBLE | DYNAMICVISIBILITY	,		"&Delete band";
+    guidVsPackageCmdSet:icmd_BandMoveUp,		guidVsPackageCmdSet:IDG_SYN_BANDS,		0x0000,		guidOfficeIcon:msotcidNoIcon,	BUTTON, DEFAULTDISABLED | DEFAULTINVISIBLE | DYNAMICVISIBILITY	,		"Band move &up";
+    guidVsPackageCmdSet:icmd_BandMoveDown,		guidVsPackageCmdSet:IDG_SYN_BANDS,		0x0000,		guidOfficeIcon:msotcidNoIcon,	BUTTON, DEFAULTDISABLED | DEFAULTINVISIBLE | DYNAMICVISIBILITY	,		"Band move d&own";
+    guidVsPackageCmdSet:icmd_Styles,			guidVsPackageCmdSet:IDG_SYN_STYLE,		0x0000,		guidOfficeIcon:msotcidNoIcon,	BUTTON, DEFAULTDISABLED | DEFAULTINVISIBLE | DYNAMICVISIBILITY	,		"&Styles";
+    guidVsPackageCmdSet:icmd_Preview,			guidVsPackageCmdSet:IDG_SYN_PREVIEW,	0x0000,		guidOfficeIcon:msotcidNoIcon,	BUTTON, DEFAULTDISABLED | DEFAULTINVISIBLE | DYNAMICVISIBILITY	,		"P&review";
+
+
+        // Those commands are not defined as shared command, so they use our package CLSID
+        // as the command set GUID. Also, by specifying blank for the FLAGS, this command is
+        // default visible and enabled. Other valid values for FLAGS are the following:
+        //    DEFAULTDISABLED, DEFAULTINVISIBLE, DYNAMICVISIBILITY, TEXTCHANGES
+        // These values for FLAGS can be or'ed together, e.g. "DEFAULTINVISIBLE | DYNAMICVISIBILITY"
+        // If you do not want an image next to your command, set the image to "guidOfficeIcon:msotcidNoIcon"
+
+    BUTTONS_END
+
+    BITMAPS_BEGIN
+        // Bitmap                          Bitmap Index, Bitmap Index, ...
+   
+    BITMAPS_END
+
+CMDS_END
+ 
+CMDUSED_SECTION
+
+CMDUSED_END
+
+CMDPLACEMENT_SECTION
+    // Command                             Group                                Priority
+CMDPLACEMENT_END
+
+VISIBILITY_SECTION
+    // Command                          GUID when visible
+VISIBILITY_END
+
+//////////////////////////////////////////////////////////////////////////////
+// KEYBINDINGS_SECTION
+// 
+// This sections defines the keystroke mappings for the commands.
+//
+// The Keystate field is done using the following:
+//    A = Alt, S = Shift, C = Control, W = Windows Key
+//
+// Example of the Keystate assignment, if you want a two key combination
+// of Ctrl-X, Ctrl-Shift-C then the syntax would be :
+//
+//	'x':C:'c':CS
+//
+//////////////////////////////////////////////////////////////////////////////
+
+KEYBINDINGS_SECTION
+	// Command                		when available  		emulation   			keystate
+KEYBINDINGS_END
+

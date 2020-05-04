@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="CommonTypes" targetNamespace="http://BizTalkWscfDemoService/CommonTypes.xsd"
+	elementFormDefault="qualified" xmlns="http://tempuri.org/CommonTypes.xsd" xmlns:mstns="http://BizTalkWscfDemoService/CommonTypes.xsd"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:simpleType name="phoneNumber">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9 \-]{1,20}" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="emailAddress">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9A-Za-z'\.\-_]{1,127}@[0-9A-Za-z'\.\-_]{1,127}" />
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

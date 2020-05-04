@@ -1,0 +1,270 @@
+<font face="Arial" size="1">
+
+<html>
+<head>
+<title>Changes in microsoft.build.utilities from EVERTM (Version 1.1.4322.573)<br> to WHI40607.03 (Version 2.0.40607.3)</title>
+
+<style type="text/css">
+dt      { font-weight: Bold; }
+.big    { font-size: 150%; font-weight: Bold; }
+.small  { font-size:  75%; font-weight: Normal; }
+.endNav { font-size:  75%; font-weight: Normal; margin: 20; }
+</style>
+
+</head>
+
+<body>
+<a name="top" id="top"></a>
+<h2><center>Changes in microsoft.build.utilities from EVERTM (Version 1.1.4322.573)<br> to WHI40607.03 (Version 2.0.40607.3)</center></h2>
+
+
+<table width="90%" align="center" border="1" cellspacing="0" bordercolor="A0000" style=background-color: #F0F0F0; border-style: solid;>
+<thead>
+ <tr>
+  <th width="50%" align="left">Removed</td>
+  <th width="50%" align="left">Added</td>
+ </tr>
+</thead>
+<tbody>
+
+ <tr>
+  <a name="Microsoft.Build.Utilities ConcurrentLoggingHelper"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.Utilities ConcurrentLoggingHelper</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed class <b><span title="Base Type: System.Object">Microsoft.Build.Utilities.ConcurrentLoggingHelper</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Constructor: public <b>ConcurrentLoggingHelper</b> ()</font></li>
+    <li><font color="black">Constructor: public <b>ConcurrentLoggingHelper</b> (<span title="Microsoft.Build.Utilities">TaskLoggingHelper</span> <i>taskLog</i>, <span title="System.IO">StreamReader</span> <i>messageStream</i>, <span title="Microsoft.Build.Framework">BuildEventImportance</span> <i>messageImportance</i>)</font></li>
+    <li><font color="black">Method: public <span title="System">void</span> <b>AbortLogging</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">bool</span> <b>Equals</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected virtual <span title="System">void</span> <b>Finalize</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">int</span> <b>GetHashCode</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method: public <span title="System">void</span> <b>StartLogging</b> ()</font></li>
+    <li><font color="black">Method: public <span title="System">void</span> <b>StopLogging</b> ()</font></li>
+    <li><font color="black">Method: public <span title="System">bool</span> <b>StopLogging</b> (<span title="System">int</span> <i>timeout</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">string</span> <b>ToString</b> ()</font></li>
+    <li><font color="black">Property: <span title="System">bool</span> <b>HasLoggedErrors</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="Microsoft.Build.Framework">BuildEventImportance</span> <b>MessageImportance</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System.IO">StreamReader</span> <b>MessageStream</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="Microsoft.Build.Utilities">TaskLoggingHelper</span> <b>TaskLog</b> { public get; public set; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.Utilities Logger"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.Utilities Logger</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public abstract class <b><span title="Base Type: System.Object; Interfaces: Microsoft.Build.Framework.ILogger">Microsoft.Build.Utilities.Logger</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Constructor: protected <b>Logger</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">bool</span> <b>Equals</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected virtual <span title="System">void</span> <b>Finalize</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">int</span> <b>GetHashCode</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Method: public abstract <span title="System">void</span> <b>Initialize</b> (<span title="Microsoft.Build.Framework">IEventSource</span> <i>eventSource</i>)</font></li>
+    <li><font color="black">Method: protected <span title="System">bool</span> <b>IsBuildStatusEvent</b> (<span title="System">object</span> <i>sender</i>, <span title="Microsoft.Build.Framework">BuildEventArgs</span> <i>e</i>)</font></li>
+    <li><font color="black">Method: protected <span title="System">bool</span> <b>IsTaskEvent</b> (<span title="System">object</span> <i>sender</i>, <span title="Microsoft.Build.Framework">BuildEventArgs</span> <i>e</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>Shutdown</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">string</span> <b>ToString</b> ()</font></li>
+    <li><font color="black">Property: virtual <span title="System">string</span> <b>Parameters</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="Microsoft.Build.Framework">LoggerVerbosity</span> <b>Verbosity</b> { public get; public set; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.Utilities Task"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.Utilities Task</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public abstract class <b><span title="Base Type: System.Object; Interfaces: Microsoft.Build.Framework.ITask">Microsoft.Build.Utilities.Task</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Constructor: protected <b>Task</b> ()</font></li>
+    <li><font color="black">Constructor: protected <b>Task</b> (<span title="System.Resources">ResourceManager</span> <i>taskResources</i>)</font></li>
+    <li><font color="black">Constructor: protected <b>Task</b> (<span title="System.Resources">ResourceManager</span> <i>taskResources</i>, <span title="System">string</span> <i>helpKeywordPrefix</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">bool</span> <b>Equals</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method: public abstract <span title="System">bool</span> <b>Execute</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected virtual <span title="System">void</span> <b>Finalize</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">int</span> <b>GetHashCode</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">string</span> <b>ToString</b> ()</font></li>
+    <li><font color="black">Property: virtual <span title="Microsoft.Build.Framework">IBuildEngine</span> <b>BuildEngine</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: protected <span title="System">string</span> <b>HelpKeywordPrefix</b> { }</font></li>
+    <li><font color="black">Property: virtual <span title="System">object</span> <b>HostObject</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="Microsoft.Build.Utilities">TaskLoggingHelper</span> <b>Log</b> { public get; }</font></li>
+    <li><font color="black">Property: protected <span title="System.Resources">ResourceManager</span> <b>TaskResources</b> { }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.Utilities TaskItem"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.Utilities TaskItem</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed class <b><span title="Base Type: System.MarshalByRefObject; Interfaces: Microsoft.Build.Framework.ITaskItem">Microsoft.Build.Utilities.TaskItem</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Constructor: public <b>TaskItem</b> ()</font></li>
+    <li><font color="black">Constructor: public <b>TaskItem</b> (<span title="Microsoft.Build.Framework">ITaskItem</span> <i>sourceItem</i>)</font></li>
+    <li><font color="black">Constructor: public <b>TaskItem</b> (<span title="System">string</span> <i>itemSpec</i>)</font></li>
+    <li><font color="black">Constructor: public <b>TaskItem</b> (<span title="System">string</span> <i>itemSpec</i>, <span title="System.Collections">IDictionary</span> <i>itemAttributes</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>CopyAttributesTo</b> (<span title="Microsoft.Build.Framework">ITaskItem</span> <i>destinationItem</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: public virtual <span title="System.Runtime.Remoting">ObjRef</span> <b>CreateObjRef</b> (<span title="System">Type</span> <i>requestedType</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">bool</span> <b>Equals</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected virtual <span title="System">void</span> <b>Finalize</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="System">string</span> <b>GetAttribute</b> (<span title="System">string</span> <i>attributeName</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">int</span> <b>GetHashCode</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: public virtual <span title="System">object</span> <b>GetLifetimeService</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: public virtual <span title="System">object</span> <b>InitializeLifetimeService</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>RemoveAttribute</b> (<span title="System">string</span> <i>attributeName</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>SetAttribute</b> (<span title="System">string</span> <i>attributeName</i>, <span title="System">string</span> <i>attributeValue</i>)</font></li>
+    <li><font color="black">Method: public override <span title="System">string</span> <b>ToString</b> ()</font></li>
+    <li><font color="black">Property: virtual <span title="System.Collections">ICollection</span> <b>AttributeNames</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">string</span> <b>ItemSpec</b> { public get; public set; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.Utilities TaskLoggingHelper"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.Utilities TaskLoggingHelper</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed class <b><span title="Base Type: System.Object">Microsoft.Build.Utilities.TaskLoggingHelper</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">bool</span> <b>Equals</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method: public <span title="System">string</span> <b>ExtractMessageCode</b> (<span title="System">string</span> <i>message</i>, out <span title="System">string</span> <i>messageWithoutCodePrefix</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected virtual <span title="System">void</span> <b>Finalize</b> ()</font></li>
+    <li><font color="black">Method: public <span title="System">string</span> <b>FormatResourceString</b> (<span title="System">string</span> <i>resourceName</i>, <span title="System">object[]</span> <i>args</i>)</font></li>
+    <li><font color="black">Method: public <span title="System">string</span> <b>FormatString</b> (<span title="System">string</span> <i>unformatted</i>, <span title="System">object[]</span> <i>args</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">int</span> <b>GetHashCode</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Method: public <span title="System">void</span> <b>LogError</b> (<span title="System">string</span> <i>message</i>, <span title="System">object[]</span> <i>messageArgs</i>)</font></li>
+    <li><font color="black">Method: public <span title="System">void</span> <b>LogError</b> (<span title="System">string</span> <i>subCategory</i>, <span title="System">string</span> <i>errorCode</i>, <span title="System">string</span> <i>helpKeyword</i>, <span title="System">string</span> <i>file</i>, <span title="System">int</span> <i>lineNumber</i>, <span title="System">int</span> <i>columnNumber</i>, <span title="System">int</span> <i>endLineNumber</i>, <span title="System">int</span> <i>endColumnNumber</i>, <span title="System">string</span> <i>message</i>, <span title="System">object[]</span> <i>messageArgs</i>)</font></li>
+    <li><font color="black">Method: public <span title="System">void</span> <b>LogErrorFromException</b> (<span title="System">Exception</span> <i>e</i>)</font></li>
+    <li><font color="black">Method: public <span title="System">void</span> <b>LogErrorFromException</b> (<span title="System">Exception</span> <i>exception</i>, <span title="System">bool</span> <i>showStackTrace</i>)</font></li>
+    <li><font color="black">Method: public <span title="System">void</span> <b>LogErrorFromResources</b> (<span title="System">string</span> <i>messageResourceName</i>, <span title="System">object[]</span> <i>messageArgs</i>)</font></li>
+    <li><font color="black">Method: public <span title="System">void</span> <b>LogErrorFromResources</b> (<span title="System">string</span> <i>subCategoryResourceName</i>, <span title="System">string</span> <i>errorCode</i>, <span title="System">string</span> <i>helpKeyword</i>, <span title="System">string</span> <i>file</i>, <span title="System">int</span> <i>lineNumber</i>, <span title="System">int</span> <i>columnNumber</i>, <span title="System">int</span> <i>endLineNumber</i>, <span title="System">int</span> <i>endColumnNumber</i>, <span title="System">string</span> <i>messageResourceName</i>, <span title="System">object[]</span> <i>messageArgs</i>)</font></li>
+    <li><font color="black">Method: public <span title="System">void</span> <b>LogErrorWithCodeFromResources</b> (<span title="System">string</span> <i>messageResourceName</i>, <span title="System">object[]</span> <i>messageArgs</i>)</font></li>
+    <li><font color="black">Method: public <span title="System">void</span> <b>LogErrorWithCodeFromResources</b> (<span title="System">string</span> <i>subCategoryResourceName</i>, <span title="System">string</span> <i>file</i>, <span title="System">int</span> <i>lineNumber</i>, <span title="System">int</span> <i>columnNumber</i>, <span title="System">int</span> <i>endLineNumber</i>, <span title="System">int</span> <i>endColumnNumber</i>, <span title="System">string</span> <i>messageResourceName</i>, <span title="System">object[]</span> <i>messageArgs</i>)</font></li>
+    <li><font color="black">Method: public <span title="System">void</span> <b>LogMessage</b> (<span title="Microsoft.Build.Framework">BuildEventImportance</span> <i>importance</i>, <span title="System">string</span> <i>message</i>, <span title="System">object[]</span> <i>messageArgs</i>)</font></li>
+    <li><font color="black">Method: public <span title="System">void</span> <b>LogMessage</b> (<span title="System">string</span> <i>message</i>, <span title="System">object[]</span> <i>messageArgs</i>)</font></li>
+    <li><font color="black">Method: public <span title="System">void</span> <b>LogMessageFromResources</b> (<span title="Microsoft.Build.Framework">BuildEventImportance</span> <i>importance</i>, <span title="System">string</span> <i>messageResourceName</i>, <span title="System">object[]</span> <i>messageArgs</i>)</font></li>
+    <li><font color="black">Method: public <span title="System">void</span> <b>LogMessageFromResources</b> (<span title="System">string</span> <i>messageResourceName</i>, <span title="System">object[]</span> <i>messageArgs</i>)</font></li>
+    <li><font color="black">Method: public <span title="System">bool</span> <b>LogMessagesFromFile</b> (<span title="System">string</span> <i>file</i>)</font></li>
+    <li><font color="black">Method: public <span title="System">bool</span> <b>LogMessagesFromFile</b> (<span title="System">string</span> <i>filename</i>, <span title="Microsoft.Build.Framework">BuildEventImportance</span> <i>messageImportance</i>)</font></li>
+    <li><font color="black">Method: public <span title="System">bool</span> <b>LogMessagesFromStream</b> (<span title="System.IO">StreamReader</span> <i>stream</i>, <span title="Microsoft.Build.Framework">BuildEventImportance</span> <i>messageImportance</i>, <span title="System">bool</span> <i>synchronize</i>)</font></li>
+    <li><font color="black">Method: public <span title="System">void</span> <b>LogWarning</b> (<span title="System">string</span> <i>message</i>, <span title="System">object[]</span> <i>messageArgs</i>)</font></li>
+    <li><font color="black">Method: public <span title="System">void</span> <b>LogWarning</b> (<span title="System">string</span> <i>subCategory</i>, <span title="System">string</span> <i>warningCode</i>, <span title="System">string</span> <i>helpKeyword</i>, <span title="System">string</span> <i>file</i>, <span title="System">int</span> <i>lineNumber</i>, <span title="System">int</span> <i>columnNumber</i>, <span title="System">int</span> <i>endLineNumber</i>, <span title="System">int</span> <i>endColumnNumber</i>, <span title="System">string</span> <i>message</i>, <span title="System">object[]</span> <i>messageArgs</i>)</font></li>
+    <li><font color="black">Method: public <span title="System">void</span> <b>LogWarningFromException</b> (<span title="System">Exception</span> <i>e</i>)</font></li>
+    <li><font color="black">Method: public <span title="System">void</span> <b>LogWarningFromException</b> (<span title="System">Exception</span> <i>exception</i>, <span title="System">bool</span> <i>showStackTrace</i>)</font></li>
+    <li><font color="black">Method: public <span title="System">void</span> <b>LogWarningFromResources</b> (<span title="System">string</span> <i>messageResourceName</i>, <span title="System">object[]</span> <i>messageArgs</i>)</font></li>
+    <li><font color="black">Method: public <span title="System">void</span> <b>LogWarningFromResources</b> (<span title="System">string</span> <i>subCategoryResourceName</i>, <span title="System">string</span> <i>warningCode</i>, <span title="System">string</span> <i>helpKeyword</i>, <span title="System">string</span> <i>file</i>, <span title="System">int</span> <i>lineNumber</i>, <span title="System">int</span> <i>columnNumber</i>, <span title="System">int</span> <i>endLineNumber</i>, <span title="System">int</span> <i>endColumnNumber</i>, <span title="System">string</span> <i>messageResourceName</i>, <span title="System">object[]</span> <i>messageArgs</i>)</font></li>
+    <li><font color="black">Method: public <span title="System">void</span> <b>LogWarningWithCodeFromResources</b> (<span title="System">string</span> <i>messageResourceName</i>, <span title="System">object[]</span> <i>messageArgs</i>)</font></li>
+    <li><font color="black">Method: public <span title="System">void</span> <b>LogWarningWithCodeFromResources</b> (<span title="System">string</span> <i>subCategoryResourceName</i>, <span title="System">string</span> <i>file</i>, <span title="System">int</span> <i>lineNumber</i>, <span title="System">int</span> <i>columnNumber</i>, <span title="System">int</span> <i>endLineNumber</i>, <span title="System">int</span> <i>endColumnNumber</i>, <span title="System">string</span> <i>messageResourceName</i>, <span title="System">object[]</span> <i>messageArgs</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">string</span> <b>ToString</b> ()</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.Utilities TaskMarshalByRef"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.Utilities TaskMarshalByRef</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public abstract class <b><span title="Base Type: System.MarshalByRefObject; Interfaces: Microsoft.Build.Framework.ITask">Microsoft.Build.Utilities.TaskMarshalByRef</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Constructor: protected <b>TaskMarshalByRef</b> ()</font></li>
+    <li><font color="black">Constructor: protected <b>TaskMarshalByRef</b> (<span title="System.Resources">ResourceManager</span> <i>taskResources</i>)</font></li>
+    <li><font color="black">Constructor: protected <b>TaskMarshalByRef</b> (<span title="System.Resources">ResourceManager</span> <i>taskResources</i>, <span title="System">string</span> <i>helpKeywordPrefix</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: public virtual <span title="System.Runtime.Remoting">ObjRef</span> <b>CreateObjRef</b> (<span title="System">Type</span> <i>requestedType</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">bool</span> <b>Equals</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method: public abstract <span title="System">bool</span> <b>Execute</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected virtual <span title="System">void</span> <b>Finalize</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">int</span> <b>GetHashCode</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: public virtual <span title="System">object</span> <b>GetLifetimeService</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: public virtual <span title="System">object</span> <b>InitializeLifetimeService</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">string</span> <b>ToString</b> ()</font></li>
+    <li><font color="black">Property: virtual <span title="Microsoft.Build.Framework">IBuildEngine</span> <b>BuildEngine</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: protected <span title="System">string</span> <b>HelpKeywordPrefix</b> { }</font></li>
+    <li><font color="black">Property: virtual <span title="System">object</span> <b>HostObject</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="Microsoft.Build.Utilities">TaskLoggingHelper</span> <b>Log</b> { public get; }</font></li>
+    <li><font color="black">Property: protected <span title="System.Resources">ResourceManager</span> <b>TaskResources</b> { }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+</tbody>
+</table>
+
+<p class="endNav"><font size=2><a href="#top">Top</a> &bull; <a href="..\APIChangesEVERTMtoWHI40607.03.html" target=_top>Summary</a></font></p>
+
+</body>
+</html>
+

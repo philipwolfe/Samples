@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="XJC" type="XJCType" />
+	<xs:complexType name="XJCType">
+		<xs:sequence>
+			<xs:element name="Category" type="CategoryType" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CategoryType">
+		<xs:sequence>
+			<xs:element name="Image" type="ImageType" />
+		</xs:sequence>
+		<xs:attribute name="Value" type="xs:string" use="required" />
+		<xs:attribute name="Protection" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:pattern value="Yes|No"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="ImageType">
+		<xs:attribute name="Encoding" type="xs:string" />
+		<xs:attribute name="Bytes" type="xs:positiveInteger" />
+		<xs:attribute name="Height" type="xs:positiveInteger" />
+		<xs:attribute name="Width" type="xs:positiveInteger" />
+		<xs:attribute name="Type" type="xs:string" />
+	</xs:complexType>
+</xs:schema>

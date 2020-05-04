@@ -1,0 +1,22 @@
+<html>
+<head>
+    <title>Untitled Page</title>
+<script language="vbscript" type="text/vbscript">
+
+
+Sub window_onLoad
+
+	
+	Set WshShell = CreateObject("WScript.Shell") 
+	set owindow = window.external.menuArguments
+	Var =WshShell.Run ("C:\WebNotes\WebNotesUI\bin\Release\WebNotesUI.exe " & owindow.document.URL ) 
+
+
+
+
+
+End Sub
+
+</script>
+</head>
+</html>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="Company" targetNamespace="http://BizTalkWscfDemoService/Company.xsd" elementFormDefault="qualified"
+	xmlns="http://BizTalkWscfDemoService/Company.xsd" xmlns:mstns="http://BizTalkWscfDemoService/Company.xsd"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:common="http://BizTalkWscfDemoService/CommonTypes.xsd"
+	xmlns:person="http://BizTalkWscfDemoService/Person.xsd">
+	<xs:import namespace="http://BizTalkWscfDemoService/CommonTypes.xsd" schemaLocation="CommonTypes.xsd" />
+	<xs:import namespace="http://BizTalkWscfDemoService/Person.xsd" schemaLocation="Person.xsd" />
+	<xs:complexType name="company">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string" />
+			<xs:element name="address" type="xs:string" />
+			<xs:element name="phone" type="common:phoneNumber" />
+			<xs:element name="email" type="common:emailAddress" />
+			<xs:element name="contactPerson" type="person:person" />
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,73 @@
+<!-- To show this window, do this: Window w=new Main; w.Show(); -->
+<Window  
+    xmlns="http://schemas.microsoft.com/2003/xaml"
+    xmlns:def="Definition"
+    def:Class="WinFSCRM.Main"
+    def:CodeBehind="Main.xaml.cs" 
+    Text="WinFSCRM" Visible="True"
+    Loaded="LoadProgram"
+    >
+    <DockPanel Width="100%" Height="100%">
+        <Border DockPanel.Dock="Top" Width="100%" Height="5%" BorderThickness="1" BorderBrush="Red">
+            <FlowPanel HorizontalAlignment="Center">
+                <Text Height="100%" Margin="0,0,10,0" VerticalAlignment="Center" FontSize="16" FontWeight="Bold">Search</Text>
+                <TextBox ID="query" Margin="0,0,10,0" Width="40%" FontSize="16" FontWeight="Bold"></TextBox>
+                <Button Height="100%" FontSize="16" FontWeight="Bold" Click="RunSearch">Go</Button>
+            </FlowPanel>
+        </Border>
+        <Border DockPanel.Dock="Bottom" Width="100%" Height="20%" BorderThickness="4" BorderBrush="Black">
+            <ListBox ID="searchResults" Width="100%" Height="100%"></ListBox>
+        </Border>
+        <Border DockPanel.Dock="Left" Width="20%" Height="75%" BorderThickness="2" BorderBrush="Black">
+            <FlowPanel Background="LightBlue">
+                <!-- Clients -->
+                <Button Width="100%" HorizontalAlignment="Right" FontSize="16" FontWeight="Bold" 
+                    Click="clients_Click" Content="Clients" />   
+                <ComboBox ID="clients" Visibility="Hidden" SelectionChanged="clients_SelectionChanged" Height="0" Width="90%">
+                    <ComboBox.Height>
+                        <LengthAnimationCollection>
+                            <LengthAnimation From="0" To="30" Begin="Indefinite" Duration="3" />
+                        </LengthAnimationCollection>
+                    </ComboBox.Height>
+                </ComboBox>
+                           
+                <!-- Events -->             
+                <Button Width="100%" HorizontalAlignment="Right" FontSize="16" FontWeight="Bold" 
+                    Click="Events_Click" Content="Events" />
+                <ComboBox ID="events" Visibility="Hidden" SelectionChanged="events_SelectionChanged" Height="0" Width="90%">
+                    <ComboBox.Height>
+                        <LengthAnimationCollection>
+                            <LengthAnimation From="0" To="30" Begin="Indefinite" Duration="5" />
+                        </LengthAnimationCollection>
+                    </ComboBox.Height>
+                </ComboBox> 
+                
+                <!-- Notes -->             
+                <Button Width="100%" HorizontalAlignment="Right" FontSize="16" FontWeight="Bold" 
+                    Click="Notes_Click" Content="Notes" />
+                <ComboBox ID="notes" Visibility="Hidden" SelectionChanged="notes_SelectionChanged" Height="0" Width="90%">
+                    <ComboBox.Height>
+                        <LengthAnimationCollection>
+                            <LengthAnimation From="0" To="30" Begin="Indefinite" Duration="5" />
+                        </LengthAnimationCollection>
+                    </ComboBox.Height>
+                </ComboBox> 
+                
+                <!-- Products -->             
+                <Button Width="100%" HorizontalAlignment="Right" FontSize="16" FontWeight="Bold" 
+                    Click="Products_Click" Content="Products" />
+
+                <Button Width="100%" HorizontalAlignment="Right" FontSize="16" FontWeight="Bold" 
+                    Click="create_Click" Content="Create Sample Data" />
+                <Line Height="40%"></Line>
+                <Button Width="100%" HorizontalAlignment="Right" FontSize="16" FontWeight="Bold" 
+                    Click="remove_Click" Content="Remove Sample Data" />
+            </FlowPanel>
+        </Border>
+
+        <Border DockPanel.Dock="Right" Width="80%" Height="75%" BorderThickness="4" BorderBrush="Black">
+            <FlowPanel ID="ContentArea" DockPanel.Dock="Right" Background="White">
+            </FlowPanel> 
+        </Border>
+    </DockPanel>
+</Window>

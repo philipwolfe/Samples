@@ -1,0 +1,782 @@
+<font face="Arial" size="1">
+
+<html>
+<head>
+<title>Changes in system.data.oracleclient from EVERTM (Version 1.1.4322.573)<br> to WHI40607.03 (Version 2.0.40607.3)</title>
+
+<style type="text/css">
+dt      { font-weight: Bold; }
+.big    { font-size: 150%; font-weight: Bold; }
+.small  { font-size:  75%; font-weight: Normal; }
+.endNav { font-size:  75%; font-weight: Normal; margin: 20; }
+</style>
+
+</head>
+
+<body>
+<a name="top" id="top"></a>
+<h2><center>Changes in system.data.oracleclient from EVERTM (Version 1.1.4322.573)<br> to WHI40607.03 (Version 2.0.40607.3)</center></h2>
+
+
+<table width="90%" align="center" border="1" cellspacing="0" bordercolor="A0000" style=background-color: #F0F0F0; border-style: solid;>
+<thead>
+ <tr>
+  <th width="50%" align="left">Removed</td>
+  <th width="50%" align="left">Added</td>
+ </tr>
+</thead>
+<tbody>
+
+ <tr>
+  <a name="System.Data.OracleClient OracleBFile"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public sealed class <b><span title="Base Type: System.IO.Stream; Interfaces: System.ICloneable, System.Data.SqlTypes.INullable; System.IDisposable">System.Data.OracleClient.OracleBFile</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Property: virtual <span title="System">bool</span> <b>CanTimeout</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">int</span> <b>ReadTimeout</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">int</span> <b>WriteTimeout</b> { public get; public set; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Data.OracleClient OracleBinary"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public sealed struct <b><span title="Base Type: System.ValueType; Interfaces: System.IComparable, System.Data.SqlTypes.INullable">System.Data.OracleClient.OracleBinary</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.ValueType">(i)</i></font>: public virtual <span title="System">string</span> <b>ToString</b> ()</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">[Obsolete: Do not use, will be removed after beta.]Method: public static <span title="System.Data.OracleClient">OracleBinary</span> <b>Parse</b> (<span title="System">string</span> <i>s</i>)</font></li>
+    <li><font color="black">[Obsolete: Do not use, will be removed after beta.]Method: public override <span title="System">string</span> <b>ToString</b> ()</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Data.OracleClient OracleClientFactory"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>System.Data.OracleClient OracleClientFactory</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed class <b><span title="Base Type: System.Data.Common.DbProviderFactory">System.Data.OracleClient.OracleClientFactory</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Field: public static readonly <span title="System.Data.OracleClient">OracleClientFactory</span> <b>Instance</b></font></li>
+    <li><font color="black">Method: public override <span title="System.Data.Common">DbCommand</span> <b>CreateCommand</b> ()</font></li>
+    <li><font color="black">Method: public override <span title="System.Data.Common">DbCommandBuilder</span> <b>CreateCommandBuilder</b> ()</font></li>
+    <li><font color="black">[Obsolete: Do not use, will be removed after beta.]Method <font color="Blue"><i title="System.Data.Common.DbProviderFactory">(i)</i></font>: protected virtual <span title="System.Data.Common">DbCommandSet</span> <b>CreateCommandSet</b> ()</font></li>
+    <li><font color="black">Method: public override <span title="System.Data.Common">DbConnection</span> <b>CreateConnection</b> ()</font></li>
+    <li><font color="black">Method: public override <span title="System.Data.Common">DbConnectionStringBuilder</span> <b>CreateConnectionStringBuilder</b> ()</font></li>
+    <li><font color="black">Method: public override <span title="System.Data.Common">DbDataAdapter</span> <b>CreateDataAdapter</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.Common.DbProviderFactory">(i)</i></font>: public virtual <span title="System.Data.Common">DbDataSourceEnumerator</span> <b>CreateDataSourceEnumerator</b> ()</font></li>
+    <li><font color="black">Method: public override <span title="System.Data.Common">DbParameter</span> <b>CreateParameter</b> ()</font></li>
+    <li><font color="black">Method: public override <span title="System.Security">CodeAccessPermission</span> <b>CreatePermission</b> (<span title="System.Security.Permissions">PermissionState</span> <i>state</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">bool</span> <b>Equals</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected virtual <span title="System">void</span> <b>Finalize</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">int</span> <b>GetHashCode</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">string</span> <b>ToString</b> ()</font></li>
+    <li><font color="black">Property: override <span title="System.Data.Common">DbProviderSupportedClasses</span> <b>SupportedClasses</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Data.OracleClient OracleCommand"><td colspan="2" align="center" style="font:100%;"><b><font color='B0000'>System.Data.OracleClient OracleCommand</font> () </b></td>
+ </tr>
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left"><font color='B0000'>public sealed class <b><span title="Base Type: System.ComponentModel.Component; Interfaces: System.ICloneable, System.Data.IDbCommand; System.IDisposable, System.ComponentModel.IComponent">System.Data.OracleClient.OracleCommand</span></b></font>
+  <br><font color=blue size=2>(Please hover your mouse over the type to see the inheritance signatures)</font></td>
+  <td width="50%" align="left"><font color='B0000'>public sealed class <b><span title="Base Type: System.Data.ProviderBase.DbCommandBase; Interfaces: System.ICloneable; System.IDisposable, System.ComponentModel.IComponent, System.Data.IDbCommand">System.Data.OracleClient.OracleCommand</span></b></font>
+  <br><font color=blue size=2>(Please hover your mouse over the type to see the inheritance signatures)</font></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>Cancel</b> ()</font></li>
+    <li><font color="black">Method: public <span title="System.Data.OracleClient">OracleParameter</span> <b>CreateParameter</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="System">int</span> <b>ExecuteNonQuery</b> ()</font></li>
+    <li><font color="black">Method: public <span title="System.Data.OracleClient">OracleDataReader</span> <b>ExecuteReader</b> ()</font></li>
+    <li><font color="black">Method: public <span title="System.Data.OracleClient">OracleDataReader</span> <b>ExecuteReader</b> (<span title="System.Data">CommandBehavior</span> <i>behavior</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">object</span> <b>ExecuteScalar</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>Prepare</b> ()</font></li>
+    <li><font color="black">Property: virtual <span title="System">string</span> <b>CommandText</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="System.Data">CommandType</span> <b>CommandType</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System.Data.OracleClient">OracleConnection</span> <b>Connection</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">bool</span> <b>DesignTimeVisible</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System.Data.OracleClient">OracleParameterCollection</span> <b>Parameters</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System.Data.OracleClient">OracleTransaction</span> <b>Transaction</b> { public get; public set; }</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method: public override <span title="System">void</span> <b>Cancel</b> ()</font></li>
+    <li><font color="black">Method: protected override <span title="System.Data.Common">DbParameter</span> <b>CreateDbParameter</b> ()</font></li>
+    <li><font color="black">Method: public new <span title="System.Data.OracleClient">OracleParameter</span> <b>CreateParameter</b> ()</font></li>
+    <li><font color="black">Method: protected override <span title="System.Data.Common">DbDataReader</span> <b>ExecuteDbDataReader</b> (<span title="System.Data">CommandBehavior</span> <i>behavior</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.Common.DbCommand">(i)</i></font>: protected virtual <span title="System.Data.Common">DbDataReader</span> <b>ExecuteDbPageReader</b> (<span title="System.Data">CommandBehavior</span> <i>behavior</i>, <span title="System">int</span> <i>startRecord</i>, <span title="System">int</span> <i>maxRecords</i>)</font></li>
+    <li><font color="black">Method: public override <span title="System">int</span> <b>ExecuteNonQuery</b> ()</font></li>
+    <li><font color="black">[Obsolete: Do not use, will be removed after beta.]Method <font color="Blue"><i title="System.Data.Common.DbCommand">(i)</i></font>: public <span title="System.Data.Common">DbDataReader</span> <b>ExecutePageReader</b> (<span title="System.Data">CommandBehavior</span> <i>behavior</i>, <span title="System">int</span> <i>startRecord</i>, <span title="System">int</span> <i>maxRecords</i>)</font></li>
+    <li><font color="black">Method: public new <span title="System.Data.OracleClient">OracleDataReader</span> <b>ExecuteReader</b> ()</font></li>
+    <li><font color="black">Method: public new <span title="System.Data.OracleClient">OracleDataReader</span> <b>ExecuteReader</b> (<span title="System.Data">CommandBehavior</span> <i>behavior</i>)</font></li>
+    <li><font color="black">Method: public override <span title="System">object</span> <b>ExecuteScalar</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method: public override <span title="System">void</span> <b>Prepare</b> ()</font></li>
+    <li><font color="black">Method: protected override <span title="System">void</span> <b>PropertyChanging</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.ProviderBase.DbCommandBase">(i)</i></font>: public virtual <span title="System">void</span> <b>ResetCommandTimeout</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.ProviderBase.DbCommandBase">(i)</i></font>: protected virtual <span title="System">bool</span> <b>ShouldSerializeCommandTimeout</b> ()</font></li>
+    <li><font color="black">[Obsolete: Do not use, will be removed after beta.]Property: virtual <span title="System">bool</span> <b>CanExecutePageReader</b> { public get; }</font></li>
+    <li><font color="black">Property: protected virtual <span title="System">bool</span> <b>CanRaiseEvents</b> { }</font></li>
+    <li><font color="black">Property: override <span title="System">string</span> <b>CommandText</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: override <span title="System">int</span> <b>CommandTimeout</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: override <span title="System.Data">CommandType</span> <b>CommandType</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: new <span title="System.Data.OracleClient">OracleConnection</span> <b>Connection</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: protected override <span title="System.Data.Common">DbConnection</span> <b>DbConnection</b> { }</font></li>
+    <li><font color="black">Property: protected override <span title="System.Data.Common">DbParameterCollection</span> <b>DbParameterCollection</b> { }</font></li>
+    <li><font color="black">Property: protected override <span title="System.Data.Common">DbTransaction</span> <b>DbTransaction</b> { }</font></li>
+    <li><font color="black">Property: virtual <span title="System">bool</span> <b>DesignTimeVisible</b> { public get; public set; }</font></li>
+    <li><font color="black">[Obsolete: Do not use, will be removed after beta.]Property: virtual <span title="System.Data.Common">DbCommandOptionalFeatures</span> <b>OptionalFeatures</b> { public get; }</font></li>
+    <li><font color="black">Property: new <span title="System.Data.OracleClient">OracleParameterCollection</span> <b>Parameters</b> { public get; }</font></li>
+    <li><font color="black">Property: new <span title="System.Data.OracleClient">OracleTransaction</span> <b>Transaction</b> { public get; public set; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Data.OracleClient OracleCommandBuilder"><td colspan="2" align="center" style="font:100%;"><b><font color='B0000'>System.Data.OracleClient OracleCommandBuilder</font> () </b></td>
+ </tr>
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left"><font color='B0000'>public sealed class <b><span title="Base Type: System.ComponentModel.Component; Interfaces: System.IDisposable, System.ComponentModel.IComponent">System.Data.OracleClient.OracleCommandBuilder</span></b></font>
+  <br><font color=blue size=2>(Please hover your mouse over the type to see the inheritance signatures)</font></td>
+  <td width="50%" align="left"><font color='B0000'>public sealed class <b><span title="Base Type: System.Data.Common.DbCommandBuilder; Interfaces: System.IDisposable, System.ComponentModel.IComponent">System.Data.OracleClient.OracleCommandBuilder</span></b></font>
+  <br><font color=blue size=2>(Please hover your mouse over the type to see the inheritance signatures)</font></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method: public <span title="System.Data.OracleClient">OracleCommand</span> <b>GetDeleteCommand</b> ()</font></li>
+    <li><font color="black">Method: public <span title="System.Data.OracleClient">OracleCommand</span> <b>GetInsertCommand</b> ()</font></li>
+    <li><font color="black">Method: public <span title="System.Data.OracleClient">OracleCommand</span> <b>GetUpdateCommand</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method: public <span title="System">void</span> <b>RefreshSchema</b> ()</font></li>
+    <li><font color="black">Property: <span title="System.Data.OracleClient">OracleDataAdapter</span> <b>DataAdapter</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>QuotePrefix</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>QuoteSuffix</b> { public get; public set; }</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method: protected override <span title="System">void</span> <b>ApplyParameterInfo</b> (<span title="System.Data.Common">DbParameter</span> <i>parameter</i>, <span title="System.Data">DataRow</span> <i>datarow</i>, <span title="System.Data">StatementType</span> <i>statementType</i>, <span title="System">bool</span> <i>whereClause</i>)</font></li>
+    <li><font color="black">[Obsolete: Do not use, will be removed after beta.]Method: public override <span title="System">string</span> <b>FormatLiteral</b> (<span title="System.Data.Common">DbConnection</span> <i>connection</i>, <span title="System">string</span> <i>dataTypeName</i>, <span title="System">object</span> <i>value</i>)</font></li>
+    <li><font color="black">Method: public new <span title="System.Data.OracleClient">OracleCommand</span> <b>GetDeleteCommand</b> ()</font></li>
+    <li><font color="black">Method: public new <span title="System.Data.OracleClient">OracleCommand</span> <b>GetDeleteCommand</b> (<span title="System">bool</span> <i>useColumnsForParameterNames</i>)</font></li>
+    <li><font color="black">[Obsolete: Do not use, will be removed after beta.]Method <font color="Blue"><i title="System.Data.Common.DbCommandBuilder">(i)</i></font>: public <span title="System.Data.Common">DbCommand</span> <b>GetDeleteCommand</b> (<span title="System.Data">DataRow</span> <i>dataRow</i>)</font></li>
+    <li><font color="black">Method: public new <span title="System.Data.OracleClient">OracleCommand</span> <b>GetInsertCommand</b> ()</font></li>
+    <li><font color="black">Method: public new <span title="System.Data.OracleClient">OracleCommand</span> <b>GetInsertCommand</b> (<span title="System">bool</span> <i>useColumnsForParameterNames</i>)</font></li>
+    <li><font color="black">[Obsolete: Do not use, will be removed after beta.]Method <font color="Blue"><i title="System.Data.Common.DbCommandBuilder">(i)</i></font>: public <span title="System.Data.Common">DbCommand</span> <b>GetInsertCommand</b> (<span title="System.Data">DataRow</span> <i>dataRow</i>)</font></li>
+    <li><font color="black">Method: protected override <span title="System">string</span> <b>GetParameterName</b> (<span title="System">int</span> <i>parameterOrdinal</i>)</font></li>
+    <li><font color="black">Method: protected override <span title="System">string</span> <b>GetParameterName</b> (<span title="System">string</span> <i>parameterName</i>)</font></li>
+    <li><font color="black">Method: protected override <span title="System">string</span> <b>GetParameterPlaceholder</b> (<span title="System">int</span> <i>parameterOrdinal</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.Common.DbCommandBuilder">(i)</i></font>: protected virtual <span title="System.Data">DataTable</span> <b>GetSchemaTable</b> (<span title="System.Data.Common">DbCommand</span> <i>srcCommand</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.Common.DbCommandBuilder">(i)</i></font>: protected <span title="System.Data.Common">DbCommand</span> <b>GetSelectCommand</b> ()</font></li>
+    <li><font color="black">Method: public new <span title="System.Data.OracleClient">OracleCommand</span> <b>GetUpdateCommand</b> ()</font></li>
+    <li><font color="black">Method: public new <span title="System.Data.OracleClient">OracleCommand</span> <b>GetUpdateCommand</b> (<span title="System">bool</span> <i>useColumnsForParameterNames</i>)</font></li>
+    <li><font color="black">[Obsolete: Do not use, will be removed after beta.]Method <font color="Blue"><i title="System.Data.Common.DbCommandBuilder">(i)</i></font>: public <span title="System.Data.Common">DbCommand</span> <b>GetUpdateCommand</b> (<span title="System.Data">DataRow</span> <i>dataRow</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.Common.DbCommandBuilder">(i)</i></font>: protected virtual <span title="System.Data.Common">DbCommand</span> <b>InitializeCommand</b> (<span title="System.Data.Common">DbCommand</span> <i>command</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method: public override <span title="System">string</span> <b>QuoteIdentifier</b> (<span title="System">string</span> <i>unquotedIdentifier</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.Common.DbCommandBuilder">(i)</i></font>: public virtual <span title="System">void</span> <b>RefreshSchema</b> ()</font></li>
+    <li><font color="black">[Obsolete: Do not use, will be removed after beta.]Method: public override <span title="System">void</span> <b>ResolveObjectName</b> (<span title="System.Data.Common">DbConnection</span> <i>connection</i>, <span title="System">string</span> <i>objectType</i>, <span title="System">string[]</span> <i>identifierParts</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.Common.DbCommandBuilder">(i)</i></font>: ProtectedInternal <span title="System">void</span> <b>RowUpdatingHandler</b> (<span title="System">object</span> <i>sender</i>, <span title="System.Data.Common">RowUpdatingEventArgs</span> <i>rowUpdatingEvent</i>)</font></li>
+    <li><font color="black">Method: protected override <span title="System">void</span> <b>SetRowUpdatingHandler</b> (<span title="System.Data.Common">DbDataAdapter</span> <i>adapter</i>)</font></li>
+    <li><font color="black">[Obsolete: Do not use, will be removed after beta.]Method: public override <span title="System">object</span> <b>UnformatLiteral</b> (<span title="System.Data.Common">DbConnection</span> <i>connection</i>, <span title="System">string</span> <i>dataTypeName</i>, <span title="System">string</span> <i>literalValue</i>)</font></li>
+    <li><font color="black">Method: public override <span title="System">string</span> <b>UnquoteIdentifier</b> (<span title="System">string</span> <i>quotedIdentifier</i>)</font></li>
+    <li><font color="black">Property: protected virtual <span title="System">bool</span> <b>CanRaiseEvents</b> { }</font></li>
+    <li><font color="black">Property: override <span title="System.Data.Common">CatalogLocation</span> <b>CatalogLocation</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: override <span title="System">string</span> <b>CatalogSeparator</b> { public get; public set; }</font></li>
+    <li><font color="black">[Obsolete: Do not use, will be removed after beta.]Property: virtual <span title="System.Data">ConflictOptions</span> <b>ConflictDetection</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: new <span title="System.Data.OracleClient">OracleDataAdapter</span> <b>DataAdapter</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: protected override <span title="System.Data.Common">DbProviderFactory</span> <b>ProviderFactory</b> { }</font></li>
+    <li><font color="black">Property: virtual <span title="System">string</span> <b>QuotePrefix</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">string</span> <b>QuoteSuffix</b> { public get; public set; }</font></li>
+    <li><font color="black">[Obsolete: Do not use, will be removed after beta.]Property: <span title="System.Data.Common">SchemaLocation</span> <b>SchemaLocation</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: override <span title="System">string</span> <b>SchemaSeparator</b> { public get; public set; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Data.OracleClient OracleConnection"><td colspan="2" align="center" style="font:100%;"><b><font color='B0000'>System.Data.OracleClient OracleConnection</font> () </b></td>
+ </tr>
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left"><font color='B0000'>public sealed class <b><span title="Base Type: System.ComponentModel.Component; Interfaces: System.ICloneable, System.Data.IDbConnection; System.IDisposable, System.ComponentModel.IComponent">System.Data.OracleClient.OracleConnection</span></b></font>
+  <br><font color=blue size=2>(Please hover your mouse over the type to see the inheritance signatures)</font></td>
+  <td width="50%" align="left"><font color='B0000'>public sealed class <b><span title="Base Type: System.Data.ProviderBase.DbConnectionBase; Interfaces: System.ICloneable; System.IDisposable, System.ComponentModel.IComponent, System.Data.IDbConnection">System.Data.OracleClient.OracleConnection</span></b></font>
+  <br><font color=blue size=2>(Please hover your mouse over the type to see the inheritance signatures)</font></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method: public <span title="System.Data.OracleClient">OracleTransaction</span> <b>BeginTransaction</b> ()</font></li>
+    <li><font color="black">Method: public <span title="System.Data.OracleClient">OracleTransaction</span> <b>BeginTransaction</b> (<span title="System.Data">IsolationLevel</span> <i>il</i>)</font></li>
+    <li><font color="black">Method: public <span title="System.Data.OracleClient">OracleCommand</span> <b>CreateCommand</b> ()</font></li>
+    <li><font color="black">Method: protected override <span title="System">void</span> <b>Dispose</b> (<span title="System">bool</span> <i>disposing</i>)</font></li>
+    <li><font color="black">Method: public <span title="System">void</span> <b>EnlistDistributedTransaction</b> (<span title="System.EnterpriseServices">ITransaction</span> <i>distributedTransaction</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Property: virtual <span title="System">string</span> <b>ConnectionString</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>DataSource</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>ServerVersion</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System.Data">ConnectionState</span> <b>State</b> { public get; }</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.ProviderBase.DbConnectionBase">(i)</i></font>: ProtectedInternal <span title="System">void</span> <b>AddWeakReference</b> (<span title="System">object</span> <i>value</i>, <span title="System">int</span> <i>tag</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.ProviderBase.DbConnectionBase">(i)</i></font>: protected virtual <span title="System.Data.Common">DbTransaction</span> <b>BeginDbTransaction</b> (<span title="System.Data">IsolationLevel</span> <i>isolationLevel</i>)</font></li>
+    <li><font color="black">Method: public new <span title="System.Data.OracleClient">OracleTransaction</span> <b>BeginTransaction</b> ()</font></li>
+    <li><font color="black">Method: public new <span title="System.Data.OracleClient">OracleTransaction</span> <b>BeginTransaction</b> (<span title="System.Data">IsolationLevel</span> <i>il</i>)</font></li>
+    <li><font color="black">Method: public override <span title="System">void</span> <b>ChangeDatabase</b> (<span title="System">string</span> <i>value</i>)</font></li>
+    <li><font color="black">Method: public static <span title="System">void</span> <b>ClearAllPools</b> ()</font></li>
+    <li><font color="black">Method: public static <span title="System">void</span> <b>ClearPool</b> (<span title="System.Data.OracleClient">OracleConnection</span> <i>connection</i>)</font></li>
+    <li><font color="black">Method: public new <span title="System.Data.OracleClient">OracleCommand</span> <b>CreateCommand</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.ProviderBase.DbConnectionBase">(i)</i></font>: protected virtual <span title="System.Data.Common">DbCommand</span> <b>CreateDbCommand</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.ProviderBase.DbConnectionBase">(i)</i></font>: protected virtual <span title="System">void</span> <b>Dispose</b> (<span title="System">bool</span> <i>disposing</i>)</font></li>
+    <li><font color="black">Method: public new <span title="System">void</span> <b>EnlistDistributedTransaction</b> (<span title="System.EnterpriseServices">ITransaction</span> <i>distributedTransaction</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.ProviderBase.DbConnectionBase">(i)</i></font>: public virtual <span title="System">void</span> <b>EnlistTransaction</b> (<span title="System.Transactions">ITransaction</span> <i>transaction</i>)</font></li>
+    <li><font color="black">[Obsolete: Do not use, will be removed after beta.]Method <font color="Blue"><i title="System.Data.ProviderBase.DbConnectionBase">(i)</i></font>: protected <span title="System.Data">DataRow</span> <b>FindMetaDataCollectionRowInternal</b> (<span title="System">string</span> <i>collectionName</i>, <span title="System.Data.ProviderBase">DbConnectionBase</span> <i>outerConnection</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.ProviderBase.DbConnectionBase">(i)</i></font>: protected virtual <span title="System.Data.ProviderBase">DbMetaDataFactory</span> <b>GetMetaDataFactory</b> (<span title="System.Data.ProviderBase">DbConnectionInternal</span> <i>internalConnection</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.ProviderBase.DbConnectionBase">(i)</i></font>: public virtual <span title="System.Data">DataTable</span> <b>GetSchema</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.ProviderBase.DbConnectionBase">(i)</i></font>: public virtual <span title="System.Data">DataTable</span> <b>GetSchema</b> (<span title="System">string</span> <i>collectionName</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.ProviderBase.DbConnectionBase">(i)</i></font>: public virtual <span title="System.Data">DataTable</span> <b>GetSchema</b> (<span title="System">string</span> <i>collectionName</i>, <span title="System">string[]</span> <i>restrictionValues</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.ProviderBase.DbConnectionBase">(i)</i></font>: protected <span title="System">void</span> <b>OnStateChange</b> (<span title="System.Data">ConnectionState</span> <i>originalState</i>, <span title="System.Data">ConnectionState</span> <i>currentState</i>)</font></li>
+    <li><font color="black">[Obsolete: Do not use, will be removed after beta. Use DbConnectionOptions.CreatePermissionSet instead.]Method <font color="Blue"><i title="System.Data.ProviderBase.DbConnectionBase">(i)</i></font>: protected virtual <span title="System">void</span> <b>PermissionDemand</b> (<span title="System.Data.Common">DbConnectionOptions</span> <i>connectionOptions</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.ProviderBase.DbConnectionBase">(i)</i></font>: ProtectedInternal <span title="System">void</span> <b>RemoveWeakReference</b> (<span title="System">object</span> <i>value</i>)</font></li>
+    <li><font color="black">Property: protected virtual <span title="System">bool</span> <b>CanRaiseEvents</b> { }</font></li>
+    <li><font color="black">Property: ProtectedInternal <span title="System.Data.ProviderBase">DbConnectionFactory</span> <b>ConnectionFactory</b> { }</font></li>
+    <li><font color="black">Property: protected <span title="System.Data.Common">DbConnectionOptions</span> <b>ConnectionOptions</b> { }</font></li>
+    <li><font color="black">Property: override <span title="System">string</span> <b>ConnectionString</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: override <span title="System">int</span> <b>ConnectionTimeout</b> { public get; }</font></li>
+    <li><font color="black">Property: protected virtual <span title="System">int</span> <b>ConnectionTimeoutInternal</b> { }</font></li>
+    <li><font color="black">Property: override <span title="System">string</span> <b>Database</b> { public get; }</font></li>
+    <li><font color="black">Property: override <span title="System">string</span> <b>DataSource</b> { public get; }</font></li>
+    <li><font color="black">Property: ProtectedInternal <span title="System.Data.ProviderBase">DbConnectionInternal</span> <b>InnerConnection</b> { }</font></li>
+    <li><font color="black">Property: override <span title="System">string</span> <b>ServerVersion</b> { public get; }</font></li>
+    <li><font color="black">Property: override <span title="System.Data">ConnectionState</span> <b>State</b> { public get; }</font></li>
+    <li><font color="black">Property: protected <span title="System.Data.Common">DbConnectionOptions</span> <b>UserConnectionOptions</b> { }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Data.OracleClient OracleConnectionStringBuilder"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>System.Data.OracleClient OracleConnectionStringBuilder</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed class <b><span title="Base Type: System.Data.Common.DbConnectionStringBuilder; Interfaces: System.Collections.ICollection, System.Collections.IEnumerable, System.Collections.Generic.ICollection`1[[System.Collections.Generic.KeyValuePair`2[[System.String, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Object, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], System.Collections.Generic.IEnumerable`1[[System.Collections.Generic.KeyValuePair`2[[System.String, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Object, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], System.Collections.IDictionary, System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Object, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], System.ComponentModel.ICustomTypeDescriptor">System.Data.OracleClient.OracleConnectionStringBuilder</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Constructor: public <b>OracleConnectionStringBuilder</b> ()</font></li>
+    <li><font color="black">Constructor: public <b>OracleConnectionStringBuilder</b> (<span title="System">string</span> <i>connectionString</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.Common.DbConnectionStringBuilder">(i)</i></font>: public virtual <span title="System">void</span> <b>Add</b> (<span title="System">string</span> <i>keyword</i>, <span title="System">object</span> <i>value</i>)</font></li>
+    <li><font color="black">Method: public override <span title="System">void</span> <b>Clear</b> ()</font></li>
+    <li><font color="black">Method: public override <span title="System">bool</span> <b>ContainsKey</b> (<span title="System">string</span> <i>keyword</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">bool</span> <b>Equals</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.Common.DbConnectionStringBuilder">(i)</i></font>: public virtual <span title="System">bool</span> <b>EquivalentTo</b> (<span title="System.Data.Common">DbConnectionStringBuilder</span> <i>connectionStringBuilder</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected virtual <span title="System">void</span> <b>Finalize</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">int</span> <b>GetHashCode</b> ()</font></li>
+    <li><font color="black">Method: protected override <span title="System">void</span> <b>GetProperties</b> (<span title="System.Collections">Hashtable</span> <i>propertyDescriptors</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method: public override <span title="System">bool</span> <b>Remove</b> (<span title="System">string</span> <i>keyword</i>)</font></li>
+    <li><font color="black">[Obsolete: Do not use, will be removed after beta. Please use the Remove method.]Method <font color="Blue"><i title="System.Data.Common.DbConnectionStringBuilder">(i)</i></font>: public virtual <span title="System">void</span> <b>Reset</b> (<span title="System">string</span> <i>keyword</i>)</font></li>
+    <li><font color="black">Method: public override <span title="System">bool</span> <b>ShouldSerialize</b> (<span title="System">string</span> <i>keyword</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.Common.DbConnectionStringBuilder">(i)</i></font>: public virtual <span title="System">string</span> <b>ToString</b> ()</font></li>
+    <li><font color="black">Method: public override <span title="System">bool</span> <b>TryGetValue</b> (<span title="System">string</span> <i>keyword</i>, out <span title="System">object</span> <i>value</i>)</font></li>
+    <li><font color="black">Property: <span title="System">bool</span> <b>BrowsableConnectionString</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>ConnectionString</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">int</span> <b>Count</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>DataSource</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">bool</span> <b>Enlist</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">bool</span> <b>IntegratedSecurity</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: override <span title="System">bool</span> <b>IsFixedSize</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">bool</span> <b>IsReadOnly</b> { public get; }</font></li>
+    <li><font color="black">Property: override <span title="System">object</span> <b>this</b> [<span title="System">string</span> <i>keyword</i>] { public get; public set; }</font></li>
+    <li><font color="black">Property: override <span title="System.Collections">ICollection</span> <b>Keys</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System">int</span> <b>LoadBalanceTimeout</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">int</span> <b>MaxPoolSize</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">int</span> <b>MinPoolSize</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>Password</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">bool</span> <b>PersistSecurityInfo</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">bool</span> <b>Pooling</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">bool</span> <b>Unicode</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>UserID</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: override <span title="System.Collections">ICollection</span> <b>Values</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Data.OracleClient OracleDataAdapter"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>System.Data.OracleClient OracleDataAdapter</font> () </b></td>
+ </tr>
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left"><font color='black'>public sealed class <b><span title="Base Type: System.Data.Common.DbDataAdapter; Interfaces: System.Data.IDbDataAdapter; System.IDisposable, System.Data.IDataAdapter, System.ComponentModel.IComponent, System.ICloneable">System.Data.OracleClient.OracleDataAdapter</span></b></font>
+  <br><font color=blue size=2>(Please hover your mouse over the type to see the inheritance signatures)</font></td>
+  <td width="50%" align="left"><font color='black'>public sealed class <b><span title="Base Type: System.Data.Common.DbDataAdapter; Interfaces: System.IDisposable, System.Data.IDataAdapter, System.ComponentModel.IComponent, System.Data.IDbDataAdapter, System.ICloneable, System.ComponentModel.ISupportInitialize">System.Data.OracleClient.OracleDataAdapter</span></b></font>
+  <br><font color=blue size=2>(Please hover your mouse over the type to see the inheritance signatures)</font></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method: protected override <span title="System">int</span> <b>AddToBatch</b> (<span title="System.Data">IDbCommand</span> <i>command</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.Common.DbDataAdapter">(i)</i></font>: public virtual <span title="System">void</span> <b>BeginInit</b> ()</font></li>
+    <li><font color="black">Method: protected override <span title="System">void</span> <b>ClearBatch</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.Common.DbDataAdapter">(i)</i></font>: public virtual <span title="System">void</span> <b>EndInit</b> ()</font></li>
+    <li><font color="black">Method: protected override <span title="System">int</span> <b>ExecuteBatch</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.Common.DbDataAdapter">(i)</i></font>: public <span title="System">int</span> <b>Fill</b> (<span title="System">int</span> <i>startRecord</i>, <span title="System">int</span> <i>maxRecords</i>, <span title="System.Data">DataTable[]</span> <i>dataTables</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.Common.DbDataAdapter">(i)</i></font>: protected virtual <span title="System">int</span> <b>Fill</b> (<span title="System.Data">DataTable[]</span> <i>dataTables</i>, <span title="System">int</span> <i>startRecord</i>, <span title="System">int</span> <i>maxRecords</i>, <span title="System.Data">IDbCommand</span> <i>command</i>, <span title="System.Data">CommandBehavior</span> <i>behavior</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.Common.DataAdapter">(i)</i></font>: protected virtual <span title="System">int</span> <b>Fill</b> (<span title="System.Data">DataTable[]</span> <i>dataTables</i>, <span title="System.Data">IDataReader</span> <i>dataReader</i>, <span title="System">int</span> <i>startRecord</i>, <span title="System">int</span> <i>maxRecords</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.Common.DataAdapter">(i)</i></font>: protected virtual <span title="System.Data">DataTable[]</span> <b>FillSchema</b> (<span title="System.Data">DataSet</span> <i>dataSet</i>, <span title="System.Data">SchemaType</span> <i>schemaType</i>, <span title="System">string</span> <i>srcTable</i>, <span title="System.Data">IDataReader</span> <i>dataReader</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.Common.DataAdapter">(i)</i></font>: protected virtual <span title="System.Data">DataTable</span> <b>FillSchema</b> (<span title="System.Data">DataTable</span> <i>dataTable</i>, <span title="System.Data">SchemaType</span> <i>schemaType</i>, <span title="System.Data">IDataReader</span> <i>dataReader</i>)</font></li>
+    <li><font color="black">Method: protected override <span title="System.Data">IDataParameter</span> <b>GetBatchedParameter</b> (<span title="System">int</span> <i>commandIdentifier</i>, <span title="System">int</span> <i>parameterIndex</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.Common.DataAdapter">(i)</i></font>: protected <span title="System">bool</span> <b>HasTableMappings</b> ()</font></li>
+    <li><font color="black">Method: protected override <span title="System">void</span> <b>InitializeBatching</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.Common.DataAdapter">(i)</i></font>: public <span title="System">void</span> <b>ResetFillLoadOption</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.Common.DataAdapter">(i)</i></font>: public virtual <span title="System">bool</span> <b>ShouldSerializeAcceptChangesDuringFill</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.Common.DataAdapter">(i)</i></font>: public virtual <span title="System">bool</span> <b>ShouldSerializeFillLoadOption</b> ()</font></li>
+    <li><font color="black">Method: protected override <span title="System">void</span> <b>TerminateBatching</b> ()</font></li>
+    <li><font color="black">Property: <span title="System">bool</span> <b>AcceptChangesDuringUpdate</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: protected virtual <span title="System">bool</span> <b>CanRaiseEvents</b> { }</font></li>
+    <li><font color="black">Property: ProtectedInternal <span title="System.Data">CommandBehavior</span> <b>FillCommandBehavior</b> { }</font></li>
+    <li><font color="black">Property: <span title="System.Data">LoadOption</span> <b>FillLoadOption</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: protected override <span title="System.Data">IDbCommand</span> <b>this</b> [<span title="System.Data">StatementType</span> <i>statementType</i>] { }</font></li>
+    <li><font color="black">[Obsolete: Do not use, will be removed after beta.]Property: protected virtual <span title="System.Data.Common">DbProviderFactory</span> <b>ProviderFactory</b> { }</font></li>
+    <li><font color="black">Property: virtual <span title="System">bool</span> <b>ReturnProviderSpecificTypes</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: override <span title="System">int</span> <b>UpdateBatchSize</b> { public get; public set; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Data.OracleClient OracleDataReader"><td colspan="2" align="center" style="font:100%;"><b><font color='B0000'>System.Data.OracleClient OracleDataReader</font> () </b></td>
+ </tr>
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left"><font color='B0000'>public sealed class <b><span title="Base Type: System.MarshalByRefObject; Interfaces: System.Data.IDataReader, System.Collections.IEnumerable; System.IDisposable, System.Data.IDataRecord">System.Data.OracleClient.OracleDataReader</span></b></font>
+  <br><font color=blue size=2>(Please hover your mouse over the type to see the inheritance signatures)</font></td>
+  <td width="50%" align="left"><font color='B0000'>public sealed class <b><span title="Base Type: System.Data.ProviderBase.DbDataReaderBase; Interfaces: System.IDisposable, System.Data.IDataRecord, System.Data.IDataReader, System.Collections.IEnumerable">System.Data.OracleClient.OracleDataReader</span></b></font>
+  <br><font color=blue size=2>(Please hover your mouse over the type to see the inheritance signatures)</font></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>Close</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="System">bool</span> <b>GetBoolean</b> (<span title="System">int</span> <i>i</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">byte</span> <b>GetByte</b> (<span title="System">int</span> <i>i</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">long</span> <b>GetBytes</b> (<span title="System">int</span> <i>i</i>, <span title="System">long</span> <i>fieldOffset</i>, <span title="System">byte[]</span> <i>buffer2</i>, <span title="System">int</span> <i>bufferoffset</i>, <span title="System">int</span> <i>length</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">char</span> <b>GetChar</b> (<span title="System">int</span> <i>i</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">long</span> <b>GetChars</b> (<span title="System">int</span> <i>i</i>, <span title="System">long</span> <i>fieldOffset</i>, <span title="System">char[]</span> <i>buffer2</i>, <span title="System">int</span> <i>bufferoffset</i>, <span title="System">int</span> <i>length</i>)</font></li>
+    <li><font color="B0000">Method: public virtual <span title="System.Data">IDataReader</span> <b>GetData</b> (<span title="System">int</span> <i>i</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">string</span> <b>GetDataTypeName</b> (<span title="System">int</span> <i>i</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">DateTime</span> <b>GetDateTime</b> (<span title="System">int</span> <i>i</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">decimal</span> <b>GetDecimal</b> (<span title="System">int</span> <i>i</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">double</span> <b>GetDouble</b> (<span title="System">int</span> <i>i</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">Type</span> <b>GetFieldType</b> (<span title="System">int</span> <i>i</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">float</span> <b>GetFloat</b> (<span title="System">int</span> <i>i</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">Guid</span> <b>GetGuid</b> (<span title="System">int</span> <i>i</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">short</span> <b>GetInt16</b> (<span title="System">int</span> <i>i</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">int</span> <b>GetInt32</b> (<span title="System">int</span> <i>i</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">long</span> <b>GetInt64</b> (<span title="System">int</span> <i>i</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">string</span> <b>GetName</b> (<span title="System">int</span> <i>i</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">string</span> <b>GetString</b> (<span title="System">int</span> <i>i</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">object</span> <b>GetValue</b> (<span title="System">int</span> <i>i</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">int</span> <b>GetValues</b> (<span title="System">object[]</span> <i>values</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">bool</span> <b>IsDBNull</b> (<span title="System">int</span> <i>i</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="System">bool</span> <b>NextResult</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="System">bool</span> <b>Read</b> ()</font></li>
+    <li><font color="black">Property: virtual <span title="System">int</span> <b>FieldCount</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System">bool</span> <b>HasRows</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">bool</span> <b>IsClosed</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">object</span> <b>this</b> [<span title="System">int</span> <i>i</i>] { public get; }</font></li>
+    <li><font color="B0000">Property: virtual <span title="System">object</span> <b>this</b> [<span title="System">string</span> <i>name</i>] { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">int</span> <b>RecordsAffected</b> { public get; }</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.ProviderBase.DbDataReaderBase">(i)</i></font>: protected <span title="System">void</span> <b>AssertReaderHasColumns</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.ProviderBase.DbDataReaderBase">(i)</i></font>: protected <span title="System">void</span> <b>AssertReaderHasData</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.ProviderBase.DbDataReaderBase">(i)</i></font>: protected <span title="System">void</span> <b>AssertReaderIsOpen</b> (<span title="System">string</span> <i>methodName</i>)</font></li>
+    <li><font color="black">Method: public override <span title="System">void</span> <b>Close</b> ()</font></li>
+    <li><font color="black">Method: protected override <span title="System">void</span> <b>FillSchemaTable</b> (<span title="System.Data">DataTable</span> <i>schemaTable</i>)</font></li>
+    <li><font color="black">Method: public override <span title="System">bool</span> <b>GetBoolean</b> (<span title="System">int</span> <i>i</i>)</font></li>
+    <li><font color="black">Method: public override <span title="System">byte</span> <b>GetByte</b> (<span title="System">int</span> <i>i</i>)</font></li>
+    <li><font color="black">Method: public override <span title="System">long</span> <b>GetBytes</b> (<span title="System">int</span> <i>i</i>, <span title="System">long</span> <i>fieldOffset</i>, <span title="System">byte[]</span> <i>buffer2</i>, <span title="System">int</span> <i>bufferoffset</i>, <span title="System">int</span> <i>length</i>)</font></li>
+    <li><font color="black">Method: public override <span title="System">char</span> <b>GetChar</b> (<span title="System">int</span> <i>i</i>)</font></li>
+    <li><font color="black">Method: public override <span title="System">long</span> <b>GetChars</b> (<span title="System">int</span> <i>i</i>, <span title="System">long</span> <i>fieldOffset</i>, <span title="System">char[]</span> <i>buffer2</i>, <span title="System">int</span> <i>bufferoffset</i>, <span title="System">int</span> <i>length</i>)</font></li>
+    <li><font color="B0000">Method <font color="Blue"><i title="System.Data.Common.DbDataReader">(i)</i></font>: public <span title="System.Data.Common">DbDataReader</span> <b>GetData</b> (<span title="System">int</span> <i>ordinal</i>)</font></li>
+    <li><font color="black">Method: public override <span title="System">string</span> <b>GetDataTypeName</b> (<span title="System">int</span> <i>i</i>)</font></li>
+    <li><font color="black">Method: public override <span title="System">DateTime</span> <b>GetDateTime</b> (<span title="System">int</span> <i>i</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.Common.DbDataReader">(i)</i></font>: protected virtual <span title="System.Data.Common">DbDataReader</span> <b>GetDbDataReader</b> (<span title="System">int</span> <i>ordinal</i>)</font></li>
+    <li><font color="black">Method: public override <span title="System">decimal</span> <b>GetDecimal</b> (<span title="System">int</span> <i>i</i>)</font></li>
+    <li><font color="black">Method: public override <span title="System">double</span> <b>GetDouble</b> (<span title="System">int</span> <i>i</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.ProviderBase.DbDataReaderBase">(i)</i></font>: public virtual <span title="System.Collections">IEnumerator</span> <b>GetEnumerator</b> ()</font></li>
+    <li><font color="black">[Obsolete: Do not use, will be removed after beta. Use GetProviderSpecificFieldType instead]Method <font color="Blue"><i title="System.Data.Common.DbDataReader">(i)</i></font>: public virtual <span title="System">Type</span> <b>GetFieldProviderSpecificType</b> (<span title="System">int</span> <i>ordinal</i>)</font></li>
+    <li><font color="black">Method: public override <span title="System">Type</span> <b>GetFieldType</b> (<span title="System">int</span> <i>i</i>)</font></li>
+    <li><font color="black">Method: public override <span title="System">float</span> <b>GetFloat</b> (<span title="System">int</span> <i>i</i>)</font></li>
+    <li><font color="black">Method: public override <span title="System">Guid</span> <b>GetGuid</b> (<span title="System">int</span> <i>i</i>)</font></li>
+    <li><font color="black">Method: public override <span title="System">short</span> <b>GetInt16</b> (<span title="System">int</span> <i>i</i>)</font></li>
+    <li><font color="black">Method: public override <span title="System">int</span> <b>GetInt32</b> (<span title="System">int</span> <i>i</i>)</font></li>
+    <li><font color="black">Method: public override <span title="System">long</span> <b>GetInt64</b> (<span title="System">int</span> <i>i</i>)</font></li>
+    <li><font color="black">Method: public override <span title="System">string</span> <b>GetName</b> (<span title="System">int</span> <i>i</i>)</font></li>
+    <li><font color="black">Method: public override <span title="System">Type</span> <b>GetProviderSpecificFieldType</b> (<span title="System">int</span> <i>i</i>)</font></li>
+    <li><font color="black">Method: public override <span title="System">object</span> <b>GetProviderSpecificValue</b> (<span title="System">int</span> <i>i</i>)</font></li>
+    <li><font color="black">Method: public override <span title="System">int</span> <b>GetProviderSpecificValues</b> (<span title="System">object[]</span> <i>values</i>)</font></li>
+    <li><font color="black">Method: public override <span title="System">string</span> <b>GetString</b> (<span title="System">int</span> <i>i</i>)</font></li>
+    <li><font color="black">Method: public override <span title="System">object</span> <b>GetValue</b> (<span title="System">int</span> <i>i</i>)</font></li>
+    <li><font color="black">Method: public override <span title="System">int</span> <b>GetValues</b> (<span title="System">object[]</span> <i>values</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.ProviderBase.DbDataReaderBase">(i)</i></font>: protected <span title="System">bool</span> <b>IsCommandBehavior</b> (<span title="System.Data">CommandBehavior</span> <i>condition</i>)</font></li>
+    <li><font color="black">Method: public override <span title="System">bool</span> <b>IsDBNull</b> (<span title="System">int</span> <i>i</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method: public override <span title="System">bool</span> <b>NextResult</b> ()</font></li>
+    <li><font color="black">Method: public override <span title="System">bool</span> <b>Read</b> ()</font></li>
+    <li><font color="black">Property: protected <span title="System.Data">CommandBehavior</span> <b>CommandBehavior</b> { }</font></li>
+    <li><font color="black">Property: override <span title="System">int</span> <b>FieldCount</b> { public get; }</font></li>
+    <li><font color="black">Property: override <span title="System">bool</span> <b>HasRows</b> { public get; }</font></li>
+    <li><font color="black">Property: override <span title="System">bool</span> <b>IsClosed</b> { public get; }</font></li>
+    <li><font color="black">Property: protected override <span title="System">bool</span> <b>IsValidRow</b> { }</font></li>
+    <li><font color="black">Property: override <span title="System">object</span> <b>this</b> [<span title="System">int</span> <i>i</i>] { public get; }</font></li>
+    <li><font color="black">Property: override <span title="System">int</span> <b>RecordsAffected</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">int</span> <b>VisibleFieldCount</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Data.OracleClient OracleException"><td colspan="2" align="center" style="font:100%;"><b><font color='B0000'>System.Data.OracleClient OracleException</font> () </b></td>
+ </tr>
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left"><font color='B0000'>public sealed class <b><span title="Base Type: System.SystemException; Interfaces: System.Runtime.Serialization.ISerializable">System.Data.OracleClient.OracleException</span></b></font>
+  <br><font color=blue size=2>(Please hover your mouse over the type to see the inheritance signatures)</font></td>
+  <td width="50%" align="left"><font color='B0000'>public sealed class <b><span title="Base Type: System.Data.Common.DbException; Interfaces: System.Runtime.Serialization.ISerializable, System.Runtime.InteropServices._Exception">System.Data.OracleClient.OracleException</span></b></font>
+  <br><font color=blue size=2>(Please hover your mouse over the type to see the inheritance signatures)</font></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Exception">(i)</i></font>: public virtual <span title="System">void</span> <b>GetObjectData</b> (<span title="System.Runtime.Serialization">SerializationInfo</span> <i>info</i>, <span title="System.Runtime.Serialization">StreamingContext</span> <i>context</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Property: <span title="System">Exception</span> <b>InnerException</b> { public get; }</font></li>
+    <li><font color="black">Property: override <span title="System">string</span> <b>Message</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System.Reflection">MethodBase</span> <b>TargetSite</b> { public get; }</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method: public override <span title="System">void</span> <b>GetObjectData</b> (<span title="System.Runtime.Serialization">SerializationInfo</span> <i>si</i>, <span title="System.Runtime.Serialization">StreamingContext</span> <i>context</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Exception">(i)</i></font>: public virtual <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Property: virtual <span title="System.Collections">IDictionary</span> <b>Data</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">int</span> <b>ErrorCode</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">Exception</span> <b>InnerException</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">string</span> <b>Message</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System.Reflection">MethodBase</span> <b>TargetSite</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Data.OracleClient OracleLob"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public sealed class <b><span title="Base Type: System.IO.Stream; Interfaces: System.ICloneable, System.Data.SqlTypes.INullable; System.IDisposable">System.Data.OracleClient.OracleLob</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.IO.Stream">(i)</i></font>: public virtual <span title="System">void</span> <b>WriteByte</b> (<span title="System">byte</span> <i>value</i>)</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method: public override <span title="System">void</span> <b>WriteByte</b> (<span title="System">byte</span> <i>value</i>)</font></li>
+    <li><font color="black">Property: virtual <span title="System">bool</span> <b>CanTimeout</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">int</span> <b>ReadTimeout</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">int</span> <b>WriteTimeout</b> { public get; public set; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Data.OracleClient OracleParameter"><td colspan="2" align="center" style="font:100%;"><b><font color='B0000'>System.Data.OracleClient OracleParameter</font> () </b></td>
+ </tr>
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left"><font color='B0000'>public sealed class <b><span title="Base Type: System.MarshalByRefObject; Interfaces: System.Data.IDbDataParameter, System.ICloneable; System.Data.IDataParameter">System.Data.OracleClient.OracleParameter</span></b></font>
+  <br><font color=blue size=2>(Please hover your mouse over the type to see the inheritance signatures)</font></td>
+  <td width="50%" align="left"><font color='B0000'>public sealed class <b><span title="Base Type: System.Data.ProviderBase.DbParameterBase; Interfaces: System.ICloneable; System.Data.IDataParameter, System.Data.IDbDataParameter">System.Data.OracleClient.OracleParameter</span></b></font>
+  <br><font color=blue size=2>(Please hover your mouse over the type to see the inheritance signatures)</font></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method: public override <span title="System">string</span> <b>ToString</b> ()</font></li>
+    <li><font color="black">Property: virtual <span title="System.Data">DbType</span> <b>DbType</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">int</span> <b>Offset</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">byte</span> <b>Precision</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">byte</span> <b>Scale</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">int</span> <b>Size</b> { public get; public set; }</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Constructor: public <b>OracleParameter</b> (<span title="System">string</span> <i>name</i>, <span title="System.Data.OracleClient">OracleType</span> <i>oracleType</i>, <span title="System">int</span> <i>size</i>, <span title="System.Data">ParameterDirection</span> <i>direction</i>, <span title="System">string</span> <i>sourceColumn</i>, <span title="System.Data">DataRowVersion</span> <i>sourceVersion</i>, <span title="System">bool</span> <i>sourceColumnNullMapping</i>, <span title="System">object</span> <i>value</i>)</font></li>
+    <li><font color="black">Method: public override <span title="System">void</span> <b>CopyTo</b> (<span title="System.Data.Common">DbParameter</span> <i>destination</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.ProviderBase.DbParameterBase">(i)</i></font>: protected virtual <span title="System">void</span> <b>PropertyChanging</b> ()</font></li>
+    <li><font color="black">Method: public override <span title="System">void</span> <b>ResetDbType</b> ()</font></li>
+    <li><font color="black">Method: public <span title="System">void</span> <b>ResetOracleType</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.ProviderBase.DbParameterBase">(i)</i></font>: protected <span title="System">void</span> <b>ResetSize</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.ProviderBase.DbParameterBase">(i)</i></font>: protected <span title="System">bool</span> <b>ShouldSerializeSize</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.ProviderBase.DbParameterBase">(i)</i></font>: public virtual <span title="System">string</span> <b>ToString</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.ProviderBase.DbParameterBase">(i)</i></font>: protected virtual <span title="System">byte</span> <b>ValuePrecision</b> (<span title="System">object</span> <i>value</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.ProviderBase.DbParameterBase">(i)</i></font>: protected virtual <span title="System">byte</span> <b>ValueScale</b> (<span title="System">object</span> <i>value</i>)</font></li>
+    <li><font color="black">Method: protected override <span title="System">int</span> <b>ValueSize</b> (<span title="System">object</span> <i>value</i>)</font></li>
+    <li><font color="black">Property: protected <span title="System">object</span> <b>CoercedValue</b> { }</font></li>
+    <li><font color="black">Property: override <span title="System.Data">DbType</span> <b>DbType</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">int</span> <b>Offset</b> { public get; public set; }</font></li>
+    <li><font color="black">[Obsolete: Precision can be automatically inferred from Value, best practice is to not set.]Property: virtual <span title="System">byte</span> <b>Precision</b> { public get; public set; }</font></li>
+    <li><font color="black">[Obsolete: Scale can be automatically inferred from Value, best practice is to not set.]Property: virtual <span title="System">byte</span> <b>Scale</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: override <span title="System">int</span> <b>Size</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">bool</span> <b>SourceColumnNullMapping</b> { public get; public set; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Data.OracleClient OracleParameterCollection"><td colspan="2" align="center" style="font:100%;"><b><font color='B0000'>System.Data.OracleClient OracleParameterCollection</font> () </b></td>
+ </tr>
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left"><font color='B0000'>public sealed class <b><span title="Base Type: System.MarshalByRefObject; Interfaces: System.Data.IDataParameterCollection; System.Collections.IList, System.Collections.ICollection, System.Collections.IEnumerable">System.Data.OracleClient.OracleParameterCollection</span></b></font>
+  <br><font color=blue size=2>(Please hover your mouse over the type to see the inheritance signatures)</font></td>
+  <td width="50%" align="left"><font color='B0000'>public sealed class <b><span title="Base Type: System.Data.ProviderBase.DbParameterBaseCollection; Interfaces: System.Collections.IList, System.Collections.ICollection, System.Collections.IEnumerable, System.Data.IDataParameterCollection">System.Data.OracleClient.OracleParameterCollection</span></b></font>
+  <br><font color=blue size=2>(Please hover your mouse over the type to see the inheritance signatures)</font></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method: public <span title="System.Data.OracleClient">OracleParameter</span> <b>Add</b> (<span title="System">string</span> <i>parameterName</i>, <span title="System">object</span> <i>value</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">bool</span> <b>Contains</b> (<span title="System">string</span> <i>parameterName</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Property: <span title="System.Data.OracleClient">OracleParameter</span> <b>this</b> [<span title="System">int</span> <i>index</i>] { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System.Data.OracleClient">OracleParameter</span> <b>this</b> [<span title="System">string</span> <i>parameterName</i>] { public get; public set; }</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">[Obsolete: use AddWithValue(string, object)]Method: public <span title="System.Data.OracleClient">OracleParameter</span> <b>Add</b> (<span title="System">string</span> <i>parameterName</i>, <span title="System">object</span> <i>value</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.ProviderBase.DbParameterBaseCollection">(i)</i></font>: public virtual <span title="System">void</span> <b>AddRange</b> (<span title="System">Array</span> <i>values</i>)</font></li>
+    <li><font color="black">Method: public <span title="System">void</span> <b>AddRange</b> (<span title="System.Data.OracleClient">OracleParameter[]</span> <i>values</i>)</font></li>
+    <li><font color="black">Method: public <span title="System.Data.OracleClient">OracleParameter</span> <b>AddWithValue</b> (<span title="System">string</span> <i>parameterName</i>, <span title="System">object</span> <i>value</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.ProviderBase.DbParameterBaseCollection">(i)</i></font>: protected virtual <span title="System">int</span> <b>CheckName</b> (<span title="System">string</span> <i>parameterName</i>)</font></li>
+    <li><font color="black">Method: public override <span title="System">bool</span> <b>Contains</b> (<span title="System">string</span> <i>parameterName</i>)</font></li>
+    <li><font color="black">Method: public <span title="System">bool</span> <b>Contains</b> (<span title="System.Data.OracleClient">OracleParameter</span> <i>value</i>)</font></li>
+    <li><font color="black">Method: public <span title="System">void</span> <b>CopyTo</b> (<span title="System.Data.OracleClient">OracleParameter[]</span> <i>array</i>, <span title="System">int</span> <i>index</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.ProviderBase.DbParameterBaseCollection">(i)</i></font>: protected virtual <span title="System.Data.Common">DbParameter</span> <b>GetParameter</b> (<span title="System">int</span> <i>index</i>)</font></li>
+    <li><font color="black">Method: public <span title="System">int</span> <b>IndexOf</b> (<span title="System.Data.OracleClient">OracleParameter</span> <i>value</i>)</font></li>
+    <li><font color="black">Method: public <span title="System">void</span> <b>Insert</b> (<span title="System">int</span> <i>index</i>, <span title="System.Data.OracleClient">OracleParameter</span> <i>value</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.ProviderBase.DbParameterBaseCollection">(i)</i></font>: protected virtual <span title="System">void</span> <b>OnChange</b> ()</font></li>
+    <li><font color="black">Method: public <span title="System">void</span> <b>Remove</b> (<span title="System.Data.OracleClient">OracleParameter</span> <i>value</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.ProviderBase.DbParameterBaseCollection">(i)</i></font>: protected virtual <span title="System">void</span> <b>SetParameter</b> (<span title="System">int</span> <i>index</i>, <span title="System.Data.Common">DbParameter</span> <i>value</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.ProviderBase.DbParameterBaseCollection">(i)</i></font>: protected virtual <span title="System">void</span> <b>Validate</b> (<span title="System">int</span> <i>index</i>, <span title="System">object</span> <i>value</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.ProviderBase.DbParameterBaseCollection">(i)</i></font>: protected virtual <span title="System">void</span> <b>ValidateType</b> (<span title="System">object</span> <i>value</i>)</font></li>
+    <li><font color="black">Property: new <span title="System.Data.OracleClient">OracleParameter</span> <b>this</b> [<span title="System">int</span> <i>index</i>] { public get; public set; }</font></li>
+    <li><font color="black">Property: new <span title="System.Data.OracleClient">OracleParameter</span> <b>this</b> [<span title="System">string</span> <i>parameterName</i>] { public get; public set; }</font></li>
+    <li><font color="black">Property: protected override <span title="System">Type</span> <b>ItemType</b> { }</font></li>
+    <li><font color="black">Property: protected override <span title="System">string</span> <b>ParameterNamePrefix</b> { }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Data.OracleClient OraclePermission"><td colspan="2" align="center" style="font:100%;"><b><font color='B0000'>System.Data.OracleClient OraclePermission</font> () </b></td>
+ </tr>
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left"><font color='B0000'>public sealed class <b><span title="Base Type: System.Security.CodeAccessPermission; Interfaces: System.Security.Permissions.IUnrestrictedPermission; System.Security.ISecurityEncodable, System.Security.IPermission, System.Security.IStackWalk">System.Data.OracleClient.OraclePermission</span></b></font>
+  <br><font color=blue size=2>(Please hover your mouse over the type to see the inheritance signatures)</font></td>
+  <td width="50%" align="left"><font color='B0000'>public sealed class <b><span title="Base Type: System.Data.Common.DBDataPermission; Interfaces: System.Security.ISecurityEncodable, System.Security.IPermission, System.Security.IStackWalk, System.Security.Permissions.IUnrestrictedPermission">System.Data.OracleClient.OraclePermission</span></b></font>
+  <br><font color=blue size=2>(Please hover your mouse over the type to see the inheritance signatures)</font></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method: public override <span title="System">void</span> <b>FromXml</b> (<span title="System.Security">SecurityElement</span> <i>securityElement</i>)</font></li>
+    <li><font color="black">Method: public override <span title="System.Security">IPermission</span> <b>Intersect</b> (<span title="System.Security">IPermission</span> <i>target</i>)</font></li>
+    <li><font color="black">Method: public override <span title="System">bool</span> <b>IsSubsetOf</b> (<span title="System.Security">IPermission</span> <i>target</i>)</font></li>
+    <li><font color="black">Method: public override <span title="System.Security">SecurityElement</span> <b>ToXml</b> ()</font></li>
+    <li><font color="black">Method: public override <span title="System.Security">IPermission</span> <b>Union</b> (<span title="System.Security">IPermission</span> <i>target</i>)</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.Common.DBDataPermission">(i)</i></font>: public virtual <span title="System">void</span> <b>Add</b> (<span title="System">string</span> <i>connectionString</i>, <span title="System">string</span> <i>restrictions</i>, <span title="System.Data">KeyRestrictionBehavior</span> <i>behavior</i>)</font></li>
+    <li><font color="black">Method: protected override <span title="System">void</span> <b>AddConnectionString</b> (<span title="System">string</span> <i>connectionString</i>, <span title="System">string</span> <i>restrictions</i>, <span title="System.Data">KeyRestrictionBehavior</span> <i>behavior</i>, <span title="System.Collections">Hashtable</span> <i>synonyms</i>, <span title="System">bool</span> <i>useFirstKeyValue</i>)</font></li>
+    <li><font color="black">[Obsolete: Do not use, will be removed after beta.]Method <font color="Blue"><i title="System.Data.Common.DBDataPermission">(i)</i></font>: protected <span title="System">void</span> <b>AddConnectionString</b> (<span title="System.Data.Common">DbConnectionOptions</span> <i>connectionOptions</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Security.CodeAccessPermission">(i)</i></font>: public virtual <span title="System">bool</span> <b>CheckAssert</b> (<span title="System.Security">CodeAccessPermission</span> <i>asserted</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Security.CodeAccessPermission">(i)</i></font>: public virtual <span title="System">bool</span> <b>CheckDemand</b> (<span title="System.Security">CodeAccessPermission</span> <i>grant</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Security.CodeAccessPermission">(i)</i></font>: public virtual <span title="System">bool</span> <b>CheckDeny</b> (<span title="System.Security">CodeAccessPermission</span> <i>denied</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Security.CodeAccessPermission">(i)</i></font>: public virtual <span title="System">bool</span> <b>CheckPermitOnly</b> (<span title="System.Security">CodeAccessPermission</span> <i>permitted</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.Common.DBDataPermission">(i)</i></font>: protected <span title="System">void</span> <b>Clear</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.Common.DBDataPermission">(i)</i></font>: protected virtual <span title="System.Data.Common">DBDataPermission</span> <b>CreateInstance</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.Common.DBDataPermission">(i)</i></font>: public virtual <span title="System">void</span> <b>FromXml</b> (<span title="System.Security">SecurityElement</span> <i>securityElement</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.Common.DBDataPermission">(i)</i></font>: public virtual <span title="System.Security">IPermission</span> <b>Intersect</b> (<span title="System.Security">IPermission</span> <i>target</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.Common.DBDataPermission">(i)</i></font>: public virtual <span title="System">bool</span> <b>IsSubsetOf</b> (<span title="System.Security">IPermission</span> <i>target</i>)</font></li>
+    <li><font color="black">[Obsolete: Do not use, will be removed after beta. Use AddConnectionString instead.]Method <font color="Blue"><i title="System.Data.Common.DBDataPermission">(i)</i></font>: protected <span title="System">void</span> <b>SetConnectionString</b> (<span title="System.Data.Common">DbConnectionOptions</span> <i>connectionOptions</i>)</font></li>
+    <li><font color="black">[Obsolete: use Clear() & Add()]Method <font color="Blue"><i title="System.Data.Common.DBDataPermission">(i)</i></font>: public virtual <span title="System">void</span> <b>SetRestriction</b> (<span title="System">string</span> <i>connectionString</i>, <span title="System">string</span> <i>restrictions</i>, <span title="System.Data">KeyRestrictionBehavior</span> <i>behavior</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.Common.DBDataPermission">(i)</i></font>: public virtual <span title="System.Security">SecurityElement</span> <b>ToXml</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.Common.DBDataPermission">(i)</i></font>: public virtual <span title="System.Security">IPermission</span> <b>Union</b> (<span title="System.Security">IPermission</span> <i>target</i>)</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Data.OracleClient OraclePermissionAttribute"><td colspan="2" align="center" style="font:100%;"><b><font color='B0000'>System.Data.OracleClient OraclePermissionAttribute</font> () </b></td>
+ </tr>
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left"><font color='B0000'>public sealed attribute <b><span title="Base Type: System.Security.Permissions.CodeAccessSecurityAttribute">System.Data.OracleClient.OraclePermissionAttribute</span></b></font>
+  <br><font color=blue size=2>(Please hover your mouse over the type to see the inheritance signatures)</font></td>
+  <td width="50%" align="left"><font color='B0000'>public sealed attribute <b><span title="Base Type: System.Data.Common.DBDataPermissionAttribute">System.Data.OracleClient.OraclePermissionAttribute</span></b></font>
+  <br><font color=blue size=2>(Please hover your mouse over the type to see the inheritance signatures)</font></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.Common.DBDataPermissionAttribute">(i)</i></font>: public <span title="System">bool</span> <b>ShouldSerializeConnectionString</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.Common.DBDataPermissionAttribute">(i)</i></font>: public <span title="System">bool</span> <b>ShouldSerializeKeyRestrictions</b> ()</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>ConnectionString</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System.Data">KeyRestrictionBehavior</span> <b>KeyRestrictionBehavior</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>KeyRestrictions</b> { public get; public set; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Data.OracleClient OracleRowUpdatedEventArgs"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public sealed class <b><span title="Base Type: System.Data.Common.RowUpdatedEventArgs">System.Data.OracleClient.OracleRowUpdatedEventArgs</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.Common.RowUpdatedEventArgs">(i)</i></font>: public <span title="System">void</span> <b>CopyToRows</b> (<span title="System.Data">DataRow[]</span> <i>array</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Data.Common.RowUpdatedEventArgs">(i)</i></font>: public <span title="System">void</span> <b>CopyToRows</b> (<span title="System.Data">DataRow[]</span> <i>array</i>, <span title="System">int</span> <i>arrayIndex</i>)</font></li>
+    <li><font color="black">Property: <span title="System">int</span> <b>RowCount</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Data.OracleClient OracleRowUpdatingEventArgs"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public sealed class <b><span title="Base Type: System.Data.Common.RowUpdatingEventArgs">System.Data.OracleClient.OracleRowUpdatingEventArgs</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Property: protected override <span title="System.Data">IDbCommand</span> <b>BaseCommand</b> { }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Data.OracleClient OracleTransaction"><td colspan="2" align="center" style="font:100%;"><b><font color='B0000'>System.Data.OracleClient OracleTransaction</font> () </b></td>
+ </tr>
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left"><font color='B0000'>public sealed class <b><span title="Base Type: System.MarshalByRefObject; Interfaces: System.Data.IDbTransaction; System.IDisposable">System.Data.OracleClient.OracleTransaction</span></b></font>
+  <br><font color=blue size=2>(Please hover your mouse over the type to see the inheritance signatures)</font></td>
+  <td width="50%" align="left"><font color='B0000'>public sealed class <b><span title="Base Type: System.Data.Common.DbTransaction; Interfaces: System.IDisposable, System.Data.IDbTransaction">System.Data.OracleClient.OracleTransaction</span></b></font>
+  <br><font color=blue size=2>(Please hover your mouse over the type to see the inheritance signatures)</font></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>Commit</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>Dispose</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>Rollback</b> ()</font></li>
+    <li><font color="black">Property: <span title="System.Data.OracleClient">OracleConnection</span> <b>Connection</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System.Data">IsolationLevel</span> <b>IsolationLevel</b> { public get; }</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method: public override <span title="System">void</span> <b>Commit</b> ()</font></li>
+    <li><font color="black">Method: public override <span title="System">void</span> <b>Dispose</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method: public override <span title="System">void</span> <b>Rollback</b> ()</font></li>
+    <li><font color="black">Property: new <span title="System.Data.OracleClient">OracleConnection</span> <b>Connection</b> { public get; }</font></li>
+    <li><font color="black">Property: protected override <span title="System.Data.Common">DbConnection</span> <b>DbConnection</b> { }</font></li>
+    <li><font color="black">Property: override <span title="System.Data">IsolationLevel</span> <b>IsolationLevel</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+</tbody>
+</table>
+
+<p class="endNav"><font size=2><a href="#top">Top</a> &bull; <a href="..\APIChangesEVERTMtoWHI40607.03.html" target=_top>Summary</a></font></p>
+
+</body>
+</html>
+

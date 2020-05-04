@@ -1,0 +1,121 @@
+<LINK rel="stylesheet" type="text/css" href="/xmlweb.css">
+	<BODY>
+		<H1>Dtd2Xsd</H1>
+		<P>This tool converts a DTD (either an XML or SGML DTD) into an XSD schema.</P>
+		<P><IMG alt="" src="download.gif" hspace="5">Download the zip file including the 
+			standalone executable and the full source code: <A href="dtd2xsd.zip">Dtd2Xsd.zip</A></P>
+		<P>See online demo at <A href="/tools/dtd2xsd/demo.aspx">demo.aspx</A>.<BR>
+			See also <A href="/srcview/srcview.aspx?path=/tools/dtd2xsd/dtd2xsd.src">online 
+				source</A>.</P>
+		<H3>Command Line Usage</H3>
+		<P>The command line executable version has the following options:</P>
+		<PRE> dtd2xsd &lt;options&gt; [InputUri] [OutputFile]</PRE>
+		<blockquote>
+			<TABLE id="Table1" cellSpacing="1" cellPadding="5" border="1">
+				<TR>
+					<TH>
+						-root "name"</TH><TD>Specifies the name of the root element in the DTD.</TD>
+				</TR>
+				<TR>
+					<TH>
+						-e "file"</TH><TD>Specifies a file to redirect error output to.</TD>
+				</TR>
+				<TR>
+					<TH>
+						-proxy "server"</TH><TD>Specifies the proxy server to use to fetch DTD's 
+						through the fire wall.</TD>
+				</TR>
+				<TR>
+					<TH>
+						-sgml</TH><TD>Specifies that the DTD is an SGML DTD.</TD>
+				</TR>
+				<TR>
+					<TH>
+						-tns "nsuri"</TH>
+					<TD>Specifies the target namespace</TD>
+				</TR>
+				<TR>
+					<TH>
+						-s prefix ns url
+					</TH>
+					<TD>
+						<P>Specifies a schema to add to the list of imported schemas:</P>
+						<UL>
+							<LI>
+								<STRONG>prefix</STRONG>
+							- is the namespace prefix to associate with the namespace
+							<LI>
+								<STRONG>ns</STRONG>
+							- is the namespace URI of the schema to import
+							<LI>
+								<STRONG>url</STRONG> - is the schema location.</LI></UL>
+					</TD>
+				</TR>
+				<TR>
+					<TH>
+						-nogroups</TH>
+					<TD>Turns off the default preservation of attribute and content model groups.</TD>
+				</TR>
+				<TR>
+					<TH>
+						InputUri</TH><TD>The input file name or URL. Default is stdin.</TD>
+				</TR>
+				<TR>
+					<TH>
+						OutputFile</TH><TD>
+						The optional output file name. Default is stdout.</TD>
+				</TR>
+			</TABLE>
+		</blockquote>
+		<H3>Notes</H3>
+		<UL>
+			<LI>
+			General Entities have no representation in XSD so those are lost in the XSD 
+			translation.
+			<LI>
+			DTD constraints are not enforced which means it is more forgiving about which 
+			DTD's it loads than the System.Xml classes. This is by design since the tool is 
+			designed to help translate DTD's, not validate them. If you want to validate 
+			your DTD's use System.Xml.
+			<LI>
+			XSD is namespace aware, so DTD's containing names with colon are treated as 
+			qualified names. DTD's that use colons and were not designed with namespaces in 
+			mind will not translate to XSD very well if at all.
+			<LI>
+			The System.Uri class is used by the Schema object model, so you may see 
+			"invalid URI" warnings. These can be ignored.
+			<LI>
+			XSD does not allow non-deterministic content models, whereas DTD's did allow 
+			this. In this case you will have to hand edit the resulting XSD schema to 
+			disambiguate the content model.
+			<LI>
+			DTD's allow undeclared elements and attributes so long as they are not used. 
+			XSD does not, so you will get errors in this case. It's a very unusual edge 
+			case.
+			<LI>
+				While the PUBLIC identifier on NOTATIONs was optional in DTD's, the XSD 
+				validator generates a warning.</LI>
+		</UL>
+		<H3>Support</H3>
+		<P>Please email bugs, feedback and/or feature requests to <A href="mailto:clovett@microsoft.com">
+				Chris Lovett</A>.</P>
+		<H3>Change History</H3>
+		<P>
+			<TABLE id="Table2" cellSpacing="1" cellPadding="5" border="1">
+				<TR>
+					<Th>
+						Version</Th>
+					<Th>
+						Description</Th>
+				</TR>
+				<TR>
+					<TD>1.1</TD>
+					<TD>Fix bug in IsStartNameChar check.</TD>
+				</TR>
+				<TR>
+					<TD>1.0</TD>
+					<TD>Initial Version</TD>
+				</TR>
+			</TABLE>
+		</P>
+	</BODY>

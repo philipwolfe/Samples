@@ -1,0 +1,506 @@
+<VisualStudioProject>
+    <VisualBasic
+        ProjectType = "Local"
+        ProductVersion = "7.10.3077"
+        SchemaVersion = "2.0"
+        ProjectGuid = "{D70F5C67-05FA-4619-B956-3A3E1C34AD28}"
+    >
+        <Build>
+            <Settings
+                ApplicationIcon = "BRIDGE.ICO"
+                AssemblyKeyContainerName = ""
+                AssemblyName = "TrafficViewer"
+                AssemblyOriginatorKeyFile = ""
+                AssemblyOriginatorKeyMode = "None"
+                DefaultClientScript = "JScript"
+                DefaultHTMLPageLayout = "Grid"
+                DefaultTargetSchema = "IE50"
+                DelaySign = "false"
+                OutputType = "WinExe"
+                OptionCompare = "Binary"
+                OptionExplicit = "On"
+                OptionStrict = "On"
+                RootNamespace = "TrafficViewer"
+                StartupObject = ""
+            >
+                <Config
+                    Name = "Debug"
+                    BaseAddress = "285212672"
+                    ConfigurationOverrideFile = ""
+                    DefineConstants = ""
+                    DefineDebug = "true"
+                    DefineTrace = "true"
+                    DebugSymbols = "true"
+                    IncrementalBuild = "true"
+                    Optimize = "true"
+                    OutputPath = "bin\"
+                    RegisterForComInterop = "false"
+                    RemoveIntegerChecks = "true"
+                    TreatWarningsAsErrors = "false"
+                    WarningLevel = "1"
+                />
+                <Config
+                    Name = "Release"
+                    BaseAddress = "285212672"
+                    ConfigurationOverrideFile = ""
+                    DefineConstants = ""
+                    DefineDebug = "false"
+                    DefineTrace = "true"
+                    DebugSymbols = "false"
+                    IncrementalBuild = "false"
+                    Optimize = "true"
+                    OutputPath = "bin\"
+                    RegisterForComInterop = "false"
+                    RemoveIntegerChecks = "true"
+                    TreatWarningsAsErrors = "false"
+                    WarningLevel = "1"
+                />
+            </Settings>
+            <References>
+                <Reference
+                    Name = "System"
+                    AssemblyName = "System"
+                />
+                <Reference
+                    Name = "System.Windows.Forms"
+                    AssemblyName = "System.Windows.Forms"
+                />
+                <Reference
+                    Name = "System.Drawing"
+                    AssemblyName = "System.Drawing"
+                    HintPath = "..\..\..\..\..\..\WINNT\Microsoft.NET\Framework\v1.1.4322\System.Drawing.dll"
+                />
+                <Reference
+                    Name = "System.Management"
+                    AssemblyName = "System.Management"
+                    HintPath = "..\..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Management.dll"
+                />
+                <Reference
+                    Name = "System.Data"
+                    AssemblyName = "System.Data"
+                    HintPath = "..\..\..\..\..\..\WINNT\Microsoft.NET\Framework\v1.1.4322\System.Data.dll"
+                />
+            </References>
+            <Imports>
+                <Import Namespace = "System" />
+                <Import Namespace = "System.Drawing" />
+                <Import Namespace = "System.Windows.Forms" />
+            </Imports>
+        </Build>
+        <Files>
+            <Include>
+                <File
+                    RelPath = "AboutForm.vb"
+                    SubType = "Form"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "AboutForm.resx"
+                    DependentUpon = "AboutForm.vb"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "ApplicationTools.vb"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "AssemblyInfo.vb"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Bellevue.vb"
+                    SubType = "Form"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Bellevue.resx"
+                    DependentUpon = "Bellevue.vb"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "BRIDGE.ICO"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "CameraLabels.vb"
+                    SubType = "UserControl"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "HelpPage.htm"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "KingCounty.vb"
+                    SubType = "Form"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "KingCounty.resx"
+                    DependentUpon = "KingCounty.vb"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "MainViewerForm.vb"
+                    SubType = "Form"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "MainViewerForm.resx"
+                    DependentUpon = "MainViewerForm.vb"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "MakeHelpFile.vb"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "RegionMap.vb"
+                    SubType = "Form"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "RegionMap.resx"
+                    DependentUpon = "RegionMap.vb"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Seattle.vb"
+                    SubType = "Form"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Seattle.resx"
+                    DependentUpon = "Seattle.vb"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tacoma.vb"
+                    SubType = "Form"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Tacoma.resx"
+                    DependentUpon = "Tacoma.vb"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\LocationDescriptions\DescNEI-90.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\LocationDescriptions\DescNESR 20.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\LocationDescriptions\DescNESR 28.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\LocationDescriptions\DescNESR 285.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\LocationDescriptions\DescNESR 291.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\LocationDescriptions\DescNEUS 395.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\LocationDescriptions\DescNEUS 97.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\LocationDescriptions\DescNEUS97A.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\LocationDescriptions\DescNWBellevue.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\LocationDescriptions\DescNWI-405.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\LocationDescriptions\DescNWI-5.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\LocationDescriptions\DescNWI-90.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\LocationDescriptions\DescNWKing Co..txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\LocationDescriptions\DescNWSeattle.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\LocationDescriptions\DescNWSR 104.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\LocationDescriptions\DescNWSR 167.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\LocationDescriptions\DescNWSR 18.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\LocationDescriptions\DescNWSR 516.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\LocationDescriptions\DescNWSR 520.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\LocationDescriptions\DescNWSR 522.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\LocationDescriptions\DescNWSR 525.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\LocationDescriptions\DescNWSR 526.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\LocationDescriptions\DescNWSR 9.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\LocationDescriptions\DescNWSR 99.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\LocationDescriptions\DescNWUS 2.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\LocationDescriptions\DescSEI-90.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\LocationDescriptions\DescSEUS 12.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\LocationDescriptions\DescSEUS 195.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\LocationDescriptions\DescSEUS 395.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\LocationDescriptions\DescSWI-5.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\LocationDescriptions\DescSWSR 14.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\LocationDescriptions\DescSWSR 16.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\LocationDescriptions\DescSWSR 4.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\LocationDescriptions\DescSWSR 8.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\URLs\NEI-90.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\URLs\NESR 20.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\URLs\NESR 28.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\URLs\NESR 285.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\URLs\NESR 291.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\URLs\NEUS 395.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\URLs\NEUS 97.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\URLs\NEUS97A.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\URLs\NWBellevue.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\URLs\NWI-405.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\URLs\NWI-5.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\URLs\NWI-90.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\URLs\NWKing Co..txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\URLs\NWSeattle.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\URLs\NWSR 104.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\URLs\NWSR 167.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\URLs\NWSR 18.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\URLs\NWSR 516.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\URLs\NWSR 520.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\URLs\NWSR 522.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\URLs\NWSR 525.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\URLs\NWSR 526.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\URLs\NWSR 9.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\URLs\NWSR 99.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\URLs\NWUS 2.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\URLs\SEI-90.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\URLs\SEUS 12.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\URLs\SEUS 195.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\URLs\SEUS 395.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\URLs\SWI-5.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\URLs\SWSR 14.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\URLs\SWSR 16.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\URLs\SWSR 4.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "CameraData\Washington\URLs\SWSR 8.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Images\BRIDGE.ICO"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Images\TacomaCam.bmp"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Images\TacomaMap.JPG"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Images\TacomaMapColor.bmp"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Images\WaMap.bmp"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Images\WebError404.bmp"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "SR_Labels\WashingtonNE.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "SR_Labels\WashingtonNW.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "SR_Labels\WashingtonSE.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "SR_Labels\WashingtonSW.txt"
+                    BuildAction = "EmbeddedResource"
+                />
+            </Include>
+        </Files>
+    </VisualBasic>
+</VisualStudioProject>
+

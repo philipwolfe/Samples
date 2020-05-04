@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<VisualStudioProject
+	ProjectType="Visual C++"
+	Version="7.10"
+	Name="VsPackageUI"
+	ProjectGUID="{0D16F467-F3A4-4871-B662-C3FCE8D279F7}"
+	SccProjectName=""
+	SccLocalPath="">
+	<Platforms>
+		<Platform
+			Name="Win32"/>
+	</Platforms>
+	<Configurations>
+		<Configuration
+			Name="Debug|Win32"
+			OutputDirectory=".\..\VsPackage\Debug\1033"
+			IntermediateDirectory=".\Debug"
+			ConfigurationType="2"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="FALSE">
+			<Tool
+				Name="VCCLCompilerTool"
+				RuntimeLibrary="5"
+				BufferSecurityCheck="TRUE"
+				PrecompiledHeaderFile=".\Debug/VsPackageUI.pch"
+				AssemblerListingLocation=".\Debug/"
+				ObjectFile=".\Debug/"
+				ProgramDataBaseFileName=".\Debug/"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				IgnoreImportLibrary="TRUE"
+				AdditionalOptions="/MACHINE:I386"
+				AdditionalDependencies=""
+				OutputFile=".\..\VsPackage\Debug\1033/VsPackageUI.dll"
+				LinkIncremental="1"
+				SuppressStartupBanner="TRUE"
+				GenerateDebugInformation="TRUE"
+				ProgramDatabaseFile=".\..\VsPackage\Debug\1033/VsPackageUI.pdb"
+				ResourceOnlyDLL="TRUE"
+				BaseAddress=""
+				ImportLibrary=""/>
+			<Tool
+				Name="VCMIDLTool"
+				TypeLibraryName=".\..\VsPackage\Debug\1033/VsPackageUI.tlb"/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				CommandLine="devenv /rootsuffix Exp /setup"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				AdditionalOptions="-r "
+				PreprocessorDefinitions="UNICODE,_UNICODE,_X86_=1,i386=1,WIN32,WINNT=1,_DEBUG,DEBUG,_NEW_SDK=1"
+				Culture="1033"
+				AdditionalIncludeDirectories="C:\Program Files\VSIP 7.1\EnvSDK\common\inc;.\Debug"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="Release|Win32"
+			OutputDirectory=".\..\VsPackage\Release\1033"
+			IntermediateDirectory=".\Release"
+			ConfigurationType="2"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="FALSE">
+			<Tool
+				Name="VCCLCompilerTool"
+				RuntimeLibrary="4"
+				BufferSecurityCheck="TRUE"
+				PrecompiledHeaderFile=".\Release/VsPackageUI.pch"
+				AssemblerListingLocation=".\Release/"
+				ObjectFile=".\Release/"
+				ProgramDataBaseFileName=".\Release/"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				IgnoreImportLibrary="TRUE"
+				AdditionalOptions="/MACHINE:I386"
+				AdditionalDependencies=""
+				OutputFile=".\..\VsPackage\Release\1033/VsPackageUI.dll"
+				LinkIncremental="1"
+				SuppressStartupBanner="TRUE"
+				ProgramDatabaseFile=".\..\VsPackage\Release\1033/VsPackageUI.pdb"
+				ResourceOnlyDLL="TRUE"
+				BaseAddress=""
+				ImportLibrary=""/>
+			<Tool
+				Name="VCMIDLTool"
+				TypeLibraryName=".\..\VsPackage\Release\1033/VsPackageUI.tlb"/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				CommandLine="devenv /rootsuffix Exp /setup"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				AdditionalOptions="-r "
+				PreprocessorDefinitions="UNICODE,_UNICODE,_X86_=1,i386=1,WIN32,WINNT=1,NDEBUG,_NEW_SDK=1"
+				Culture="1033"
+				AdditionalIncludeDirectories="C:\Program Files\VSIP 7.1\EnvSDK\common\inc;.\Release"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+	</Configurations>
+	<References>
+	</References>
+	<Files>
+		<Filter
+			Name="Header Files"
+			Filter="h;hpp;hxx;hm;inl">
+			<File
+				RelativePath=".\Guids.h">
+			</File>
+			<File
+				RelativePath=".\PkgCmdID.h">
+			</File>
+			<File
+				RelativePath=".\Resource.h">
+			</File>
+		</Filter>
+		<Filter
+			Name="Resource Files"
+			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe">
+			<File
+				RelativePath=".\File.ico">
+			</File>
+			<File
+				RelativePath=".\PkgCmd.ctc">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						CommandLine="&quot;C:\Program Files\VSIP 7.1\EnvSDK\tools\bin\x86\ctc&quot; -nologo .\pkgcmd.ctc Debug\pkgcmd.cto -Ccl -IC:\PROGRA~1\VSIP7~1.1\EnvSDK\common\inc -IC:\PROGRA~1\VSIP7~1.1\EnvSDK\common\inc\office10
+"
+						Outputs="Debug\pkgcmd.cto"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						CommandLine="&quot;C:\Program Files\VSIP 7.1\EnvSDK\tools\bin\x86\ctc&quot; -nologo .\pkgcmd.ctc Release\pkgcmd.cto -Ccl -IC:\PROGRA~1\VSIP7~1.1\EnvSDK\common\inc -IC:\PROGRA~1\VSIP7~1.1\EnvSDK\common\inc\office10
+"
+						Outputs="Release\pkgcmd.cto"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\VsPackageUI.rc">
+			</File>
+		</Filter>
+	</Files>
+	<Globals>
+	</Globals>
+</VisualStudioProject>

@@ -1,0 +1,70 @@
+<Project DefaultTargets="Build">
+  <PropertyGroup>
+    <Property Language="C#" />
+    <Property AssemblyName="WinFSCRM" />
+    <Property TargetName="$(AssemblyName)" />
+    <Property ApplicationIcon="App.ico" />
+    <Property ProductVersion="8.0.30703" />
+    <Property SchemaVersion="2.0" />
+    <Property RootNamespace="WinFSCRM" />
+    <Property ProjectGuid="{1D358F3A-6391-4677-A4DE-A526323DBEC4}" />
+  </PropertyGroup>
+  <Import Project="$(LAPI)\WindowsApplication.target" />
+  <!-- The rest of the References are currently in one of the .target files. Eventually, post-PDC we'll put them all here -->
+  <Item Type="Reference" Include="$(windir)\system32\winfs\api\System.Storage" Name="System.Storage" HintPath="$(windir)\system32\winfs\api\System.Storage.dll" />
+  <Item Type="Reference" Include="$(windir)\system32\winfs\api\System.Storage.Schemas" Name="System.Storage.Schemas" HintPath="$(windir)\system32\winfs\api\System.Storage.Schemas.dll" />
+  <Item Type="Reference" Include="$(windir)\microsoft.net\avalon\System.Windows.Explorer" Name="System.Windows.Explorer" HintPath="$(windir)\microsoft.net\avalon\System.Windows.Explorer.dll" />
+  <Item Type="Reference" Include="$(windir)\microsoft.net\avalon\System.Windows.Contacts" Name="System.Windows.Contacts" HintPath="$(windir)\microsoft.net\avalon\System.Windows.Contacts.dll" />
+  <Item Type="Reference" Include="$(lapi)\WindowsFormsIntegration" Name="WindowsFormsIntegration" HintPath="$(lapi)\WindowsFormsIntegration.dll" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <CommonProperties>
+        <FL_FAE04EC0_301F_11D3_BF4B_00C04F79EFBC />
+      </CommonProperties>
+      <UserProperties />
+    </VisualStudio>
+  </ProjectExtensions>
+  <ItemGroup>
+    <Item Type="ApplicationDefinition" Include="MyApp.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Item Type="Compile" Include="ClientData.cs" SubType="Code" />
+    <Item Type="Compile" Include="ClientInformation.xaml.cs" SubType="Code" />
+    <Item Type="Compile" Include="EventInformation.xaml.cs" DependentUpon="EventInformation.xaml" SubType="Code" />
+    <Item Type="Compile" Include="NoteBody.xaml.cs" DependentUpon="NoteBody.xaml" SubType="Code" />
+    <Item Type="Compile" Include="StorageManager.cs" SubType="Code" />
+    <Item Type="Compile" Include="Main.xaml.cs" DependentUpon="Main.xaml" SubType="Code" />
+    <Item Type="Compile" Include="MyApp.xaml.cs" DependentUpon="MyApp.xaml" SubType="Code" />
+  </ItemGroup>
+  <ItemGroup>
+    <Item Type="Content" Include="Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Item Type="Resources" Include="App.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Item Type="Pages" Include="ClientInformation.xaml" />
+    <Item Type="Pages" Include="EventInformation.xaml" />
+    <Item Type="Pages" Include="Main.xaml" />
+    <Item Type="Pages" Include="NoteBody.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Item Type="GeneratedCodePersisted" Include="obj\Release\ClientInformation.g.cs" />
+    <Item Type="GeneratedCodePersisted" Include="obj\Release\EventInformation.g.cs" />
+    <Item Type="GeneratedCodePersisted" Include="obj\Release\Main.g.cs" />
+    <Item Type="GeneratedCodePersisted" Include="obj\Release\MyApp.g.cs" />
+    <Item Type="GeneratedCodePersisted" Include="obj\Release\NoteBody.g.cs" />
+    <Item Type="GeneratedCodePersisted" Include="obj\Release\WinFSCRM.Main.g.cs" />
+  </ItemGroup>
+</Project>
+<!-- 
+    This project gets built by MSBuild on the commmand line.
+    Visual Studio "Whidbey" can also compile a project using only this data.
+
+    The build steps of a project are defined in the .target file referenced in the <Import>.
+    You can modify the steps involved in build.
+
+    You can also "execute" other targets besides the defaulttarget of build.
+    From a command prompt: msbuild myproj.csproj /t:TARGETNAME
+    Examples of TARGETNAME include: Build, Clean, CleanBuild, Run
+-->

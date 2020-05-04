@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.pinvoke.net/webservices/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://www.pinvoke.net/webservices/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.pinvoke.net/webservices/">
+      <s:element name="GetResultsForFunction">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="functionName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="moduleName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetResultsForFunctionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetResultsForFunctionResult" type="tns:ArrayOfSignatureInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSignatureInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SignatureInfo" type="tns:SignatureInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SignatureInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Signature" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Language" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastAuthor" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastModified" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Module" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Url" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AlternativeManagedAPI" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Summary" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SignatureComments" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ContributeSignaturesAndTypes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="language" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ContributeSignaturesAndTypesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ContributeSignaturesAndTypesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetResultsForFunctionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetResultsForFunction" />
+  </wsdl:message>
+  <wsdl:message name="GetResultsForFunctionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetResultsForFunctionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ContributeSignaturesAndTypesSoapIn">
+    <wsdl:part name="parameters" element="tns:ContributeSignaturesAndTypes" />
+  </wsdl:message>
+  <wsdl:message name="ContributeSignaturesAndTypesSoapOut">
+    <wsdl:part name="parameters" element="tns:ContributeSignaturesAndTypesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="PInvokeServiceSoap">
+    <wsdl:operation name="GetResultsForFunction">
+      <wsdl:input message="tns:GetResultsForFunctionSoapIn" />
+      <wsdl:output message="tns:GetResultsForFunctionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ContributeSignaturesAndTypes">
+      <wsdl:input message="tns:ContributeSignaturesAndTypesSoapIn" />
+      <wsdl:output message="tns:ContributeSignaturesAndTypesSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PInvokeServiceSoap" type="tns:PInvokeServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetResultsForFunction">
+      <soap:operation soapAction="http://www.pinvoke.net/webservices/GetResultsForFunction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ContributeSignaturesAndTypes">
+      <soap:operation soapAction="http://www.pinvoke.net/webservices/ContributeSignaturesAndTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PInvokeService">
+    <wsdl:port name="PInvokeServiceSoap" binding="tns:PInvokeServiceSoap">
+      <soap:address location="http://www.pinvoke.net/pinvokeservice.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

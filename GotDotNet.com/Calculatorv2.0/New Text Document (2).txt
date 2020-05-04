@@ -1,0 +1,705 @@
+using System;
+using System.Drawing;
+using System.Collections;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Data;
+
+namespace Caliculator
+{
+	/// <summary>
+	/// Summary description for Form1.
+	/// </summary>
+	public class CalV2 : System.Windows.Forms.Form
+	{
+		private System.Windows.Forms.Button btnOne;
+		private System.Windows.Forms.Button btnTwo;
+		private System.Windows.Forms.Button btnThree;
+		private System.Windows.Forms.Button btnFour;
+		private System.Windows.Forms.Button btnFive;
+		private System.Windows.Forms.Button btnSix;
+		private System.Windows.Forms.Button btnSeven;
+		private System.Windows.Forms.Button btnEight;
+		private System.Windows.Forms.Button btnNine;
+		private System.Windows.Forms.Button btnZero;
+		private System.Windows.Forms.Button btnBackspace;
+		private System.Windows.Forms.Button btnPlus;
+		private System.Windows.Forms.Button btnMinus;
+		private System.Windows.Forms.Button btnMultiply;
+		private System.Windows.Forms.Button btnDivide;
+		private System.Windows.Forms.TextBox txtResult;
+		private System.Windows.Forms.Button btnEquals;
+		private System.Windows.Forms.Button btnC;
+		private System.Collections.ArrayList arr;
+		private System.Collections.ArrayList sarr;
+		private bool Symbol;
+		private bool Dot;
+		private System.Windows.Forms.Button btnDot;
+		private int count=0;
+		private System.Windows.Forms.Button btn;
+		private System.Windows.Forms.MainMenu CalMenu;
+		private System.Windows.Forms.MenuItem menuItemEdit;
+		private System.Windows.Forms.MenuItem menuItemCopy;
+		private System.Windows.Forms.MenuItem menuItemPaste;
+		private System.Windows.Forms.MenuItem menuItemHelp;
+		private System.Windows.Forms.MenuItem menuItemAbout;
+		private string Copy;
+		private System.Windows.Forms.Button btnOneby;
+	
+		/// <summary>
+		/// Required designer variable.
+		/// </summary>
+		private System.ComponentModel.Container components = null;
+
+		public CalV2()
+		{
+			//
+			// Required for Windows Form Designer support
+			//
+			InitializeComponent();
+			arr = new System.Collections.ArrayList(2);
+			sarr = new System.Collections.ArrayList(2);
+			Symbol=false;
+			Dot=false;
+			Copy=null;
+			//
+			// TODO: Add any constructor code after InitializeComponent call
+			//
+		}
+
+		/// <summary>
+		/// Clean up any resources being used.
+		/// </summary>
+		protected override void Dispose( bool disposing )
+		{
+			if( disposing )
+			{
+				if (components != null) 
+				{
+					components.Dispose();
+				}
+			}
+			base.Dispose( disposing );
+		}
+
+		#region Windows Form Designer generated code
+		/// <summary>
+		/// Required method for Designer support - do not modify
+		/// the contents of this method with the code editor.
+		/// </summary>
+		private void InitializeComponent()
+		{
+			System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(CalV2));
+			this.btnOne = new System.Windows.Forms.Button();
+			this.btnTwo = new System.Windows.Forms.Button();
+			this.btnThree = new System.Windows.Forms.Button();
+			this.btnFour = new System.Windows.Forms.Button();
+			this.btnFive = new System.Windows.Forms.Button();
+			this.btnSix = new System.Windows.Forms.Button();
+			this.btnSeven = new System.Windows.Forms.Button();
+			this.btnEight = new System.Windows.Forms.Button();
+			this.btnNine = new System.Windows.Forms.Button();
+			this.btnZero = new System.Windows.Forms.Button();
+			this.btnBackspace = new System.Windows.Forms.Button();
+			this.btnPlus = new System.Windows.Forms.Button();
+			this.btnMinus = new System.Windows.Forms.Button();
+			this.btnMultiply = new System.Windows.Forms.Button();
+			this.btnDivide = new System.Windows.Forms.Button();
+			this.txtResult = new System.Windows.Forms.TextBox();
+			this.btnEquals = new System.Windows.Forms.Button();
+			this.btnC = new System.Windows.Forms.Button();
+			this.btnDot = new System.Windows.Forms.Button();
+			this.btn = new System.Windows.Forms.Button();
+			this.CalMenu = new System.Windows.Forms.MainMenu();
+			this.menuItemEdit = new System.Windows.Forms.MenuItem();
+			this.menuItemCopy = new System.Windows.Forms.MenuItem();
+			this.menuItemPaste = new System.Windows.Forms.MenuItem();
+			this.menuItemHelp = new System.Windows.Forms.MenuItem();
+			this.menuItemAbout = new System.Windows.Forms.MenuItem();
+			this.btnOneby = new System.Windows.Forms.Button();
+			this.SuspendLayout();
+			// 
+			// btnOne
+			// 
+			this.btnOne.ForeColor = System.Drawing.Color.Blue;
+			this.btnOne.Location = new System.Drawing.Point(88, 128);
+			this.btnOne.Name = "btnOne";
+			this.btnOne.Size = new System.Drawing.Size(32, 24);
+			this.btnOne.TabIndex = 17;
+			this.btnOne.Text = "1";
+			this.btnOne.Click += new System.EventHandler(this.btnOne_Click);
+			// 
+			// btnTwo
+			// 
+			this.btnTwo.ForeColor = System.Drawing.Color.Blue;
+			this.btnTwo.Location = new System.Drawing.Point(48, 128);
+			this.btnTwo.Name = "btnTwo";
+			this.btnTwo.Size = new System.Drawing.Size(32, 24);
+			this.btnTwo.TabIndex = 22;
+			this.btnTwo.Text = "2";
+			this.btnTwo.Click += new System.EventHandler(this.btnTwo_Click);
+			// 
+			// btnThree
+			// 
+			this.btnThree.ForeColor = System.Drawing.Color.Blue;
+			this.btnThree.Location = new System.Drawing.Point(8, 128);
+			this.btnThree.Name = "btnThree";
+			this.btnThree.Size = new System.Drawing.Size(32, 24);
+			this.btnThree.TabIndex = 3;
+			this.btnThree.Text = "3";
+			this.btnThree.Click += new System.EventHandler(this.btnThree_Click);
+			// 
+			// btnFour
+			// 
+			this.btnFour.ForeColor = System.Drawing.Color.Blue;
+			this.btnFour.Location = new System.Drawing.Point(88, 96);
+			this.btnFour.Name = "btnFour";
+			this.btnFour.RightToLeft = System.Windows.Forms.RightToLeft.No;
+			this.btnFour.Size = new System.Drawing.Size(32, 24);
+			this.btnFour.TabIndex = 4;
+			this.btnFour.Text = "4";
+			this.btnFour.Click += new System.EventHandler(this.btnFour_Click);
+			// 
+			// btnFive
+			// 
+			this.btnFive.ForeColor = System.Drawing.Color.Blue;
+			this.btnFive.Location = new System.Drawing.Point(48, 96);
+			this.btnFive.Name = "btnFive";
+			this.btnFive.Size = new System.Drawing.Size(32, 24);
+			this.btnFive.TabIndex = 5;
+			this.btnFive.Text = "5";
+			this.btnFive.Click += new System.EventHandler(this.btnFive_Click);
+			// 
+			// btnSix
+			// 
+			this.btnSix.ForeColor = System.Drawing.Color.Blue;
+			this.btnSix.Location = new System.Drawing.Point(8, 96);
+			this.btnSix.Name = "btnSix";
+			this.btnSix.Size = new System.Drawing.Size(32, 24);
+			this.btnSix.TabIndex = 6;
+			this.btnSix.Text = "6";
+			this.btnSix.Click += new System.EventHandler(this.btnSix_Click);
+			// 
+			// btnSeven
+			// 
+			this.btnSeven.ForeColor = System.Drawing.Color.Blue;
+			this.btnSeven.Location = new System.Drawing.Point(88, 64);
+			this.btnSeven.Name = "btnSeven";
+			this.btnSeven.Size = new System.Drawing.Size(32, 24);
+			this.btnSeven.TabIndex = 7;
+			this.btnSeven.Text = "7";
+			this.btnSeven.Click += new System.EventHandler(this.btnSeven_Click);
+			// 
+			// btnEight
+			// 
+			this.btnEight.ForeColor = System.Drawing.Color.Blue;
+			this.btnEight.Location = new System.Drawing.Point(48, 64);
+			this.btnEight.Name = "btnEight";
+			this.btnEight.Size = new System.Drawing.Size(32, 24);
+			this.btnEight.TabIndex = 8;
+			this.btnEight.Text = "8";
+			this.btnEight.Click += new System.EventHandler(this.btnEight_Click);
+			// 
+			// btnNine
+			// 
+			this.btnNine.ForeColor = System.Drawing.Color.Blue;
+			this.btnNine.Location = new System.Drawing.Point(8, 64);
+			this.btnNine.Name = "btnNine";
+			this.btnNine.Size = new System.Drawing.Size(32, 24);
+			this.btnNine.TabIndex = 9;
+			this.btnNine.Text = "9";
+			this.btnNine.Click += new System.EventHandler(this.btnNine_Click);
+			// 
+			// btnZero
+			// 
+			this.btnZero.ForeColor = System.Drawing.Color.Blue;
+			this.btnZero.Location = new System.Drawing.Point(88, 32);
+			this.btnZero.Name = "btnZero";
+			this.btnZero.Size = new System.Drawing.Size(32, 24);
+			this.btnZero.TabIndex = 10;
+			this.btnZero.Text = "0";
+			this.btnZero.Click += new System.EventHandler(this.btnZero_Click);
+			// 
+			// btnBackspace
+			// 
+			this.btnBackspace.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(0)));
+			this.btnBackspace.ForeColor = System.Drawing.Color.Red;
+			this.btnBackspace.Location = new System.Drawing.Point(8, 32);
+			this.btnBackspace.Name = "btnBackspace";
+			this.btnBackspace.Size = new System.Drawing.Size(72, 24);
+			this.btnBackspace.TabIndex = 11;
+			this.btnBackspace.Text = "Backspace";
+			this.btnBackspace.Click += new System.EventHandler(this.btnBackspace_Click);
+			// 
+			// btnPlus
+			// 
+			this.btnPlus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((System.Byte)(0)));
+			this.btnPlus.ForeColor = System.Drawing.Color.Red;
+			this.btnPlus.Location = new System.Drawing.Point(168, 64);
+			this.btnPlus.Name = "btnPlus";
+			this.btnPlus.Size = new System.Drawing.Size(32, 24);
+			this.btnPlus.TabIndex = 12;
+			this.btnPlus.Text = "+";
+			this.btnPlus.Click += new System.EventHandler(this.btnPlus_Click);
+			// 
+			// btnMinus
+			// 
+			this.btnMinus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((System.Byte)(0)));
+			this.btnMinus.ForeColor = System.Drawing.Color.Red;
+			this.btnMinus.Location = new System.Drawing.Point(128, 64);
+			this.btnMinus.Name = "btnMinus";
+			this.btnMinus.Size = new System.Drawing.Size(32, 24);
+			this.btnMinus.TabIndex = 13;
+			this.btnMinus.Text = "-";
+			this.btnMinus.Click += new System.EventHandler(this.btnMinus_Click);
+			// 
+			// btnMultiply
+			// 
+			this.btnMultiply.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((System.Byte)(0)));
+			this.btnMultiply.ForeColor = System.Drawing.Color.Red;
+			this.btnMultiply.Location = new System.Drawing.Point(168, 96);
+			this.btnMultiply.Name = "btnMultiply";
+			this.btnMultiply.Size = new System.Drawing.Size(32, 24);
+			this.btnMultiply.TabIndex = 14;
+			this.btnMultiply.Text = "*";
+			this.btnMultiply.Click += new System.EventHandler(this.btnMultiply_Click);
+			// 
+			// btnDivide
+			// 
+			this.btnDivide.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((System.Byte)(0)));
+			this.btnDivide.ForeColor = System.Drawing.Color.Red;
+			this.btnDivide.Location = new System.Drawing.Point(128, 96);
+			this.btnDivide.Name = "btnDivide";
+			this.btnDivide.Size = new System.Drawing.Size(32, 24);
+			this.btnDivide.TabIndex = 15;
+			this.btnDivide.Text = "/";
+			this.btnDivide.Click += new System.EventHandler(this.btnDivide_Click);
+			// 
+			// txtResult
+			// 
+			this.txtResult.BackColor = System.Drawing.SystemColors.Window;
+			this.txtResult.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.txtResult.Cursor = System.Windows.Forms.Cursors.Default;
+			this.txtResult.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.txtResult.Location = new System.Drawing.Point(8, 0);
+			this.txtResult.Name = "txtResult";
+			this.txtResult.ReadOnly = true;
+			this.txtResult.Size = new System.Drawing.Size(192, 20);
+			this.txtResult.TabIndex = 18;
+			this.txtResult.Text = "";
+			this.txtResult.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.txtResult.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtResult_MouseDown);
+			// 
+			// btnEquals
+			// 
+			this.btnEquals.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((System.Byte)(0)));
+			this.btnEquals.ForeColor = System.Drawing.Color.Red;
+			this.btnEquals.Location = new System.Drawing.Point(168, 128);
+			this.btnEquals.Name = "btnEquals";
+			this.btnEquals.Size = new System.Drawing.Size(32, 24);
+			this.btnEquals.TabIndex = 19;
+			this.btnEquals.Text = "=";
+			this.btnEquals.Click += new System.EventHandler(this.btnEquals_Click);
+			// 
+			// btnC
+			// 
+			this.btnC.ForeColor = System.Drawing.Color.Red;
+			this.btnC.Location = new System.Drawing.Point(168, 32);
+			this.btnC.Name = "btnC";
+			this.btnC.Size = new System.Drawing.Size(32, 24);
+			this.btnC.TabIndex = 20;
+			this.btnC.Text = "C";
+			this.btnC.Click += new System.EventHandler(this.btnC_Click);
+			// 
+			// btnDot
+			// 
+			this.btnDot.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((System.Byte)(0)));
+			this.btnDot.ForeColor = System.Drawing.Color.Red;
+			this.btnDot.Location = new System.Drawing.Point(128, 128);
+			this.btnDot.Name = "btnDot";
+			this.btnDot.Size = new System.Drawing.Size(32, 24);
+			this.btnDot.TabIndex = 21;
+			this.btnDot.Text = ".";
+			this.btnDot.Click += new System.EventHandler(this.btnDot_Click);
+			// 
+			// btn
+			// 
+			this.btn.Location = new System.Drawing.Point(48, 0);
+			this.btn.Name = "btn";
+			this.btn.Size = new System.Drawing.Size(16, 16);
+			this.btn.TabIndex = 1;
+			// 
+			// CalMenu
+			// 
+			this.CalMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+																					this.menuItemEdit,
+																					this.menuItemHelp});
+			// 
+			// menuItemEdit
+			// 
+			this.menuItemEdit.Index = 0;
+			this.menuItemEdit.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+																						 this.menuItemCopy,
+																						 this.menuItemPaste});
+			this.menuItemEdit.Text = "Edit";
+			// 
+			// menuItemCopy
+			// 
+			this.menuItemCopy.Index = 0;
+			this.menuItemCopy.Text = "Copy";
+			this.menuItemCopy.Click += new System.EventHandler(this.menuItemCopy_Click);
+			// 
+			// menuItemPaste
+			// 
+			this.menuItemPaste.Index = 1;
+			this.menuItemPaste.Text = "Paste";
+			this.menuItemPaste.Click += new System.EventHandler(this.menuItemPaste_Click);
+			// 
+			// menuItemHelp
+			// 
+			this.menuItemHelp.Index = 1;
+			this.menuItemHelp.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+																						 this.menuItemAbout});
+			this.menuItemHelp.Text = "Help";
+			// 
+			// menuItemAbout
+			// 
+			this.menuItemAbout.Index = 0;
+			this.menuItemAbout.Text = "About Calculator";
+			this.menuItemAbout.Click += new System.EventHandler(this.menuItemAbout_Click);
+			// 
+			// btnOneby
+			// 
+			this.btnOneby.ForeColor = System.Drawing.Color.Red;
+			this.btnOneby.Location = new System.Drawing.Point(128, 32);
+			this.btnOneby.Name = "btnOneby";
+			this.btnOneby.Size = new System.Drawing.Size(32, 24);
+			this.btnOneby.TabIndex = 23;
+			this.btnOneby.Text = "1/x";
+			this.btnOneby.Click += new System.EventHandler(this.btnOneby_Click);
+			// 
+			// CalV2
+			// 
+			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
+			this.ClientSize = new System.Drawing.Size(210, 163);
+			this.Controls.Add(this.btnOneby);
+			this.Controls.Add(this.txtResult);
+			this.Controls.Add(this.btn);
+			this.Controls.Add(this.btnDot);
+			this.Controls.Add(this.btnC);
+			this.Controls.Add(this.btnEquals);
+			this.Controls.Add(this.btnDivide);
+			this.Controls.Add(this.btnMultiply);
+			this.Controls.Add(this.btnMinus);
+			this.Controls.Add(this.btnPlus);
+			this.Controls.Add(this.btnBackspace);
+			this.Controls.Add(this.btnZero);
+			this.Controls.Add(this.btnNine);
+			this.Controls.Add(this.btnEight);
+			this.Controls.Add(this.btnSeven);
+			this.Controls.Add(this.btnSix);
+			this.Controls.Add(this.btnFive);
+			this.Controls.Add(this.btnFour);
+			this.Controls.Add(this.btnThree);
+			this.Controls.Add(this.btnTwo);
+			this.Controls.Add(this.btnOne);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.KeyPreview = true;
+			this.MaximizeBox = false;
+			this.Menu = this.CalMenu;
+			this.Name = "CalV2";
+			this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+			this.Text = "Calculator 2.0";
+			this.Load += new System.EventHandler(this.CalV2_Load);
+			this.ResumeLayout(false);
+
+		}
+		#endregion
+
+		/// <summary>
+		/// The main entry point for the application.
+		/// </summary>
+		[STAThread]
+		static void Main() 
+		{
+			System.Windows.Forms.Application.Run(new CalV2());
+		}
+
+		private void CalV2_Load(object sender, System.EventArgs e)
+		{
+			txtResult.Text="0.";
+			btn.Focus();
+		}	
+
+		private void btnOne_Click(object sender, System.EventArgs e)
+		{
+			view(1);
+		}
+
+		private void btnTwo_Click(object sender, System.EventArgs e)
+		{
+			view(2);
+		}
+
+		private void btnThree_Click(object sender, System.EventArgs e)
+		{
+			view(3);
+		}
+
+		private void btnFour_Click(object sender, System.EventArgs e)
+		{
+			view(4);
+		}
+
+		private void btnFive_Click(object sender, System.EventArgs e)
+		{
+			view(5);
+		}
+
+		private void btnSix_Click(object sender, System.EventArgs e)
+		{
+			view(6);
+		}
+
+		private void btnSeven_Click(object sender, System.EventArgs e)
+		{
+			view(7);
+		}
+
+		private void btnEight_Click(object sender, System.EventArgs e)
+		{
+			view(8);		
+		}
+
+		private void btnNine_Click(object sender, System.EventArgs e)
+		{
+			view(9);
+		}
+
+		private void btnZero_Click(object sender, System.EventArgs e)
+		{
+			view(0);
+		}
+
+		private void view(int num)
+		{
+			count=0;
+			string st = num.ToString();
+			if(txtResult.Text=="0."||Symbol==true)
+			{
+				if(Symbol==true)
+				{
+					Symbol=false;
+					//Dot=false;
+				}
+				if(Dot==true)
+				{
+					txtResult.Text=txtResult.Text+st;
+				}
+				else
+				txtResult.Text=st+"."; 
+			}
+			else 
+			{
+				if(Dot==true)
+				{
+					txtResult.Text=txtResult.Text+st;
+				}
+				else
+				txtResult.Text=(txtResult.Text).Replace(".","")+st+"."; 
+			}
+			btn.Focus();
+		}
+
+		private void btnC_Click(object sender, System.EventArgs e)
+		{
+			txtResult.Clear();
+			txtResult.Text="0.";
+			Symbol=false;
+			Dot=false;
+			count=0;
+			Copy=null;
+			arr.Clear();
+			sarr.Clear();
+			btn.Focus();
+		}
+
+		private void btnBackspace_Click(object sender, System.EventArgs e)
+		{
+			string str = (txtResult.Text);
+			if(str.LastIndexOf(".")==str.Length-1)
+			str = str.Remove(str.Length-1,1);
+			if(str.Length>1&&(!(str=="0")))
+			{	
+				if(str.IndexOf(".")==-1)
+				{
+					txtResult.Text=str.Remove(str.Length-1,1)+".";
+				}
+				else if(str.IndexOf(".")>=0)
+				{
+					txtResult.Text=str.Remove(str.Length-1,1);
+				}
+			}
+			else
+				txtResult.Text="0.";
+			btn.Focus();
+		}
+
+		private void Symclick(int sympos)
+		{
+			if(count<1)
+			{
+				//MessageBox.Show(count.ToString());
+				arr.Add(txtResult.Text);
+				Symbol=true;
+				if(sarr.Count>0) 
+				{
+					int sym = Convert.ToInt32(sarr[0]);
+					cali(sym);
+				}
+				else
+				{
+					cali(sympos);	
+				}
+				sarr.Clear();
+				sarr.Add(sympos);
+				//Dot=true;
+				Dot=false;
+			}
+			btn.Focus();
+		}
+
+		private void btnPlus_Click(object sender, System.EventArgs e)
+		{   
+			Symclick(1);
+			count++;
+		}
+
+		private void btnMinus_Click(object sender, System.EventArgs e)
+		{
+			Symclick(2);
+			count++;
+		}
+
+		private void btnDivide_Click(object sender, System.EventArgs e)
+		{
+			Symclick(4);
+			count++;
+		}
+
+		private void btnMultiply_Click(object sender, System.EventArgs e)
+		{
+			Symclick(3);
+			count++;
+		}
+
+		private void btnEquals_Click(object sender, System.EventArgs e)
+		{
+			arr.Add(txtResult.Text);
+			if(sarr.Count>0)
+			{
+				int sym = Convert.ToInt32(sarr[0]);
+				cali(sym);
+				sarr.Clear();
+			}
+			else 
+			{
+				if(Symbol==true)
+				{
+					txtResult.Text="0.";
+				}
+			}
+			Symbol=false;
+			Dot=false;
+			arr.Clear();
+			sarr.Clear();
+			btn.Focus();
+		}
+
+		private void cali(int pos)
+		{
+			double val=Convert.ToDouble(arr[0]);
+			switch(pos)
+			{
+				case 1 : for(int i=1;i<arr.Count;i++)
+						 {
+							 val+=Convert.ToDouble(arr[i]);				
+						 }break;
+				case 2 : for(int i=1;i<arr.Count;i++)
+						 {
+							 val-=Convert.ToDouble(arr[i]);				
+						 }break;
+				case 3 : for(int i=1;i<arr.Count;i++)
+						 {
+							 val*=Convert.ToDouble(arr[i]);				
+						 }break;
+				case 4 : for(int i=1;i<arr.Count;i++)
+						 {
+							 val/=Convert.ToDouble(arr[i]);				
+						 }break;
+			}
+			string DotCheck = val.ToString().Remove(val.ToString().Length-1,1);
+			if(DotCheck.IndexOf(".")==-1)
+			{
+				txtResult.Text=val.ToString()+".";
+			}
+			else if(DotCheck.IndexOf(".")>=0)
+			{
+				txtResult.Text=val.ToString();
+			}
+			arr.Clear();
+			arr.Add(Convert.ToDouble(txtResult.Text));
+		}
+
+		private void txtResult_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
+		{
+			btn.Focus();
+		}
+
+		private void btnDot_Click(object sender, System.EventArgs e)
+		{
+			if(Dot.Equals(false))
+			{
+				Dot=true;
+				btn.Focus();
+			}
+		}
+
+		private void menuItemCopy_Click(object sender, System.EventArgs e)
+		{
+			Copy=txtResult.Text;
+		}
+
+		private void menuItemPaste_Click(object sender, System.EventArgs e)
+		{
+			if(!(Copy==null))
+				txtResult.Text=Copy;
+			btn.Focus();
+		}
+
+		private void menuItemAbout_Click(object sender, System.EventArgs e)
+		{
+			string mesg = "This is Calculator 2.0"+"\n\nAuthor:HariSundeep.G";
+			MessageBox.Show(mesg,"About Calculator");
+		}
+
+		private void btnOneby_Click(object sender, System.EventArgs e)
+		{
+			string text = txtResult.Text;
+			if(Dot==false) text = text.Remove(text.Length-1,1);
+			if(text=="0")
+				txtResult.Text="Cannot Divide By Zero";
+			else
+			{
+				double result = Convert.ToDouble(text);
+				if(result.Equals(1))
+					txtResult.Text="1.";
+				else
+				txtResult.Text=Convert.ToString(1/result);
+			}
+			btn.Focus();
+		}
+	}
+}

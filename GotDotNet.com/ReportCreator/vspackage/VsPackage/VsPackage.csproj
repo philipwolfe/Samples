@@ -1,0 +1,164 @@
+<VisualStudioProject>
+    <CSHARP
+        ProjectType = "Local"
+        ProductVersion = "7.10.3077"
+        SchemaVersion = "2.0"
+        ProjectGuid = "{9B43D08A-1B46-43F7-BD1B-2325AEA4046F}"
+    >
+        <Build>
+            <Settings
+                ApplicationIcon = ""
+                AssemblyKeyContainerName = ""
+                AssemblyName = "VsPackage"
+                AssemblyOriginatorKeyFile = ""
+                DefaultClientScript = "JScript"
+                DefaultHTMLPageLayout = "Grid"
+                DefaultTargetSchema = "IE50"
+                DelaySign = "false"
+                OutputType = "Library"
+                PreBuildEvent = ""
+                PostBuildEvent = '"C:\Program Files\VSIP 7.1\EnvSDK\tools\bin\x86\VSIPRegPkg" "$(TargetPath)"&#xd;&#xa;'
+                RootNamespace = "Vsip.VsPackage"
+                RunPostBuildEvent = "OnBuildSuccess"
+                StartupObject = ""
+            >
+                <Config
+                    Name = "Debug"
+                    AllowUnsafeBlocks = "false"
+                    BaseAddress = "285212672"
+                    CheckForOverflowUnderflow = "false"
+                    ConfigurationOverrideFile = ""
+                    DefineConstants = "DEBUG;TRACE"
+                    DocumentationFile = ""
+                    DebugSymbols = "true"
+                    FileAlignment = "4096"
+                    IncrementalBuild = "false"
+                    NoStdLib = "false"
+                    NoWarn = ""
+                    Optimize = "false"
+                    OutputPath = "Debug\"
+                    RegisterForComInterop = "false"
+                    RemoveIntegerChecks = "false"
+                    TreatWarningsAsErrors = "false"
+                    WarningLevel = "4"
+                />
+                <Config
+                    Name = "Release"
+                    AllowUnsafeBlocks = "false"
+                    BaseAddress = "285212672"
+                    CheckForOverflowUnderflow = "false"
+                    ConfigurationOverrideFile = ""
+                    DefineConstants = "TRACE"
+                    DocumentationFile = ""
+                    DebugSymbols = "false"
+                    FileAlignment = "4096"
+                    IncrementalBuild = "false"
+                    NoStdLib = "false"
+                    NoWarn = ""
+                    Optimize = "true"
+                    OutputPath = "Release\"
+                    RegisterForComInterop = "false"
+                    RemoveIntegerChecks = "false"
+                    TreatWarningsAsErrors = "false"
+                    WarningLevel = "4"
+                />
+            </Settings>
+            <References>
+                <Reference
+                    Name = "System"
+                    AssemblyName = "System"
+                    HintPath = "..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.dll"
+                />
+                <Reference
+                    Name = "System.Drawing"
+                    AssemblyName = "System.Drawing"
+                    HintPath = "..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Drawing.dll"
+                />
+                <Reference
+                    Name = "System.Windows.Forms"
+                    AssemblyName = "System.Windows.Forms"
+                    HintPath = "..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Windows.Forms.dll"
+                />
+                <Reference
+                    Name = "System.Data"
+                    AssemblyName = "System.Data"
+                    HintPath = "..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Data.dll"
+                />
+                <Reference
+                    Name = "System.XML"
+                    AssemblyName = "System.Xml"
+                    HintPath = "..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.XML.dll"
+                />
+                <Reference
+                    Name = "Microsoft.VisualStudio.OLE.Interop"
+                    AssemblyName = "Microsoft.VisualStudio.OLE.Interop"
+                    HintPath = "C:\Program Files\VSIP 7.1\EnvSDK\common\VSIA\Microsoft.VisualStudio.OLE.Interop.dll"
+                />
+                <Reference
+                    Name = "Microsoft.VisualStudio.Shell.Interop"
+                    AssemblyName = "Microsoft.VisualStudio.Shell.Interop"
+                    HintPath = "C:\Program Files\VSIP 7.1\EnvSDK\common\VSIA\Microsoft.VisualStudio.Shell.Interop.dll"
+                />
+                <Reference
+                    Name = "Microsoft.VisualStudio.TextManager.Interop"
+                    AssemblyName = "Microsoft.VisualStudio.TextManager.Interop"
+                    HintPath = "C:\Program Files\VSIP 7.1\EnvSDK\common\VSIA\Microsoft.VisualStudio.TextManager.Interop.dll"
+                />
+                <Reference
+                    Name = "Microsoft.VisualStudio.VSIP.Helper"
+                    AssemblyName = "Microsoft.VisualStudio.VSIP.Helper"
+                    HintPath = "C:\Program Files\VSIP 7.1\EnvSDK\common\VSIA\Microsoft.VisualStudio.VSIP.Helper.dll"
+                />
+                <Reference
+                    Name = "Microsoft.VisualStudio"
+                    AssemblyName = "Microsoft.VisualStudio"
+                    HintPath = "C:\Program Files\Microsoft Visual Studio .NET 2003\Common7\IDE\Microsoft.VisualStudio.dll"
+                />
+                <Reference
+                    Name = "ReportLibrary"
+                    AssemblyName = "ReportLibrary"
+                    HintPath = "..\ReportLibrary\bin\Debug\ReportLibrary.dll"
+                />
+            </References>
+        </Build>
+        <Files>
+            <Include>
+                <File
+                    RelPath = "AssemblyInfo.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "EditorFactory.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "EditorPane.cs"
+                    SubType = "Component"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Guids.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Key.snk"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "PkgCmdID.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "VsPkg.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+            </Include>
+        </Files>
+    </CSHARP>
+</VisualStudioProject>
+

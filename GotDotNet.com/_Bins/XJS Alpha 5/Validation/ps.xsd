@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="Settings" type="SettingsType" />
+	<xs:complexType name="SettingsType">
+		<xs:sequence>
+			<xs:element name="DefaultLoc" type="DefaultLocType" />
+		</xs:sequence>
+		<xs:attribute name="Version" type="xs:decimal" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="DefaultLocType">
+		<xs:attribute name="OpenFirst" type="xs:string" use="required"/>
+	</xs:complexType>
+</xs:schema>

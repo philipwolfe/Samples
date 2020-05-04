@@ -1,0 +1,297 @@
+<font face="Arial" size="1">
+
+<html>
+<head>
+<title>Changes in microsoft.build.visualjsharp from EVERTM (Version 1.1.4322.573)<br> to WHI40607.03 (Version 2.0.40607.3)</title>
+
+<style type="text/css">
+dt      { font-weight: Bold; }
+.big    { font-size: 150%; font-weight: Bold; }
+.small  { font-size:  75%; font-weight: Normal; }
+.endNav { font-size:  75%; font-weight: Normal; margin: 20; }
+</style>
+
+</head>
+
+<body>
+<a name="top" id="top"></a>
+<h2><center>Changes in microsoft.build.visualjsharp from EVERTM (Version 1.1.4322.573)<br> to WHI40607.03 (Version 2.0.40607.3)</center></h2>
+
+
+<table width="90%" align="center" border="1" cellspacing="0" bordercolor="A0000" style=background-color: #F0F0F0; border-style: solid;>
+<thead>
+ <tr>
+  <th width="50%" align="left">Removed</td>
+  <th width="50%" align="left">Added</td>
+ </tr>
+</thead>
+<tbody>
+
+ <tr>
+  <a name="Microsoft.Build.Tasks CreateJSharpManifestResourceName"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.Tasks CreateJSharpManifestResourceName</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed class <b><span title="Base Type: Microsoft.Build.Tasks.CreateManifestResourceName; Interfaces: Microsoft.Build.Framework.ITask">Microsoft.Build.Tasks.CreateJSharpManifestResourceName</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Constructor: public <b>CreateJSharpManifestResourceName</b> ()</font></li>
+    <li><font color="black">Method: ProtectedInternal virtual <span title="System">string</span> <b>CreateManifestName</b> (<span title="System">string</span> <i>fileName</i>, <span title="System">string</span> <i>linkFileName</i>, <span title="System">string</span> <i>rootNamespace</i>, <span title="System.IO">Stream</span> <i>binaryStream</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">bool</span> <b>Equals</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="Microsoft.Build.Tasks.CreateManifestResourceName">(i)</i></font>: public virtual <span title="System">bool</span> <b>Execute</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected virtual <span title="System">void</span> <b>Finalize</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">int</span> <b>GetHashCode</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Method: ProtectedInternal virtual <span title="System">bool</span> <b>IsSourceFile</b> (<span title="System">string</span> <i>fileName</i>)</font></li>
+    <li><font color="black">Method: ProtectedInternal virtual <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method: public override <span title="System">string</span> <b>ToString</b> ()</font></li>
+    <li><font color="black">Property: virtual <span title="Microsoft.Build.Framework">IBuildEngine</span> <b>BuildEngine</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: protected <span title="System">string</span> <b>HelpKeywordPrefix</b> { }</font></li>
+    <li><font color="black">Property: virtual <span title="System">object</span> <b>HostObject</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="Microsoft.Build.Utilities">TaskLoggingHelper</span> <b>Log</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="Microsoft.Build.Framework">ITaskItem[]</span> <b>ManifestResourceNames</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="Microsoft.Build.Framework">ITaskItem[]</span> <b>ResourceFiles</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>RootNamespace</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: protected <span title="System.Resources">ResourceManager</span> <b>TaskResources</b> { }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.Tasks IVjcHostObject"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.Tasks IVjcHostObject</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public interface <b><span title="Base Type: none">Microsoft.Build.Tasks.IVjcHostObject</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method: <span title="System">void</span> <b>BeginBuild</b> ()</font></li>
+    <li><font color="black">Method: <span title="System">void</span> <b>BeginInitialization</b> ()</font></li>
+    <li><font color="black">Method: <span title="System">bool</span> <b>Compile</b> ()</font></li>
+    <li><font color="black">Method: <span title="System">void</span> <b>EndBuild</b> ()</font></li>
+    <li><font color="black">Method: <span title="System">bool</span> <b>EndInitialization</b> (<span title="System">string</span> <i>errorMessage</i>, <span title="System">int</span> <i>errorCode</i>)</font></li>
+    <li><font color="black">Method: <span title="System">bool</span> <b>IsDesignTime</b> ()</font></li>
+    <li><font color="black">Method: <span title="System">bool</span> <b>ReportMessage</b> (<span title="System">int</span> <i>messageKind</i>, <span title="System">int</span> <i>messageCode</i>, <span title="System">int</span> <i>line</i>, <span title="System">int</span> <i>column</i>, <span title="System">string</span> <i>fileName</i>, <span title="System">string</span> <i>messageText</i>)</font></li>
+    <li><font color="black">Method: <span title="System">bool</span> <b>SetAdditionalLibPaths</b> (<span title="System">string[]</span> <i>additionalLibPaths</i>)</font></li>
+    <li><font color="black">Method: <span title="System">bool</span> <b>SetAddModules</b> (<span title="System">string[]</span> <i>addModules</i>)</font></li>
+    <li><font color="black">Method: <span title="System">bool</span> <b>SetBaseAddress</b> (<span title="System">string</span> <i>baseAddress</i>)</font></li>
+    <li><font color="black">Method: <span title="System">bool</span> <b>SetCodePage</b> (<span title="System">int</span> <i>codePage</i>)</font></li>
+    <li><font color="black">Method: <span title="System">bool</span> <b>SetDebugType</b> (<span title="System">string</span> <i>debugType</i>)</font></li>
+    <li><font color="black">Method: <span title="System">bool</span> <b>SetDefineConstants</b> (<span title="System">string</span> <i>defineConstants</i>)</font></li>
+    <li><font color="black">Method: <span title="System">bool</span> <b>SetDelaySign</b> (<span title="System">bool</span> <i>delaySignExplicitlySet</i>, <span title="System">bool</span> <i>delaySign</i>)</font></li>
+    <li><font color="black">Method: <span title="System">bool</span> <b>SetDisabledWarnings</b> (<span title="System">string</span> <i>disabledWarnings</i>)</font></li>
+    <li><font color="black">Method: <span title="System">bool</span> <b>SetDisableExtensions</b> (<span title="System">string</span> <i>langExtension</i>)</font></li>
+    <li><font color="black">Method: <span title="System">bool</span> <b>SetDocumentationFile</b> (<span title="System">string</span> <i>documentationFile</i>)</font></li>
+    <li><font color="black">Method: <span title="System">bool</span> <b>SetEmitDebugInformation</b> (<span title="System">bool</span> <i>emitDebugInformation</i>)</font></li>
+    <li><font color="black">Method: <span title="System">bool</span> <b>SetJcpa</b> (<span title="System">string</span> <i>jcpaSpec</i>)</font></li>
+    <li><font color="black">Method: <span title="System">bool</span> <b>SetKeyContainer</b> (<span title="System">string</span> <i>keyContainer</i>)</font></li>
+    <li><font color="black">Method: <span title="System">bool</span> <b>SetKeyFile</b> (<span title="System">string</span> <i>keyFile</i>)</font></li>
+    <li><font color="black">Method: <span title="System">bool</span> <b>SetLinkResources</b> (<span title="Microsoft.Build.Framework">ITaskItem[]</span> <i>linkResources</i>)</font></li>
+    <li><font color="black">Method: <span title="System">bool</span> <b>SetMainEntryPoint</b> (<span title="System">string</span> <i>targetType</i>, <span title="System">string</span> <i>mainEntryPoint</i>)</font></li>
+    <li><font color="black">Method: <span title="System">bool</span> <b>SetNoConfig</b> (<span title="System">bool</span> <i>noConfig</i>)</font></li>
+    <li><font color="black">Method: <span title="System">bool</span> <b>SetOptimize</b> (<span title="System">bool</span> <i>optimize</i>)</font></li>
+    <li><font color="black">Method: <span title="System">bool</span> <b>SetOutputAssembly</b> (<span title="System">string</span> <i>outputAssembly</i>)</font></li>
+    <li><font color="black">Method: <span title="System">bool</span> <b>SetReferences</b> (<span title="Microsoft.Build.Framework">ITaskItem[]</span> <i>references</i>)</font></li>
+    <li><font color="black">Method: <span title="System">bool</span> <b>SetResources</b> (<span title="Microsoft.Build.Framework">ITaskItem[]</span> <i>resources</i>)</font></li>
+    <li><font color="black">Method: <span title="System">bool</span> <b>SetResponseFile</b> (<span title="System">string</span> <i>responseFile</i>)</font></li>
+    <li><font color="black">Method: <span title="System">bool</span> <b>SetSecureScoping</b> (<span title="System">bool</span> <i>secureScope</i>)</font></li>
+    <li><font color="black">Method: <span title="System">bool</span> <b>SetSources</b> (<span title="Microsoft.Build.Framework">ITaskItem[]</span> <i>sources</i>)</font></li>
+    <li><font color="black">Method: <span title="System">bool</span> <b>SetTargetType</b> (<span title="System">string</span> <i>targetType</i>)</font></li>
+    <li><font color="black">Method: <span title="System">bool</span> <b>SetTreatWarningsAsErrors</b> (<span title="System">bool</span> <i>treatWarningsAsErrors</i>)</font></li>
+    <li><font color="black">Method: <span title="System">bool</span> <b>SetUtf8Output</b> (<span title="System">bool</span> <i>utf8Output</i>)</font></li>
+    <li><font color="black">Method: <span title="System">bool</span> <b>SetWarningLevel</b> (<span title="System">int</span> <i>warningLevel</i>)</font></li>
+    <li><font color="black">Method: <span title="System">bool</span> <b>SetWin32Icon</b> (<span title="System">string</span> <i>win32Icon</i>)</font></li>
+    <li><font color="black">Method: <span title="System">bool</span> <b>SetWin32Resource</b> (<span title="System">string</span> <i>win32Resource</i>)</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.Tasks JSharpParserUtilities_Tests"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.Tasks JSharpParserUtilities_Tests</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed class <b><span title="Base Type: System.Object">Microsoft.Build.Tasks.JSharpParserUtilities_Tests</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Constructor: public <b>JSharpParserUtilities_Tests</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">bool</span> <b>Equals</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected virtual <span title="System">void</span> <b>Finalize</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">int</span> <b>GetHashCode</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method: public override <span title="System">string</span> <b>ToString</b> ()</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.Tasks JSharpTokenizer_Tests"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.Tasks JSharpTokenizer_Tests</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed class <b><span title="Base Type: System.Object">Microsoft.Build.Tasks.JSharpTokenizer_Tests</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Constructor: public <b>JSharpTokenizer_Tests</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">bool</span> <b>Equals</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected virtual <span title="System">void</span> <b>Finalize</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">int</span> <b>GetHashCode</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method: public override <span title="System">string</span> <b>ToString</b> ()</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.Tasks Vjc"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.Tasks Vjc</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed class <b><span title="Base Type: Microsoft.Build.Tasks.ManagedCompiler; Interfaces: Microsoft.Build.Framework.ITask">Microsoft.Build.Tasks.Vjc</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Constructor: public <b>Vjc</b> ()</font></li>
+    <li><font color="black">Method: ProtectedInternal virtual <span title="System">bool</span> <b>CallHostObjectToExecute</b> (<span title="System">bool</span> <i>appropriateHostObjectExists</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="Microsoft.Build.Tasks.ManagedCompiler">(i)</i></font>: protected <span title="System">void</span> <b>CheckHostObjectSupport</b> (<span title="System">string</span> <i>parameterName</i>, <span title="System">bool</span> <i>resultFromHostObjectSetOperation</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">bool</span> <b>Equals</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="Microsoft.Build.Tasks.ToolTask">(i)</i></font>: public virtual <span title="System">bool</span> <b>Execute</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected virtual <span title="System">void</span> <b>Finalize</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="Microsoft.Build.Tasks.ManagedCompiler">(i)</i></font>: ProtectedInternal virtual <span title="System">bool</span> <b>GenerateCommandLineCommands</b> (<span title="Microsoft.Build.Tasks">CommandLineBuilder</span> <i>commandLine</i>)</font></li>
+    <li><font color="black">Method: ProtectedInternal override <span title="System">void</span> <b>GenerateResponseFileCommands</b> (<span title="Microsoft.Build.Tasks">CommandLineBuilder</span> <i>commandLine</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">int</span> <b>GetHashCode</b> ()</font></li>
+    <li><font color="black">Method: ProtectedInternal virtual <span title="System">string</span> <b>GetPathToTool</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="Microsoft.Build.Tasks.ManagedCompiler">(i)</i></font>: protected virtual <span title="System">void</span> <b>HandleReturnCode</b> (<span title="System">int</span> <i>exitCode</i>)</font></li>
+    <li><font color="black">Method: ProtectedInternal virtual <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method: public override <span title="System">string</span> <b>ToString</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="Microsoft.Build.Tasks.ManagedCompiler">(i)</i></font>: ProtectedInternal virtual <span title="System">bool</span> <b>ValidateParameters</b> ()</font></li>
+    <li><font color="black">Property: <span title="System">String[]</span> <b>AdditionalLibPaths</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">String[]</span> <b>AddModules</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">string</span> <b>BaseAddress</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="Microsoft.Build.Framework">IBuildEngine</span> <b>BuildEngine</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">int</span> <b>CodePage</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>DebugType</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>DefineConstants</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">bool</span> <b>DelaySign</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">string</span> <b>DisabledWarnings</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">string</span> <b>DisableExtensions</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">string</span> <b>DocumentationFile</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">bool</span> <b>EmitDebugInformation</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">int</span> <b>FileAlignment</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: protected <span title="System">string</span> <b>HelpKeywordPrefix</b> { }</font></li>
+    <li><font color="black">Property: protected <span title="System">bool</span> <b>HostCompilerSupportsAllParameters</b> { }</font></li>
+    <li><font color="black">Property: virtual <span title="System">object</span> <b>HostObject</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">string</span> <b>Jcpa</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>KeyContainer</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>KeyFile</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="Microsoft.Build.Framework">ITaskItem[]</span> <b>LinkResources</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="Microsoft.Build.Utilities">TaskLoggingHelper</span> <b>Log</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>MainEntryPoint</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">bool</span> <b>NoConfig</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">bool</span> <b>NoLogo</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">bool</span> <b>Optimize</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>OutputAssembly</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="Microsoft.Build.Framework">ITaskItem[]</span> <b>References</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="Microsoft.Build.Framework">ITaskItem[]</span> <b>Resources</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>ResponseFile</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">bool</span> <b>SecureScoping</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="Microsoft.Build.Framework">ITaskItem[]</span> <b>Sources</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>TargetType</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: protected <span title="System.Resources">ResourceManager</span> <b>TaskResources</b> { }</font></li>
+    <li><font color="black">Property: ProtectedInternal override <span title="System">string</span> <b>ToolName</b> { }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>ToolPath</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">bool</span> <b>TreatWarningsAsErrors</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">bool</span> <b>Utf8Output</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">int</span> <b>WarningLevel</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>Win32Icon</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>Win32Resource</b> { public get; public set; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.Tasks VjsResGen"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.Tasks VjsResGen</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed class <b><span title="Base Type: Microsoft.Build.Utilities.Task; Interfaces: Microsoft.Build.Framework.ITask">Microsoft.Build.Tasks.VjsResGen</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Constructor: public <b>VjsResGen</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">bool</span> <b>Equals</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method: public override <span title="System">bool</span> <b>Execute</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected virtual <span title="System">void</span> <b>Finalize</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">int</span> <b>GetHashCode</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Method: ProtectedInternal virtual <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method: public override <span title="System">string</span> <b>ToString</b> ()</font></li>
+    <li><font color="black">Property: virtual <span title="Microsoft.Build.Framework">IBuildEngine</span> <b>BuildEngine</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: protected <span title="System">string</span> <b>HelpKeywordPrefix</b> { }</font></li>
+    <li><font color="black">Property: virtual <span title="System">object</span> <b>HostObject</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="Microsoft.Build.Utilities">TaskLoggingHelper</span> <b>Log</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">String[]</span> <b>OutputResx</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">String[]</span> <b>Sources</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: protected <span title="System.Resources">ResourceManager</span> <b>TaskResources</b> { }</font></li>
+    <li><font color="black">Property: virtual <span title="System">String[]</span> <b>WildCards</b> { public get; public set; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+</tbody>
+</table>
+
+<p class="endNav"><font size=2><a href="#top">Top</a> &bull; <a href="..\APIChangesEVERTMtoWHI40607.03.html" target=_top>Summary</a></font></p>
+
+</body>
+</html>
+

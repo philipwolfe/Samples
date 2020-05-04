@@ -1,0 +1,512 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title></title>
+		<link rel="STYLESHEET" type="text/css" href="http://www.oreillynet.com/styles/main.css" />
+	</head>
+	<body>
+		<h2>Introduction</h2>
+		<p>
+			If you didn't know it already, now is a pretty exciting time for unit testing 
+			in .NET. Tremendous progress is being made on several fronts:
+		</p>
+		<ul>
+			<li>
+				IDE Integration</li>
+			<li>
+				Process Integration</li>
+			<li>
+				New test fixtures</li>
+		</ul>
+		<p>This article will cover the following products:</p>
+		<p>&nbsp;</p>
+		<h3>NUnit</h3>
+		<p>The default for the .NET world.</p>
+		<p>&nbsp;</p>
+		<h3>VS.NET 2005</h3>
+		<p>Unit testing rolled into the IDE by Microsoft.</p>
+		<p>&nbsp;</p>
+		<h3>MbUnit</h3>
+		<p>If NUnit was Clark Kent, MbUnit is Superman.</p>
+		<p>&nbsp;</p>
+		<h3>TestDriven.NET</h3>
+		<p>This is a VS.NET Add-In that integrates existing unit testing frameworks into 
+			the IDE.</p>
+		<p>&nbsp;</p>
+		<p>There is one more product that I will not cover here but, it is worth keeping 
+			your eye on: NTeam. The team that is creating NTeam has not yet produced 
+			anything but they only just established the project in April. They seem to be 
+			very organized and progressing with great speed.</p>
+		<p>&nbsp;</p>
+		<h2>NUnit</h2>
+		<p>NUnit is the unit testing framework that has the majority of the market share. 
+			It was one of the first unit testing frameworks for the .NET platform. It 
+			utilizes attributes to identify what is a test. The <code>TestFixture</code> attribute is 
+			used to identify a class that will expose test methods. The <code>Test</code> attribute is 
+			used to identify a method that will exercise a test subject.</p>
+		<p>&nbsp;</p>
+		<p>Let’s get down to business and look at some code. First we need something to 
+			test.</p>
+		<p>&nbsp;</p>
+		<pre><code>
+	public class Subject
+	{
+		public Int32 Add(Int32 x, Int32 y){
+			return x + y;
+		}
+
+	}
+</code></pre>
+		<p>&nbsp;</p>
+		<p>That <code>Subject</code> class has one method: Add. We will test the Subject class by 
+			exercising the <code>Add</code> method with different arguments.</p>
+		<p>&nbsp;</p>
+		<pre><code>
+	[TestFixture]
+	public class tSubject
+	{
+
+		[Test]
+		public void tAdd()
+		{
+			Int32 Sum;
+			Subject Subject = new Subject();
+			Sum = Subject.Add(1,2);
+			Assert.AreEqual(3, Sum);
+		}
+
+	}
+</code></pre>
+		<p>&nbsp;</p>
+		<p>The class <code>tSubject</code> is decorated with the attribute <code>TestFixture</code> and the method 
+			<code>tAdd</code> is decorated with the attribute <code>Test</code>. You can compile this and run it in 
+			the NUnit GUI application. It will produce a successful test run.</p>
+		<p>&nbsp;</p>
+		<p>That is the basics of what NUnit offers. There are attributes to help with 
+			setting up and tearing down your test environment: <code>SetUp</code>, <code>SetUpFixture</code>, 
+			<code>TearDown</code>, and <code>TearDownFixture</code>. <code>SetUpFixture</code> is run once at the begin when the 
+			fixture is first created, similarly <code>TearDownFixture</code> is run once after all tests 
+			have completed. <code>SetUp</code> and <code>TearDown</code> are run before and after each test.</p>
+		<p>&nbsp;</p>
+		<p>NUnit tests can be run several different ways: from the GUI application, from 
+			the consoles application, and from a NAnt task. It has been integrated into 
+			Cruise Control .Net as well. In the last product review you will see how it has 
+			been integrated into the VS.NET IDE as well.</p>
+		<img src="images/nunit.jpg" alt="NUnit GUI Application" /><br/>
+		<em>NUnit GUI Application</em>
+		<p>&nbsp;</p>
+		<h2>MbUnit</h2>
+		This is where we see some of the most innovative work for the unit testing 
+		regardless of language. There are 11 types of test fixtures, 9 types of tests, 
+		and a myriad of other attributes to be applied. What one can do with MbUnit 
+		boggles the mind and can be difficult to wrap your mind around. So let's start 
+		with something reasonable, let's build on an existing example.</p>
+		<p>&nbsp;</p>
+		<pre><code>
+	[RowTest()]
+	[Row(1,2,3)]
+	[Row(2,3,5)]
+	[Row(3,4,8)]
+	[Row(4,5,9)]
+	public void tAdd(Int32 x, Int32 y, Int32 expectedSum)
+	{
+		Int32 Sum;
+		Sum = this.Subject.Add(x,y);
+		Assert.AreEqual(expectedSum, Sum);
+	}
+</code></pre>
+		<p>&nbsp;</p>
+		<p>So the attribute <code>Test</code> has been replaced with <code>RowTest</code>. The attribute <code>Row</code> 
+			decorates providing data to be passed as parameters to the test. Notice the 
+			signature to the test, (Int32 x, Int32 y, Int32 expectedSum). MbUnit test 
+			runner will run the test for as many <code>Row</code> decorators have been applied, 4 in 
+			this case. And yes for thoughts of you paying attention the test runner will 
+			count them as separate tests. So the results of running these tests would be 4 
+			tests run, 3 passed, 1 failed. The <code>RowTest</code> leads into the <code>XMLDataProvider</code> 
+			attribute. It is similar to functionality of a FitNesse fixture. The general 
+			idea is to provide an XML file and XPath query. The test runner will loop 
+			through the nodes passing the node or if desired deserializing the node and 
+			passing it as a parameter to the test. Again the test runner will count each 
+			run of the test as a test, (i.e., 3 nodes would be counted as 3 tests.) Jumping 
+			up in complexity MbUnit provides advanced fixtures like the attribute <code>TestSuite</code> 
+			that can be combine with other features like reflection to produce a test like:</p>
+		<p>&nbsp;</p>
+		<pre><code>
+	[TestSuite]
+	public TestSuite TestGenerator(){
+		this.LoadAssemblies(); 
+		TestSuite suite = new TestSuite("ExceptionSuite"); 
+		foreach (Assembly Asm in AppDomain.CurrentDomain.GetAssemblies()) 
+		{ 
+			if (!(Asm.FullName.StartsWith("MbUnit"))) 
+			{ 
+				foreach (Type Tp in Asm.GetExportedTypes()) 
+				{ 
+					if (Tp.IsSubclassOf(typeof(Exception))) 
+					{ 
+						suite.Add(Tp.FullName, new TestDelegate(GenericTest), Tp);
+					} 
+				} 
+			} 
+		} 
+		return suite;
+	}
+</code></pre>
+		<p>&nbsp;</p>
+		<p>The method decorated with the attribute <code>TestSuite</code> must return a <code>TestSuite</code>. To 
+			add to the <code>TestSuite</code> a name of the test and an instance of the delegate 
+			<code>TestDeleagte</code> must be provided. In the example we will be testing the 
+			serialization and deserialization of exceptions. You will be surprised at how 
+			many types of exceptions are not able to be serialized or deserialized. The 
+			method <code>LoadAssemblies</code> reads a config file and loads all assemblies specified. A 
+			test is added to the <code>TestSuite</code> for each type found that is derived from 
+			<code>Exception</code>.</p>
+		<p>&nbsp;</p>
+		<pre><code>
+	public void GenericTest(Type exceptionType){
+		if (exceptionType == typeof(System.Data.SqlTypes.SqlTypeException)) 
+		{ 
+			Assert.Ignore("The type {0} does not implement ISerializable correctly.", exceptionType.FullName);
+		} 
+		else if (exceptionType == typeof(System.Data.SqlTypes.SqlNullValueException)) 
+		{ 
+			Assert.Ignore("The type {0} does not implement ISerializable correctly.", exceptionType.FullName);
+		} 
+		else if (exceptionType == typeof(System.Data.SqlTypes.SqlTruncateException)) 
+		{ 
+			Assert.Ignore("The type {0} does not implement ISerializable correctly.", exceptionType.FullName);
+		}
+</code></pre>
+		<p>&nbsp;</p>
+		<p>The method <code>GenericTest</code> was provided as the delegate for each test. Notice the 
+			parameter <code>exceptionType</code>, it was specified when the test was added to the 
+			<code>TestSuite</code>. The next interesting thing is MbUnit's ability to dynamically ignore 
+			a unit test. Here we are ignoring the SqlTypes exception because they do not 
+			implement <code>ISerializable</code> correctly.</p>
+		<p>&nbsp;</p>
+		<pre><code>
+		Exception ThrownException = null; 
+		Stream Stream = null; 
+		Exception Clone = null; 
+		
+		try 
+		{ 
+			throw ((Exception)(this.ClassFactory.CreateInstanceOf(exceptionType))); 
+		} 
+		catch (Exception ex) 
+		{ 
+			if (ex.GetType() == exceptionType) 
+			{ 
+				ThrownException = ex; 
+			} 
+			else 
+			{ 
+				Assert.Ignore(string.Format("Not able to create {0} {1}", exceptionType.FullName, ex.ToString())); 
+			} 
+		}
+</code></pre>
+		<p>&nbsp;</p>
+		<p>Next a class factory wil be used to create an instance of the exception and 
+			throw it. Again the <code>Assert.Ignore</code> is used when the class factory has an error 
+			(remember we are testing the exception's ability to be serialized and 
+			deserialized).</p>
+		<p>&nbsp;</p>
+		<pre><code>
+		try 
+		{ 
+			try 
+			{ 
+				Stream = this.Serializer.SerializeToStream(ThrownException); 
+			} 
+			catch (SerializationException SerEx) 
+			{ 
+				Assert.Fail(string.Format("Not able to serialize {0} {1}", exceptionType.FullName, SerEx.Message)); 
+			} 
+			catch (Exception OtherEx) 
+			{ 
+				if (!(OtherEx.InnerException is SerializationException)) 
+				{ 
+					Assert.Fail(string.Format("Problem with {0} {1}", exceptionType.FullName, OtherEx.ToString())); 
+				} 
+				else 
+				{ 
+					Assert.Fail(string.Format("Not able to serialize {0} {1}", exceptionType.FullName, OtherEx.ToString()));
+				} 
+			}		 
+</code></pre>
+		<p>&nbsp;</p>
+		<p>Now that we have a thrown exception let get to the test. First we will try to 
+			serialize it, and because we are going to want to deserialize it in just a 
+			second we will hold on to the stream. Now at this point because we are actually 
+			test if there is a problem we fail the test with <code>Assert.Fail</code>.</p>
+		<p>&nbsp;</p>
+		<pre><code>
+			try 
+			{ 
+				Clone = ((Exception)(this.Serializer.DeserializeToObject(Stream))); 
+			} 
+			catch (SerializationException SerEx) 
+			{ 
+				Assert.Fail(string.Format("Not able to deserialize {0} {1}", exceptionType.FullName, SerEx.Message)); 
+			} 
+			catch (Exception OtherEx) 
+			{ 
+				if (!(OtherEx.InnerException is SerializationException)) 
+				{ 
+					Assert.Fail(string.Format("Problem with {0} {1}", exceptionType.FullName, OtherEx.ToString())); 
+				} 
+				else 
+				{ 
+					Assert.Fail(string.Format("Not able to deserialize {0} {1}", exceptionType.FullName, OtherEx.ToString()));
+				} 
+			} 
+		} 
+		finally 
+		{ 
+			if (Clone != null) 
+			{ 
+				Assert.AreEqual(ThrownException.StackTrace, Clone.StackTrace); 
+			} 
+			if (Stream != null) 
+			{ 
+				Stream.Close(); 
+			} 
+		}
+	}	 
+</code></pre>
+		<p>&nbsp;</p>
+		<p>Now we will try and deserialize the stream back into the exception, creating a 
+			clone. Now if this were not an example I would need to be more thorough, but 
+			because it's for an article and I have only verified the <code>StackTrace</code>. Now I want 
+			to point that the class used to test exception serialization is 170 lines, and 
+			that 161 test are generated from loading 18 assemblies. Now that is cool. By 
+			the way 24 exceptions failed, interestingly 16 of them are from WSE. There are 
+			many more cool, time saving features to MbUnit. The last one I will mention is 
+			the ability to take an existing NUnit test and simply change the reference and 
+			using statement to MbUnit and awhala your conversion is done. MbUnit can be run 
+			from the GUI application, from a console application, and from a NAnt task. It 
+			has been integrated into Cruise Control .NET. And yes again in the last product 
+			you will see how it has been integrated into the VS.NET IDE.</p>
+		<img src="images/mbunit.jpg" alt="MbUnit GUI Application" /><br/>
+		<em>MbUnit GUI Application</em>
+		<p>&nbsp;</p>
+		<h2>VSTS</h2>
+		<p>&nbsp;</p>
+		<p>Visual Studio Team System (VSTS for shore) is a beta level commercial SCM and 
+			testing platform from Microsoft with unit testing as one of its testing types. 
+			I will be covering only the unit testing features here but its worth noting 
+			that VSTS supports other testing such as functional and load testing. This 
+			article is based on Beta 2 of VSTS, as this is a beta product some features 
+			could change for the final release.</p>
+		<p>&nbsp;</p>
+		<p>Test Class</p>
+		<p>&nbsp;</p>
+		<p>The class used to demo the VSTS tests is a class with simple addition and 
+			subtraction methods.</p>
+		<p>&nbsp;</p>
+		<pre><code>
+    public class Simple
+    {
+        public int Add(int intNum1, int intNum2)
+        {
+            return intNum1 + intNum2;
+        }
+
+        public int Subtract(int intNum1, int intNum2)
+        {
+            return intNum1 - intNum2;
+        }
+
+    }
+</code></pre>
+		<p>&nbsp;</p>
+		<p>Assert tests</p>
+		<p>&nbsp;</p>
+		<p>VSTS supports the <code>Assert</code> range of tests like MbUnit and NUnit, with commonly 
+			found tasks such as <code>Assert.AreEqual</code> etc. VSTS has also added other tasks to its 
+			<code>Assert</code> test, including tasks such as <code>GetHashCodeTests</code>, <code>Inconclusive</code>, 
+			<code>IsInstanceOf</code> and <code>IsNotIstanceOf</code>. The following is an example of an assert test, 
+			here showing the <code>AreEqual</code> task.</p>
+		<p>&nbsp;</p>
+		<pre><code>
+    [TestClass]
+    public class SimpleTest
+    {
+
+        VSTSTest.Simple objSimple;
+
+        [TestInitialize()]
+        public void Initialize()
+        {
+            objSimple = new VSTSTest.Simple();
+        }
+   
+        [TestMethod]
+        public void TestAdd()
+        {
+            Assert.AreEqual(2, objSimple.Add(1, 1));      
+        }
+
+        [TestMethod]
+        public void TestSubtract()
+        {
+            Assert.AreEqual(2, objSimple.Subtract(3,1));
+        }
+                
+    }
+</code></pre>
+		<p>&nbsp;</p>
+		<p>Note how VSTS is lays out its unit tests. The <code>TestClass</code> attribute marks a class 
+			as a unit test class. The <code>TestInitalize</code> attributed is fired up each and every 
+			time by a test runner (e.g. the IDE etc) to allow a test class to set up any 
+			objects or values that the class might need. While not shown here is worth 
+			considering the <code>TestCleanup</code> attribute which allows a class to cleanup when the 
+			tests are complete. Finally note that each test method in our class is marked 
+			with the <code>TestMethod</code> attribute.</p>
+		<p>&nbsp;</p>
+		<p>DataDriven test fixture</p>
+		<p>&nbsp;</p>
+		<p>It’s often vital to drive different sets of data through your unit tests, by 
+			running a broad spectrum of data through your tests you can build a bigger 
+			picture of inputs and expected outputs. VSTS supports running tests through a 
+			database table of your choice, for example a sample table may be as follows.</p>
+		<p>&nbsp;</p>
+		<pre><code>
+	CREATE TABLE [UnitTest] (
+		[ID] [int] IDENTITY (1, 1) NOT NULL ,
+		[TestVal1] [int] NULL ,
+		[TestVal2] [int] NULL ,
+		[Result] [int] NULL 
+	) ON [PRIMARY]
+	GO
+</code></pre>
+		<p>&nbsp;</p>
+		<p>We can then alter our unit test as follows</p>
+		<p>&nbsp;</p>
+		<pre><code>
+    [TestClass]
+    public class SimpleDBTest
+    {
+        VSTSTest.Simple objSimple;
+
+        private TestContext testContextInstance;
+
+        public TestContext TestContext
+        {
+            get
+            {
+                return testContextInstance;
+            }
+            set
+            {
+                testContextInstance = value;
+            }
+        }
+        
+        [TestInitialize()]
+        public void Initialize()
+        {
+            objSimple = new VSTSTest.Simple();
+        }
+
+        [TestMethod, DataSource("System.Data.SqlClient", "Data Source=LOCALHOST;Initial Catalog=TestDB;Integrated Security=True", "UnitTest", DataAccessMethod.Sequential)]
+        public void TestAddDB()
+        {
+            Assert.AreEqual((int)TestContext.DataRow["Result"], objSimple.Add((int)TestContext.DataRow["TestVal1"], (int)TestContext.DataRow["TestVal2"]));
+        }
+   
+    }
+</code></pre>
+		<p>&nbsp;</p>
+		<p>This is almost like the previous example however to enable data driven testing 
+			we extend the <code>TestMethod</code> attribute with the additional <code>DataSource</code> value. Here 
+			we add a database connection string, table name (in this case "UnitTest") and 
+			then reference the data using the <code>TestContect.DataRow</code>.</p>
+		<p>&nbsp;</p>
+		<p>VSTS and the VS IDE</p>
+		<p>&nbsp;</p>
+		<p>VSTS enjoys a close relationship with the VS IDE that you would expect from a 
+			Microsoft tool. The IDE allows you to use a wizard to generate the unit tests 
+			from the code you are testing. This supports testing both public and private 
+			methods, however opion about testing private methods remains divided. VSTS 
+			includes a TestManager which is a GUI to allow you to select tests to run and 
+			see the results of those tests. TestManager allows you to run all your unit 
+			tests are once or you can select which tests you want to run. You can also add 
+			additional information to a test such as adding the DataSource attribute that 
+			we featured in the demo. Finally VSTS supports debugging unit tests in the VS 
+			IDE so that its possible to se breakpoints and start debug run via your unit 
+			test.</p>
+		<p>&nbsp;</p>
+		<p>MSTest</p>
+		<p>&nbsp;</p>
+		<p>VSTS supports running its test types (including unit tests) via a command line 
+			tool called MSTest. MSTest does require VSTS to be installed to work (client 
+			side tools) and is not available individually for setup on a build server etc.</p>
+		<p>&nbsp;</p>
+		<p>TeamBuild</p>
+		<p>&nbsp;</p>
+		<p>VSTS unit tests can be run in a build cycle using an extended version of MSBuild 
+			called TeamBuild.</p>
+		<p>&nbsp;</p>
+		<p>Other Notes</p>
+		<p>&nbsp;</p>
+		<p>Need to be a MSDN subscriber to download CTP releases, beta 2 can be downloaded 
+			from MSDN or mail with a small charge.</p>
+		<p>&nbsp;</p>
+		<h2>TestDriven.NET</h2>
+		<p>&nbsp;</p>
+		<p>This product is not a unit testing framework but a Visual Studio add-in for 
+			integrating existing unit testing frameworks into the IDE. It offers test 
+			execution from the IDE, both in and out of the debugger. It currently supports 
+			all versions of VS.NET and the unit testing frameworks, NUnit, MbUnit, and MS 
+			Team System. Test execution can begin from several actions. Right clicking, in 
+			a test method, in a class testfixture, in a namespace, on the solution, on a 
+			project, and finally on a class will expose the Run Test(s) context menu item. 
+			This context menu item will begin executing the test(s). There is a feature 
+			called Ad-Hoc testing that relates to Run Test(s) context menu. If you right 
+			click in a method that is not part of a testfixture class and run it as a test 
+			the method will in effect become sub main. If there is a return value from the 
+			method it will be displayed in the output pane. Regular tests results are 
+			printed to the output pane as well. If there is an exception and the line 
+			numbers are available they are active and can be double clicked to navigate to 
+			that line. Task list entries are created for failing lists as well.</p>
+		<p>&nbsp;</p>
+		<H2>Conclusion</H2>
+		<p>&nbsp;</p>
+		<p>I don’t see a benefit to pitting these products against each other. They each 
+			serve different needs. NUnit provides the basics needed for unit testing in 
+			clean and elegant fashion. It has been integrated into many other products and 
+			adopted as standard by the .NET community. MbUnit is an advanced unit testing 
+			framework. It has been integrated into almost as many products as NUnit. 
+			MbUnit’s motivation is to provide a more robust framework. Taking on more of 
+			the common unit testing tasks so that you don’t have to. VSTS has an entirely 
+			different goal. This product was born from a desire to integrate into the 
+			process of creating software. Not only does it provide a basic unit testing 
+			framework, but it integrates into the IDE. It’s integration into the IDE is for 
+			the purpose of injecting itself before a developer can submit to source 
+			control. It can impose itself on a developer and force unit testing into the 
+			process. TestDriven.NET has its own motivations. It lowers the effort to run 
+			tests. If I don’t have to leave the IDE to run a test, if I can begin debugging 
+			a test with a single click, I am more likely to write more tests. It makes it 
+			easier for me to do the right thing. That is criteria that I would urge you to 
+			judge which of these products is right for you and or your team. Which one will 
+			make it easiest to do the right thing?</p>
+		<p>&nbsp;</p>
+		<h3>Resources</h3>
+		</p>
+		<p>&nbsp;</p>
+		<p><strong>Product Sites</strong></p>
+		<p><a href="http://NUnit.org">NUnit</a></p>
+		<p><a href="http://MbUnit.org">MbUnit</a></p>
+		<p><a href="http://TestDriven.Net">TestDriven.Net</a></p>
+		<p><a href="http://http://msdn.microsoft.com/library/default.asp?url=/library/en- us/dnvs05/html/vstsunittesting.asp">VSTS</a></p>
+		<p>&nbsp;</p>
+		<p><strong>Blogs</strong></p>
+		<p><a href="http://weblogs.asp.net/astopford/">Andrew Stopford</a></p>
+		<p><A href="http://blog.dotnetwiki.org/default.aspx">Peli (Jonathan de Halleux)</A></p>
+		<p><a href="http://www.testing.com/cgi-bin/blog">Brian Marick</a></p>
+		<p><a href="http://codebetter.com/blogs/darrell.norton/">Darrell Norton</a></p>
+		<p><a href="http://blogs.msdn.com/jason_anderson/">Jason Anderson</a></p>
+		<p><a href="http://http://weblogs.asp.net/nunitaddin/">Jamie Cansdale</a></p>
+	</body>
+</html>

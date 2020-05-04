@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd">
+  <assemblyIdentity name="WinFSCRM" version="1.0.0.0" processorArchitecture="x86" asmv2:culture="en-us" publicKeyToken="0000000000000000" />
+  <entryPoint name="main" xmlns="urn:schemas-microsoft-com:asm.v2" dependencyName="WinFSCRM">
+    <commandLine file="WinFSCRM.exe" parameters="" />
+  </entryPoint>
+  <description asmv2:iconFile="App.ico" />
+  <TrustInfo xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:temp="temporary">
+    <Security>
+      <ApplicationRequestMinimum>
+        <PermissionSet class="System.Security.PermissionSet" version="1" ID="SeeDefinition">
+          <IPermission class="System.Security.Permissions.FileDialogPermission" version="1" Unrestricted="true" />
+          <IPermission class="System.Security.Permissions.IsolatedStorageFilePermission" version="1" Allowed="DomainIsolationByUser" UserQuota="5242880" />
+          <IPermission class="System.Security.Permissions.SecurityPermission" version="1" Flags="Execution" />
+          <IPermission class="System.Security.Permissions.UIPermission" version="1" Window="SafeTopLevelWindows" Clipboard="OwnClipboard" />
+          <IPermission class="System.Drawing.Printing.PrintingPermission, System.Drawing, Version=1.2.3400.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" version="1" Level="SafePrinting" />
+          <IPermission class="MSAvalon.Windows.AVTempUIPermission, PresentationFramework, Version=6.0.4030.0, Culture=neutral, PublicKeyToken=a29c01bbd4e39ac5" version="1" NewWindow="LaunchNewWindows" FullScreen="SafeFullScreen" />
+        </PermissionSet>
+        <DefaultAssemblyRequest PermissionSetReference="SeeDefinition" />
+      </ApplicationRequestMinimum>
+    </Security>
+  </TrustInfo>
+  <dependency asmv2:name="WinFSCRM">
+    <dependentAssembly>
+      <assemblyIdentity name="WinFSCRM" version="0.0.0.0" processorArchitecture="x86" />
+    </dependentAssembly>
+    <asmv2:installFrom codebase="WinFSCRM.exe" hash="58f0b2710e7355e50316deafb286d6139ec38638" hashalg="SHA1" size="90112" />
+  </dependency>
+</assembly>

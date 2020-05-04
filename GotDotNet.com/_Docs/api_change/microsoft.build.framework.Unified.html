@@ -1,0 +1,525 @@
+<font face="Arial" size="1">
+
+<html>
+<head>
+<title>Changes in microsoft.build.framework from EVERTM (Version 1.1.4322.573)<br> to WHI40607.03 (Version 2.0.40607.3)</title>
+
+<style type="text/css">
+dt      { font-weight: Bold; }
+.big    { font-size: 150%; font-weight: Bold; }
+.small  { font-size:  75%; font-weight: Normal; }
+.endNav { font-size:  75%; font-weight: Normal; margin: 20; }
+</style>
+
+</head>
+
+<body>
+<a name="top" id="top"></a>
+<h2><center>Changes in microsoft.build.framework from EVERTM (Version 1.1.4322.573)<br> to WHI40607.03 (Version 2.0.40607.3)</center></h2>
+
+
+<table width="90%" align="center" border="1" cellspacing="0" bordercolor="A0000" style=background-color: #F0F0F0; border-style: solid;>
+<thead>
+ <tr>
+  <th width="50%" align="left">Removed</td>
+  <th width="50%" align="left">Added</td>
+ </tr>
+</thead>
+<tbody>
+
+ <tr>
+  <a name="Microsoft.Build.Framework BuildEventArgs"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.Framework BuildEventArgs</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public class <b><span title="Base Type: System.EventArgs">Microsoft.Build.Framework.BuildEventArgs</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Constructor: public <b>BuildEventArgs</b> ()</font></li>
+    <li><font color="black">Constructor: public <b>BuildEventArgs</b> (<span title="Microsoft.Build.Framework">BuildEventCategory</span> <i>category</i>, <span title="Microsoft.Build.Framework">BuildEventImportance</span> <i>importance</i>)</font></li>
+    <li><font color="black">Constructor: public <b>BuildEventArgs</b> (<span title="Microsoft.Build.Framework">BuildEventCategory</span> <i>category</i>, <span title="System">string</span> <i>subCategory</i>, <span title="Microsoft.Build.Framework">BuildEventImportance</span> <i>importance</i>, <span title="System">string</span> <i>code</i>, <span title="System">string</span> <i>file</i>, <span title="System">int</span> <i>lineNumber</i>, <span title="System">int</span> <i>columnNumber</i>, <span title="System">int</span> <i>endLineNumber</i>, <span title="System">int</span> <i>endColumnNumber</i>, <span title="System">string</span> <i>message</i>, <span title="System">string</span> <i>helpKeyword</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">bool</span> <b>Equals</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected virtual <span title="System">void</span> <b>Finalize</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">int</span> <b>GetHashCode</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">string</span> <b>ToString</b> ()</font></li>
+    <li><font color="black">Property: <span title="Microsoft.Build.Framework">BuildEventCategory</span> <b>Category</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>Code</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">int</span> <b>ColumnNumber</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">int</span> <b>EndColumnNumber</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">int</span> <b>EndLineNumber</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>File</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>HelpKeyword</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="Microsoft.Build.Framework">BuildEventImportance</span> <b>Importance</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">int</span> <b>LineNumber</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>Message</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">int</span> <b>Processor</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>SubCategory</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">DateTime</span> <b>TimeStamp</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name=" BuildEventCategory"><td colspan="2" align="center" style="font:100%;"><b><font color='black'> BuildEventCategory</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed enum <b><span title="Base Type: System.Enum; Interfaces: System.IComparable, System.IFormattable, System.IConvertible">Microsoft.Build.Framework.BuildEventCategory</span>
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspComment = 0,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspError = 1,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspWarning = 2,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCustom = 3,
+<br></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">--> NONE <--
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.Framework BuildEventHandler"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.Framework BuildEventHandler</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed delegate <b><span title="Base Type: System.MulticastDelegate; Interfaces: System.ICloneable, System.Runtime.Serialization.ISerializable">Microsoft.Build.Framework.BuildEventHandler</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Constructor: public <b>BuildEventHandler</b> (<span title="System">object</span> <i>object</i>, <span title="System">IntPtr</span> <i>method</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">IAsyncResult</span> <b>BeginInvoke</b> (<span title="System">object</span> <i>sender</i>, <span title="Microsoft.Build.Framework">BuildEventArgs</span> <i>e</i>, <span title="System">AsyncCallback</span> <i>callback</i>, <span title="System">object</span> <i>object</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Delegate">(i)</i></font>: public virtual <span title="System">object</span> <b>Clone</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.MulticastDelegate">(i)</i></font>: protected virtual <span title="System">delegate</span> <b>CombineImpl</b> (<span title="System">delegate</span> <i>follow</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Delegate">(i)</i></font>: public <span title="System">object</span> <b>DynamicInvoke</b> (<span title="System">object[]</span> <i>args</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.MulticastDelegate">(i)</i></font>: protected virtual <span title="System">object</span> <b>DynamicInvokeImpl</b> (<span title="System">object[]</span> <i>args</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>EndInvoke</b> (<span title="System">IAsyncResult</span> <i>result</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.MulticastDelegate">(i)</i></font>: public virtual <span title="System">bool</span> <b>Equals</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected virtual <span title="System">void</span> <b>Finalize</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.MulticastDelegate">(i)</i></font>: public virtual <span title="System">int</span> <b>GetHashCode</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.MulticastDelegate">(i)</i></font>: public virtual <span title="System">delegate[]</span> <b>GetInvocationList</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.MulticastDelegate">(i)</i></font>: protected virtual <span title="System.Reflection">MethodInfo</span> <b>GetMethodImpl</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.MulticastDelegate">(i)</i></font>: public virtual <span title="System">void</span> <b>GetObjectData</b> (<span title="System.Runtime.Serialization">SerializationInfo</span> <i>info</i>, <span title="System.Runtime.Serialization">StreamingContext</span> <i>context</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>Invoke</b> (<span title="System">object</span> <i>sender</i>, <span title="Microsoft.Build.Framework">BuildEventArgs</span> <i>e</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.MulticastDelegate">(i)</i></font>: protected virtual <span title="System">delegate</span> <b>RemoveImpl</b> (<span title="System">delegate</span> <i>value</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">string</span> <b>ToString</b> ()</font></li>
+    <li><font color="black">Property: <span title="System.Reflection">MethodInfo</span> <b>Method</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System">object</span> <b>Target</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name=" BuildEventImportance"><td colspan="2" align="center" style="font:100%;"><b><font color='black'> BuildEventImportance</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed enum <b><span title="Base Type: System.Enum; Interfaces: System.IComparable, System.IFormattable, System.IConvertible">Microsoft.Build.Framework.BuildEventImportance</span>
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspHigh = 0,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspNormal = 1,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLow = 2,
+<br></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">--> NONE <--
+  </td>
+ </tr>
+
+ <tr>
+  <a name=" BuildStage"><td colspan="2" align="center" style="font:100%;"><b><font color='black'> BuildStage</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed enum <b><span title="Base Type: System.Enum; Interfaces: System.IComparable, System.IFormattable, System.IConvertible">Microsoft.Build.Framework.BuildStage</span>
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspNotBuilding = 0,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspBuildStarted = 1,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspBuildFinished = 2,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspProjectStarted = 3,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspProjectFinished = 4,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTargetStarted = 5,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTargetFinished = 6,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTaskStarted = 7,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTaskFinished = 8,
+<br></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">--> NONE <--
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.Framework BuildStatusEventArgs"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.Framework BuildStatusEventArgs</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed class <b><span title="Base Type: Microsoft.Build.Framework.BuildEventArgs">Microsoft.Build.Framework.BuildStatusEventArgs</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Constructor: public <b>BuildStatusEventArgs</b> ()</font></li>
+    <li><font color="black">Constructor: public <b>BuildStatusEventArgs</b> (<span title="Microsoft.Build.Framework">BuildStage</span> <i>stage</i>)</font></li>
+    <li><font color="black">Constructor: public <b>BuildStatusEventArgs</b> (<span title="Microsoft.Build.Framework">BuildStage</span> <i>stage</i>, <span title="System">bool</span> <i>success</i>)</font></li>
+    <li><font color="black">Constructor: public <b>BuildStatusEventArgs</b> (<span title="Microsoft.Build.Framework">BuildStage</span> <i>stage</i>, <span title="System">string</span> <i>stageName</i>)</font></li>
+    <li><font color="black">Constructor: public <b>BuildStatusEventArgs</b> (<span title="Microsoft.Build.Framework">BuildStage</span> <i>stage</i>, <span title="System">string</span> <i>stageName</i>, <span title="System">bool</span> <i>success</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">bool</span> <b>Equals</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected virtual <span title="System">void</span> <b>Finalize</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">int</span> <b>GetHashCode</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">string</span> <b>ToString</b> ()</font></li>
+    <li><font color="black">Property: <span title="Microsoft.Build.Framework">BuildEventCategory</span> <b>Category</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>Code</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">int</span> <b>ColumnNumber</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">int</span> <b>EndColumnNumber</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">int</span> <b>EndLineNumber</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>File</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>HelpKeyword</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="Microsoft.Build.Framework">BuildEventImportance</span> <b>Importance</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">bool</span> <b>IsStageSuccessfullyFinished</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">int</span> <b>LineNumber</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>Message</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">int</span> <b>Processor</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="Microsoft.Build.Framework">BuildStage</span> <b>Stage</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>StageName</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>SubCategory</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">DateTime</span> <b>TimeStamp</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.Framework IBuildEngine"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.Framework IBuildEngine</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public interface <b><span title="Base Type: none">Microsoft.Build.Framework.IBuildEngine</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method: <span title="System">bool</span> <b>BuildProjectFile</b> (<span title="System">string</span> <i>projectFileName</i>, <span title="System">string[]</span> <i>targetNames</i>, <span title="System.Collections">IDictionary</span> <i>targetOutputs</i>)</font></li>
+    <li><font color="black">Method: <span title="System">void</span> <b>LogBuildEvent</b> (<span title="Microsoft.Build.Framework">TaskEventArgs</span> <i>e</i>)</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.Framework IEventSource"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.Framework IEventSource</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public interface <b><span title="Base Type: none">Microsoft.Build.Framework.IEventSource</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Event: public event <span title="Microsoft.Build.Framework">BuildEventHandler</span> <b>BuildEvent</b></font></li>
+    <li><font color="black">Event: public event <span title="Microsoft.Build.Framework">BuildEventHandler</span> <b>BuildFinishedEvent</b></font></li>
+    <li><font color="black">Event: public event <span title="Microsoft.Build.Framework">BuildEventHandler</span> <b>BuildStartedEvent</b></font></li>
+    <li><font color="black">Event: public event <span title="Microsoft.Build.Framework">BuildEventHandler</span> <b>CommentEvent</b></font></li>
+    <li><font color="black">Event: public event <span title="Microsoft.Build.Framework">BuildEventHandler</span> <b>CustomEvent</b></font></li>
+    <li><font color="black">Event: public event <span title="Microsoft.Build.Framework">BuildEventHandler</span> <b>ErrorEvent</b></font></li>
+    <li><font color="black">Event: public event <span title="Microsoft.Build.Framework">BuildEventHandler</span> <b>ProjectFinishedEvent</b></font></li>
+    <li><font color="black">Event: public event <span title="Microsoft.Build.Framework">BuildEventHandler</span> <b>ProjectStartedEvent</b></font></li>
+    <li><font color="black">Event: public event <span title="Microsoft.Build.Framework">BuildEventHandler</span> <b>StatusEvent</b></font></li>
+    <li><font color="black">Event: public event <span title="Microsoft.Build.Framework">BuildEventHandler</span> <b>TargetFinishedEvent</b></font></li>
+    <li><font color="black">Event: public event <span title="Microsoft.Build.Framework">BuildEventHandler</span> <b>TargetStartedEvent</b></font></li>
+    <li><font color="black">Event: public event <span title="Microsoft.Build.Framework">BuildEventHandler</span> <b>TaskFinishedEvent</b></font></li>
+    <li><font color="black">Event: public event <span title="Microsoft.Build.Framework">BuildEventHandler</span> <b>TaskStartedEvent</b></font></li>
+    <li><font color="black">Event: public event <span title="Microsoft.Build.Framework">BuildEventHandler</span> <b>WarningEvent</b></font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.Framework ILogger"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.Framework ILogger</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public interface <b><span title="Base Type: none">Microsoft.Build.Framework.ILogger</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method: <span title="System">void</span> <b>Initialize</b> (<span title="Microsoft.Build.Framework">IEventSource</span> <i>eventSource</i>)</font></li>
+    <li><font color="black">Method: <span title="System">void</span> <b>Shutdown</b> ()</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>Parameters</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="Microsoft.Build.Framework">LoggerVerbosity</span> <b>Verbosity</b> { public get; public set; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.Framework ITask"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.Framework ITask</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public interface <b><span title="Base Type: none">Microsoft.Build.Framework.ITask</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method: <span title="System">bool</span> <b>Execute</b> ()</font></li>
+    <li><font color="black">Property: <span title="Microsoft.Build.Framework">IBuildEngine</span> <b>BuildEngine</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">object</span> <b>HostObject</b> { public get; public set; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.Framework ITaskItem"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.Framework ITaskItem</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public interface <b><span title="Base Type: none">Microsoft.Build.Framework.ITaskItem</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method: <span title="System">void</span> <b>CopyAttributesTo</b> (<span title="Microsoft.Build.Framework">ITaskItem</span> <i>destinationItem</i>)</font></li>
+    <li><font color="black">Method: <span title="System">string</span> <b>GetAttribute</b> (<span title="System">string</span> <i>attributeName</i>)</font></li>
+    <li><font color="black">Method: <span title="System">void</span> <b>RemoveAttribute</b> (<span title="System">string</span> <i>attributeName</i>)</font></li>
+    <li><font color="black">Method: <span title="System">void</span> <b>SetAttribute</b> (<span title="System">string</span> <i>attributeName</i>, <span title="System">string</span> <i>attributeValue</i>)</font></li>
+    <li><font color="black">Property: <span title="System.Collections">ICollection</span> <b>AttributeNames</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>ItemSpec</b> { public get; public set; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.Framework LoadInSeparateAppDomainAttribute"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.Framework LoadInSeparateAppDomainAttribute</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed attribute <b><span title="Base Type: System.Attribute">Microsoft.Build.Framework.LoadInSeparateAppDomainAttribute</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Constructor: public <b>LoadInSeparateAppDomainAttribute</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Attribute">(i)</i></font>: public virtual <span title="System">bool</span> <b>Equals</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected virtual <span title="System">void</span> <b>Finalize</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Attribute">(i)</i></font>: public virtual <span title="System">int</span> <b>GetHashCode</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Attribute">(i)</i></font>: public virtual <span title="System">bool</span> <b>IsDefaultAttribute</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Attribute">(i)</i></font>: public virtual <span title="System">bool</span> <b>Match</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">string</span> <b>ToString</b> ()</font></li>
+    <li><font color="black">Property: virtual <span title="System">object</span> <b>TypeId</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name=" LoggerVerbosity"><td colspan="2" align="center" style="font:100%;"><b><font color='black'> LoggerVerbosity</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed enum <b><span title="Base Type: System.Enum; Interfaces: System.IComparable, System.IFormattable, System.IConvertible">Microsoft.Build.Framework.LoggerVerbosity</span>
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspQuiet = 0,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMinimal = 1,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspNormal = 2,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDetailed = 3,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDiagnostic = 4,
+<br></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">--> NONE <--
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.Framework OutputAttribute"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.Framework OutputAttribute</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed attribute <b><span title="Base Type: System.Attribute">Microsoft.Build.Framework.OutputAttribute</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Constructor: public <b>OutputAttribute</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Attribute">(i)</i></font>: public virtual <span title="System">bool</span> <b>Equals</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected virtual <span title="System">void</span> <b>Finalize</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Attribute">(i)</i></font>: public virtual <span title="System">int</span> <b>GetHashCode</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Attribute">(i)</i></font>: public virtual <span title="System">bool</span> <b>IsDefaultAttribute</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Attribute">(i)</i></font>: public virtual <span title="System">bool</span> <b>Match</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">string</span> <b>ToString</b> ()</font></li>
+    <li><font color="black">Property: virtual <span title="System">object</span> <b>TypeId</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.Framework RequiredAttribute"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.Framework RequiredAttribute</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed attribute <b><span title="Base Type: System.Attribute">Microsoft.Build.Framework.RequiredAttribute</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Constructor: public <b>RequiredAttribute</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Attribute">(i)</i></font>: public virtual <span title="System">bool</span> <b>Equals</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected virtual <span title="System">void</span> <b>Finalize</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Attribute">(i)</i></font>: public virtual <span title="System">int</span> <b>GetHashCode</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Attribute">(i)</i></font>: public virtual <span title="System">bool</span> <b>IsDefaultAttribute</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Attribute">(i)</i></font>: public virtual <span title="System">bool</span> <b>Match</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">string</span> <b>ToString</b> ()</font></li>
+    <li><font color="black">Property: virtual <span title="System">object</span> <b>TypeId</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.Framework TaskEventArgs"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.Framework TaskEventArgs</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public class <b><span title="Base Type: Microsoft.Build.Framework.BuildEventArgs">Microsoft.Build.Framework.TaskEventArgs</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Constructor: public <b>TaskEventArgs</b> ()</font></li>
+    <li><font color="black">Constructor: public <b>TaskEventArgs</b> (<span title="Microsoft.Build.Framework">BuildEventCategory</span> <i>category</i>, <span title="Microsoft.Build.Framework">BuildEventImportance</span> <i>importance</i>, <span title="System">string</span> <i>message</i>, <span title="System">string</span> <i>taskName</i>)</font></li>
+    <li><font color="black">Constructor: public <b>TaskEventArgs</b> (<span title="Microsoft.Build.Framework">BuildEventCategory</span> <i>category</i>, <span title="System">string</span> <i>subCategory</i>, <span title="Microsoft.Build.Framework">BuildEventImportance</span> <i>importance</i>, <span title="System">string</span> <i>code</i>, <span title="System">string</span> <i>file</i>, <span title="System">int</span> <i>lineNumber</i>, <span title="System">int</span> <i>columnNumber</i>, <span title="System">int</span> <i>endLineNumber</i>, <span title="System">int</span> <i>endColumnNumber</i>, <span title="System">string</span> <i>message</i>, <span title="System">string</span> <i>helpKeyword</i>, <span title="System">string</span> <i>taskName</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">bool</span> <b>Equals</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected virtual <span title="System">void</span> <b>Finalize</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">int</span> <b>GetHashCode</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">string</span> <b>ToString</b> ()</font></li>
+    <li><font color="black">Property: <span title="Microsoft.Build.Framework">BuildEventCategory</span> <b>Category</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>Code</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">int</span> <b>ColumnNumber</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">int</span> <b>EndColumnNumber</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">int</span> <b>EndLineNumber</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>File</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>HelpKeyword</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="Microsoft.Build.Framework">BuildEventImportance</span> <b>Importance</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">int</span> <b>LineNumber</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>Message</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">int</span> <b>Processor</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>SubCategory</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>TaskName</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">DateTime</span> <b>TimeStamp</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+</tbody>
+</table>
+
+<p class="endNav"><font size=2><a href="#top">Top</a> &bull; <a href="..\APIChangesEVERTMtoWHI40607.03.html" target=_top>Summary</a></font></p>
+
+</body>
+</html>
+

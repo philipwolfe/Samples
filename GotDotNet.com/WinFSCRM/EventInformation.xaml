@@ -1,0 +1,39 @@
+<!-- Typically, the root element will be one of the Panels: Canvas, DockPanel, FlowPanel, GridPanel, Table, TextPanel -->
+<FlowPanel  
+    xmlns="http://schemas.microsoft.com/2003/xaml"
+    xmlns:def="Definition"
+    def:Class="WinFSCRM.EventInformation"
+    def:CodeBehind="EventInformation.xaml.cs" 
+    >
+    <Table>
+        <Column Width="50%" />
+        <Column Width="50%" />
+        
+        <Body>
+            <Row>
+                <Cell>
+                    <Text FontSize="16" FontWeight="Bold">Name</Text>
+                </Cell>
+                <Cell>
+                    <Text FontSize="16" FontWeight="Bold" ID="name">Name</Text>
+                </Cell>
+            </Row>
+            <Row>
+                <Cell>
+                    <Text FontSize="16" FontWeight="Bold">Date</Text>
+                </Cell>
+                <Cell>
+                    <Text FontSize="16" FontWeight="Bold" ID="date">Date</Text>
+                </Cell>
+            </Row>
+            <Row>
+                <Cell>
+                    <Text FontSize="16" FontWeight="Bold">Description</Text>
+                </Cell>
+                <Cell>
+                    <Text FontSize="16" FontWeight="Bold" ID="description">Description</Text>
+                </Cell>
+            </Row>
+        </Body>
+    </Table>
+</FlowPanel>

@@ -1,0 +1,603 @@
+<font face="Arial" size="1">
+
+<html>
+<head>
+<title>Changes in system.messaging from EVERTM (Version 1.1.4322.573)<br> to WHI40607.03 (Version 2.0.40607.3)</title>
+
+<style type="text/css">
+dt      { font-weight: Bold; }
+.big    { font-size: 150%; font-weight: Bold; }
+.small  { font-size:  75%; font-weight: Normal; }
+.endNav { font-size:  75%; font-weight: Normal; margin: 20; }
+</style>
+
+</head>
+
+<body>
+<a name="top" id="top"></a>
+<h2><center>Changes in system.messaging from EVERTM (Version 1.1.4322.573)<br> to WHI40607.03 (Version 2.0.40607.3)</center></h2>
+
+
+<table width="90%" align="center" border="1" cellspacing="0" bordercolor="A0000" style=background-color: #F0F0F0; border-style: solid;>
+<thead>
+ <tr>
+  <th width="50%" align="left">Removed</td>
+  <th width="50%" align="left">Added</td>
+ </tr>
+</thead>
+<tbody>
+
+ <tr>
+  <a name="System.Messaging AccessControlList"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public class <b><span title="Base Type: System.Collections.CollectionBase; Interfaces: System.Collections.ICollection, System.Collections.IEnumerable, System.Collections.IList">System.Messaging.AccessControlList</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Property: <span title="System">int</span> <b>Capacity</b> { public get; public set; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Messaging Message"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public class <b><span title="Base Type: System.ComponentModel.Component; Interfaces: System.IDisposable, System.ComponentModel.IComponent">System.Messaging.Message</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Property: protected virtual <span title="System">bool</span> <b>CanRaiseEvents</b> { }</font></li>
+    <li><font color="black">Property: <span title="System">long</span> <b>LookupId</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Messaging MessageEnumerator"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public class <b><span title="Base Type: System.MarshalByRefObject; Interfaces: System.Collections.IEnumerator, System.IDisposable">System.Messaging.MessageEnumerator</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name=" MessageLookupAction"><td colspan="2" align="center" style="font:100%;"><b><font color='black'> MessageLookupAction</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed enum <b><span title="Base Type: System.Enum; Interfaces: System.IComparable, System.IFormattable, System.IConvertible">System.Messaging.MessageLookupAction</span>
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCurrent = 0,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspNext = 1,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspPrevious = 2,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspFirst = 4,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLast = 8,
+<br></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">--> NONE <--
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Messaging MessagePropertyFilter"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public class <b><span title="Base Type: System.Object">System.Messaging.MessagePropertyFilter</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Property: <span title="System">bool</span> <b>LookupId</b> { public get; public set; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Messaging MessageQueue"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public class <b><span title="Base Type: System.ComponentModel.Component; Interfaces: System.Collections.IEnumerable; System.IDisposable, System.ComponentModel.IComponent">System.Messaging.MessageQueue</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Constructor: public <b>MessageQueue</b> (<span title="System">string</span> <i>path</i>, <span title="System">bool</span> <i>sharedModeDenyReceive</i>, <span title="System">bool</span> <i>enableCache</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method: public <span title="System.Messaging">Message</span> <b>PeekByLookupId</b> (<span title="System">long</span> <i>lookupId</i>)</font></li>
+    <li><font color="black">Method: public <span title="System.Messaging">Message</span> <b>PeekByLookupId</b> (<span title="System.Messaging">MessageLookupAction</span> <i>action</i>, <span title="System">long</span> <i>lookupId</i>)</font></li>
+    <li><font color="black">Method: public <span title="System.Messaging">Message</span> <b>ReceiveByLookupId</b> (<span title="System">long</span> <i>lookupId</i>)</font></li>
+    <li><font color="black">Method: public <span title="System.Messaging">Message</span> <b>ReceiveByLookupId</b> (<span title="System.Messaging">MessageLookupAction</span> <i>action</i>, <span title="System">long</span> <i>lookupId</i>, <span title="System.Messaging">MessageQueueTransaction</span> <i>transaction</i>)</font></li>
+    <li><font color="black">Method: public <span title="System.Messaging">Message</span> <b>ReceiveByLookupId</b> (<span title="System.Messaging">MessageLookupAction</span> <i>action</i>, <span title="System">long</span> <i>lookupId</i>, <span title="System.Messaging">MessageQueueTransactionType</span> <i>transactionType</i>)</font></li>
+    <li><font color="black">Property: protected virtual <span title="System">bool</span> <b>CanRaiseEvents</b> { }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>MulticastAddress</b> { public get; public set; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Messaging MessageQueueEnumerator"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public class <b><span title="Base Type: System.MarshalByRefObject; Interfaces: System.Collections.IEnumerator, System.IDisposable">System.Messaging.MessageQueueEnumerator</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name=" MessageQueueErrorCode"><td colspan="2" align="center" style="font:100%;"><b><font color='black'> MessageQueueErrorCode</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left"><font color='black'>public sealed enum <b><span title="Base Type: System.Enum; Interfaces: System.IComparable, System.IFormattable, System.IConvertible">System.Messaging.MessageQueueErrorCode</span>
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspBase = -1072824320,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspGeneric = -1072824319,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspProperty = -1072824318,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspQueueNotFound = -1072824317,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspQueueExists = -1072824315,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspInvalidParameter = -1072824314,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspInvalidHandle = -1072824313,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspOperationCanceled = -1072824312,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSharingViolation = -1072824311,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspServiceNotAvailable = -1072824309,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMachineNotFound = -1072824307,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIllegalSort = -1072824304,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIllegalUser = -1072824303,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspNoDs = -1072824301,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIllegalQueuePathName = -1072824300,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIllegalPropertyValue = -1072824296,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIllegalPropertyVt = -1072824295,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspBufferOverflow = -1072824294,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIOTimeout = -1072824293,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIllegalCursorAction = -1072824292,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMessageAlreadyReceived = -1072824291,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIllegalFormatName = -1072824290,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspFormatNameBufferTooSmall = -1072824289,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspUnsupportedFormatNameOperation = -1072824288,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIllegalSecurityDescriptor = -1072824287,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSenderIdBufferTooSmall = -1072824286,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSecurityDescriptorBufferTooSmall = -1072824285,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCannotImpersonateClient = -1072824284,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspAccessDenied = -1072824283,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspPrivilegeNotHeld = -1072824282,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspInsufficientResources = -1072824281,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspUserBufferTooSmall = -1072824280,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMessageStorageFailed = -1072824278,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSenderCertificateBufferTooSmall = -1072824277,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspInvalidCertificate = -1072824276,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCorruptedInternalCertificate = -1072824275,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspNoInternalUserCertificate = -1072824273,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCorruptedSecurityData = -1072824272,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCorruptedPersonalCertStore = -1072824271,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspComputerDoesNotSupportEncryption = -1072824269,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspBadSecurityContext = -1072824267,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCouldNotGetUserSid = -1072824266,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCouldNotGetAccountInfo = -1072824265,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIllegalCriteriaColumns = -1072824264,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIllegalPropertyId = -1072824263,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIllegalRelation = -1072824262,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIllegalPropertySize = -1072824261,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIllegalRestrictionPropertyId = -1072824260,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIllegalQueueProperties = -1072824259,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspPropertyNotAllowed = -1072824258,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspInsufficientProperties = -1072824257,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMachineExists = -1072824256,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIllegalMessageProperties = -1072824255,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDsIsFull = -1072824254,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDsError = -1072824253,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspInvalidOwner = -1072824252,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspUnsupportedAccessMode = -1072824251,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspResultBufferTooSmall = -1072824250,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDeleteConnectedNetworkInUse = -1072824248,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspNoResponseFromObjectServer = -1072824247,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspObjectServerNotAvailable = -1072824246,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspQueueNotAvailable = -1072824245,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDtcConnect = -1072824244,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTransactionImport = -1072824242,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTransactionUsage = -1072824240,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTransactionSequence = -1072824239,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMissingConnectorType = -1072824235,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspStaleHandle = -1072824234,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTransactionEnlist = -1072824232,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspQueueDeleted = -1072824230,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIllegalContext = -1072824229,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIllegalSortPropertyId = -1072824228,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLabelBufferTooSmall = -1072824226,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMqisServerEmpty = -1072824225,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMqisReadOnlyMode = -1072824224,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSymmetricKeyBufferTooSmall = -1072824223,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSignatureBufferTooSmall = -1072824222,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspProviderNameBufferTooSmall = -1072824221,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIllegalOperation = -1072824220,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspWriteNotAllowed = -1072824219,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspWksCantServeClient = -1072824218,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDependentClientLicenseOverflow = -1072824217,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCorruptedQueueWasDeleted = -1072824216,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspRemoteMachineNotAvailable = -1072824215,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspUnsupportedOperation = -1072824214,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspEncryptionProviderNotSupported = -1072824213,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCannotSetCryptographicSecurityDescriptor = -1072824212,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCertificateNotProvided = -1072824211,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspQDnsPropertyNotSupported = -1072824210,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCannotCreateCertificateStore = -1072824209,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCannotOpenCertificateStore = -1072824208,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIllegalEnterpriseOperation = -1072824207,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCannotGrantAddGuid = -1072824206,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCannotLoadMsmqOcm = -1072824205,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspNoEntryPointMsmqOcm = -1072824204,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspNoMsmqServersOnDc = -1072824203,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCannotJoinDomain = -1072824202,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCannotCreateOnGlobalCatalog = -1072824201,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspGuidNotMatching = -1072824200,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspPublicKeyNotFound = -1072824199,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspPublicKeyDoesNotExist = -1072824198,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIllegalPrivateProperties = -1072824197,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspNoGlobalCatalogInDomain = -1072824196,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspNoMsmqServersOnGlobalCatalog = -1072824195,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCannotGetDistinguishedName = -1072824194,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCannotHashDataEx = -1072824193,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCannotSignDataEx = -1072824192,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCannotCreateHashEx = -1072824191,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspFailVerifySignatureEx = -1072824190,
+<br></b></font>
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed enum <b><span title="Base Type: System.Enum; Interfaces: System.IComparable, System.IFormattable, System.IConvertible">System.Messaging.MessageQueueErrorCode</span>
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspBase = -1072824320,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspGeneric = -1072824319,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspProperty = -1072824318,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspQueueNotFound = -1072824317,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspQueueExists = -1072824315,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspInvalidParameter = -1072824314,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspInvalidHandle = -1072824313,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspOperationCanceled = -1072824312,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSharingViolation = -1072824311,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspServiceNotAvailable = -1072824309,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMachineNotFound = -1072824307,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIllegalSort = -1072824304,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIllegalUser = -1072824303,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspNoDs = -1072824301,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIllegalQueuePathName = -1072824300,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIllegalPropertyValue = -1072824296,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIllegalPropertyVt = -1072824295,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspBufferOverflow = -1072824294,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIOTimeout = -1072824293,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIllegalCursorAction = -1072824292,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMessageAlreadyReceived = -1072824291,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIllegalFormatName = -1072824290,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspFormatNameBufferTooSmall = -1072824289,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspUnsupportedFormatNameOperation = -1072824288,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIllegalSecurityDescriptor = -1072824287,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSenderIdBufferTooSmall = -1072824286,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSecurityDescriptorBufferTooSmall = -1072824285,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCannotImpersonateClient = -1072824284,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspAccessDenied = -1072824283,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspPrivilegeNotHeld = -1072824282,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspInsufficientResources = -1072824281,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspUserBufferTooSmall = -1072824280,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMessageStorageFailed = -1072824278,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSenderCertificateBufferTooSmall = -1072824277,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspInvalidCertificate = -1072824276,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCorruptedInternalCertificate = -1072824275,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspNoInternalUserCertificate = -1072824273,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCorruptedSecurityData = -1072824272,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCorruptedPersonalCertStore = -1072824271,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspComputerDoesNotSupportEncryption = -1072824269,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspBadSecurityContext = -1072824267,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCouldNotGetUserSid = -1072824266,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCouldNotGetAccountInfo = -1072824265,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIllegalCriteriaColumns = -1072824264,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIllegalPropertyId = -1072824263,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIllegalRelation = -1072824262,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIllegalPropertySize = -1072824261,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIllegalRestrictionPropertyId = -1072824260,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIllegalQueueProperties = -1072824259,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspPropertyNotAllowed = -1072824258,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspInsufficientProperties = -1072824257,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMachineExists = -1072824256,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIllegalMessageProperties = -1072824255,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDsIsFull = -1072824254,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDsError = -1072824253,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspInvalidOwner = -1072824252,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspUnsupportedAccessMode = -1072824251,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspResultBufferTooSmall = -1072824250,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDeleteConnectedNetworkInUse = -1072824248,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspNoResponseFromObjectServer = -1072824247,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspObjectServerNotAvailable = -1072824246,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspQueueNotAvailable = -1072824245,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDtcConnect = -1072824244,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTransactionImport = -1072824242,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTransactionUsage = -1072824240,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTransactionSequence = -1072824239,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMissingConnectorType = -1072824235,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspStaleHandle = -1072824234,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTransactionEnlist = -1072824232,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspQueueDeleted = -1072824230,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIllegalContext = -1072824229,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIllegalSortPropertyId = -1072824228,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLabelBufferTooSmall = -1072824226,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMqisServerEmpty = -1072824225,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMqisReadOnlyMode = -1072824224,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSymmetricKeyBufferTooSmall = -1072824223,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSignatureBufferTooSmall = -1072824222,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspProviderNameBufferTooSmall = -1072824221,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIllegalOperation = -1072824220,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspWriteNotAllowed = -1072824219,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspWksCantServeClient = -1072824218,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspDependentClientLicenseOverflow = -1072824217,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCorruptedQueueWasDeleted = -1072824216,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspRemoteMachineNotAvailable = -1072824215,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspUnsupportedOperation = -1072824214,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspEncryptionProviderNotSupported = -1072824213,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCannotSetCryptographicSecurityDescriptor = -1072824212,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCertificateNotProvided = -1072824211,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspQDnsPropertyNotSupported = -1072824210,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCannotCreateCertificateStore = -1072824209,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCannotOpenCertificateStore = -1072824208,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIllegalEnterpriseOperation = -1072824207,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCannotGrantAddGuid = -1072824206,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCannotLoadMsmqOcm = -1072824205,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspNoEntryPointMsmqOcm = -1072824204,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspNoMsmqServersOnDc = -1072824203,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCannotJoinDomain = -1072824202,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCannotCreateOnGlobalCatalog = -1072824201,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspGuidNotMatching = -1072824200,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspPublicKeyNotFound = -1072824199,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspPublicKeyDoesNotExist = -1072824198,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspIllegalPrivateProperties = -1072824197,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspNoGlobalCatalogInDomain = -1072824196,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspNoMsmqServersOnGlobalCatalog = -1072824195,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCannotGetDistinguishedName = -1072824194,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCannotHashDataEx = -1072824193,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCannotSignDataEx = -1072824192,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCannotCreateHashEx = -1072824191,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspFailVerifySignatureEx = -1072824190,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMessageNotFound = -1072824184,
+<br></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">--> NONE <--
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Messaging MessageQueueException"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>System.Messaging MessageQueueException</font> () </b></td>
+ </tr>
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left"><font color='black'>public class <b><span title="Base Type: System.Runtime.InteropServices.ExternalException; Interfaces: System.Runtime.Serialization.ISerializable">System.Messaging.MessageQueueException</span></b></font>
+  <br><font color=blue size=2>(Please hover your mouse over the type to see the inheritance signatures)</font></td>
+  <td width="50%" align="left"><font color='black'>public class <b><span title="Base Type: System.Runtime.InteropServices.ExternalException; Interfaces: System.Runtime.Serialization.ISerializable, System.Runtime.InteropServices._Exception">System.Messaging.MessageQueueException</span></b></font>
+  <br><font color=blue size=2>(Please hover your mouse over the type to see the inheritance signatures)</font></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Property: <span title="System">Exception</span> <b>InnerException</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System.Reflection">MethodBase</span> <b>TargetSite</b> { public get; }</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Exception">(i)</i></font>: public virtual <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Property: virtual <span title="System.Collections">IDictionary</span> <b>Data</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">Exception</span> <b>InnerException</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System.Reflection">MethodBase</span> <b>TargetSite</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Messaging MessageQueueInstaller"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public class <b><span title="Base Type: System.Configuration.Install.ComponentInstaller; Interfaces: System.IDisposable, System.ComponentModel.IComponent">System.Messaging.MessageQueueInstaller</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Property: protected virtual <span title="System">bool</span> <b>CanRaiseEvents</b> { }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Messaging MessageQueuePermission"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public sealed class <b><span title="Base Type: System.Security.CodeAccessPermission; Interfaces: System.Security.Permissions.IUnrestrictedPermission; System.Security.ISecurityEncodable, System.Security.IPermission, System.Security.IStackWalk">System.Messaging.MessageQueuePermission</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Security.CodeAccessPermission">(i)</i></font>: public virtual <span title="System">bool</span> <b>CheckAssert</b> (<span title="System.Security">CodeAccessPermission</span> <i>asserted</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Security.CodeAccessPermission">(i)</i></font>: public virtual <span title="System">bool</span> <b>CheckDemand</b> (<span title="System.Security">CodeAccessPermission</span> <i>grant</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Security.CodeAccessPermission">(i)</i></font>: public virtual <span title="System">bool</span> <b>CheckDeny</b> (<span title="System.Security">CodeAccessPermission</span> <i>denied</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Security.CodeAccessPermission">(i)</i></font>: public virtual <span title="System">bool</span> <b>CheckPermitOnly</b> (<span title="System.Security">CodeAccessPermission</span> <i>permitted</i>)</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Messaging MessageQueuePermissionEntryCollection"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public class <b><span title="Base Type: System.Collections.CollectionBase; Interfaces: System.Collections.ICollection, System.Collections.IEnumerable, System.Collections.IList">System.Messaging.MessageQueuePermissionEntryCollection</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Property: <span title="System">int</span> <b>Capacity</b> { public get; public set; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Messaging.Design QueuePathDialog"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>System.Messaging.Design QueuePathDialog</font> () </b></td>
+ </tr>
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left"><font color='black'>public class <b><span title="Base Type: System.Windows.Forms.Form; Interfaces: System.IDisposable, System.ComponentModel.IComponent, System.Windows.Forms.UnsafeNativeMethods+IOleControl, System.Windows.Forms.UnsafeNativeMethods+IOleObject, System.Windows.Forms.UnsafeNativeMethods+IOleInPlaceObject, System.Windows.Forms.UnsafeNativeMethods+IOleInPlaceActiveObject, System.Windows.Forms.UnsafeNativeMethods+IOleWindow, System.Windows.Forms.UnsafeNativeMethods+IViewObject, System.Windows.Forms.UnsafeNativeMethods+IViewObject2, System.Windows.Forms.UnsafeNativeMethods+IPersist, System.Windows.Forms.UnsafeNativeMethods+IPersistStreamInit, System.Windows.Forms.UnsafeNativeMethods+IPersistPropertyBag, System.Windows.Forms.UnsafeNativeMethods+IPersistStorage, System.Windows.Forms.UnsafeNativeMethods+IQuickActivate, System.ComponentModel.ISynchronizeInvoke, System.Windows.Forms.IWin32Window, System.Windows.Forms.IContainerControl">System.Messaging.Design.QueuePathDialog</span></b></font>
+  <br><font color=blue size=2>(Please hover your mouse over the type to see the inheritance signatures)</font></td>
+  <td width="50%" align="left"><font color='black'>public class <b><span title="Base Type: System.Windows.Forms.Form; Interfaces: System.IDisposable, System.ComponentModel.IComponent, System.Windows.Forms.UnsafeNativeMethods+IOleControl, System.Windows.Forms.UnsafeNativeMethods+IOleObject, System.Windows.Forms.UnsafeNativeMethods+IOleInPlaceObject, System.Windows.Forms.UnsafeNativeMethods+IOleInPlaceActiveObject, System.Windows.Forms.UnsafeNativeMethods+IOleWindow, System.Windows.Forms.UnsafeNativeMethods+IViewObject, System.Windows.Forms.UnsafeNativeMethods+IViewObject2, System.Windows.Forms.UnsafeNativeMethods+IPersist, System.Windows.Forms.UnsafeNativeMethods+IPersistStreamInit, System.Windows.Forms.UnsafeNativeMethods+IPersistPropertyBag, System.Windows.Forms.UnsafeNativeMethods+IPersistStorage, System.Windows.Forms.UnsafeNativeMethods+IQuickActivate, System.Windows.Forms.ISupportOleDropSource, System.Windows.Forms.IDropTarget, System.ComponentModel.ISynchronizeInvoke, System.ComponentModel.IEnablable, System.Windows.Forms.IWin32Window, System.Windows.Forms.Layout.IArrangedElement, System.Windows.Forms.IBindableComponent, System.Windows.Forms.IContainerControl">System.Messaging.Design.QueuePathDialog</span></b></font>
+  <br><font color=blue size=2>(Please hover your mouse over the type to see the inheritance signatures)</font></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.ContainerControl">(i)</i></font>: protected virtual <span title="System">bool</span> <b>ProcessMnemonic</b> (<span title="System">char</span> <i>charCode</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Control">(i)</i></font>: protected <span title="System">void</span> <b>UpdateBounds</b> ()</font></li>
+    <li><font color="black">Property: <span title="System.Drawing">Rectangle</span> <b>Bounds</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System.Windows.Forms">ControlBindingsCollection</span> <b>DataBindings</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System.Drawing">Size</span> <b>MaximumSize</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: protected <span title="System">bool</span> <b>RenderRightToLeft</b> { }</font></li>
+    <li><font color="black">Property: protected virtual <span title="System">bool</span> <b>ShowFocusCues</b> { }</font></li>
+    <li><font color="black">Property: protected <span title="System">bool</span> <b>ShowKeyboardCues</b> { }</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Event: public event <span title="System">EventHandler</span> <b>AutoSizeChanged</b></font></li>
+    <li><font color="black">Event: public event <span title="System">EventHandler</span> <b>AutoValidateChanged</b></font></li>
+    <li><font color="black">Event: public event <span title="System">EventHandler</span> <b>BackgroundImageLayoutChanged</b></font></li>
+    <li><font color="black">Event: public event <span title="System">EventHandler</span> <b>ContextMenuStripChanged</b></font></li>
+    <li><font color="black">Event: public event <span title="System.Windows.Forms">FormClosedEventHandler</span> <b>FormClosed</b></font></li>
+    <li><font color="black">Event: public event <span title="System.Windows.Forms">FormClosingEventHandler</span> <b>FormClosing</b></font></li>
+    <li><font color="black">Event: public event <span title="System">EventHandler</span> <b>MarginChanged</b></font></li>
+    <li><font color="black">Event: public event <span title="System">EventHandler</span> <b>MouseCaptureChanged</b></font></li>
+    <li><font color="black">Event: public event <span title="System.Windows.Forms">MouseEventHandler</span> <b>MouseClick</b></font></li>
+    <li><font color="black">Event: public event <span title="System.Windows.Forms">MouseEventHandler</span> <b>MouseDoubleClick</b></font></li>
+    <li><font color="black">Event: public event <span title="System">EventHandler</span> <b>PaddingChanged</b></font></li>
+    <li><font color="black">Event: public event <span title="System">EventHandler</span> <b>RegionChanged</b></font></li>
+    <li><font color="black">Event: public event <span title="System">EventHandler</span> <b>ResizeBegin</b></font></li>
+    <li><font color="black">Event: public event <span title="System">EventHandler</span> <b>ResizeEnd</b></font></li>
+    <li><font color="black">Event: public event <span title="System.Windows.Forms">ScrollEventHandler</span> <b>Scroll</b></font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Control">(i)</i></font>: protected <span title="System">void</span> <b>AccessibilityNotifyClients</b> (<span title="System.Windows.Forms">AccessibleEvents</span> <i>accEvent</i>, <span title="System">int</span> <i>objectID</i>, <span title="System">int</span> <i>childID</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Form">(i)</i></font>: public <span title="System">void</span> <b>Flash</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Form">(i)</i></font>: public <span title="System">void</span> <b>Flash</b> (<span title="System">int</span> <i>flashRate</i>, <span title="System.Windows.Forms">FlashWindow</span> <i>flashWhat</i>, <span title="System">bool</span> <i>continuousUntilActivated</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Control">(i)</i></font>: protected virtual <span title="System.Windows.Forms">AccessibleObject</span> <b>GetAccessibilityObjectByID</b> (<span title="System">int</span> <i>objectID</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Control">(i)</i></font>: public virtual <span title="System.Drawing">Size</span> <b>GetPreferredSize</b> (<span title="System.Drawing">Size</span> <i>proposedSize</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Control">(i)</i></font>: protected virtual <span title="System">void</span> <b>OnAutoSizeChanged</b> (<span title="System">EventArgs</span> <i>e</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.ContainerControl">(i)</i></font>: protected virtual <span title="System">void</span> <b>OnAutoValidateChanged</b> (<span title="System">EventArgs</span> <i>e</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Control">(i)</i></font>: protected virtual <span title="System">void</span> <b>OnBackgroundImageLayoutChanged</b> (<span title="System">EventArgs</span> <i>e</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Control">(i)</i></font>: protected virtual <span title="System">void</span> <b>OnContextMenuStripChanged</b> (<span title="System">EventArgs</span> <i>e</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Form">(i)</i></font>: protected virtual <span title="System">void</span> <b>OnFormClosed</b> (<span title="System.Windows.Forms">FormClosedEventArgs</span> <i>e</i>)</font></li>
+    <li><font color="black">Method: protected override <span title="System">void</span> <b>OnFormClosing</b> (<span title="System.Windows.Forms">FormClosingEventArgs</span> <i>e</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Control">(i)</i></font>: protected virtual <span title="System">void</span> <b>OnMarginChanged</b> (<span title="System">EventArgs</span> <i>e</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Control">(i)</i></font>: protected virtual <span title="System">void</span> <b>OnMouseCaptureChanged</b> (<span title="System">EventArgs</span> <i>e</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Control">(i)</i></font>: protected virtual <span title="System">void</span> <b>OnMouseClick</b> (<span title="System.Windows.Forms">MouseEventArgs</span> <i>mea</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Control">(i)</i></font>: protected virtual <span title="System">void</span> <b>OnMouseDoubleClick</b> (<span title="System.Windows.Forms">MouseEventArgs</span> <i>mea</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Control">(i)</i></font>: protected virtual <span title="System">void</span> <b>OnPaddingChanged</b> (<span title="System">EventArgs</span> <i>e</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Control">(i)</i></font>: protected virtual <span title="System">void</span> <b>OnParentCursorChanged</b> (<span title="System">EventArgs</span> <i>e</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Control">(i)</i></font>: protected virtual <span title="System">void</span> <b>OnRegionChanged</b> (<span title="System">EventArgs</span> <i>e</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Control">(i)</i></font>: protected virtual <span title="System">void</span> <b>OnResizeBegin</b> (<span title="System">EventArgs</span> <i>e</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Control">(i)</i></font>: protected virtual <span title="System">void</span> <b>OnResizeEnd</b> (<span title="System">EventArgs</span> <i>e</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.ScrollableControl">(i)</i></font>: protected virtual <span title="System">void</span> <b>OnScroll</b> (<span title="System.Windows.Forms">ScrollEventArgs</span> <i>se</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.ContainerControl">(i)</i></font>: ProtectedInternal virtual <span title="System">bool</span> <b>ProcessMnemonic</b> (<span title="System">char</span> <i>charCode</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.ScrollableControl">(i)</i></font>: protected virtual <span title="System.Drawing">Point</span> <b>ScrollToControl</b> (<span title="System.Windows.Forms">Control</span> <i>activeControl</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Control">(i)</i></font>: public <span title="System.Windows.Forms">ScrollReturnType</span> <b>ScrollWindow</b> (<span title="System">int</span> <i>dx</i>, <span title="System">int</span> <i>dy</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Control">(i)</i></font>: public <span title="System.Windows.Forms">ScrollReturnType</span> <b>ScrollWindow</b> (<span title="System">int</span> <i>dx</i>, <span title="System">int</span> <i>dy</i>, <span title="System.Drawing">Rectangle</span> <i>scrollRectangle</i>, <span title="System.Drawing">Rectangle</span> <i>clipRectangle</i>, <span title="System.Drawing">Region</span> <i>regionToUpdate</i>, <span title="System.Windows.Forms">ScrollType</span> <i>scrollType</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Form">(i)</i></font>: public <span title="System">void</span> <b>Show</b> (<span title="System.Windows.Forms">IWin32Window</span> <i>owner</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Control">(i)</i></font>: protected virtual <span title="System.Drawing">Size</span> <b>SizeFromClientSize</b> (<span title="System.Drawing">Size</span> <i>clientSize</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Form">(i)</i></font>: public <span title="System">void</span> <b>StopFlash</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Control">(i)</i></font>: ProtectedInternal <span title="System">void</span> <b>UpdateBounds</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.ContainerControl">(i)</i></font>: public <span title="System">bool</span> <b>Validate</b> (<span title="System">bool</span> <i>checkAutoValidate</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Form">(i)</i></font>: public virtual <span title="System">bool</span> <b>ValidateAll</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Form">(i)</i></font>: public virtual <span title="System">bool</span> <b>ValidateAll</b> (<span title="System.Windows.Forms">ValidateFlags</span> <i>flags</i>)</font></li>
+    <li><font color="black">Property: <span title="System">bool</span> <b>AutoRelocate</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="System.Drawing">Point</span> <b>AutoScrollOffset</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">bool</span> <b>AutoSize</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="System.Windows.Forms">AutoValidate</span> <b>AutoValidate</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="System.Windows.Forms">ImageLayout</span> <b>BackgroundImageLayout</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="System.Drawing">Rectangle</span> <b>Bounds</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: protected virtual <span title="System">bool</span> <b>CanRaiseEvents</b> { }</font></li>
+    <li><font color="black">Property: virtual <span title="System.Windows.Forms">ContextMenuStrip</span> <b>ContextMenuStrip</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="System.Windows.Forms">ControlBindingsCollection</span> <b>DataBindings</b> { public get; }</font></li>
+    <li><font color="black">Property: protected virtual <span title="System.Windows.Forms">Cursor</span> <b>DefaultCursor</b> { }</font></li>
+    <li><font color="black">Property: protected virtual <span title="System.Windows.Forms">Padding</span> <b>DefaultMargin</b> { }</font></li>
+    <li><font color="black">Property: protected virtual <span title="System.Drawing">Size</span> <b>DefaultMaximumSize</b> { }</font></li>
+    <li><font color="black">Property: protected virtual <span title="System.Drawing">Size</span> <b>DefaultMinimumSize</b> { }</font></li>
+    <li><font color="black">Property: protected virtual <span title="System.Windows.Forms">Padding</span> <b>DefaultPadding</b> { }</font></li>
+    <li><font color="black">Property: protected virtual <span title="System">bool</span> <b>DoubleBuffered</b> { }</font></li>
+    <li><font color="black">Property: <span title="System.Windows.Forms">HScrollProperties</span> <b>HorizontalScroll</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System.Windows.Forms.Layout">LayoutEngine</span> <b>LayoutEngine</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System.Windows.Forms">Padding</span> <b>Margin</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="System.Drawing">Size</span> <b>MaximumSize</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System.Windows.Forms">Padding</span> <b>Padding</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System.Drawing">Size</span> <b>PreferredSize</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System">bool</span> <b>RaiseMouseEnterLeaveEventsForScrollBars</b> { public get; public set; }</font></li>
+    <li><font color="black">[Obsolete: Do not use this property]Property: ProtectedInternal <span title="System">bool</span> <b>RenderRightToLeft</b> { }</font></li>
+    <li><font color="black">Property: <span title="System.Drawing">Rectangle</span> <b>RestoreBounds</b> { public get; }</font></li>
+    <li><font color="black">Property: ProtectedInternal virtual <span title="System">bool</span> <b>ShowFocusCues</b> { }</font></li>
+    <li><font color="black">Property: ProtectedInternal virtual <span title="System">bool</span> <b>ShowKeyboardCues</b> { }</font></li>
+    <li><font color="black">Property: <span title="System">bool</span> <b>UseWaitCursor</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System.Windows.Forms">VScrollProperties</span> <b>VerticalScroll</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.Messaging.Design QueuePathEditor"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public class <b><span title="Base Type: System.Drawing.Design.UITypeEditor">System.Messaging.Design.QueuePathEditor</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Property: virtual <span title="System">bool</span> <b>IsDropDownResizable</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+</tbody>
+</table>
+
+<p class="endNav"><font size=2><a href="#top">Top</a> &bull; <a href="..\APIChangesEVERTMtoWHI40607.03.html" target=_top>Summary</a></font></p>
+
+</body>
+</html>
+

@@ -1,0 +1,67 @@
+<LINK rel="stylesheet" type="text/css" href="/xmlweb.css">
+  <BODY>
+    <H1>WinCamera</H1>
+    <P>by <A href="mailto:clovett">Chris Lovett</A></P>
+    <P>A little command line utility that snaps pictures of the desktop in the 
+      background. This makes it possible to get pictures of menus and capture a whole 
+      sequence of UI operations.&nbsp; Makes writing specs a lot easier.</P>
+    <P><IMG alt="" hspace="5" src="download.gif">Download full <A href="wincamera.zip">Source 
+        Code</A> and executable (9kb) or view the source code at <A href="http://clovett1/srcview/srcview.aspx?path=/csharp/wincamera/wincamera.src">
+        WinCamera.src</A></P>
+    <PRE>Usage: wincamera -i:10 -t:1000 -s:1 -f:jpeg image </PRE>
+    <P>This will take 10 snapshots of screen 1 with 1 second delay between each and 
+      saves them as jpeg files named "image1.jpeg" through "image10.jpeg"
+    </P>
+    <P><STRONG>Options:</STRONG>
+      <TABLE id="Table2" cellSpacing="1" cellPadding="3" width="100%" border="2">
+        <TR>
+          <TD width="86"><PRE>-i:n</PRE>
+          </TD>
+          <TD>specifies the number of shots to take (default is 1)
+          </TD>
+        </TR>
+        <TR>
+          <TD width="86"><PRE>-t:n</PRE>
+          </TD>
+          <TD>specifies the delay between each shot in milliseconds (default 1000)
+          </TD>
+        </TR>
+        <TR>
+          <TD width="86"><PRE>-s:n</PRE>
+          </TD>
+          <TD>specifies which screen number to copy (default is primary screen)</TD>
+        </TR>
+        <TR>
+          <TD width="86"><PRE>-f:format</PRE>
+          </TD>
+          <TD>specifies image format (default jpeg) supported formats: bmp, emf, gif, png, 
+            jpg, tiff, wmf
+          </TD>
+        </TR>
+        <TR>
+          <TD width="86"><PRE>filename </PRE>
+          </TD>
+          <TD>the base file name to use (default "image")</TD>
+        </TR>
+      </TABLE>
+    </P>
+    <P>&nbsp;</P>
+    <H2>Change History</H2>
+    <P>
+      <TABLE id="Table1" width="100%" border="0">
+        <TR>
+          <TH width="114">
+            Date</TH>
+          <TH>
+            Description</TH></TR>
+        <TR>
+          <TD width="114">7/1/2003</TD>
+          <TD>
+            <UL>
+              <LI>
+                Initial Version</LI></UL>
+          </TD>
+        </TR>
+      </TABLE>
+    </P>
+  </BODY>

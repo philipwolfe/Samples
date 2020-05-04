@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly manifestVersion="1.0" xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <asmv1:assemblyIdentity name="WinSudoku.exe" version="1.0.0.0" publicKeyToken="c80ece253ad8d916" language="neutral" processorArchitecture="msil" type="win32" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="WinSudoku" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="WinSudoku.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet class="System.Security.PermissionSet" version="1" ID="Custom" SameSite="site">
+          <IPermission class="System.Security.Permissions.EnvironmentPermission, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Read="USERNAME" />
+          <IPermission class="System.Security.Permissions.FileDialogPermission, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+          <IPermission class="System.Security.Permissions.IsolatedStorageFilePermission, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Allowed="AssemblyIsolationByUser" UserQuota="9223372036854775807" Expiry="9223372036854775807" Permanent="True" />
+          <IPermission class="System.Security.Permissions.ReflectionPermission, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="ReflectionEmit" />
+          <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="Assertion, Execution, BindingRedirects" />
+          <IPermission class="System.Security.Permissions.UIPermission, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+          <IPermission class="System.Net.DnsPermission, System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+          <IPermission class="System.Drawing.Printing.PrintingPermission, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" version="1" Level="DefaultPrinting" />
+        </PermissionSet>
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="4" minorVersion="10" buildNumber="0" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="2.0.50727.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="WinSudoku.exe" size="40960">
+      <assemblyIdentity name="WinSudoku" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>ZdWSI1m/AyZ/BkIUpI786WyMGd8=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+<publisherIdentity name="CN=DEVL\knopf" issuerKeyHash="632b02ca58c971cf9667c55d2ea93fd2765d6509" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>mmuVkyCl7CCl+lw9MNlkUWBiMr0=</DigestValue></Reference></SignedInfo><SignatureValue>jYtVMX2OSGx9m/ddrG3dFPyVSSI6REyhcUiwLR8AZc+QePFSDwpfq+D9P/o9sfpx87g1Q+bfxqciEAwsF/W2S6+4ysWlXEGLwtmnQxlXOa7bE/WjskuoRz0k4oBZXLgL96TzBqfu5s/ZSe46vfhKp5/9bLbf8hPyiSOIC2BwmLU=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>paDocCL+1wTZ60+JuT3xJgtaxzElH7jjGPQekhlUz5Arn7wLaZenF1ETMnOdwFMZpVWeMO+YVqmNzpQoMJ43/Wp7uTeSNp789E85iR2C9p+MRbm/CGOkhzyw0GCK5KrVJQ4sh/2QX/1QY8v4tg4hMZPpb1qzzlxMtaQt21UrJ2E=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="bd3262605164d9303d5cfaa520eca52093956b9a" Description="" Url=""><as:assemblyIdentity name="WinSudoku.exe" version="1.0.0.0" publicKeyToken="c80ece253ad8d916" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=DEVL\knopf</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>ohoexufrUiIK3M/qSU2jwaAyMyY=</DigestValue></Reference></SignedInfo><SignatureValue>icUbnGi6go8ehWl6XLrlgXbRNf2G6SCNqlK7os5LZ2POPJ5Cnhr1rrO+HHtHuu5i7YylwRkxvcGzjz1F4wyYKwuOZO52yWBzFusnVzkxAkgo7Dgd7r9d6vsSKYlhQc/gI8d/oyMUtnm2vPsVfpKzGjk/vlAULFTJJw3Vcvw6I2E=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>paDocCL+1wTZ60+JuT3xJgtaxzElH7jjGPQekhlUz5Arn7wLaZenF1ETMnOdwFMZpVWeMO+YVqmNzpQoMJ43/Wp7uTeSNp789E85iR2C9p+MRbm/CGOkhzyw0GCK5KrVJQ4sh/2QX/1QY8v4tg4hMZPpb1qzzlxMtaQt21UrJ2E=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIBuTCCASagAwIBAgIQovTVmQz9ZppEyS+4hk8P0TAJBgUrDgMCHQUAMB8xHTAbBgNVBAMeFABEAEUAVgBMAFwAawBuAG8AcABmMB4XDTA2MDUyOTIwNTEyOFoXDTA3MDUzMDAyNTEyOFowHzEdMBsGA1UEAx4UAEQARQBWAEwAXABrAG4AbwBwAGYwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAKWg6HAi/tcE2etPibk98SYLWscxJR+44xj0HpIZVM+QK5+8C2mXpxdREzJzncBTGaVVnjDvmFapjc6UKDCeN/1qe7k3kjae/PRPOYkdgvafjEW5vwhjpIc8sNBgiuSq1SUOLIf9kF/9UGPL+LYOITGT6W9as85cTLWkLdtVKydhAgMBAAEwCQYFKw4DAh0FAAOBgQCKlyom69GBs5Zen/BnQaxluscz/lNwGuTsB7ssd1VlfnYVPZMZaktmOtaYdgaWx4yfYOFG0640Qy/qHBWT2TxyFbwzpTC//Rd6rOMrNjkFstWy3RUuM0BXe+YIXSYiiWcwl9qpOcjeClW9uPzl6O1g+/TiUSikx2eiT0tZgRAExg==</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

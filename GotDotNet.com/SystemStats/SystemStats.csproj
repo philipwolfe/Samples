@@ -1,0 +1,59 @@
+<Project DefaultTargets="Build">
+  <PropertyGroup>
+    <Property Language="C#" />
+    <Property AssemblyName="SystemStats" />
+    <Property TargetName="$(AssemblyName)" />
+    <Property ApplicationIcon="App.ico" />
+    <Property ProductVersion="8.0.30703" />
+    <Property SchemaVersion="2.0" />
+    <Property RootNamespace="SystemStats" />
+    <Property ProjectGuid="{713FB4CA-9F6C-452F-93EB-9849F3263774}" />
+  </PropertyGroup>
+  <Import Project="$(LAPI)\WindowsApplication.target" />
+  <!-- The rest of the References are currently in one of the .target files. Eventually, post-PDC we'll put them all here -->
+  <Item Type="Reference" Include="$(windir)\system32\winfs\api\System.Storage" Name="System.Storage" HintPath="$(windir)\system32\winfs\api\System.Storage.dll" />
+  <Item Type="Reference" Include="$(windir)\system32\winfs\api\System.Storage.Schemas" Name="System.Storage.Schemas" HintPath="$(windir)\system32\winfs\api\System.Storage.Schemas.dll" />
+  <Item Type="Reference" Include="$(windir)\microsoft.net\avalon\System.Windows.Explorer" Name="System.Windows.Explorer" HintPath="$(windir)\microsoft.net\avalon\System.Windows.Explorer.dll" />
+  <Item Type="Reference" Include="$(windir)\microsoft.net\avalon\System.Windows.Contacts" Name="System.Windows.Contacts" HintPath="$(windir)\microsoft.net\avalon\System.Windows.Contacts.dll" />
+  <Item Type="Reference" Include="$(lapi)\WindowsFormsIntegration" Name="WindowsFormsIntegration" HintPath="$(lapi)\WindowsFormsIntegration.dll" />
+  <Item Type="Reference" Include="System.Management" HintPath="..\..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.2.30703\System.Management.dll" Name="System.Management" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <CommonProperties>
+        <FL_FAE04EC0_301F_11D3_BF4B_00C04F79EFBC />
+      </CommonProperties>
+      <UserProperties />
+    </VisualStudio>
+  </ProjectExtensions>
+  <ItemGroup>
+    <Item Type="ApplicationDefinition" Include="MyApp.xaml" />
+    <Item Type="Pages" Include="Main.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Item Type="Compile" Include="Main.xaml.cs" DependentUpon="Main.xaml" SubType="Code" />
+    <Item Type="Compile" Include="MyApp.xaml.cs" DependentUpon="MyApp.xaml" SubType="Code" />
+    <Item Type="Compile" Include="WMITransactor.cs" SubType="Code" />
+  </ItemGroup>
+  <ItemGroup>
+    <Item Type="Content" Include="Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Item Type="Resources" Include="App.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Item Type="GeneratedCodePersisted" Include="obj\Release\Main.g.cs" />
+    <Item Type="GeneratedCodePersisted" Include="obj\Release\MyApp.g.cs" />
+    <Item Type="GeneratedCodePersisted" Include="obj\Release\SystemStats.Main.g.cs" />
+  </ItemGroup>
+</Project>
+<!-- 
+    This project gets built by MSBuild on the commmand line.
+    Visual Studio "Whidbey" can also compile a project using only this data.
+
+    The build steps of a project are defined in the .target file referenced in the <Import>.
+    You can modify the steps involved in build.
+
+    You can also "execute" other targets besides the defaulttarget of build.
+    From a command prompt: msbuild myproj.csproj /t:TARGETNAME
+    Examples of TARGETNAME include: Build, Clean, CleanBuild, Run
+-->

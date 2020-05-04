@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="XTM" type="XTMType" />
+	<xs:complexType name="XTMType">
+		<xs:sequence>
+			<xs:element name="Year" type="YearType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="YearType">
+		<xs:sequence>
+			<xs:element name="Month" type="MonthType"/>
+		</xs:sequence>
+		<xs:attribute name="Value" type="xs:positiveInteger" use="required" />
+	</xs:complexType>
+	<xs:complexType name="MonthType">
+		<xs:sequence>
+			<xs:element name="Day" type="DayType"/>
+		</xs:sequence>
+		<xs:attribute name="Value" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:integer">
+					<xs:minInclusive value="1"/>
+					<xs:maxInclusive value="12"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="DayType">
+		<xs:sequence>
+			<xs:element name="Time" type="TimeType"/>
+		</xs:sequence>
+		<xs:attribute name="Value" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:integer">
+					<xs:minInclusive value="1"/>
+					<xs:maxInclusive value="31"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="TimeType">
+		<xs:attribute name="Value" type="xs:string" use="required" />
+	</xs:complexType>
+</xs:schema>

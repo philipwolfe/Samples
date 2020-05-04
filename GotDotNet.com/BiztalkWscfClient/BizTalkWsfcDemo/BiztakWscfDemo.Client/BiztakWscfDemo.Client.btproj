@@ -1,0 +1,118 @@
+﻿<VisualStudioProject>
+    <BIZTALK
+        ProductVersion = "3.0.4902"
+        SchemaVersion = "1.0"
+        ProjectGuid = "{3DB4F916-8960-41FC-BBE0-CDB9A805EE98}"
+    >
+        <Build>
+            <Settings>
+                <EditorCommon/>
+                <ProjectCommon
+                    AssemblyKeyName = ""
+                    AssemblyKeyFile = "../../../BizTalkWsfcDemo.snk"
+                    AssemblyDelaySign = "False"
+                    AssemblyTitle = ""
+                    AssemblyDescription = ""
+                    AssemblyDefaultAlias = ""
+                    AssemblyConfiguration = ""
+                    AssemblyTrademark = ""
+                    AssemblyProduct = ""
+                    AssemblyInformationalVersion = "1.0.0.0"
+                    AssemblyFileVersion = "1.0.0.0"
+                    AssemblyCopyright = ""
+                    AssemblyCompany = ""
+                    AssemblyVersion = "1.0.0.0"
+                    DefaultNamespace = "BiztakWscfDemo.Client"
+                    AssemblyName = "BiztakWscfDemo.Client"
+                />
+                <Config
+                    Name = "Development"
+                    BpelCompliance = "True"
+                    GenerateDebuggingInformation = "True"
+                    EmbedTrackingInformation = "True"
+                    TreatWarningsAsErrors = "False"
+                    WarningLevel = "4"
+                    OutputPath = "bin\Debug\"
+                />
+                <Config
+                    Name = "Deployment"
+                    BpelCompliance = "True"
+                    GenerateDebuggingInformation = "False"
+                    EmbedTrackingInformation = "True"
+                    TreatWarningsAsErrors = "False"
+                    WarningLevel = "4"
+                    OutputPath = "bin\Release\"
+                />
+            </Settings>
+            <References>
+                <Reference
+                    Name = "System"
+                    AssemblyName = "System"
+                />
+                <Reference
+                    Name = "System.XML"
+                    AssemblyName = "System.Xml"
+                />
+                <Reference
+                    Name = "Microsoft.BizTalk.DefaultPipelines"
+                    AssemblyName = "Microsoft.BizTalk.DefaultPipelines"
+                />
+                <Reference
+                    Name = "Microsoft.BizTalk.GlobalPropertySchemas"
+                    AssemblyName = "Microsoft.BizTalk.GlobalPropertySchemas"
+                />
+                <Reference
+                    Name = "system.web.services"
+                    AssemblyName = "System.Web.Services"
+                    HintPath = "..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\system.web.services.dll"
+                />
+                <Reference
+                    Name = "BiztalkWsfcDemo.Client.WebProxy"
+                    Project = "{D234D4E6-0662-4E6D-8BD8-459888A8AE87}"
+                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
+                />
+            </References>
+        </Build>
+        <Files>
+            <Include>
+                <File
+                    RelPath = "CallBiztalkWscfDemoWebService.odx"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Schemas\CommonTypes.xsd"
+                    BuildAction = "Compile"
+                    Namespace = "BiztakWscfDemo.Client.Schemas"
+                    Type = "CommonTypes"
+                />
+                <File
+                    RelPath = "Schemas\Company.xsd"
+                    BuildAction = "Compile"
+                    Namespace = "BiztakWscfDemo.Client.Schemas"
+                    Type = "Company"
+                />
+                <File
+                    RelPath = "Schemas\Person.xsd"
+                    BuildAction = "Compile"
+                    Namespace = "BiztakWscfDemo.Client.Schemas"
+                    Type = "Person"
+                />
+                <File
+                    RelPath = "ServiceContracts\BiztalkWscfDemoService.wsdl"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "ServiceContracts\BiztalkWscfDemoSrvcMsgs.xsd"
+                    BuildAction = "Compile"
+                    Namespace = "BiztakWscfDemo.Client.ServiceContracts"
+                    Type = "BiztalkWscfDemoSrvcMsgs"
+                />
+                <File
+                    RelPath = "WebPorts\BiztalkWscfDemoService.odx"
+                    BuildAction = "Compile"
+                />
+            </Include>
+        </Files>
+    </BIZTALK>
+</VisualStudioProject>
+

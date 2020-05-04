@@ -1,0 +1,73 @@
+<html><head><META HTTP-EQUIV="Content-Type" CONTENT="text/html;charset=utf-8" /><title>
+			Web Services
+		</title><style>
+a:link {color:#2852BF}
+a:visited {color:#2852BF}
+a:active {color:#2852BF}
+a:hover {color:#5A7EDC}
+</style><script language="javascript">
+		
+function OnPageLoad()
+{
+	if (document.readyState != "complete") return;
+	document.all.MainIcon.src = external.getMainBitmap();
+	document.all.Bar.src = external.getTopBar();
+	
+	if(document.all.Information != null)
+		document.all.Information.src = external.getInformationBitmap();
+	
+	if(document.all.Operation == null)
+		return;
+	var opBitmap = external.getOperationBitmap();
+	if(document.all.Operation.length == null)
+		document.all.Operation.src = opBitmap;
+	else
+	{
+		var count = 0;
+		
+		for(var x in document.all.Operation)
+		{
+			if(x == "length") continue;
+			document.all.Operation[count].src = opBitmap;
+			count++;
+		}
+	}
+   
+}
+
+function SelectOperation(e)
+{
+	if (document.readyState != "complete") return;
+	external.selectOperation(document.all.Port.innerText, e);
+	
+}
+
+function openAdWnd(e)
+{
+	if (document.readyState != "complete") return;
+	external.navigate(e);
+}
+
+function OnPageUnload()
+{
+}
+	
+		</script></head><style></style><BODY onload="OnPageLoad()" onunload="OnPageUnload()"><p align="center"><strong><font face="Lucida Console" size="4"><div style="position:absolute;left:800px;"><img id="MainIcon" name="MainIcon" border="0" top="0" src="net.gif" width="133" height="60" align="left"></img></div></font><div id="Port" style="position:absolute;left:24px;top:27px"><font FACE="Tahoma" size="5" color="#5A7EDC">BiztalkWscfDemoServicePort</font></div><font size="6" face="Tahoma" color="#0000FF"></font></strong></p><style>
+a:link {color:#2852BF}
+a:visited {color:#2852BF}
+a:active {color:#2852BF}
+a:hover {color:#5A7EDC}
+</style><div style="position:relative;left:17px;top:49"><p><font face="MS Reference Sans Serif" size="5" color="#000080"></font><a href="javascript:openAdWnd('')"><u><font face="Tahoma" style="font-size: 8pt"></font></u></a></p></div><font size="5" face="MS Reference Sans Serif" color="#000080"><div style="position:absolute;left:20;top:86"><img id="Bar" name="Bar" border="0" top="70" src="barblu05a.jpg" width="900" height="3"></img></div></font><div style="position:relative;left:27px;top:45px;"><p align="left"><font style="font-size: 12pt" color="#2852BF" face="Tahoma">Description:</font></p><div style="position:relative;left:33px;top:-5px;"><img id="Information" name="Information" border="0" src="fldrclnr0.bmp" width="20" height="20"></img></div><div style="position:relative;left:60px;top:-25px;"><font face="Tahoma" style="font-size: 8pt">There is no description available for this Service.</font></div></div><div style="position:relative;left:27px;top:15px;"><p align="left"><font style="font-size: 12pt" color="#2852BF" face="Tahoma">Operations:</font></p><style>
+a:link {color:#000000;text-Decoration:none}
+a:visited {color:#000000;text-Decoration:none}
+a:active {color:#000000;text-Decoration:none}
+a:hover {color:#5A7EDC;text-Decoration:underline}
+</style><div style="position:relative;top:1px;left:33px;"><a href="javascript:SelectOperation('GetCompanyForPerson')"><img id="Operation" name="Operation" border="0" src="oper1.bmp" width="17" height="17"></img></a><div style="position:relative;top:-18px;left:22px;"><font face="Tahoma" style="font-size: 8pt"><b><a href="javascript:SelectOperation('GetCompanyForPerson')">GetCompanyForPerson
+		(
+			<font color="#5A7EDC">getCompanyForPerson1</font>
+						as  
+						'BiztakWscfDemoClient.ServiceContracts.BiztalkWscfDemoSrvcMsgs.getCompanyForPerson
+		) 
+			
+					as	
+					<font color="#5A7EDC">'BiztakWscfDemoClient.ServiceContracts.BiztalkWscfDemoSrvcMsgs.getCompanyForPersonResponse</font><font color="#0080FF"></font></a></b></font></div><div style="position:relative;top:-16px;left:22px;"><font face="Tahoma" style="font-size: 8pt"></font></div></div></div></BODY></html>

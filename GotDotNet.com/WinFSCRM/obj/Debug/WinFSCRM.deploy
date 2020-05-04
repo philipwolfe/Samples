@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd">
+  <assemblyIdentity name="WinFSCRM.deploy" version="1.0.0.0" processorArchitecture="x86" asmv2:culture="en-us" publicKeyToken="0000000000000000" />
+  <description asmv2:publisher="MyCompany" asmv2:product="WCP Application of WinFSCRM" asmv2:supportUrl="http://www.mycompany.com/AppServer/WinFSCRM/support.asp" />
+  <deployment xmlns="urn:schemas-microsoft-com:asm.v2" isRequiredUpdate="false">
+    <install shellVisible="true" />
+    <subscription>
+      <update>
+        <beforeApplicationStartup />
+        <periodic>
+          <minElapsedTimeAllowed time="6" unit="hours" />
+          <maxElapsedTimeAllowed time="1" unit="weeks" />
+        </periodic>
+      </update>
+    </subscription>
+  </deployment>
+  <dependency>
+    <dependentAssembly>
+      <assemblyIdentity name="WinFSCRM" version="1.0.0.0" processorArchitecture="x86" asmv2:culture="en-us" publicKeyToken="0000000000000000" />
+    </dependentAssembly>
+    <asmv2:installFrom codebase="WinFSCRM.manifest" />
+  </dependency>
+</assembly>

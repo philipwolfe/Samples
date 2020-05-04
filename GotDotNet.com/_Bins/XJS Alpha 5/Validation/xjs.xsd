@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="XJS" type="XJSType" />
+	<xs:complexType name="XJSType">
+		<xs:sequence>
+			<xs:element name="Name" type="xs:string" />
+			<xs:element name="Description" type="xs:string" />
+			<xs:element name="Security" type="SecurityType" />
+			<xs:element name="Export" type="ExportType" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SecurityType">
+		<xs:sequence>
+			<xs:element name="EntryProtectDefault" >
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:pattern value="Yes|No"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ExportType">
+		<xs:sequence>
+			<xs:element name="LastUpdate" type="xs:string" />
+			<xs:element name="MainStyle" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

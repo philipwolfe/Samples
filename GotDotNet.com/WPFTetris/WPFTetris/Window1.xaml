@@ -1,0 +1,114 @@
+﻿<Window xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	x:Class="WPFTetris.Window1"		
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    Title="WPFTetris" Height="558" Width="379"
+	KeyDown="HandleKeyDown"
+	Initialized="Window1_Initialized"
+	>
+	
+	
+	
+	<DockPanel  MinHeight="50" MinWidth="50" Name="dockPanel1">
+
+		<DockPanel.Background>
+			<!--<ImageBrush ImageSource="D:\Documents\Fotos\DSC00888.jpg" /> -->
+
+			<ImageBrush ImageSource="BACKGROUND-CHINO-TETRIS.jpg" />
+		</DockPanel.Background>
+
+
+		<ToolBar DockPanel.Dock="Top" MinHeight="40" Background="#00000000" >
+			<ToolBar.Resources>
+				<Style TargetType="{x:Type Button}">
+					<Setter Property="BorderThickness" Value="3" />
+					<Setter Property="BorderBrush" Value="#FFFFFF" />
+					
+				</Style>	
+			</ToolBar.Resources>
+			
+			<Button Click="StartNewGame">New Game</Button>
+			<Separator />
+			<Button Visibility="Hidden">Top Stats</Button>
+			<Separator Visibility="Hidden" />
+      <Button Name="btnDebugAction" Visibility="Hidden">Debug Action</Button>
+    </ToolBar>
+		<StackPanel DockPanel.Dock="Right" MinWidth="55" Background="#00000000">
+			<StackPanel.Resources>
+				<Style TargetType="{x:Type Label}">
+					<Setter Property="FontSize" Value="16" />
+					<Setter Property="FontFamily" Value="ComicSans" />
+					<Setter Property="FontWeight" Value="Bold" />
+					<Setter Property="Foreground" Value="AntiqueWhite" />
+				</Style>	
+			</StackPanel.Resources>
+
+			<Label >Score</Label>
+			<Label Name="scoreLabel">0</Label>
+
+			<Label></Label>
+			<Label >Level</Label>
+			<Label Name="levelLabel">0</Label>
+
+
+		</StackPanel>
+
+		
+
+		<Border DockPanel.Dock="Left" BorderThickness="0,0,8,0" BorderBrush="#AA4444FF"
+		  >
+
+
+			<Grid  	MinWidth="100" Name="tetrisGrid">
+
+				
+				<!-- Rows -->
+				<Grid.RowDefinitions>					
+					<RowDefinition  />
+					<RowDefinition  />
+					<RowDefinition  />
+					<RowDefinition  />
+					<RowDefinition  />
+					<RowDefinition  />
+					<RowDefinition  />
+					<RowDefinition  />
+					<RowDefinition  />
+					<RowDefinition  />
+					<RowDefinition  />
+					<RowDefinition  />
+					<RowDefinition  />
+					<RowDefinition  />
+					<RowDefinition  />
+					<RowDefinition  />
+					<RowDefinition  />
+					<RowDefinition  />
+					<RowDefinition  />
+					<RowDefinition  />
+					<RowDefinition  />
+					<RowDefinition  />
+
+				</Grid.RowDefinitions>
+				
+				<!--Columns-->
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition />
+					<ColumnDefinition />
+					<ColumnDefinition />
+					<ColumnDefinition />
+					<ColumnDefinition />
+					<ColumnDefinition />
+					<ColumnDefinition />
+					<ColumnDefinition />
+					<ColumnDefinition />
+					<ColumnDefinition />
+					<ColumnDefinition />
+					<ColumnDefinition />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+			
+				
+			</Grid>
+		</Border>
+	</DockPanel>
+  
+</Window>

@@ -1,0 +1,65 @@
+<Project MSBuildVersion="1.0" DefaultTargets="Build">
+  <PropertyGroup>
+    <Property Configuration="Debug" Condition=" '$(Configuration)' == '' " />
+    <Property ProductVersion="8.0.30815" />
+    <Property SchemaVersion="2.0" />
+    <Property ProjectGuid="{9716504C-FE16-4EB3-AE6D-71CC28B9AE3F}" />
+    <Property OutputType="WinExe" />
+    <Property StartupObject="" />
+    <Property RootNamespace="GenericsPerf" />
+    <Property NoStandardLibraries="false" />
+    <Property AssemblyName="GenericsPerf" />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <Property DebugSymbols="true" />
+    <Property Optimize="false" />
+    <Property OutputPath=".\bin\Debug\" />
+    <Property EnableUnmanagedDebugging="false" />
+    <Property DefineConstants="DEBUG;TRACE" />
+    <Property WarningLevel="4" />
+    <Property IncrementalBuild="false" />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <Property DebugSymbols="false" />
+    <Property Optimize="true" />
+    <Property OutputPath=".\bin\Release\" />
+    <Property EnableUnmanagedDebugging="false" />
+    <Property DefineConstants="TRACE" />
+    <Property WarningLevel="4" />
+    <Property IncrementalBuild="false" />
+  </PropertyGroup>
+  <ItemGroup>
+    <Item Type="Reference" Include="System" HintPath="..\..\..\WINDOWS\Microsoft.NET\Framework\v2.0.30815\System.dll" Name="System" />
+    <Item Type="Reference" Include="System.Data" HintPath="..\..\..\WINDOWS\Microsoft.NET\Framework\v2.0.30815\System.Data.dll" Name="System.Data" />
+    <Item Type="Reference" Include="System.Drawing" HintPath="..\..\..\WINDOWS\Microsoft.NET\Framework\v2.0.30815\System.Drawing.dll" Name="System.Drawing" />
+    <Item Type="Reference" Include="System.Windows.Forms" HintPath="..\..\..\WINDOWS\Microsoft.NET\Framework\v2.0.30815\System.Windows.Forms.dll" Name="System.Windows.Forms" />
+    <Item Type="Reference" Include="System.Xml" HintPath="..\..\..\WINDOWS\Microsoft.NET\Framework\v2.0.30815\System.XML.dll" Name="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <Item Type="Content" Include="App.ico" />
+    <Item Type="Compile" Include="AssemblyInfo.cs" SubType="Code" />
+    <Item Type="Compile" Include="DateTimeTests.cs" SubType="Code" />
+    <Item Type="Compile" Include="DoubleTests.cs" SubType="Code" />
+    <Item Type="Compile" Include="FormMain.cs" SubType="Form" />
+    <Item Type="EmbeddedResource" Include="FormMain.resx" DependentUpon="FormMain.cs" />
+    <Item Type="Compile" Include="IntegerTests.cs" SubType="Code" />
+    <Item Type="Compile" Include="PerfResult.cs" SubType="Code" />
+    <Item Type="Compile" Include="PhoneNumber.cs" SubType="Code" />
+    <Item Type="Compile" Include="PhoneNumberTests.cs" SubType="Code" />
+    <Item Type="Compile" Include="StringTests.cs" SubType="Code" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\CSHARP.Targets" />
+  <PropertyGroup>
+    <Property PreBuildEvent="" />
+    <Property PostBuildEvent="" />
+    <Property ApplicationIcon="App.ico" />
+  </PropertyGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <CommonProperties>
+        <FL_FAE04EC0_301F_11D3_BF4B_00C04F79EFBC />
+      </CommonProperties>
+      <UserProperties />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

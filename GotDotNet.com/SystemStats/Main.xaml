@@ -1,0 +1,216 @@
+<Window  
+    xmlns="http://schemas.microsoft.com/2003/xaml"
+    xmlns:def="Definition"
+    def:Class="SystemStats.Main"
+    def:CodeBehind="Main.xaml.cs" 
+    Text="SystemStats" Visible="True"
+    >
+        
+    <Window.Resources>
+        <Style def:Name="TitleButton">
+            <Button/>
+            <Style.VisualTree>
+                    <!-- Main Drawing Structure for Button -->
+                    <Canvas Cursor="Hand" Width="100%" Height="100%"  >
+                    <!-- VerticalGradient Blue Cyan-->
+                        <Rectangle RadiusX="6" RadiusY="6" Width="100%" Height="100%" DockPanel.Dock="Fill" Fill="*Alias(Target=Background)"  Stroke="VerticalGradient transparent #cc000000" StrokeThickness="1" />
+                      
+                        <DockPanel Width="100%" Height="25">
+                            <Rectangle RadiusX="6" RadiusY="6" DockPanel.Dock="Fill" Margin="1,1,1,12" Fill="VerticalGradient #99ffffff transparent" Stroke="transparent"  />
+                        </DockPanel>
+                       <SimpleText TextWrap="Wrap" Width="100%" Height="100%" Text="*Alias(Target=Content)" Margin="15,10,15,15"
+                                  FontFamily="arial" Foreground="White" FontWeight="bold" FontSize="13pt" />
+                    </Canvas>
+            </Style.VisualTree>
+        </Style>
+        
+        <Style def:Name="ScrollingListBox">
+            <ListBox/>
+            <Style.VisualTree>
+                <Border
+                    Height="*Alias(Target=Height)" Width ="*Alias(Target=Width)"
+                    BorderThickness="*Alias(Target=BorderThickness)"
+                    BorderBrush="*Alias(Target=BorderBrush)">
+                    <Canvas>
+                        <TextBox Height="*Alias(Target=Height)"
+			                Width="*Alias(Target=Width)" />
+                        <ScrollViewer Canvas.Top="5" Height="94%" Width="98%">
+                            <DockPanel ItemsControl.ContentOwner="*Alias(Target=ContentOwner)" Width="100%" Height="100%"/>
+                        </ScrollViewer>
+                    </Canvas>
+                </Border>
+            </Style.VisualTree>    
+        </Style>
+    </Window.Resources>
+    
+    <Canvas Height="100%" Width="100%">
+        <!-- Background Image -->
+        <!-- Will use 40MB, Comment out if you do not have that much memory -->
+        <Image Width="100%" Height="100%" Source="../../Media/pic.jpg" Stretch="Fill" />
+
+
+        <DockPanel>
+            <Canvas Width="100%" Height="100%">
+                <TransformDecorator Canvas.Left="200" Canvas.Top="30" Width="130" Height="36" ID="informationTransform">
+                    <Button Width="100%" Height="100%" Style="{TitleButton}" Background="VerticalGradient Blue Cyan" 
+                        Click="information_Click" Content="Information" />
+                </TransformDecorator>
+            </Canvas>
+  
+            <Canvas Width="100%" Height="100%">
+                <TransformDecorator Canvas.Left="350" Canvas.Top="30" Width="130" Height="36" ID="performanceTransform">
+                    <Button Width="100%" Height="100%" Style="{TitleButton}" Background="VerticalGradient Blue Cyan" 
+                        Click="performance_Click" Content="Performance" />
+                </TransformDecorator>
+            </Canvas>
+            
+            <Canvas Width="100%" Height="100%">
+                <TransformDecorator Canvas.Left="500" Canvas.Top="30" Width="130" Height="36" ID="processesTransform">
+                    <Button Width="100%" Height="100%" Style="{TitleButton}" Background="VerticalGradient Blue Cyan" 
+                        Click="processes_Click" Content="Processes" />
+                </TransformDecorator>
+           </Canvas>
+           
+            <Canvas Width="100%" Height="100%">
+                <TransformDecorator Canvas.Left="0" Canvas.Top="100" Width="0" Height="0" Visibility="Hidden" ID="informationGridTransform">
+                    
+                    <DockPanel>
+                        <Rectangle DockPanel.Dock="Fill" RadiusX="6" RadiusY="6" Width="100%" Height="100%" Fill="Black" />
+                        
+                        <Canvas Width="100%" Height="100%">
+                            <TransformDecorator Canvas.Left="0" Canvas.Top="0" Width="110" Height="70" ID="operatingSystem">
+                                <Button Width="100%" Height="100%" Style="{TitleButton}" Background="VerticalGradient Red White" 
+                                    Content="Operating System" Click="operatingSystem_Click" />
+                            </TransformDecorator>
+                        </Canvas>   
+
+                        <Canvas Width="100%" Height="100%">
+                            <TransformDecorator Canvas.Left="120" Canvas.Top="0" Width="110" Height="70" ID="computerSystem">         
+                                <Button Width="100%" Height="100%" Style="{TitleButton}" Background="VerticalGradient Green White" 
+                                    Content="Computer System" Click="computerSystem_Click" />
+                            </TransformDecorator>
+                        </Canvas> 
+
+                        <Canvas Width="100%" Height="100%">
+                            <TransformDecorator Canvas.Left="420" Canvas.Top="0" Width="110" Height="70" ID="videoController"> 
+                                <Button Width="100%" Height="100%" Style="{TitleButton}" Background="VerticalGradient Blue White" 
+                                    Content="Video Controller" Click="videoController_Click" />
+                            </TransformDecorator>
+                        </Canvas>  
+                        
+                        <Canvas Width="100%" Height="100%">
+                            <TransformDecorator Canvas.Left="530" Canvas.Top="0" Width="110" Height="70" ID="systemProcessor"> 
+                                <Button Width="100%" Height="100%" Style="{TitleButton}" Background="VerticalGradient Orange White" 
+                                    Content="System Processor" Click="systemProcessor_Click" />
+                            </TransformDecorator>
+                        </Canvas>  
+                        
+                        <Canvas Width="100%" Height="100%">
+                            <TransformDecorator Canvas.Left="530" Canvas.Top="0" Width="300" Height="400" ID="informationGridContent"> 
+                                <TextBox Wrap="true" Width="100%" Height="100%" ID="informationText" />
+                            </TransformDecorator>
+                        </Canvas>  
+                         
+                    </DockPanel>
+                    <TransformDecorator.Opacity>
+                            <DoubleAnimationCollection>
+                                <DoubleAnimation From="0" To=".72" Begin="Indefinite" />
+                            </DoubleAnimationCollection>
+                        </TransformDecorator.Opacity>
+                        <TransformDecorator.Width>
+                            <LengthAnimationCollection>
+                                <LengthAnimation Begin="Indefinite" />
+                            </LengthAnimationCollection>
+                        </TransformDecorator.Width>
+                        <TransformDecorator.Height>
+                            <LengthAnimationCollection>
+                                <LengthAnimation Begin="Indefinite" />
+                            </LengthAnimationCollection>
+                        </TransformDecorator.Height>
+                </TransformDecorator>
+           </Canvas>   
+           
+          
+            <Canvas Width="100%" Height="100%">
+
+                <TransformDecorator Canvas.Left="0" Canvas.Top="100" Width="0" Height="0" Visibility="Hidden" ID="performanceGridTransform">
+                    <DockPanel Width="100%" Height="100%">
+       
+                        <Rectangle DockPanel.Dock="Fill" RadiusX="6" RadiusY="6" Width="100%" Height="100%" Fill="Black" />
+  
+ 
+                        <Canvas Width="100%" Height="100%" ID="performanceGridGraph">   
+                            <Button Width="10" Height="300" Style="{TitleButton}" Background="VerticalGradient Green Lime" Content="" />
+                            <Button Width="10" Height="300" Style="{TitleButton}" Background="VerticalGradient Green Lime" Content="" />
+                            <Button Width="10" Height="100" Style="{TitleButton}" Background="VerticalGradient Green Lime" Content="" />
+                            <Button Width="10" Height="100" Style="{TitleButton}" Background="VerticalGradient Green Lime" Content="" />
+                            <Button Width="10" Height="100" Style="{TitleButton}" Background="VerticalGradient Green Lime" Content="" />
+                            <Button Width="10" Height="100" Style="{TitleButton}" Background="VerticalGradient Green Lime" Content="" />
+                            <Button Width="10" Height="100" Style="{TitleButton}" Background="VerticalGradient Green Lime" Content="" />
+                            <Button Width="10" Height="100" Style="{TitleButton}" Background="VerticalGradient Green Lime" Content="" />
+                            <Button Width="10" Height="100" Style="{TitleButton}" Background="VerticalGradient Green Lime" Content="" />
+                            <Button Width="10" Height="100" Style="{TitleButton}" Background="VerticalGradient Green Lime" Content="" />
+                        
+                        </Canvas>
+                        <Canvas Width="100%" Height="100%"> 
+                            <SimpleText ID="performanceCaption" Foreground="White" Text="CPU Usage" />
+                        </Canvas>
+         
+
+                    </DockPanel>
+                    <TransformDecorator.Opacity>
+                        <DoubleAnimationCollection>
+                            <DoubleAnimation From="0" To=".72" Begin="Indefinite" />
+                        </DoubleAnimationCollection>
+                    </TransformDecorator.Opacity>
+                    <TransformDecorator.Width>
+                        <LengthAnimationCollection>
+                            <LengthAnimation Begin="Indefinite" />
+                        </LengthAnimationCollection>
+                    </TransformDecorator.Width>
+                    <TransformDecorator.Height>
+                        <LengthAnimationCollection>
+                            <LengthAnimation Begin="Indefinite" />
+                        </LengthAnimationCollection>
+                    </TransformDecorator.Height>
+
+                </TransformDecorator>
+
+           </Canvas>  
+         
+             
+             
+            <Canvas Width="100%" Height="100%">
+
+                <TransformDecorator Canvas.Left="0" Canvas.Top="100" Width="0" Height="0" Visibility="Hidden" ID="processesGridTransform">
+                    <DockPanel Width="100%" Height="100%">
+                        <ListBox DockPanel.Dock="Fill" Width="100%" Height="100%" Style="{ScrollingListBox}" ID="processesBox" />
+                    </DockPanel>
+                    <TransformDecorator.Opacity>
+                        <DoubleAnimationCollection>
+                            <DoubleAnimation From="0" To=".72" Begin="Indefinite" />
+                        </DoubleAnimationCollection>
+                    </TransformDecorator.Opacity>
+                    <TransformDecorator.Width>
+                        <LengthAnimationCollection>
+                            <LengthAnimation Begin="Indefinite" />
+                        </LengthAnimationCollection>
+                    </TransformDecorator.Width>
+                    <TransformDecorator.Height>
+                        <LengthAnimationCollection>
+                            <LengthAnimation Begin="Indefinite" />
+                        </LengthAnimationCollection>
+                    </TransformDecorator.Height>
+
+                </TransformDecorator>
+
+           </Canvas>               
+             
+             
+             
+                
+        </DockPanel>
+        
+        
+    </Canvas>
+</Window>

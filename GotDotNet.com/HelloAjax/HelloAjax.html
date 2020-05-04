@@ -1,0 +1,78 @@
+<html>
+	<head>
+		<title>Saying Hello to AJAX</title>
+		<script language="JavaScript" type="text/javascript">
+
+			//Gets XmlHttpRequest Object
+
+			function getXmlHttpRequestObject() {
+
+
+				// Check for the browser.
+				if (window.XMLHttpRequest) {
+
+					return new XMLHttpRequest(); //If not Internet Explorer
+
+				} else if(window.ActiveXObject) {
+
+					return new ActiveXObject("Microsoft.XMLHTTP"); //Internet Explorer
+
+				} else {
+
+					// Browser doesn't support the XmlHttpRequest
+					//Show an error message.
+
+					alert("This application uses AJAX but your browser doesn't support that.");
+				}
+			}
+
+			//Get the XmlHttpRequest object.
+			var oXmlHttpRequest = getXmlHttpRequestObject();
+
+			//Initiate the AJAX request.
+			function HelloAjax() {
+				//Check if XmlHttpRequest object is already serving
+				//a request or not before we start the new request.
+
+				if (oXmlHttpRequest.readyState == 4 || oXmlHttpRequest.readyState == 0) {
+
+					//Open the request
+					var sURL;
+
+					sURL = 'HelloAjax.aspx?txtRequest='+ document.getElementById('txtRequest').value;
+
+					oXmlHttpRequest.open("GET", sURL, true);
+
+					//Set the callback function that will handle the result.
+					oXmlHttpRequest.onreadystatechange = Result;
+					//And the final call made here.
+					oXmlHttpRequest.send(null);
+				}
+			}
+
+			//Call back function, called when XmlHttpRequest object changes its state.
+			function Result() {
+				//Set the values for user if XmlHttpRequests cal is over.
+				if (oXmlHttpRequest.readyState == 4) {
+
+					//Populate the span with result from server.
+					document.getElementById('txtResult').innerHTML = oXmlHttpRequest.responseText;
+
+				}
+			}
+			</script>
+	</head>
+	<body>
+
+		<form name="frmAjax">
+			Enter your Name:&nbsp; <input name="txtRequest" type=text id="txtRequest">
+			<br><br>
+			<!--Server Reply:&nbsp; <input name="txtResult" type=text id="txtResult"> -->
+			<span id="txtResult"></span>
+			<br><br>
+			<input type="button" value="Submit" onClick="Javascript:HelloAjax();">
+
+		<form>
+
+	</body>
+</html>

@@ -1,0 +1,43 @@
+AssemblyToVisio - Visio 2003 UML diagram generator
+---------------------------------------------------
+
+This tool fulfills the need that arises when one wants to update his/her design docs with the 
+up-to-date UML diagrams which would provide the reader with detailed code map, illustrating 
+the classes, their properties and methods, and relationships between them. Visio 2003 seems as 
+the perfect tool for achieving this, and Visual Studio 2003 even has the reverse-engineering feature 
+which generates the UML shapes out of the C# code. 
+
+But, VS 2003 only generates classes in so called 
+Model Explorer view, and it doesn't show class relationships (neither inheritance nor references). 
+
+AssemblyToVisio tries to fix that shortcomings.
+
+Manually dragging/dropping shapes and then connecting them wasn't an option for me, I have 
+hundreds of classes in my code, it would take ages to produce diagrams this way. Also, there's no
+way (or I couldn't find it) of inserting .NET Framework classes into diagrams - a must, if
+I want to illustrate how my code is using .NET Framework and how it leverages it's goodies.
+
+What is needed is the tool which would allow one for selecting the subset of his/her classes 
+and then generate the Visio diagram for them having classes, methods, properties and relationships,
+so this diagram can be directly embedded into design document. That's what AssemblyToVisio tool does.
+
+To use the tool:
+1) Have Visio 2003 Professional installed
+2) Enable macros in Visio (they're disabled by default) - set it to ask before executing macro (just to be safe)
+	it can be done by going Tools/Options/Security tab/Macro Security... button/Security level tab/Medium radio button 
+3) Install AssemblyToVisio by running its Setup
+4) Copy C:\Program Files\Microsoft Office\Visio11\AssemblyToVisio.vsd to folder of your choice and open it there
+5) From the Tools menu of Visio select Macros/Macro... (or use Alt-F8 shortcut), and then 
+	run AssemblyToVisioReverseEngineer.Module1.ReverseEngineerAssembly macro - AssemblyToVisio form should open
+6) There's two listboxes on the form with one edit field and two editing buttons (Add and Remove) each. The upper
+	listbox keeps the list of regular expressions which are used for filtering the class names the user is interested in.
+	The lower listbox keeps the list of paths to assemblies the classes reside in.
+7) Populate the regular expressions list with expressions of your choice (there must be at least one) - e.g use .*Collection to see 
+	all collection classes 
+8) Populate assembly paths list - for instance add C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.dll to it
+9) Click Generate button in right lower corner of the form
+10) Enjoy the diagrams!
+
+
+
+

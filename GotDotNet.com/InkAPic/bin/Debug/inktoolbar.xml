@@ -1,0 +1,722 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>InkToolBar</name>
+    </assembly>
+    <members>
+        <member name="T:Leszynski.SampleInkControls.InkToolBarControls.ColorComboBox">
+            <summary>
+            Represents a <c>ComboBox</c> that display colors.
+            </summary>
+        </member>
+        <member name="F:Leszynski.SampleInkControls.InkToolBarControls.ColorComboBox.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBarControls.ColorComboBox.#ctor">
+            <summary>
+            ComboBox that display systema and web colors.
+            </summary>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBarControls.ColorComboBox.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBarControls.ColorComboBox.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBarControls.ColorComboBox.OnColorChanged">
+            <summary>
+            Raises the ColorChanged event.
+            </summary>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBarControls.ColorComboBox.OnPaint(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Overrides OnPaint to draw the ComboBox.
+            </summary>
+            <param name="e">System.Windows.Forms.PaintEventArgs</param>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBarControls.ColorComboBox.OnEnabledChanged(System.EventArgs)">
+            <summary>
+            Overriden to update internal state.
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBarControls.ColorComboBox.ProcessKeyPreview(System.Windows.Forms.Message@)">
+            <summary>
+            Overridden to see if any child controls receive a WM_KEYDOWN message.
+            </summary>
+            <param name="m">Windows Message</param>
+            <returns></returns>
+            <remarks>
+            Since UserControls don't have a KeyPreview property, we have to override ProcessKeyPreview.
+            </remarks>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBarControls.ColorComboBox.OnKeyDown(System.Windows.Forms.KeyEventArgs)">
+            <summary>
+            Overridden to catch the F4 key which opens and closes a combo dropdown.
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="E:Leszynski.SampleInkControls.InkToolBarControls.ColorComboBox.ColorChanged">
+            <summary>
+            Event is raised when Color property has changed.
+            </summary>
+        </member>
+        <member name="P:Leszynski.SampleInkControls.InkToolBarControls.ColorComboBox.Color">
+            <summary>
+            Gets or sets the selected color on the control.
+            </summary>
+        </member>
+        <member name="T:Leszynski.SampleInkControls.InkToolBarControls.ColorListBox">
+            <summary>
+            Lists the colors for the ColorPickerDialog.
+            </summary>
+        </member>
+        <member name="T:Leszynski.SampleInkControls.InkToolBarControls.ColorPicker">
+            <summary>
+            Represents the drop-down window of the ColorComboBox.
+            </summary>
+        </member>
+        <member name="F:Leszynski.SampleInkControls.InkToolBarControls.ColorPicker.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBarControls.ColorPicker.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBarControls.ColorPicker.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Leszynski.SampleInkControls.InkToolBarControls.PercentUpDown">
+            <summary>
+            Represents a <c>System.Windows.Forms.NumericUpDown</c> control that displays percentage points.
+            </summary>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBarControls.ImageMenuItem.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBarControls.ImageMenuItem.DrawMenuGlyph(System.Drawing.Graphics,System.Drawing.Rectangle,System.Drawing.Color,System.Drawing.Color)">
+            <summary>
+            Draws a menu glyph with the specified colors.
+            </summary>
+            <param name="g"></param>
+            <param name="rect">The <c>System.Drawing.Graphics</c> object to draw on.</param>
+            <param name="foreColor">The <c>System.Drawing.Color</c> that represents the foreground color.</param>
+            <param name="backColor">The <c>System.Drawing.Color</c> that represents the background color.</param>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBarControls.ImageMenuItem.DrawImage(System.Drawing.Graphics,System.Drawing.Image,System.Drawing.Rectangle,System.Drawing.Color,System.Drawing.Color,System.Drawing.Color,System.Drawing.Color)">
+            <summary>
+            Draws an image in the menu.
+            </summary>
+            <param name="g">The <c>System.Drawing.Graphics</c> object to draw on.</param>
+            <param name="baseImage">The <c>System.Drawing.Image</c> object to draw.</param>
+            <param name="rectDraw">The <c>System.Drawing.Rectangle</c> structure that specifies the 
+            location and size of the drawn image.</param>
+            <param name="oldColor1">A <c>System.Drawing.Color</c> that represents the color to be swapped with <c>newColor1</c></param>
+            <param name="newColor1">A <c>System.Drawing.Color</c> that represents the color to replace <c>oldColor1</c></param>
+            <param name="oldColor2">A <c>System.Drawing.Color</c> that represents the color to be swapped with <c>newColor2</c></param>
+            <param name="newColor2">A <c>System.Drawing.Color</c> that represents the color to replace <c>oldColor2</c></param>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBarControls.ColorMenuItem.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Leszynski.SampleInkControls.InkToolBarControls.SizeMenuItem">
+            <summary>
+            Base class for the pen size menus.  This is a workaround due to the fact that if a client wants to
+            merge the toolbar menus into their form's main menu the use of Menu.MergeMenu() does not persist
+            dervied class properties.  So the only way around is to make a concrete class for each seperate size.
+            </summary>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBarControls.SizeMenuItem.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:NativeMethods.UxTheme">
+            <summary>
+            Wraps some methods of native UxTheme.dll.
+            </summary>
+            <remarks>
+            Used primarily for drawing the custom color combobox control.
+            </remarks>
+        </member>
+        <member name="T:Leszynski.SampleInkControls.InkToolBarControls.ErasingAttributes">
+            <summary>
+            Represents eraser drawing attributes.
+            </summary>
+        </member>
+        <member name="P:Leszynski.SampleInkControls.InkToolBarControls.ErasingAttributes.Size">
+            <value>
+            Represents the size of the eraser.
+            </value>
+        </member>
+        <member name="P:Leszynski.SampleInkControls.InkToolBarControls.ErasingAttributes.Mode">
+            <value>
+            Represents the eraser's mode.
+            </value>
+            <remarks>
+            An eraser can either eraser whole strokes or individual points.
+            </remarks>
+        </member>
+        <member name="T:Leszynski.SampleInkControls.InkToolBarMode">
+            <summary>
+            Specifies the selected tool.
+            </summary>
+        </member>
+        <member name="F:Leszynski.SampleInkControls.InkToolBarMode.Pen">
+            <summary>
+            Represents a pen tool with opaque ink and small widths.
+            </summary>
+        </member>
+        <member name="F:Leszynski.SampleInkControls.InkToolBarMode.Highlighter">
+            <summary>
+            Represents a highlighter tool with transparent ink and large heights.
+            </summary>
+        </member>
+        <member name="F:Leszynski.SampleInkControls.InkToolBarMode.Eraser">
+            <summary>
+            Represents an eraser tool.
+            </summary>
+        </member>
+        <member name="F:Leszynski.SampleInkControls.InkToolBarMode.Lasso">
+            <summary>
+            Represents a flexible selection tool.
+            </summary>
+        </member>
+        <member name="T:Leszynski.SampleInkControls.InkToolBar">
+            <summary>
+            Represents a pre-constructed toolbar for Ink enabled applications.
+            </summary>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBar.#ctor">
+            <summary>
+            Initializes a new instance of the InkToolBar class.
+            </summary>
+            <remarks>
+            The default <c>Mode</c> is Pen.  Set <c>Mode</c> to select a different startup tool.  
+            Subscibe and handle the <c>SettingsChanged</c> and <c>ModeChanged</c> events.
+            </remarks>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBar.InitializeMenus">
+            <summary>
+            Initializes the button drop down menus.
+            </summary>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBar.InitializeModes">
+            <summary>
+            Initializes the toolbar's modes and checks the appropriate menu items.
+            </summary>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBar.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBar.OnSettingsChanged">
+            <summary>
+            Raises the <c>SettingsChanged</c> event.
+            </summary>
+            <remarks>
+            The <c>SettingsChanged</c> event is raised when pen or highlighter settings change such as 
+            color.
+            </remarks>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBar.OnModeChanged">
+            <summary>
+            Raises the <c>ModeChanged</c> event.
+            </summary>
+            <remarks>
+            The <c>ModeChanged</c> event is raised when the currently selected tool changes.
+            </remarks>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBar.OnSettingsDialogVisibleChanged(System.Object,System.EventArgs)">
+            <summary>
+            Raises the <c>SettingsDialogVisibilityChanged</c> event.
+            </summary>
+            <remarks>
+            The <c>SettingsDialogVisibilityChanged</c> event is raised when the Settings Dialog is opened or closed.
+            </remarks>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBar.SetInkDrawingAttributes(Microsoft.Ink.DrawingAttributes)">
+            <summary>
+            Sets the default drawing attributes.
+            </summary>
+            <param name="drawingAttributes"></param>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBar.ToolBarButtonClicked(System.Object,System.Windows.Forms.ToolBarButtonClickEventArgs)">
+            <summary>
+            Event handler for the <c>ToolBar.ButtonClick</c> event.
+            </summary>
+            <param name="sender">Object that invoked the event.</param>
+            <param name="e">A <c>ToolBarButtonClickEventArgs</c> that contains the event data.</param>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBar.MenuItemPenColors_Click(System.Object,System.EventArgs)">
+            <summary>
+            Event handler for the <c>MenuItem.Click</c> event from the Pen-Color menus.
+            </summary>
+            <param name="sender">Object that invoked the event.</param>
+            <param name="e">An <c>EventArgs</c> that contains the event data.</param>
+            <remarks>
+            By setting the <c>Mode</c> at the end of the method.  The <c>ModeChanged</c> event will be 
+            fired if needed.
+            </remarks>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBar.MenuItemPenSizes_Click(System.Object,System.EventArgs)">
+            <summary>
+            Event handler for the <c>MenuItem.Click</c> event from the Pen-Size menus.
+            </summary>
+            <param name="sender">Object that invoked the event.</param>
+            <param name="e">An <c>EventArgs</c> that contains the event data.</param>
+            <remarks>
+            By setting the <c>Mode</c> at the end of the method.  The <c>ModeChanged</c> event will be 
+            fired if needed.
+            </remarks>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBar.MenuItemPenTip_Click(System.Object,System.EventArgs)">
+            <summary>
+            Event handler for the <c>MenuItem.Click</c> event from the Pen-Tip menus.
+            </summary>
+            <param name="sender">Object that invoked the event.</param>
+            <param name="e">An <c>EventArgs</c> that contains the event data.</param>
+            <remarks>
+            By setting the <c>Mode</c> at the end of the method.  The <c>ModeChanged</c> event will be 
+            fired if needed.
+            </remarks>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBar.MenuItemPenSettings_Click(System.Object,System.EventArgs)">
+            <summary>
+            Event handler for the <c>MenuItem.Click</c> event for opening the <c>SettingsDialog</c>.
+            </summary>
+            <param name="sender">Object that invoked the event.</param>
+            <param name="e">An <c>EventArgs</c> that contains the event data.</param>
+            <remarks>
+            Displays the <c>SettingsDialog</c>, updating any attributes that might have changed for the pen.
+            <para>
+            By setting the <c>Mode</c> at the end of the method.  The <c>ModeChanged</c> event will be 
+            fired if needed.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBar.UpdatePenMenus">
+            <summary>
+            Updates the pen menus after pen settings have changed.
+            </summary>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBar.MenuItemHighlighterColors_Click(System.Object,System.EventArgs)">
+            <summary>
+            Event handler for the <c>MenuItem.Click</c> event from the Highlighter-Color menus.
+            </summary>
+            <param name="sender">Object that invoked the event.</param>
+            <param name="e">An <c>EventArgs</c> that contains the event data.</param>
+            <remarks>
+            By setting the <c>Mode</c> at the end of the method.  The <c>ModeChanged</c> event will be 
+            fired if needed. 
+            </remarks>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBar.MenuItemHighlighterSettings_Click(System.Object,System.EventArgs)">
+            <summary>
+            Event handler for the <c>MenuItem.Click</c> event for opening the <c>SettingsDialog</c>.
+            </summary>
+            <param name="sender">Object that invoked the event.</param>
+            <param name="e">An <c>EventArgs</c> that contains the event data.</param>
+            <remarks>
+            Displays the <c>SettingsDialog</c>, updating any attributes that might have changed for the 
+            highlighter.
+            <para>
+            By setting the <c>Mode</c> at the end of the method.  The <c>ModeChanged</c> event will be 
+            fired if needed.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBar.UpdateHighlighterMenus">
+            <summary>
+            Updates the highlighter color menus after settings are changed using the <c>SettingsDialog</c>.
+            </summary>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBar.MenuItemEraserMode_Click(System.Object,System.EventArgs)">
+            <summary>
+            Event handler for the <c>MenuItem.Click</c> event for changing the eraser's mode.
+            </summary>
+            <param name="sender">Object that invoked the event.</param>
+            <param name="e">An <c>EventArgs</c> that contains the event data.</param>
+            <remarks>
+            By setting the <c>Mode</c> at the end of the method.  The <c>ModeChanged</c> event will be 
+            fired if needed.  Similarly calling <see cref="M:Leszynski.SampleInkControls.InkToolBar.OnSettingsChanged"/> will raise the
+            <c>SettingsChanged</c> event.
+            </remarks>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBar.MenuItemEraserSize_Click(System.Object,System.EventArgs)">
+            <summary>
+            Event handler for the <c>MenuItem.Click</c> event for changing the eraser's size when
+            the eraser's mode is set to Point.
+            </summary>
+            <param name="sender">Object that invoked the event.</param>
+            <param name="e">An <c>EventArgs</c> that contains the event data.</param>
+            <remarks>
+            By setting the <c>Mode</c> at the end of the method.  The <c>ModeChanged</c> event will be 
+            fired if needed.  Similarly calling <see cref="M:Leszynski.SampleInkControls.InkToolBar.OnSettingsChanged"/> will raise the
+            <c>SettingsChanged</c> event.
+            </remarks>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBar.StripAmpersandFromMenuText(System.String)">
+            <summary>
+            Helper method to remove apsersand character from menu text for Color.FromName()
+            </summary>
+            <param name="menuText">Menu text of a color</param>
+            <returns>Menu text without ampersand character</returns>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBar.EditDrawingAttributes(Microsoft.Ink.DrawingAttributes)">
+            <summary>
+            Provides a utility dialog to edit drawing attributes.
+            </summary>
+            <param name="drawingAttributes">The Microsoft.Ink.DrawingAttributes to edit.</param>
+        </member>
+        <member name="E:Leszynski.SampleInkControls.InkToolBar.SettingsChanged">
+            <summary>
+            Occurs when any of the pen, highlighter or eraser settings change.
+            </summary>
+        </member>
+        <member name="E:Leszynski.SampleInkControls.InkToolBar.ModeChanged">
+            <summary>
+            Occurs when a different tool other than the currently selected tool is selected from the toolbar.
+            </summary>
+        </member>
+        <member name="E:Leszynski.SampleInkControls.InkToolBar.SettingsDialogVisibleChanged">
+            <summary>
+            Occurs when the Settings Dialog is opened or closed.
+            </summary>
+        </member>
+        <member name="P:Leszynski.SampleInkControls.InkToolBar.AccessibleRole">
+            <summary>
+            Gets or sets the accessible role of the control.
+            </summary>
+            <remarks>Overridden to change the default value for the AccessibleRole property</remarks>
+        </member>
+        <member name="P:Leszynski.SampleInkControls.InkToolBar.Buttons">
+            <summary>
+            Gets the collection of System.Windows.Forms.ToolBarButton controls assigned to the 
+            toolbar control.
+            </summary>
+            <remarks>Overridden to remove the Buttons property from the properties window</remarks>
+        </member>
+        <member name="P:Leszynski.SampleInkControls.InkToolBar.ImageList">
+            <summary>
+            Gets or sets the collection of images available to the toolbar button controls.
+            </summary>
+            <remarks>Overridden to remove the ImageList property from the properties window</remarks> 
+        </member>
+        <member name="P:Leszynski.SampleInkControls.InkToolBar.DropDownArrows">
+            <summary>
+            Gets or sets the value indicating whether drop-down buttons on a toolbar display down arrows.
+            </summary>
+            <remarks>Overridden to change the default value for the DropDownArrows property</remarks>
+        </member>
+        <member name="P:Leszynski.SampleInkControls.InkToolBar.Appearance">
+            <summary>
+             Gets or sets the value that determines the appearance of a toolbar control and its buttons. 
+            </summary>
+            <remarks>Overridden to change the default value for the Appearance property</remarks>
+        </member>
+        <member name="P:Leszynski.SampleInkControls.InkToolBar.ShowToolTips">
+            <summary>
+             Gets or sets a value indicating whether the toolbar displays a tooltip for each button. 
+            </summary>
+            <remarks>Overridden to change the default value for the ShowTooltips property</remarks>
+        </member>
+        <member name="P:Leszynski.SampleInkControls.InkToolBar.SettingsDialogVisible">
+            <summary>
+            Indicates whether the Settings Dialog is open.
+            </summary>
+        </member>
+        <member name="P:Leszynski.SampleInkControls.InkToolBar.InkDrawingAttributes">
+            <summary>
+            Returns the drawing attributes for the tool selected. (Only applies to Pen and 
+            Highlighter modes.)
+            </summary>
+            <value>
+            The <c>Microsoft.Ink.DrawingAttributes</c> that contain settings for the Pen or Highlighter.
+            </value>
+            <remarks>
+            This property is most often accessed when handling the <c>SettingsChanged</c> event.
+            </remarks>
+        </member>
+        <member name="P:Leszynski.SampleInkControls.InkToolBar.DefaultPenSettings">
+            <summary>
+            Sets the default drawing attributes for the pen tool.  Should only be used for initialization.
+            </summary>
+        </member>
+        <member name="P:Leszynski.SampleInkControls.InkToolBar.DefaultHighlighterSettings">
+            <summary>
+            Sets the default drawing attributes for the highlighter tool.  Should only be used for initialization.
+            </summary>
+        </member>
+        <member name="P:Leszynski.SampleInkControls.InkToolBar.EraserAttributes">
+            <summary>
+            Gets the eraser attributes.
+            </summary>
+            <value>
+            The <c>EraserAttributes</c> class contain settings for the Eraser tool.
+            </value>
+            <remarks>
+            This property is most often accessed when handling the <c>ModeChanged</c> event.
+            It contains settings mode the eraser mode and width.
+            </remarks>
+        </member>
+        <member name="P:Leszynski.SampleInkControls.InkToolBar.UseRasterOperationForHighlighter">
+            <summary>
+            Indicates whether highlighter should render using alpha transparency or
+            use a MaskPen RasterOperation.
+            </summary>
+        </member>
+        <member name="P:Leszynski.SampleInkControls.InkToolBar.Mode">
+            <summary>
+            Gets or sets the <c>Mode</c> of the toolbar.
+            </summary>
+            <value>
+            One of the <c>InkToolBarMode</c> values.  The default is <c>InkToolBarMode.Pen</c>.
+            </value>
+            <remarks>
+            The <c>Mode</c> property determines which Ink tool is selected on the toolbar.  When a
+            <c>Mode</c> changes, the <c>ModeChanged</c> event is fired.
+            </remarks>
+        </member>
+        <member name="P:Leszynski.SampleInkControls.InkToolBar.AllowPointEraser">
+            <summary>
+            Gets or sets whether point erasing is allowed.
+            </summary>
+        </member>
+        <member name="T:Leszynski.SampleInkControls.InkToolBarControls.SettingsDialog">
+            <summary>
+            Represents a dialog box for modifying pen or highlighter settings for the <c>InkToolBar</c> 
+            control.
+            </summary>
+            <remarks>
+            The <c>SettingsDialog</c> class is a modal form invoked from the drop down menus of the 
+            <c>InkToolBar</c> control.  It enables the user to adjust attributes like color, size, smoothness,
+            transparency and tip.  It also contains an <c>InkPicture</c> test area to try out settings
+            before saving them to the main application.
+            </remarks>
+        </member>
+        <member name="F:Leszynski.SampleInkControls.InkToolBarControls.SettingsDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBarControls.SettingsDialog.#ctor(Microsoft.Ink.DrawingAttributes)">
+            <summary>
+            Initializes a new instance of the SettingsDialog class.
+            </summary>
+            <param name="da">Used to initilize the form's settings.</param>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBarControls.SettingsDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBarControls.SettingsDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBarControls.SettingsDialog.InitializeCustomControls">
+            <summary>
+            Initializes the custom controls.
+            </summary>
+            <remarks>
+            The custom controls if included in the standard initialize component method are subject to
+            vanishing if that method is regenerated by the system.
+            </remarks>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBarControls.SettingsDialog.Settings_Load(System.Object,System.EventArgs)">
+            <summary>
+            Event handler for the <c>Form.Load</c> event.
+            </summary>
+            <param name="sender">Object that invoked the event.</param>
+            <param name="e">An <c>EventArgs</c> that contains the event data.</param>
+            <remarks>
+            Initializes the form's controls to represent the <c>DrawingAttributes</c> passed in to the
+            constructor.
+            </remarks>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBarControls.SettingsDialog.TransparencyBar_ValueChanged(System.Object,System.EventArgs)">
+            <summary>
+            Event handler for m_transparencyBar's <c>TrackBar.ValueChanged</c> event.
+            </summary>
+            <param name="sender">Object that invoked the event.</param>
+            <param name="e">An <c>EventArgs</c> that contains the event data.</param>
+            <remarks>
+            Sets the <c>Transparency</c> property of the <c>DrawingAttributes</c> and updates the 
+            <c>PercentUpDown</c> control.
+            </remarks>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBarControls.SettingsDialog.ClearBtn_Click(System.Object,System.EventArgs)">
+            <summary>
+            Event handler for the m_clearBtn's <c>Button.Click</c> event.
+            </summary>
+            <param name="sender">Object that invoked the event.</param>
+            <param name="e">An <c>EventArgs</c> that contains the event data.</param>
+            <remarks>
+            Clear the test area of Ink strokes.
+            </remarks>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBarControls.SettingsDialog.Antialias_CheckedChanged(System.Object,System.EventArgs)">
+            <summary>
+            Event handler for the m_antialias's <c>CheckBox.CheckChanged</c> event.
+            </summary>
+            <param name="sender">Object that invoked the event.</param>
+            <param name="e">An <c>EventArgs</c> that contains the event data.</param>
+            <remarks>
+            Sets the AntiAliased property.
+            </remarks>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBarControls.SettingsDialog.FitToCurve_CheckedChanged(System.Object,System.EventArgs)">
+            <summary>
+            Event handler for the m_fitToCurve's <c>CheckBox.CheckChanged</c> event.
+            </summary>
+            <param name="sender">Object that invoked the event.</param>
+            <param name="e">An <c>EventArgs</c> that contains the event data.</param>
+            <remarks>
+            Sets the FitToCurve property.
+            </remarks>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBarControls.SettingsDialog.RoundRadio_CheckedChanged(System.Object,System.EventArgs)">
+            <summary>
+            Event handler for m_ballRadio's <c>RadioButton.CheckChanged</c> event.
+            </summary>
+            <param name="sender">Object that invoked the event.</param>
+            <param name="e">An <c>EventArgs</c> that contains the event data.</param>
+            <remarks>
+            Sets the PenTip property.
+            </remarks>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBarControls.SettingsDialog.PressureCheck_CheckedChanged(System.Object,System.EventArgs)">
+            <summary>
+            Event handler for m_pressureCheck's <c>CheckBox.CheckChanged</c> event.
+            </summary>
+            <param name="sender">Object that invoked the event.</param>
+            <param name="e">An <c>EventArgs</c> that contains the event data.</param>
+            <remarks>
+            Sets the IgnorePressure property.
+            </remarks>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBarControls.SettingsDialog.HeightUpDown_ValueChanged(System.Object,System.EventArgs)">
+            <summary>
+            Event handler for m_heightUpDown's <c>NumericUpDown.ValueChanged</c> event.
+            </summary>
+            <param name="sender">Object that invoked the event.</param>
+            <param name="e">An <c>EventArgs</c> that contains the event data.</param>
+            <remarks>
+            Updates the Height property.
+            </remarks>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBarControls.SettingsDialog.WidthUpDown_ValueChanged(System.Object,System.EventArgs)">
+            <summary>
+            Event handler for m_widthUpDown's <c>NumericUpDown.ValueChanged</c> event.
+            </summary>
+            <param name="sender">Control that invoked the event.</param>
+            <param name="e">An <c>EventArgs</c> that contains the event data.</param>
+            <remarks>
+            Updates the Width property.
+            </remarks>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBarControls.SettingsDialog.UpDown_Leave(System.Object,System.EventArgs)">
+            <summary>
+            Event handler for the <c>Control.Leave</c> event for all <c>NumericUpDown</c> controls.
+            </summary>
+            <param name="sender">Control that invoked the event.</param>
+            <param name="e">An <c>EventArgs</c> that contains the event data.</param>
+            <remarks>
+            Ensures the control's value is updated when input focus is lost. e.g. tab or click
+            outside the control.
+            </remarks>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBarControls.SettingsDialog.RectangleRadio_CheckedChanged(System.Object,System.EventArgs)">
+            <summary>
+            Event handler for m_rectangleRadio's <c>RadioButton.CheckChanged</c> event.
+            </summary>
+            <param name="sender">Control that invoked the event.</param>
+            <param name="e">An <c>EventArgs</c> that contains the event data.</param>
+            <remarks>
+            Enables or disables m_heightUpDown (Size height control).
+            </remarks>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBarControls.SettingsDialog.CustomBtn_Click(System.Object,System.EventArgs)">
+            <summary>
+            Event handler for m_customBtn's <c>Button.Click</c> event.
+            </summary>
+            <param name="sender">Control that invoked the event.</param>
+            <param name="e"></param>
+            <remarks>
+            Opens a modal <c>ColorDialog</c> for choosing custom colors.  It updates the
+            color combo box custom control.
+            </remarks>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBarControls.SettingsDialog.ColorCombo_ColorChanged(System.Object,System.EventArgs)">
+            <summary>
+            Event handler for m_colorBox's <c>ColorComboBox.ColorChanged</c> event.
+            </summary>
+            <param name="sender">Control that invoked the event.</param>
+            <param name="e">An <c>EventArgs</c> that contains the event data.</param>
+            <remarks>
+            Updates the Color property.
+            </remarks>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBarControls.SettingsDialog.PercentUpDown_ValueChanged(System.Object,System.EventArgs)">
+            <summary>
+            Event handler for the m_percentUpDown's <c>NumericUpDown.ValueChanged</c> event.
+            </summary>
+            <param name="sender">Control that invoked the event.</param>
+            <param name="e">An <c>EventArgs</c> that contains the event data.</param>
+            <remarks>
+            Updates the transparency <c>TrackBar</c>'s value.
+            </remarks>
+        </member>
+        <member name="M:Leszynski.SampleInkControls.InkToolBarControls.SettingsDialog.OnInkPicture_Stroke(System.Object,Microsoft.Ink.InkCollectorStrokeEventArgs)">
+            <summary>
+            Invalidate the stroke if FitToCurve is set or there is transparency.
+            </summary>
+        </member>
+        <member name="P:Leszynski.SampleInkControls.InkToolBarControls.SettingsDialog.InkDrawingAttributes">
+            <summary>
+            Gets the drawing attributes for the adusted settings.
+            </summary>
+            <value>
+            The adjusted <c>Microsoft.Ink.DrawingAttributes</c> that contain settings for the Pen or Highlighter.
+            </value>
+            <remarks>
+            This property is accessed after closing the <c>SettingsDialog</c> form.
+            </remarks>
+            <example>
+            <code>
+            SettingsDialog s = new SettingsDialog(m_penAttributes.Clone());
+            
+            if (s.ShowDialog() == DialogResult.OK)
+            {
+            	m_penAttributes = s.InkDrawingAttributes;
+            }
+            </code>
+            </example>
+        </member>
+    </members>
+</doc>

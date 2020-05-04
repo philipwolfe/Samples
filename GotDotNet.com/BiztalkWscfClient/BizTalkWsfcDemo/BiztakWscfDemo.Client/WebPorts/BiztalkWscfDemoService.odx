@@ -1,0 +1,29 @@
+﻿#if __DESIGNER_DATA
+#error Do not define __DESIGNER_DATA.
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<om:MetaModel MajorVersion="1" MinorVersion="3" Core="2b131234-7959-458d-834f-2dc0769ce683" ScheduleModel="66366196-361d-448d-976f-cab5e87496d2" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:om="http://schemas.microsoft.com/BizTalk/2003/DesignerData"><om:Element Type="Module" OID="63edfa91-85db-4170-985e-494acc78bbc9" LowerBound="1.1" HigherBound="1.1"><om:Property Name="ReportToAnalyst" Value="True" /><om:Property Name="Name" Value="BiztakWscfDemo.Client.WebPorts.BiztalkWscfDemoServicePort_" /><om:Property Name="Signal" Value="False" /><om:Element Type="MethodMessageType" OID="00000000-0000-0000-0000-000000000000" ParentLink="Module_MessageType"><om:Property Name="Url" Value="" /><om:Property Name="TypeModifier" Value="Public" /><om:Property Name="ReportToAnalyst" Value="True" /><om:Property Name="Name" Value="BiztakWscfDemo.Client.WebPorts.BiztalkWscfDemoServicePort" /><om:Property Name="Signal" Value="False" /><om:Element Type="MethodMessageOperation" OID="10df1444-e233-4b80-a320-dbb1b3274df2" ParentLink="MethodMessageType_MethodMessageOperation"><om:Property Name="OperationName" Value="GetCompanyForPerson" /><om:Property Name="OperationDirection" Value="Request" /><om:Property Name="ReportToAnalyst" Value="True" /><om:Property Name="Name" Value="GetCompanyForPerson_request" /><om:Property Name="Signal" Value="False" /><om:Element Type="WebOperationPart" OID="bd1188ca-77ad-422b-b3bb-170db7aa0bb1" ParentLink="MethodMessageOperation_WebOperationPart"><om:Property Name="ClassName" Value="BiztakWscfDemo.Client.ServiceContracts.BiztalkWscfDemoSrvcMsgs.getCompanyForPerson" /><om:Property Name="ReportToAnalyst" Value="True" /><om:Property Name="Name" Value="getCompanyForPerson1" /><om:Property Name="Signal" Value="False" /></om:Element></om:Element><om:Element Type="MethodMessageOperation" OID="2157b6ca-ec35-42a1-be82-8f6a17e57b35" ParentLink="MethodMessageType_MethodMessageOperation"><om:Property Name="OperationName" Value="GetCompanyForPerson" /><om:Property Name="OperationDirection" Value="Response" /><om:Property Name="ReportToAnalyst" Value="True" /><om:Property Name="Name" Value="GetCompanyForPerson_response" /><om:Property Name="Signal" Value="False" /><om:Element Type="WebOperationPart" OID="ad85bf4d-5506-41e1-abc6-087862576514" ParentLink="MethodMessageOperation_WebOperationPart"><om:Property Name="ClassName" Value="BiztakWscfDemo.Client.ServiceContracts.BiztalkWscfDemoSrvcMsgs.getCompanyForPersonResponse" /><om:Property Name="ReportToAnalyst" Value="True" /><om:Property Name="Name" Value="getCompanyForPersonResponse1" /><om:Property Name="Signal" Value="False" /></om:Element></om:Element></om:Element><om:Element Type="TargetXMLNamespaceAttribute" OID="146b1121-4090-4cc6-9e50-8a8aa6987b9f" ParentLink="Module_CLRAttribute" LowerBound="2.1" HigherBound="3.1"><om:Property Name="TargetXMLNamespace" Value="http://BizTalkWscfDemoService/BiztalkWscfDemoSrvcMsgs" /><om:Property Name="Signal" Value="False" /></om:Element></om:Element></om:MetaModel>
+#endif // __DESIGNER_DATA
+[Microsoft.XLANGs.BaseTypes.BPELExportable(true)]
+[Microsoft.XLANGs.BaseTypes.TargetXmlNamespaceAttribute("http://BizTalkWscfDemoService/BiztalkWscfDemoSrvcMsgs")]
+module BiztakWscfDemo.Client.WebPorts.BiztalkWscfDemoServicePort_
+{
+    [Microsoft.XLANGs.BaseTypes.WebPortBinding(typeof(BiztalkWsfcDemo.Client.WebProxy.BiztalkWscfDemoServicePort), "GetCompanyForPerson", Microsoft.XLANGs.BaseTypes.EXLangSMessageInfo. eRequest)]
+    public messagetype GetCompanyForPerson_request 
+    {		
+        body BiztakWscfDemo.Client.ServiceContracts.BiztalkWscfDemoSrvcMsgs.getCompanyForPerson getCompanyForPerson1; 
+    };
+    [Microsoft.XLANGs.BaseTypes.WebPortBinding(typeof(BiztalkWsfcDemo.Client.WebProxy.BiztalkWscfDemoServicePort), "GetCompanyForPerson", Microsoft.XLANGs.BaseTypes.EXLangSMessageInfo. eResponse)]
+    public messagetype GetCompanyForPerson_response 
+    {		
+        body BiztakWscfDemo.Client.ServiceContracts.BiztalkWscfDemoSrvcMsgs.getCompanyForPersonResponse getCompanyForPersonResponse1; 
+    };
+    	
+    [Microsoft.XLANGs.BaseTypes.WSDLProxyName(typeof(BiztalkWsfcDemo.Client.WebProxy.BiztalkWscfDemoServicePort))]
+    public porttype BiztalkWscfDemoServicePort
+    {
+	requestresponse GetCompanyForPerson
+	{
+	    BiztakWscfDemo.Client.WebPorts.BiztalkWscfDemoServicePort_.GetCompanyForPerson_request, BiztakWscfDemo.Client.WebPorts.BiztalkWscfDemoServicePort_.GetCompanyForPerson_response
+	};			
+	};	
+}

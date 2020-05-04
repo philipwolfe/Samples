@@ -1,0 +1,1213 @@
+<font face="Arial" size="1">
+
+<html>
+<head>
+<title>Changes in microsoft.build.engine from EVERTM (Version 1.1.4322.573)<br> to WHI40607.03 (Version 2.0.40607.3)</title>
+
+<style type="text/css">
+dt      { font-weight: Bold; }
+.big    { font-size: 150%; font-weight: Bold; }
+.small  { font-size:  75%; font-weight: Normal; }
+.endNav { font-size:  75%; font-weight: Normal; margin: 20; }
+</style>
+
+</head>
+
+<body>
+<a name="top" id="top"></a>
+<h2><center>Changes in microsoft.build.engine from EVERTM (Version 1.1.4322.573)<br> to WHI40607.03 (Version 2.0.40607.3)</center></h2>
+
+
+<table width="90%" align="center" border="1" cellspacing="0" bordercolor="A0000" style=background-color: #F0F0F0; border-style: solid;>
+<thead>
+ <tr>
+  <th width="50%" align="left">Removed</td>
+  <th width="50%" align="left">Added</td>
+ </tr>
+</thead>
+<tbody>
+
+ <tr>
+  <a name="Microsoft.Build.BuildEngine ConsoleLogger"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.BuildEngine ConsoleLogger</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed class <b><span title="Base Type: System.Object; Interfaces: Microsoft.Build.Framework.ILogger">Microsoft.Build.BuildEngine.ConsoleLogger</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Constructor: public <b>ConsoleLogger</b> ()</font></li>
+    <li><font color="black">Constructor: public <b>ConsoleLogger</b> (<span title="Microsoft.Build.Framework">LoggerVerbosity</span> <i>verbosity</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">bool</span> <b>Equals</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected virtual <span title="System">void</span> <b>Finalize</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">int</span> <b>GetHashCode</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>Initialize</b> (<span title="Microsoft.Build.Framework">IEventSource</span> <i>eventSource</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>Shutdown</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">string</span> <b>ToString</b> ()</font></li>
+    <li><font color="black">Property: virtual <span title="System">string</span> <b>Parameters</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="Microsoft.Build.Framework">LoggerVerbosity</span> <b>Verbosity</b> { public get; public set; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.BuildEngine Engine"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.BuildEngine Engine</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed class <b><span title="Base Type: System.Object; Interfaces: Microsoft.Build.BuildEngine.IEngine">Microsoft.Build.BuildEngine.Engine</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Constructor: public <b>Engine</b> ()</font></li>
+    <li><font color="black">Constructor: public <b>Engine</b> (<span title="System">string</span> <i>binPath</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>Abort</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="System">bool</span> <b>BuildProject</b> (<span title="Microsoft.Build.BuildEngine">Project</span> <i>project</i>, <span title="System">string[]</span> <i>targetNames</i>, <span title="System.Collections">IDictionary</span> <i>targetOutputs</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">bool</span> <b>BuildProjectFile</b> (<span title="System">string</span> <i>projectFileName</i>, <span title="System">string[]</span> <i>targetNames</i>, <span title="System.Collections">IDictionary</span> <i>targetOutputs</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="Microsoft.Build.BuildEngine">Project</span> <b>CreateNewProject</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">bool</span> <b>Equals</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected virtual <span title="System">void</span> <b>Finalize</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">int</span> <b>GetHashCode</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>RegisterLogger</b> (<span title="Microsoft.Build.Framework">ILogger</span> <i>logger</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">string</span> <b>ToString</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>UnregisterAllLoggers</b> ()</font></li>
+    <li><font color="black">Property: virtual <span title="System">string</span> <b>BinPath</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: static <span title="System">string</span> <b>EngineVersion</b> { public get; }</font></li>
+    <li><font color="black">Property: static <span title="Microsoft.Build.BuildEngine">Engine</span> <b>GlobalEngine</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="Microsoft.Build.BuildEngine">PropertyGroup</span> <b>GlobalProperties</b> { public get; public set; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.BuildEngine GlobalEngineAccessor"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.BuildEngine GlobalEngineAccessor</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed class <b><span title="Base Type: System.Object; Interfaces: Microsoft.Build.BuildEngine.IGlobalEngineAccessor">Microsoft.Build.BuildEngine.GlobalEngineAccessor</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Constructor: public <b>GlobalEngineAccessor</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">bool</span> <b>Equals</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected virtual <span title="System">void</span> <b>Finalize</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">int</span> <b>GetHashCode</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">string</span> <b>ToString</b> ()</font></li>
+    <li><font color="black">Property: virtual <span title="Microsoft.Build.BuildEngine">Engine</span> <b>GlobalEngine</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.BuildEngine HostLogger"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.BuildEngine HostLogger</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed class <b><span title="Base Type: System.Object; Interfaces: Microsoft.Build.Framework.ILogger, Microsoft.Build.BuildEngine.IHostLogger">Microsoft.Build.BuildEngine.HostLogger</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Constructor: public <b>HostLogger</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">bool</span> <b>Equals</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected virtual <span title="System">void</span> <b>Finalize</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">int</span> <b>GetHashCode</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>Initialize</b> (<span title="Microsoft.Build.Framework">IEventSource</span> <i>eventSource</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>SetHostFeedBackObject</b> (<span title="Microsoft.Build.BuildEngine">IHostFeedback</span> <i>ide</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>Shutdown</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">string</span> <b>ToString</b> ()</font></li>
+    <li><font color="black">Property: virtual <span title="System">string</span> <b>Parameters</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="Microsoft.Build.Framework">LoggerVerbosity</span> <b>Verbosity</b> { public get; public set; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.BuildEngine ICultureStringUtilities"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.BuildEngine ICultureStringUtilities</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public interface <b><span title="Base Type: none">Microsoft.Build.BuildEngine.ICultureStringUtilities</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method: <span title="System">string[]</span> <b>GetSupportedCultures</b> ()</font></li>
+    <li><font color="black">Method: <span title="System">bool</span> <b>ValidateCulture</b> (<span title="System">string</span> <i>culture</i>)</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.BuildEngine IEngine"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.BuildEngine IEngine</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public interface <b><span title="Base Type: none">Microsoft.Build.BuildEngine.IEngine</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method: <span title="System">void</span> <b>Abort</b> ()</font></li>
+    <li><font color="black">Method: <span title="System">bool</span> <b>BuildProject</b> (<span title="Microsoft.Build.BuildEngine">Project</span> <i>project</i>, <span title="System">string[]</span> <i>targetNames</i>, <span title="System.Collections">IDictionary</span> <i>targetOutputs</i>)</font></li>
+    <li><font color="black">Method: <span title="System">bool</span> <b>BuildProjectFile</b> (<span title="System">string</span> <i>projectFileName</i>, <span title="System">string[]</span> <i>targetNames</i>, <span title="System.Collections">IDictionary</span> <i>targetOutputs</i>)</font></li>
+    <li><font color="black">Method: <span title="Microsoft.Build.BuildEngine">Project</span> <b>CreateNewProject</b> ()</font></li>
+    <li><font color="black">Method: <span title="System">void</span> <b>RegisterLogger</b> (<span title="Microsoft.Build.Framework">ILogger</span> <i>logger</i>)</font></li>
+    <li><font color="black">Method: <span title="System">void</span> <b>UnregisterAllLoggers</b> ()</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>BinPath</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="Microsoft.Build.BuildEngine">PropertyGroup</span> <b>GlobalProperties</b> { public get; public set; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.BuildEngine IGlobalEngineAccessor"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.BuildEngine IGlobalEngineAccessor</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public interface <b><span title="Base Type: none">Microsoft.Build.BuildEngine.IGlobalEngineAccessor</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Property: <span title="Microsoft.Build.BuildEngine">Engine</span> <b>GlobalEngine</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.BuildEngine IHostFeedback"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.BuildEngine IHostFeedback</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public interface <b><span title="Base Type: none">Microsoft.Build.BuildEngine.IHostFeedback</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method: <span title="System">void</span> <b>BeginLogging</b> ()</font></li>
+    <li><font color="black">Method: <span title="System">void</span> <b>LogFormattedError</b> (<span title="Microsoft.Build.Framework">BuildEventCategory</span> <i>category</i>, <span title="Microsoft.Build.Framework">BuildEventImportance</span> <i>importance</i>, <span title="System">string</span> <i>message</i>, <span title="System">string</span> <i>errorCode</i>, <span title="System">string</span> <i>helpKeyword</i>, <span title="System">int</span> <i>line</i>, <span title="System">int</span> <i>column</i>, <span title="System">int</span> <i>endingLine</i>, <span title="System">int</span> <i>endingColumn</i>, <span title="System">string</span> <i>file</i>)</font></li>
+    <li><font color="black">Method: <span title="System">void</span> <b>LogTextMessage</b> (<span title="System">string</span> <i>message</i>)</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.BuildEngine IHostLogger"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.BuildEngine IHostLogger</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public interface <b><span title="Base Type: none">Microsoft.Build.BuildEngine.IHostLogger</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method: <span title="System">void</span> <b>SetHostFeedBackObject</b> (<span title="Microsoft.Build.BuildEngine">IHostFeedback</span> <i>ide</i>)</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.BuildEngine IItem"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.BuildEngine IItem</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public interface <b><span title="Base Type: none">Microsoft.Build.BuildEngine.IItem</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method: <span title="System">void</span> <b>CopyCustomAttributesTo</b> (<span title="Microsoft.Build.BuildEngine">IItem</span> <i>item</i>)</font></li>
+    <li><font color="black">Method: <span title="System">string</span> <b>GetAttribute</b> (<span title="System">string</span> <i>attributeName</i>)</font></li>
+    <li><font color="black">Method: <span title="System">string</span> <b>GetEvaluatedAttribute</b> (<span title="System">string</span> <i>attributeName</i>)</font></li>
+    <li><font color="black">Method: <span title="System">void</span> <b>RemoveAttribute</b> (<span title="System">string</span> <i>attributeName</i>)</font></li>
+    <li><font color="black">Method: <span title="System">void</span> <b>SetAttribute</b> (<span title="System">string</span> <i>attributeName</i>, <span title="System">string</span> <i>attributeValue</i>)</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>Condition</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>Exclude</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>FinalItemSpec</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>Include</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">bool</span> <b>IsImported</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>Type</b> { public get; public set; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.BuildEngine IItemGroup"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.BuildEngine IItemGroup</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public interface <b><span title="Base Type: none">Microsoft.Build.BuildEngine.IItemGroup</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method: <span title="Microsoft.Build.BuildEngine">Item</span> <b>AddNewItem</b> (<span title="System">string</span> <i>itemType</i>, <span title="System">string</span> <i>itemInclude</i>)</font></li>
+    <li><font color="black">Method: <span title="System">void</span> <b>Clear</b> ()</font></li>
+    <li><font color="black">Method: <span title="Microsoft.Build.BuildEngine">ItemGroup</span> <b>Clone</b> (<span title="System">bool</span> <i>deepClone</i>)</font></li>
+    <li><font color="black">Method: <span title="System.Collections">IEnumerator</span> <b>GetEnumerator</b> ()</font></li>
+    <li><font color="black">Method: <span title="System">void</span> <b>RemoveItem</b> (<span title="Microsoft.Build.BuildEngine">Item</span> <i>itemToRemove</i>)</font></li>
+    <li><font color="black">Method: <span title="System">void</span> <b>RemoveItemAt</b> (<span title="System">int</span> <i>index</i>)</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>Condition</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">bool</span> <b>IsImported</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.BuildEngine IItemGroupCollection"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.BuildEngine IItemGroupCollection</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public interface <b><span title="Base Type: none; Interfaces: System.Collections.ICollection; System.Collections.IEnumerable">Microsoft.Build.BuildEngine.IItemGroupCollection</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method: <span title="System">void</span> <b>CopyTo</b> (<span title="Microsoft.Build.BuildEngine">ItemGroup[]</span> <i>array</i>, <span title="System">int</span> <i>index</i>)</font></li>
+    <li><font color="black">Method: <span title="System">void</span> <b>CopyTo</b> (<span title="System">Array</span> <i>array</i>, <span title="System">int</span> <i>index</i>)</font></li>
+    <li><font color="black">Method: <span title="System.Collections">IEnumerator</span> <b>GetEnumerator</b> ()</font></li>
+    <li><font color="black">Property: <span title="System">int</span> <b>Count</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System">bool</span> <b>IsSynchronized</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System">object</span> <b>SyncRoot</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.BuildEngine InvalidProjectFileException"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.BuildEngine InvalidProjectFileException</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed class <b><span title="Base Type: System.Exception; Interfaces: System.Runtime.Serialization.ISerializable, System.Runtime.InteropServices._Exception">Microsoft.Build.BuildEngine.InvalidProjectFileException</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Constructor: public <b>InvalidProjectFileException</b> ()</font></li>
+    <li><font color="black">Constructor: public <b>InvalidProjectFileException</b> (<span title="System">string</span> <i>message</i>)</font></li>
+    <li><font color="black">Constructor: public <b>InvalidProjectFileException</b> (<span title="System">string</span> <i>message</i>, <span title="System">Exception</span> <i>innerException</i>)</font></li>
+    <li><font color="black">Constructor: public <b>InvalidProjectFileException</b> (<span title="System">string</span> <i>projectFile</i>, <span title="System">int</span> <i>lineNumber</i>, <span title="System">int</span> <i>columnNumber</i>, <span title="System">int</span> <i>endLineNumber</i>, <span title="System">int</span> <i>endColumnNumber</i>, <span title="System">string</span> <i>message</i>, <span title="System">string</span> <i>errorSubCategory</i>, <span title="System">string</span> <i>errorCode</i>, <span title="System">string</span> <i>helpKeyword</i>)</font></li>
+    <li><font color="black">Constructor: public <b>InvalidProjectFileException</b> (<span title="System.Xml">XmlNode</span> <i>xmlNode</i>, <span title="System">string</span> <i>message</i>, <span title="System">string</span> <i>errorSubCategory</i>, <span title="System">string</span> <i>errorCode</i>, <span title="System">string</span> <i>helpKeyword</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">bool</span> <b>Equals</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected virtual <span title="System">void</span> <b>Finalize</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Exception">(i)</i></font>: public virtual <span title="System">Exception</span> <b>GetBaseException</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">int</span> <b>GetHashCode</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Exception">(i)</i></font>: public virtual <span title="System">void</span> <b>GetObjectData</b> (<span title="System.Runtime.Serialization">SerializationInfo</span> <i>info</i>, <span title="System.Runtime.Serialization">StreamingContext</span> <i>context</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Exception">(i)</i></font>: public virtual <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Exception">(i)</i></font>: public virtual <span title="System">string</span> <b>ToString</b> ()</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>BaseMessage</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System">int</span> <b>ColumnNumber</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System.Collections">IDictionary</span> <b>Data</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System">int</span> <b>EndColumnNumber</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System">int</span> <b>EndLineNumber</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>ErrorCode</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>ErrorSubCategory</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>HelpKeyword</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">string</span> <b>HelpLink</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: protected <span title="System">int</span> <b>HResult</b> { }</font></li>
+    <li><font color="black">Property: virtual <span title="System">Exception</span> <b>InnerException</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System">int</span> <b>LineNumber</b> { public get; }</font></li>
+    <li><font color="black">Property: override <span title="System">string</span> <b>Message</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>ProjectFile</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">string</span> <b>Source</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">string</span> <b>StackTrace</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System.Reflection">MethodBase</span> <b>TargetSite</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.BuildEngine IProject"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.BuildEngine IProject</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public interface <b><span title="Base Type: none">Microsoft.Build.BuildEngine.IProject</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method: <span title="System">void</span> <b>AddNewImport</b> (<span title="System">string</span> <i>importLocation</i>)</font></li>
+    <li><font color="black">Method: <span title="Microsoft.Build.BuildEngine">Item</span> <b>AddNewItem</b> (<span title="System">string</span> <i>itemType</i>, <span title="System">string</span> <i>itemInclude</i>)</font></li>
+    <li><font color="black">Method: <span title="Microsoft.Build.BuildEngine">ItemGroup</span> <b>AddNewItemGroup</b> ()</font></li>
+    <li><font color="black">Method: <span title="Microsoft.Build.BuildEngine">PropertyGroup</span> <b>AddNewPropertyGroup</b> (<span title="System">bool</span> <i>insertAtEndOfProject</i>)</font></li>
+    <li><font color="black">Method: <span title="System">bool</span> <b>Build</b> (<span title="System">string[]</span> <i>targetNamesToBuild</i>, <span title="System.Collections">IDictionary</span> <i>targetOutputs</i>)</font></li>
+    <li><font color="black">Method: <span title="System">bool</span> <b>BuildTarget</b> (<span title="System">string</span> <i>targetName</i>, <span title="System.Collections">IDictionary</span> <i>targetOutputs</i>)</font></li>
+    <li><font color="black">Method: <span title="System">string[]</span> <b>GetConditionedPropertyValues</b> (<span title="System">string</span> <i>propertyName</i>)</font></li>
+    <li><font color="black">Method: <span title="Microsoft.Build.BuildEngine">ItemGroup</span> <b>GetEvaluatedItemsByType</b> (<span title="System">string</span> <i>itemType</i>)</font></li>
+    <li><font color="black">Method: <span title="Microsoft.Build.BuildEngine">ItemGroup</span> <b>GetEvaluatedItemsByTypeIgnoringCondition</b> (<span title="System">string</span> <i>itemType</i>)</font></li>
+    <li><font color="black">Method: <span title="System">string</span> <b>GetProjectExtensions</b> (<span title="System">string</span> <i>id</i>)</font></li>
+    <li><font color="black">Method: <span title="System">void</span> <b>LoadFromFile</b> (<span title="System">string</span> <i>projectFileName</i>)</font></li>
+    <li><font color="black">Method: <span title="System">void</span> <b>LoadFromXml</b> (<span title="System.Xml">XmlDocument</span> <i>projectXml</i>)</font></li>
+    <li><font color="black">Method: <span title="System">void</span> <b>MarkProjectAsDirty</b> ()</font></li>
+    <li><font color="black">Method: <span title="System">void</span> <b>RefreshImportedProperties</b> ()</font></li>
+    <li><font color="black">Method: <span title="System">void</span> <b>RemoveAllItemGroups</b> ()</font></li>
+    <li><font color="black">Method: <span title="System">void</span> <b>RemoveAllItemGroupsByCondition</b> (<span title="System">string</span> <i>condition</i>)</font></li>
+    <li><font color="black">Method: <span title="System">void</span> <b>RemoveAllPropertyGroups</b> ()</font></li>
+    <li><font color="black">Method: <span title="System">void</span> <b>RemoveAllPropertyGroupsByCondition</b> (<span title="System">string</span> <i>condition</i>)</font></li>
+    <li><font color="black">Method: <span title="System">void</span> <b>RemoveItem</b> (<span title="Microsoft.Build.BuildEngine">Item</span> <i>itemToRemove</i>)</font></li>
+    <li><font color="black">Method: <span title="System">void</span> <b>RemoveItemGroup</b> (<span title="Microsoft.Build.BuildEngine">ItemGroup</span> <i>itemGroupToRemove</i>)</font></li>
+    <li><font color="black">Method: <span title="System">void</span> <b>RemoveItemsByType</b> (<span title="System">string</span> <i>itemType</i>)</font></li>
+    <li><font color="black">Method: <span title="System">void</span> <b>RemovePropertyGroup</b> (<span title="Microsoft.Build.BuildEngine">PropertyGroup</span> <i>propertyGroupToRemove</i>)</font></li>
+    <li><font color="black">Method: <span title="System">void</span> <b>ResetBuildStatus</b> ()</font></li>
+    <li><font color="black">Method: <span title="System">void</span> <b>SaveToFile</b> (<span title="System">string</span> <i>projectFileName</i>)</font></li>
+    <li><font color="black">Method: <span title="System">void</span> <b>SaveToFileWithEncoding</b> (<span title="System">string</span> <i>projectFileName</i>, <span title="Microsoft.Build.BuildEngine">ProjectFileEncoding</span> <i>encoding</i>)</font></li>
+    <li><font color="black">Method: <span title="System">void</span> <b>SaveToTextWriter</b> (<span title="System.IO">TextWriter</span> <i>outTextWriter</i>)</font></li>
+    <li><font color="black">Method: <span title="System">void</span> <b>SetProjectExtensions</b> (<span title="System">string</span> <i>id</i>, <span title="System">string</span> <i>xmlText</i>)</font></li>
+    <li><font color="black">Method: <span title="System">void</span> <b>SetProperty</b> (<span title="System">string</span> <i>propertyName</i>, <span title="System">string</span> <i>propertyValue</i>, <span title="System">string</span> <i>condition</i>)</font></li>
+    <li><font color="black">Method: <span title="System">void</span> <b>SetPropertyAt</b> (<span title="System">string</span> <i>propertyName</i>, <span title="System">string</span> <i>propertyValue</i>, <span title="System">string</span> <i>condition</i>, <span title="Microsoft.Build.BuildEngine">SetPropertyPosition</span> <i>position</i>)</font></li>
+    <li><font color="black">Method: <span title="System">void</span> <b>Unload</b> ()</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>CurrentEncoding</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>DefaultTargets</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="Microsoft.Build.BuildEngine">ItemGroup</span> <b>EvaluatedItems</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="Microsoft.Build.BuildEngine">ItemGroup</span> <b>EvaluatedItemsIgnoringCondition</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="Microsoft.Build.BuildEngine">PropertyGroup</span> <b>EvaluatedProperties</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>FullFileName</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="Microsoft.Build.BuildEngine">PropertyGroup</span> <b>GlobalProperties</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">bool</span> <b>IsDirty</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="Microsoft.Build.BuildEngine">ItemGroupCollection</span> <b>ItemGroups</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="Microsoft.Build.BuildEngine">Engine</span> <b>ParentEngine</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="Microsoft.Build.BuildEngine">PropertyGroupCollection</span> <b>PropertyGroups</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="Microsoft.Build.BuildEngine">TargetCollection</span> <b>Targets</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System">DateTime</span> <b>TimeOfLastDirty</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.BuildEngine IProperty"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.BuildEngine IProperty</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public interface <b><span title="Base Type: none">Microsoft.Build.BuildEngine.IProperty</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method: <span title="Microsoft.Build.BuildEngine">Property</span> <b>Clone</b> (<span title="System">bool</span> <i>deepClone</i>)</font></li>
+    <li><font color="black">Method: <span title="System">string</span> <b>ToString</b> ()</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>Condition</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>FinalValue</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>Name</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>Value</b> { public get; public set; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.BuildEngine IPropertyGroup"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.BuildEngine IPropertyGroup</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public interface <b><span title="Base Type: none">Microsoft.Build.BuildEngine.IPropertyGroup</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method: <span title="Microsoft.Build.BuildEngine">Property</span> <b>AddNewProperty</b> (<span title="System">string</span> <i>propertyName</i>, <span title="System">string</span> <i>propertyValue</i>)</font></li>
+    <li><font color="black">Method: <span title="System">void</span> <b>Clear</b> ()</font></li>
+    <li><font color="black">Method: <span title="Microsoft.Build.BuildEngine">PropertyGroup</span> <b>Clone</b> (<span title="System">bool</span> <i>deepClone</i>)</font></li>
+    <li><font color="black">Method: <span title="System.Collections">IEnumerator</span> <b>GetEnumerator</b> ()</font></li>
+    <li><font color="black">Method: <span title="System">void</span> <b>RemoveProperty</b> (<span title="Microsoft.Build.BuildEngine">Property</span> <i>propertyToRemove</i>)</font></li>
+    <li><font color="black">Method: <span title="System">void</span> <b>RemovePropertyByName</b> (<span title="System">string</span> <i>propertyNameToRemove</i>)</font></li>
+    <li><font color="black">Method: <span title="System">void</span> <b>SetProperty</b> (<span title="System">string</span> <i>propertyName</i>, <span title="System">string</span> <i>propertyValue</i>)</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>Condition</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">int</span> <b>Count</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System">bool</span> <b>IsImported</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="Microsoft.Build.BuildEngine">Property</span> <b>this</b> [<span title="System">string</span> <i>propertyName</i>] { public get; public set; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.BuildEngine IPropertyGroupCollection"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.BuildEngine IPropertyGroupCollection</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public interface <b><span title="Base Type: none; Interfaces: System.Collections.ICollection; System.Collections.IEnumerable">Microsoft.Build.BuildEngine.IPropertyGroupCollection</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method: <span title="System">void</span> <b>CopyTo</b> (<span title="Microsoft.Build.BuildEngine">PropertyGroup[]</span> <i>array</i>, <span title="System">int</span> <i>index</i>)</font></li>
+    <li><font color="black">Method: <span title="System">void</span> <b>CopyTo</b> (<span title="System">Array</span> <i>array</i>, <span title="System">int</span> <i>index</i>)</font></li>
+    <li><font color="black">Method: <span title="System.Collections">IEnumerator</span> <b>GetEnumerator</b> ()</font></li>
+    <li><font color="black">Property: <span title="System">int</span> <b>Count</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System">bool</span> <b>IsSynchronized</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System">object</span> <b>SyncRoot</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.BuildEngine ITarget"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.BuildEngine ITarget</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public interface <b><span title="Base Type: none">Microsoft.Build.BuildEngine.ITarget</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method: <span title="System.Collections">IEnumerator</span> <b>GetEnumerator</b> ()</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>Condition</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>DependsOnTargets</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>Name</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.BuildEngine ITargetCollection"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.BuildEngine ITargetCollection</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public interface <b><span title="Base Type: none; Interfaces: System.Collections.ICollection; System.Collections.IEnumerable">Microsoft.Build.BuildEngine.ITargetCollection</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method: <span title="System">void</span> <b>CopyTo</b> (<span title="Microsoft.Build.BuildEngine">Target[]</span> <i>array</i>, <span title="System">int</span> <i>index</i>)</font></li>
+    <li><font color="black">Method: <span title="System">void</span> <b>CopyTo</b> (<span title="System">Array</span> <i>array</i>, <span title="System">int</span> <i>index</i>)</font></li>
+    <li><font color="black">Method: <span title="System">bool</span> <b>Exists</b> (<span title="System">string</span> <i>targetName</i>)</font></li>
+    <li><font color="black">Method: <span title="System.Collections">IEnumerator</span> <b>GetEnumerator</b> ()</font></li>
+    <li><font color="black">Property: <span title="System">int</span> <b>Count</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System">bool</span> <b>IsSynchronized</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="Microsoft.Build.BuildEngine">Target</span> <b>this</b> [<span title="System">string</span> <i>index</i>] { public get; }</font></li>
+    <li><font color="black">Property: <span title="System">object</span> <b>SyncRoot</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.BuildEngine ITaskElement"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.BuildEngine ITaskElement</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public interface <b><span title="Base Type: none">Microsoft.Build.BuildEngine.ITaskElement</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method: <span title="System">bool</span> <b>Execute</b> ()</font></li>
+    <li><font color="black">Method: <span title="System">string[]</span> <b>GetParameterNames</b> ()</font></li>
+    <li><font color="black">Method: <span title="System">string</span> <b>GetParameterValue</b> (<span title="System">string</span> <i>attributeName</i>)</font></li>
+    <li><font color="black">Method: <span title="System">void</span> <b>SetParameterValue</b> (<span title="System">string</span> <i>parameterName</i>, <span title="System">string</span> <i>parameterValue</i>)</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>Condition</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">bool</span> <b>ContinueOnError</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">object</span> <b>HostObject</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>Name</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System">Type</span> <b>Type</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.BuildEngine Item"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.BuildEngine Item</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed class <b><span title="Base Type: System.Object; Interfaces: Microsoft.Build.BuildEngine.IItem">Microsoft.Build.BuildEngine.Item</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Constructor: public <b>Item</b> ()</font></li>
+    <li><font color="black">Constructor: public <b>Item</b> (<span title="System">string</span> <i>itemType</i>, <span title="Microsoft.Build.Framework">ITaskItem</span> <i>taskItem</i>)</font></li>
+    <li><font color="black">Constructor: public <b>Item</b> (<span title="System">string</span> <i>itemType</i>, <span title="System">string</span> <i>itemInclude</i>)</font></li>
+    <li><font color="black">Constructor: public <b>Item</b> (<span title="System.Xml">XmlDocument</span> <i>ownerDocument</i>, <span title="System">string</span> <i>itemType</i>, <span title="System">string</span> <i>itemInclude</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>CopyCustomAttributesTo</b> (<span title="Microsoft.Build.BuildEngine">IItem</span> <i>item</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">bool</span> <b>Equals</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected virtual <span title="System">void</span> <b>Finalize</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="System">string</span> <b>GetAttribute</b> (<span title="System">string</span> <i>attributeName</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">string</span> <b>GetEvaluatedAttribute</b> (<span title="System">string</span> <i>attributeName</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">int</span> <b>GetHashCode</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>RemoveAttribute</b> (<span title="System">string</span> <i>attributeName</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>SetAttribute</b> (<span title="System">string</span> <i>attributeName</i>, <span title="System">string</span> <i>attributeValue</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">string</span> <b>ToString</b> ()</font></li>
+    <li><font color="black">Property: virtual <span title="System">string</span> <b>Condition</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">string</span> <b>Exclude</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">string</span> <b>FinalItemSpec</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">string</span> <b>Include</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">bool</span> <b>IsImported</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">string</span> <b>Type</b> { public get; public set; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.BuildEngine ItemGroup"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.BuildEngine ItemGroup</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed class <b><span title="Base Type: System.Object; Interfaces: Microsoft.Build.BuildEngine.IItemGroup, System.Collections.IEnumerable">Microsoft.Build.BuildEngine.ItemGroup</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Constructor: public <b>ItemGroup</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="Microsoft.Build.BuildEngine">Item</span> <b>AddNewItem</b> (<span title="System">string</span> <i>itemType</i>, <span title="System">string</span> <i>itemInclude</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>Clear</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="Microsoft.Build.BuildEngine">ItemGroup</span> <b>Clone</b> (<span title="System">bool</span> <i>deepClone</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">bool</span> <b>Equals</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected virtual <span title="System">void</span> <b>Finalize</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="System.Collections">IEnumerator</span> <b>GetEnumerator</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">int</span> <b>GetHashCode</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>RemoveItem</b> (<span title="Microsoft.Build.BuildEngine">Item</span> <i>itemToRemove</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>RemoveItemAt</b> (<span title="System">int</span> <i>index</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">string</span> <b>ToString</b> ()</font></li>
+    <li><font color="black">Property: virtual <span title="System">string</span> <b>Condition</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">bool</span> <b>IsImported</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.BuildEngine ItemGroupCollection"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.BuildEngine ItemGroupCollection</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed class <b><span title="Base Type: System.Object; Interfaces: Microsoft.Build.BuildEngine.IItemGroupCollection; System.Collections.ICollection, System.Collections.IEnumerable">Microsoft.Build.BuildEngine.ItemGroupCollection</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Constructor: public <b>ItemGroupCollection</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>CopyTo</b> (<span title="Microsoft.Build.BuildEngine">ItemGroup[]</span> <i>array</i>, <span title="System">int</span> <i>index</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>CopyTo</b> (<span title="System">Array</span> <i>array</i>, <span title="System">int</span> <i>index</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">bool</span> <b>Equals</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected virtual <span title="System">void</span> <b>Finalize</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="System.Collections">IEnumerator</span> <b>GetEnumerator</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">int</span> <b>GetHashCode</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">string</span> <b>ToString</b> ()</font></li>
+    <li><font color="black">Property: virtual <span title="System">int</span> <b>Count</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">bool</span> <b>IsSynchronized</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">object</span> <b>SyncRoot</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.BuildEngine LoggerException"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.BuildEngine LoggerException</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed class <b><span title="Base Type: System.Exception; Interfaces: System.Runtime.Serialization.ISerializable, System.Runtime.InteropServices._Exception">Microsoft.Build.BuildEngine.LoggerException</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Constructor: public <b>LoggerException</b> ()</font></li>
+    <li><font color="black">Constructor: public <b>LoggerException</b> (<span title="System">string</span> <i>message</i>)</font></li>
+    <li><font color="black">Constructor: public <b>LoggerException</b> (<span title="System">string</span> <i>message</i>, <span title="System">Exception</span> <i>innerException</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">bool</span> <b>Equals</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected virtual <span title="System">void</span> <b>Finalize</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Exception">(i)</i></font>: public virtual <span title="System">Exception</span> <b>GetBaseException</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">int</span> <b>GetHashCode</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Exception">(i)</i></font>: public virtual <span title="System">void</span> <b>GetObjectData</b> (<span title="System.Runtime.Serialization">SerializationInfo</span> <i>info</i>, <span title="System.Runtime.Serialization">StreamingContext</span> <i>context</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Exception">(i)</i></font>: public virtual <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Exception">(i)</i></font>: public virtual <span title="System">string</span> <b>ToString</b> ()</font></li>
+    <li><font color="black">Property: <span title="Microsoft.Build.Framework">BuildEventArgs</span> <b>BuildEventArgs</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System.Collections">IDictionary</span> <b>Data</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>ErrorCode</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>HelpKeyword</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">string</span> <b>HelpLink</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: protected <span title="System">int</span> <b>HResult</b> { }</font></li>
+    <li><font color="black">Property: virtual <span title="System">Exception</span> <b>InnerException</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">string</span> <b>Message</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">string</span> <b>Source</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">string</span> <b>StackTrace</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System.Reflection">MethodBase</span> <b>TargetSite</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.BuildEngine Project"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.BuildEngine Project</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed class <b><span title="Base Type: System.Object; Interfaces: Microsoft.Build.BuildEngine.IProject">Microsoft.Build.BuildEngine.Project</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Constructor: public <b>Project</b> ()</font></li>
+    <li><font color="black">Constructor: public <b>Project</b> (<span title="Microsoft.Build.BuildEngine">Engine</span> <i>engine</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>AddNewImport</b> (<span title="System">string</span> <i>importLocation</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="Microsoft.Build.BuildEngine">Item</span> <b>AddNewItem</b> (<span title="System">string</span> <i>itemType</i>, <span title="System">string</span> <i>itemInclude</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="Microsoft.Build.BuildEngine">ItemGroup</span> <b>AddNewItemGroup</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="Microsoft.Build.BuildEngine">PropertyGroup</span> <b>AddNewPropertyGroup</b> (<span title="System">bool</span> <i>insertAtEndOfProject</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">bool</span> <b>Build</b> (<span title="System">string[]</span> <i>targetNamesToBuild</i>, <span title="System.Collections">IDictionary</span> <i>targetOutputs</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">bool</span> <b>BuildTarget</b> (<span title="System">string</span> <i>targetName</i>, <span title="System.Collections">IDictionary</span> <i>targetOutputs</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">bool</span> <b>Equals</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected virtual <span title="System">void</span> <b>Finalize</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="System">string[]</span> <b>GetConditionedPropertyValues</b> (<span title="System">string</span> <i>propertyName</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="Microsoft.Build.BuildEngine">ItemGroup</span> <b>GetEvaluatedItemsByType</b> (<span title="System">string</span> <i>itemType</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="Microsoft.Build.BuildEngine">ItemGroup</span> <b>GetEvaluatedItemsByTypeIgnoringCondition</b> (<span title="System">string</span> <i>itemType</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">int</span> <b>GetHashCode</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="System">string</span> <b>GetProjectExtensions</b> (<span title="System">string</span> <i>id</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>LoadFromFile</b> (<span title="System">string</span> <i>projectFileName</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>LoadFromXml</b> (<span title="System.Xml">XmlDocument</span> <i>projectXml</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>MarkProjectAsDirty</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>RefreshImportedProperties</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>RemoveAllItemGroups</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>RemoveAllItemGroupsByCondition</b> (<span title="System">string</span> <i>condition</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>RemoveAllPropertyGroups</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>RemoveAllPropertyGroupsByCondition</b> (<span title="System">string</span> <i>condition</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>RemoveItem</b> (<span title="Microsoft.Build.BuildEngine">Item</span> <i>itemToRemove</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>RemoveItemGroup</b> (<span title="Microsoft.Build.BuildEngine">ItemGroup</span> <i>itemGroupToRemove</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>RemoveItemsByType</b> (<span title="System">string</span> <i>itemType</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>RemovePropertyGroup</b> (<span title="Microsoft.Build.BuildEngine">PropertyGroup</span> <i>propertyGroupToRemove</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>ResetBuildStatus</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>SaveToFile</b> (<span title="System">string</span> <i>projectFileName</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>SaveToFileWithEncoding</b> (<span title="System">string</span> <i>projectFileName</i>, <span title="Microsoft.Build.BuildEngine">ProjectFileEncoding</span> <i>encoding</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>SaveToTextWriter</b> (<span title="System.IO">TextWriter</span> <i>outTextWriter</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>SetProjectExtensions</b> (<span title="System">string</span> <i>id</i>, <span title="System">string</span> <i>xmlText</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>SetProperty</b> (<span title="System">string</span> <i>propertyName</i>, <span title="System">string</span> <i>propertyValue</i>, <span title="System">string</span> <i>condition</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>SetPropertyAt</b> (<span title="System">string</span> <i>propertyName</i>, <span title="System">string</span> <i>propertyValue</i>, <span title="System">string</span> <i>condition</i>, <span title="Microsoft.Build.BuildEngine">SetPropertyPosition</span> <i>position</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">string</span> <b>ToString</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>Unload</b> ()</font></li>
+    <li><font color="black">Property: virtual <span title="System">string</span> <b>CurrentEncoding</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">string</span> <b>DefaultTargets</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="Microsoft.Build.BuildEngine">ItemGroup</span> <b>EvaluatedItems</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="Microsoft.Build.BuildEngine">ItemGroup</span> <b>EvaluatedItemsIgnoringCondition</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="Microsoft.Build.BuildEngine">PropertyGroup</span> <b>EvaluatedProperties</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">string</span> <b>FullFileName</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="Microsoft.Build.BuildEngine">PropertyGroup</span> <b>GlobalProperties</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">bool</span> <b>IsDirty</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System">bool</span> <b>IsValidated</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="Microsoft.Build.BuildEngine">ItemGroupCollection</span> <b>ItemGroups</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="Microsoft.Build.BuildEngine">Engine</span> <b>ParentEngine</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="Microsoft.Build.BuildEngine">PropertyGroupCollection</span> <b>PropertyGroups</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>SchemaFile</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="Microsoft.Build.BuildEngine">TargetCollection</span> <b>Targets</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">DateTime</span> <b>TimeOfLastDirty</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System.Xml">XmlDocument</span> <b>Xml</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name=" ProjectFileEncoding"><td colspan="2" align="center" style="font:100%;"><b><font color='black'> ProjectFileEncoding</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed enum <b><span title="Base Type: System.Enum; Interfaces: System.IComparable, System.IFormattable, System.IConvertible">Microsoft.Build.BuildEngine.ProjectFileEncoding</span>
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspUnicodeBE = 0,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspUnicode = 1,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspAscii = 2,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspUtf8 = 3,
+<br></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">--> NONE <--
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.BuildEngine Property"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.BuildEngine Property</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed class <b><span title="Base Type: System.Object; Interfaces: Microsoft.Build.BuildEngine.IProperty">Microsoft.Build.BuildEngine.Property</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Constructor: public <b>Property</b> ()</font></li>
+    <li><font color="black">Constructor: public <b>Property</b> (<span title="System">string</span> <i>propertyName</i>, <span title="System">string</span> <i>propertyValue</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="Microsoft.Build.BuildEngine">Property</span> <b>Clone</b> (<span title="System">bool</span> <i>deepClone</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">bool</span> <b>Equals</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected virtual <span title="System">void</span> <b>Finalize</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">int</span> <b>GetHashCode</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method: public override <span title="System">string</span> <b>ToString</b> ()</font></li>
+    <li><font color="black">Property: virtual <span title="System">string</span> <b>Condition</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">string</span> <b>FinalValue</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">string</span> <b>Name</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">string</span> <b>Value</b> { public get; public set; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.BuildEngine PropertyGroup"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.BuildEngine PropertyGroup</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed class <b><span title="Base Type: System.Object; Interfaces: Microsoft.Build.BuildEngine.IPropertyGroup, System.Collections.IEnumerable">Microsoft.Build.BuildEngine.PropertyGroup</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Constructor: public <b>PropertyGroup</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="Microsoft.Build.BuildEngine">Property</span> <b>AddNewProperty</b> (<span title="System">string</span> <i>propertyName</i>, <span title="System">string</span> <i>propertyValue</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>Clear</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="Microsoft.Build.BuildEngine">PropertyGroup</span> <b>Clone</b> (<span title="System">bool</span> <i>deepClone</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">bool</span> <b>Equals</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected virtual <span title="System">void</span> <b>Finalize</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="System.Collections">IEnumerator</span> <b>GetEnumerator</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">int</span> <b>GetHashCode</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>RemoveProperty</b> (<span title="Microsoft.Build.BuildEngine">Property</span> <i>propertyToRemove</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>RemovePropertyByName</b> (<span title="System">string</span> <i>propertyNameToRemove</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>SetProperty</b> (<span title="System">string</span> <i>propertyName</i>, <span title="System">string</span> <i>propertyValue</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">string</span> <b>ToString</b> ()</font></li>
+    <li><font color="black">Property: virtual <span title="System">string</span> <b>Condition</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">int</span> <b>Count</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">bool</span> <b>IsImported</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="Microsoft.Build.BuildEngine">Property</span> <b>this</b> [<span title="System">string</span> <i>propertyName</i>] { public get; public set; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.BuildEngine PropertyGroupCollection"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.BuildEngine PropertyGroupCollection</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed class <b><span title="Base Type: System.Object; Interfaces: Microsoft.Build.BuildEngine.IPropertyGroupCollection; System.Collections.ICollection, System.Collections.IEnumerable">Microsoft.Build.BuildEngine.PropertyGroupCollection</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Constructor: public <b>PropertyGroupCollection</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>CopyTo</b> (<span title="Microsoft.Build.BuildEngine">PropertyGroup[]</span> <i>array</i>, <span title="System">int</span> <i>index</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>CopyTo</b> (<span title="System">Array</span> <i>array</i>, <span title="System">int</span> <i>index</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">bool</span> <b>Equals</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected virtual <span title="System">void</span> <b>Finalize</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="System.Collections">IEnumerator</span> <b>GetEnumerator</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">int</span> <b>GetHashCode</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">string</span> <b>ToString</b> ()</font></li>
+    <li><font color="black">Property: virtual <span title="System">int</span> <b>Count</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">bool</span> <b>IsSynchronized</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">object</span> <b>SyncRoot</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name=" SetPropertyPosition"><td colspan="2" align="center" style="font:100%;"><b><font color='black'> SetPropertyPosition</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed enum <b><span title="Base Type: System.Enum; Interfaces: System.IComparable, System.IFormattable, System.IConvertible">Microsoft.Build.BuildEngine.SetPropertyPosition</span>
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspUseExistingOrCreateAfterLastPropertyGroup = 0,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspUseExistingOrCreateAfterLastImport = 1,
+<br></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">--> NONE <--
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.BuildEngine SolutionParser"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.BuildEngine SolutionParser</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed class <b><span title="Base Type: System.Object">Microsoft.Build.BuildEngine.SolutionParser</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Constructor: public <b>SolutionParser</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">bool</span> <b>Equals</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected virtual <span title="System">void</span> <b>Finalize</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">int</span> <b>GetHashCode</b> ()</font></li>
+    <li><font color="black">Method: public <span title="System">string</span> <b>GetProjectRelativePathByGuid</b> (<span title="System">string</span> <i>projectGuid</i>)</font></li>
+    <li><font color="black">Method: public <span title="System">string</span> <b>GetProjectUniqueNameByGuid</b> (<span title="System">string</span> <i>projectGuid</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method: public <span title="System">void</span> <b>ParseSolutionFile</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">string</span> <b>ToString</b> ()</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>SolutionFile</b> { public get; public set; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.BuildEngine Target"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.BuildEngine Target</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed class <b><span title="Base Type: System.Object; Interfaces: Microsoft.Build.BuildEngine.ITarget, System.Collections.IEnumerable">Microsoft.Build.BuildEngine.Target</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method: public <span title="Microsoft.Build.BuildEngine">TaskElement</span> <b>AddNewTaskElement</b> (<span title="System">string</span> <i>taskName</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">bool</span> <b>Equals</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected virtual <span title="System">void</span> <b>Finalize</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="System.Collections">IEnumerator</span> <b>GetEnumerator</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">int</span> <b>GetHashCode</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method: public <span title="System">void</span> <b>RemoveTaskElement</b> (<span title="Microsoft.Build.BuildEngine">TaskElement</span> <i>taskElement</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">string</span> <b>ToString</b> ()</font></li>
+    <li><font color="black">Property: virtual <span title="System">string</span> <b>Condition</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">string</span> <b>DependsOnTargets</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System">bool</span> <b>IsImported</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">string</span> <b>Name</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.BuildEngine TargetCollection"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.BuildEngine TargetCollection</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed class <b><span title="Base Type: System.Object; Interfaces: Microsoft.Build.BuildEngine.ITargetCollection; System.Collections.ICollection, System.Collections.IEnumerable">Microsoft.Build.BuildEngine.TargetCollection</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method: public <span title="Microsoft.Build.BuildEngine">Target</span> <b>AddNewTarget</b> (<span title="System">string</span> <i>targetName</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>CopyTo</b> (<span title="Microsoft.Build.BuildEngine">Target[]</span> <i>array</i>, <span title="System">int</span> <i>index</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>CopyTo</b> (<span title="System">Array</span> <i>array</i>, <span title="System">int</span> <i>index</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">bool</span> <b>Equals</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">bool</span> <b>Exists</b> (<span title="System">string</span> <i>targetName</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected virtual <span title="System">void</span> <b>Finalize</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="System.Collections">IEnumerator</span> <b>GetEnumerator</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">int</span> <b>GetHashCode</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method: public <span title="System">void</span> <b>RemoveTarget</b> (<span title="Microsoft.Build.BuildEngine">Target</span> <i>targetToRemove</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">string</span> <b>ToString</b> ()</font></li>
+    <li><font color="black">Property: virtual <span title="System">int</span> <b>Count</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">bool</span> <b>IsSynchronized</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="Microsoft.Build.BuildEngine">Target</span> <b>this</b> [<span title="System">string</span> <i>index</i>] { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">object</span> <b>SyncRoot</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.BuildEngine TaskElement"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.BuildEngine TaskElement</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public class <b><span title="Base Type: System.Object; Interfaces: Microsoft.Build.BuildEngine.ITaskElement">Microsoft.Build.BuildEngine.TaskElement</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Constructor: public <b>TaskElement</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">bool</span> <b>Equals</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method: public virtual <span title="System">bool</span> <b>Execute</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected virtual <span title="System">void</span> <b>Finalize</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">int</span> <b>GetHashCode</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="System">string[]</span> <b>GetParameterNames</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="System">string</span> <b>GetParameterValue</b> (<span title="System">string</span> <i>attributeName</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="System">void</span> <b>SetParameterValue</b> (<span title="System">string</span> <i>parameterName</i>, <span title="System">string</span> <i>parameterValue</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">string</span> <b>ToString</b> ()</font></li>
+    <li><font color="black">Property: virtual <span title="System">string</span> <b>Condition</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">bool</span> <b>ContinueOnError</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">object</span> <b>HostObject</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">string</span> <b>Name</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">Type</span> <b>Type</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.BuildEngine TaskEngineAssemblyResolver"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.BuildEngine TaskEngineAssemblyResolver</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed class <b><span title="Base Type: System.MarshalByRefObject">Microsoft.Build.BuildEngine.TaskEngineAssemblyResolver</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Constructor: public <b>TaskEngineAssemblyResolver</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: public virtual <span title="System.Runtime.Remoting">ObjRef</span> <b>CreateObjRef</b> (<span title="System">Type</span> <i>requestedType</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">bool</span> <b>Equals</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected virtual <span title="System">void</span> <b>Finalize</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">int</span> <b>GetHashCode</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: public virtual <span title="System">object</span> <b>GetLifetimeService</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: public virtual <span title="System">object</span> <b>InitializeLifetimeService</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">string</span> <b>ToString</b> ()</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="Microsoft.Build.BuildEngine Utilities"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>Microsoft.Build.BuildEngine Utilities</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed class <b><span title="Base Type: System.Object; Interfaces: Microsoft.Build.BuildEngine.ICultureStringUtilities">Microsoft.Build.BuildEngine.Utilities</span></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Constructor: public <b>Utilities</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">bool</span> <b>Equals</b> (<span title="System">object</span> <i>obj</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected virtual <span title="System">void</span> <b>Finalize</b> ()</font></li>
+    <li><font color="black">Method: public static <span title="System">string</span> <b>GetDescriptiveErrorMessage</b> (<span title="System">Exception</span> <i>e</i>, <span title="Microsoft.Build.BuildEngine">Engine</span> <i>engine</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">int</span> <b>GetHashCode</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="System">string[]</span> <b>GetSupportedCultures</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public virtual <span title="System">string</span> <b>ToString</b> ()</font></li>
+    <li><font color="black">Method: public virtual <span title="System">bool</span> <b>ValidateCulture</b> (<span title="System">string</span> <i>culture</i>)</font></li>
+   </ul>
+  </td>
+ </tr>
+
+</tbody>
+</table>
+
+<p class="endNav"><font size=2><a href="#top">Top</a> &bull; <a href="..\APIChangesEVERTMtoWHI40607.03.html" target=_top>Summary</a></font></p>
+
+</body>
+</html>
+

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="XJP" type="XJPType"/>
+	<xs:complexType name="XJPType">
+		<xs:sequence>
+			<xs:element name="Info" type="InfoType"/>
+			<xs:element name="Picture" type="ImageType" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="InfoType">
+		<xs:sequence>
+			<xs:element name="Data" type="DataType" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DataType">
+		<xs:attribute name="Value" type="xs:string" use="required" />
+		<xs:attribute name="Exists" type="xs:string" use="required" />
+	</xs:complexType>
+	<xs:complexType name="ImageType">
+		<xs:attribute name="Exists" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:pattern value="Yes|No"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+</xs:schema>

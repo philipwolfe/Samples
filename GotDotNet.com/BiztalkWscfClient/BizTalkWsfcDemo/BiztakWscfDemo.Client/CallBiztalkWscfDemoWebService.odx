@@ -1,0 +1,238 @@
+﻿#if __DESIGNER_DATA
+#error Do not define __DESIGNER_DATA.
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<om:MetaModel MajorVersion="1" MinorVersion="3" Core="2b131234-7959-458d-834f-2dc0769ce683" ScheduleModel="66366196-361d-448d-976f-cab5e87496d2" xmlns:om="http://schemas.microsoft.com/BizTalk/2003/DesignerData">
+    <om:Element Type="Module" OID="bfa81873-bf37-4909-93ff-74eecdcd4c66" LowerBound="1.1" HigherBound="52.1">
+        <om:Property Name="ReportToAnalyst" Value="True" />
+        <om:Property Name="Name" Value="BiztakWscfDemoClient" />
+        <om:Property Name="Signal" Value="False" />
+        <om:Element Type="PortType" OID="b5314f98-dd6b-43bb-a5a7-66a45e35a487" ParentLink="Module_PortType" LowerBound="4.1" HigherBound="11.1">
+            <om:Property Name="Synchronous" Value="False" />
+            <om:Property Name="TypeModifier" Value="Internal" />
+            <om:Property Name="ReportToAnalyst" Value="True" />
+            <om:Property Name="Name" Value="PortType_ReceiveGetPeronByIdMsg" />
+            <om:Property Name="Signal" Value="False" />
+            <om:Element Type="OperationDeclaration" OID="d7a63e65-8327-4345-9ea0-50a1f1270c4b" ParentLink="PortType_OperationDeclaration" LowerBound="6.1" HigherBound="10.1">
+                <om:Property Name="OperationType" Value="OneWay" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="Operation_ReceiveGetCompanyForPerson" />
+                <om:Property Name="Signal" Value="True" />
+                <om:Element Type="MessageRef" OID="00d47ec8-3765-4457-8cc4-7d4a9501f858" ParentLink="OperationDeclaration_RequestMessageRef" LowerBound="8.13" HigherBound="8.99">
+                    <om:Property Name="Ref" Value="BiztakWscfDemo.Client.WebPorts.BiztalkWscfDemoServicePort_.GetCompanyForPerson_request" />
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="Request" />
+                    <om:Property Name="Signal" Value="True" />
+                </om:Element>
+            </om:Element>
+        </om:Element>
+        <om:Element Type="PortType" OID="a2a4a509-bcf7-4435-a77a-1b380bc88d7f" ParentLink="Module_PortType" LowerBound="11.1" HigherBound="18.1">
+            <om:Property Name="Synchronous" Value="False" />
+            <om:Property Name="TypeModifier" Value="Internal" />
+            <om:Property Name="ReportToAnalyst" Value="True" />
+            <om:Property Name="Name" Value="PortType_DumpReceivedCompanyMsg" />
+            <om:Property Name="Signal" Value="False" />
+            <om:Element Type="OperationDeclaration" OID="cf58d399-77c0-4c1b-bde3-de67ed79712a" ParentLink="PortType_OperationDeclaration" LowerBound="13.1" HigherBound="17.1">
+                <om:Property Name="OperationType" Value="OneWay" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="Operation_DumpCompanyMsg" />
+                <om:Property Name="Signal" Value="True" />
+                <om:Element Type="MessageRef" OID="60ef8ab0-2d30-4ce0-958e-15301367ae80" ParentLink="OperationDeclaration_RequestMessageRef" LowerBound="15.13" HigherBound="15.100">
+                    <om:Property Name="Ref" Value="BiztakWscfDemo.Client.WebPorts.BiztalkWscfDemoServicePort_.GetCompanyForPerson_response" />
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="Request" />
+                    <om:Property Name="Signal" Value="True" />
+                </om:Element>
+            </om:Element>
+        </om:Element>
+        <om:Element Type="ServiceDeclaration" OID="a891db3c-ce77-4adb-a6b6-b4279589f834" ParentLink="Module_ServiceDeclaration" LowerBound="18.1" HigherBound="51.1">
+            <om:Property Name="InitializedTransactionType" Value="False" />
+            <om:Property Name="IsInvokable" Value="False" />
+            <om:Property Name="TypeModifier" Value="Internal" />
+            <om:Property Name="ReportToAnalyst" Value="True" />
+            <om:Property Name="Name" Value="CallbiztalkWscfDemoWebService" />
+            <om:Property Name="Signal" Value="False" />
+            <om:Element Type="VariableDeclaration" OID="54348087-5e45-4fd1-8f74-fa7bbfd5040b" ParentLink="ServiceDeclaration_VariableDeclaration" LowerBound="29.1" HigherBound="30.1">
+                <om:Property Name="UseDefaultConstructor" Value="True" />
+                <om:Property Name="Type" Value="System.Xml.XmlDocument" />
+                <om:Property Name="ParamDirection" Value="In" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="objXml" />
+                <om:Property Name="Signal" Value="True" />
+            </om:Element>
+            <om:Element Type="MessageDeclaration" OID="7234e726-d096-4d2c-a691-986f541260c0" ParentLink="ServiceDeclaration_MessageDeclaration" LowerBound="27.1" HigherBound="28.1">
+                <om:Property Name="Type" Value="BiztakWscfDemo.Client.WebPorts.BiztalkWscfDemoServicePort_.GetCompanyForPerson_request" />
+                <om:Property Name="ParamDirection" Value="In" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="msgGetCompanyForPersonRequest" />
+                <om:Property Name="Signal" Value="True" />
+            </om:Element>
+            <om:Element Type="MessageDeclaration" OID="c165e0c0-a58d-4655-a9e4-b734cbda71b3" ParentLink="ServiceDeclaration_MessageDeclaration" LowerBound="28.1" HigherBound="29.1">
+                <om:Property Name="Type" Value="BiztakWscfDemo.Client.WebPorts.BiztalkWscfDemoServicePort_.GetCompanyForPerson_response" />
+                <om:Property Name="ParamDirection" Value="In" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="msgGetCompanyForPersonResponse" />
+                <om:Property Name="Signal" Value="True" />
+            </om:Element>
+            <om:Element Type="ServiceBody" OID="91cdf1d6-4e93-4c84-83f9-e7f5b6cce8e9" ParentLink="ServiceDeclaration_ServiceBody">
+                <om:Property Name="Signal" Value="False" />
+                <om:Element Type="Receive" OID="b3d2487f-80c2-4117-9cad-1ed75598e62c" ParentLink="ServiceBody_Statement" LowerBound="32.1" HigherBound="35.1">
+                    <om:Property Name="Activate" Value="True" />
+                    <om:Property Name="PortName" Value="Port_ReceiveGetCompanyForPerson" />
+                    <om:Property Name="MessageName" Value="msgGetCompanyForPersonRequest" />
+                    <om:Property Name="OperationName" Value="Operation_ReceiveGetCompanyForPerson" />
+                    <om:Property Name="OperationMessageName" Value="Request" />
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="Receive_GetCompanyForPersonMsg" />
+                    <om:Property Name="Signal" Value="True" />
+                </om:Element>
+                <om:Element Type="VariableAssignment" OID="cdfde1ac-f0e0-4a72-8f5d-8db6597516cb" ParentLink="ServiceBody_Statement" LowerBound="35.1" HigherBound="38.1">
+                    <om:Property Name="Expression" Value="objXml = msgGetCompanyForPersonRequest.getCompanyForPerson1;&#xD;&#xA;System.Diagnostics.Trace.WriteLine(&quot;CallBiztalkWscfDemoWebService: Receieved a 'get company for person' message: &quot; + objXml.OuterXml);" />
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="Trace" />
+                    <om:Property Name="Signal" Value="True" />
+                </om:Element>
+                <om:Element Type="Send" OID="26bde141-ef55-41eb-bb78-0365075a15dd" ParentLink="ServiceBody_Statement" LowerBound="38.1" HigherBound="40.1">
+                    <om:Property Name="PortName" Value="Port_BizTalkWscfDemoService" />
+                    <om:Property Name="MessageName" Value="msgGetCompanyForPersonRequest" />
+                    <om:Property Name="OperationName" Value="GetCompanyForPerson" />
+                    <om:Property Name="OperationMessageName" Value="Request" />
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="Send_GetCompanyForPersonRequest" />
+                    <om:Property Name="Signal" Value="True" />
+                </om:Element>
+                <om:Element Type="VariableAssignment" OID="06d31f8d-1560-4ebb-b8be-288130682914" ParentLink="ServiceBody_Statement" LowerBound="40.1" HigherBound="42.1">
+                    <om:Property Name="Expression" Value="System.Diagnostics.Trace.WriteLine(&quot;Get 'company for person' message sent&quot;);" />
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="Trace" />
+                    <om:Property Name="Signal" Value="False" />
+                </om:Element>
+                <om:Element Type="Receive" OID="400adfaf-8890-417a-b508-df6c8b09dedc" ParentLink="ServiceBody_Statement" LowerBound="42.1" HigherBound="44.1">
+                    <om:Property Name="Activate" Value="False" />
+                    <om:Property Name="PortName" Value="Port_BizTalkWscfDemoService" />
+                    <om:Property Name="MessageName" Value="msgGetCompanyForPersonResponse" />
+                    <om:Property Name="OperationName" Value="GetCompanyForPerson" />
+                    <om:Property Name="OperationMessageName" Value="Response" />
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="Receive_GetPersonByIdResponse" />
+                    <om:Property Name="Signal" Value="True" />
+                </om:Element>
+                <om:Element Type="VariableAssignment" OID="26031e97-1379-43e3-baaa-f4d4fdc90418" ParentLink="ServiceBody_Statement" LowerBound="44.1" HigherBound="47.1">
+                    <om:Property Name="Expression" Value="objXml = msgGetCompanyForPersonResponse.getCompanyForPersonResponse1;&#xD;&#xA;System.Diagnostics.Trace.WriteLine(&quot;CallbiztalkWscfDemoWebService: Receieved a company message...&quot; + objXml.OuterXml);" />
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="Trace" />
+                    <om:Property Name="Signal" Value="True" />
+                </om:Element>
+                <om:Element Type="Send" OID="3e210dcb-a40d-4dd4-b445-d1f6c4a41504" ParentLink="ServiceBody_Statement" LowerBound="47.1" HigherBound="49.1">
+                    <om:Property Name="PortName" Value="Port_DumpReceivedCompanyMsg" />
+                    <om:Property Name="MessageName" Value="msgGetCompanyForPersonResponse" />
+                    <om:Property Name="OperationName" Value="Operation_DumpCompanyMsg" />
+                    <om:Property Name="OperationMessageName" Value="Request" />
+                    <om:Property Name="ReportToAnalyst" Value="True" />
+                    <om:Property Name="Name" Value="Send_MsgGetCompanyForPersonResponse" />
+                    <om:Property Name="Signal" Value="True" />
+                </om:Element>
+            </om:Element>
+            <om:Element Type="PortDeclaration" OID="25181e06-21ae-45c3-90ec-e4fead15b05d" ParentLink="ServiceDeclaration_PortDeclaration" LowerBound="21.1" HigherBound="23.1">
+                <om:Property Name="PortModifier" Value="Implements" />
+                <om:Property Name="Orientation" Value="Left" />
+                <om:Property Name="PortIndex" Value="4" />
+                <om:Property Name="IsWebPort" Value="False" />
+                <om:Property Name="OrderedDelivery" Value="False" />
+                <om:Property Name="DeliveryNotification" Value="None" />
+                <om:Property Name="Type" Value="BiztakWscfDemoClient.PortType_ReceiveGetPeronByIdMsg" />
+                <om:Property Name="ParamDirection" Value="In" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="Port_ReceiveGetCompanyForPerson" />
+                <om:Property Name="Signal" Value="True" />
+                <om:Element Type="LogicalBindingAttribute" OID="b394c952-8bee-46f2-931d-8ac0fbe1fdf3" ParentLink="PortDeclaration_CLRAttribute" LowerBound="21.1" HigherBound="22.1">
+                    <om:Property Name="Signal" Value="False" />
+                </om:Element>
+            </om:Element>
+            <om:Element Type="PortDeclaration" OID="7f7553cc-77f7-407b-9391-d1b17e9df165" ParentLink="ServiceDeclaration_PortDeclaration" LowerBound="23.1" HigherBound="25.1">
+                <om:Property Name="PortModifier" Value="Uses" />
+                <om:Property Name="Orientation" Value="Right" />
+                <om:Property Name="PortIndex" Value="17" />
+                <om:Property Name="IsWebPort" Value="False" />
+                <om:Property Name="OrderedDelivery" Value="False" />
+                <om:Property Name="DeliveryNotification" Value="None" />
+                <om:Property Name="Type" Value="BiztakWscfDemoClient.PortType_DumpReceivedCompanyMsg" />
+                <om:Property Name="ParamDirection" Value="In" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="Port_DumpReceivedCompanyMsg" />
+                <om:Property Name="Signal" Value="False" />
+                <om:Element Type="LogicalBindingAttribute" OID="235f92ab-7147-4360-84ff-19f542d8dc4f" ParentLink="PortDeclaration_CLRAttribute" LowerBound="23.1" HigherBound="24.1">
+                    <om:Property Name="Signal" Value="False" />
+                </om:Element>
+            </om:Element>
+            <om:Element Type="PortDeclaration" OID="b64c6c12-6734-476e-8b69-44c2daa7f677" ParentLink="ServiceDeclaration_PortDeclaration" LowerBound="25.1" HigherBound="27.1">
+                <om:Property Name="PortModifier" Value="Uses" />
+                <om:Property Name="Orientation" Value="Right" />
+                <om:Property Name="PortIndex" Value="8" />
+                <om:Property Name="IsWebPort" Value="True" />
+                <om:Property Name="OrderedDelivery" Value="False" />
+                <om:Property Name="DeliveryNotification" Value="None" />
+                <om:Property Name="Type" Value="BiztakWscfDemo.Client.WebPorts.BiztalkWscfDemoServicePort_.BiztalkWscfDemoServicePort" />
+                <om:Property Name="ParamDirection" Value="In" />
+                <om:Property Name="ReportToAnalyst" Value="True" />
+                <om:Property Name="Name" Value="Port_BizTalkWscfDemoService" />
+                <om:Property Name="Signal" Value="False" />
+                <om:Element Type="LogicalBindingAttribute" OID="a5429843-cd87-4518-a97f-8a459b8e4d58" ParentLink="PortDeclaration_CLRAttribute" LowerBound="25.1" HigherBound="26.1">
+                    <om:Property Name="Signal" Value="False" />
+                </om:Element>
+            </om:Element>
+        </om:Element>
+    </om:Element>
+</om:MetaModel>
+#endif // __DESIGNER_DATA
+[Microsoft.XLANGs.BaseTypes.BPELExportable(false)]
+module BiztakWscfDemoClient
+{
+    internal porttype PortType_ReceiveGetPeronByIdMsg
+    {
+        oneway Operation_ReceiveGetCompanyForPerson
+        {
+            BiztakWscfDemo.Client.WebPorts.BiztalkWscfDemoServicePort_.GetCompanyForPerson_request
+        };
+    };
+    internal porttype PortType_DumpReceivedCompanyMsg
+    {
+        oneway Operation_DumpCompanyMsg
+        {
+            BiztakWscfDemo.Client.WebPorts.BiztalkWscfDemoServicePort_.GetCompanyForPerson_response
+        };
+    };
+    [Microsoft.XLANGs.BaseTypes.BPELExportable(false)]
+    internal service CallbiztalkWscfDemoWebService
+    {
+        [Microsoft.XLANGs.BaseTypes.LogicalBinding()]
+        port implements PortType_ReceiveGetPeronByIdMsg Port_ReceiveGetCompanyForPerson;
+        [Microsoft.XLANGs.BaseTypes.LogicalBinding()]
+        port uses PortType_DumpReceivedCompanyMsg Port_DumpReceivedCompanyMsg;
+        [Microsoft.XLANGs.BaseTypes.LogicalBinding()]
+        port uses BiztakWscfDemo.Client.WebPorts.BiztalkWscfDemoServicePort_.BiztalkWscfDemoServicePort Port_BizTalkWscfDemoService;
+        message BiztakWscfDemo.Client.WebPorts.BiztalkWscfDemoServicePort_.GetCompanyForPerson_request msgGetCompanyForPersonRequest;
+        message BiztakWscfDemo.Client.WebPorts.BiztalkWscfDemoServicePort_.GetCompanyForPerson_response msgGetCompanyForPersonResponse;
+        System.Xml.XmlDocument objXml;
+        body ()
+        {
+            [Microsoft.XLANGs.BaseTypes.DesignerPosition("b3d2487f-80c2-4117-9cad-1ed75598e62c")]
+            activate receive (Port_ReceiveGetCompanyForPerson.Operation_ReceiveGetCompanyForPerson, msgGetCompanyForPersonRequest);
+            objXml = new System.Xml.XmlDocument();
+            [Microsoft.XLANGs.BaseTypes.DesignerPosition("cdfde1ac-f0e0-4a72-8f5d-8db6597516cb")]
+            objXml = msgGetCompanyForPersonRequest.getCompanyForPerson1;
+            System.Diagnostics.Trace.WriteLine("CallBiztalkWscfDemoWebService: Receieved a 'get company for person' message: " + objXml.OuterXml);
+            [Microsoft.XLANGs.BaseTypes.DesignerPosition("26bde141-ef55-41eb-bb78-0365075a15dd")]
+            send (Port_BizTalkWscfDemoService.GetCompanyForPerson, msgGetCompanyForPersonRequest);
+            [Microsoft.XLANGs.BaseTypes.DesignerPosition("06d31f8d-1560-4ebb-b8be-288130682914")]
+            System.Diagnostics.Trace.WriteLine("Get 'company for person' message sent");
+            [Microsoft.XLANGs.BaseTypes.DesignerPosition("400adfaf-8890-417a-b508-df6c8b09dedc")]
+            receive (Port_BizTalkWscfDemoService.GetCompanyForPerson, msgGetCompanyForPersonResponse);
+            [Microsoft.XLANGs.BaseTypes.DesignerPosition("26031e97-1379-43e3-baaa-f4d4fdc90418")]
+            objXml = msgGetCompanyForPersonResponse.getCompanyForPersonResponse1;
+            System.Diagnostics.Trace.WriteLine("CallbiztalkWscfDemoWebService: Receieved a company message..." + objXml.OuterXml);
+            [Microsoft.XLANGs.BaseTypes.DesignerPosition("3e210dcb-a40d-4dd4-b445-d1f6c4a41504")]
+            send (Port_DumpReceivedCompanyMsg.Operation_DumpCompanyMsg, msgGetCompanyForPersonResponse);
+        }
+    }
+}
+

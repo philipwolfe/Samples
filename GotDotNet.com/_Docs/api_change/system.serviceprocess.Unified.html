@@ -1,0 +1,311 @@
+<font face="Arial" size="1">
+
+<html>
+<head>
+<title>Changes in system.serviceprocess from EVERTM (Version 1.1.4322.573)<br> to WHI40607.03 (Version 2.0.40607.3)</title>
+
+<style type="text/css">
+dt      { font-weight: Bold; }
+.big    { font-size: 150%; font-weight: Bold; }
+.small  { font-size:  75%; font-weight: Normal; }
+.endNav { font-size:  75%; font-weight: Normal; margin: 20; }
+</style>
+
+</head>
+
+<body>
+<a name="top" id="top"></a>
+<h2><center>Changes in system.serviceprocess from EVERTM (Version 1.1.4322.573)<br> to WHI40607.03 (Version 2.0.40607.3)</center></h2>
+
+
+<table width="90%" align="center" border="1" cellspacing="0" bordercolor="A0000" style=background-color: #F0F0F0; border-style: solid;>
+<thead>
+ <tr>
+  <th width="50%" align="left">Removed</td>
+  <th width="50%" align="left">Added</td>
+ </tr>
+</thead>
+<tbody>
+
+ <tr>
+  <a name="System.ServiceProcess ServiceBase"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public class <b><span title="Base Type: System.ComponentModel.Component; Interfaces: System.IDisposable, System.ComponentModel.IComponent">System.ServiceProcess.ServiceBase</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method: protected virtual <span title="System">void</span> <b>OnSessionChange</b> (<span title="System.ServiceProcess">SessionStateChange</span> <i>changeType</i>, <span title="System">int</span> <i>sessionId</i>)</font></li>
+    <li><font color="black">Method: public <span title="System">void</span> <b>ServiceMainCallback</b> (<span title="System">int</span> <i>argCount</i>, <span title="System">IntPtr</span> <i>argPointer</i>)</font></li>
+    <li><font color="black">Method: public <span title="System">void</span> <b>UpdatePendingStatus</b> (<span title="System">int</span> <i>waitHint</i>)</font></li>
+    <li><font color="black">Property: <span title="System">bool</span> <b>CanHandleSessionChangeEvent</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: protected virtual <span title="System">bool</span> <b>CanRaiseEvents</b> { }</font></li>
+    <li><font color="black">Property: <span title="System">IntPtr</span> <b>CustomCommandEventContext</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System">IntPtr</span> <b>CustomCommandEventData</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System">int</span> <b>CustomCommandEventType</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System">int</span> <b>ExitCode</b> { public get; public set; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.ServiceProcess ServiceController"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public class <b><span title="Base Type: System.ComponentModel.Component; Interfaces: System.IDisposable, System.ComponentModel.IComponent">System.ServiceProcess.ServiceController</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Property: protected virtual <span title="System">bool</span> <b>CanRaiseEvents</b> { }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.ServiceProcess ServiceControllerPermission"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public sealed class <b><span title="Base Type: System.Security.Permissions.ResourcePermissionBase; Interfaces: System.Security.ISecurityEncodable, System.Security.IPermission, System.Security.IStackWalk, System.Security.Permissions.IUnrestrictedPermission">System.ServiceProcess.ServiceControllerPermission</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Security.CodeAccessPermission">(i)</i></font>: public virtual <span title="System">bool</span> <b>CheckAssert</b> (<span title="System.Security">CodeAccessPermission</span> <i>asserted</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Security.CodeAccessPermission">(i)</i></font>: public virtual <span title="System">bool</span> <b>CheckDemand</b> (<span title="System.Security">CodeAccessPermission</span> <i>grant</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Security.CodeAccessPermission">(i)</i></font>: public virtual <span title="System">bool</span> <b>CheckDeny</b> (<span title="System.Security">CodeAccessPermission</span> <i>denied</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Security.CodeAccessPermission">(i)</i></font>: public virtual <span title="System">bool</span> <b>CheckPermitOnly</b> (<span title="System.Security">CodeAccessPermission</span> <i>permitted</i>)</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.ServiceProcess ServiceControllerPermissionEntryCollection"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public class <b><span title="Base Type: System.Collections.CollectionBase; Interfaces: System.Collections.ICollection, System.Collections.IEnumerable, System.Collections.IList">System.ServiceProcess.ServiceControllerPermissionEntryCollection</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Property: <span title="System">int</span> <b>Capacity</b> { public get; public set; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.ServiceProcess ServiceInstaller"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public class <b><span title="Base Type: System.Configuration.Install.ComponentInstaller; Interfaces: System.IDisposable, System.ComponentModel.IComponent">System.ServiceProcess.ServiceInstaller</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Property: protected virtual <span title="System">bool</span> <b>CanRaiseEvents</b> { }</font></li>
+    <li><font color="black">Property: <span title="System">string</span> <b>Description</b> { public get; public set; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.ServiceProcess ServiceProcessInstaller"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>public class <b><span title="Base Type: System.Configuration.Install.ComponentInstaller; Interfaces: System.IDisposable, System.ComponentModel.IComponent">System.ServiceProcess.ServiceProcessInstaller</span></b></font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Property: protected virtual <span title="System">bool</span> <b>CanRaiseEvents</b> { }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name=" SessionStateChange"><td colspan="2" align="center" style="font:100%;"><b><font color='black'> SessionStateChange</font> () </b></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">n/a
+  </td>
+  <td width="50%" align="left"><font color='black'>public sealed enum <b><span title="Base Type: System.Enum; Interfaces: System.IComparable, System.IFormattable, System.IConvertible">System.ServiceProcess.SessionStateChange</span>
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspConsoleConnect = 1,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspConsoleDisconnect = 2,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspRemoteConnect = 3,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspRemoteDisconnect = 4,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSessionLogon = 5,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSessionLogoff = 6,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSessionLock = 7,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSessionUnlock = 8,
+<br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSessionRemoteControl = 9,
+<br></b></font>
+  </td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">--> NONE <--
+  </td>
+  <td width="50%" align="left">--> NONE <--
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.ServiceProcess TimeoutException"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>System.ServiceProcess TimeoutException</font> () </b></td>
+ </tr>
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left"><font color='black'>public class <b><span title="Base Type: System.SystemException; Interfaces: System.Runtime.Serialization.ISerializable">System.ServiceProcess.TimeoutException</span></b></font>
+  <br><font color=blue size=2>(Please hover your mouse over the type to see the inheritance signatures)</font></td>
+  <td width="50%" align="left"><font color='black'>public class <b><span title="Base Type: System.SystemException; Interfaces: System.Runtime.Serialization.ISerializable, System.Runtime.InteropServices._Exception">System.ServiceProcess.TimeoutException</span></b></font>
+  <br><font color=blue size=2>(Please hover your mouse over the type to see the inheritance signatures)</font></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: public <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Property: <span title="System">Exception</span> <b>InnerException</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System.Reflection">MethodBase</span> <b>TargetSite</b> { public get; }</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Exception">(i)</i></font>: public virtual <span title="System">Type</span> <b>GetType</b> ()</font></li>
+    <li><font color="black">Property: virtual <span title="System.Collections">IDictionary</span> <b>Data</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">Exception</span> <b>InnerException</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System.Reflection">MethodBase</span> <b>TargetSite</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+ <tr>
+  <a name="System.ServiceProcess.Design ServiceInstallerDialog"><td colspan="2" align="center" style="font:100%;"><b><font color='black'>System.ServiceProcess.Design ServiceInstallerDialog</font> () </b></td>
+ </tr>
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left"><font color='black'>public class <b><span title="Base Type: System.Windows.Forms.Form; Interfaces: System.IDisposable, System.ComponentModel.IComponent, System.Windows.Forms.UnsafeNativeMethods+IOleControl, System.Windows.Forms.UnsafeNativeMethods+IOleObject, System.Windows.Forms.UnsafeNativeMethods+IOleInPlaceObject, System.Windows.Forms.UnsafeNativeMethods+IOleInPlaceActiveObject, System.Windows.Forms.UnsafeNativeMethods+IOleWindow, System.Windows.Forms.UnsafeNativeMethods+IViewObject, System.Windows.Forms.UnsafeNativeMethods+IViewObject2, System.Windows.Forms.UnsafeNativeMethods+IPersist, System.Windows.Forms.UnsafeNativeMethods+IPersistStreamInit, System.Windows.Forms.UnsafeNativeMethods+IPersistPropertyBag, System.Windows.Forms.UnsafeNativeMethods+IPersistStorage, System.Windows.Forms.UnsafeNativeMethods+IQuickActivate, System.ComponentModel.ISynchronizeInvoke, System.Windows.Forms.IWin32Window, System.Windows.Forms.IContainerControl">System.ServiceProcess.Design.ServiceInstallerDialog</span></b></font>
+  <br><font color=blue size=2>(Please hover your mouse over the type to see the inheritance signatures)</font></td>
+  <td width="50%" align="left"><font color='black'>public class <b><span title="Base Type: System.Windows.Forms.Form; Interfaces: System.IDisposable, System.ComponentModel.IComponent, System.Windows.Forms.UnsafeNativeMethods+IOleControl, System.Windows.Forms.UnsafeNativeMethods+IOleObject, System.Windows.Forms.UnsafeNativeMethods+IOleInPlaceObject, System.Windows.Forms.UnsafeNativeMethods+IOleInPlaceActiveObject, System.Windows.Forms.UnsafeNativeMethods+IOleWindow, System.Windows.Forms.UnsafeNativeMethods+IViewObject, System.Windows.Forms.UnsafeNativeMethods+IViewObject2, System.Windows.Forms.UnsafeNativeMethods+IPersist, System.Windows.Forms.UnsafeNativeMethods+IPersistStreamInit, System.Windows.Forms.UnsafeNativeMethods+IPersistPropertyBag, System.Windows.Forms.UnsafeNativeMethods+IPersistStorage, System.Windows.Forms.UnsafeNativeMethods+IQuickActivate, System.Windows.Forms.ISupportOleDropSource, System.Windows.Forms.IDropTarget, System.ComponentModel.ISynchronizeInvoke, System.ComponentModel.IEnablable, System.Windows.Forms.IWin32Window, System.Windows.Forms.Layout.IArrangedElement, System.Windows.Forms.IBindableComponent, System.Windows.Forms.IContainerControl">System.ServiceProcess.Design.ServiceInstallerDialog</span></b></font>
+  <br><font color=blue size=2>(Please hover your mouse over the type to see the inheritance signatures)</font></td>
+ </tr>
+
+ <tr bgcolor="#F0F0F0">
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Method <font color="Blue"><i title="System.Object">(i)</i></font>: protected <span title="System">object</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.ContainerControl">(i)</i></font>: protected virtual <span title="System">bool</span> <b>ProcessMnemonic</b> (<span title="System">char</span> <i>charCode</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Control">(i)</i></font>: protected <span title="System">void</span> <b>UpdateBounds</b> ()</font></li>
+    <li><font color="black">Property: <span title="System.Drawing">Rectangle</span> <b>Bounds</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System.Windows.Forms">ControlBindingsCollection</span> <b>DataBindings</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System.Drawing">Size</span> <b>MaximumSize</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: protected <span title="System">bool</span> <b>RenderRightToLeft</b> { }</font></li>
+    <li><font color="black">Property: protected virtual <span title="System">bool</span> <b>ShowFocusCues</b> { }</font></li>
+    <li><font color="black">Property: protected <span title="System">bool</span> <b>ShowKeyboardCues</b> { }</font></li>
+   </ul>
+  </td>
+  <td width="50%" align="left">
+   <ul>
+    <li><font color="black">Event: public event <span title="System">EventHandler</span> <b>AutoSizeChanged</b></font></li>
+    <li><font color="black">Event: public event <span title="System">EventHandler</span> <b>AutoValidateChanged</b></font></li>
+    <li><font color="black">Event: public event <span title="System">EventHandler</span> <b>BackgroundImageLayoutChanged</b></font></li>
+    <li><font color="black">Event: public event <span title="System">EventHandler</span> <b>ContextMenuStripChanged</b></font></li>
+    <li><font color="black">Event: public event <span title="System.Windows.Forms">FormClosedEventHandler</span> <b>FormClosed</b></font></li>
+    <li><font color="black">Event: public event <span title="System.Windows.Forms">FormClosingEventHandler</span> <b>FormClosing</b></font></li>
+    <li><font color="black">Event: public event <span title="System">EventHandler</span> <b>MarginChanged</b></font></li>
+    <li><font color="black">Event: public event <span title="System">EventHandler</span> <b>MouseCaptureChanged</b></font></li>
+    <li><font color="black">Event: public event <span title="System.Windows.Forms">MouseEventHandler</span> <b>MouseClick</b></font></li>
+    <li><font color="black">Event: public event <span title="System.Windows.Forms">MouseEventHandler</span> <b>MouseDoubleClick</b></font></li>
+    <li><font color="black">Event: public event <span title="System">EventHandler</span> <b>PaddingChanged</b></font></li>
+    <li><font color="black">Event: public event <span title="System">EventHandler</span> <b>RegionChanged</b></font></li>
+    <li><font color="black">Event: public event <span title="System">EventHandler</span> <b>ResizeBegin</b></font></li>
+    <li><font color="black">Event: public event <span title="System">EventHandler</span> <b>ResizeEnd</b></font></li>
+    <li><font color="black">Event: public event <span title="System.Windows.Forms">ScrollEventHandler</span> <b>Scroll</b></font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Control">(i)</i></font>: protected <span title="System">void</span> <b>AccessibilityNotifyClients</b> (<span title="System.Windows.Forms">AccessibleEvents</span> <i>accEvent</i>, <span title="System">int</span> <i>objectID</i>, <span title="System">int</span> <i>childID</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Form">(i)</i></font>: public <span title="System">void</span> <b>Flash</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Form">(i)</i></font>: public <span title="System">void</span> <b>Flash</b> (<span title="System">int</span> <i>flashRate</i>, <span title="System.Windows.Forms">FlashWindow</span> <i>flashWhat</i>, <span title="System">bool</span> <i>continuousUntilActivated</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Control">(i)</i></font>: protected virtual <span title="System.Windows.Forms">AccessibleObject</span> <b>GetAccessibilityObjectByID</b> (<span title="System">int</span> <i>objectID</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Control">(i)</i></font>: public virtual <span title="System.Drawing">Size</span> <b>GetPreferredSize</b> (<span title="System.Drawing">Size</span> <i>proposedSize</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.MarshalByRefObject">(i)</i></font>: protected <span title="System">MarshalByRefObject</span> <b>MemberwiseClone</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Control">(i)</i></font>: protected virtual <span title="System">void</span> <b>OnAutoSizeChanged</b> (<span title="System">EventArgs</span> <i>e</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.ContainerControl">(i)</i></font>: protected virtual <span title="System">void</span> <b>OnAutoValidateChanged</b> (<span title="System">EventArgs</span> <i>e</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Control">(i)</i></font>: protected virtual <span title="System">void</span> <b>OnBackgroundImageLayoutChanged</b> (<span title="System">EventArgs</span> <i>e</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Control">(i)</i></font>: protected virtual <span title="System">void</span> <b>OnContextMenuStripChanged</b> (<span title="System">EventArgs</span> <i>e</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Form">(i)</i></font>: protected virtual <span title="System">void</span> <b>OnFormClosed</b> (<span title="System.Windows.Forms">FormClosedEventArgs</span> <i>e</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Form">(i)</i></font>: protected virtual <span title="System">void</span> <b>OnFormClosing</b> (<span title="System.Windows.Forms">FormClosingEventArgs</span> <i>e</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Control">(i)</i></font>: protected virtual <span title="System">void</span> <b>OnMarginChanged</b> (<span title="System">EventArgs</span> <i>e</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Control">(i)</i></font>: protected virtual <span title="System">void</span> <b>OnMouseCaptureChanged</b> (<span title="System">EventArgs</span> <i>e</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Control">(i)</i></font>: protected virtual <span title="System">void</span> <b>OnMouseClick</b> (<span title="System.Windows.Forms">MouseEventArgs</span> <i>mea</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Control">(i)</i></font>: protected virtual <span title="System">void</span> <b>OnMouseDoubleClick</b> (<span title="System.Windows.Forms">MouseEventArgs</span> <i>mea</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Control">(i)</i></font>: protected virtual <span title="System">void</span> <b>OnPaddingChanged</b> (<span title="System">EventArgs</span> <i>e</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Control">(i)</i></font>: protected virtual <span title="System">void</span> <b>OnParentCursorChanged</b> (<span title="System">EventArgs</span> <i>e</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Control">(i)</i></font>: protected virtual <span title="System">void</span> <b>OnRegionChanged</b> (<span title="System">EventArgs</span> <i>e</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Control">(i)</i></font>: protected virtual <span title="System">void</span> <b>OnResizeBegin</b> (<span title="System">EventArgs</span> <i>e</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Control">(i)</i></font>: protected virtual <span title="System">void</span> <b>OnResizeEnd</b> (<span title="System">EventArgs</span> <i>e</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.ScrollableControl">(i)</i></font>: protected virtual <span title="System">void</span> <b>OnScroll</b> (<span title="System.Windows.Forms">ScrollEventArgs</span> <i>se</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.ContainerControl">(i)</i></font>: ProtectedInternal virtual <span title="System">bool</span> <b>ProcessMnemonic</b> (<span title="System">char</span> <i>charCode</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.ScrollableControl">(i)</i></font>: protected virtual <span title="System.Drawing">Point</span> <b>ScrollToControl</b> (<span title="System.Windows.Forms">Control</span> <i>activeControl</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Control">(i)</i></font>: public <span title="System.Windows.Forms">ScrollReturnType</span> <b>ScrollWindow</b> (<span title="System">int</span> <i>dx</i>, <span title="System">int</span> <i>dy</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Control">(i)</i></font>: public <span title="System.Windows.Forms">ScrollReturnType</span> <b>ScrollWindow</b> (<span title="System">int</span> <i>dx</i>, <span title="System">int</span> <i>dy</i>, <span title="System.Drawing">Rectangle</span> <i>scrollRectangle</i>, <span title="System.Drawing">Rectangle</span> <i>clipRectangle</i>, <span title="System.Drawing">Region</span> <i>regionToUpdate</i>, <span title="System.Windows.Forms">ScrollType</span> <i>scrollType</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Form">(i)</i></font>: public <span title="System">void</span> <b>Show</b> (<span title="System.Windows.Forms">IWin32Window</span> <i>owner</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Control">(i)</i></font>: protected virtual <span title="System.Drawing">Size</span> <b>SizeFromClientSize</b> (<span title="System.Drawing">Size</span> <i>clientSize</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Form">(i)</i></font>: public <span title="System">void</span> <b>StopFlash</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Control">(i)</i></font>: ProtectedInternal <span title="System">void</span> <b>UpdateBounds</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.ContainerControl">(i)</i></font>: public <span title="System">bool</span> <b>Validate</b> (<span title="System">bool</span> <i>checkAutoValidate</i>)</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Form">(i)</i></font>: public virtual <span title="System">bool</span> <b>ValidateAll</b> ()</font></li>
+    <li><font color="black">Method <font color="Blue"><i title="System.Windows.Forms.Form">(i)</i></font>: public virtual <span title="System">bool</span> <b>ValidateAll</b> (<span title="System.Windows.Forms">ValidateFlags</span> <i>flags</i>)</font></li>
+    <li><font color="black">Property: <span title="System">bool</span> <b>AutoRelocate</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="System.Drawing">Point</span> <b>AutoScrollOffset</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="System">bool</span> <b>AutoSize</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="System.Windows.Forms">AutoValidate</span> <b>AutoValidate</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="System.Windows.Forms">ImageLayout</span> <b>BackgroundImageLayout</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="System.Drawing">Rectangle</span> <b>Bounds</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: protected virtual <span title="System">bool</span> <b>CanRaiseEvents</b> { }</font></li>
+    <li><font color="black">Property: virtual <span title="System.Windows.Forms">ContextMenuStrip</span> <b>ContextMenuStrip</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="System.Windows.Forms">ControlBindingsCollection</span> <b>DataBindings</b> { public get; }</font></li>
+    <li><font color="black">Property: protected virtual <span title="System.Windows.Forms">Cursor</span> <b>DefaultCursor</b> { }</font></li>
+    <li><font color="black">Property: protected virtual <span title="System.Windows.Forms">Padding</span> <b>DefaultMargin</b> { }</font></li>
+    <li><font color="black">Property: protected virtual <span title="System.Drawing">Size</span> <b>DefaultMaximumSize</b> { }</font></li>
+    <li><font color="black">Property: protected virtual <span title="System.Drawing">Size</span> <b>DefaultMinimumSize</b> { }</font></li>
+    <li><font color="black">Property: protected virtual <span title="System.Windows.Forms">Padding</span> <b>DefaultPadding</b> { }</font></li>
+    <li><font color="black">Property: protected virtual <span title="System">bool</span> <b>DoubleBuffered</b> { }</font></li>
+    <li><font color="black">Property: <span title="System.Windows.Forms">HScrollProperties</span> <b>HorizontalScroll</b> { public get; }</font></li>
+    <li><font color="black">Property: virtual <span title="System.Windows.Forms.Layout">LayoutEngine</span> <b>LayoutEngine</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System.Windows.Forms">Padding</span> <b>Margin</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: virtual <span title="System.Drawing">Size</span> <b>MaximumSize</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System.Windows.Forms">Padding</span> <b>Padding</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System.Drawing">Size</span> <b>PreferredSize</b> { public get; }</font></li>
+    <li><font color="black">Property: <span title="System">bool</span> <b>RaiseMouseEnterLeaveEventsForScrollBars</b> { public get; public set; }</font></li>
+    <li><font color="black">[Obsolete: Do not use this property]Property: ProtectedInternal <span title="System">bool</span> <b>RenderRightToLeft</b> { }</font></li>
+    <li><font color="black">Property: <span title="System.Drawing">Rectangle</span> <b>RestoreBounds</b> { public get; }</font></li>
+    <li><font color="black">Property: ProtectedInternal virtual <span title="System">bool</span> <b>ShowFocusCues</b> { }</font></li>
+    <li><font color="black">Property: ProtectedInternal virtual <span title="System">bool</span> <b>ShowKeyboardCues</b> { }</font></li>
+    <li><font color="black">Property: <span title="System">bool</span> <b>UseWaitCursor</b> { public get; public set; }</font></li>
+    <li><font color="black">Property: <span title="System.Windows.Forms">VScrollProperties</span> <b>VerticalScroll</b> { public get; }</font></li>
+   </ul>
+  </td>
+ </tr>
+
+</tbody>
+</table>
+
+<p class="endNav"><font size=2><a href="#top">Top</a> &bull; <a href="..\APIChangesEVERTMtoWHI40607.03.html" target=_top>Summary</a></font></p>
+
+</body>
+</html>
+
