@@ -1,0 +1,128 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="zh-cn">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>Vasesoft FileUpload Web Control Specification</title>
+</head>
+
+<body>
+
+<p align="center"><b><font size="5">Vasesoft FileUpload Web Control 
+Specification</font></b></p>
+<p><br>
+<b>Platform:</b><br>
+<font size="2">Windows 2000, Windows XP<br>
+.NET Framework with ASP.NET ver 1.0<br>
+</font><br>
+<b>Installation:<br>
+</b><font size="2">Copy FileUpLo.dll to the web application /bin directory.<br>
+</font><br>
+<b>Usage:<br>
+</b><font size="2">1. Register the FileUpload web control to the current .aspx 
+page<br>
+<font color="#0000FF"><span style="background-color: #FFFF00">&lt;%@ Register 
+TagPrefix=&quot;VaseWeb&quot; Namespace=&quot;Vasesoft.WebControls&quot; Assembly=&quot;FileUpLo&quot;%&gt;<br>
+<br>
+</span></font>2. Define the web form for posting “multipart/form-data” data<br>
+<font color="#0000FF"><span style="background-color: #FFFF00">&lt;form id=&quot;FileUp&quot; 
+method=&quot;post&quot; encType=</font><font color="#FF0000"><b>&quot;multipart/form-data&quot;</b></font><font color="#0000FF"> 
+runat=&quot;server&quot;&gt;<br>
+<br>
+</font></span>3. Place the FileUpload web control to the page, and set the 
+control’s property.<br>
+<span style="background-color: #FFFF00"><font color="#0000FF">&lt;VaseWeb:FileUpload 
+id=&quot;ClientFile&quot; SavePath=&quot;e:\upfile&quot; RequiredField=&quot;True&quot; MaxFileSize=&quot;100K&quot; 
+ValidFileExtensionName=&quot;jpg;jpeg;gif&quot; SaveMode=&quot;feedback&quot; runat=&quot;server&quot; /&gt;<br>
+<br>
+</font></span>SavePath : the directory the upload file save to <br>
+RequireField : Set to true, the file upload field is blank will cause error 
+message.<br>
+MaxFileSize : The limit of the file maximum size. For example, &quot;100K&quot;, &quot;1M&quot;, 
+&quot;1024B&quot; or &quot;512&quot;<br>
+ValidFileExtensionName : The acceptable file extension name, separated by &quot;;&quot;, 
+not include &quot;.&quot; . For example, &quot;doc;txt;xls&quot;<br>
+SaveMode : The method to handle saving the same name file name at server, 
+Feedback,AutoRename,OverWrite is available. Default value is AutoRename.<br>
+<br>
+&nbsp;&nbsp; <span style="background-color: #FFFF00"><br>
+</span>4. Program for more function<br>
+　</font></p>
+<p class="MsoNormal" align="left" style="text-align: left; line-height: 25%; text-autospace: none">
+<span lang="EN-US" style="font-size: 9.0pt; line-height: 25%; font-family: 宋体; color: blue">
+private</span><span lang="EN-US" style="font-size: 9.0pt; line-height: 25%; font-family: 宋体">
+<span style="color: blue">void</span> Button1_Click(<span style="color: blue">object</span> 
+sender, System.EventArgs e)</span></p>
+<p class="MsoNormal" align="left" style="text-align: left; line-height: 25%; text-autospace: none">
+<span lang="EN-US" style="font-size: 9.0pt; line-height: 25%; font-family: 宋体">{</span></p>
+<p class="MsoNormal" align="left" style="text-align: left; line-height: 25%; text-autospace: none">
+<span lang="EN-US" style="font-size: 9.0pt; line-height: 25%; font-family: 宋体">
+&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: blue">if</span> (ClientFile.IsValid)</span></p>
+<p class="MsoNormal" align="left" style="text-align: left; line-height: 25%; text-autospace: none">
+<span lang="EN-US" style="font-size: 9.0pt; line-height: 25%; font-family: 宋体">
+&nbsp;&nbsp;&nbsp;&nbsp; {</span></p>
+<p class="MsoNormal" align="left" style="text-align: left; line-height: 25%; text-autospace: none">
+<span lang="EN-US" style="font-size: 9.0pt; line-height: 25%; font-family: 宋体">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: blue">if</span> (ClientFile.SavedFileName != &quot;&quot;)</span></p>
+<p class="MsoNormal" align="left" style="text-align: left; line-height: 25%; text-autospace: none">
+<span lang="EN-US" style="font-size: 9.0pt; line-height: 25%; font-family: 宋体">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {</span></p>
+<p class="MsoNormal" align="left" style="text-align: left; line-height: 25%; text-autospace: none">
+<span lang="EN-US" style="font-size: 9.0pt; line-height: 25%; font-family: 宋体">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Label1.Text = &quot;File is uploaded.&quot; + &quot;&lt;br&gt;&quot;;</span></p>
+<p class="MsoNormal" align="left" style="text-align: left; line-height: 25%; text-autospace: none">
+<span lang="EN-US" style="font-size: 9.0pt; line-height: 25%; font-family: 宋体">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Label1.Text += &quot;Save filename as: &quot; + ClientFile.SavedFileName&nbsp; + 
+&quot;&lt;br&gt;&quot;;</span></p>
+<p class="MsoNormal" align="left" style="text-align: left; line-height: 25%; text-autospace: none">
+<span lang="EN-US" style="font-size: 9.0pt; line-height: 25%; font-family: 宋体">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Label1.Text += &quot;Save to path: &quot; + ClientFile.SavePath + &quot;&lt;br&gt;&quot;;</span></p>
+<p class="MsoNormal" align="left" style="text-align: left; line-height: 25%; text-autospace: none">
+<span lang="EN-US" style="font-size: 9.0pt; line-height: 25%; font-family: 宋体">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Label1.Text += &quot;Save file fullname: &quot; + 
+ClientFile.SavedFileFullName + &quot;&lt;br&gt;&quot;;</span></p>
+<p class="MsoNormal" align="left" style="text-align: left; line-height: 25%; text-autospace: none">
+<span lang="EN-US" style="font-size: 9.0pt; line-height: 25%; font-family: 宋体">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Label1.Text += &quot;File size: &quot; + ClientFile.FileSize + &quot;&lt;br&gt;&quot;;</span></p>
+<p class="MsoNormal" align="left" style="text-align: left; line-height: 25%; text-autospace: none">
+<span lang="EN-US" style="font-size: 9.0pt; line-height: 25%; font-family: 宋体">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Label1.Text += &quot;Save date: &quot; + ClientFile.SavedFileDate + &quot;&lt;br&gt;&quot;;</span></p>
+<p class="MsoNormal" align="left" style="text-align: left; line-height: 25%; text-autospace: none">
+<span lang="EN-US" style="font-size: 9.0pt; line-height: 25%; font-family: 宋体">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Label1.Text += &quot;Posted file name: &quot; + ClientFile.PostedFileName + 
+&quot;&lt;br&gt;&quot;;</span></p>
+<p class="MsoNormal" align="left" style="text-align: left; line-height: 25%; text-autospace: none">
+<span lang="EN-US" style="font-size: 9.0pt; line-height: 25%; font-family: 宋体">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Label1.Text += &quot;Posted file path: &quot; + ClientFile.PostedFilePath + 
+&quot;&lt;br&gt;&quot;;</span></p>
+<p class="MsoNormal" align="left" style="text-align: left; line-height: 25%; text-autospace: none">
+<span lang="EN-US" style="font-size: 9.0pt; line-height: 25%; font-family: 宋体">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</span></p>
+<p class="MsoNormal" align="left" style="text-align: left; line-height: 25%; text-autospace: none">
+<span lang="EN-US" style="font-size: 9.0pt; line-height: 25%; font-family: 宋体">
+&nbsp;&nbsp;&nbsp;&nbsp; }</span></p>
+<p class="MsoNormal" align="left" style="text-align: left; line-height: 25%; text-autospace: none">
+<span lang="EN-US" style="font-size: 9.0pt; line-height: 25%; font-family: 宋体">
+&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: blue">else</span></span></p>
+<p class="MsoNormal" align="left" style="text-align: left; line-height: 25%; text-autospace: none">
+<span lang="EN-US" style="font-size: 9.0pt; line-height: 25%; font-family: 宋体">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Label1.Text = ClientFile.ErrorMessag;</span></p>
+<p class="MsoNormal" style="line-height: 25%">
+<span lang="EN-US" style="font-size: 9.0pt; line-height: 25%; font-family: 宋体">}</span></p>
+<p><br>
+<b>Attention:</b><br>
+<font size="2">For ASP.NET application using FileUpLoad web control, add the 
+reference of “FileUpLo.dll” to your web application.<br>
+</font><br>
+<b>Copyright:<br>
+</b><font size="2">Copyright by Vasesoft, XuGuoHua (vazi), 2002.<br>
+</font><br>
+<b>Contact:</b><br>
+<font size="2">vazix@21cn.com </font><br>
+　</p>
+
+</body>
+
+</html>

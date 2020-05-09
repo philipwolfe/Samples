@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<doc version="XmlDoc 1.0">
+  <assembly>
+    <name>ResGenX</name>
+    <language>CSharp</language>
+    <version>1.0.0.0</version>
+    <culture>neutral</culture>
+    <description>Extend ResGen functionality</description>
+    <company />
+    <product />
+    <copyright />
+    <trademark />
+    <authors>
+      <author name="James Johnson" contact="jimj@iland.net" />
+    </authors>
+  </assembly>
+  <members>
+    <member name="T:ResGenX.Class1" type="Class" namespace="ResGenX">
+      <modifiers>
+        <codetype>Class</codetype>
+        <access>Project</access>
+        <inherits>
+          <class>System.Object</class>
+        </inherits>
+      </modifiers>
+      <summary>Defines the entry point "Main".</summary>
+      <remarks>Calls <see cref="T:ResGenX.ResGenX" /> to do the actual processing.
+      </remarks>
+      <history>
+        <modified user="JJohnson" date="7/25/2006" />
+      </history>
+    </member>
+    <member name="T:ResGenX.ResGenX" type="Class" namespace="ResGenX">
+      <modifiers>
+        <codetype>Class</codetype>
+        <access>Project</access>
+        <inherits>
+          <class>System.Object</class>
+        </inherits>
+      </modifiers>
+      <summary>Contains the routines that do the actual processing.</summary>
+      <param name="args">The command line arguments</param>
+      <returns type="">
+        Returns the exit code. A value of zero indicates success. Any other value indicates an
+        error occured.
+      </returns>
+      <remarks>
+        The routines in ResGenx are:
+        <list type="definition">
+          <item>
+            <term><see cref="M:ResGenX.ResGenX.Process" />
+            </term>
+            <description>Evaluates the command line</description>
+          </item>
+          <item>
+            <term><see cref="M:ResGenX.ResGenX.GenResFromMC" />
+            </term>
+            <description>
+              Loads the <see cref="T:ResGenX.ResGenMC" /> class which performs the conversion of an .mc file to a
+              resource.
+            </description>
+          </item>
+          <item>
+            <term><see cref="M:ResGenX.ResGenX.GenResFromTxt" />
+            </term>
+            <description>Converts a .txt file to a resource</description>
+          </item>
+          <item>
+            <term><see cref="M:ResGenX.ResGenX.GenTxtFromRes" />
+            </term>
+            <description>Converts a resource into a .txt file</description>
+          </item>
+          <item>
+            <term><see cref="M:ResGenX.ResGenX.GenResFromRes" />
+            </term>
+            <description>Convert a .resources to a .resx or visa versa</description>
+          </item>
+        </list>
+      </remarks>
+      <history>
+        <modified user="JJohnson" date="7/25/2006" />
+      </history>
+    </member>
+    <member name="M:ResGenX.ResGenX.Process(System.String[])" type="Function">
+      <modifiers>
+        <access>Project</access>
+      </modifiers>
+      <summary>Evaluate the command line and execute the request</summary>
+      <param type="System.String[]" name="args">The command line arguments</param>
+      <returns type="System.Int32">
+        Returns the exit code. A value of zero indicates success. Any other value indicates an
+        error occured.
+      </returns>
+      <remarks>
+        The command line format is:
+        <code>
+ resgenx [/xref {cs|vb}] inputfile.ext [outputfile.ext]
+ resgenx [/compile] [/xref {cs|vb}] inputfile.ext[,outputfile.ext] ...
+ </code>
+        <list type="definition">
+          <item>
+            <term>/compile</term>
+            <description>
+              Allows you to specify multiple .resx, .txt or .mc files to convert to .resources files in
+              a single bulk operation. If you do not specify this option, you can specify only one input
+              file argument.
+            </description>
+          </item>
+          <item>
+            <term>/xref {cs|vb}</term>
+            <description>
+              This specifies the type of cross reference to create when processing a .mc file or a .txt
+              file that uses the symbolic name syntax.<c> cs</c> is for CSharp and<c> vb</c> for Visual
+              Basic. If this prameter is ommitted then both types are generated if symbolic names are
+              used.
+            </description>
+          </item>
+          <item>
+            <term>inputfile.ext</term>
+            <description>
+              The name of the input file to convert. The extension must be one of the following:
+              <list type="definition">
+                <item>
+                  <term>.txt</term>
+                  <description>
+                    Specifies the extension for a text file to convert to a .resources or a .resx file. Text
+                    files can only contain string resources.
+                  </description>
+                </item>
+                <item>
+                  <term>.resx</term>
+                  <description>
+                    Specifies the extension for an XML-based resource file to convert 	to a .resources or a
+                    .txt file.
+                  </description>
+                </item>
+                <item>
+                  <term>.resources</term>
+                  <description>Specifies the extension for a resource file to convert to 	a .resx or a .txt file.</description>
+                </item>
+                <item>
+                  <term>.mc</term>
+                  <description>
+                    Specifies the the extension of a message compiler file to 	convert to a .resources or a
+                    .resx file.
+                  </description>
+                </item>
+              </list>
+            </description>
+          </item>
+          <para>
+            <item>
+              <term>outputFilename.ext</term>
+              <description>
+                The name of the resource file to create. The ouput file extension<c> MAY NOT</c> be .mc. A
+                .mc file cannot be recreated. It should also be noted that any symbolic names in a .txt
+                file can not be recreated from the resource file. 	This argument is optional when
+                converting from a .txt, .resx or .mc file. The default output name is
+                inputfile.resources. The outputfile argument is mandatory when 	converting from a
+                .resources file. Specify the .resx extension when converting a .resources file to 	an
+                XML-based resource file. Specify the .txt extension when converting a .resources file to a
+                text 	file. Only string resources will be written to a .txt file.
+              </description>
+            </item>
+          </para>
+        </list>
+      </remarks>
+      <history>
+        <modified user="JJohnson" date="7/25/2006" />
+      </history>
+    </member>
+    <member name="M:ResGenX.ResGenX.GenResFromMC(System.String,System.String,System.String)" type="Function">
+      <modifiers>
+        <access>Private</access>
+      </modifiers>
+      <summary>Load the <see cref="T:ResGenX.ResGenMC" /> class to perform the conversion
+      </summary>
+      <param type="System.String" name="inFileName">The name of the .mc file</param>
+      <param type="System.String" name="outFileName">The name of the output file</param>
+      <param type="System.String" name="resType">the type of resource to create</param>
+      <returns type="void" />
+      <remarks />
+      <seealso cref="T:ResGenX.ResGenMC" />
+      <history>
+        <modified user="JJohnson" date="7/30/2006" />
+      </history>
+    </member>
+    <member name="M:ResGenX.ResGenX.GenResFromTxt(System.String,System.String,System.String)" type="Function">
+      <modifiers>
+        <access>Private</access>
+      </modifiers>
+      <summary>Generate a resources or resx file from a txt file.</summary>
+      <param type="System.String" name="inFileName">The name of the input txt file.</param>
+      <param type="System.String" name="outFileName">The name of the output file.</param>
+      <param type="System.String" name="resType">The type of resource to be created</param>
+      <returns type="void" />
+      <remarks>
+        The handling of txt files is where<c> resgenx</c> differs from<c> resgen</c> . The message
+        text can consist of multiple lines. For example:
+        <code>
+ SymbolicName:MsgID = text line1
+         text line2
+         text line3
+ </code>
+        A message continues until a blank or comment line is found. As with<c> resgen</c> leading
+        and trailing spaces are ignored. Comment lines must start with a semicolon ";" or a pound
+        sign "#". Comment lines cannot appear in the body of a message. The following escape
+        sequences are recognized by<c> ResGenX</c> :
+        <list type="bullet">
+          <item>
+            <term>
+              \n - Insert a newline chararcter. By default a newline character is added to the end of a
+              message.
+            </term>
+          </item>
+          <item>
+            <term>\t - Insert a tab character.</term>
+          </item>
+          <item>
+            <term>\b - Used to reserve leading or trailing spaces.</term>
+          </item>
+          <item>
+            <term>
+              \0 - Used to suppress the insertion of a newline to the last line of a message. Must be
+              used at the end of the last line in a message.
+            </term>
+          </item>
+        </list>
+        The<c> SymbolicName</c> element is optional. If specified the command line option<c>
+        /xref</c> (see <see cref="M:ResGenX.ResGenX.Process" /> ) is used to create a cross reference of
+        the<c> MsgID</c> and the<c> SymbolicName</c> .
+      </remarks>
+      <history>
+        <modified user="JJohnson" date="7/25/2006" />
+      </history>
+    </member>
+    <member name="M:ResGenX.ResGenX.GenTxtFromRes(System.String,System.String,System.String)" type="Function">
+      <modifiers>
+        <access>Private</access>
+      </modifiers>
+      <summary>Generate a txt file from a resources file.</summary>
+      <param type="System.String" name="inFileName">The name of the input file.</param>
+      <param type="System.String" name="outFileName">The name of the output file.</param>
+      <param type="System.String" name="resType">The type of resource file to create</param>
+      <returns type="void" />
+      <remarks>
+        Only<c> string</c> elements of the resource file are written to the output file. A multi
+        line text message will be generated under the following condiftions:
+        <list type="number">
+          <item>
+            <term>The text length must be greater that 100.</term>
+          </item>
+          <item>
+            <term>
+              If the message text contains the newline sequence<c> \n</c> the text will be split at that
+              the point immediately following the newline sequence.
+            </term>
+          </item>
+          <item>
+            <term>
+              If the text does not contain newlinr characters, it will be broken into segments of 80
+              characters maximum. If possible the break point will ne on a space. The max line length,
+              100, and the max segment length, 80, are configurable thru the application configuration
+              file.
+            </term>
+          </item>
+        </list>
+      </remarks>
+      <history>
+        <modified user="JJohnson" date="7/25/2006" />
+      </history>
+    </member>
+    <member name="M:ResGenX.ResGenX.GenResFromRes(System.String,System.String,System.String)" type="Function">
+      <modifiers>
+        <access>Private</access>
+      </modifiers>
+      <summary>Generate a resources file from a resx or a resx file from a resources.</summary>
+      <param type="System.String" name="inFileName">The name of the input file.</param>
+      <param type="System.String" name="outFileName">The name of the output file.</param>
+      <param type="System.String" name="resType">The type of resource to create</param>
+      <returns type="void" />
+      <remarks>
+        If the input file is a .resources then a .resx file is created. If the input is a .resx
+        the a .resources is created.
+      </remarks>
+      <history>
+        <modified user="JJohnson" date="7/25/2006" />
+      </history>
+    </member>
+    <member name="T:ResGenX.ResGenMC" type="Class" namespace="ResGenX">
+      <modifiers>
+        <codetype>Class</codetype>
+        <access>Project</access>
+        <inherits>
+          <class>System.Object</class>
+        </inherits>
+      </modifiers>
+      <summary>Generates a resource file from a .mc file</summary>
+      <remarks>
+        The .mc file has the same structure as described in the Microsoft documentaion. For
+        conversion to a Managed Code application the follow assumptions are made:
+        <list type="number">
+          <item>
+            <term>
+              SeverityNames and FacilityNames have the following format:
+              <code>
+ SeverityName = (label=value:name ... )
+ FacilityNames = (label=value:name ... )
+ </code>
+              The<c> :name</c> element is ignored.
+              <para>
+                The following Severity codes are predefined:
+                <code>
+ Success = 0x0
+ Informational = 0x1
+ Warning = 0x2
+ Error = 0x3
+ </code>
+              </para>
+              <para>
+                The following Facility names codes are predefined:
+                <code>
+ System = 0xFF
+ Application = 0xFFF
+ </code>
+              </para>
+            </term>
+          </item>
+          <item>
+            <term>
+              The LanguageNames directive has the following format:
+              <code>
+ LanguageNames = (language=culturename ... )
+ For example: LanguageNames=(English=en German=de)</code>
+              <para>
+                The following Languages are predefined:
+                <code>
+	English   en
+	German    de
+	TChinese  zv-CHT    (Chinese Traditional)
+	SChinese  zv-CHS    (Chinese Simplified)
+	Spanish   es
+	French    fr
+ </code>
+              </para>
+            </term>
+          </item>
+          <item>
+            <term>Message text contains Managed Code formatting strings not printf strings.</term>
+          </item>
+          <item>
+            <term>
+              The<c> \</c> character is used as the place holder delimitor not<c> %</c> .
+              <para>
+                The following place holders are recognized:
+                <code>
+	\n - for newline
+	\t - for tag
+	\b - for a leading or trailing space
+	\0 - if at the end of the last line, do not insert a newline at the end of a message
+	</code>
+              </para>
+            </term>
+          </item>
+          <item>
+            <term>A newline character will be appended to the last line unless directed not to.</term>
+          </item>
+          <item>
+            <term>Message text is terminated by a line containing only a period or a blank line.</term>
+          </item>
+        </list>
+      </remarks>
+      <history>
+        <modified user="JJohnson" date="7/25/2006" />
+      </history>
+    </member>
+    <member name="M:ResGenX.ResGenMC.Process(System.String,System.String,System.String,System.String)" type="Function">
+      <modifiers>
+        <access>Project</access>
+      </modifiers>
+      <summary>generate a resource file from an .mc file</summary>
+      <param type="System.String" name="inFile">Name of the .mc input file</param>
+      <param type="System.String" name="outFile">Name of the output resource file</param>
+      <param type="System.String" name="type">Type of resource file to create</param>
+      <param type="System.String" name="xref">Type of cross reference to create</param>
+      <returns type="System.Int32">
+        Returns an exit code. A value of zero indicates success. Any other value indicates an
+        error occured.
+      </returns>
+      <remarks />
+      <history>
+        <modified user="JJohnson" date="7/25/2006" />
+      </history>
+    </member>
+    <member name="M:ResGenX.ResGenMC.MCHeader" type="Function">
+      <modifiers>
+        <access>Private</access>
+      </modifiers>
+      <summary>Process .mc file Header data</summary>
+      <returns type="void" />
+      <remarks>The Header consists of the Severity, Facility and Language definitions.</remarks>
+      <history>
+        <modified user="JJohnson" date="7/30/2006" />
+      </history>
+    </member>
+    <member name="M:ResGenX.ResGenMC.MCMessages" type="Function">
+      <modifiers>
+        <access>Private</access>
+      </modifiers>
+      <summary>Process the messages in the .mc file and write them to a resource file</summary>
+      <returns type="System.Int32" />
+      <remarks>
+        A message definition consists of the following
+        <code>
+ MessageId = [number|+number]
+ Severity = severity_name
+ Facility = facility_name
+ SymbolicName = name
+ OutputBase = {number}
+
+ following by: (for each language)
+ Language=name
+ message text
+ .
+ </code>
+        The OutputBase keyword is ignored. Severity and Facility are optional and default to<c>
+        Success</c> and<c> Application</c> respectivly.
+      </remarks>
+      <history>
+        <modified user="JJohnson" date="7/30/2006" />
+      </history>
+    </member>
+    <member name="M:ResGenX.ResGenMC.ProcessMessage(System.Resources.IResourceWriter,System.String,System.String@)" type="Function">
+      <modifiers>
+        <access>Private</access>
+      </modifiers>
+      <summary>Format a text message for inclusion into a resource</summary>
+      <param type="System.Resources.IResourceWriter" name="rw">The IResourceWriter</param>
+      <param type="System.String" name="msgName">The message id</param>
+      <param type="out System.String" name="resText">returns the formated message</param>
+      <returns type="void">The number of lines read to process this message</returns>
+      <remarks>
+        This routine gathers the text lines that comprise this message into a signle resource. Any
+        place holder codes are replaced with thier actual values.
+      </remarks>
+      <history>
+        <modified user="JJohnson" date="7/28/2006" />
+      </history>
+    </member>
+    <member name="T:Messages.Msg" type="Class" namespace="Messages">
+      <modifiers>
+        <codetype>Class</codetype>
+        <access>Public</access>
+        <inherits>
+          <class>System.Object</class>
+        </inherits>
+      </modifiers>
+      <summary>SymbolicName and MsgID cross reference for resgenmsg</summary>
+    </member>
+    <member name="T:ResGenX.Util" type="Class" namespace="ResGenX">
+      <modifiers>
+        <codetype>Class</codetype>
+        <access>Public</access>
+        <inherits>
+          <class>System.Object</class>
+        </inherits>
+      </modifiers>
+      <summary>Common Utility functions for ResGenX.</summary>
+    </member>
+    <member name="M:ResGenX.Util.CreateXref(System.String,System.Collections.SortedList,System.String)" type="Function">
+      <modifiers>
+        <access>Project</access>
+        <isshared />
+      </modifiers>
+      <summary>Creates the message and Symbolc name cross reference</summary>
+      <param type="System.String" name="fileName">Name of the cross reference file</param>
+      <param type="System.Collections.SortedList" name="symbol">Sorted list that hols the cross reference data</param>
+      <param type="System.String" name="xrefType">The type of cross reference file to create</param>
+      <returns type="void">The cross reference is a class that links the message symbolic name to the message ID.</returns>
+      <remarks />
+      <history>
+        <modified user="JJohnson" date="7/31/2006" />
+      </history>
+    </member>
+    <member name="M:ResGenX.Util.Message(System.Resources.ResourceManager,System.String,System.Object[])" type="Function">
+      <modifiers>
+        <access>Project</access>
+        <isshared />
+      </modifiers>
+      <summary>Writes messages to the console</summary>
+      <param type="System.Resources.ResourceManager" name="rmgr">The ResourceManager for the message resources</param>
+      <param type="System.String" name="msgID">The ID of the message to write</param>
+      <param type="System.Object[]" name="args">Any string format arguments</param>
+      <returns type="void" />
+      <remarks>
+        This routine looks up a message in the Messages resource and writes it to the console.
+        Error messages are written to<c> stderr</c> all other messages are written to<c>
+        stdout</c> .
+      </remarks>
+      <history>
+        <modified user="JJohnson" date="7/26/2006" />
+      </history>
+    </member>
+  </members>
+</doc>

@@ -1,0 +1,29 @@
+PROCEDURE DRAW 
+CLS 
+PEN_UP 
+RIGHT 90 
+FORWARD 300 
+LEFT 90 
+PEN_DOWN 
+DECLARE LEVEL 
+SET LEVEL = 5 
+CALL DRAW 
+
+
+START DRAW 
+    IF LEVEL > 0 
+        LEVEL -= 1 
+        CALL DRAW 
+        LEFT 60 
+        CALL DRAW 
+        RIGHT 120 
+        CALL DRAW 
+        LEFT 60 
+        CALL DRAW 
+        LEVEL += 1 
+    ELSE 
+        FORWARD 2 
+    ENDIF 
+END 
+
+

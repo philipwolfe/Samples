@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ResGenX.ResGenX.GenResFromTxt</title>
+		<meta name="GENERATOR" content="Microsoft Visual Studio .NET 7.1">
+		<meta name="ProgId" content="VisualStudio.HTML">
+		<meta name="Originator" content="Microsoft Visual Studio .NET 7.1">
+		<link REL="STYLESHEET" HREF="../WebDoc.css" TYPE="text/css">
+	</head>
+	<body>
+		<h1 align="center">ResGenX.ResGenX.GenResFromTxt</h1>
+		<table border="0" cellpadding="2px" cellspacing="0" class="Table">
+			<tr>
+				<td>CodeType</td>
+				<td width="90%">Function</td>
+			</tr>
+			<tr>
+				<td>Access</td>
+				<td>Private</td>
+			</tr>
+		<tr><td>&nbsp</td></tr>
+		<tr><td valign="top">Summary</td><td>Generate a resources or resx file from a txt file.</td></tr>
+		<tr><td valign="top">Syntax</td><td><pre>void GenResFromTxt(System.String <span class="Paramref">inFileName</span>,<br>                   System.String <span class="Paramref">outFileName</span>,<br>                   System.String <span class="Paramref">resType</span><br>                   )</pre></td></tr>
+		<tr><td>&nbsp</td><td><dl><dt><span class="Paramref">inFileName</span></dt><dd>The name of the input txt file.</dd><dt><span class="Paramref">outFileName</span></dt><dd>The name of the output file.</dd><dt><span class="Paramref">resType</span></dt><dd>The type of resource to be created</dd></dl></td></tr>
+		<tr><td>&nbsp</td></tr>
+		<tr><td colspan="2">
+        The handling of txt files is where<b> resgenx</b> differs from<b> resgen</b> . The message
+        text can consist of multiple lines. For example:
+        <pre> SymbolicName:MsgID = text line1
+         text line2
+         text line3  </pre>
+        A message continues until a blank or comment line is found. As with<b> resgen</b> leading
+        and trailing spaces are ignored. Comment lines must start with a semicolon ";" or a pound
+        sign "#". Comment lines cannot appear in the body of a message. The following escape
+        sequences are recognized by<b> ResGenX</b> :
+        <ul><li>
+              \n - Insert a newline chararcter. By default a newline character is added to the end of a
+              message.
+            </li><li>\t - Insert a tab character.</li><li>\b - Used to reserve leading or trailing spaces.</li><li>
+              \0 - Used to suppress the insertion of a newline to the last line of a message. Must be
+              used at the end of the last line in a message.
+            </li></ul>
+        The<b> SymbolicName</b> element is optional. If specified the command line option<b>
+        /xref</b> (see <a href="ResGenX.Process.htm"> Process </a> ) is used to create a cross reference of
+        the<b> MsgID</b> and the<b> SymbolicName</b> .
+      </td></tr>
+		</table>
+	</body>
+</html>

@@ -1,0 +1,219 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MarkItUp.WebControls.Timer</name>
+    </assembly>
+    <members>
+        <member name="T:MarkItUp.WebControls.Timer">
+            <summary>
+            Provides a mechanism for generating recurring events at specified intervals.
+            </summary>
+            <remarks>
+            <p>
+            The Timer control requires javascript support in order to function.
+            </p>
+            </remarks>
+            <example>
+            The following example shows you how to create a <see cref="T:MarkItUp.WebControls.Timer"/> control on 
+            your page that will generate a server postback after 3 seconds.
+            <code>
+            <![CDATA[
+            <%@ Register TagPrefix="miu" Namespace="MarkItUp.WebControls" Assembly="MarkItUp.WebControls.Timer" %>
+            <script runat="server" language="c#" >
+            private void MyTimer_Elapsed(object sender, MarkItUp.WebControls.TimerElapsedEventArgs e)
+            {
+                Response.Write( e.CommandName + "<br />" ) ;
+                Response.Write( e.CommandArgument + "<br />" ) ;
+            }
+            </script>
+            <form runat="server">
+                <miu:Timer 
+                    id="MyTimer" 
+                    runat="server" 
+                    Interval="1000"
+                    MaxTicks="3"
+                />
+            </form>
+            ]]>
+            </code>
+            </example>
+        </member>
+        <member name="M:MarkItUp.WebControls.Timer.OnElapsed(MarkItUp.WebControls.TimerElapsedEventArgs)">
+            <summary>
+            Raises the Elapsed event.
+            </summary>
+        </member>
+        <member name="M:MarkItUp.WebControls.Timer.OnPreRender(System.EventArgs)">
+            <summary>
+            Overrides <see cref="M:System.Web.UI.Control.OnPreRender(System.EventArgs)"/>
+            </summary>
+        </member>
+        <member name="M:MarkItUp.WebControls.Timer.RegisterClientScript">
+            <summary>
+            Registers the neccessary clientscript for the Timer.
+            </summary>
+        </member>
+        <member name="M:MarkItUp.WebControls.Timer.Render(System.Web.UI.HtmlTextWriter)">
+            <summary>
+            Render this control to the output parameter specified.
+            </summary>
+            <param name="output"> The HTML writer to write out to </param>
+        </member>
+        <member name="P:MarkItUp.WebControls.Timer.ClientNotificationFunction">
+             <summary>
+             Gets or sets the name of the custom client-side script to use for client-side event notifications.
+             </summary>
+             <remarks>
+             Client-side event-handler that receives notifications for each Tick of the Timer.
+            </remarks>
+             <example>
+             The following example shows you how to receive client-side notifications from the control.
+             <code>
+             <![CDATA[
+             <%@ Register TagPrefix="miu" Namespace="MarkItUp.WebControls" Assembly="MarkItUp.WebControls.Timer" %>
+            
+             <form runat="server">
+                 <miu:Timer 
+            	        id="MyTimer" 
+            	        runat="server" 
+            	        ClientNotificationFunction="ClientNotify"
+            	        Interval="1000"
+            	        MaxTicks="3"
+                 />
+             </form>
+             
+             
+             <script language="javascript">
+                 function ClientNotify( source, arguments )
+                 {
+                     window.status = arguments.TickCount + " of " + arguments.MaxTicks ;
+                 }
+             </script>
+             
+             ]]>
+             </code>
+             </example>
+        </member>
+        <member name="P:MarkItUp.WebControls.Timer.Interval">
+             <summary>
+             Gets or sets the interval to raise the <see cref="E:MarkItUp.WebControls.Timer.Elapsed"/> event of the Timer.
+             </summary>
+             <remarks>
+             Number of milliseconds to wait before increasing the tick counter.
+             Minimum value is 500 ;
+            </remarks>
+        </member>
+        <member name="P:MarkItUp.WebControls.Timer.MaxTicks">
+             <summary>
+             Gets or sets the number of <see cref="P:MarkItUp.WebControls.Timer.Interval"/>s to raise the <see cref="E:MarkItUp.WebControls.Timer.Elapsed"/> event of the Timer.
+             </summary>
+             <remarks>
+             Number of <see cref="P:MarkItUp.WebControls.Timer.Interval"/>s to wait before raising the <see cref="E:MarkItUp.WebControls.Timer.Elapsed"/> event.
+             Returns -1 if the interval has not been set. 
+             Minimum value is 1 ;
+            </remarks>
+        </member>
+        <member name="P:MarkItUp.WebControls.Timer.CommandName">
+            <summary>
+            Gets or sets the command name associated with the <see cref="T:MarkItUp.WebControls.Timer"/> that is 
+            passed to the <see cref="E:MarkItUp.WebControls.Timer.Elapsed"/> event.
+            </summary>
+            <example>
+            The following example shows you how to use a <see cref="T:MarkItUp.WebControls.Timer"/> control on your page.
+            <code>
+            <![CDATA[
+            <%@ Register TagPrefix="miu" Namespace="MarkItUp.WebControls" Assembly="MarkItUp.WebControls.Timer" %>
+            <script runat="server" language="c#" >
+            private void MyTimer_Elapsed(object sender, MarkItUp.WebControls.TimerElapsedEventArgs e)
+            {
+                if( e.CommandName == "Foo" && e.CommandArgument == "Bar" )
+                {
+                    // do something...
+                }
+            }
+            </script>
+            <form runat="server">
+            	<miu:Timer 
+                    id="MyTimer" 
+                    runat="server" 
+                    CommandName="Foo" 
+                    CommandArgument="Bar" 
+                    Interval="1000"
+                    MaxTicks="3"
+                />
+            </form>
+            ]]>
+            </code>
+            </example>
+        </member>
+        <member name="P:MarkItUp.WebControls.Timer.CommandArgument">
+             <summary>
+             Gets or sets an optional parameter passed to the <see cref="E:MarkItUp.WebControls.Timer.Elapsed"/> event 
+             along with the associated <see cref="P:MarkItUp.WebControls.Timer.CommandName"/>.
+             </summary>
+             <remarks>
+             Returns -1 if the interval has not been set. 
+            </remarks>
+             <example>
+             The following example shows you how to use a <see cref="T:MarkItUp.WebControls.Timer"/> control on your page.
+             <code>
+             <![CDATA[
+             <%@ Register TagPrefix="miu" Namespace="MarkItUp.WebControls" Assembly="MarkItUp.WebControls.Timer" %>
+             <script runat="server" language="c#" >
+             private void MyTimer_Elapsed(object sender, MarkItUp.WebControls.TimerElapsedEventArgs e)
+             {
+                 if( e.CommandName == "Foo" && e.CommandArgument == "Bar" )
+                 {
+                     // do something...
+                 }
+             }
+             </script>
+             <form runat="server">
+            		<miu:Timer 
+            	        id="MyTimer" 
+            	        runat="server" 
+            	        CommandName="Foo" 
+            	        CommandArgument="Bar" 
+            	        Interval="1000"
+            	        MaxTicks="3"
+            	    />
+             </form>
+             ]]>
+             </code>
+             </example>
+        </member>
+        <member name="E:MarkItUp.WebControls.Timer.Elapsed">
+            <summary>
+            The event that is raised when the <see cref="P:MarkItUp.WebControls.Timer.Interval"/> has elapsed 
+            for the <see cref="T:MarkItUp.WebControls.Timer"/>.
+            </summary>
+            <remarks/>
+        </member>
+        <member name="T:MarkItUp.WebControls.TimerElapsedEventHandler">
+            <summary>
+            The signature for a method handling the <see cref="E:MarkItUp.WebControls.Timer.Elapsed"/> event.
+            </summary>
+        </member>
+        <member name="T:MarkItUp.WebControls.TimerElapsedEventArgs">
+            <summary>
+            Provides data for the <see cref="E:MarkItUp.WebControls.Timer.Elapsed"/> event.
+            </summary>
+        </member>
+        <member name="M:MarkItUp.WebControls.TimerElapsedEventArgs.#ctor(System.String)">
+            <summary>
+            Instantiates a <see cref="T:MarkItUp.WebControls.TimerElapsedEventArgs"/> with the given results.
+            </summary>
+            <param name="arg"></param>
+        </member>
+        <member name="P:MarkItUp.WebControls.TimerElapsedEventArgs.CommandName">
+            <summary>
+            Gets the CommandName for the event.
+            </summary>
+        </member>
+        <member name="P:MarkItUp.WebControls.TimerElapsedEventArgs.CommandArgument">
+            <summary>
+            Gets the CommandArgument for the event.
+            </summary>
+        </member>
+    </members>
+</doc>

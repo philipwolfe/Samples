@@ -1,0 +1,1 @@
+OSQL -S localhost -U sa -P 00password < xp_post.sql

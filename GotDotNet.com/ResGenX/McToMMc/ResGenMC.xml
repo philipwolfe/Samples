@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<doc version="XmlDoc 1.0">
+  <assembly>
+    <name>ResGenMC</name>
+    <language>CSharp</language>
+    <version>1.0.2404.25548</version>
+    <culture>neutral</culture>
+    <title />
+    <description />
+  </assembly>
+  <members>
+    <member name="T:ResGenX.Class1" type="Class" namespace="ResGenX">
+      <modifiers>
+        <codetype>Class</codetype>
+        <access>Project</access>
+        <inherits>
+          <class>System.Object</class>
+        </inherits>
+      </modifiers>
+      <summary>Defines the entry point "Main"</summary>
+      <remarks />
+      <history>
+        <modified user="JJohnson" date="7/25/2006" />
+      </history>
+    </member>
+    <member name="M:ResGenX.Class1.Main(System.String[])" type="Function">
+      <modifiers>
+        <access>Private</access>
+        <isshared />
+        <attributes>
+          <attribute>System.STAThreadAttribute</attribute>
+        </attributes>
+      </modifiers>
+      <summary>The application entry point</summary>
+      <param type="System.String[]" name="args">The command line arguments</param>
+      <returns type="System.Int32">
+        Returns the exit code. A value of zero indicates success. Any other value indicates an
+        error occured.
+      </returns>
+      <remarks>
+        The command line format for ResGenMC command is:
+        <code>
+          
+ resgenmc [/compile] [/xref {c# | vb}] inputfile[.mc] [res | resx]
+ </code>
+        <list type="definition">
+          <item>
+            <term>/compile</term>
+            <description>
+              This option allows you to specify multiple .mc files to convert to .resources files in a
+              single bulk operation. If you do not specify this option, you can specify only one input
+              file argument.
+            </description>
+          </item>
+          <item>
+            <term>/xref {c# | vb}</term>
+            <description>
+              This option specifies the type of message cross reference to create. Specifiey<c> c#</c>
+              for a CSharp style,<c> vb</c> for a Visual Basic style. If option is ommitted then both
+              stylies are created.
+            </description>
+          </item>
+          <item>
+            <term>inputfile</term>
+            <description>The name of the input file to convert. The .mc extension is optional:</description>
+          </item>
+          <item>
+            <term>res | resx</term>
+            <description>
+              Specifies the type of resource file to generate. res - indicates that .resources file is
+              to be created, This is the default.
+              <para>resx - indicats that a .resx file is to be created.</para>
+            </description>
+          </item>
+        </list>
+      </remarks>
+      <history>
+        <modified user="JJohnson" date="7/25/2006" />
+      </history>
+    </member>
+    <member name="T:ResGenX.ResGenMC" type="Class" namespace="ResGenX">
+      <modifiers>
+        <codetype>Class</codetype>
+        <access>Project</access>
+        <inherits>
+          <class>System.Object</class>
+        </inherits>
+      </modifiers>
+      <summary>Defines all of the routines that create the resource file.</summary>
+      <remarks />
+      <history>
+        <modified user="JJohnson" date="7/25/2006" />
+      </history>
+    </member>
+    <member name="M:ResGenX.ResGenMC.Process(System.String[])" type="Function">
+      <modifiers>
+        <access>Project</access>
+      </modifiers>
+      <summary>Evaluate the command line.</summary>
+      <param type="System.String[]" name="args">The command line options and arguments.</param>
+      <returns type="System.Int32">
+        Returns an exit code. A value of zero indicates success. Any other value indicates an
+        error occured.
+      </returns>
+      <remarks />
+      <history>
+        <modified user="JJohnson" date="7/25/2006" />
+      </history>
+    </member>
+    <member name="M:ResGenX.ResGenMC.LanguageLookup(System.String)" type="Function">
+      <modifiers>
+        <access>Private</access>
+      </modifiers>
+      <summary>Try to locate a culture id for the requested language</summary>
+      <param type="System.String" name="language">The language display name to look for</param>
+      <returns type="System.String">The requested culture id</returns>
+      <remarks />
+      <history>
+        <modified user="JJohnson" date="7/28/2006" />
+      </history>
+    </member>
+    <member name="M:ResGenX.ResGenMC.ProcessMessage(System.IO.TextReader,System.Resources.IResourceWriter,System.String,System.String@)" type="Function">
+      <modifiers>
+        <access>Private</access>
+      </modifiers>
+      <summary>Format a text message for inclusion into a resource</summary>
+      <param type="System.IO.TextReader" name="tr">The .mc file TextReader</param>
+      <param type="System.Resources.IResourceWriter" name="rw">The IResourceWriter</param>
+      <param type="System.String" name="msgName">The message id</param>
+      <param type="out System.String" name="resText">returns the formated message</param>
+      <returns type="void">The number of lines read to process this message</returns>
+      <remarks />
+      <history>
+        <modified user="JJohnson" date="7/28/2006" />
+      </history>
+    </member>
+    <member name="M:ResGenX.ResGenMC.Message(System.String,System.Object[])" type="Function">
+      <modifiers>
+        <access>Private</access>
+      </modifiers>
+      <summary>Writes messages to the console</summary>
+      <param type="System.String" name="msgID">The ID of the message to write</param>
+      <param type="System.Object[]" name="args">Any string format arguments</param>
+      <returns type="void" />
+      <remarks>
+        This routine looks up a message in the Messages resource and writes it to the console.
+        Error messages are written to<c> stderr</c> all other messages are written to<c>
+        stdout</c> .
+      </remarks>
+      <history>
+        <modified user="JJohnson" date="7/26/2006" />
+      </history>
+    </member>
+  </members>
+</doc>

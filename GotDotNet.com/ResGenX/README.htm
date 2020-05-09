@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title></title>
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft Visual Studio .NET 7.1">
+		<meta name="ProgId" content="VisualStudio.HTML">
+		<meta name="Originator" content="Microsoft Visual Studio .NET 7.1">
+	</head>
+	<body>
+		<h1 align="center">README for ResGenX</h1>
+		<b>ResGenX</b> will process any existing txt resource files and files in the 
+		extended format that is defined by this project. An extended format txt file 
+		look like the following:
+		<pre>
+SymbolicName:MessageID = message text
+</pre>
+		In the extended format the <b>message text</b> can consist of multiple lines, 
+		i.e.
+		<pre>
+SymbolicName:MessageID = message text line1
+                         message text line2
+                         message text line3
+                         
+</pre>
+		The message is terminated by a blank line. The <b>SymbolicName</b> is optional 
+		in both single and multi line mode.
+		<p>
+			To support the <b>SymbolicName</b> option a new command line option is 
+			available:<br>
+			<span style="TEXT-ALIGN: center">/xref {cs|vb}</span><br>
+			This option specifies the type of <b>SymbolicName, MessageID</b> cross 
+			reference class to create. Specify <b>cs</b> for CSharp style and <b>vb</b> for 
+			Visual Basic. If this option is omitted and symbolic names are used then both 
+			types are created.
+		</p>
+		<b>ResGenX</b> also supports using <b>.mc</b> files as input. To use a <b>.mc</b>
+		file it must adhere to the following:
+		<ol>
+			<li>
+				SeverityNames and FacilityNames have the following format:
+				<pre>
+	 SeverityName = (label=value:name ... )
+	 FacilityNames = (label=value:name ... )
+	 </pre>
+				The <b>:name</b> element is ignored. The following Severity codes are 
+				predefined:<pre>
+	 Success = 0x0
+	 Informational = 0x1
+	 Warning = 0x2
+	 Error = 0x3
+	 </pre>
+				The following Facility names codes are predefined:<pre>
+	 System = 0xFF
+	 Application = 0xFFF
+	 </pre>
+			<li>
+				The LanguageNames directive has the following format:
+				<p>
+				LanguageNames = (language=culturename ... )
+				<p>
+					For example: LanguageNames=(English=en German=de)<br>
+					The following Languages are predefined:</p>
+				<pre>
+		English   en
+		German    de
+		TChinese  zv-CHT    (Chinese Traditional)
+		SChinese  zv-CHS    (Chinese Simplified) 
+		Spanish   es
+		French    fr
+	 </pre>
+			<li>
+				Message text contains Managed Code formatting strings not printf strings. The <b>McToMMc</b>
+				program will convert the formating strings in a .mc file to those usable with <b>ResGenX</b>.
+			</li>
+		</ol>
+		<p>
+			A message is defined by the following structure:<pre>
+		 MessageId = [number|+number]
+		 Severity = severity_name
+		 Facility = facility_name
+		 SymbolicName = name
+		 OutputBase = {number}
+		
+		 following by: (for each language)
+		 Language=name
+		 message text
+		 .
+		</pre>
+			<b>OutputBase</b> is ignored. <b>Message text</b>
+		may be single or multi lined and is terminated by a line that contains only a 
+		period or a blank line.
+		<P></P>
+		A resource file is created for each language and the format of the file name is <i>
+			mcfilename.culture.resources(.resx)</i>. Also the message text of the first 
+		language for a message is used to create the <b>fallback</b> resource file. 
+		This file is named <i>mcfilename.resources(.resx)</i> .
+		<p>The <b>/xref</b> command line option also applies to <b>.mc</b> file 
+			processing and has the same meaning as in <b>.txt</b> file processing. Both 
+			.txt and .mc files support the following text formating strings:
+			<ul>
+				<li>
+				\n - for newline
+				<li>
+				\t - for tag
+				<li>
+				\b - for a leading or trailing space
+				<li>
+					\0 - if at the end of the last line, do not insert a newline at the end of a 
+					message</li>
+			</ul>
+		<P>For both <b>.mc</b> and <b>.txt</b> files a newline charcter is appended to 
+			the end of the last line of a message. The <b>\0</b> formating string supresses 
+			this behavior.</P>
+	</body>
+</html>

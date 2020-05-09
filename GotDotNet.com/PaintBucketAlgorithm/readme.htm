@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>readme</title>
+		<meta name="vs_defaultClientScript" content="JavaScript">
+		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+		<meta name="GENERATOR" content="Microsoft Visual Studio .NET 7.1">
+		<meta name="ProgId" content="VisualStudio.HTML">
+		<meta name="Originator" content="Microsoft Visual Studio .NET 7.1">
+	</head>
+	<body style="FONT-SIZE: x-small; FONT-FAMILY: Verdana, Tahoma">
+		<p><font size="4"><strong>PaintBucket Algorithm</strong></font></p>
+		<p>Paint Bucket is a common tool&nbsp;for image editing applications (Photoshop, 
+			Paintshop Pro etc..). Main purpose of this tool is find and paint an area that 
+			has similar colored pixels. So it's algorithm much more harder to code and 
+			compute than a normal paint brush or pencil brush. Because paint bucket 
+			algorithm has, a search and determine an area with similar color, different 
+			with other tools.</p>
+		<p>And on the other hand, Paint Bucket algoritm has very similar with path finder 
+			algorithm, they both have a search algorithm. Path finder algorithm search and 
+			select the best way, this algorithm search and fill all the ways with selected 
+			color.</p>
+		<p>Main route of algorithm</p>
+		<p align="center"><img src="fig01.gif"></p>
+		<p>Here it is a sample 19x19 pixel work area that seperated with black lines. 
+			Bright red means that the work area. X axis is written in red, Y Axis is 
+			written in orange.</p>
+		<p>First user select a start point (marked as red in figure - 11,11). Algorithm 
+			marked the startpoint as a allowed point and add it to array. Then determine 
+			the north, east, west and south neighbour of it (marked as yellow in figure). 
+			Check each point, if it similar with startpoint, adds it to the postponed 
+			points array for future process. After that progress, code&nbsp;will 
+			have&nbsp;a 4 postponed point for future check. And starts&nbsp;the checking of 
+			them point by point. And if the checked point is similar than it adds that 
+			point to the postponeds array and also allowed points array. If not, it does 
+			nothing and check if any postponed point available.</p>
+		<p>This progress is continues up to postoned array is reach zero lenght and all 
+			waiting check operations has finished.</p>
+		<p>Very&nbsp;common question at this time that "Why we are using a postponeds 
+			array, Why we aren't using a recursive routine",<br>
+			Answer: if we don't use a array, all waiting operations stored at stack of 
+			executable. In the future of progress we&nbsp;will have&nbsp;lots of point to 
+			be waiting for check. And because of that, stack will probably overflow 
+			acording to dimensions of image. In tests i get "out of stack" error with 
+			images bigger than 200x200 pixel.</p>
+		<p>After the operation image become like that</p>
+		<p align="center"><img src="fig02.gif"></p>
+		<p>There is only an&nbsp;area (on the bottom corner-right) where was not filled, 
+			because it has no gate that&nbsp;brush can come in.</p>
+		<p>Finally, all this algorithm written in vb.net is included with project. Please 
+			check the codes and try to understand if i am not clear.</p>
+		<p>And Test Application is very functional and reusable with all this and other MDI 
+			based applications. You can freely use and distrubute it in&nbsp;personal and 
+			opensourced projects&nbsp;(please not in commercial projects).</p>
+		<p>Test Application has Undo and Redo function (with 5 history limitation), "open", 
+			"save", "save as" and "close" functions with four common image format.</p>
+		<p>At the end, a last question: "Why we aren't use a multitheread routine for 
+			speeding up the progress"<br>
+			Answer: I think of it and try as well but nothings changed, because of GDI+. 
+			GDI+ in .net is very new and unstable. It occurs lots of unrecognized and silly 
+			errors. For example in Undo Function, when you get a clone of image to the 
+			memory. It gives an silly error like "Undetermined Error". I have to do with 
+			"memory stream" after trying 3 other routine (all of them occurs very unlikely 
+			error). I hope that all that GDI+ problems solved on VS2005.</p>
+		<p>Have a nice coding<br>
+			Sukru Alatas<br>
+			<a href="mailto:ferrodoxin@hotmail.com">ferrodoxin@hotmail.com</a><br>
+			<br>
+			27th Aug 05</p>
+	</body>
+</html>

@@ -1,0 +1,73 @@
+// MMCFormsShim.idl : IDL source for MMCFormsShim
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (MMCFormsShim.tlb) and marshalling code.
+
+#include "olectl.h"
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(85BCEB7D-7628-4BEB-8A00-56414702FDC8),
+	dual,
+	nonextensible,
+	helpstring("IMMCFormsShimCtrl Interface"),
+	pointer_default(unique)
+]
+interface IMMCFormsShimCtrl : IDispatch
+{
+	[propget, id(2), helpstring("property FormClassName")] HRESULT FormClassName([out, retval] BSTR* pVal);
+	[propput, id(2), helpstring("property FormClassName")] HRESULT FormClassName([in] BSTR newVal);
+	[propget, id(3), helpstring("property AssemblyName")] HRESULT AssemblyName([out, retval] BSTR* pVal);
+	[propput, id(3), helpstring("property AssemblyName")] HRESULT AssemblyName([in] BSTR newVal);
+};
+
+
+
+[
+	object,
+	uuid(B8F882F8-3D93-401c-A4D4-E3A9943E858D),
+	dual,
+	nonextensible,
+	helpstring("IMMCFormsShim Interface"),
+	pointer_default(unique)
+]
+interface IMMCFormsShim : IUnknown
+{
+	[helpstring("method HostUserControl")] HRESULT HostUserControl(BSTR Assembly, BSTR Class, [out,retval] IUnknown** ppControlObject);
+};
+
+
+
+
+
+
+[
+	uuid(222A2FC0-81A9-4B3B-92B6-1D9E0691BAA8),
+	version(1.0),
+	helpstring("MMCFormsShim 1.0 Type Library")
+]
+library MMCFormsShimLib
+{
+
+	[
+		uuid(458AB8A2-A1EA-4D7B-8EBE-DEE5D3D9442C)
+	]
+	interface IWin32Window : IUnknown
+	{
+		HRESULT get_Handle([out, retval] long *pHWnd);
+	};
+
+	importlib("stdole2.tlb");
+	[
+		uuid(97AD17DA-70A5-45B9-9E10-DEAA3D26E17D),
+		helpstring("MMCFormsShimCtrl Class")
+	]
+	coclass MMCFormsShimCtrl
+	{
+		[default] interface IMMCFormsShimCtrl;
+      interface IMMCFormsShim;
+	};
+};

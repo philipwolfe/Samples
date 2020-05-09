@@ -1,0 +1,120 @@
+<Project MSBuildVersion="1.2" DefaultTargets="Build">
+  <PropertyGroup>
+    <Property ProjectType="Local" />
+    <Property ProductVersion="8.0.30923" />
+    <Property SchemaVersion="2.0" />
+    <Property ProjectGuid="{9FDAA86F-AC52-49A9-81C2-0A394A804BEA}" />
+    <Property Configuration="Debug" Condition=" '$(Configuration)' == '' " />
+    <Property ApplicationIcon="" />
+    <Property AssemblyKeyContainerName="" />
+    <Property AssemblyName="StrongResourcesDemo" />
+    <Property AssemblyOriginatorKeyFile="" />
+    <Property AssemblyOriginatorKeyMode="None" />
+    <Property DefaultClientScript="JScript" />
+    <Property DefaultHTMLPageLayout="Grid" />
+    <Property DefaultTargetSchema="IE50" />
+    <Property DelaySign="false" />
+    <Property OutputType="WinExe" />
+    <Property OptionCompare="Binary" />
+    <Property OptionExplicit="On" />
+    <Property OptionStrict="Off" />
+    <Property RootNamespace="StrongResourcesDemo" />
+    <Property StartupObject="StrongResourcesDemo.formMain" />
+    <Property InstanceType="SingleInstance" />
+    <Property ShutdownMode="MainFormClose" />
+    <Property Title="" />
+    <Property Description="" />
+    <Property Company="" />
+    <Property Product="" />
+    <Property Copyright="" />
+    <Property Trademark="" />
+    <Property AssemblyType="Library" />
+    <Property TypeComplianceDiagnostics="false" />
+    <Property CompatibilityChecks="false" />
+    <Property CompatibleAssembly="" />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <Property OutputPath="bin\" />
+    <Property BaseAddress="285212672" />
+    <Property ConfigurationOverrideFile="" />
+    <Property DefineConstants="" />
+    <Property DefineDebug="true" />
+    <Property DefineTrace="true" />
+    <Property DocumentationFile="" />
+    <Property DebugSymbols="true" />
+    <Property IncrementalBuild="true" />
+    <Property Optimize="false" />
+    <Property RegisterForComInterop="false" />
+    <Property RemoveIntegerChecks="false" />
+    <Property TreatWarningsAsErrors="false" />
+    <Property WarningLevel="1" />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <Property OutputPath="bin\" />
+    <Property BaseAddress="285212672" />
+    <Property ConfigurationOverrideFile="" />
+    <Property DefineConstants="" />
+    <Property DefineDebug="false" />
+    <Property DefineTrace="true" />
+    <Property DocumentationFile="" />
+    <Property DebugSymbols="false" />
+    <Property IncrementalBuild="false" />
+    <Property Optimize="true" />
+    <Property RegisterForComInterop="false" />
+    <Property RemoveIntegerChecks="false" />
+    <Property TreatWarningsAsErrors="false" />
+    <Property WarningLevel="1" />
+  </PropertyGroup>
+  <ItemGroup>
+    <Item Type="Reference" Include="System" Name="System" />
+    <Item Type="Reference" Include="System.Data" Name="System.Data" />
+    <Item Type="Reference" Include="System.Drawing" Name="System.Drawing" />
+    <Item Type="Reference" Include="System.Windows.Forms" Name="System.Windows.Forms" />
+    <Item Type="Reference" Include="System.Xml" Name="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <Item Type="Import" Include="Microsoft.VisualBasic" />
+    <Item Type="Import" Include="System" />
+    <Item Type="Import" Include="System.Collections" />
+    <Item Type="Import" Include="System.Data" />
+    <Item Type="Import" Include="System.Drawing" />
+    <Item Type="Import" Include="System.Diagnostics" />
+    <Item Type="Import" Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Item Type="Compile" Include="AssemblyInfo.vb" SubType="Code" />
+    <Item Type="Compile" Include="formMain.vb" SubType="Form" />
+    <Item Type="Compile" Include="My.vb" SubType="Code" />
+    <Item Type="Compile" Include="strings.vb" SubType="Code" />
+    <Item Type="EmbeddedResource" Include="formMain.ar.resx" DependentUpon="formMain.vb" />
+    <Item Type="EmbeddedResource" Include="formMain.fr.resx" DependentUpon="formMain.vb" />
+    <Item Type="EmbeddedResource" Include="formMain.fr-FR.resx" DependentUpon="formMain.vb" />
+    <Item Type="EmbeddedResource" Include="formMain.ja.resx" DependentUpon="formMain.vb" />
+    <Item Type="EmbeddedResource" Include="formMain.ja-JP.resx" DependentUpon="formMain.vb" />
+    <Item Type="EmbeddedResource" Include="formMain.resx" DependentUpon="formMain.vb" />
+    <Item Type="EmbeddedResource" Include="strings.fr.resx" DependentUpon="strings.vb">
+      <PropertyGroup>
+        <Property Culture="fr" />
+      </PropertyGroup>
+    </Item>
+    <Item Type="EmbeddedResource" Include="strings.ja.resx" DependentUpon="strings.vb">
+      <PropertyGroup>
+        <Property Culture="ja" />
+      </PropertyGroup>
+    </Item>
+    <Item Type="EmbeddedResource" Include="strings.resx" DependentUpon="strings.vb" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\VisualBasic.Targets" />
+  <PropertyGroup>
+    <Property PreBuildEvent="" />
+    <Property PostBuildEvent="" />
+  </PropertyGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <CommonProperties>
+        <FL_F184B08F_C81C_45F6_A57F_5ABD9991F28F />
+      </CommonProperties>
+      <UserProperties />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

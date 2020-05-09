@@ -1,0 +1,1 @@
+OSQL -S localhost -U sa -P < UnInstall.sql

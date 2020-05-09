@@ -1,0 +1,435 @@
+<GRAMMAR LANGID="409">
+	<DEFINE>
+		<ID NAME="VID_MODE_GRAPH" VAL="101"/>
+		<ID NAME="VID_MODE_EDIT" VAL="102"/>
+		
+		<ID NAME="VID_COMPILE" VAL="1001"/>
+		<ID NAME="VID_RUN" VAL="1002"/>
+		<ID NAME="VID_RESET" VAL="1003"/>
+		<ID NAME="VID_UNDO" VAL="1004"/>
+		
+		<ID NAME="VID_FORWARD" VAL="2001"/>
+		<ID NAME="VID_LEFT" VAL="2002"/>
+		<ID NAME="VID_RIGHT" VAL="2003"/>
+		
+		
+		<ID NAME="VID_CLS" VAL="2004"/>
+		<ID NAME="VID_PENUP" VAL="2005"/>
+		<ID NAME="VID_PENDOWN" VAL="2006"/>
+		<ID NAME="VID_SLEEP" VAL="2007"/>
+		
+		<ID NAME="VID_DECLARE" VAL="2008"/>
+		<ID NAME="VID_SET" VAL="2009"/>
+		<ID NAME="VID_DO" VAL="2010"/>
+		<ID NAME="VID_UNTIL" VAL="2011"/>
+		<ID NAME="VID_IF" VAL="2012"/>
+		<ID NAME="VID_ELSE" VAL="2013"/>
+		<ID NAME="VID_ENDIF" VAL="2014"/>
+		
+		<ID NAME="VID_INCREMENT" VAL="2015"/>
+		<ID NAME="VID_DECREMENT" VAL="2016"/>
+		<ID NAME="VID_DIVIDE" VAL="2017"/>
+		<ID NAME="VID_MULTIPLY" VAL="2018"/>
+		
+		<ID NAME="VID_END" VAL="2019"/>
+		<ID NAME="VID_PROCEDURE" VAL="2020"/>
+		<ID NAME="VID_START" VAL="2021"/>
+		<ID NAME="VID_CALL" VAL="2022"/>
+		
+		<ID NAME="VID_CURRENT_VARS" VAL="10001"/>
+		<ID NAME="VID_ARITHMETICS" VAL="10002"/>
+		<ID NAME="VID_BOOL_OPERATOR" VAL="10003"/>
+		<ID NAME="VID_CURRENT_PROCS" VAL="10004"/>
+		
+		<ID NAME="VID_RVALTYPE_INT" VAL="20001"/>
+		<ID NAME="VID_RVALTYPE_VAR" VAL="20002"/>
+		
+		<ID NAME="VID_LEQ" VAL="20003"/>
+		<ID NAME="VID_GEQ" VAL="20004"/>
+		<ID NAME="VID_EQ" VAL="20005"/>
+		<ID NAME="VID_GT" VAL="20006"/>
+		<ID NAME="VID_LT" VAL="20007"/>
+		<ID NAME="VID_DIFF" VAL="20008"/>
+     </DEFINE>
+
+   
+    <RULE NAME="GraphicMode" ID="VID_MODE_GRAPH" TOPLEVEL="ACTIVE">
+      <P>Graphic mode</P>
+   </RULE>
+   
+    <RULE NAME="EditMode" ID="VID_MODE_EDIT" TOPLEVEL="ACTIVE">
+      <P>Edit mode</P>
+   </RULE>
+
+    <RULE NAME="Compile" ID="VID_COMPILE" TOPLEVEL="ACTIVE">
+      <P>Compile</P>
+   </RULE>
+
+    <RULE NAME="Run" ID="VID_RUN" TOPLEVEL="ACTIVE">
+      <P>Run</P>
+   </RULE>
+
+    <RULE NAME="Reset" ID="VID_RESET" TOPLEVEL="ACTIVE">
+      <P>Reset</P>
+   </RULE>
+
+    <RULE NAME="Undo" ID="VID_UNDO" TOPLEVEL="ACTIVE">
+      <P>Undo</P>
+    </RULE>
+
+	<!-- 
+		Rule for TURTLE::CLS
+		TURTLE : CLS
+	-->
+    <RULE NAME="CLS" ID="VID_CLS" TOPLEVEL="ACTIVE">
+      <P>Clear Screen</P>
+    </RULE>
+
+	<!-- 
+		Rule for TURTLE::PENUP
+		TURTLE : PEN_UP
+	-->
+    <RULE NAME="PenUp" ID="VID_PENUP" TOPLEVEL="ACTIVE">
+      <P>Pen UP</P>
+    </RULE>
+    
+	<!-- 
+		Rule for TURTLE::Sleep
+		TURTLE : SLEEP x
+	-->
+   <RULE NAME="Sleep" ID="VID_SLEEP" TOPLEVEL="ACTIVE">
+      <PHRASE>Sleep</PHRASE>
+      <L>
+      	<RULEREF NAME="Number" PROPNAME="RVALUETYPE" VAL="VID_RVALTYPE_INT"/>
+      	<RULEREF NAME="CURRENT_VARS" PROPNAME="RVALUETYPE" VAL="VID_RVALTYPE_VAR"/>
+      </L>
+
+   </RULE>
+    
+
+	<!-- 
+		Rule for TURTLE::PENDOWN
+		TURTLE : PEN_DOWN
+	-->
+    <RULE NAME="PenDown" ID="VID_PENDOWN" TOPLEVEL="ACTIVE">
+      <P>Pen Down</P>
+    </RULE>
+
+	<!-- 
+		Rule for TURTLE::Forward
+		TURTLE : FORWARD x
+	-->
+   <RULE NAME="MOVEFORWARD" ID="VID_FORWARD" TOPLEVEL="ACTIVE">
+      <PHRASE>forward</PHRASE>
+      <L>
+      	<RULEREF NAME="Number" PROPNAME="RVALUETYPE" VAL="VID_RVALTYPE_INT"/>
+      	<RULEREF NAME="CURRENT_VARS" PROPNAME="RVALUETYPE" VAL="VID_RVALTYPE_VAR"/>
+      </L>
+
+   </RULE>
+	
+	<!-- 
+		Rule for TURTLE::Left
+		TURTLE : LEFT x
+	-->
+   <RULE NAME="TURNLEFT" ID="VID_LEFT" TOPLEVEL="ACTIVE">
+      <PHRASE>left</PHRASE>
+      <L>
+      	<RULEREF NAME="Number" PROPNAME="RVALUETYPE" VAL="VID_RVALTYPE_INT"/>
+      	<RULEREF NAME="CURRENT_VARS" PROPNAME="RVALUETYPE" VAL="VID_RVALTYPE_VAR"/>
+      </L>
+
+   </RULE>
+
+	<!-- 
+		Rule for TURTLE::Forward
+		TURTLE : FORWARD x
+	-->
+   <RULE NAME="TURNRIGHT" ID="VID_RIGHT" TOPLEVEL="ACTIVE">
+      <PHRASE>right</PHRASE>
+      <L>
+      	<RULEREF NAME="Number" PROPNAME="RVALUETYPE" VAL="VID_RVALTYPE_INT"/>
+      	<RULEREF NAME="CURRENT_VARS" PROPNAME="RVALUETYPE" VAL="VID_RVALTYPE_VAR"/>
+      </L>
+
+   </RULE>
+
+
+	<!-- 
+		Rule for declaring a variable
+		TURTLE : DECLARE x
+	-->
+	<RULE NAME="DECLARE" DYNAMIC="TRUE" ID="VID_DECLARE" TOPLEVEL="ACTIVE">
+      <P>DECLARE</P> 
+      <DICTATION MAX="1"></DICTATION> <!-- Single word variables -->
+	</RULE>
+
+	
+	
+	<!-- 
+		Rule for assigning a variable
+		TURTLE : SET x TO value
+	-->
+   <RULE NAME="SET" TOPLEVEL="ACTIVE" ID="VID_SET">
+      <PHRASE>SET</PHRASE>
+      <RULEREF NAME="CURRENT_VARS" PROPNAME="NAME"/>
+      <PHRASE> TO</PHRASE>
+      <L>
+      	<RULEREF NAME="Number" PROPNAME="RVALUETYPE" VAL="VID_RVALTYPE_INT"/>
+      	<RULEREF NAME="CURRENT_VARS" PROPNAME="RVALUETYPE" VAL="VID_RVALTYPE_VAR"/>
+      </L>
+
+   </RULE>
+   
+   
+
+
+
+
+   <!-- Rules to support arithmetical operators-->
+   <RULE NAME="INCREMENT" ID="VID_INCREMENT" TOPLEVEL="ACTIVE">
+      <P>INCREMENT</P>
+      <RULEREF NAME="CURRENT_VARS" PROPNAME="NAME"/>
+      <P>BY</P>
+      <L>
+      	<RULEREF NAME="Number" PROPNAME="RVALUETYPE" VAL="VID_RVALTYPE_INT"/>
+      	<RULEREF NAME="CURRENT_VARS" PROPNAME="RVALUETYPE" VAL="VID_RVALTYPE_VAR"/>
+      </L>
+   </RULE>
+   
+   <RULE NAME="DECREMENT" ID="VID_DECREMENT" TOPLEVEL="ACTIVE">
+      <P>DECREMENT</P>
+      <RULEREF NAME="CURRENT_VARS" PROPNAME="NAME"/>
+      <P>BY</P>
+      <L>
+      	<RULEREF NAME="Number" PROPNAME="RVALUETYPE" VAL="VID_RVALTYPE_INT"/>
+      	<RULEREF NAME="CURRENT_VARS" PROPNAME="RVALUETYPE" VAL="VID_RVALTYPE_VAR"/>
+      </L>
+   </RULE>
+
+   <RULE NAME="MULTIPLY" ID="VID_MULTIPLY" TOPLEVEL="ACTIVE">
+      <P>MULTIPLY</P>
+      <RULEREF NAME="CURRENT_VARS" PROPNAME="NAME"/>
+      <P>BY</P>
+      <L>
+      	<RULEREF NAME="Number" PROPNAME="RVALUETYPE" VAL="VID_RVALTYPE_INT"/>
+      	<RULEREF NAME="CURRENT_VARS" PROPNAME="RVALUETYPE" VAL="VID_RVALTYPE_VAR"/>
+      </L>
+   </RULE>
+
+
+   <RULE NAME="DIVIDE" ID="VID_DIVIDE" TOPLEVEL="ACTIVE">
+      <P>DIVIDE</P>
+      <RULEREF NAME="CURRENT_VARS" PROPNAME="NAME"/>
+      <P>BY</P>
+      <L>
+      	<RULEREF NAME="CURRENT_VARS" PROPNAME="RVALUETYPE" VAL="VID_RVALTYPE_VAR"/>
+      	<RULEREF NAME="Number" PROPNAME="RVALUETYPE" VAL="VID_RVALTYPE_INT"/>
+      </L>
+   </RULE>
+   
+   
+   
+   	<!-- 
+		Rule for declaring a procedure
+		TURTLE : PROCEDURE x
+	-->
+	<RULE NAME="PROCEDURE" DYNAMIC="TRUE" ID="VID_PROCEDURE" TOPLEVEL="ACTIVE">
+      <P>PROCEDURE</P> 
+      <DICTATION MAX="1"></DICTATION> <!-- Single word variables -->
+	</RULE>
+
+
+	<!-- 
+		Rule for invoking a proc
+		TURTLE : CALL proc
+	-->
+   <RULE NAME="CALL" TOPLEVEL="ACTIVE" ID="VID_CALL">
+      <PHRASE>CALL</PHRASE>
+      <RULEREF NAME="CURRENT_PROCS" PROPNAME="NAME"/>
+   </RULE>
+   
+
+	<!-- 
+		Rule for starting a proc
+		TURTLE : START proc
+	-->
+   <RULE NAME="START" TOPLEVEL="ACTIVE" ID="VID_START">
+      <PHRASE>START</PHRASE>
+      <RULEREF NAME="CURRENT_PROCS" PROPNAME="NAME"/>
+   </RULE>
+   
+   
+
+	<!-- 
+		Rule for ending a proc
+		TURTLE : START proc
+	-->
+   <RULE NAME="ENDPROC" TOPLEVEL="ACTIVE" ID="VID_END">
+      <PHRASE>END</PHRASE>
+      <O>
+      	<P>PROCEDURE</P>
+      </O>
+   </RULE>
+   
+   
+      
+   
+   	<!-- 
+		Rule for TURTLE::IF
+		TURTLE : IF
+	-->
+    <RULE NAME="IF" ID="VID_IF" TOPLEVEL="ACTIVE">
+      <P>IF</P>
+      <RULEREF NAME="BOOLEANOPERATOR"/>
+    </RULE>
+
+   	<!-- 
+		Rule for TURTLE::ELSE
+		TURTLE : ELSE
+	-->
+    <RULE NAME="ELSE" ID="VID_ELSE" TOPLEVEL="ACTIVE">
+      <P>ELSE</P>
+    </RULE>
+    
+	<!-- 
+		Rule for TURTLE::ENDIF
+		TURTLE : ENDIF
+	-->
+    <RULE NAME="ENDIF" ID="VID_ENDIF" TOPLEVEL="ACTIVE">
+      <P>ENDIF</P>
+    </RULE>    
+    
+    
+   	<!-- 
+		Rule for TURTLE::DO
+		TURTLE : DO
+	-->
+    <RULE NAME="DO" ID="VID_DO" TOPLEVEL="ACTIVE">
+      <P>DO</P>
+    </RULE>
+    
+   	<!-- 
+		Rule for TURTLE::UNTIL
+		TURTLE : UNTIL
+	-->
+    <RULE NAME="UNTIL" ID="VID_UNTIL" TOPLEVEL="ACTIVE">
+      <P>UNTIL</P>
+      <RULEREF NAME="BOOLEANOPERATOR"/>
+    </RULE>
+    
+    
+    
+   <!-- Rule for boolean operators -->
+   <RULE NAME="BOOLEANOPERATOR" ID="VID_BOOL_OPERATOR">
+      <RULEREF NAME="CURRENT_VARS"/>
+      <L>
+      	<P PROPNAME="OPTYPE" VAL="VID_LEQ">IS LESSER THAN OR EQUAL TO</P>
+      	<P PROPNAME="OPTYPE" VAL="VID_GEQ">IS GREATER THAN OR EQUAL TO</P>
+		<P PROPNAME="OPTYPE" VAL="VID_EQ">IS EQUAL TO</P>
+      	<P PROPNAME="OPTYPE" VAL="VID_GT">IS GREATER THAN</P>
+      	<P PROPNAME="OPTYPE" VAL="VID_LT">IS LESSER THAN</P>
+      	<P PROPNAME="OPTYPE" VAL="VID_DIFF">IS DIFFERENT FROM</P>
+      </L>
+      <L>
+      	<RULEREF NAME="Number" PROPNAME="RVALUETYPE" VAL="VID_RVALTYPE_INT"/>
+      	<RULEREF NAME="CURRENT_VARS" PROPNAME="RVALUETYPE" VAL="VID_RVALTYPE_VAR"/>
+      </L>
+   </RULE>
+
+
+
+   
+   <!-- Rule to hold the var names -->
+   <RULE NAME="CURRENT_VARS" ID="VID_CURRENT_VARS" DYNAMIC="TRUE">
+      <PHRASE>placeholder</PHRASE>
+   </RULE>
+	
+
+	<!-- Rule to hold the var names -->
+   <RULE NAME="CURRENT_PROCS" ID="VID_CURRENT_PROCS" DYNAMIC="TRUE">
+      <PHRASE>placeholder</PHRASE>
+   </RULE>
+	
+
+	<!-- Rule to hold numbers -->
+	<RULE NAME="Number" TOPLEVEL="ACTIVE">
+		<O>
+			<RULEREF NAME="Hundreds" PROPNAME="HUNDREDS"/>
+		</O>
+		<O>
+			<LIST>
+				<RULEREF NAME="TeenNumbers" PROPNAME="TEENNBR"/>
+				<RULEREF NAME="Digits" PROPNAME="DIGIT"/>
+				<RULEREF NAME="BigTyNumber" PROPNAME="BIGTY"/>
+				<RULEREF NAME="ExceptionNumbers" PROPNAME="EXCEPTIONNBR"/>
+			</LIST>
+		</O>
+	</RULE>
+	
+	
+	<RULE NAME="Hundreds">
+		<RULEREF NAME="Digits" PROPNAME="DIGIT"/>
+		<P>hundred</P>
+	</RULE>
+	
+	<RULE NAME="BigTyNumber">
+		<RULEREF NAME="TyNumbers" PROPNAME="TYNUMBERS"/>
+		<O>
+			<RULEREF NAME="Digits" PROPNAME="DIGIT"/>
+		</O>
+	</RULE>
+	
+	
+
+	<RULE NAME="ExceptionNumbers">
+		<LIST PROPNAME="EXCEPTIONNBR">
+			<P VAL="10">ten</P>
+			<P VAL="0">zero</P>
+		</LIST>
+	</RULE>
+
+
+	<RULE NAME="Digits">
+		<LIST PROPNAME="DIGIT">
+			<P VAL="1">one</P>
+			<P VAL="2">two</P>
+			<P VAL="3">three</P>
+			<P VAL="4">four</P>
+			<P VAL="5">five</P>
+			<P VAL="6">six</P>
+			<P VAL="7">seven</P>
+			<P VAL="8">eight</P>
+			<P VAL="9">nine</P>
+		</LIST>
+	</RULE>
+
+
+	<RULE NAME="TeenNumbers">
+		<LIST PROPNAME="TEENNBR">
+			<P VAL="11">eleven</P>
+			<P VAL="12">twelve</P>
+			<P VAL="13">thirteen</P>
+			<P VAL="14">fourteen</P>
+			<P VAL="15">fifteen</P>
+			<P VAL="16">sixteen</P>
+			<P VAL="17">seventeen</P>
+			<P VAL="18">eighteen</P>
+			<P VAL="19">nineteen</P>
+		</LIST>
+	</RULE>
+
+	<RULE NAME="TyNumbers">
+		<LIST PROPNAME="TYNBR">
+			<P VAL="20">twenty</P>
+			<P VAL="30">thirty</P>
+			<P VAL="40">fourty</P>
+			<P VAL="50">fifty</P>
+			<P VAL="60">sixty</P>
+			<P VAL="70">seventy</P>
+			<P VAL="80">eighty</P>
+			<P VAL="90">ninety</P>
+		</LIST>
+	</RULE>
+
+</GRAMMAR>

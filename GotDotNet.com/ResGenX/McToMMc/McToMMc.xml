@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<doc version="XmlDoc 1.0">
+  <assembly>
+    <name>McToMMc</name>
+    <language>CSharp</language>
+    <version>1.0.0.0</version>
+    <culture>neutral</culture>
+    <description>Convert .mc file for use with Mangaged Code</description>
+    <company />
+    <product />
+    <copyright />
+    <trademark />
+    <authors>
+      <author name="James Johnson" contact="jimj@iland.net" />
+    </authors>
+  </assembly>
+  <members>
+    <member name="T:McToMMc.Class1" type="Class" namespace="McToMMc">
+      <modifiers>
+        <codetype>Class</codetype>
+        <access>Project</access>
+        <inherits>
+          <class>System.Object</class>
+        </inherits>
+      </modifiers>
+      <summary>Convert .mc file for use with managed code</summary>
+      <remarks>
+        The syntax of the<c> McToMMc</c> command is:
+        <code>McToMMc infile.mc[,outfile.ext] ...</code>
+        The infile must have an extension of<c> mc</c> . If the output file is not specified a
+        name of<c> infile.mmc</c> will be used. Multiple infile,outfile parameters may be
+        specified.
+        <para>
+          The<c> %c</c> formating strings used in an mc file are replaced as follows:
+          <list type="definition">
+            <item>
+              <term>%.</term>
+              <description>Replace with a period.</description>
+            </item>
+            <item>
+              <term>%b</term>
+              <description>Replaced with "\b".</description>
+            </item>
+            <item>
+              <term>%%</term>
+              <description>Replaced by a percent sign.</description>
+            </item>
+            <item>
+              <term>%!</term>
+              <description>Replaced by a exclamation point.</description>
+            </item>
+            <item>
+              <term>%r</term>
+              <description>Replaced with "\r".</description>
+            </item>
+            <item>
+              <term>%\</term>
+              <description>Replaced with "\n".</description>
+            </item>
+            <item>
+              <term>%0</term>
+              <description>Replaced with "\0".</description>
+            </item>
+            <item>
+              <term>%nn[!printf-format-specifier!]</term>
+              <description>Replaced with a managed code format specifier.</description>
+            </item>
+          </list>
+        </para>
+      </remarks>
+      <history>
+        <modified user="JJohnson" date="7/25/2006" />
+      </history>
+    </member>
+    <member name="T:McToMMc.Converter" type="Class" namespace="McToMMc">
+      <modifiers>
+        <codetype>Class</codetype>
+        <access>Project</access>
+        <inherits>
+          <class>System.Object</class>
+        </inherits>
+      </modifiers>
+      <summary>Performs the actual .mc file conversion.</summary>
+      <remarks>See <see cref="T:McToMMc.Class1" /> for a description of the conversion process.
+      </remarks>
+      <history>
+        <modified user="JJohnson" date="8/8/2006" />
+      </history>
+    </member>
+  </members>
+</doc>

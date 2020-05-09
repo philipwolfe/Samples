@@ -1,0 +1,38 @@
+﻿Msg001 = Usage:\tResGenX [/xref {{cs | vb}}] inFile.ext [outFile.ext]\n
+         \tResGenX [/compile] [/xref {{cs | vb\}}] inFile1.ext[,outFile1.resources] [...]\n
+         \n
+         Where .ext is .resX, .txt, mc or .resources\n
+         \n
+         Converts files from one resource format to another.  If the outFile\n
+         is not specified, inFile.resources will be used.\n
+         \n
+         The /compile option takes a list of .resX, mc or .txt files to convert to\n
+         .resources files in one bulk operation, replacing .ext with .resources for\n
+         the output file name.\n
+         \n
+         The /xref option specifies the type of cross reference file(s)\n
+         to create. Specify cs to create a CSharp style or vb for Visual Basic.\n
+         If the option is ommitted both styles are generated.
+
+Msg002 = Read in {0} resources from `{1}'\nWritting resource file... Done
+
+Msg011E = Exception adding message to resource\n{0}
+
+Msg009E = Invalid or unsupported option: {0}
+
+Msg005E = Value out of range or invalid at {0} : (1}
+
+Msg006E = Undefined {0} name at {1}: {2}
+
+Msg004E = Invalid MC file structute at (0)
+
+Msg001E = Input file does not exist or has in invalid extension: {0}
+
+Msg002E = Output file has an invalid extension: {0}
+
+Msg007E = Symbol already defined at {0}: {1}
+
+Msg003E = Invalid text file structure:\n{0}
+
+msg008E = Duplicate message ID: Severity:{0} Facility:{1} Message:{2}
+

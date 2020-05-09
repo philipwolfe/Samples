@@ -1,0 +1,60 @@
+<html>
+<head runat="server">
+    <title>StringBuilder vs. String</title>
+</head>
+    <script type="text/javascript" src="StringBuilder.Compressed.js"></script>
+    <script type="text/javascript">
+
+    function TestStringBuilder()
+    {
+        var StartTime = (new Date()).getTime();
+        
+        document.getElementById("Details").innerHTML="";
+    
+        var a = new StringBuilder();
+        
+        for(var i = 0; i<10000; i++)
+        {
+            a.Append("Testing string number: ");
+            a.Append(i);
+        }
+        
+        document.getElementById("Details").innerHTML=a.ToString();
+        
+        var EndTime = (new Date()).getTime();
+        document.getElementById("Timer").innerHTML=(EndTime-StartTime)/1000 + " Seconds";
+    }
+    
+    function TestCommonString()
+    {
+        var StartTime = (new Date()).getTime();
+
+        document.getElementById("Details").innerHTML="";
+        
+        var a = new String();
+    
+        for(var i = 0; i<10000; i++)
+        {
+            a = a + "Testing string number: ";
+            a = a + i;
+        }
+        
+        document.getElementById("Details").innerHTML=a;
+        
+        var EndTime = (new Date()).getTime();
+        document.getElementById("Timer").innerHTML=(EndTime-StartTime)/1000 + " Seconds";
+    }
+    
+    </script>
+<body>
+        StringBuilder vs.
+    String - Speed Test 10,000 lines (Internet Explorer)<br />&nbsp;<div>
+    <input type="button" name="Test" value="TestStringBuilder" onclick="TestStringBuilder();" />
+    <input type="button" name="Test" value="TestString" onclick="TestCommonString();" /><br /><br />
+    <span id="Timer"></span>
+    <br /><br />
+    <span id="Details"></span>
+    
+    </div>
+</body>
+</html>

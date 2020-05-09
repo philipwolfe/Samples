@@ -1,0 +1,53 @@
+PROCEDURE right
+PROCEDURE left
+CLS 
+DECLARE data
+DECLARE value 
+SET data = 12 
+SET value = 40 
+value /= data 
+PEN_UP 
+FORWARD 300 
+RIGHT 90 
+FORWARD 80 
+RIGHT 90 
+FORWARD 50 
+FORWARD 90 
+PEN_DOWN 
+CALL right
+
+
+START right
+    IF data > 0 
+        RIGHT 45 
+        data -= 1 
+        CALL right
+        data += 1 
+        LEFT 90 
+        data -= 1 
+        CALL left
+        data += 1 
+        RIGHT 45 
+    ENDIF 
+    IF data == 0 
+        FORWARD value 
+    ENDIF 
+END 
+
+
+START left
+    IF data > 0 
+        LEFT 45 
+        data -= 1 
+        CALL right
+        data += 1 
+        RIGHT 90 
+        data -= 1 
+        CALL left
+        data += 1 
+        LEFT 45 
+    ENDIF 
+    IF data == 0 
+        FORWARD value 
+    ENDIF 
+END 

@@ -1,0 +1,558 @@
+<!--------------------------------------------------------------------------->
+<!--                           INTRODUCTION                                
+
+ The Code Project article submission template (HTML version)
+
+Using this template will help us post your article sooner. To use, just 
+follow the 3 easy steps below:
+ 
+     1. Fill in the article description details
+     2. Add links to your images and downloads
+     3. Include the main article text
+
+That's all there is to it! All formatting will be done by our submission
+scripts and style sheets. 
+
+-->
+<!--------------------------------------------------------------------------->
+<!--                        IGNORE THIS SECTION                            --><html><head>
+		<title>The Code Project</title>
+		<STYLE> BODY, P, TD { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10pt }
+	H2,H3,H4,H5 { color: #ff9900; font-weight: bold; }
+	H2 { font-size: 13pt; }
+	H3 { font-size: 12pt; }
+	H4 { font-size: 10pt; color: black; }
+	PRE { BACKGROUND-COLOR: #FBEDBB; FONT-FAMILY: "Courier New", Courier, mono; WHITE-SPACE: pre; }
+	CODE { COLOR: #990000; FONT-FAMILY: "Courier New", Courier, mono; }
+	</STYLE>
+		<link href="http://www.codeproject.com/styles/global.css" type="text/css" rel="stylesheet"></head>
+	<body bgColor="#ffffff" color="#000000">
+		<!--------------------------------------------------------------------------->
+		<!-------------------------------     STEP 1      --------------------------->
+		<!--  Fill in the details (CodeProject will reformat this section for you) --><pre>Title:      The case for a channel-schema concept
+Author:      Wytek Szymanski 
+Email:       wytek@szymanski.com
+Environment: .net framework
+Keywords:    .net remoting
+Level:       Intermediate"
+Description: An article about .net remoting channel schemas
+</pre>
+		<!-------------------------------     STEP 2      --------------------------->
+		<!--  Include download and sample image information.                       -->
+		<ul class="download">
+			<li>
+				<A href="Article_src.zip">Download source - XXX Kb</A>
+			</li>
+		</ul>
+		<!-------------------------------     STEP 3      --------------------------->
+		<!--  Add the article text. Please use simple formatting (<h2>, <p> etc)   -->
+		<h2>Abstract</h2>
+		<p></p>
+		A .net remoting channel can be extended in many different ways, providing 
+		encryption, transformation, logging, etc. For a client that wants to 
+		communicate with many remote servers there is no direct way to choose the 
+		appropriate channel for the appropriate remote server. A channel is a chain of 
+		sinks where each sink serves a purpose. Thinking of channel schemas helps to 
+		distinguish one channel from the other.
+		<h2>Introduction</h2>
+		<p>
+		The .net remoting framework provides that clients and servers use channels for 
+		the exchange of messages. Two principal parts must always be considered when 
+		selecting a channel, the formatter sink and the transport sink, together 
+		constituting a channel schema. The .net remoting framework readily provides two 
+		channel schemas, one that employs a binary formatter with a tcp transport, and 
+		another that employs a soap formatter with an http transport.
+		<P>The concept of a .net remoting channel schema is regrettably not well accepted 
+			in the .net remoting framework. But combining the out-of-the-box transports and 
+			formatters four channel schemas can be established.</P>
+		<p>
+			<li>
+			1. Tcp transport and binary formatter
+			<li>
+			2. Http transport and soap formatter
+			<li>
+			3. Tcp transport and soap formatter
+			<li>
+		4. Http transport and binary formatter
+		<P></P>
+		<p>The third and fourth channels are obtained by setting the configuration entries 
+			like so:
+		</p>
+		<pre>&lt;channels&gt;
+  &lt;channel name="Two way http-binary server channel" port="9090" ref="http"&gt;
+    &lt;clientproviders&gt;
+      &lt;formatter ref="binary" /&gt;
+    &lt;/clientproviders&gt;
+    &lt;serverproviders&gt;
+      &lt;formatter ref="binary" /&gt;
+    &lt;/serverproviders&gt;
+  &lt;/channel&gt;
+			
+  &lt;channel name="Two way tcp-soap server channel" port="9000" ref="tcp"&gt;
+    &lt;clientproviders&gt;
+      &lt;formatter ref="soap" /&gt;
+    &lt;/clientproviders&gt;
+    &lt;serverproviders&gt;
+      &lt;formatter ref="soap" /&gt;
+    &lt;/serverproviders&gt;
+  &lt;/channel&gt;
+&lt;/channels&gt;</pre>
+		<p>But why use channel schemas other then the out-of-the-box ones? The Tcp channels 
+			are touted for better performance because they employ the binary formatter that 
+			serializes the messages into much smaller streams. The Http channels are touted 
+			for their ability to get through firewalls. It makes good sense to combine an 
+			Http channel with a binary formatter. Indeed, the performance of an http-binary 
+			channel is as good as a tcp-binary channel. Either channel transfers the 
+			message data by sending or receiving a series of transport headers together 
+			with the serialized message data. The only difference is that the http channel 
+			arranges and decorates the transport headers in compliance with the http 
+			protocol whereas the tcp channels decorate the transport headers with a 
+			signature, version number, and other magic numbers. Finally, it is all TCP/IP 
+			or sockets that transfers the messages across the network.
+		</p>
+		<p>In one of my previous articles I have described the dilemma of picking a channel 
+			when multiple channels all of the same transport but with different formatters 
+			are registered. <a href="http://www.codeproject.com/csharp/Abstract_Client_Formatter.asp">
+				Read my previous article here.</a> In this article I will revisit that 
+			problem but in a somewhat more thorough way.</p>
+		<h2>The bi-directional channel dilemma</h2>
+		<p>A client application typically registers bi-directional channels, e.g. <code>TcpChannel</code>
+			or <code>HttpChannel</code> , if it wants to pass a callback object. Here is 
+			some sample client code.
+		</p>
+		<pre>//implemented on the server
+public RemoteObject : MarshalByRefObject {
+	public void CallMe(Callback cb) {
+		String ret = cb.Callback(“Hello”);
+	}
+}
+
+// implemented on the client
+public CallbackObject : MarshalByRefObject {
+	public String Callback(String msg) {
+		return "Message received: " + msg;
+	}
+}
+
+CallbackObject callbackObject = new CallbackObject();
+
+String url = "http://localhost:8000/KnossosObject.rem";
+RemoteObjec remoteObj = (RemoteObject)RemotingServices.Connect(typeof(RemoteObject), url);
+
+// call the remote server
+RemoteObject.CallMe(callbackObject);</pre>
+		<p>To make this work, the client and server must each register at least one 
+			bi-directional http channel. The client and server could than be calling each 
+			in turn using that same channel. But what if the client and the server have 
+			each registered two or more bi-directional channels? This is a very realistic 
+			scenario where a client needs to talk to two different servers and where the 
+			servers may have to serve their clients over different channel. The interesting 
+			question is: Would a client that calls a server via the http channel also be 
+			called back via that same http channel? The answer is: If client and server 
+			each have registered a <code>TcpChannel</code> and an <code>HttpChannel</code> there 
+			is a fair chance that the server may use a different channel to execute the 
+			callback on, possibly presenting a dilemma where a client initiates the 
+			communication via the faster <code>TcpChannel</code> yet the server calls back 
+			the client via the slower <code>HttpChannel</code>. To see why this may happen 
+			let me explain how the server actually learns about the client’s callback 
+			address.</p>
+		<p>A callback object is always a subclass of <code>MarshalByRefObject</code>. When 
+			it is passed as a parameter to a method call it is marshalled into a 
+			serializable reference object. Once the client side formatter realizes that a 
+			method parameter is an object of type <code>MarshalByRefObject</code> it 
+			converts it to an <code>ObjRef</code> before serializing it to the message 
+			stream. This conversion is performed by the <code>RemotingServices</code>. One 
+			effect of the conversion is that the <code>ObjRef</code> type object has been 
+			provided with channel data that has embedded in it the addresses of every 
+			registered server channel.
+		</p>
+		<pre>// create the callback object
+CallbackObject callback = new CallbackObject();
+
+// convert to ObjRef
+ObjRef objRef = RemotingServices.Marshal(callback);
+
+// get at the channel data
+Object[] channelData = objRef.ChannelInfo.ChannelData;
+
+foreach(Object data in channelData) {
+
+&nbsp;&nbsp;&nbsp; // look for a ChannelDataStore
+&nbsp;&nbsp;&nbsp; if(data is ChannelDataStore) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // get at the channel URIs
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String[] channelUris = ((ChannelDataStore)data).ChannelUris;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // print each uri, the client’s server channel address
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; foreach(String uri in channelUris)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Console.WriteLine(uri); // 
+&nbsp;&nbsp;&nbsp; }
+}</pre>
+		<p>If two http channels have been registered than this is the output showing the 
+			local endpoints with identical network addresses but different listening ports. 
+			This is part of the channel data that the server receives on the other side. 
+			The server must choose one of the URLs when calling the client back.
+		</p>
+		<pre>http://192.168.1.100:8000
+http://192.168.1.100:8080</pre>
+		<p>The <code>RemoringServices.CreateEnvoyAndChannelSinks</code> method makes this 
+			choice on behalf of the server. Before connecting to the server, the 
+			RemotingServices attempts to create a message sink. It does so by presenting 
+			the embedded channel data to the <code>ChannelServices.CreateMessageSink</code> 
+			method. The code snippet below illustrates this and it is actual source code of 
+			the .net remoting framework.
+		</p>
+		<pre>// RemotingServices.CreateEnvoyAndChannelSinks 
+
+// Extract the channel from the channel data and name embedded
+// inside the objectRef
+Object[] channelData = objectRef.ChannelInfo.ChannelData;
+if (channelData != null) {
+   for (int i = 0; i &lt; channelData.Length; i++)
+   {
+      // Get the first availabe sink           
+      chnlSink = ChannelServices.CreateMessageSink(channelData[i]);
+      if(null != chnlSink)
+      {
+         break;
+      }
+   }
+}</pre>
+		<p>Eventually, the ChannelServices tries every registered sender channel. Here is 
+			the actual source code of the .net remoting infrastructure.
+		</p>
+		<pre>// ChannelServices.CreateMessageSink
+internal static IMessageSink CreateMessageSink(Object data)
+{
+   String objectUri;
+   return CreateMessageSink(null, data, out objectUri);
+} // CreateMessageSink
+               
+internal static IMessageSink CreateMessageSink(String url, Object data, out String objectURI) 
+{
+   IMessageSink msgSink = null;
+
+    RegisteredChannelList regChnlList = s_registeredChannels;
+    int count = regChnlList.Count;
+            
+    for(int i = 0; i &lt; count; i++)
+    {
+        if(regChnlList.IsSender(i))
+        {
+            IChannelSender chnl = (IChannelSender)regChnlList.GetChannel(i);
+             msgSink = chnl.CreateMessageSink(url, data, out objectURI);
+                    
+             if(msgSink != null)
+                break;
+        }
+    }
+       
+    return msgSink;
+} // CreateMessageSink
+</pre>
+		<p>A message sink may be created providing that the URL is one of the known types, 
+			one that starts with either <code>"tcp://"</code> or <code>"http://"</code>. 
+			If, for example, two http sender channels are registered than the first one 
+			that matches the <code>"http://"</code> at the starts of the URL will create 
+			the message sink. The problem here is that the first best sender channel may 
+			not be provided with the desired formatter. That is one crux of my 
+			channel-schema proposition. Register any two channel of the same type, one 
+			provided with a soap formatter the other provided with a binary formatter, and 
+			the system will become confused.
+		</p>
+		<p>The other crux of my channel-schema proposition lies in the fact that the 
+			bi-directional channels are not very bi-directional. In fact, the <code>TcpChannel</code>
+			or the <code>HttpChannel</code> are only loose associations of the client and 
+			server channels, or just a convenient short cut to registering the client and 
+			server channels explicitly. For example, the following configuration file 
+			entries are equivalent.
+		</p>
+		<pre>&lt;channel ref="tcp" /&gt;
+
+// or alternatively
+
+&lt;channel ref="tcp client" /&gt;
+&lt;channel ref="tcp server" /&gt;</pre>
+		<p>Let us assume that the client and the server have registered one tcp channel and 
+			one http channel each.
+		</p>
+		<pre>// the client’s config entries
+&lt;channel ref="tcp" /&gt;
+&lt;channel ref="http" /&gt;
+
+// the servers’s config entries
+&lt;channel ref="http" /&gt;
+&lt;channel ref="tcp" /&gt;</pre>
+		<p>And considering the client code like so.</p>
+		<pre>String url = "tcp://remoteserver:8000/MyObject.rem";
+MyObject obj = (MyObject)RemotingServices.Connect(typeof(MyObject), url);
+
+// create a callback object, one that derives from MarshalByRefObject
+CallbackObject callback = new CallbackObject();
+
+// and make a call
+obj.CallMe(callback);</pre>
+		<p>The URL will cause the client to select a tcp channel with its default binary 
+			formatter. The callback object will eventually transfer embedded in its channel 
+			data the URLs for the tcp and http server channels, which are two URLs. When 
+			the server calls back we would naturally want it to call back on the same 
+			channel that the request was initiated first, that was the tcp channel. But a 
+			message sink must be created on the server’s side before any callback can be 
+			made. And, as we have seen before, the remoting services will create the first 
+			best message sink that matches the first best URL. In other words, the server’s 
+			callback may be executing on the other channel, the http one. Add to it 
+			additional channels with alternate formatters and the whole thing becomes even 
+			more confusing. The concept of a channel schema, in my opinion, is thoroughly 
+			justified.
+		</p>
+		<h2>A channel schema implementation</h2>
+		<p>As I have already pointed out, the existing framework does not offer the 
+			opportunity to specify a particular communication channel. So, I have tried to 
+			provide one. Please download the source code to inspect the implementation.
+		</p>
+		<p>The implementation involves a client channel sink provider that is hooked as an 
+			interceptor into the client provider chain. After some experimenting and 
+			thinking, I decided to modify the channel information in the URL like this.
+		</p>
+		<pre>http-binary://server:port/objectUri
+http-soap://server:port/objectUri
+
+tcp-binary://server:port/objectUri
+tcp-soap://server:port/objectUri</pre>
+		<p>The installed and intercepting sink providers could easily recognize the desired 
+			schema and create the appropriate message sinks. But the sender channels reject 
+			anything but “tcp://” and http://. The solution to this is a custom 
+			implementation of the bi-directional tcp and http channels. The modified URL 
+			can in this way be intercepted and rewritten to the expectation of the standard 
+			client channels.
+		</p>
+		<pre>// IChannelSender interface
+public IMessageSink CreateMessageSink(
+    String url, 
+    Object remoteChannelData,
+    out String objectUri) {
+
+    if(url != null) {
+    
+        // client sending a request to server
+        // remove the formatter part 'binary'
+        // as in 'tcp-binary://server:port/object.rem'
+        int index = url.IndexOf("://");
+        String schema = url.Substring(0, index);
+        int n = schema.IndexOf('-');
+        if(n != -1) {
+             url = schema.Substring(0, n) + url.Substring(index);
+             <STRONG>remoteChannelData = schema.Substring(n);</STRONG>
+        }
+    }
+    else
+    if(remoteChannelData is ChannelDataStore) {
+        
+        // server calling the client back
+        ChannelDataStore channelDataStore = (ChannelDataStore)remoteChannelData;
+        url = channelDataStore.ChannelUris[0];
+        
+        // remove the formatter part 'binary'
+        // as in tcp-binary://server:port/object.rem
+        int index = url.IndexOf("://");
+        String schema = url.Substring(0, index);
+        int n = schema.IndexOf('-');
+        if(n != -1) {
+            url = schema.Substring(0, n) + url.Substring(index);
+            String[] channelURIs = new String[] { url, schema.Substring(n) };
+            <STRONG>remoteChannelData = new ChannelDataStore(channelURIs);</STRONG>
+        }
+     }
+
+     // pass it on to the standard TcpClientChannel/HttpClientChannel
+     return _clientChannel.CreateMessageSink(url, <STRONG>remoteChannelData</STRONG>, out objectUri);
+} // CreateMessageSink</pre>
+		<p>The trick here is to pass the formatter specification as a remoteCchannelData 
+			parameter to the CreateSink method, as I had already described in one of my 
+			previous articles.
+		</p>
+		<pre>public IClientChannelSink CreateSink(
+    IChannelSender channel,
+    String url,
+    Object remoteChannelData) {
+
+    int index = url.IndexOf(':');
+    if(index == -1)
+        throw new RemotingException("No channel url specified.");
+
+    <STRONG>String channelSchema = url.Substring(0,index);</STRONG>
+    <STRONG>String formatter = remoteChannelData as String;</STRONG>
+    if(formatter == null) {
+        // this is the server's callback 
+        // take the hint from the ChannelDataStore
+        ChannelDataStore channelDataStore = remoteChannelData as ChannelDataStore;
+        if(channelDataStore == null)
+            throw new RemotingException("Cannot identify channel schema.");
+            
+        <STRONG>formatter = channelDataStore.ChannelUris[1];</STRONG>
+    }
+
+    <STRONG>channelSchema += formatter;
+    if(String.Compare(channelSchema, _channelSchema, true) != 0)
+        return null; // channel schema does not match</STRONG>  
+
+    IClientChannelSink nextSink = null;
+    if(_nextSinkProvider != null) {
+        nextSink = _nextSinkProvider.CreateSink(channel, url, remoteChannelData);
+        if(nextSink == null)
+            return null;
+    }
+
+    return new ClientChannelSink(nextSink, _serverUrl);
+}</pre>
+		<p>All the trickery is about passing the formatter information around.
+		</p>
+		<p>
+		<p>To be certain that the server will make the callback to the same channel that 
+			the initial request was posted, the client channel must examine the method 
+			arguments before the request is posted. For every method argument that is an 
+			object derived from MarshalByRefObject the channel data is rewritten so that 
+			only the desired channel address is made available. In this way we can be 
+			certain that the server will post the callback on the same channel that the 
+			initial request was made. Here is the relevant code of the client channel sink.</p>
+		<pre>public IMessage SyncProcessMessage(IMessage msg)
+{
+    <b>msg = ModifyChannelData(msg);</b>
+    return NextSink.SyncProcessMessage(msg);
+}
+
+IMessage ModifyChannelData(IMessage msg) {
+
+    IMethodCallMessage mcm = msg as IMethodCallMessage;
+    if(mcm == null)
+        return msg;
+
+    Object[] args = mcm.InArgs;
+    for(int i=0; i &lt; args.Length; i++)
+        if(args[i] is MarshalByRefObject) {
+
+            // Any method parameter that is a MarshalByRefObject is a callback facility
+            // so we want to be sure that the desired channel schema is used when the 
+            // callback is made.
+            ObjRef objRef = RemotingServices.Marshal((MarshalByRefObject)args[i]);
+
+            Object[] data = objRef.ChannelInfo.ChannelData;
+
+            for(int j=0; j &lt; data.Length; j++) {
+
+                if(data[j] is ChannelDataStore) {
+                    <STRONG>data[j] = new ChannelDataStore(_channelURIs);</STRONG>
+                    break;
+                }
+            }
+        }
+    
+
+
+     String url = msg.Properties["__Uri"] as String;
+
+     int index = url.IndexOf("://");
+     if(index != -1) {
+         // the client makes a request to the server
+         // rewrite the url to remove the formatter spec
+         // e.g. remove 'binary' from http-binary://server:port/MyObject'
+
+         String formatter = url.Substring(0, index);
+         int n = formatter.IndexOf('-');
+         if(n != -1) {
+             String newUrl = formatter.Substring(0, n) + url.Substring(index);
+
+             MethodCallMessageWrapper newMsg = new MethodCallMessageWrapper(mcm); 
+             newMsg.Properties["__Uri"] = newUrl;
+             msg = newMsg;
+        }
+     }
+
+     return msg;
+}
+</pre>
+		<p>The configuration file entries might be as follows.</p>
+		<pre><P>&lt;channels&gt;
+    &lt;channel id="http" type="Custom.Remoting.Channels.HttpChannel, TwoWayChannel" /&gt;
+    &lt;channel id="tcp" type="Custom.Remoting.Channels.TcpChannel, TwoWayChannel" /&gt;
+&lt;/channels&gt;
+ 
+&lt;application&gt;
+    &lt;channels&gt;
+        &lt;channel ref="http" port="8000" channel-schema="http-binary" name="Two way http-binary channel" /&gt;
+        &lt;channel ref="http" port="9000" channel-schema="http-soap" name="Two way http-soap channel" /&gt;
+        &lt;channel ref="tcp" port="8080" channel-schema="tcp-binary" name="Two way tcp-binary channel" /&gt;
+        &lt;channel ref="tcp" port="9090" channel-schema="tcp-soap" name= "Two way tcp-soap channel" /&gt;
+        
+        &lt;channel ref="http" port="9876" channel-schema= "http-secure" name="Two way http-secure channel" &gt;
+            &lt;clientProviders&gt;
+                &lt;formatter ref="binary" /&gt;
+                &lt;provider
+                    type= "MsdnMag.Remoting.SecureClientChannelSinkProvider, SecureChannel"
+                    algorithm="DES"
+                    oaep="false"
+                    maxRetries="1"
+                /&gt;
+            &lt;/clientProviders&gt;
+            &lt;serverProviders&gt;
+                &lt;provider
+                    type="MsdnMag.Remoting.SecureServerChannelSinkProvider, SecureChannel"
+                    algorithm="DES" oaep= "false
+                    requireSecurity="true" 
+                    securityExemptionList="127.0.0.1; 207.46.230.220" 
+                    connectionAgeLimit="120"
+                    sweepFrequency="60" 
+                 /&gt;
+                &lt;formatter ref="binary" /&gt;
+            &lt;/serverProviders&gt; 
+        &lt;/channel&gt;
+    &lt;/channels&gt;
+&lt;/application
+</P>
+</pre>
+		<h2>Conclusion</h2>
+		<p>
+			The soap formatter outputs much larger data streams than binary formatters do. 
+			On the other hand, the http channels are preferred where a connection must pass 
+			through a firewall. Assigning a binary formatter to an http channel is 
+			therefore one way to improve the performance. But the channel schema concept is 
+			not just about performance. There are also other ways to improve the 
+			performance of an http channel. One other way is to compress/decompress the 
+			soap formatted text stream.
+		</p>
+		<p>
+			The channel schema concept is really about clients that want to communicate 
+			with many different servers. Be it a tcp channel or an http channel, the 
+			extensibility of the .net remoting framework invites many different types of 
+			extensions serving many purposes, e.g. encryption, logging, transformation. 
+			There is presently no official way to identify the channel that a client should 
+			use to connect to a remote object. I do hope that the .net remoting team at 
+			Microsoft will do something about it in a future release of the framework.
+		</p>
+		<h2>Project</h2>
+		<P><B>TwoWayChannel</B><br>
+			This assembly is the core. It implements the channel schema.</P>
+		<p><b>SecureChannel</b><br>
+			Microsoft developed this assembly. It contains the client and server channel 
+			sinks for secure communications. This project is part of an article in the June 
+			MSDN magazine.
+		</p>
+		<p><b>TestLibray</b><br>
+			This assembly contains an object for testing
+		</p>
+		<p><b>RemotingClient</b><br>
+			This is a client application for demo purposes.
+		</p>
+		<p><b>RemotingServer</b><br>
+			This is the server application for demo purposes.
+		</p>
+		<h2>P.S.</h2>
+		<p>The object of my work is to identify the limits of what I otherwise believe is a 
+			fine framework for distributed computing. You may review the code I have 
+			written and most like find it not to be good enough to be deployed in a 
+			production environment. But I will always appreciate your comments, 
+			suggestions, and tips on how to make things better. Please, be free to provide 
+			your feed-back.
+		</p>
+		</li>
+	</body>
+</html>

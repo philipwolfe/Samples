@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ResGenX.ResGenMC</title>
+		<meta name="GENERATOR" content="Microsoft Visual Studio .NET 7.1">
+		<meta name="ProgId" content="VisualStudio.HTML">
+		<meta name="Originator" content="Microsoft Visual Studio .NET 7.1">
+		<link REL="STYLESHEET" HREF="../WebDoc.css" TYPE="text/css">
+	</head>
+	<body>
+		<h1 align="center">ResGenX.ResGenMC</h1>
+		<table border="0" cellpadding="2px" cellspacing="0" class="Table">
+			<tr>
+				<td>CodeType</td>
+				<td width="90%">Class</td>
+			</tr>
+			<tr>
+				<td>Access</td>
+				<td>Project</td>
+			</tr>
+		<tr><td valign="top">Inherits</td><td>System.Object<br></td></tr>
+		<tr><td>&nbsp</td></tr>
+		<tr><td valign="top">Summary</td><td>Generates a resource file from a .mc file</td></tr>
+		<tr><td>&nbsp</td></tr>
+		<tr><td colspan="2">
+        The .mc file has the same structure as described in the Microsoft documentaion. For
+        conversion to a Managed Code application the follow assumptions are made:
+        <ol><li>
+              SeverityNames and FacilityNames have the following format:
+              <pre> SeverityName = (label=value:name ... )
+ FacilityNames = (label=value:name ... )  </pre>
+              The<b> :name</b> element is ignored.
+              <p>
+                The following Severity codes are predefined:
+                <pre> Success = 0x0
+ Informational = 0x1
+ Warning = 0x2
+ Error = 0x3  </pre></p><p>
+                The following Facility names codes are predefined:
+                <pre> System = 0xFF
+ Application = 0xFFF  </pre></p></li><li>
+              The LanguageNames directive has the following format:
+              <pre> LanguageNames = (language=culturename ... )
+ For example: LanguageNames=(English=en German=de)</pre><p>
+                The following Languages are predefined:
+                <pre>	English   en
+	German    de
+	TChinese  zv-CHT    (Chinese Traditional)
+	SChinese  zv-CHS    (Chinese Simplified)
+	Spanish   es
+	French    fr  </pre></p></li><li>Message text contains Managed Code formatting strings not printf strings.</li><li>
+              The<b> \</b> character is used as the place holder delimitor not<b> %</b> .
+              <p>
+                The following place holders are recognized:
+                <pre>	\n - for newline
+	\t - for tag
+	\b - for a leading or trailing space
+	\0 - if at the end of the last line, do not insert a newline at the end of a message 	</pre></p></li><li>A newline character will be appended to the last line unless directed not to.</li><li>Message text is terminated by a line containing only a period or a blank line.</li></ol></td></tr>
+		</table>
+	</body>
+</html>

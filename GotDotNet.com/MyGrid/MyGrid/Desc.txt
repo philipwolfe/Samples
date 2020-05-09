@@ -1,0 +1,23 @@
+grd Version 1.0
+
+Hi there,
+
+   This is my first control and not yet finished because I need suggestions.
+This grid supports combobox,datetimepicker,noneditable columns,some other extra functionality and good looking interface (I did not yet make good but I think not very bad.)
+
+   I'm trying now add a design-time form designer.But I've got some problems.When I add the designer property the grid couldn't be drag and drop over the container.
+
+   Try this in the grd.vb file
+
+<Designer(GetType(MyGridDesigner)), DesignTimeVisible(True), ToolboxBitmap(GetType(grd), "grd.ico")> _
+Public Class grd
+    Inherits System.Windows.Forms.DataGrid
+
+And also it is a problem that to list a class (here is grd class) members within the PropertyGrid control.
+
+I hope I'll make these on the other version.
+
+Please send your suggestions and bugs(I did not yet test well for bugs).
+
+Salim Afþar
+salimafsar@hotmail.com

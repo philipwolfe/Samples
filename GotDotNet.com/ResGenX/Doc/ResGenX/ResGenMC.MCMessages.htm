@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ResGenX.ResGenMC.MCMessages</title>
+		<meta name="GENERATOR" content="Microsoft Visual Studio .NET 7.1">
+		<meta name="ProgId" content="VisualStudio.HTML">
+		<meta name="Originator" content="Microsoft Visual Studio .NET 7.1">
+		<link REL="STYLESHEET" HREF="../WebDoc.css" TYPE="text/css">
+	</head>
+	<body>
+		<h1 align="center">ResGenX.ResGenMC.MCMessages</h1>
+		<table border="0" cellpadding="2px" cellspacing="0" class="Table">
+			<tr>
+				<td>CodeType</td>
+				<td width="90%">Function</td>
+			</tr>
+			<tr>
+				<td>Access</td>
+				<td>Private</td>
+			</tr>
+		<tr><td>&nbsp</td></tr>
+		<tr><td valign="top">Summary</td><td>Process the messages in the .mc file and write them to a resource file</td></tr>
+		<tr><td>Syntax</td><td>System.Int32 MCMessages()</td></tr>
+		<tr><td>&nbsp</td></tr>
+		<tr><td colspan="2">
+        A message definition consists of the following
+        <pre> MessageId = [number|+number]
+ Severity = severity_name
+ Facility = facility_name
+ SymbolicName = name
+ OutputBase = {number}
+
+ following by: (for each language)
+ Language=name
+ message text
+ .  </pre>
+        The OutputBase keyword is ignored. Severity and Facility are optional and default to<b>
+        Success</b> and<b> Application</b> respectivly.
+      </td></tr>
+		</table>
+	</body>
+</html>

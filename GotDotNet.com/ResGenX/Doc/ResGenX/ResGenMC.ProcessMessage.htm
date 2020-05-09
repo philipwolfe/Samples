@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>ResGenX.ResGenMC.ProcessMessage</title>
+		<meta name="GENERATOR" content="Microsoft Visual Studio .NET 7.1">
+		<meta name="ProgId" content="VisualStudio.HTML">
+		<meta name="Originator" content="Microsoft Visual Studio .NET 7.1">
+		<link REL="STYLESHEET" HREF="../WebDoc.css" TYPE="text/css">
+	</head>
+	<body>
+		<h1 align="center">ResGenX.ResGenMC.ProcessMessage</h1>
+		<table border="0" cellpadding="2px" cellspacing="0" class="Table">
+			<tr>
+				<td>CodeType</td>
+				<td width="90%">Function</td>
+			</tr>
+			<tr>
+				<td>Access</td>
+				<td>Private</td>
+			</tr>
+		<tr><td>&nbsp</td></tr>
+		<tr><td valign="top">Summary</td><td>Format a text message for inclusion into a resource</td></tr>
+		<tr><td valign="top">Syntax</td><td><pre>void ProcessMessage(System.Resources.IResourceWriter <span class="Paramref">rw</span>,<br>                    System.String <span class="Paramref">msgName</span>,<br>                    out System.String <span class="Paramref">resText</span><br>                    )</pre></td></tr>
+		<tr><td>&nbsp</td><td><dl><dt><span class="Paramref">rw</span></dt><dd>The IResourceWriter</dd><dt><span class="Paramref">msgName</span></dt><dd>The message id</dd><dt><span class="Paramref">resText</span></dt><dd>returns the formated message</dd></dl></td></tr>
+		<tr><td valign="top">Returns</td><td>The number of lines read to process this message</td></tr>
+		<tr><td>&nbsp</td></tr>
+		<tr><td colspan="2">
+        This routine gathers the text lines that comprise this message into a signle resource. Any
+        place holder codes are replaced with thier actual values.
+      </td></tr>
+		</table>
+	</body>
+</html>

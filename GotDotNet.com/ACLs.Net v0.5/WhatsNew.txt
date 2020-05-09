@@ -1,0 +1,36 @@
+v0.1
+----
+- First draft
+- Translated many Win32 security structs into C#
+- Translated many Win32 security API using DllImport
+
+
+v0.2
+----
+- Various bug fixes
+
+
+v0.3
+----
+- Added custom marshaler for SecurityAttributes and SecurityDescriptor
+- The purpose of the custom marshaler it two-fold
+  1. Make things easier for the user
+  2. Make sure the objects won't be collected by the GC (the custom marshaler instances
+     keep a strong ref to the managed marshaled object).
+- Various bug fixes
+
+
+v0.4
+----
+- Bug fix for ACL construction in SecutoryDesctiptor class
+- Started translation of TRUSTEE struct
+- Various bug fixes
+
+
+v0.5
+----
+- Added SetFileSecurity
+- Added Get/SetRegistryKeySecurity
+- Added SetKernelObjectSecurity
+- Added Get/SetSecurityInfo
+- Added Get/SetNamedSecurityInfo

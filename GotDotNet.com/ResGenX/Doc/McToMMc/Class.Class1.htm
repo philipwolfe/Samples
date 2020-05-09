@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>McToMMc.Class1</title>
+		<meta name="GENERATOR" content="Microsoft Visual Studio .NET 7.1">
+		<meta name="ProgId" content="VisualStudio.HTML">
+		<meta name="Originator" content="Microsoft Visual Studio .NET 7.1">
+		<link REL="STYLESHEET" HREF="../WebDoc.css" TYPE="text/css">
+	</head>
+	<body>
+		<h1 align="center">McToMMc.Class1</h1>
+		<table border="0" cellpadding="2px" cellspacing="0" class="Table">
+			<tr>
+				<td>CodeType</td>
+				<td width="90%">Class</td>
+			</tr>
+			<tr>
+				<td>Access</td>
+				<td>Project</td>
+			</tr>
+		<tr><td valign="top">Inherits</td><td>System.Object<br></td></tr>
+		<tr><td>&nbsp</td></tr>
+		<tr><td valign="top">Summary</td><td>Convert .mc file for use with managed code</td></tr>
+		<tr><td>&nbsp</td></tr>
+		<tr><td colspan="2">
+        The syntax of the<b> McToMMc</b> command is:
+        <pre>McToMMc infile.mc[,outfile.ext] ...</pre>        The infile must have an extension of<b> mc</b> . If the output file is not specified a
+        name of<b> infile.mmc</b> will be used. Multiple infile,outfile parameters may be
+        specified.
+        <p>
+          The<b> %c</b> formating strings used in an mc file are replaced as follows:
+          <dl><dt>%.</dt><dd>Replace with a period.</dd><dt>%b</dt><dd>Replaced with "\b".</dd><dt>%%</dt><dd>Replaced by a percent sign.</dd><dt>%!</dt><dd>Replaced by a exclamation point.</dd><dt>%r</dt><dd>Replaced with "\r".</dd><dt>%\</dt><dd>Replaced with "\n".</dd><dt>%0</dt><dd>Replaced with "\0".</dd><dt>%nn[!printf-format-specifier!]</dt><dd>Replaced with a managed code format specifier.</dd></dl></p></td></tr>
+		</table>
+	</body>
+</html>

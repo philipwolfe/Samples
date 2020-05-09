@@ -1,0 +1,1 @@
+Make sure to make the MMWeb dir a web share (/MMWeb) or the solution file is useless to you..
