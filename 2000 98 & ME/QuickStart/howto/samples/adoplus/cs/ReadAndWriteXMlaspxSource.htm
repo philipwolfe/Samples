@@ -1,0 +1,75 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/adoplus/vb/readandwritexml.src&file=..%5CCS%5CReadAndWriteXMl.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfLi5cXENTXFxSZWFkQW5kV3JpdGVYTWwuYXNwXHh4X194eF94eF94X19441606939" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">..\CS\ReadAndWriteXMl.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../howto/samples/adoplus/vb/readandwritexmlaspxsource.htm'>ReadAndWriteXMl.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../howto/samples/adoplus/cs/readandwritexmlaspxsource.htm'>..\CS\ReadAndWriteXMl.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><html>
+<%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="System.Data.SQL" %>
+<head>
+<script language="C#" runat="server">
+
+	public string Message;
+	protected void Page_Load(Object Src, EventArgs E ) 
+	{
+		try
+		{
+			SQLConnection myConnection = new SQLConnection("server=localhost;uid=sa;pwd=;database=northwind");
+			SQLDataSetCommand CustomersDSCommand = new SQLDataSetCommand("select * from customers", myConnection);
+			SQLDataSetCommand OrdersDSCommand = new SQLDataSetCommand("select * from orders", myConnection);
+			
+			DataSet myDataSet = new DataSet();
+			DataRow myCustomer;
+			
+			CustomersDSCommand.FillDataSet(myDataSet,"Customers");
+			OrdersDSCommand.FillDataSet(myDataSet,"Orders");
+			
+			string MyXMLData = myDataSet.XmlData;
+			string MyXMLSchema = myDataSet.XmlSchema;
+			
+			Message = "<b>Select View Source to see XMLSchema</b>\r\n<br>\r\n";
+			Message += MyXMLSchema;
+			Message += "\r\n<br><br>\r\n<b>Data</b>\r\n<pre>\r\n";
+			Message += MyXMLData;
+		}
+		catch(Exception e)
+		{
+			Message += "<br>\r\n" + e.ToString();
+		}
+		Message += "\r\n</pre>";
+  }
+
+</script>
+</head>
+<body>
+
+<%  Response.Write(Message);  %>
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

@@ -1,0 +1,62 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/IO/readwrite/readwrite.src&file=VB%5CReadWrite.vb" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkJcXFJlYWRXcml0ZS52YnhfX3h4X3h4X3hfX3g=1637b4df" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB\ReadWrite.vb</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../howto/samples/io/readwrite/readwritecssource.htm'>ReadWrite.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../howto/samples/io/readwrite/vb/readwritevbsource.htm'>VB\ReadWrite.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>
+Imports System.IO
+Imports System
+
+Public Class ReadWrite
+    
+    Public Shared Sub Main()
+    
+        Dim fs As FileStream 
+        fs = new FileStream("data.txt", FileMode.OpenOrCreate)	
+        Dim w As BinaryWriter 
+        w = new BinaryWriter(fs)
+        Dim r As BinaryReader 
+        r = new BinaryReader(fs)
+        Dim I as Integer
+        for I = 0 to 11 
+            w.Write( CInt ( i))
+        Next I
+        
+        w.BaseStream.Seek(0,SeekOrigin.Begin)	'set the file pointer to the beginning
+        for I = 0 to 11
+            Console.WriteLine( r.ReadInt32() )
+        Next I
+        fs.Close()
+
+		Console.WriteLine ()
+		Console.WriteLine ("Press Return to exit.")
+		Console.Read()
+    End Sub
+    
+End Class
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

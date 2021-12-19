@@ -1,0 +1,26 @@
+
+This is the demo given in PDC2000 session 2-232 - ADO+ and XML Conceptual Overview by Omri Gazitt.
+
+Files:
+
+config.web	- ASP+ config file
+edititems.aspx	- ASP+ source file for bound grid example (html and script)
+edititems.cs	- code behind the ASP+ file
+default.html	- main page for launching demo
+global.asax	- application initialization file (application load event is here)
+po.xml		- purchase order source XML file (from schemas.biztalk.org)
+poschema.xdr	- XML-DR schema for purchase order (from schemas.biztalk.org)
+poschema.xdr.xml- same as above, but with XML extension (so IE can format it as XML)
+poschema.xsd	- XSD schema for purchase order (obtained by running a transform over the XDR schema)
+ponew.xml	- output of XSL/T transform for purchase order
+poxform.xsl	- XSL/T transform for purchase order
+poxsl.xml	- same purchase order as po.xml, except it has an XSL stylesheet attached for pretty printing
+README		- this file
+README.html	- html version of this file
+tables.aspx	- ASP+ source file for mapped table example
+tables.cs	- code behind the ASP+ file
+
+Installation:
+
+After installing the NGWS SDK, create a directory somewhere on your IIS machine, put the files in this directory, and create an IIS Virtual Root called "demo" that maps to this directory.
+

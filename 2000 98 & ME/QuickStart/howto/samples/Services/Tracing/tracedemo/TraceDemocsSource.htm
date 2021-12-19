@@ -1,0 +1,85 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Services/Tracing/tracedemo/tracedemo.src&file=TraceDemo.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVHJhY2VEZW1vLmNzeF9feHhfeHhfeF9feA==c54714d9" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">TraceDemo.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../howto/samples/services/tracing/tracedemo/tracedemocssource.htm'>TraceDemo.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../howto/samples/services/tracing/tracedemo/vb/tracedemovbsource.htm'>VB\TraceDemo.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>using System;
+using System.Diagnostics;
+using System.IO;
+
+// Set DWORD value of HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\COMPlus\Switches\TraceMethods to 0 (false) or 1 (true)
+// Set DWORD value of HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\COMPlus\Switches\Arithmetic to 0 (off), 1(error), 2 (warning), 3(info)4(verbose)
+
+public class TraceDemo
+{
+	static BooleanSwitch traceMethods; 
+	static TraceSwitch arithmeticSwitch;
+
+	public static void Main(String[] args) 
+	{
+		Debug.Listeners.Add(new TextWriterTraceListener(Console.Out));
+		traceMethods = new BooleanSwitch("TraceMethods", "TraceDemo Method Tracing Switch");
+		arithmeticSwitch = new TraceSwitch("Arithmetic","Arithemtic Operations");
+			
+		for(int a = 0; a <= 4; a++)
+			for(int b = 0; b <= 4; b++)
+				Console.WriteLine(a+"/"+b+"="+Percent(a,b));
+	}
+
+	public static Int64 Divide(Int64 a, Int64 b)
+	{
+		if(traceMethods.Enabled) Trace.WriteLine("Divide("+a+","+b+") called");
+		
+		if(b==0)
+		{
+			Trace.WriteLineIf(arithmeticSwitch.TraceWarning,"!!!!!!!!!!!!!!!!!!Division by 0!!!!!!!!!!!!!!!!");
+			b = 1;
+		}
+		
+		Int64 ratio = a / b;
+	
+		if(traceMethods.Enabled)
+			Trace.WriteLine("Divide("+a+","+b+") returns "+ratio);
+
+		return ratio;
+	}
+
+	public static Int64 Percent(Int64 a, Int64 b)
+	{
+		if(traceMethods.Enabled)
+			Trace.WriteLine("Percent("+a+","+b+") called");
+		
+		Int64 percent = Divide(100*a, b);
+	
+		if(traceMethods.Enabled)
+			Trace.WriteLine("Percent("+a+","+b+") returns "+percent);
+
+		return percent;
+	}
+}
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

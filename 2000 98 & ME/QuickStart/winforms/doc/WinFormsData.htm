@@ -1,0 +1,1632 @@
+<!--BEGIN HEADER-->
+
+
+
+<html>
+<head>
+<link rel="stylesheet" href="../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+  <table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+
+            <div style="padding:0,0,0,0"><a class=outer style="color:darkred" href="../../winforms/doc/default.htm"><b>Introduction</b></a><br></div>
+            <p>
+            <div style="padding:0,0,4,0"><b>Getting Started</b><br></div>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsgettingstarted.htm">What is Windows Forms?</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformssimplehelloworld.htm">Writing a Hello World Form</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsapplicationmodel.htm">Windows Forms Application Model</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsusingwindes.htm">Using the Windows Forms Designer</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsformlayout.htm">Dynamic Layout in Windows Forms</a><br>            
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsmenus.htm">Adding Menus to a Form</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsmdi.htm">Writing MDI Applications</a><p>
+
+            <div style="padding:0,0,4,0"><b>Building Applications</b><br></div>
+            &nbsp; <a class="outer" href="../../winforms/doc/dataaccessplaceholder.htm">Data Access Overview</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/webservicesplaceholder.htm">Web Services Overview</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsdata.htm">Databinding in Windows Forms</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsaxhosting.htm">Using ActiveX Controls</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsgdiplus.htm">Working with Graphics</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsprinting.htm">Working with Printing</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformscreatingcontrols.htm">Creating Controls</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsmsaa.htm">Accessibility</a><p>
+
+            <div style="padding:0,0,0,0"><a class=outer style="color:darkred" href="../../winforms/doc/winformssamples.htm"><b>Control Reference</b></a><br></div>
+            <p>
+            <div style="padding:0,0,0,0"><a target=_top class=outer style="color:darkred" href="../../howto/default.htm"><b>How Do I...?</b></a><br></div>
+            <p>
+            <div style="padding:0,0,0,0"><a class=outer style="color:darkred" href="../../winforms/doc/winformsrelateddocs.htm"><b>Related Documentation</b></a><br></div>
+            <p>
+            
+</div>
+
+</td>
+</tr>
+</table>
+
+
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<style>
+.mydd {  font: smaller verdana; }
+
+.code1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	font-family:"Courier New";
+	color:darkred; 
+	}
+.codecomment1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	font-family:"Courier New";
+	color:green;
+	}
+.issue {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background-color:RED;
+	color:WHITE;
+	font-weight:bold;
+	}
+
+
+body { font: smaller verdana }        
+
+</style>
+
+
+
+
+
+<h4>Databinding in Windows Forms</h4>
+
+<p>Before reading this Quick Start you should read the <a 
+href="DataAccessPlaceHolder.htm">ADO.NET Overview</a></p> 
+
+<p>The last three samples use Web Services. You should read the <a 
+href="WebServicesPlaceHolder.htm">Web Services Overview</a> before reviewing those samples.</p> 
+
+<ul>
+    <li><a href="#Introduction">Introduction</a>
+    <li><a href="#Simple Databinding">Simple Databinding</a>
+    <li><a href="#Binding to a Combobox or ListBox">Binding to a Combobox or ListBox</a>
+    <li><a href="#Binding to a DataGrid">Binding to a DataGrid</a>
+    <li><a href="#Using a Web Service to retrieve a DataSet">Using a Web Service to retrieve a DataSet</a>
+    <li><a href="#Master Detail Forms">Master Detail Forms</a>
+    <li><a href="#Customer Details Form">Customer Details Form</a>
+</ul>
+
+
+<a name="Introduction">
+<h5>Introduction</h5>
+
+<p>Data binding provides a simple, convenient, powerful, transparent way 
+for developers to create a read/write link between the controls on a Form
+and the data in their application (their datamodel).</p> 
+
+<p>Windows Forms supports databinding to ADO.NET DataSets, Arrays, ArrayLists and 
+so on.  A control can be databound to any collection that supports indexed 
+access to the elements in that collection -- to be specific, to any 
+collection that implements the IList interface.</p> 
+
+<h6>Simple Data Binding</h6> 
+
+<p>Simple Data Binding means databinding a single value within the 
+datamodel to a single property of a control, for example, databinding 
+TextBox1.Text to Customer.Name. Simple binding is managed via the 
+Bindings collection on each control.</p>
+
+<h6>Complex Data Binding</h6> 
+
+<p>Complex Data Binding means databinding a control to a collection rather 
+a single item within the collection.  For example the DataGrid has a 
+DataSource property that can be set to an entire DataSet or Array.  The 
+DataGrid understands how to extract information from the DataSource and 
+display it.  ListBox and Combobox also use Complex Data Binding</p> 
+
+<h6>One Way and Two Way Data Binding</h6>
+
+<p><b>One Way Data Binding</b> A property of a control can be bound to the 
+datamodel for read-only or presentation purposes.  When data binding is 
+set up in this fashion, the property will reflect the value of the data, 
+but direct changes to the property will not be reflected in the datamodel.  
+
+<p><b>Two Way Data Binding</b> A property of a control can be bound to the 
+datamodel in a read/write fashion.  When data binding is set up in this 
+fashion, the property will reflect the value of the data, and  
+changes to the property will be propogated to the datamodel.  
+
+<h6>The BindingManager</h6> 
+
+<p>Each Form has a BindingManager.  The BindingManager is responsible for 
+managing the collections that controls are bound to.  It manages currency 
+and dependency.  
+
+<p><b>Currency:</b> The BindingManager maintains a current position for 
+each collection.  Simple Databinding uses this current position to 
+determine which object in the collection to data bind a control property 
+to.  As the current position is changed so does the object that a control 
+property is bound to.  See <a href="#Simple 
+Databinding">Simple Databinding.</a></p> 
+
+<p><b>Dependency:</b> The BindingManager maintains dependency relationships 
+between collections.  This allows the creation of Master/Details Forms - 
+see <a href="#Master Detail Forms">Master Detail 
+Forms.</a></p> 
+
+
+<a name="Simple Databinding">
+<h5>Simple Databinding</h5>
+
+<p>This sample demonstrates simple databinding of the Text property on a 
+set of TextBoxes to the properties of a Customer object stored as a List 
+of Customers.  You add simple data bindings using the Bindings collection 
+on a control:</p> 
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl6" style="display:none">
+
+textBoxID.Bindings.Add("Text", custList, "CustomerID");
+textBoxTitle.Bindings.Add("Text", custList, "ContactTitle");
+textBoxLastName.Bindings.Add("Text", custList, "ContactName");
+textBoxFirstName.Bindings.Add("Text", custList, "CompanyName");
+textBoxAddress.Bindings.Add("Text", custList, "Address");
+</pre>
+<pre id="codectrl6" style="display:">
+
+textBoxID.Bindings.Add("Text", custList, "CustomerID")
+textBoxTitle.Bindings.Add("Text", custList, "ContactTitle")
+textBoxLastName.Bindings.Add("Text", custList, "ContactName")
+textBoxFirstName.Bindings.Add("Text", custList, "CompanyName")
+textBoxAddress.Bindings.Add("Text", custList, "Address")
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl6" onclick="doClick(0, 'ctrl6')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl6" onclick="doClick(1, 'ctrl6')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<p>Each TextBox.Text is bound to the current Customer object as maintained by 
+the BindingManager.  To change the current object you increment or decrement 
+the Position property for the collection via the BindingManager.  For 
+example you would implement a "Move Next" button by handling the button 
+click event as follows:</p> 
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl8" style="display:none">
+
+private void buttonMoveNext_Click(object sender, System.EventArgs e) {
+    this.BindingManager[custList].Position++;
+}
+</pre>
+<pre id="codectrl8" style="display:">
+
+Private Sub buttonMoveNext_Click(sender As Object, e As System.EventArgs)
+    Me.BindingManager(custList).Position = Me.BindingManager(custList).Position + 1
+End Sub
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl8" onclick="doClick(0, 'ctrl8')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl8" onclick="doClick(1, 'ctrl8')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<p>The BindingManager raises an event whenever the position changes:</p>
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl10" style="display:none">
+
+this.BindingManager[custList].PositionChanged += new System.EventHandler(customer_PositionChanged);
+
+private void customer_PositionChanged(object sender, System.EventArgs e) {
+    textBoxPosition.Text = "Record " + (this.BindingManager[custList].Position + 1)
+                                     + " of " + custList.Length;
+}
+</pre>
+<pre id="codectrl10" style="display:">
+
+AddHandler Me.BindingManager(custList).PositionChanged, AddressOf customer_PositionChanged
+
+Private Sub customer_PositionChanged(sender As Object, e As System.EventArgs)
+    textBoxPosition.Text = "Record " + (this.BindingManager[custList].Position + 1) _
+                                     + " of " + custList.Length
+End Sub
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl10" onclick="doClick(0, 'ctrl10')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl10" onclick="doClick(1, 'ctrl10')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<p>To view and run this sample:
+<br><br>
+<span>
+    
+    
+    
+    
+    
+
+        
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../winforms/samples/vb/data/simplebinding">
+	<img style="border-color:black" border=1 src="../../winforms/images/wflink.jpg"><br>
+	</a>
+	<div class="caption">VB Simple Data binding</div><br>
+	
+	
+		[<a target="_blank" href="../../winforms/samples/vb/data/simplebinding">Run Sample</a>] | 
+		[<a target="_blank" href="../../winforms/samples/vb/data/simplebinding/simplebindingvbsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+    </span>
+
+
+<a name="Binding to a Combobox or ListBox">
+<h5>Binding to a Combobox or ListBox</h5>
+
+<p>This sample demonstrates databinding a Combobox. Databinding a ListBox 
+follows exactly the same model. 
+
+<p>To databind the list of items to be displayed set the DataSource and 
+DisplayMember properties of the ComboBox.  For example the following code 
+data binds a ComboBox to an array of State objects.  The DisplayMember 
+property is used to determine what property of the State object to display 
+in the ComboBox:</p> 
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 1;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:85%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="2">
+<pre id="codectrl14" style="display:">
+
+public struct State {
+    private string shortName, longName;
+
+    public State(string longName , string shortName) {
+        this.shortName = shortName ; this.longName = longName ;
+    }
+
+    public string ShortName { get { return shortName; } }
+    public string LongName { get { return longName; } }
+}
+
+private State[] States  = new State[] {
+    new State("Alabama","AL"),
+....
+    new State("Washington" ,"WA),
+....
+}
+
+comboBoxState.DataSource=States;
+comboBoxState.DisplayMember="LongName";
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="tab" id="tabctrl14" onclick="doClick(0, 'ctrl14')">
+          <b>C#
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<p>Typically in a databound form a ComboBox is used to lookup up a value.  
+In this example the form displays a Customer object.  Each Customer object 
+has a Region property that contains a State abbreviation. We want to
+display a list of full State names for the user to select from. When the 
+user selects a particular State, we want the Customer Region to be updated 
+with the State Abbreviation rather than the full State name. In order to 
+achieve this we:
+<ul>
+<li>set the ComboBox up as before 
+<li>set the ValueMember property to point to the State Abbreviation 
+property on the State object - State.ShortName 
+<li>Simple Databind the SelectedValue to Customer.Region
+</ul>
+<p>The ValueMember property determines what value gets pushed into SelectedValue. So 
+in our example whenever the user selects a State by State.LongName, the SelectedValue is
+the State.ShortName. Whenever the SelectedValue changes, the databinding pushes the new 
+value into the Customer object.</p>
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl16" style="display:none">
+
+comboBoxState.DataSource=States;
+comboBoxState.DisplayMember="LongName";
+comboBoxState.ValueMember="ShortName";
+comboBoxState.Bindings.Add("SelectedValue", customersDataSet1, "Customers.Region");
+</pre>
+<pre id="codectrl16" style="display:">
+
+comboBoxState.DataSource=States
+comboBoxState.DisplayMember="LongName"
+comboBoxState.ValueMember="ShortName"
+comboBoxState.Bindings.Add("SelectedValue", customersDataSet1, "Customers.Region")
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl16" onclick="doClick(0, 'ctrl16')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl16" onclick="doClick(1, 'ctrl16')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<p>To view and run this sample:
+<br><br>
+<span>
+    
+    
+    
+    
+    
+
+        
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../winforms/samples/vb/data/comboboxbinding">
+	<img style="border-color:black" border=1 src="../../winforms/images/wflink.jpg"><br>
+	</a>
+	<div class="caption">VB Combobox binding</div><br>
+	
+	
+		[<a target="_blank" href="../../winforms/samples/vb/data/comboboxbinding">Run Sample</a>] | 
+		[<a target="_blank" href="../../winforms/samples/vb/data/comboboxbinding/comboboxbindingvbsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+    </span>
+
+
+<a name="Binding to a DataGrid">
+<h5>Binding to a DataGrid</h5>
+
+<p>The DataGrid displays all the information in an array, collection or 
+ADO.NET DataTable as a series of rows.  Each row can be edited in place.  
+Changes are automatically pushed back into the underlying collection of 
+objects as the user moves from row to row.</p> 
+
+<p>When the DataGrid is used to view a DataSet, the user can navigate 
+across the DataTables in a DataSet via their relationships.</p> 
+
+<p>In order to use a DataGrid you simply set the DataSource property to 
+the list of objects to display.  If the DataSource is a DataSet you also 
+need to set the DataMember property to the DataTable to display:</p> 
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl20" style="display:none">
+
+dataGrid1.Size = new System.Drawing.Size(584, 336);
+dataGrid1.DataSource = customersDataSet1;
+dataGrid1.DataMember = "Customers";
+</pre>
+<pre id="codectrl20" style="display:">
+
+dataGrid1.Size = New System.Drawing.Size(584, 336)
+dataGrid1.DataSource = customersDataSet1
+dataGrid1.DataMember = "Customers"
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl20" onclick="doClick(0, 'ctrl20')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl20" onclick="doClick(1, 'ctrl20')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<p>There are a set of properties on the DataGrid that allow you to change 
+the way it displays data.  For example you can set the AlternatingBackColor
+property to cause alternate rows to be displayed with a different BackColor:</p>
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl22" style="display:none">
+
+dataGrid1.DataSource = customersDataSet1;
+dataGrid1.DataMember = "Customers";
+dataGrid1.ForeColor = System.Drawing.Color.Navy;
+dataGrid1.BackColor = System.Drawing.Color.Gainsboro;
+dataGrid1.AlternatingBackColor = System.Drawing.Color.WhiteSmoke;
+</pre>
+<pre id="codectrl22" style="display:">
+
+dataGrid1.DataSource = customersDataSet1
+dataGrid1.DataMember = "Customers"
+dataGrid1.ForeColor = System.Drawing.Color.Navy
+dataGrid1.BackColor = System.Drawing.Color.Gainsboro
+dataGrid1.AlternatingBackColor = System.Drawing.Color.WhiteSmoke
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl22" onclick="doClick(0, 'ctrl22')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl22" onclick="doClick(1, 'ctrl22')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<p>The DataGrid sample demonstrates how to load a DataSet and displays its contents 
+in a DataGrid:</p>
+<span>
+    
+    
+    
+    
+    
+
+        
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../winforms/samples/vb/data/grid">
+	<img style="border-color:black" border=1 src="../../winforms/images/wflink.jpg"><br>
+	</a>
+	<div class="caption">VB Grid binding</div><br>
+	
+	
+		[<a target="_blank" href="../../winforms/samples/vb/data/grid">Run Sample</a>] | 
+		[<a target="_blank" href="../../winforms/samples/vb/data/grid/gridvbsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+    </span>
+
+
+<a name="Using a Web Service to retrieve a DataSet">
+<h5>Using a Web Service to retrieve a DataSet</h5>
+
+<p>The .Net Framework based applications expose services as Web Services.  Web Services 
+can return data.  Windows Forms applications can use a Web Service to retrieve 
+data and data bind to that returned data.  This sample demonstrates data 
+binding to data return from a Web Service.</p> 
+
+<p>Before walking through this sample you should make yourself familar 
+with Web Services by reading the <a 
+href=../../winforms/doc/webservicesplaceholder.htm>web Services 
+Overview</a></p> 
+
+<p>The first step is to create a Web Service that returns a DataSet:</p>
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl26" style="display:none">
+
+&lt;%@ WebService Language="C#" class="CustomersList" %&gt;
+
+using System.Web.Services;
+using System.Data;
+using System.Data.SQL;
+using Microsoft.Samples.WinForms.Cs.WebServiceBinding.Data;
+
+public class CustomersList : WebService {
+
+     [ WebMethod ]
+     public DataSet GetCustomers() {
+         CustomersDataSet customersDataSet1 = new CustomersDataSet();
+         SQLConnection con = new SQLConnection("server=localhost;uid=sa;pwd=;database=northwind");
+         SQLDataSetCommand cmdCustomers = new SQLDataSetCommand("Select * from Customers", con);
+         SQLDataSetCommand cmdOrders = new SQLDataSetCommand("Select * from Orders", con);
+         cmdCustomers.FillDataSet(customersDataSet1, "Customers");
+         cmdOrders.FillDataSet(customersDataSet1, "Orders");
+         return customersDataSet1 ;
+     }
+
+}
+</pre>
+<pre id="codectrl26" style="display:">
+
+&lt;%@ WebService Language="VB" Class="CustomersList"%&gt;
+
+Imports System.Web.Services
+Imports System.Data
+Imports System.Data.SQL
+Imports Microsoft.Samples.WinForms.VB.WebServiceBinding.Data
+
+public class CustomersList
+        Inherits WebService
+
+     Public Function &lt;WebMethod()&gt; GetCustomers() As DataSet
+         Dim customersDataSet1 As New CustomersDataSet
+         Dim con As SQLConnection = new SQLConnection("server=localhost;uid=sa;pwd=;database=northwind")
+         Dim cmdCustomers As SQLDataSetCommand  = new SQLDataSetCommand("Select * from Customers", con)
+         Dim cmdOrders As SQLDataSetCommand = new SQLDataSetCommand("Select * from Orders", con)
+         cmdCustomers.FillDataSet(customersDataSet1, "Customers")
+         cmdOrders.FillDataSet(customersDataSet1, "Orders")
+         return customersDataSet1
+     End Function
+
+End Class
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl26" onclick="doClick(0, 'ctrl26')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl26" onclick="doClick(1, 'ctrl26')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+<br>
+<p>You can view this Web Service at: <a target="_NEW" 
+href="../../winforms/samples/cs/data/webservicebinding/simplecustomerswebservice.asmx">CustomersList</a></p> 
+
+<p>Having created the Web Service you then need to create an SDL file that 
+defines the schema for that Web Service.  You can get the SDL by connecting 
+to the Web Service with the &quot;?SDL&quot; parameter: 
+<a target="_NEW" 
+href="../../winforms/samples/cs/data/webservicebinding/simplecustomerswebservice.asmx?sdl">CustomersList 
+SDL</a>.  You can also use the WebServiceUtil tool:
+
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl28" style="display:none">
+
+webserviceutil
+  /c:getSDL
+  /URL:http://localhost/quickstart/winforms/Samples/Cs/Data/WebServiceBinding/SimpleCustomersWebService.asmx?SDL
+</pre>
+<pre id="codectrl28" style="display:">
+
+webserviceutil
+  /c:getSDL
+  /URL:http://localhost/quickstart/winforms/Samples/VB/Data/WebServiceBinding/SimpleCustomersWebService.asmx?SDL
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl28" onclick="doClick(0, 'ctrl28')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl28" onclick="doClick(1, 'ctrl28')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+
+<p>Once you have the SDL file you can then create a client proxy source file 
+using the WebServiceUtil tool:</p> 
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl30" style="display:none">
+
+webserviceutil /c:proxy /pa:SimpleCustomersWebService.SDL /l:CSharp /n:SimpleWebService
+</pre>
+<pre id="codectrl30" style="display:">
+
+webserviceutil /c:proxy /pa:SimpleCustomersWebService.SDL /l:VB /n:SimpleWebService
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl30" onclick="doClick(0, 'ctrl30')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl30" onclick="doClick(1, 'ctrl30')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<p>Once you have the proxy source file you can compile it into your 
+application and use it to retrieve the data from the Web Service:</p>
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl32" style="display:none">
+
+CustomersList custList1 = new CustomersList();
+DataSet ds1 = custList1.GetCustomers();
+dataGrid1.DataSource=ds1;
+</pre>
+<pre id="codectrl32" style="display:">
+
+Dim custList1 As New CustomersList
+Dim ds1 As DataSet = custList1.GetCustomers
+dataGrid1.DataSource=ds1
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl32" onclick="doClick(0, 'ctrl32')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl32" onclick="doClick(1, 'ctrl32')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+ 
+<p>The Web Services sample demonstrates how to load a DataSet from a 
+Web Service and display its contents in a DataGrid:</p>
+<span> 
+    
+    
+    
+    
+    
+
+        
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../winforms/samples/vb/data/webservicebinding">
+	<img style="border-color:black" border=1 src="../../winforms/images/wflink.jpg"><br>
+	</a>
+	<div class="caption">VB Grid binding to a Web Service</div><br>
+	
+	
+		[<a target="_blank" href="../../winforms/samples/vb/data/webservicebinding">Run Sample</a>] | 
+		[<a target="_blank" href="../../winforms/samples/vb/data/webservicebinding/webserviceclientvbsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+    </span>
+
+
+<a name="Master Detail Forms">
+<h5>Master Detail Forms</h5>
+
+<p>In database applications, it's often useful to simultaneously view a 
+record with a group of related records.  For example, you may want to view 
+a customer and the current orders for the customer.  A common way 
+to accomplish this is to create a Master/Detail form.
+
+<p>This sample displays Customers and the Orders for each Customer in 2 DataGrids.
+The first DataGrid displays the list of Customers.  The 
+second DataGrid displays the list of Orders.  As the selected Customer 
+changes, the second DataGrid will update to display the Orders for that 
+Customer.</p> 
+
+<p>In order to link the 2 DataGrids together you need set the DataSource of the 
+2 DataGrids to the same DataSet. You also need to set the DataMembers so that 
+the Windows Forms BindingManager understands that they are related. You do
+this by setting the DataMember for the second DataGrid to the name of the relationship 
+between the Customers and Orders tables - &quot;Customers.CustomersOrders&quot;:</p>
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl36" style="display:none">
+
+dataGrid1.DataSource = customersAndOrdersDataSet1;
+dataGrid1.DataMember = "Customers";
+
+dataGrid2.DataSource = customersAndOrdersDataSet1;
+dataGrid2.DataMember = "Customers.CustomersOrders";
+</pre>
+<pre id="codectrl36" style="display:">
+
+dataGrid1.DataSource = customersAndOrdersDataSet1
+dataGrid1.DataMember = "Customers"
+
+dataGrid2.DataSource = customersAndOrdersDataSet1
+dataGrid2.DataMember = "Customers.CustomersOrders"
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl36" onclick="doClick(0, 'ctrl36')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl36" onclick="doClick(1, 'ctrl36')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<p>To view and run this sample:
+<br><br>
+<span>
+    
+    
+    
+    
+    
+
+        
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../winforms/samples/vb/data/masterdetails">
+	<img style="border-color:black" border=1 src="../../winforms/images/wflink.jpg"><br>
+	</a>
+	<div class="caption">VB MasterDetails</div><br>
+	
+	
+		[<a target="_blank" href="../../winforms/samples/vb/data/masterdetails">Run Sample</a>] | 
+		[<a target="_blank" href="../../winforms/samples/vb/data/masterdetails/customersformvbsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+    </span>
+
+
+<a name="Customer Details Form">
+<h5>Customer Details Form</h5>
+
+<p>This sample demonstrates the following:
+
+<ul> 
+<li>Writing a Web Service that fills a DataSet and returns it.</li>
+<li>Writing a Web Service that saves the updates in a DataSet back to the database.</li>
+<li>Binding to that DataSet.</li>
+<li>Updating the DataSet and tracking changes in the Form</li>
+<li>Extracting changed rows from the DataSet and sending them to the Update Web Service.</li>
+<li>Reconciling the saved rows and displaying errors.</li>
+</ul> 
+
+<p>To view and run this sample:
+<br><br>
+<span>
+    
+    
+    
+
+        
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../winforms/samples/cs/data/update">
+	<img style="border-color:black" border=1 src="../../winforms/images/wflink.jpg"><br>
+	</a>
+	<div class="caption">C# Customer Details Form</div><br>
+	
+	
+		[<a target="_blank" href="../../winforms/samples/cs/data/update">Run Sample</a>] | 
+		[<a target="_blank" href="../../winforms/samples/cs/data/update/updateformcssource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+    </span>
+
+
+<!--END FOOTER-->
+<p>
+<hr>
+<p>
+</div>
+</td>
+</tr>
+</table>
+</BODY>
+</html>
+<!--END FOOTER-->

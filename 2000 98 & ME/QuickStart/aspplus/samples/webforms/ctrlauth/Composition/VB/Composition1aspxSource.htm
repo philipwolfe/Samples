@@ -1,0 +1,63 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlauth/Composition/Composition1.src&file=VB/Composition1.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvQ29tcG9zaXRpb24xLmFzcFx4eF9feHhfeHhfeF9feA==d557d69a" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/Composition1.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlauth/composition/composition1aspxsource.htm'>Composition1.htm</a> &nbsp;&nbsp<a href='../../../../../../aspplus/samples/webforms/ctrlauth/composition/composition1cssource.htm'>Composition1.cs</a> &nbsp;&nbsp<a href='../../../../../../aspplus/samples/webforms/ctrlauth/composition/makesamplebatsource.htm'>makesample.bat</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlauth/composition/vb/composition1aspxsource.htm'>VB/Composition1.htm</a> &nbsp;&nbsp<a href='../../../../../../aspplus/samples/webforms/ctrlauth/composition/vb/composition1vbsource.htm'>VB/Composition1.vb</a> &nbsp;&nbsp<a href='../../../../../../aspplus/samples/webforms/ctrlauth/composition/vb/makesamplebatsource.htm'>VB/makesample.bat</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Register TagPrefix="CompositionSampleControls" Namespace="CompositionSampleControls" %>
+
+<html>
+
+   <script language="VB" runat=server>
+
+      Private Sub AddBtn_Click(Sender As Object, E As EventArgs)
+          MyControl.Value = MyControl.Value + 1
+      End Sub
+
+      Private Sub SubtractBtn_Click(Sender As Object, E As EventArgs)
+          MyControl.Value = MyControl.Value - 1
+      End Sub
+
+   </script>
+
+   <body>
+
+      <form method="POST" action="Composition1.htm" runat=server>
+
+          <CompositionSampleControls:Composition1VB id="MyControl" runat=server/>
+
+          <br>
+
+          <asp:button text="Add" OnClick="AddBtn_Click" runat=server/> | 
+          <asp:button text="Subtract" OnClick="SubtractBtn_Click" runat=server/>
+
+      </form>
+
+   </body>
+
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

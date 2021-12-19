@@ -1,0 +1,108 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/services/Intrinsics/SessionService1Client.src&file=VB/SessionService1.sdl" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvU2Vzc2lvblNlcnZpY2UxLnNkbHhfX3h4X3h4X3hfX3g=857468fe" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/SessionService1.sdl</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/services/intrinsics/sessionservice1clientaspxsource.htm'>SessionService1Client.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/services/intrinsics/sessionservice1sdlsource.htm'>SessionService1.sdl</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/services/intrinsics/sessionservice1cssource.htm'>SessionService1.cs</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/services/intrinsics/makeservicebatsource.htm'>makeservice.bat</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/services/intrinsics/vb/sessionservice1clientaspxsource.htm'>VB/SessionService1Client.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/services/intrinsics/vb/sessionservice1sdlsource.htm'>VB/SessionService1.sdl</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/services/intrinsics/vb/sessionservice1vbsource.htm'>VB/SessionService1.vb</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/services/intrinsics/vb/makeservicebatsource.htm'>VB/makeservice.bat</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><?xml version="1.0"?>
+<serviceDescription xmlns:s0="http://tempuri.org/" name="SessionService1" targetNamespace="http://tempuri.org/" xmlns="urn:schemas-xmlsoap-org:sdl.2000-01-25">
+  <soap xmlns="urn:schemas-xmlsoap-org:soap-sdl-2000-01-25">
+    <service>
+      <addresses>
+        <address uri="http://localhost/QuickStart/aspplus/samples/services/Intrinsics/VB/SessionService1.asmx"/>
+      </addresses>
+      <requestResponse name="UpdateHitCounter" soapAction="http://tempuri.org/UpdateHitCounter">
+        <request ref="s0:UpdateHitCounter"/>
+        <response ref="s0:UpdateHitCounterResult"/>
+      </requestResponse>
+      <requestResponse name="UpdateAppCounter" soapAction="http://tempuri.org/UpdateAppCounter">
+        <request ref="s0:UpdateAppCounter"/>
+        <response ref="s0:UpdateAppCounterResult"/>
+      </requestResponse>
+    </service>
+  </soap>
+  <httppost xmlns="urn:schemas-xmlsoap-org:post-sdl-2000-01-25">
+    <service>
+      <requestResponse name="UpdateHitCounter" href="http://localhost/QuickStart/aspplus/samples/services/Intrinsics/VB/SessionService1.asmx/UpdateHitCounter">
+        <request>
+          <form/>
+        </request>
+        <response>
+          <mimeXml ref="s0:string"/>
+        </response>
+      </requestResponse>
+      <requestResponse name="UpdateAppCounter" href="http://localhost/QuickStart/aspplus/samples/services/Intrinsics/VB/SessionService1.asmx/UpdateAppCounter">
+        <request>
+          <form/>
+        </request>
+        <response>
+          <mimeXml ref="s0:string"/>
+        </response>
+      </requestResponse>
+    </service>
+  </httppost>
+  <httpget xmlns="urn:schemas-xmlsoap-org:get-sdl-2000-01-25">
+    <service>
+      <requestResponse name="UpdateHitCounter" href="http://localhost/QuickStart/aspplus/samples/services/Intrinsics/VB/SessionService1.asmx/UpdateHitCounter">
+        <request/>
+        <response>
+          <mimeXml ref="s0:string"/>
+        </response>
+      </requestResponse>
+      <requestResponse name="UpdateAppCounter" href="http://localhost/QuickStart/aspplus/samples/services/Intrinsics/VB/SessionService1.asmx/UpdateAppCounter">
+        <request/>
+        <response>
+          <mimeXml ref="s0:string"/>
+        </response>
+      </requestResponse>
+    </service>
+  </httpget>
+  <schema targetNamespace="http://tempuri.org/" attributeFormDefault="qualified" elementFormDefault="qualified" xmlns="http://www.w3.org/1999/XMLSchema">
+    <element name="UpdateHitCounter">
+      <complexType/>
+    </element>
+    <element name="UpdateHitCounterResult">
+      <complexType>
+        <all>
+          <element name="result" type="string" nullable="true"/>
+        </all>
+      </complexType>
+    </element>
+    <element name="string" type="string" nullable="true"/>
+    <element name="UpdateAppCounter">
+      <complexType/>
+    </element>
+    <element name="UpdateAppCounterResult">
+      <complexType>
+        <all>
+          <element name="result" type="string" nullable="true"/>
+        </all>
+      </complexType>
+    </element>
+  </schema>
+</serviceDescription>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

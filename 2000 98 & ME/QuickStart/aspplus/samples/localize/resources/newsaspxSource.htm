@@ -1,0 +1,163 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/localize/resources/news.src&file=news.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfbmV3cy5hc3BceHhfX3h4X3h4X3hfX3g=e56acc6d" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">news.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../aspplus/samples/localize/resources/newsaspxsource.htm'>news.htm</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/localize/localize2/searchascxsource.htm'>../localize2/search.ascx</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/localize/localize2/flagascxsource.htm'>../localize2/flag.ascx</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../aspplus/samples/localize/resources/news_vbaspxsource.htm'>news_vb.htm</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/localize/localize2/vb/searchascxsource.htm'>../localize2/VB/search.ascx</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/localize/localize2/vb/flagascxsource.htm'>../localize2/VB/flag.ascx</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@Page Description="Localized Page" %>
+<%@ OutputCache Duration="0" %>
+
+<%@Import Namespace="System.Globalization"%>
+<%@Import Namespace="System.Resources"%>
+<%@Import Namespace="System.Threading"%>
+
+<%@Register TagPrefix="Localized" TagName="Search" src="search.ascx" %>
+<%@Register TagPrefix="Localized" TagName="Flag" src="flag.ascx" %>
+
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<link rel="stylesheet" type="text/css" href="../i18n_styles.css" >
+<link rel="stylesheet" type="text/css" href="../news.css" >
+
+<script runat="Server" Language="C#">
+
+ResourceManager rm;
+
+void Page_Init(Object sender, EventArgs args) {
+    // Get the ResourceManager from the Application object.
+    rm = (ResourceManager) Application["RM"];
+    if(rm == null) 
+    {
+	// Do something sensible if resources are not available.
+	Server.Transfer("noresource.htm");
+    }
+
+    // Fill the drop-down list with the supported culture values.
+    MyUICulture.Items.Add("Choose another language");
+    MyUICulture.Items.Add("de");
+    MyUICulture.Items.Add("en-us");
+    MyUICulture.Items.Add("ja");
+    MyUICulture.AutoPostBack = true;
+}
+
+void Page_Load(Object sender, EventArgs args) {
+    String SelectedCulture = MyUICulture.SelectedItem.Text;
+    if(! SelectedCulture.StartsWith("Choose")) 
+    {
+	// If another culture was selected, use that instead.
+	Thread.CurrentThread.CurrentCulture = new CultureInfo(SelectedCulture);
+	Thread.CurrentThread.CurrentUICulture = new CultureInfo(SelectedCulture);
+    }
+
+    // Using culture within a script block.
+    TopAdRotator.KeywordFilter = Thread.CurrentThread.CurrentUICulture.Name;
+    TopAdRotator.AdvertisementFile = "rotator/ads.xml";
+}
+
+</script>
+
+<title>Localized Page</title>
+
+</head>
+
+
+<body>
+
+<center>
+<asp:AdRotator id="TopAdRotator" Runat="server"	Target="_newwindow" />
+</center>
+
+
+<h3>
+<%--
+    Display the flag as declarative control, 
+      get the greeting string from a resource.
+--%>
+<Localized:Flag runat="server"/>
+<%=rm.GetString("greeting")%>
+</h3>
+
+<%--
+    Give the user the opportunity to override browser language.
+--%>
+
+<form runat="server">
+
+<asp:DropDownList id="MyUICulture" runat="server"/>
+
+<hr>
+
+
+<center>
+
+<p>
+
+<table bgcolor="#FFFFFF" cellpadding="5" cellspacing="5" border="0"
+    style="border-style:solid; border-width:2; border-color:Wheat"
+    width="99%" align=center>
+
+<tr>
+<td class="infocol"><%=DateTime.Now.Format("D", CultureInfo.CurrentCulture)%></td>
+<td class="contentcol"><%=rm.GetString("article1")%>
+	    <br>(<a href="../../../../../../../../../../../..//some/where/else"><%=rm.GetString("more")%></a>)</td>
+</tr>
+
+<tr>
+<td class="infocol"><%=DateTime.Now.Format("D", CultureInfo.CurrentCulture)%></td>
+<td class="contentcol"><%=rm.GetString("article2")%>
+	    <br>(<a href="/some/where/else"><%=rm.GetString("more")%></a>)</td>
+</tr>
+
+<tr>
+<td class="infocol"><%=DateTime.Now.Format("D", CultureInfo.CurrentCulture)%></td>
+<td class="contentcol"><%=rm.GetString("article3")%>
+	    <br>(<a href="/some/where/else"><%=rm.GetString("more")%></a>)</td>
+</tr>
+
+</table>
+
+
+    <Localized:Search runat="Server" />
+
+</center>
+
+</form>
+
+</body>
+
+</html>
+
+
+
+
+
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

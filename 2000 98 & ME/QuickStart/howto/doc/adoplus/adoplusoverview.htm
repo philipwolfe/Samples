@@ -1,0 +1,550 @@
+
+
+<!--BEGIN HEADER-->
+<html>
+<head>
+<link rel="stylesheet" href="../../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+
+<table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+
+    <div style="padding:0,0,4,0"><b>Data and ADO.NET</b><br></div>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/adoplusoverview.htm">Overview of ADO.NET</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/executecommand.htm">Execute a Command</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/outparams.htm">Stored proc out params</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/getdatafromdb.htm">Retrieve from a Database</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/updatedatafromdb.htm">Update Data in a Database</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/readandwritexml.htm">Read and Write XML</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/databasetrans.htm">Use Database Transactions</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/handleerrors.htm">Handling Errors</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/relationaldata.htm">Work with Relational Data</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/typeddata.htm">Work with typed Data</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/filterdata.htm">Filter Data</a><p>
+    <div style="padding:0,0,4,0"><a target="_top" style="color:darkred" href="../../../howto"><b>Back to Index</b></a><br></div>
+
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<style>
+.mydd {  font: smaller verdana; }
+.code1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:blue;
+	}
+.codecomment1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:green;
+	}
+.issue {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background-color:RED;
+	color:WHITE;
+	font-weight:bold;
+	}
+
+
+body { font: smaller verdana }        
+
+</style>
+
+
+
+
+
+<h4>ADO.NET Overview</h4>
+
+<p>
+ADO.NET is an evolution of the ADO data access model that directly answers 
+user requirements for developing scalable applications. It was architected 
+for the web with scalability, statelessness, and XML in mind.
+<p>
+ADO.NET has some of the same objects from ADO (like Connection and Command), 
+and introduces new objects: DataSets, DataReaders and DataSetCommands.
+<p>
+One of the new concepts is the XML based DataSet. This object provides a 
+consistent programming model around flat, relational and hierarchical data. 
+It does this by having no knowledge of the source of its data and by 
+representing the data that it holds as collections and data types.  No 
+matter what the source of the data within the DataSet is, it is manipulated 
+through the same set of standard APIs exposed though the DataSet and its 
+subordinate objects.
+<p>
+While the DataSet has no knowledge of the source of its data, the managed 
+provider has detailed and specific information.  The role of the managed 
+provider is to connect, fill, and persist the DataSet to and from data stores. 
+The ADO and SQL Server managed providers that are part of the .Net Framework 
+provide three basic objects: Commands, Connections and DataSetCommands. 
+In the remaining sections of this document, we'll walk through each of the 
+parts of the DataSet and the ADO/SQL Managed providers explaining what they 
+are, and how to program against them.
+<p>
+The important distinction between this evolved stage of ADO.NET and previous 
+data architectures is that there exists an object -- the DataSet -- that is 
+separate and distinct from any data stores.  Because of that, we can use 
+the DataSet as standalone entity. You can think of the DataSet as an always 
+disconnected recordset that knows nothing about where the data came from, 
+or where it is going. Inside a DataSet, much like a database, there are 
+tables/columns, relationships, constraints, views etc. A DataSetCommand is 
+the object that connects to the database to fill the DataSet. Later it 
+connects to the database to update the data. Getting the Data In the past, 
+data processing has been primarily connection based. Now, in an effort to 
+make multi-tiered apps more efficient, data processing is turning to a 
+message based approach that revolves around chunks of information. At the 
+center of this approach is the DataSetCommand, which provides a bridge to 
+retrieve and save data between a DataSet and its source data store. It 
+accomplishes this by requests to the appropriate SQL commands against the 
+data store. 
+<p>
+The following sections will introduce you to some objects that have evolved, 
+and some that are new. These objects are:
+<ul>
+<li><b>Connections</b>. For connection to and managing transactions against a database.
+<li><b>Commands</b>. For issuing SQL Commands against a database.
+<li><b>DataReaders</b>. For reading data readonly off a stream.
+<li><b>DataSets and DataSetCommands</b>. For pushing data into a DataSet, 
+	and reconciling data against a database. For storing, remoting and 
+	programming against flat data, XML data and relational data.
+</ul>
+<p>
+Note: When dealing with connections to databases there are two different 
+options: ADO and SQL. In these samples we will use the SQL libraries. 
+These are written to talk directly to MS-SQL server. The ADO libraries 
+are used to talk to any OLEDB provider (as it uses OLEDB underneath).
+<p>
+
+<a name="Connections" />
+<span class="subhead">Connections</span>
+<p>
+Connections are used to talk to databases. Commands travel over connections 
+and result sets are returned in the form of streams which can be read by 
+DataReaders, or pushed into DataSet objects.
+<p>
+
+The example below shows how to create a connection. Connections can be opened 
+explicitly by calling the Open method on the connection, or will be opened 
+implicitly when using a DataSetCommand.
+<p>
+
+<span>
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../../howto/images/ado1.gif"><br>
+	</a>
+	<div class="caption">AdoOverview1.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../../howto/samples/adoplus/vb/adooverview1aspxsource.htm">View VB Source</a>] | [<a target="_blank" href="../../../howto/samples/adoplus/cs/adooverview1aspxsource.htm">View C# Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+
+<p>
+<a name="Commands" />
+<span class="subhead">Commands</span>
+<p>
+Commands contain the information that is submitted to a database. A command 
+can be a stored procedure call, an update statement, or a statement that 
+returns results. You can also use input and output parameters and return 
+values. The example below shows how to issue an insert statement against 
+the Northwind database.
+<p>
+
+<span>
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../../howto/images/ado2.gif"><br>
+	</a>
+	<div class="caption">AdoOverview2.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../../howto/samples/adoplus/vb/adooverview2aspxsource.htm">View VB Source</a>] | [<a target="_blank" href="../../../howto/samples/adoplus/cs/adooverview2aspxsource.htm">View C# Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+
+<p>
+<a name="DataReaders" />
+<span class="subhead">DataReaders</span>
+<p>
+DataReaders are somewhat synonymous with a read-only/forward-only cursor 
+over data. The DataReader API supports regular (flat, rectangular data) 
+as well as hierarchical data. You can use a DataReader after executing a 
+command to a database. For example, if you wanted to simply show the 
+results of a search list in a web page, a DataReader is very appropriate.
+DataReaders are returned after executing a command. The syntax is 
+different from a recordset.
+<p>
+
+<span>
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../../howto/images/ado3.gif"><br>
+	</a>
+	<div class="caption">AdoOverview3.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../../howto/samples/adoplus/vb/adooverview3aspxsource.htm">View VB Source</a>] | [<a target="_blank" href="../../../howto/samples/adoplus/cs/adooverview3aspxsource.htm">View C# Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+
+<p>
+<a name="DataSetsAndDataSetCommands" />
+<span class="subhead">DataSets and DataSetCommands</span>
+<p>
+<B>DataSets</B><br>
+At the highest level, you can think of a DataSet as an always disconnected 
+Recordset on steroids. The DataSet object represents a cache of data, with 
+database like behaviors. There exists tables, columns, relationships, 
+constraints, and data. However, though a DataSet can and does behave much 
+like a database, it is important to know that DataSet objects do not talk 
+to databases. This important distinction allows the developer to anticipate 
+an always consistent programming model regardless of where the data came. 
+Data coming from a database, an XML file, from code, or user input can all 
+be put into DataSet objects and converted into files, forms, or databases. 
+As changes are made to the DataSet, they are tracked; much like tracking 
+changes in a document. The DataSet can provide a message (GetChanges()) in 
+the form of another DataSet that can be used by DataSetCommands (or other 
+objects) to update sources of data like databases.
+<p>
+DataSets have many XML characteristics, including the ability to produce 
+and consume XML Data and XML Schemas. XML Schemas can be used to describe 
+schemas interchanged via WebServices.  In fact, DataSets with schemas can 
+be compiled for type safety and statement completion.
+<p>
+<B>DataSetCommands (ADO/SQL)</B><br>
+DataSets can move in and out of sources using an object with the 
+IDataSetCommand interface. We provide both the ADODataSetCommand and the 
+SQLDataSetCommand that implements this interface. A DataSetCommand is much 
+like a Command on steroids. While a command has one CommandText property, 
+a DataSetCommand has four--to represent InsertCommand, SelectCommand, 
+UpdateCommand and DeleteCommand. The DataSetCommand can generate these at 
+run-time based upon a select statement.  Additionally, a developer can 
+specify them in code, for example, when using stored procedures.
+
+<p>
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl10" style="display:none">
+
+SQLConnection MyConnection = new SQLConnection("server=localhost;uid=sa;pwd=;database=northwind");
+SQLDataSetCommmand MyDataSetCommand = new SQLDataSetCommand("select * from customers", 
+                                                             MyConnection);
+
+MyDataSetCommand.InsertCommand.CommandText = "sp_InsertCustomer";
+MyDataSetCommand.InsertCommand.CommandType = CommandType.StoredProcedure;
+MyDataSetCommand.DeleteCommand.CommandText = "sp_DeleteCustomer";
+MyDataSetCommand.DeleteCommand.CommandType = CommandType.StoredProcedure;
+MyDataSetCommand.UpdateCommand.CommandText = "sp_UpdateCustomers";
+MyDataSetCommand.UpdateCommand.CommandType = CommandType.StoredProcedure;
+</pre>
+<pre id="codectrl10" style="display:">
+
+Dim MyConnection As SQLConnection = New SQLConnection("server=localhost;uid=sa;pwd=;database=northwind")
+Dim MyDataSetCommand As SQLDataSetCommmand = New SQLDataSetCommand("select * from customers", _
+                                                                    MyConnection)
+
+MyDataSetCommand.InsertCommand.CommandText = "sp_InsertCustomer"
+MyDataSetCommand.InsertCommand.CommandType = CommandType.StoredProcedure
+MyDataSetCommand.DeleteCommand.CommandText = "sp_DeleteCustomer"
+MyDataSetCommand.DeleteCommand.CommandType = CommandType.StoredProcedure
+MyDataSetCommand.UpdateCommand.CommandText = "sp_UpdateCustomers"
+MyDataSetCommand.UpdateCommand.CommandType = CommandType.StoredProcedure
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl10" onclick="doClick(0, 'ctrl10')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl10" onclick="doClick(1, 'ctrl10')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+
+<p>
+The DataSetCommand.Update method compares the contents of the DataSet to the data source to determine what changes have been made:
+<p>
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl12" style="display:none">
+
+MyDataSetCommand.Update(MyDataSet);
+</pre>
+<pre id="codectrl12" style="display:">
+
+MyDataSetCommand.Update(MyDataSet)
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl12" onclick="doClick(0, 'ctrl12')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl12" onclick="doClick(1, 'ctrl12')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+<p>
+
+The records are appropriately mapped to the given commands accordingly.
+<p>
+
+<img border=1 src="../../../howto/images/adodataset.gif"><br>
+<font size=-1 >Figure: DataSetCommands and DataSets</font>
+
+<p>
+The sample below illustrates loading a DataSetCommand via a select statement. 
+Then it updates, deletes and adds some records within the DataSet. Finally it 
+sends those updates to the database via the DataSetCommand. The constructed 
+DeleteCommand, InsertCommand and UpdateCommand are shown in the page. It also 
+illustrates using multiple DataSetCommands to load multiple tables into the 
+DataSet (Customers and Orders).
+<p>
+
+<span>
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../../howto/images/ado4.gif"><br>
+	</a>
+	<div class="caption">AdoOverview4.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../../howto/samples/adoplus/vb/adooverview4aspxsource.htm">View VB Source</a>] | [<a target="_blank" href="../../../howto/samples/adoplus/cs/adooverview4aspxsource.htm">View C# Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+
+<h4>Section Summary</h4>
+<ol>
+	<li>ADO.NET is the next evolution of ADO for the .Net Framework.
+	<li>ADO.NET was created with n-Tier, statelessness and XML in the forefront. Two new 
+		objects, DataSets and DataSetCommands are provided for these scenarios.
+	<li>ADO.NET can be used to get data from a stream, or to store in a cache for updates.
+	<li>There is a lot more information about ADO.NET in the documentation.
+</ol>
+<!--END FOOTER-->
+<p>
+<hr>
+<p>
+</div>
+</td>
+</tr>
+</table>
+</BODY>
+</html>
+<!--END FOOTER-->

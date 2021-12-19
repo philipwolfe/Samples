@@ -1,0 +1,139 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/winforms/samples/Cs/Data/MasterDetails/MasterDetails.src&file=CustomersAndOrdersWebService.SDL" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfQ3VzdG9tZXJzQW5kT3JkZXJzV2ViU2VydmljZS5TREx4X194eF94eF94X19471f44437" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">CustomersAndOrdersWebService.SDL</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>Form: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/data/masterdetails/customersformcssource.htm'>CustomersForm.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>DataSet: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/data/masterdetails/customersandordersdatasetcssource.htm'>CustomersAndOrdersDataSet.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Schema: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/data/masterdetails/customersandordersdatasetxsdsource.htm'>CustomersAndOrdersDataSet.xsd</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>WebService: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/data/masterdetails/customersandorderswebserviceasmxsource.htm'>CustomersAndOrdersWebService.asmx</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>WebServiceDefinition: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/data/masterdetails/customersandorderswebservicesdlsource.htm'>CustomersAndOrdersWebService.SDL</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><?xml version="1.0"?>
+<serviceDescription xmlns:s0="http://tempuri.org/" name="CustomersAndOrders" targetNamespace="http://tempuri.org/" xmlns="urn:schemas-xmlsoap-org:sdl.2000-01-25">
+  <soap xmlns="urn:schemas-xmlsoap-org:soap-sdl-2000-01-25">
+    <service>
+      <addresses>
+        <address uri="http://localhost/QuickStart/winforms/samples/Cs/Data/MasterDetails/CustomersAndOrdersWebService.asmx"/>
+      </addresses>
+      <requestResponse name="GetCustomersAndOrders" soapAction="http://tempuri.org/GetCustomersAndOrders">
+        <request ref="s0:GetCustomersAndOrders"/>
+        <response ref="s0:GetCustomersAndOrdersResult"/>
+      </requestResponse>
+      <requestResponse name="UpdateCustomersAndOrders" soapAction="http://tempuri.org/UpdateCustomersAndOrders">
+        <request ref="s0:UpdateCustomersAndOrders"/>
+        <response ref="s0:UpdateCustomersAndOrdersResult"/>
+      </requestResponse>
+    </service>
+  </soap>
+  <httppost xmlns="urn:schemas-xmlsoap-org:post-sdl-2000-01-25">
+    <service>
+      <requestResponse name="GetCustomersAndOrders" href="http://localhost/QuickStart/winforms/samples/Cs/Data/MasterDetails/CustomersAndOrdersWebService.asmx/GetCustomersAndOrders">
+        <request>
+          <form/>
+        </request>
+        <response>
+          <mimeXml ref="s0:DataSet"/>
+        </response>
+      </requestResponse>
+    </service>
+  </httppost>
+  <httpget xmlns="urn:schemas-xmlsoap-org:get-sdl-2000-01-25">
+    <service>
+      <requestResponse name="GetCustomersAndOrders" href="http://localhost/QuickStart/winforms/samples/Cs/Data/MasterDetails/CustomersAndOrdersWebService.asmx/GetCustomersAndOrders">
+        <request/>
+        <response>
+          <mimeXml ref="s0:DataSet"/>
+        </response>
+      </requestResponse>
+    </service>
+  </httpget>
+  <schema targetNamespace="http://tempuri.org/" attributeFormDefault="qualified" elementFormDefault="qualified" xmlns="http://www.w3.org/1999/XMLSchema">
+    <import namespace="http://www.w3.org/1999/XMLSchema"/>
+    <element name="GetCustomersAndOrders">
+      <complexType/>
+    </element>
+    <element name="GetCustomersAndOrdersResult">
+      <complexType>
+        <all>
+          <element name="result" nullable="true">
+            <complexType>
+              <all>
+                <element ref="schema"/>
+                <any/>
+              </all>
+            </complexType>
+          </element>
+        </all>
+      </complexType>
+    </element>
+    <element name="DataSet" nullable="true">
+      <complexType>
+        <all>
+          <element ref="schema"/>
+          <any/>
+        </all>
+      </complexType>
+    </element>
+    <element name="UpdateCustomersAndOrders">
+      <complexType>
+        <all>
+          <element name="ds" nullable="true">
+            <complexType>
+              <all>
+                <element ref="schema"/>
+                <any/>
+              </all>
+            </complexType>
+          </element>
+        </all>
+      </complexType>
+    </element>
+    <element name="UpdateCustomersAndOrdersResult">
+      <complexType>
+        <all>
+          <element name="result" nullable="true">
+            <complexType>
+              <all>
+                <element ref="schema"/>
+                <any/>
+              </all>
+            </complexType>
+          </element>
+        </all>
+      </complexType>
+    </element>
+  </schema>
+</serviceDescription>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

@@ -1,0 +1,94 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Services/PerformanceCounters/pcdemo/pcdemo.src&file=PCDemo.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfUENEZW1vLmNzeF9feHhfeHhfeF9feA==e8704486" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">PCDemo.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../howto/samples/services/performancecounters/pcdemo/pcdemocssource.htm'>PCDemo.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../howto/samples/services/performancecounters/pcdemo/vb/pcdemovbsource.htm'>VB/PCDemo.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>using System;
+using System.Diagnostics;
+using System.Timers;
+using System.Threading;
+
+public class PCDemo{
+
+	static PerformanceCounter theCounter;
+
+	public static void Main(string[] args){
+
+		string objectName   = "ACounterDemo";
+		string counterName  = "CountPerSecond";
+		string instanceName = "_Total";
+
+		if(!PerformanceCounter.CategoryExists(objectName))
+		{
+			CounterCreationData ccd = new CounterCreationData();
+			ccd.CounterName = counterName;
+			ccd.CounterType = PerformanceCounterType.RateOfChangePerSecond32;
+			CounterCreationData[] ccds = new CounterCreationData[1];
+			ccds[0] = ccd;
+
+			PerformanceCounterCategory.Create(objectName,"Sample Object",ccds);
+		}
+		
+		theCounter = new PerformanceCounter(objectName, counterName ,instanceName);
+
+		System.Timers.Timer aTimer = new System.Timers.Timer();
+		aTimer.Tick += new EventHandler(OnTimer);
+
+		aTimer.Interval  = 100;
+		aTimer.Enabled   = true;
+		aTimer.AutoReset = false;
+		
+		Console.WriteLine("Press \'+\' to increase the interval");
+		Console.WriteLine("Press \'-\' to decrease the interval");
+		Console.WriteLine("Press \'q\' to quit the sample");
+		Console.WriteLine("Started");
+
+		int command;
+		do
+		{
+			command = Console.Read();
+			if(command=='+')
+				aTimer.Interval = Math.Max(1,aTimer.Interval/2);
+			if(command=='-')
+				aTimer.Interval *= 2;
+
+
+			Thread.Sleep(500);
+		}
+		while(command!='q');
+		PerformanceCounter.DeleteCategory(objectName);
+	}
+
+	public static void OnTimer(Object source, EventArgs e)
+	{
+		theCounter.IncrementBy(1);
+		System.Timers.Timer theTimer = (System.Timers.Timer)source;
+		theTimer.Enabled = true;
+	}
+}
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

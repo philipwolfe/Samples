@@ -1,0 +1,94 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlauth/Composition/Composition2.src&file=Composition2.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfQ29tcG9zaXRpb24yLmNzeF9feHhfeHhfeF9feA==311b26f8" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">Composition2.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/ctrlauth/composition/composition2aspxsource.htm'>Composition2.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/ctrlauth/composition/composition2cssource.htm'>Composition2.cs</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/ctrlauth/composition/makesamplebatsource.htm'>makesample.bat</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/ctrlauth/composition/vb/composition2aspxsource.htm'>VB/Composition2.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/ctrlauth/composition/vb/composition2vbsource.htm'>VB/Composition2.vb</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/ctrlauth/composition/vb/makesamplebatsource.htm'>VB/makesample.bat</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>using System;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace CompositionSampleControls {
+
+    public class Composition2 : Control, INamingContainer {
+
+        public int Value {
+           get {
+               return Int32.Parse(((TextBox)Controls[1]).Text);
+           }
+           set {
+               ((TextBox)Controls[1]).Text = value.ToString();
+           }
+        }
+
+        protected override void CreateChildControls() {
+
+           // Add Literal Control
+
+           this.Controls.Add(new LiteralControl("<h3>Value: "));
+
+           // Add Textbox
+
+           TextBox box = new TextBox();
+           box.Text = "0";
+           this.Controls.Add(box);
+
+           // Add Literal Control
+
+           this.Controls.Add(new LiteralControl("</h3>"));
+
+           // Add "Add" Button
+
+           Button addButton = new Button();
+           addButton.Text = "Add";
+           addButton.Click += new EventHandler(this.AddBtn_Click);
+           this.Controls.Add(addButton);
+
+           // Add Literal Control
+
+           this.Controls.Add(new LiteralControl(" | "));
+
+           // Add "Subtract" Button
+
+           Button subtractButton = new Button();
+           subtractButton.Text = "Subtract";
+           subtractButton.Click += new EventHandler(this.SubtractBtn_Click);
+           this.Controls.Add(subtractButton);
+
+        }
+
+        private void AddBtn_Click(Object sender, EventArgs e) {
+           this.Value++;
+        }
+
+        private void SubtractBtn_Click(Object sender, EventArgs e) {
+           this.Value--;
+        }        
+    }    
+}
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

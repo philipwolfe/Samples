@@ -1,0 +1,127 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/winforms/samples/Cs/WritingControls/usercontrol/usercontrol.src&file=Customer.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfQ3VzdG9tZXIuY3N4X194eF94eF94X194ba0d7128" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">Customer.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>Control: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/writingcontrols/usercontrol/customercontrolcssource.htm'>CustomerControl.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Customer: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/writingcontrols/usercontrol/customercssource.htm'>Customer.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Host Application: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/writingcontrols/usercontrol/hostappcssource.htm'>HostApp.cs</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>//------------------------------------------------------------------------------
+/// <copyright from='1997' to='2001' company='Microsoft Corporation'>           
+///    Copyright (c) Microsoft Corporation. All Rights Reserved.                
+///       
+///    This source code is intended only as a supplement to Microsoft
+///    Development Tools and/or on-line documentation.  See these other
+///    materials for detailed information regarding Microsoft code samples.
+///
+/// </copyright>                                                                
+//------------------------------------------------------------------------------
+namespace Microsoft.Samples.WinForms.Cs.CustomerControl {
+    using System;
+    using System.ComponentModel;
+    using System.IO;
+
+    public class Customer : Component {
+
+        private string id ;
+        private string title ;
+        private string firstName ;
+        private string lastName ;
+        private string address ;
+
+        public static Customer ReadCustomer() {
+            Customer cust = new Customer("536-45-1245");
+            cust.Title = "Mr.";
+            cust.FirstName = "Otis";
+            cust.LastName = "Redding";
+            cust.Address = "1 Dock Street,\r\nThe Bay,\r\nSomeWhere,\r\nUSA";
+            return cust;
+        }
+
+        internal Customer(string ID): base() {
+            this.id = ID ;    
+        }
+
+        public string ID { 
+            get  { 
+                return id ;
+            }
+        }
+
+        public string FirstName { 
+            get  { 
+                return firstName ;
+            }
+            set {
+                firstName = value ;
+            }
+        }
+
+        public string Title { 
+            get  { 
+                return title ;
+            }
+            set {
+                title = value ;
+            }
+        }
+
+        public string LastName { 
+            get  { 
+                return lastName ;
+            }
+            set {
+                lastName = value ;
+            }
+        }
+
+        public string Address { 
+            get  { 
+                return address ;
+            }
+            set {
+                address = value ;
+            }
+        }
+
+        public override string ToString() {
+            StringWriter sb = new StringWriter() ;
+            sb.WriteLine("Customer: \n");
+            sb.WriteLine(this.ID);
+            sb.Write(this.Title);
+            sb.Write(this.FirstName);
+            sb.WriteLine(this.LastName);
+            sb.WriteLine(this.Address);
+            return sb.ToString();
+        }
+
+
+    }
+}
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

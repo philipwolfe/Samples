@@ -1,0 +1,831 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>The Programmable Web: The Web Services Platform Provides Building Blocks for Seamless App Integration -- MSDN Magazine, Special Edition</TITLE>
+<META content=noindex name=robots>
+<META http-equiv=Content-Type content="text/html; charset=iso8859-1">
+<SCRIPT language=JavaScript><!--
+
+	// -----------------------------------------------------------
+	// Client-side BrowserData constructor
+	// Populated using data from server-side oBD object to avoid redundancy
+	// -----------------------------------------------------------
+
+	function BrowserData()
+	{
+		this.userAgent = "Mozilla/4.0 (compatible; MSIE 5.5; Windows NT 5.0)";
+		this.browser = "MSIE";
+		this.majorVer = 5;
+		this.minorVer = "5";
+		this.betaVer = "0";
+		this.platform = "NT";
+		this.platVer = "5.0";
+		this.getsNavBar = true;
+		this.doesActiveX = true;
+		this.fullVer = 5.5;
+
+	}
+	var oBD = new BrowserData();
+
+//--></SCRIPT>
+
+<SCRIPT language=JavaScript 
+src="NGWS Platform Overview_files/jscripts.js"></SCRIPT>
+<LINK 
+href="NGWS Platform Overview_files/IE4.css" 
+type=text/css rel=stylesheet>
+<SCRIPT language=JavaScript 
+src="NGWS Platform Overview_files/navlinks.js"></SCRIPT>
+
+<SCRIPT language=JScript><!--
+
+	function CommonLoad()
+	{
+		if ("function" == typeof(InitNavLinks)) InitNavLinks();
+		if ("function" == typeof(CheckToTop)) CheckToTop();
+		if ("function" == typeof(RemoveLastPipe)) RemoveLastPipe();
+		if ("function" == typeof(process_button))
+		{
+			with( document )
+			{
+				onmousedown = onmouseup = onmouseover = onmouseout = onkeyup = onclick = onselectstart = process_button;
+			}
+		}
+		if( "function" == typeof( doOutline ) )
+		{
+			document.onclick = doOutline;
+		}
+	}
+
+//--></SCRIPT>
+
+<SCRIPT language=javascript><!--
+
+	// -----------------------------------------------------------
+	// window_load()
+	// Container function for load.
+	// -----------------------------------------------------------
+
+	function window_load()
+	{
+		if (oBD.getsNavBar)
+		{
+			if ("function" == typeof(CommonLoad)) CommonLoad();
+		}
+	}
+	window.onload = window_load;
+
+//-->
+</SCRIPT>
+
+<META content="MSHTML 5.50.3825.1300" name=GENERATOR></HEAD>
+<BODY text=#000000 bottomMargin=10 vLink=#003399 aLink=#003399 link=#003399 
+bgColor=#ffffff topMargin=10 MARGINHEIGHT="10" MARGINWIDTH="10"><!--TOOLBAR_EXEMPT-->
+<TABLE height="100%" cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD>
+      <H1>The Programmable Web: The Web Services Platform Provides Building 
+      Blocks for Seamless App Integration</H1></TD></TR>
+  <TR>
+    <TD><SPAN class=pd>By Mary Kirtland, &nbsp<i>MSDN Magazine</i>, Sept. 2000. <br>Copyright Microsoft and Miller Freeman Inc is reprinted by permission. &nbspAll rights reserved.</SPAN> </TD></TR>
+  <TR>
+    <TD height=15><IMG height=15 alt="" 
+      src="NGWS Platform Overview_files/ts.gif" 
+      width=1> </TD></TR>
+  <TR>
+    <TD><!---InfoBar--->
+      <TABLE cellSpacing=0 cellPadding=3 bgColor=#ffffff border=0>
+        <TBODY>
+        <TR>
+          <TD bgColor=#ffffff><SPAN class=clsInfo>This article assumes you&#8217;re 
+            familiar with HTTP and XML</SPAN> </TD></TR>
+        <TR>
+          <TD vAlign=bottom bgColor=#336699><SPAN class=clsLevel><FONT 
+            color=#ffffff>Level of Difficulty&nbsp; &nbsp;&nbsp;</FONT> <FONT 
+            color=#999999>1</FONT>&nbsp;&nbsp; <FONT 
+            color=#ffffff>2</FONT>&nbsp;&nbsp; <FONT 
+            color=#999999>3</FONT>&nbsp;</SPAN> </TD></TR><!---
+<TR>
+<TD BGCOLOR="#99CCFF">
+<SPAN CLASS="clsInfo">Code for this article: <a href="/msdnmag/issues/0800/code/.exe">(KB)</a>
+</SPAN>
+</TD>
+</TR>
+--->
+        <TR>
+          <TD bgColor=#ffffff><SPAN class=clsSum>SUMMARY</SPAN> <SPAN 
+            class=clsSumText>Web Services are building blocks for constructing 
+            distributed Web-based applications in a platform, object model, and 
+            programming language-agnostic manner. Web Services are based on open 
+            Internet standards, such as HTTP and XML, and form the basis of 
+            Microsoft&#8217;s vision of the programmable Web.<BR><BR><IMG height=4 alt="" 
+            src="NGWS Platform Overview_files/indent.gif" 
+            width=10>This article defines Web Services and the key enabling 
+            technologies that ensure services can be aggregated into 
+            applications. It then describes Microsoft&#8217;s new Web Services 
+            Platform and its support for creating and consuming Web 
+            Services.</SPAN> 
+            <HR color=#6699cc>
+          </TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD class=articletext>
+      <TABLE align=left>
+        <TBODY>
+        <TR>
+          <TD vAlign=bottom><IMG height=63 alt=O 
+            src="NGWS Platform Overview_files/o.gif" 
+            width=44> </TD></TR></TBODY></TABLE>ne of today's most pressing challenges 
+      is application integration: taking different applications running on 
+      different operating systems built with different object models using 
+      different programming languages and turning them into easy-to-use Web 
+      applications. The Microsoft vision of Web Services, based on open Web 
+      standards such as HTTP and XML, addresses this challenge. <BR><BR><IMG 
+      height=4 alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>But supporting standard protocols isn't enough. There must be 
+      some way to create, deploy, scale, and maintain these Web Services. This 
+      is where the Microsoft® Web Services Platform comes in.<BR><BR><IMG height=4 
+      alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>This article describes Web Services and the components of the 
+      Microsoft Web Services Platform, including the common language runtime, 
+      the services framework, and the programming models for building and 
+      integrating Web Services. <BR>
+      <P><SPAN class=clsSubhead>A Look at Web Services</SPAN> <BR><IMG height=4 
+      alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>Broadly speaking, a Web Service is simply an application 
+      delivered as a service that can be integrated with other Web Services 
+      using Internet standards. In other words, it's a URL-addressable resource 
+      that programmatically returns information to clients who want to use it. 
+      One important feature of Web Services is that clients don't need to know 
+      how a service is implemented. In this section, I'll explain how Web 
+      Services combine the best aspects of component-based technologies and the 
+      Web, and introduce the infrastructure needed to communicate with Web 
+      Services.<BR><br><IMG height=4 alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>Like components, Web Services represent black-box functionality 
+      that can be reused without worrying about how the service is implemented. 
+      Web Services provide well-defined interfaces, called contracts, that 
+      describe the services provided. Developers can assemble applications using 
+      a combination of remote services, local services, and custom code. For 
+      example, a company might assemble an online store using the Microsoft 
+      Passport service to authenticate users, a third-party personalization 
+      service to adapt Web pages to each user's preferences, a credit-card 
+      processing service, a sales tax service, package-tracking services from 
+      each shipping company, an in-house catalog service that connects to the 
+      company's internal inventory management applications, and a bit of custom 
+      code to make sure that their store stands out from the crowd. <SPAN 
+      class=clsFigs>Figure&nbsp;1</SPAN> shows a model that illustrates how Web 
+      Services can be linked to create distributed Web applications.<BR><BR>
+      <TABLE>
+        <TBODY>
+        <TR>
+          <TD bgColor=#ffffff><IMG height=188 
+            alt="Figure 1 Web Services Application Model" 
+            src="NGWS Platform Overview_files/webplatformfig01.gif" 
+            width=360></TD></TR>
+        <TR>
+          <TD><SPAN class=clsCap>Figure 1</SPAN> <SPAN class=clsCaptxt>Web 
+            Services Application Model</SPAN> </TD></TR></TBODY></TABLE>
+      <P><IMG height=4 alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>Unlike current component technologies, however, Web Services do 
+      not use object model-specific protocols such as DCOM, RMI, or IIOP that 
+      require specific, homogeneous infrastructures on both the client and 
+      service machines. While implementations tightly coupled to specific 
+      component technologies are perfectly acceptable in a controlled 
+      environment, they become impractical on the Web. As the set of 
+      participants in an integrated business process changes, and as technology 
+      changes over time, it becomes very difficult to guarantee a single, 
+      unified infrastructure among all participants. Web Services take a 
+      different approach; they communicate using ubiquitous Web protocols and 
+      data formats such as HTTP and XML. Any system supporting these Web 
+      standards will be able to support Web Services.<BR><BR><IMG height=4 alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>Furthermore, a Web Service contract describes the services 
+      provided in terms of the messages the Web Service accepts and generates 
+      rather than how the service is implemented. By focusing solely on 
+      messages, the Web Services model is completely language, platform, and 
+      object model-agnostic. A Web Service can be implemented using the full 
+      feature set of any programming language, object model, and platform. A Web 
+      Service can be consumed by applications implemented in any language for 
+      any platform. As long as the contract that explains the service's 
+      capabilities and the message sequences and protocols it expects is 
+      honored, the implementations of Web Services and Web Service consumers can 
+      vary independently without affecting the application at the other end of 
+      the conversation.<BR><BR><IMG height=4 alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>The minimum infrastructure required by the Web Services model is 
+      purposefully low to help ensure that Web Services can be implemented on 
+      and accessed from any platform using any technology and programming 
+      language. The key to Web Service interoperability is reliance solely on 
+      Web standards. However, simply agreeing that Web Services should be 
+      accessed through standard Web protocols is not sufficient to make it easy 
+      for applications to use Web Services. Web Services become easy to use when 
+      a Web Service and Web Service consumer rely on standard ways to represent 
+      data and commands, to represent Web Service contracts, and to figure out 
+      the capabilities a Web Service provides.<BR><BR><IMG height=4 alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>XML is the obvious choice for defining a standard yet extensible 
+      language to represent commands and typed data. While rules for 
+      representing commands and typed data using other techniques (such as 
+      encoding as a query string) could be defined, XML is specifically designed 
+      as a standard metalanguage for describing data. The Simple Object Access 
+      Protocol (SOAP) is an industry standard for using XML to represent data 
+      and commands in an extensible way. A Web Service can choose to use SOAP to 
+      specify its message formats. You can learn more about SOAP and the SOAP 
+      Toolkit for Visual Studio® 6.0 from Rob Caron's article in the August 2000 
+      issue of <I>MSDN Magazine</I> (see "<A 
+      href="http://msdn.microsoft.com/msdnmag/issues/0800/webservice/webservice.asp">Develop 
+      a Web Service: Up and Running with the SOAP Toolkit for Visual 
+      Studio</A>"). <BR><BR><IMG height=4 alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>XML is also the enabling technology for the Web Service 
+      contracts. The Service Description Language (SDL) is an XML grammar for 
+      documenting Web Service contracts. Since SDL is XML-based, contracts are 
+      easy for both developers and developer tools to create and interpret. The 
+      SDL specification will be included with the SOAP Toolkit for Visual Studio 
+      6.0, which should be available by the time you read this.<BR><BR><IMG height=4 
+      alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>The Disco specification will describe a standard way for service 
+      providers to publish Web Service contracts and the corresponding mechanism 
+      that lets developers or developer tools discover contract documents. A 
+      draft of the Disco specification should be available by the time you read 
+      this.<BR><BR><IMG height=4 alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>Standards like SOAP, SDL, and Disco help developers since they do 
+      not need to understand and implement different ways to access each Web 
+      Service that they use. Even better, well-tested, high-performance 
+      infrastructure supporting these standards can be supplied by development 
+      platforms, greatly simplifying the entire development process.<BR>
+      <P><SPAN class=clsSubhead>The Microsoft Web Services Platform</SPAN> 
+      <BR><IMG height=4 alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>The goal of the Microsoft Web Services Platform is to make it 
+      easy to build Web applications and Web Services. <SPAN 
+      class=clsFigs>Figure&nbsp;2</SPAN> shows the Web Services Platform 
+      architecture.
+      <TABLE>
+        <TBODY>
+        <TR>
+          <TD bgColor=#ffffff><br><IMG height=166 
+            alt="Figure 2 Web Services Platform Architecture" 
+            src="NGWS Platform Overview_files/webplatformfig02.gif" 
+            width=280></TD></TR>
+        <TR>
+          <TD><SPAN class=clsCap>Figure 2</SPAN> <SPAN class=clsCaptxt>Web 
+            Services Platform Architecture</SPAN> </TD></TR></TBODY></TABLE>
+      <P><IMG height=4 alt="" src="NGWS Platform Overview_files/indent.gif" 
+      width=10>Built on top of operating system services is a common language runtime 
+      that manages the needs of running code written in any modern programming 
+      language. This runtime supplies many services that help simplify code 
+      development and application deployment while also improving application 
+      reliability. The Web Services Platform also supplies a framework that 
+      provides a set of class libraries that developers can use from any 
+      programming language. Above that sit various application programming 
+      models that provide higher-level components and services targeted 
+      specifically at developing Web sites and Web Services. Now I'll describe 
+      each of these layers. <BR>
+      <P><SPAN class=clsSubhead>Common Language Runtime</SPAN><BR><IMG height=4 
+      alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>The runtime loads and runs code written in any runtime-aware 
+      programming language. Code that targets the runtime is called managed 
+      code. Managed code simply means that there is a defined contract of 
+      cooperation between natively executing code and the runtime itself. 
+      Responsibility for tasks like creating objects, making method calls, and 
+      so on is delegated to the runtime, which enables the runtime to provide 
+      additional services to the executing code.<BR><BR><IMG height=4 alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>The runtime features cross-language integration, self-describing 
+      components, simple deployment and versioning, and integrated security 
+      services. Let's take a quick look at each of these features. <BR><BR><IMG 
+      height=4 alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>The runtime makes use of a new common type system capable of 
+      expressing the semantics of most modern programming languages. The common 
+      type system defines a standard set of types and rules for creating new 
+      types. The runtime understands how to create and execute these types. 
+      Compilers and interpreters use runtime services to define types, manage 
+      objects, and make method calls instead of using tool or language-specific 
+      methods. <BR><BR><IMG height=4 alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>The primary design goal for the type system is to enable deep 
+      multilanguage integration. Code written in one language can now inherit 
+      implementation from classes written in another language; exceptions can be 
+      thrown from code written in one language and caught in code written in 
+      another; and operations such as debugging and profiling work seamlessly 
+      regardless of the languages used to write the code. This means that 
+      developers of reusable class libraries no longer need to create versions 
+      for each programming language or compiler, and developers using class 
+      libraries are no longer limited to libraries developed for the programming 
+      language they are using. <BR><BR><IMG height=4 alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>Self-describing components, which are now possible on the Web 
+      Services Platform, simplify development and deployment and improve system 
+      reliability. Let me explain how this works. Many services provided by the 
+      runtime are driven by metadata, information that supplements the 
+      executable code. Since all the information is stored together, the 
+      executables are referred to as self-describing components.<BR><BR><IMG 
+      height=4 alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>A key advantage of self-describing components is that no other 
+      files are needed to use the components. Separate header files are not 
+      required for class definitions; the definitions can be obtained from the 
+      component itself by inspecting the metadata. Separate IDL files, type 
+      libraries, or proxy/stubs are not required to access a component across 
+      language or process boundaries; the necessary information is located in 
+      the component's metadata. Separate configuration information does not need 
+      to be deployed to identify developer requested service attributes. And 
+      best of all, since the metadata is generated from the source code during 
+      the compilation process and stored with the executable code, it is never 
+      out of sync with the executable. <BR><BR><IMG height=4 alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>In addition to improvements in deploying individual components, 
+      the Web Services Platform defines an application deployment model that 
+      addresses customer issues with the complexities of application 
+      installation and DLL versioning (commonly known as "DLL Hell"). Services 
+      to support this model are provided by the runtime. <BR><BR><IMG height=4 
+      alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>The Web Services Platform introduces the notion of an assembly. 
+      An assembly is a group of resources and types, along with metadata about 
+      those resources and types, that is deployed as a unit. The metadata is 
+      called an assembly manifest and includes information such as a list of 
+      types and resources visible outside the assembly. The manifest also 
+      includes information about dependencies, such as the version of the 
+      assemblies used when the assembly was built. Developers can specify 
+      versioning policies to indicate whether the runtime should load the latest 
+      version of a dependent assembly installed on the system, a specific 
+      version, or the version used at build time.<BR><BR><IMG height=4 alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>It has always been possible for multiple copies of a software 
+      component to reside on the same system. In general, however, only one of 
+      these copies can be registered with the operating system or loaded for 
+      execution. The policy for locating and loading components is global to the 
+      system. The Web Services Platform runtime adds the infrastructure 
+      necessary to support per-application policies that govern the locating and 
+      loading of components, which is generally referred to as side-by-side 
+      deployment.<BR><BR><IMG height=4 alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>Assemblies can be private to an application or shared by multiple 
+      applications. Multiple versions of an assembly can be deployed on a 
+      machine at the same time. Application configuration information defines 
+      where to look for assemblies, thus the runtime can load different versions 
+      of the same assembly for two different applications that are running 
+      concurrently. This eliminates issues that arise from incompatibilities 
+      between component versions, improving overall system stability. If 
+      necessary, administrators can add configuration information, such as a 
+      different versioning policy, to assemblies at deployment time, but the 
+      original information provided at build time is never lost.<BR><BR><IMG 
+      height=4 alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>Because assemblies are self-describing, no explicit registration 
+      with the operating system is required. Application deployment can be as 
+      simple as copying files to a directory tree. (Things are slightly more 
+      complicated if unmanaged components must be installed for the application 
+      to work.) Configuration information is stored in XML files that can be 
+      edited by any text editor. <BR><BR><IMG height=4 alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>Finally, the runtime also supplies integrated, pervasive security 
+      services to ensure that unauthorized users cannot access resources on a 
+      machine and that code cannot perform unauthorized actions. This improves 
+      overall system safety and reliability. Since the runtime is used to load 
+      code, create objects, and make method calls, the runtime can perform 
+      security checks and enforce security policy as managed code is loaded and 
+      executed. <BR><BR><IMG height=4 alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>The Web Services Platform provides both code access security and 
+      role-based security. With code access security, developers can specify the 
+      required permissions their code needs to accomplish work. For example, 
+      code may need permission to write a file or access environment variables. 
+      This information is stored at the assembly level, along with information 
+      about the identity of the code. At load time and on method calls, the 
+      runtime verifies that the code can be granted the permissions it has asked 
+      for. If not, a security violation is reported. Policies for granting 
+      permissions, known as trust policies, are established by system 
+      administrators, and are based on evidence about the code such as who 
+      published the code and where it was obtained from, as well as the identity 
+      and requested permissions found in the assembly. Developers can also 
+      specify permissions they explicitly don't want, to prevent malicious use 
+      of their code by others. Programmatic security checks can be written if 
+      the permissions required depend on information that isn't known until 
+      runtime.<BR><BR><IMG height=4 alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>In addition to code access security, the runtime supports 
+      role-based security. Role-based security builds on the same permissions 
+      model as code access security, except that the permissions are based on 
+      user identity rather than code identity. Roles represent categories of 
+      users and can be defined at development or deployment time. Policies for 
+      granting permissions are assigned to each defined role. At runtime, the 
+      identity of the user on whose behalf the code is running is determined. 
+      The runtime determines what roles the user is a member of and then grants 
+      permissions based on those roles.<BR><BR><IMG height=4 alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>Before looking at programming models in the Web Services 
+      Platform, let's take a quick look at the framework and the services it 
+      provides. <BR>
+      <P><SPAN class=clsSubhead>The Services Framework</SPAN><BR><IMG height=4 
+      alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>As you may recall from <SPAN class=clsFigs>Figure&nbsp;2</SPAN>, 
+      on top of the common language runtime is the services framework. This 
+      framework provides classes that can be called from any modern programming 
+      language. All classes comply with a set of naming and design guidelines to 
+      further reduce the learning curve for developers.<BR><BR>
+      <TABLE>
+        <TBODY>
+        <TR>
+          <TD bgColor=#ffffff><IMG height=174 
+            alt="Figure 3 Services Framework Class Libraries" 
+            src="NGWS Platform Overview_files/webplatformfig03.gif" 
+            width=220></TD></TR>
+        <TR>
+          <TD><SPAN class=clsCap>Figure 3</SPAN> <SPAN 
+            class=clsCaptxt>Services Framework Class Libraries</SPAN> 
+        </TD></TR></TBODY></TABLE>
+      <P><IMG height=4 alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>Some of the key class libraries in the services framework are 
+      shown in <SPAN class=clsFigs>Figure&nbsp;3</SPAN>. The framework includes 
+      a base set of class libraries that developers would expect in a standard 
+      language library, such as collections, input/output, string, and numerical 
+      classes. In addition, the base class library provides classes to access 
+      operating system services such as graphics, networking, threading, 
+      globalization, and cryptography. The services framework also includes a 
+      data access class library, as well as classes that development tools can 
+      use, such as debugging and profiling services. There isn't room in this 
+      article to discuss all the classes in detail, so I'll focus on the data 
+      access classes since most Web Services need access to data. Of course, you 
+      can find additional information about the services framework class 
+      libraries in the Web Services Platform SDK.<BR>
+      <P><SPAN class=clsSubhead>Data Access Services</SPAN><BR><IMG height=4 
+      alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>Nearly all Web Services need to query or update persisted data, 
+      whether in simple files, relational databases, or any other type of store. 
+      To provide data access, the services framework includes the ADO+ class 
+      library. As the name implies, ADO+ evolves from ActiveX® Data Objects 
+      (ADO). ADO+ is designed to provide data access services for scalable 
+      Web-based applications and services. ADO+ provides high-performance stream 
+      APIs for connected, cursor-style data access, as well as a disconnected 
+      data model more suitable for returning data to client applications, as 
+      I'll explain later. <SPAN class=clsFigs>Figure&nbsp;4</SPAN> illustrates 
+      the ADO+ architecture and shows that any data&#8212;regardless of how it is 
+      actually stored&#8212;can be manipulated as XML or relational data, whichever is 
+      most appropriate for the app at a given point in time.<BR><BR>
+      <TABLE>
+        <TBODY>
+        <TR>
+          <TD bgColor=#ffffff><IMG height=140 alt="Figure 4 ADO+ Architecture" 
+            src="NGWS Platform Overview_files/webplatformfig04.gif" 
+            width=380></TD></TR>
+        <TR>
+          <TD><SPAN class=clsCap>Figure 4</SPAN> <SPAN class=clsCaptxt>ADO+ 
+            Architecture</SPAN> </TD></TR></TBODY></TABLE>
+      <P><IMG height=4 alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>New concepts in ADO+ include DataSets and managed providers. A 
+      DataSet is an in-memory data cache providing a relational view of the 
+      data. DataSets know nothing about the source of their data&#8212;the DataSet may 
+      be created and populated programmatically or by loading data from a data 
+      store. No matter where the data comes from, it is manipulated using the 
+      same programming model and uses the same underlying cache. Developers 
+      familiar with ADO will recognize the DataSet as the evolution of the ADO 
+      disconnected RecordSet.<BR><BR><IMG height=4 alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>Managed data providers interface between data stores and 
+      DataSets. Providers supply classes to connect to data stores, fill 
+      DataSets from data stores, and persist DataSets into data stores. The Web 
+      Services Platform includes data providers for Microsoft SQL Server&#8482; and 
+      any data store that can be accessed via OLE DB. These providers support an 
+      object model based on connections and commands, which will be familiar to 
+      developers who use ADO. <BR><BR><IMG height=4 alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>ADO+ also defines a set of high-performance stream APIs for 
+      navigating XML documents and data stores. These interfaces are used by the 
+      data providers. Each interface is optimized for particular navigation 
+      patterns. The basic unit of navigation is the DataRecord, which is 
+      equivalent to a node in an XML document or a record in a relational table. 
+      DataReaders provide forward-only, read-only access to a stream of 
+      DataRecords. The DataReaders implemented by the Web Services Platform are 
+      designed to minimize the number of in-memory objects created to avoid 
+      garbage collection and improve performance. <BR><BR><IMG height=4 alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>DataNavigators are scrollable forms of DataReaders. 
+      DataNavigators are functionally equivalent to the W3C Document Object 
+      Model (DOM), but are more efficient and provide an object model that maps 
+      nicely to the relational data view. DataNavigators support XPath syntax 
+      for navigating the data stream. DataEditors add editing capabilities to 
+      DataNavigators and provide a superset of DOM editing features. Of course, 
+      if a developer wants to use the DOM rather than DataNavigators or 
+      DataEditors, ADO+ provides managed classes for that.<BR><BR><IMG height=4 
+      alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>Since all data can be viewed as XML, developers can take 
+      advantage of ADO+ transformation and validation services for any data. 
+      ADO+ defines a general transformation architecture that consumes a 
+      DataNavigator and produces a new DataReader. The Web Services Platform 
+      provides a specific transformation component that supports the W3C XSL 
+      Transformations (XSLT) specification. ADO+ also provides a validation 
+      engine that uses XML Schemas to validate a DataReader. ADO+ supports 
+      schemas defined via DTDs, XSD, or XDR.<BR>
+      <P><SPAN class=clsSubhead>The Win Forms Application Model</SPAN><BR><IMG 
+      height=4 alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>Conceptually, on top of the services framework sit two 
+      application models: the Windows® application model and the Web application 
+      model. Although I've focused on the Web Services Platform as a way to 
+      develop Web Services and Web applications, the Web Services Platform can 
+      also be used to develop more traditional Windows-based applications (of 
+      course, these applications can use Web Services, too).<BR><BR><IMG height=4 
+      alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>Developers writing client applications for Windows can use the 
+      Win Forms application model to take advantage of all the rich user 
+      interface features of Windows, including existing ActiveX controls and new 
+      features of Windows 2000, such as transparent, layered, and floating 
+      windows. Either a traditional Windows or Web appearance can be selected. 
+      Developers will find the Win Forms programming model and design-time 
+      support very intuitive, given its similarities to existing Windows-based 
+      forms packages.<BR><BR><IMG height=4 alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>Win Forms also takes advantage of the Web Services Platform 
+      runtime to reduce total cost of ownership for Windows-based client 
+      applications. The Web Services Platform security model can safely execute 
+      applications and components on client machines provided they are written 
+      using the Win Forms model or used from a Win Forms application. If 
+      implemented or used in this way, the cute game someone got off the 
+      Internet won't corrupt configuration information and data, or 
+      automatically send e-mail to everyone in the user's address book.<BR><BR><IMG 
+      height=4 alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>The Web Services Platform assembly model simplifies application 
+      deployment and versioning. Applications can be configured to use the 
+      versions of shared components they were built and tested with, rather than 
+      using whatever component versions happen to be installed on the client 
+      machine, improving application reliability and eliminating one of the 
+      major causes of application support calls: incompatible versions of user 
+      interface controls and other shared components.<BR>
+      <P><SPAN class=clsSubhead>A Model for Web Applications</SPAN><BR><IMG 
+      height=4 alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>Web applications built on the Web Services Platform share a 
+      common application model. In this model, a Web application is a set of 
+      URLs rooted at some base URL. Thus it encompasses both Web applications 
+      that generate pages for display in a browser and Web Services. In this 
+      section, I'll detail the Web application programming model called Active 
+      Server Pages+ (ASP+), which is illustrated in <SPAN 
+      class=clsFigs>Figure&nbsp;5</SPAN>. <BR><BR>
+      <TABLE align=right>
+        <TBODY>
+        <TR>
+          <TD align=right bgColor=#ffffff><IMG height=405 
+            alt="Figure 5 ASP+ Web Application Model" 
+            src="NGWS Platform Overview_files/webplatformfig05.gif" 
+            width=200></TD></TR>
+        <TR>
+          <TD><SPAN class=clsCap>Figure 5</SPAN> <SPAN class=clsCaptxt>ASP+ 
+            Web Application Model</SPAN> </TD></TR></TBODY></TABLE><IMG height=4 
+      alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>As you might guess from the name, ASP+ evolves from Active Server 
+      Pages. ASP+ takes advantage of the common language runtime and services 
+      framework to provide a reliable, robust, scalable hosting environment for 
+      Web applications. ASP+ also benefits from the common language runtime 
+      assembly model to simplify application deployment. In addition, it 
+      provides services to simplify application development (such as state 
+      management services) and higher-level programming models (such as ASP+ Web 
+      Forms and ASP+ Web Services). <BR><BR><IMG height=4 alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>At the core of ASP+ is the HTTP runtime, a high-performance 
+      runtime for processing HTTP requests that is based on a low-level 
+      architecture similar to the ISAPI architecture provided by Microsoft 
+      Internet Information Services (IIS). The HTTP runtime, as you saw in <SPAN 
+      class=clsFigs>Figure&nbsp;5</SPAN>, is managed code that runs within an 
+      unmanaged host process, such as IIS on server machines or Microsoft 
+      Internet Explorer on client machines. The HTTP runtime is responsible for 
+      processing all incoming HTTP requests, resolving the URL of each request 
+      to an application, and then dispatching the request to the application for 
+      further processing. The HTTP runtime is multithreaded and processes 
+      requests asynchronously, so it cannot be blocked by bad application code 
+      from processing new requests. Furthermore, the HTTP runtime assumes that 
+      failures will occur, so it is engineered to automatically recover as best 
+      it can from access violations, memory leaks, deadlocks, and so on. Barring 
+      hardware failure, the runtime aims for 100 percent availability.<BR><BR><IMG 
+      height=4 alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>ASP+ uses the Web Services Platform deployment model based on 
+      assemblies, thus gaining all its benefits such as XCOPY deployment, 
+      side-by-side deployment of assemblies, and XML-based configuration. 
+      Another major benefit of ASP+ is support for live updating of 
+      applications. An administrator doesn't need to shut down the Web server or 
+      even the application to update application files. Application files are 
+      never locked, so they can be overwritten even when the application is 
+      running. When files are updated, the system gracefully switches over to 
+      the new version. The system detects file changes, launches a new instance 
+      of the application using the new application code, and begins routing 
+      incoming requests to that application. When all outstanding requests being 
+      processed by the existing application instance have been handled, that 
+      instance is shut down.<BR><BR><IMG height=4 alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>Within an application, HTTP requests are routed through a 
+      pipeline of HTTP modules, ultimately to a request handler. HTTP modules 
+      and request handlers are simply managed classes that implement specific 
+      interfaces defined by ASP+. The pipeline architecture makes it very easy 
+      to add services to applications: just supply an HTTP module. For example, 
+      security, state management, and tracing are implemented as HTTP modules. 
+      Higher-level programming models, such as Web Services and Web Forms, are 
+      generally implemented as request handlers. An application can be 
+      associated with multiple request handlers&#8212;one per URL&#8212;but all HTTP 
+      requests are routed through the same pipeline. <BR><BR><IMG height=4 alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>The Web is a fundamentally stateless model with no correlation 
+      between HTTP requests. This can make writing Web applications difficult, 
+      since applications usually need to maintain state across multiple 
+      requests. ASP+ enhances the state management services introduced by ASP to 
+      provide three types of state to Web applications: application, session, 
+      and user. Application state, as in ASP, is specific to an application 
+      instance and is not persisted. Session state is specific to a user session 
+      with the application. Unlike ASP session state, ASP+ session state is 
+      stored in a separate process and can even be configured to be stored on a 
+      separate machine. This makes session state usable when an application is 
+      deployed on a Web farm. User state resembles session state, but generally 
+      does not time out and is persisted. Thus user state is useful for storing 
+      user preferences and other personalization information. All the state 
+      management services are implemented as HTTP modules, so they can be added 
+      or removed from an application's pipeline easily. If additional state 
+      management services are required beyond those supplied by ASP+, they can 
+      be provided by a third-party module.<BR><BR><IMG height=4 alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>ASP+ also provides caching services to improve performance. An 
+      output cache saves completely rendered pages, and a fragment cache stores 
+      partial pages. Classes are provided so applications, HTTP modules, and 
+      request handlers can store arbitrary objects in the cache as 
+      needed.<BR><BR><IMG height=4 alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>Now let's take a quick look at the two higher-level programming 
+      models that build on the ASP+ programming model: ASP+ Web Forms and ASP+ 
+      Web Services. <BR>
+      <P><SPAN class=clsSubhead>ASP+ Web Forms</SPAN><BR><IMG height=4 alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>Web Forms bring the productivity benefits of Visual Basic®-based 
+      forms to Web application development. Web Forms support traditional ASP 
+      syntax that mixes HTML content with script code, but it also promotes a 
+      more structured approach that separates application code from user 
+      interface content. Web Forms controls are being introduced to provide a 
+      mechanism for encapsulating common user interface elements. These new 
+      features enable tools to support a design-time model along the lines of 
+      Visual Basic, enabling WYSIWYG tool support for Web page layout.<BR><BR><IMG 
+      height=4 alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>Web Forms controls are responsible for generating the user 
+      interface, typically in the form of HTML. ASP+ comes with a set of Web 
+      Forms controls that mirror the typical HTML user interface widgets 
+      (including listboxes, text boxes, and buttons), and an additional set of 
+      Web controls that are more complex (such as calendars and ad rotators). 
+      One important feature of these controls is that they can be written to 
+      adapt to client-side capabilities; the same pages can be used to target a 
+      wide range of client platforms and form factors. In other words, Web Forms 
+      controls can "sniff" the client that is hitting a form and return an 
+      appropriate user experience&#8212;maybe HTML 3.2 for a down-level browser and 
+      Dynamic HTML for Internet Explorer 5.0.<BR><BR><IMG height=4 alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>Given the stateless communication model of the Web, one of the 
+      more complex issues facing Web application developers is responding to 
+      user interaction with Web-based interfaces. Web Forms take advantage of 
+      the ASP+ infrastructure to provide a rich set of services to help 
+      developers build interactive Web pages. The net effect of these services 
+      is to enable a component-based, event-driven programming model much like 
+      client-side forms programming for application developers. The complexities 
+      of state management across user interaction with a page are hidden by ASP+ 
+      Web Forms and Web Forms controls. Rich data-binding services are also 
+      supplied, making it very easy for application developers to display data 
+      retrieved through the data access services.<BR><BR><IMG height=4 alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>The separation of code and content enables ASP+ pages to be 
+      dynamically compiled into managed classes for fast performance. Each 
+      incoming HTTP request is delivered to a new page instance so that 
+      developers do not need to be concerned about thread safety in their code. 
+      <BR>
+      <P><SPAN class=clsSubhead>ASP+ Web Services</SPAN><BR><IMG height=4 
+      alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>The ASP+ Web Services infrastructure provides a high-level 
+      programming model for building Web Services with ASP+. While not required 
+      for building a Web Service using the Web Services Platform, it provides 
+      several benefits that simplify development and uses a programming model 
+      that will be very familiar to developers who have worked with ASP or 
+      Visual Basic. Developers don't need to understand HTTP, SOAP, SDL, or any 
+      other specifications for Web Services to use this programming model. The 
+      ASP+ Web Services programming model is shown in <SPAN 
+      class=clsFigs>Figure&nbsp;6</SPAN>. <BR><BR>
+      <TABLE>
+        <TBODY>
+        <TR>
+          <TD bgColor=#ffffff><IMG height=435 alt="Figure 6 ASP+ Web Services" 
+            src="NGWS Platform Overview_files/webplatformfig06.gif" 
+            width=300></TD></TR>
+        <TR>
+          <TD><SPAN class=clsCap>Figure 6</SPAN> <SPAN class=clsCaptxt>ASP+ 
+            Web Services</SPAN> </TD></TR></TBODY></TABLE>
+      <P><IMG height=4 alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>Developers can create a Web Service with ASP+ by authoring a file 
+      with the extension .asmx and deploying it as part of a Web application. 
+      The ASMX file either contains a reference to a managed class defined 
+      elsewhere or the class definition itself. The class is derived from the 
+      WebService class supplied by ASP+. Public class methods are exposed as Web 
+      Service methods by marking them with the WebMethod attribute. These 
+      methods can be invoked by sending HTTP requests to the URL of the ASMX 
+      file. You don't need to handcraft a contract for your Web Service. ASP+ 
+      inspects the class metadata to automatically generate an SDL file when 
+      requested by the caller. <BR><BR><IMG height=4 alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>Clients may submit service requests via SOAP, HTTP GET, and HTTP 
+      POST. Conventions are defined for encoding methods and parameters as query 
+      strings for HTTP GET and form data for HTTP POST. The HTTP GET and HTTP 
+      POST mechanisms are not as powerful as SOAP, but they enable clients that 
+      don't support SOAP to access the Web Service. <BR><BR><IMG height=4 alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>The ASP+ Web Services model assumes a stateless service 
+      architecture. Stateless architectures are generally more scalable than 
+      stateful architectures. Each time a service request is received, a new 
+      object is created, the request is converted into a method call, and the 
+      object is destroyed once the method call returns. Services can use the 
+      ASP+ State Management services if they need to maintain state across 
+      requests. Web Services based on ASP+ run in the Web application model, so 
+      they get all the security, deployment, and other benefits of that model. 
+      <BR><BR><IMG height=4 alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>ASP+ Web Services also supplies a tool to generate strongly typed 
+      managed proxies for any Web Service described by an SDL file. The proxy 
+      generator maps messages described in the SDL file into methods on the 
+      generated class. The proxy hides all the network and marshaling plumbing 
+      from the application code, so using the Web Service looks just like using 
+      any other managed code. The proxy will preferentially use SOAP to 
+      communicate with the Web Service, but also supports the HTTP GET and HTTP 
+      POST mechanisms, so they can be used as well.<BR>
+      <P><SPAN class=clsSubhead>Conclusion</SPAN><BR><IMG height=4 alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>Web Services provide a simple, flexible, standards-based model 
+      for binding applications together over the Internet that takes advantage 
+      of existing infrastructure and applications. Web applications can be 
+      easily assembled with locally developed services and existing services, 
+      irrespective of the platform, development language, or object model used 
+      to implement any of the constituent services or applications. <BR><BR><IMG 
+      height=4 alt="" 
+      src="NGWS Platform Overview_files/indent.gif" 
+      width=10>The Microsoft Web Services Platform provides an application model 
+      and key enabling technologies to simplify the creation, deployment, and 
+      ongoing evolution of secure, reliable, scalable, highly available Web 
+      Services while building on existing developer skills.<BR></P></TD></TR>
+  <TR>
+    <TD>
+      <HR color=#dddddd>
+      <SPAN class=clsSumText><B>For related articles see:</B><BR><A 
+       target=_top href="http://msdn.microsoft.com/msdnmag/issues/0800/webservice/webservice.asp">Develop 
+      a Web Service: Up and Running with the SOAP Toolkit for Visual 
+      Studio</A><BR><A 
+       target=_top href="http://msdn.microsoft.com/xml/general/toolkit_intro.asp">Web Services and the SOAP Toolkit for Visual Studio 6.0</A> 
+      </SPAN><BR><SPAN class=clsSumText><B>For background information 
+      see:</B><BR><A  target=_top href="http://msdn.microsoft.com/xml/general/soapspec.asp">The 
+      SOAP spec</A> </SPAN><BR></TD></TR>
+  <TR>
+    <TD>
+      <HR color=#dddddd>
+    </TD></TR>
+  <TR>
+    <TD vAlign=top>
+      <TABLE>
+        <TBODY>
+        <TR>
+          <TD width=380><SPAN class=clsFrom>From the <!A HREF="http://msdn.microsoft.com/msdnmag/issues/0800/default.asp">Special Edition<!/A> 
+            issue of <A target=_top 
+            href="http://msdn.microsoft.com/msdnmag/default.asp">MSDN 
+            Magazine</A>.<BR>Get it at your local newsstand, or better yet, <A 
+            target=_top href="http://msdn.microsoft.com/msdnmag/subscribe.asp"><I>subscribe</I></A>.</SPAN> 
+          </TD></TR></TBODY></TABLE><!---begin copyright.inc--->
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD vAlign=top noWrap><IMG height=10 alt="" 
+            src="NGWS Platform Overview_files/ts.gif" 
+            width=1> </TD></TR>
+        <TR>
+          <TD><A class=clsBackTop 
+            href="#top"><IMG 
+            height=8 alt="Back to top" 
+            src="NGWS Platform Overview_files/top.gif" 
+            width=18 border=0>Back to top</A> </TD></TR>
+        <TR>
+          <TD>
+            <HR color=#6699cc>
+            <A class=clsBackTop 
+            href="../../autorun/cpyright.htm">© 
+            2000 Microsoft Corporation & Miller Freeman Inc. &nbspAll rights reserved. &nbspTerms of 
+            Use.</A><BR><A class=clsBackTop 
+            href="http://msdn.microsoft.com/isapi/gomscom.asp?TARGET=/info/privacy.htm">Privacy 
+            Policy</A>. 
+  </TD></TR></TBODY></TABLE><!---end copyright.inc---></TD></TR></TBODY></TABLE></BODY></HTML>

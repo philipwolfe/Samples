@@ -1,0 +1,106 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/net/WebRequests/clientgetwithproxy.src&file=VB/clientgetwithproxy.vb" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvY2xpZW50Z2V0d2l0aHByb1x4eS52YnhfX3h4X3h4X3hfX3g=d1c7239a" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/clientgetwithproxy.vb</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../howto/samples/net/webrequests/clientgetwithproxycssource.htm'>clientgetwithproxy.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../howto/samples/net/webrequests/vb/clientgetwithproxyvbsource.htm'>VB/clientgetwithproxy.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>Imports System
+Imports System.Net
+Imports System.IO
+
+Namespace Client
+    Public class ClientGETproxy
+
+        Public Shared bShow As Boolean
+        Public Shared Sub Main()
+            Dim args As String ()
+            args = Environment.GetCommandLineArgs()
+
+            If (args.Length < 3)
+                showusage()
+                return
+            End If
+
+            if (args.Length > 3)
+                bShow = false
+            Else
+                bShow = true
+            End If
+            
+            getPage(args(1), args(2))
+            return
+        End Sub
+
+        public Shared Sub showusage()
+            Console.WriteLine("Attempts to GET a URL")
+            Console.WriteLine()
+            Console.WriteLine("Usage:")
+            Console.WriteLine("ClientGETwithProxy URL proxyname")
+            Console.WriteLine("Examples:")
+            Console.WriteLine("ClientGETwithProxy http://www.microsoft.com/net/ myproxy")
+        End Sub
+
+        public Shared Sub getPage(url As String, proxy as String)
+            Dim proxyObject as DefaultControlObject
+            Dim req As WebRequest
+            Dim result As WebResponse
+            Dim ReceiveStream As Stream
+
+            proxyObject = new DefaultControlObject(proxy, 80)
+
+            ' Disable Proxy use when the host is local i.e. without periods.
+            proxyObject.ProxyNoLocal = true
+
+            ' Now actually take over the global with our new settings, all new requests 
+            ' use this proxy info
+            GlobalProxySelection.Select = proxyObject
+            
+            req = WebRequestFactory.Create(url)
+            result = req.GetResponse()
+            ReceiveStream = result.GetResponseStream()
+            Console.WriteLine()
+            Console.WriteLine("Response stream received, Status code: " & result.Status)
+            if (bShow)
+            
+                Dim read(512) As Byte
+                Dim bytes As Integer
+                bytes = ReceiveStream.Read(read, 0, 512)
+                Console.WriteLine("HTML...")
+                Console.WriteLine()
+            
+                Do while (bytes > 0)
+                    Console.Write(System.Text.Encoding.ASCII.GetString(read, 0, bytes))
+                    bytes = ReceiveStream.Read(read, 0, 512)
+                Loop
+
+                Console.WriteLine()
+            End If
+        End Sub
+    End Class
+End Namespace
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

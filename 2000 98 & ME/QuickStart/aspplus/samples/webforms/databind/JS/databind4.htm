@@ -1,0 +1,154 @@
+
+
+<html>
+<head>
+
+    
+
+</head>
+<body>
+
+    <h3><font face="Verdana">Databinding to a DataView</font></h3>
+
+    <form name="ctrl2" method="post" action="databind4.htm" id="ctrl2">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQzMzIzNjQ0Nl9hMHpfaHo1ejJ4X2Ewel9oejV6MXhfYTB6YTB6YTB6aHpEYXRhS2V5c19senhfSXRlbUNvdW50XzV6MTJ4X0RhdGFTb3VyY2VJdGVtQ291bnRfNXoxMnh4X194X19fX19fX19fYTB6YTB6aHowX0RhdGFDb2x1bW4xXzFfRGF0YUNvbHVtbjFfMl9EYXRhQ29sdW1uMV8zXzUwekZhbHNleHhfX19feF9hMHpoejBfRGF0YUNvbHVtbjJfMV9EYXRhQ29sdW1uMl8yX0RhdGFDb2x1bW4yXzNfNTB6RmFsc2V4eF9fX194X2Ewemh6MF9EYXRhQ29sdW1uM18xX0RhdGFDb2x1bW4zXzJfRGF0YUNvbHVtbjNfM181MHpGYWxzZXh4X19fX3hfYTB6aHowX0RhdGFDb2x1bW40XzFfRGF0YUNvbHVtbjRfMl9EYXRhQ29sdW1uNF8zXzUwekZhbHNleHhfX19feF94X3hfaHo1ejB4X2Ewel9oejV6MTJ4X2Ewel9oejV6M3hfYTB6YTB6aHo0X1RydWV4X194X194XzV6MnhfYTB6YTB6aHo0XzIwMDAtMTAtMjVUMTY6NTA6NTF4X194X194XzV6MXhfYTB6YTB6aHo0X0l0ZW0gMTF4X194X194XzV6MHhfYTB6YTB6aHo0XzExeF9feF9feHhfeF81ejExeF9hMHpfaHo1ejN4X2EwemEwemh6NF9GYWxzZXhfX3hfX3hfNXoyeF9hMHphMHpoejRfMjAwMC0xMC0yNVQxNjo1MDo1MXhfX3hfX3hfNXoxeF9hMHphMHpoejRfSXRlbSAxMHhfX3hfX3hfNXoweF9hMHphMHpoejRfMTB4X194X194eF94XzV6MTB4X2Ewel9oejV6M3hfYTB6YTB6aHo0X1RydWV4X194X194XzV6MnhfYTB6YTB6aHo0XzIwMDAtMTAtMjVUMTY6NTA6NTF4X194X194XzV6MXhfYTB6YTB6aHo0X0l0ZW0gOXhfX3hfX3hfNXoweF9hMHphMHpoejRfOXhfX3hfX3h4X3hfNXo5eF9hMHpfaHo1ejN4X2EwemEwemh6NF9GYWxzZXhfX3hfX3hfNXoyeF9hMHphMHpoejRfMjAwMC0xMC0yNVQxNjo1MDo1MXhfX3hfX3hfNXoxeF9hMHphMHpoejRfSXRlbSA4eF9feF9feF81ejB4X2EwemEwemh6NF84eF9feF9feHhfeF81ejh4X2Ewel9oejV6M3hfYTB6YTB6aHo0X1RydWV4X194X194XzV6MnhfYTB6YTB6aHo0XzIwMDAtMTAtMjVUMTY6NTA6NTF4X194X194XzV6MXhfYTB6YTB6aHo0X0l0ZW0gN3hfX3hfX3hfNXoweF9hMHphMHpoejRfN3hfX3hfX3h4X3hfNXo3eF9hMHpfaHo1ejN4X2EwemEwemh6NF9GYWxzZXhfX3hfX3hfNXoyeF9hMHphMHpoejRfMjAwMC0xMC0yNVQxNjo1MDo1MXhfX3hfX3hfNXoxeF9hMHphMHpoejRfSXRlbSA2eF9feF9feF81ejB4X2EwemEwemh6NF82eF9feF9feHhfeF81ejZ4X2Ewel9oejV6M3hfYTB6YTB6aHo0X1RydWV4X194X194XzV6MnhfYTB6YTB6aHo0XzIwMDAtMTAtMjVUMTY6NTA6NTF4X194X194XzV6MXhfYTB6YTB6aHo0X0l0ZW0gNXhfX3hfX3hfNXoweF9hMHphMHpoejRfNXhfX3hfX3h4X3hfNXo1eF9hMHpfaHo1ejN4X2EwemEwemh6NF9GYWxzZXhfX3hfX3hfNXoyeF9hMHphMHpoejRfMjAwMC0xMC0yNVQxNjo1MDo1MXhfX3hfX3hfNXoxeF9hMHphMHpoejRfSXRlbSA0eF9feF9feF81ejB4X2EwemEwemh6NF80eF9feF9feHhfeF81ejR4X2Ewel9oejV6M3hfYTB6YTB6aHo0X1RydWV4X194X194XzV6MnhfYTB6YTB6aHo0XzIwMDAtMTAtMjVUMTY6NTA6NTF4X194X194XzV6MXhfYTB6YTB6aHo0X0l0ZW0gM3hfX3hfX3hfNXoweF9hMHphMHpoejRfM3hfX3hfX3h4X3hfNXozeF9hMHpfaHo1ejN4X2EwemEwemh6NF9GYWxzZXhfX3hfX3hfNXoyeF9hMHphMHpoejRfMjAwMC0xMC0yNVQxNjo1MDo1MXhfX3hfX3hfNXoxeF9hMHphMHpoejRfSXRlbSAyeF9feF9feF81ejB4X2EwemEwemh6NF8yeF9feF9feHhfeF81ejJ4X2Ewel9oejV6M3hfYTB6YTB6aHo0X1RydWV4X194X194XzV6MnhfYTB6YTB6aHo0XzIwMDAtMTAtMjVUMTY6NTA6NTF4X194X194XzV6MXhfYTB6YTB6aHo0X0l0ZW0gMXhfX3hfX3hfNXoweF9hMHphMHpoejRfMXhfX3hfX3h4X3hfNXoxeF9hMHpfaHo1ejN4X2EwemEwemh6NF9GYWxzZXhfX3hfX3hfNXoyeF9hMHphMHpoejRfMjAwMC0xMC0yNVQxNjo1MDo1MXhfX3hfX3hfNXoxeF9hMHphMHpoejRfSXRlbSAweF9feF9feF81ejB4X2EwemEwemh6NF8weF9feF9feHhfeHhfeHhfeHhfeHhfeF9feFx0NTBfU3lzdGVtLkJvb2xlYW5cbjBfSGVhZGVyVGVceHRfMV9Tb3J0RmllbGRfMl9EYXRhRmllbGRfM19SZWFkT25seV80X1RlXHh04c9fc644" />
+
+
+        <table cellspacing="0" rules="all" border="1">
+    <tr>
+        <td>
+            DataColumn1
+        </td><td>
+            DataColumn2
+        </td><td>
+            DataColumn3
+        </td><td>
+            DataColumn4
+        </td>
+    </tr><tr>
+        <td>
+            0
+        </td><td>
+            Item 0
+        </td><td>
+            2000-10-25T16:50:51
+        </td><td>
+            False
+        </td>
+    </tr><tr>
+        <td>
+            1
+        </td><td>
+            Item 1
+        </td><td>
+            2000-10-25T16:50:51
+        </td><td>
+            True
+        </td>
+    </tr><tr>
+        <td>
+            2
+        </td><td>
+            Item 2
+        </td><td>
+            2000-10-25T16:50:51
+        </td><td>
+            False
+        </td>
+    </tr><tr>
+        <td>
+            3
+        </td><td>
+            Item 3
+        </td><td>
+            2000-10-25T16:50:51
+        </td><td>
+            True
+        </td>
+    </tr><tr>
+        <td>
+            4
+        </td><td>
+            Item 4
+        </td><td>
+            2000-10-25T16:50:51
+        </td><td>
+            False
+        </td>
+    </tr><tr>
+        <td>
+            5
+        </td><td>
+            Item 5
+        </td><td>
+            2000-10-25T16:50:51
+        </td><td>
+            True
+        </td>
+    </tr><tr>
+        <td>
+            6
+        </td><td>
+            Item 6
+        </td><td>
+            2000-10-25T16:50:51
+        </td><td>
+            False
+        </td>
+    </tr><tr>
+        <td>
+            7
+        </td><td>
+            Item 7
+        </td><td>
+            2000-10-25T16:50:51
+        </td><td>
+            True
+        </td>
+    </tr><tr>
+        <td>
+            8
+        </td><td>
+            Item 8
+        </td><td>
+            2000-10-25T16:50:51
+        </td><td>
+            False
+        </td>
+    </tr><tr>
+        <td>
+            9
+        </td><td>
+            Item 9
+        </td><td>
+            2000-10-25T16:50:51
+        </td><td>
+            True
+        </td>
+    </tr><tr>
+        <td>
+            10
+        </td><td>
+            Item 10
+        </td><td>
+            2000-10-25T16:50:51
+        </td><td>
+            False
+        </td>
+    </tr><tr>
+        <td>
+            11
+        </td><td>
+            Item 11
+        </td><td>
+            2000-10-25T16:50:51
+        </td><td>
+            True
+        </td>
+    </tr>
+</table>
+
+    </form>
+
+</body>
+</html>

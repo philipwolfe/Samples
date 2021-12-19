@@ -1,0 +1,89 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlref/htmlctrl/HtmlButton/HtmlButton1.src&file=HtmlButton1.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfSHRtbEJ1dHRvbjEuYXNwXHh4X194eF94eF94X19473de58a3" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">HtmlButton1.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlref/htmlctrl/htmlbutton/htmlbutton1aspxsource.htm'>HtmlButton1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlref/htmlctrl/htmlbutton/vb/htmlbutton1aspxsource.htm'>VB\HtmlButton1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlref/htmlctrl/htmlbutton/js/htmlbutton1aspxsource.htm'>JS\HtmlButton1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><html>
+
+<head>
+    <script language="C#" runat="server">
+
+       void Button1_OnClick(object Source, EventArgs e) {
+
+          Span1.InnerHtml="You clicked Button1";
+       }
+
+       void Button2_OnClick(object Source, EventArgs e) {
+
+          Span1.InnerHtml="You clicked Button2";
+       }
+
+    </script>
+</head>
+
+<body>
+
+    <h3><font face="Verdana">HtmlButton Sample</font></h3>
+
+    <form runat=server>
+    <font face="Verdana" size="-1">
+
+        <p>
+        <button id="Button1" onServerClick="Button1_OnClick" style="font: 8pt verdana;background-color:lightgreen;border-color:black;height=30;width:100" runat="server">
+            <img src="../../../../../../aspplus/images/right4.gif"> Click me!
+        </button>
+
+        &nbsp;With embedded &lt;img&gt; tag
+        <p>
+
+        <button id=Button2 onServerClick="Button2_OnClick" 
+                style="font: 8pt verdana;background-color:lightgreen;border-color:black;height=30;width:100"
+                onmouseover="this.style.backgroundColor='yellow'"
+                onmouseout="this.style.backgroundColor='lightgreen'"
+                runat="server">
+
+            Click me too!
+        </button>
+
+        &nbsp;With rollover effect
+
+        <p>
+
+        <span id=Span1 runat=server />
+
+    </font>
+    </form>
+
+</body>
+</html>
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

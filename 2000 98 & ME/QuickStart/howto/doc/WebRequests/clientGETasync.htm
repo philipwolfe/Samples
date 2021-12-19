@@ -1,0 +1,147 @@
+
+
+<!--BEGIN HEADER-->
+<html>
+<head>
+<link rel="stylesheet" href="../../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+
+<table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+
+    <div style="padding:0,0,4,0"><b>Networking</b><br></div>
+    &nbsp; <a class="outer" href="../../../howto/doc/webrequests/clientget.htm">Make a GET request</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/webrequests/clientgetwithssl.htm">Make an SSL GET request</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/webrequests/clientgetwithntlm.htm">Make an NTLM GET request</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/webrequests/clientgetwithproxy.htm">Make a proxy GET request</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/webrequests/clientgetasync.htm">Make an async GET request</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/aspxnet/get.htm">Make a GET request in ASP.NET</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/aspxnet/getasync.htm">Async GET request in ASP.NET</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/webrequests/clientexception.htm">Handle WebExceptions</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/webrequests/clientpost.htm">Make a POST request</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/tcpudp/datetimeclient.htm">Write a TCPClient client</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/tcpudp/datetimeserver.htm">Write a TCPListener server</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/tcpudp/broadcastchatclient.htm">Write a UDPClient client</a><p>
+    <div style="padding:0,0,4,0"><a target="_top" style="color:darkred" href="../../../howto"><b>Back to Index</b></a><br></div>
+
+</div>
+
+</td>
+</tr>
+</table>
+
+
+
+
+
+
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<style>
+.mydd {  font: smaller verdana; }
+.code1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:blue;
+	}
+.codecomment1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:green;
+	}
+.issue {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background-color:RED;
+	color:WHITE;
+	font-weight:bold;
+	}
+
+
+body { font: smaller verdana }        
+
+</style>
+
+
+
+
+
+<h4>How Do I...Make a GET request asynchronously?</h4>
+
+<div class="indent" style="width:660">
+<P>
+This sample illustrates using the WebRequest and WebResponse classes to make a GET request on a URI asynchronously.
+</P>
+<P>
+This sample is similar to the other WebRequest samples, with the difference found in the <I>Begin</I> and <I>End</i> async-style function calls. Put simply, instead of calling <B>GetResponse</B> a call is made to the function <B>BeginGetResponse</B>, with the callback function sent as a parameter.
+</P>
+<P>
+This function <B>RespCallback</B>, takes an object of type <B>IASyncResult</B>. This object contains an object <B>AsyncObject</B> that can be cast as a <B>HttpWebRequest</B>. Calling this casted objects <B>EndGetResponse</B> method will return a WebResponse object (which is cast as an HttpWebResponse in this case.)
+</P>
+<P>
+From here, this example is like the others. It pulls out the response from the stream and writes it out to the console. However, this example is using the StreamReader and StreamWriter classes to do this.
+</p>
+</div>
+
+<h4>Example</h4>
+
+<span>
+  
+  
+
+        
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../../howto/samples/net/webrequests/vb">
+	<img style="border-color:black" border=1 src="../../../images/console.gif"><br>
+	</a>
+	<div class="caption">ClientGETasync.exe</div><br>
+	
+	
+		[<a target="_blank" href="../../../howto/samples/net/webrequests/vb">Run Sample</a>] | 
+		[<a target="_blank" href="../../../howto/samples/net/webrequests/clientgetasynccssource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<!--END FOOTER-->
+<p>
+<hr>
+<p>
+</div>
+</td>
+</tr>
+</table>
+</BODY>
+</html>
+<!--END FOOTER-->

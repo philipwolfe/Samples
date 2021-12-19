@@ -1,0 +1,105 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/adoplus/vb/outparamswithacommand.src&file=..%5CCS%5COutParamsWithACommand.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfLi5cXENTXFxPdXRQYXJhbXNXaXRoQUNvbW1hbmQuYXNwXHh4X194eF94eF94X1946603efbf" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">..\CS\OutParamsWithACommand.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../howto/samples/adoplus/vb/outparamswithacommandaspxsource.htm'>OutParamsWithACommand.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../howto/samples/adoplus/cs/outparamswithacommandaspxsource.htm'>..\CS\OutParamsWithACommand.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><html>
+<%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="System.Data.SQL" %>
+<head>
+<script language="C#" runat="server">
+
+	public string Message;
+	protected void Page_Load(Object Src, EventArgs E ) 
+	{
+		// Create a new Connection and DataSetCOmmand
+		SQLConnection myConnection = new SQLConnection("server=localhost;uid=sa;pwd=;database=northwind");
+		
+		// Create stored procedure with out parameter
+		// this command will create the sproc with the out parameter
+		try
+		{
+			SQLCommand CreateProcCommand = new SQLCommand("CREATE PROCEDURE GetCompanyName  @CustomerId nchar(5), @CompanyName nchar(40) out as select @CompanyName = CompanyName from Customers where CustomerId = @CustomerId",myConnection);
+			myConnection.Open();
+			Cleanup(myConnection);	// restore database to its original condition.
+			CreateProcCommand.ExecuteNonQuery();
+			
+			SQLCommand myCommand = new SQLCommand("GetCompanyName", myConnection);
+			myCommand.CommandType = CommandType.StoredProcedure;
+			
+			// fill the parameters collection based upon stord procedure
+			SQLParameter workParam = null;
+			
+			workParam = myCommand.Parameters.Add(new SQLParameter("@CustomerID", SQLDataType.NChar, 5));
+			workParam.Direction = ParameterDirection.Input;
+			
+			workParam = myCommand.Parameters.Add(new SQLParameter("@CompanyName", SQLDataType.NChar, 40));
+			workParam.Direction = ParameterDirection.Output;
+			
+			myCommand.Parameters["@CustomerID"].Value = "ALFKI";
+			
+			myCommand.ExecuteNonQuery();
+			Message = "CompanyName = " + myCommand.Parameters["@CompanyName"].Value;
+		}
+		catch(Exception e)
+		{
+			Message = e.ToString();
+		}
+		finally
+		{
+			myConnection.Close();
+		}
+	}
+
+	protected void Cleanup(SQLConnection myConnection)
+	{
+		SQLCommand myCommand = new SQLCommand("DROP PROCEDURE GetCompanyName", myConnection);
+		try
+		{
+			myCommand.ExecuteNonQuery();	// remove procedure if it exists
+		}
+		catch (Exception e)	// if procedure doesn't exists, an SQLException is thrown
+		{
+			if (!(e is SQLException))
+				Response.Write(e.ToString() + "<br><br>\r\n");
+		}
+	}
+
+</script>
+</head>
+
+<body>
+
+<% Response.Write(Message); %>
+
+</body>
+</html>
+
+
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

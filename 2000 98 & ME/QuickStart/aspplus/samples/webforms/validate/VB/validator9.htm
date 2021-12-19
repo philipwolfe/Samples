@@ -1,0 +1,245 @@
+<html>
+<body>
+
+    <h3><font face="Verdana">Sign In Form Validation Sample</font></h3>
+
+    <form name="ctrl1" method="post" action="validator9.htm" id="ctrl1">
+<input type="hidden" name="__VIEWSTATE" value="YTB6LTI3MzA0NzQzN19fX3g=2baa6bb6" />
+
+    <hr width=600 size=1 noshade>
+
+    <center>
+    
+    <p>
+    
+    <!-- sign-in -->
+    <table border=0 width=600>
+    <tr><td colspan=3>
+        <table border=0 cellpadding=0 cellspacing=0 width="100%">
+        <tr><td>
+            <font face=geneva,arial size=-1><b>Sign-In Information</b></font>
+        </td></tr>
+        </table>
+    </td></tr>
+    <tr>
+      <td align=right>
+        <font face=Arial size=2>Email Address:</font>
+      </td>
+      <td>
+        <input name="email" type="text" maxlength="60" id="email" />
+      </td>
+      <td>
+        
+        &nbsp;
+      </td>
+    </tr>
+
+    <tr>
+      <td align=right>
+        <font face=Arial size=2>Password:</font>
+      </td>
+      <td>
+        <input name="passwd" type="password" maxlength="20" id="passwd" />
+      </td>
+      <td>
+          
+          &nbsp;
+      </td>
+    </tr>
+    <tr>
+      <td align=right>
+        <font face=Arial size=2>Re-enter Password:</font>
+      </td>
+      <td>
+        <input name="passwd2" type="password" maxlength="20" id="passwd2" />
+      </td>
+      <td>
+        
+        &nbsp;
+      </td>
+    </tr>
+    <tr><td colspan=3>&nbsp;</td></tr>
+
+
+    <!-- personalization information -->
+    <tr><td colspan=3>
+        <table border=0 cellpadding=0 cellspacing=0 width="100%">
+        <tr><td><font face=geneva,arial size=-1>
+            <b>Personal Information</b></font>
+        </td></tr>
+        </table>
+    </td></tr>
+    <tr>
+      <td align=right>
+        <font face=Arial size=2>First Name:</font>
+      </td>
+      <td>
+        <input name="fn" type="text" maxlength="20" id="fn" />
+      </td>
+      <td>
+      </td>
+    </tr>
+    <tr>
+      <td align=right>
+        <font face=Arial size=2>Last Name:</font>
+      </td>
+      <td>
+        <input name="ln" type="text" maxlength="40" id="ln" />
+      </td>
+      <td>
+      </td>
+    </tr>
+    <tr>
+      <td align=right>
+        <font face=Arial size=2>Address:</font>
+      </td>
+      <td>
+        <input name="address" type="text" id="address" />
+      </td>
+      <td>
+      </td>
+    </tr>
+    <tr>
+      <td align=right>
+        <font face=Arial size=2>State:</font>
+      </td>
+      <td>
+        <input name="txtState" type="text" maxlength="2" id="txtState" />&nbsp;
+        <font face=Arial size=2>Zip Code:</font>&nbsp;
+        <input name="zip" type="text" maxlength="5" id="zip" />
+      </td>
+      <td>
+        &nbsp;
+      </td>
+    </tr>
+    <tr>
+      <td align=right>
+        <font face=Arial size=2>Phone:</font>
+      </td>
+      <td>
+        <input name="phone" type="text" maxlength="20" id="phone" />
+      </td>
+      <td>
+        
+        &nbsp;
+      </td>
+    </tr>
+    <tr><td colspan=3>&nbsp;</td></tr>
+
+    <!-- Credit Card Info -->
+    <tr>
+      <td colspan=3>
+      <font face=Arial size=2><b>Credit Card Information</b></font>
+      </td>
+    </tr>
+    <tr>
+      <td align=right>
+        <font face=Arial size=2>Card Type:</font>
+      </td>
+      <td>
+        <span><font face="Arial"><span value="MasterCard"><input type="radio" id="ccType_0" value="MasterCard" name="ccType" /><label for="ccType_0">MasterCard</label></span><br><span value="Visa"><input type="radio" id="ccType_1" value="Visa" name="ccType" /><label for="ccType_1">Visa</label></span></font></span>
+      </td>
+      <td>
+        &nbsp;
+      </td>
+    </tr>
+    <tr>
+      <td align=right>
+        <font face=Arial size=2>Card Number:</font>
+      </td>
+      <td>
+        <input name="ccNum" type="text" id="ccNum" />
+      </td>
+      <td>
+        
+        &nbsp;
+      </td>
+    </tr>
+    <tr>
+      <td align=right>
+        <font face=Arial size=2>Expiration Date:</font>
+      </td>
+      <td>
+        <select name="expDate" id="expDate">
+    <option value=""></option>
+    <option value="06/00">06/00</option>
+    <option value="07/00">07/00</option>
+    <option value="08/00">08/00</option>
+    <option value="09/00">09/00</option>
+    <option value="10/00">10/00</option>
+    <option value="11/00">11/00</option>
+    <option value="01/01">01/01</option>
+    <option value="02/01">02/01</option>
+    <option value="03/01">03/01</option>
+    <option value="04/01">04/01</option>
+    <option value="05/01">05/01</option>
+    <option value="06/01">06/01</option>
+    <option value="07/01">07/01</option>
+    <option value="08/01">08/01</option>
+    <option value="09/01">09/01</option>
+    <option value="10/01">10/01</option>
+    <option value="11/01">11/01</option>
+    <option value="12/01">12/01</option>
+    
+</select>
+      </td>
+      <td>
+        &nbsp;
+      </td>
+    </tr>
+    </table>
+        
+    <p>
+    <input name="ctrl30" type="submit" value="Sign In" />
+    <p>
+
+    <hr width=600 size=1 noshade>
+
+    <script language="javascript">
+
+        function ccClientValidate(source, cc)
+        {
+            var ccSansSpace;
+            var i, digits, total;
+
+            // SAMPLE ONLY.  Not a real world actual credit card algo.
+            // Based on ANSI X4.13, the LUHN formula (also known as the modulus 10 -- or mod 10 -- algorithm )
+            // is used to generate and/or validate and verify the accuracy of some credit-card numbers.
+
+            // Get the number, parse out any non digits, should have 16 left
+            ccSansSpace = cc.replace(/\D/g, "");
+            if(ccSansSpace.length != 16) {
+                return false;   // invalid ccn
+            }
+
+            // Convert to array of digits
+            digits = new Array(16);
+            for(i=0; i<16; i++)
+                digits[i] = Number(ccSansSpace.charAt(i));
+
+            // Double & sum digits of every other number
+            for(i=0; i<16; i+=2) {
+                digits[i] *= 2;
+                if(digits[i] > 9)   digits[i] -= 9;
+            }
+
+            // Sum the numbers
+            total = 0;
+            for(i=0; i<16; i++)     total += digits[i];
+
+            // Results
+            if( total % 10 == 0 )   {
+                return true;    // valid ccn
+            }
+            else  {
+                return false;   // invalid ccn
+            }
+        }
+
+    </script>
+</form>
+</center>
+
+
+</body>
+</html>

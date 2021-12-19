@@ -1,0 +1,184 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/WinForms/Cs/OwnerDrawListBox/OwnerDrawListBox.src&file=OwnerDrawListBox.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfT3duZXJEcmF3TGlzdEJvXHguY3N4X194eF94eF94X1941b2a06cc" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">OwnerDrawListBox.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>Win Form Source: </b></td>
+        <td><a href='../../../../../howto/samples/winforms/cs/ownerdrawlistbox/ownerdrawlistboxcssource.htm'>OwnerDrawListBox.cs</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>//------------------------------------------------------------------------------
+/// <copyright from='1997' to='2001' company='Microsoft Corporation'>           
+///    Copyright (c) Microsoft Corporation. All Rights Reserved.                
+///       
+///    This source code is intended only as a supplement to Microsoft
+///    Development Tools and/or on-line documentation.  See these other
+///    materials for detailed information regarding Microsoft code samples.
+///
+/// </copyright>                                                                
+//------------------------------------------------------------------------------
+namespace OwnerDrawListBox {
+    using System;
+    using System.ComponentModel;
+    using System.Drawing;
+    using System.Drawing.Drawing2D;
+    using System.WinForms;
+
+    // <doc>
+    // <desc>
+    //     This sample control demonstrates various properties and
+    //     methods for the ListBox control.  
+    // </desc>
+    // </doc>
+    //
+    public class OwnerDrawListBox : Form {
+        
+        //Used to paint the list box
+        private Brush[] listBoxBrushes ;
+        private int[] listBoxHeights = new int[] {50, 25, 33, 15} ;
+
+        // <doc>
+        // <desc>
+        //     Public Constructor
+        // </desc>
+        // </doc>
+        //
+        public OwnerDrawListBox() : base() {
+
+            // This call is required for support of the Windows Forms Form Designer.
+            InitializeComponent();
+
+            //Set up the brushes we are going to use
+                        
+            //Load the image to be used for the background from the exe's resource fork
+            Image backgroundImage = new Bitmap(typeof(OwnerDrawListBox), "colorbars.jpg");
+            //Now create the brush we are going to use to paint the background
+            Brush backgroundBrush = new TextureBrush(backgroundImage);
+            Rectangle r = new Rectangle(0, 0, listBox1.Width, 100);
+            LinearGradientBrush lb = new LinearGradientBrush(r, Color.Red, Color.Yellow,LinearGradientMode.Horizontal);
+
+
+            listBoxBrushes = new Brush[] 
+                {
+                    backgroundBrush, 
+                    Brushes.LemonChiffon, 
+                    lb, 
+                    Brushes.PeachPuff
+                };
+
+        }
+
+        // <doc>
+        // <desc>
+        //     OwnerDrawListBox overrides dispose so it can clean up the
+        //     component list.
+        // </desc>
+        // </doc>
+        //
+        public override void Dispose() {
+            base.Dispose();
+            components.Dispose();
+        }
+
+        private void listBox1_DrawItem(object sender, DrawItemEventArgs e) {
+            
+            // The following method should generally be called before drawing.
+            // It is actually superfluous here, since the subsequent drawing
+            // will completely cover the area of interest.
+            e.DrawBackground();
+            
+            //The system provides the context
+            //into which the owner custom-draws the required graphics.
+            //The context into which to draw is e.graphics.
+            //The index of the item to be painted is e.Index.
+            //The painting should be done into the area described by e.Bounds.
+            Brush brush = listBoxBrushes[e.Index];
+            e.Graphics.FillRectangle(brush, e.Bounds);
+            e.Graphics.DrawRectangle(SystemPens.WindowText, e.Bounds);
+            
+            bool selected = ((e.State & DrawItemState.Selected) == DrawItemState.Selected) ? true : false;
+                
+            string displayText = "ITEM #" + e.Index;
+            displayText = displayText + (selected ? " SELECTED" : "");
+
+            e.Graphics.DrawString(displayText, this.Font, Brushes.Black,e.Bounds);
+
+            e.DrawFocusRectangle();
+        }
+
+        //REturn the height of the item to be drawn
+        private void listBox1_MeasureItem(object sender, MeasureItemEventArgs e) {
+            
+            //Work out what the text will be
+            string displayText = "ITEM #" + e.Index;
+
+            //Get widht & height of string
+            SizeF stringSize=e.Graphics.MeasureString(displayText, this.Font);
+
+            //Now set height to taller of default and text height
+            if (listBoxHeights[e.Index] > stringSize.Height)
+                e.ItemHeight = listBoxHeights[e.Index];
+            else 
+                e.ItemHeight = (int)stringSize.Height;
+
+        }
+
+        // NOTE: The following code is required by the Windows Forms Form Designer
+        // It can be modified using the Windows Forms Form Designer.  
+        // Do not modify it using the code editor.
+        private System.ComponentModel.Container components;
+        private ListBox listBox1;
+
+        private void InitializeComponent() {
+		this.components = new System.ComponentModel.Container();
+		this.listBox1 = new ListBox();
+		
+		this.TabIndex = 0;
+		this.Size = new System.Drawing.Size(300, 320);
+		this.Text = "ListBox";
+        this.Font = new Font("Lucida Sans Unicode", 12);
+		
+		listBox1.ForeColor = (Color)SystemColors.WindowText;
+		listBox1.Location = new System.Drawing.Point(8, 24);
+		listBox1.IntegralHeight = false;
+		listBox1.TabIndex = 0;
+		listBox1.UseTabStops = true;
+        listBox1.Size = new System.Drawing.Size(232, 200);
+		listBox1.ColumnWidth = 144;
+		listBox1.MeasureItem += new MeasureItemEventHandler(listBox1_MeasureItem);
+		listBox1.DrawItem += new DrawItemEventHandler(listBox1_DrawItem);
+        listBox1.DrawMode=DrawMode.OwnerDrawVariable;
+		listBox1.Items.All = (object[])new object[] {"First", "Second", "Third", "Fourth"};
+		
+		this.Controls.Add(listBox1);
+	}
+
+        // The main entry point for the application.
+        public static void Main(string[] args) {
+            Application.Run(new OwnerDrawListBox());
+        }
+    }
+
+}
+
+
+
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

@@ -1,0 +1,284 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/data/datagrid5.src&file=JS/datagrid5.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfSlMvZGF0YWdyaWQ1LmFzcFx4eF9feHhfeHhfeF9feA==3fba261c" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">JS/datagrid5.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/data/datagrid5aspxsource.htm'>datagrid5.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/data/vb/datagrid5aspxsource.htm'>VB/datagrid5.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/data/js/datagrid5aspxsource.htm'>JS/datagrid5.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>
+<%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="System.Data.SQL" %>
+
+<html>
+<script language="JScript" runat="server">
+
+    var myConnection : SQLConnection;
+
+    protected function Page_Load(Src : Object, E : EventArgs) : void 
+    {
+        myConnection = new SQLConnection("server=localhost;uid=sa;pwd=;database=pubs");
+
+        if (!IsPostBack)
+            BindGrid();
+    }
+
+    public function AddAuthor_Click(sender : Object, E : EventArgs) : void 
+    {
+        if (Page.IsValid)
+        {
+            var insertCmd : String = "insert into Authors values (@Id, @LName, @FName, @Phone, @Address, @City, @State, @Zip, @Contract)";
+
+            var myCommand : SQLCommand = new SQLCommand(insertCmd, myConnection);
+
+            myCommand.Parameters.Add(new SQLParameter("@Id", SQLDataType.VarChar, 11));
+            myCommand.Parameters("@Id").Value = au_id.Value;
+
+            myCommand.Parameters.Add(new SQLParameter("@LName", SQLDataType.VarChar, 40));
+            myCommand.Parameters("@LName").Value = au_lname.Value;
+
+            myCommand.Parameters.Add(new SQLParameter("@FName", SQLDataType.VarChar, 20));
+            myCommand.Parameters("@FName").Value = au_fname.Value;
+
+            myCommand.Parameters.Add(new SQLParameter("@Phone", SQLDataType.Char, 12));
+            myCommand.Parameters("@Phone").Value = phone.Value;
+
+            myCommand.Parameters.Add(new SQLParameter("@Address", SQLDataType.VarChar, 40));
+            myCommand.Parameters("@Address").Value = address.Value;
+
+            myCommand.Parameters.Add(new SQLParameter("@City", SQLDataType.VarChar, 20));
+            myCommand.Parameters("@City").Value = city.Value;
+
+            myCommand.Parameters.Add(new SQLParameter("@State", SQLDataType.Char, 2));
+            myCommand.Parameters("@State").Value = state.Value;
+
+            myCommand.Parameters.Add(new SQLParameter("@Zip", SQLDataType.Char, 5));
+            myCommand.Parameters("@Zip").Value = zip.Value;
+
+            myCommand.Parameters.Add(new SQLParameter("@Contract", SQLDataType.VarChar,1));
+            myCommand.Parameters("@Contract").Value = contract.Value;
+
+            myCommand.ActiveConnection.Open();
+
+            try 
+            {
+                myCommand.Execute();
+                Message.InnerHtml = "<b>Record Added</b><br>" + insertCmd + "<p>";
+            }
+            catch (e : SQLException)
+            {
+                if (e.Number == 2627)
+                    Message.InnerHtml = "ERROR: A record already exists with the same primary key<p>";
+                else
+                    Message.InnerHtml = "ERROR: Could not add record, please ensure the fields are correctly filled out<p>";
+              Message.Style("color") = "red";
+            }
+
+            myCommand.ActiveConnection.Close();
+        }
+
+        BindGrid();
+    }
+
+    public function BindGrid() : void 
+    {
+        var myCommand : SQLDataSetCommand = new SQLDataSetCommand("select * from Authors", myConnection);
+
+        var ds : DataSet = new DataSet();
+        myCommand.FillDataSet(ds, "Authors");
+
+        MyDataGrid.DataSource=ds.Tables("Authors").DefaultView;
+        MyDataGrid.DataBind();
+    }
+
+</script>
+
+<body style="font: 10pt verdana">
+
+  <form runat="server">
+
+    <h3><font face="Verdana">Inserting a Row of Data w/ Validation</font></h3>
+
+    <table width="95%">
+      <tr>
+        <td valign="top">
+
+          <ASP:DataGrid id="MyDataGrid" runat="server"
+            Width="700"
+            BackColor="#ccccff" 
+            BorderColor="black"
+            ShowFooter="false" 
+            CellPadding=3 
+            CellSpacing="0"
+            Font-Name="Verdana"
+            Font-Size="8pt"
+            HeaderStyle-BackColor="#aaaadd"
+            MaintainState="false"
+          />
+
+        </td>
+        <td valign="top">
+
+          <table style="font: 8pt verdana">
+            <tr>
+              <td colspan="2" bgcolor="#aaaadd" style="font:10pt verdana">Add a New Author:</td>
+            </tr>
+            <tr>
+              <td nowrap>Author ID: </td>
+              <td>
+                <input type="text" id="au_id" value="000-00-0000" runat="server">
+                <asp:RequiredFieldValidator id="au_idReqVal"
+                    ControlToValidate="au_id"
+                    Display="Static"
+                    Font-Name="Verdana" Font-Size="12"
+                    runat=server>
+                        &nbsp;*
+                </asp:RequiredFieldValidator>
+              </td>
+            </tr>
+            <tr>
+              <td nowrap>Last Name: </td>
+              <td>
+                <input type="text" id="au_lname" value="Doe" runat="server">
+                <asp:RequiredFieldValidator id="au_lnameReqVal"
+                    ControlToValidate="au_lname"
+                    Display="Static"
+                    Font-Name="Verdana" Font-Size="12"
+                    runat=server>
+                        &nbsp;*
+                </asp:RequiredFieldValidator>
+              </td>
+            </tr>  
+            <tr>
+              <td nowrap>First Name: </td>
+              <td>
+                <input type="text" id="au_fname" value="John" runat="server">
+                <asp:RequiredFieldValidator id="au_fnameReqVal"
+                    ControlToValidate="au_fname"
+                    Display="Static"
+                    Font-Name="Verdana" Font-Size="12"
+                    runat=server>
+                        &nbsp;*
+                </asp:RequiredFieldValidator>
+              </td>
+            </tr>
+            <tr>
+              <td>Phone: </td>
+              <td><nobr>
+                <input type="text" id="phone" value="808 555-5555" runat="server">
+                <asp:RequiredFieldValidator id="phoneReqVal"
+                    ControlToValidate="phone"
+                    Display="Static"
+                    Font-Name="Verdana" Font-Size="12"
+                    runat=server>
+                        &nbsp;*
+                </asp:RequiredFieldValidator>
+              </td>
+            </tr>
+            <tr>
+              <td>Address: </td>
+              <td><input type="text" id="address" value="One Microsoft Way" runat="server"></td>
+            </tr>
+            <tr>
+              <td>City: </td>
+              <td><input type="text" id="city" value="Redmond" runat="server"></td>
+            </tr>
+            <tr>
+              <td>State: </td>
+              <td>
+                <select id="state" runat="server">
+                  <option>CA</option>
+                  <option>IN</option>  
+                  <option>KS</option>  
+                  <option>MD</option>  
+                  <option>MI</option>  
+                  <option>OR</option> 
+                  <option>TN</option>  
+                  <option>UT</option>  
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td nowrap>Zip Code: </td>
+              <td><input type="text" id="zip" value="98005" runat="server"></td>
+            </tr>
+            <tr>
+              <td>Contract: </td>
+              <td>
+                <select id="contract" runat="server">
+                  <option value="0">False</option>
+                  <option value="1">True</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td style="padding-top:15">
+                <input type="submit" OnServerClick="AddAuthor_Click" value="Add Author" runat="server">
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" style="padding-top:15" align="center">
+                <span id="Message" MaintainState="false" style="font: arial 11pt;" runat="server"/>
+                <asp:RegularExpressionValidator id="RegularExpressionValidator1"
+                     ASPClass="RegularExpressionValidator" ControlToValidate="zip"
+                     ValidationExpression="[0-9]{5}"
+                     Display="Dynamic"
+                     Font-Name="Arial" Font-Size="11"
+                     runat=server>
+                         * Zip Code must be 5 numeric digits <br>
+                </asp:RegularExpressionValidator>
+                <asp:RegularExpressionValidator id="phoneRegexVal"
+                    ControlToValidate="phone"
+                    ValidationExpression="[0-9]{3} [0-9]{3}-[0-9]{4}"
+                    Display="Dynamic"
+                    Font-Name="Arial" Font-Size="11"
+                    runat=server>
+                        * Phone must be in form: XXX XXX-XXXX <br>
+                </asp:RegularExpressionValidator>
+                <asp:RegularExpressionValidator id="au_idRegexVal"
+                    ControlToValidate="au_id"
+                    ValidationExpression="[0-9]{3}-[0-9]{2}-[0-9]{4}"
+                    Display="Dynamic"
+                    Font-Name="Arial" Font-Size="11"
+                    runat=server>
+                        * Author ID must be digits: XXX-XX-XXXX <br>
+                </asp:RegularExpressionValidator>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+
+  </form>
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

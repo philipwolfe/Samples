@@ -1,0 +1,71 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/localize/resources/controls.src&file=controls%5CLocalizedButtons.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfY29udHJvbHNcXExvY2FsaVx6ZWRCdXR0b25zLmNzeF9feHhfeHhfeF9feA==3a14796e" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">controls\LocalizedButtons.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/localize/resources/controls/localizedbuttonscssource.htm'>controls\LocalizedButtons.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/localize/resources/controls/localizedbuttonsvbsource.htm'>controls\LocalizedButtons.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>
+namespace LocalizedControls {
+
+    using System;
+    using System.Globalization;
+    using System.Reflection;
+    using System.Resources;
+    using System.Threading;
+    using System.Web;
+    using System.Web.UI;
+    using System.Web.UI.WebControls;
+
+
+    internal class ResourceFactory {
+	static ResourceManager _rm;
+
+	public static ResourceManager RManager {
+	    get {
+		if(_rm == null) {
+		    _rm = new ResourceManager( "LocalizedStrings",
+					       Assembly.GetExecutingAssembly(),
+					       null,
+					       true );
+		}
+		return _rm;
+	    }
+	}
+    }
+    
+
+
+    public class LocalizedButton : Button {
+	override protected void Render (HtmlTextWriter writer) {
+	    Text = ResourceFactory.RManager.GetString(Text);
+	    base.Render(writer);
+	}
+    }
+    
+}
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

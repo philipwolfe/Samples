@@ -1,0 +1,103 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlref/webctrl/Calendar/calendar2.src&file=calendar2.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfY2FsZW5kYXIyLmFzcFx4eF9feHhfeHhfeF9feA==15ea8a6a" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">calendar2.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlref/webctrl/calendar/calendar2aspxsource.htm'>calendar2.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlref/webctrl/calendar/vb/calendar2aspxsource.htm'>VB\calendar2.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><html>
+<head>
+    <script language="C#" runat="server">
+
+        void Page_Load(Object Sender, EventArgs e) {
+        
+            Calendar1.SelectionMode = (CalendarSelectionMode)lstSelMode.SelectedIndex;
+            
+            if (Calendar1.SelectionMode == CalendarSelectionMode.None)
+                Calendar1.SelectedDates.Clear();
+        }
+
+        void Date_Selected(object s, EventArgs e) {
+        
+            switch (Calendar1.SelectedDates.Count) {
+                case (0):   //None
+                    Label1.Text = "No dates are currently selected";
+                    break;
+                case (1):   //Day
+                    Label1.Text = "The selected date is " + Calendar1.SelectedDate.ToShortDateString();
+                    break;
+                case (7):   //Week
+                    Label1.Text = "The selection is a week beginning " + Calendar1.SelectedDate.ToShortDateString();
+                    break;
+                default:    //Month
+                    Label1.Text = "The selection is a month beginning " + Calendar1.SelectedDate.ToShortDateString();
+            }
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+    <h3><font face="Verdana">Date Selection Modes</font></h3>
+    <p>
+
+    <form runat=server>
+
+        Choose a Selection Mode:
+        <asp:DropDownList id="lstSelMode" runat=server
+            AutoPostBack=true>
+            <asp:ListItem Value="None" >None</asp:ListItem>
+            <asp:ListItem Selected Value="Day" >Day</asp:ListItem>
+            <asp:ListItem Value="DayWeek" >DayWeek</asp:ListItem>
+            <asp:ListItem Value="DayWeekMonth" >DayWeekMonth</asp:ListItem>
+        </asp:DropDownList>
+
+        <p>
+        <asp:Calendar id=Calendar1 runat="server"
+            onselectionchanged="Date_Selected"
+            DayNameFormat="FirstLetter"
+            Font-Name="Arial" Font-Size="12px"
+            Height="180px" Width="200px"
+            SelectorStyle-BackColor="gainsboro"
+            TodayDayStyle-BackColor="gainsboro"
+            DayHeaderStyle-BackColor="gainsboro"
+            OtherMonthDayStyle-ForeColor="gray"
+            TitleStyle-BackColor="gray"
+            TitleStyle-Font-Bold="True"
+            TitleStyle-Font-Size="12px"
+            SelectedDayStyle-BackColor="Navy"
+            SelectedDayStyle-Font-Bold="True"
+            />
+
+        <p>
+        <asp:Label id=Label1 runat="server" />
+    </form>
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

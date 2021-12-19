@@ -1,0 +1,69 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Remoting/async/server.src&file=client.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfY2xpZW50LmNzeF9feHhfeHhfeF9feA==f7a2e23c" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">client.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../howto/samples/remoting/async/servercssource.htm'>server.cs</a> &nbsp;&nbsp<a href='../../../../howto/samples/remoting/async/clientcssource.htm'>client.cs</a> &nbsp;&nbsp<a href='../../../../howto/samples/remoting/async/objectcssource.htm'>object.cs</a> &nbsp;&nbsp<a href='../../../../howto/samples/remoting/async/makefilesource.htm'>makefile</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../howto/samples/remoting/async/vb/servervbsource.htm'>vb\server.vb</a> &nbsp;&nbsp<a href='../../../../howto/samples/remoting/async/vb/clientvbsource.htm'>vb\client.vb</a> &nbsp;&nbsp<a href='../../../../howto/samples/remoting/async/vb/objectvbsource.htm'>vb\object.vb</a> &nbsp;&nbsp<a href='../../../../howto/samples/remoting/async/vb/makefilesource.htm'>vb\makefile</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>using System;
+using System.Threading;
+using System.Runtime.Remoting;
+using System.Runtime.Remoting.Channels.TCP;
+
+namespace RemotingSamples {
+  public class Client {
+
+    public static ManualResetEvent e;
+    public delegate String MyDelegate(String name);
+
+    public static int Main(string [] args)
+    {
+      e = new ManualResetEvent(false);
+
+      TCPChannel chan = new TCPChannel();
+      ChannelServices.RegisterChannel(chan);
+      HelloServer obj = (HelloServer)Activator.GetObject(typeof(RemotingSamples.HelloServer), "tcp://localhost:8085/SayHello");
+      if (obj == null) System.Console.WriteLine("Could not locate server");
+      else {
+        AsyncCallback cb = new AsyncCallback(Client.MyCallBack);
+        MyDelegate d = new MyDelegate(obj.HelloMethod);
+        IAsyncResult ar = d.BeginInvoke("Caveman", cb, null);
+      }
+
+      e.WaitOne();
+      return 0;
+    }
+
+
+    public static void MyCallBack(IAsyncResult ar)
+    {
+      MyDelegate d  = (MyDelegate)ar.AsyncObject;
+      Console.WriteLine(d.EndInvoke(ar));
+      e.Set();
+    }
+  }
+}
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

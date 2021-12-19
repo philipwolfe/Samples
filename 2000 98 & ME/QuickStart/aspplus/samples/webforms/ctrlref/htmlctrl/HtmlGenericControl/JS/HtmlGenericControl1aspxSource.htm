@@ -1,0 +1,74 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlref/htmlctrl/HtmlGenericControl/HtmlGenericControl1.src&file=JS%5CHtmlGenericControl1.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfSlNcXEh0bWxHZW5lcmljQ29udHJvbDEuYXNwXHh4X194eF94eF94X1949e0d6a15" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">JS\HtmlGenericControl1.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../../aspplus/samples/webforms/ctrlref/htmlctrl/htmlgenericcontrol/htmlgenericcontrol1aspxsource.htm'>HtmlGenericControl1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../../aspplus/samples/webforms/ctrlref/htmlctrl/htmlgenericcontrol/vb/htmlgenericcontrol1aspxsource.htm'>VB\HtmlGenericControl1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../../../../aspplus/samples/webforms/ctrlref/htmlctrl/htmlgenericcontrol/js/htmlgenericcontrol1aspxsource.htm'>JS\HtmlGenericControl1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><html>
+<head>
+
+    <script language="JScript" runat="server">
+
+       function SubmitBtn_Click(Source:Object, e:EventArgs) : void {
+
+          Body.Attributes["bgcolor"] = ColorSelect.Value;
+       }
+
+    </script>
+
+</head>
+
+<body id=Body runat=server>
+
+    <h3><font face="Verdana">HtmlGenericControl Sample</font></h3>
+
+    <form runat=server>
+
+      <p>
+      Select a background color for the page: <p>
+      <select id="ColorSelect" runat="server">
+          <option>White</option>
+          <option>Wheat</option>
+          <option>Gainsboro</option>
+          <option>LemonChiffon</option>
+      </select>
+
+      <input type="submit" runat="server" Value="Apply" OnServerClick="SubmitBtn_Click">
+
+    </form>
+
+</body>
+</html>
+
+
+
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

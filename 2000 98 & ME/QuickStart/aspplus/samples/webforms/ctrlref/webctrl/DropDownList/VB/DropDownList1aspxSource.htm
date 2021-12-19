@@ -1,0 +1,72 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlref/webctrl/DropDownList/dropdownlist1.src&file=VB%5CDropDownList1.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkJcXERyb3BEb3duTGlzdDEuYXNwXHh4X194eF94eF94X194b69e1573" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB\DropDownList1.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../../aspplus/samples/webforms/ctrlref/webctrl/dropdownlist/dropdownlist1aspxsource.htm'>DropDownList1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../../aspplus/samples/webforms/ctrlref/webctrl/dropdownlist/vb/dropdownlist1aspxsource.htm'>VB\DropDownList1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><html>
+<head>
+
+    <script language="VB" runat="server">
+
+        Sub SubmitBtn_Click(sender As Object, e As EventArgs)
+            Label1.Text="You chose: " + DropDown1.SelectedItem.Text
+        End Sub
+
+    </script>
+
+</head>
+<body>
+
+    <h3><font face="Verdana">DropDownList Example</font></h3>
+
+    <form runat=server>
+
+        <asp:DropDownList id=DropDown1 runat="server">
+            <asp:ListItem>Item 1</asp:ListItem>
+            <asp:ListItem>Item 2</asp:ListItem>
+            <asp:ListItem>Item 3</asp:ListItem>
+            <asp:ListItem>Item 4</asp:ListItem>
+            <asp:ListItem>Item 5</asp:ListItem>
+            <asp:ListItem>Item 6</asp:ListItem>
+        </asp:DropDownList>
+
+        <asp:button text="Submit" OnClick="SubmitBtn_Click" runat=server/>
+
+        <p>
+        
+        <asp:Label id=Label1 font-name="Verdana" font-size="10pt" runat="server">
+          Select a value from the list
+        </asp:Label>
+
+    </form>
+
+</body>
+</html>
+
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

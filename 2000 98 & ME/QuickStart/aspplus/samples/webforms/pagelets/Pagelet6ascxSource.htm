@@ -1,0 +1,103 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/pagelets/pagelet6.src&file=Pagelet6.ascx" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfUGFnZWxldDYuYXNjXHh4X194eF94eF94X194b2a2ab00" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">Pagelet6.ascx</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/pagelets/pagelet6aspxsource.htm'>Pagelet6.htm</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/pagelets/pagelet6ascxsource.htm'>Pagelet6.ascx</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/pagelets/vb/pagelet6aspxsource.htm'>VB/Pagelet6.htm</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/pagelets/vb/pagelet6ascxsource.htm'>VB/Pagelet6.ascx</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/pagelets/js/pagelet6aspxsource.htm'>JS/Pagelet6.htm</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/pagelets/js/pagelet6ascxsource.htm'>JS/Pagelet6.ascx</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="System.Data.SQL" %>
+
+<script language="C#" runat="server">
+
+    void Page_Load(Object Src, EventArgs e) {
+    
+        if (!Page.IsPostBack) {
+        
+          SQLConnection myConnection = new SQLConnection("server=localhost;uid=sa;pwd=;database=pubs");
+          SQLDataSetCommand myCommand = new SQLDataSetCommand("select * from Titles where type='" + Category.SelectedItem.Value + "'", myConnection);
+
+          DataSet ds = new DataSet();
+          myCommand.FillDataSet(ds, "Titles");
+
+          MyDataList.DataSource = ds.Tables["Titles"].DefaultView;
+          MyDataList.DataBind();
+       }
+    }
+
+    void Category_Select(Object sender, EventArgs e) {
+    
+      SQLConnection myConnection = new SQLConnection("server=localhost;uid=sa;pwd=;database=pubs");
+      SQLDataSetCommand myCommand = new SQLDataSetCommand("select * from Titles where type='" + Category.SelectedItem.Value + "'", myConnection);
+
+      DataSet ds = new DataSet();
+      myCommand.FillDataSet(ds, "Titles");
+
+      MyDataList.DataSource = ds.Tables["Titles"].DefaultView;
+      MyDataList.DataBind();
+    }
+
+</script>
+
+<table style="font: 10pt verdana">
+  <tr>
+    <td><b>Select a Category:</b></td>
+    <td style="padding-left:15">
+      <ASP:DropDownList AutoPostBack="true" id="Category" OnSelectedIndexChanged="Category_Select" runat="server">
+        <ASP:ListItem value="business">Business</ASP:ListItem>
+        <ASP:ListItem value="trad_cook">Traditional Cooking</ASP:ListItem>
+        <ASP:ListItem value="mod_cook">Modern Cooking</ASP:ListItem>
+      </ASP:DropDownList>
+    </td>
+  </tr>
+</table>
+
+<ASP:DataList id="MyDataList" BorderWidth="0" RepeatColumns="2" runat="server">
+
+    <template name="itemtemplate">
+
+      <table cellpadding=10 style="font: 10pt verdana">
+        <tr>
+          <td valign="top">
+            <img align="top" src='<%# DataBinder.Eval(Container.DataItem, "title_id", "/quickstart/aspplus/images/title-{0}.gif") %>' >
+          </td>
+          <td valign="top">
+            <b>Title: </b><%# DataBinder.Eval(Container.DataItem, "title") %><br>
+            <b>Category: </b><%# DataBinder.Eval(Container.DataItem, "type") %><br>
+            <b>Publisher ID: </b><%# DataBinder.Eval(Container.DataItem, "pub_id") %><br>
+            <b>Price: </b><%# DataBinder.Eval(Container.DataItem, "price", "$ {0}") %>
+          </td>
+        </tr>
+      </table>
+
+    </template>
+
+</ASP:DataList>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

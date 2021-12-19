@@ -1,0 +1,78 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/net/ASPXNet/webrequest.src&file=webrequest.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfd2VicmVxdWVzdC5hc3BceHhfX3h4X3h4X3hfX3g=475858ac" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">webrequest.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../howto/samples/net/aspxnet/webrequestaspxsource.htm'>webrequest.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../howto/samples/net/aspxnet/vb/webrequestaspxsource.htm'>VB/webrequest.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Page language="C#" %>
+<%@ Import Namespace="System.Net" %>
+<%@ Import Namespace="System.IO" %>
+<%@ Assembly Name="System.Net.dll" %>
+
+<html>
+<head>
+
+<SCRIPT runat="server">
+	void btnSubmit_Click(Object sender, EventArgs e) {
+
+		WebRequest req = WebRequestFactory.Create(txtURI.Text);
+		WebResponse result = req.GetResponse();
+		Stream ReceiveStream = result.GetResponseStream();
+		Console.Write("\nResponse stream received, Status code: " + result.Status);
+
+		Byte[] read = new Byte[512];
+		int bytes = ReceiveStream.Read(read, 0, 512);
+
+		txtHTML.InnerHtml = "";
+		while (bytes > 0) 
+		{
+
+			// Note:
+			// The following assumes that the the response uses UTF-8 as encoding.
+			// If the content is sent in a ANSI codepage like 932 use something like this:
+			// 	Encoding encode = System.Text.Encoding.GetEncoding("shift-jis"); 
+			Encoding encode = System.Text.Encoding.GetEncoding("utf-8"); 
+			txtHTML.InnerHtml = txtHTML.InnerHtml + encode.GetString(read, 0, bytes);
+			bytes = ReceiveStream.Read(read, 0, 512);
+ 		}
+	}
+</SCRIPT>
+</head>
+
+<body>
+
+	<form method="post" action="Webrequest.htm" runat="server">
+		Please enter a URI -
+		<asp:TextBox runat=server ID="txtURI"></asp:TextBox>
+		<asp:Button runat=server Text="Submit" ID="btnSubmit" onClick="btnSubmit_Click"></asp:button>
+		<br><br>
+		<TextArea runat=server ID="txtHTML" Rows="30" Cols="80" MaintainState="false"  Wrap="True"></TextArea>
+	</form>
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

@@ -1,0 +1,95 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/resources/custom/customreader.src&file=VB/CustomReader.vb" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvQ3VzdG9tUmVhZGVyLnZieF9feHhfeHhfeF9feA==07697405" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/CustomReader.vb</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../howto/samples/resources/custom/customreadercssource.htm'>CustomReader.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../howto/samples/resources/custom/vb/customreadervbsource.htm'>VB/CustomReader.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>' CustomReader: Implement the interface IResourceReader.
+' CustomManager: Sub-class ResourceManager and create
+' ResourceSets using the CustomReader class.
+
+
+Imports System
+Imports System.Collections
+Imports System.Globalization
+Imports System.Resources
+
+Imports Microsoft.VisualBasic
+
+
+
+Class CustomReader 
+Implements IResourceReader 
+
+    Public Sub Close() Implements IResourceReader.Close
+        ' Close any open files, DB connections, etc here.
+    End Sub
+
+    Function IEnumerable_GetEnumerator() As IEnumerator Implements IEnumerable.GetEnumerator
+        IEnumerable_GetEnumerator = Me.GetEnumerator()
+    End Function
+
+    Public Function GetEnumerator() As IDictionaryEnumerator Implements IResourceReader.GetEnumerator
+
+        Dim dict As Dictionary = new Dictionary()
+  
+        dict("key1") = "value 1"
+        dict("key2") = "value 2"
+        dict("key3") = "value 3"
+  
+        GetEnumerator = dict.GetEnumerator()
+    End Function
+
+End Class
+
+
+
+Public Class CustomManager 
+Inherits ResourceManager 
+
+
+    Protected Overrides Function InternalGetResourceSet( _
+        culture As CultureInfo, _
+        createIfNotExists As Boolean, _
+        tryParents As Boolean ) As ResourceSet 
+
+        InternalGetResourceSet = new ResourceSet( new CustomReader() )
+    End Function
+
+
+        
+    Public shared Sub Main()
+        Dim my_resourceManager As ResourceManager = new CustomManager()
+        Console.WriteLine( "Lookup for key1 yields: " + my_resourceManager.GetString("key1") )
+    
+        Console.WriteLine (ControlChars.CrLf + "Press Return to exit.")
+        Console.Read()
+    End Sub
+        
+End Class
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

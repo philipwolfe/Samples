@@ -1,0 +1,819 @@
+
+
+
+<!--BEGIN HEADER-->
+<html>
+<head>
+<link rel="stylesheet" href="../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+  <table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+
+            <div style="padding:0,0,4,0"><b>Getting Started</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/quickstart.htm">Introduction</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/whatisaspx.htm">What is ASP.NET?</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/langsupport.htm">Language Support</a><p>
+
+            <div style="padding:0,0,4,0"><b>ASP.NET Web Forms</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webformsintro.htm">Introducing Web Forms</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webserverctrls.htm">Working with Server Controls</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webtemplates.htm">Applying Styles to Controls</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webvalidation.htm">Server Control Form Validation</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webpagelets.htm">Web Forms User Controls</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webdatabinding.htm">Databinding Server Controls</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webdataaccess.htm">Server-Side Data Access</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webdatalist.htm">Data Access and Customization</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/businessobjs.htm">Working with Business Objects</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webctrlauthoring.htm">Authoring Custom Controls</a><br>
+<!--            &nbsp; <a class="outer" href="../../aspplus/doc/webformsandvs7.htm">Visual Studio 7.0 & Web Forms</a><br> -->
+            &nbsp; <a class="outer" href="../../aspplus/doc/webcontrolsref.htm">Web Forms Controls Reference</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webformssyntaxref.htm">Web Forms Syntax Reference</a><p>
+
+            <div style="padding:0,0,4,0"><b>ASP.NET Web Services</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webservicesintro.htm">Introducing Web Services</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/writingservices.htm">Writing a Simple Web Service</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webservicetypes.htm">Web Service Type Marshalling</a><br>
+<!--            &nbsp; <a class="outer" href="../../aspplus/doc/discoverservices.htm">Making Services Discoverable</a><br> -->
+            &nbsp; <a class="outer" href="../../aspplus/doc/servicesanddata.htm">Using Data in Web Services</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/servicesandobjs.htm">Using Objects and Intrinsics</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/htmlscraping.htm">HTML Pattern Matching</a><p>
+
+            <div style="padding:0,0,4,0"><b>ASP.NET Web Applications</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/applications.htm">Application Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/globalasax.htm">Using the Global.asax File</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/stateoverview.htm">Managing Application State</a><br>
+<!--            &nbsp; <a class="outer" href="../../aspplus/doc/httpmodules.htm">Handling HttpModule Events</a><br> -->
+            &nbsp; <a class="outer" href="../../aspplus/doc/httphandlers.htm">HttpHandlers and Factories</a><p>
+
+<!--
+            <div style="padding:0,0,4,0"><b>State Management</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/stateoverview.htm">State Management Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/pageviewstate.htm">Using Page-local View State</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/sessionappstate.htm">Session and Application State</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/usingcookies.htm">Using Client-side Cookies</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/choosingstate.htm">Choosing a Strategy</a><p>
+-->
+            <div style="padding:0,0,4,0"><b>Cache Services</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/cachingoverview.htm">Caching Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/outputcaching.htm">Page Output Caching</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/datacaching.htm">Page Data Caching</a><p>
+
+            <div style="padding:0,0,4,0"><b>Configuration</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/configoverview.htm">Configuration Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/configformat.htm">Configuration File Format</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/configretrieve.htm">Retrieving Configuration</a><p>
+
+            <div style="padding:0,0,4,0"><b>Deployment</b><br></div>
+<!--            &nbsp; <a class="outer" href="../../aspplus/doc/adminoverview.htm">Administration Overview</a><br> -->
+            &nbsp; <a class="outer" href="../../aspplus/doc/deployment.htm">Deploying ASP.NET Applications</a><p>
+
+            <div style="padding:0,0,4,0"><b>Security</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/securityoverview.htm">Security Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/authandauth.htm">Authentication & Authorization</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/windowsauth.htm">Windows-based Authentication</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/formsauth.htm">Forms-based Authentication</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/authorization.htm">Authorizing Users and Roles</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/impersonation.htm">User Account Impersonation</a><p>
+
+            <div style="padding:0,0,4,0"><b>Localization</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/internationalization.htm">Internationalization Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/cultureencoding.htm">Setting Culture and Encoding</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/localizingapps.htm">Localizing ASP.NET Applications</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/resourcefiles.htm">Working with Resource Files</a><p>
+
+            <div style="padding:0,0,4,0"><b>Tracing</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/tracingoverview.htm">Tracing Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/tracelogpage.htm">Trace Logging to Page Output</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/tracelogapp.htm">Application-level Trace Logging</a><p>
+
+            <div style="padding:0,0,4,0"><b>Debugging</b><br></div>
+<!--
+            &nbsp; <a class="outer" href="../../aspplus/doc/debuggingoverview.htm">Debugging Overview</a><br>
+-->
+            &nbsp; <a class="outer" href="../../aspplus/doc/debugcomsdk.htm">The SDK Debugger</a><p>
+<!--
+            &nbsp; <a class="outer" href="../../aspplus/doc/debugvisualstudio.htm">The Visual Studio 7 Debugger</a><p>
+-->
+
+<!--
+            <div style="padding:0,0,4,0"><b>Performance</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/perfoverview.htm">Performance Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/perfcounters.htm">Using Performance Counters</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/perftuning.htm">Performance Tuning Tips</a><p>
+
+            <div style="padding:0,0,4,0"><b>ASP to ASP.NET Migration</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/migrationoverview.htm">Migration Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/syntaxandsemantics.htm">Syntax and Semantics</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/languagecompat.htm">Language Compatibility</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/cominterop.htm">COM Interoperability</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/mtstransactions.htm">MTS Transactions</a><p>
+-->
+            <div style="padding:0,0,4,0"><b>Sample Applications</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/portalapp.htm">A Personalized Portal</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/ecommerceapp.htm">An E-Commerce Storefront</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/classbrowser.htm">A Class Browser Application</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/ibuyspy.htm">IBuySpy.com</a><p>
+
+</div>
+
+</td>
+</tr>
+</table>
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<h4>Introducing Web Forms</h4>
+<p>
+
+
+<div class="indent" style="font-family:Verdana; font-size:8pt;">
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#webforms">What is ASP.NET Web Forms?</a><br>
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#writingforms">Writing Your First Web Form</a><br>
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#usingasp">Using ASP &lt;%%&gt; Render Blocks</a><br>
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#serverctrls">Introduction to Server Controls</a><br>
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#handlingevts">Handling Server Control Events</a><br>
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#customctrls">Using Custom Server Controls</a><br>
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#listsanddata">Lists, Data, and Databinding</a><br>
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#formvalidate">Form Validation Controls</a><br>
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#codebehind">Code-Behind Web Forms</a><br>
+</div>
+
+<p>
+<hr>
+
+<!--BEGIN SECTION-->
+<a name="webforms">
+<span class="subhead">What is ASP.NET Web Forms?</span>
+<p>
+
+The ASP.NET Web Forms Page Framework is a scalable Common Language Runtime programming model 
+that can be used on the server to dynamically generate web pages.
+
+<p>
+
+Intended as a logical evolution of ASP (ASP.NET provides syntax compatibility with 
+existing pages), the ASP.NET Web Forms Framework has been specifically designed to 
+address a number of key deficiencies with the previous model.  In particular: 
+
+<ul>
+	<li>The ability to create and use reusable UI controls that can encapsulate common 
+		functionality and reduce the code a page developer has to write.
+	<li>The ability for developers to cleanly structure their page logic in an orderly 
+		-- non-b spaghetti codeb  b  fashion.
+	<li>The ability for development/authoring tools to provide strong WYSIWYG design 
+		support for pages (existing ASP code today is opaque to a tool).
+</ul>
+
+<p>
+
+This section of the quickstart provides a high-level code walkthrough of some key ASP.NET 
+Web Forms features. Subsequent sections of the quickstart can then be visited to drill 
+down into more specific details.
+
+
+<!--BEGIN SECTION-->
+<br>
+<a name="writingforms">
+<br>
+<span class="subhead">Writing Your First Web Form Page</span>
+<p>
+
+ASP.NET Web Form Pages are text files with a <b>.htm</b> filename extension.  They can be deployed throughout an IIS 
+virtual root directory tree.  When a browser client requests .htm resources, the ASP.NET runtime parses and compiles
+the target file into a .NET Framework class.  This class can then be used to dynamically process  incoming request (note that
+the .htm file is only compiled the first time it is accessed -- the compiled type instance is reused across multiple
+requests). 
+
+<p>
+
+An ASP.NET Page can be created simply by taking an existing HTML file and renaming its file extension .htm (no
+modification or code is required).  For example, the below sample demonstrates a simple HTML page that collects
+a user's name and category preference, and then performs a form-post back to the originating page when a button
+is clicked:
+
+<p>
+
+<span>
+  
+
+    
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/intro1.gif"><br>
+	</a>
+	<div class="caption">Intro1.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/webforms/intro/intro1aspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<p>
+
+<b>Important:</b> Note that nothing really happens yet when you click the "Lookup" button.  This is because the .htm file contains
+only static HTML (no dynamic content).  As such, the same HTML gets sent back to the client on each trip to the page --
+which results in the contents of the form fields (the TextBox and DropDownList) getting lost between requests.
+
+
+<!--BEGIN SECTION-->
+<br>
+<a name="usingasp">
+<br>
+<span class="subhead">Using ASP &lt;% %&gt; Render Blocks</span>
+<p>
+
+ASP.NET provides syntax compatibility with existing ASP Pages. This includes support 
+for &lt;% %&gt; <b>code render blocks</b> that can be intermixed with HTML content within 
+a .htm file. These code blocks execute in a top-down manner at page render time.
+
+<p>
+
+The below example demonstrates how &lt;% %&gt; render blocks can be used to loop over a HTML block (increasing
+the font size each time):
+
+<p>
+
+<span>
+  
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/intro2.gif"><br>
+	</a>
+	<div class="caption">Intro2.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/webforms/intro/intro2aspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+
+<p>
+
+<b>Important:</b> Unlike ASP, the code used within the above &lt;% %&gt; blocks is <i>compiled</i> -- not interpreted using a script engine.  This
+results in improved runtime execution performance. 
+
+<p>
+
+ASP.NET Page developers can utilize &lt;% %&gt; code blocks to dynamically modify HTML 
+output much like they can today with ASP. For example, the below sample demonstrates 
+how &lt;% %&gt; code blocks can be used to interpret results posted back from a client.
+
+<p>
+
+<span>
+  
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/intro3.gif"><br>
+	</a>
+	<div class="caption">Intro3.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/webforms/intro/intro3aspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<p>
+
+<b>Important:</b> While &lt;% %&gt; code blocks provide a powerful way to custom 
+manipulate the text output returned from an ASP.NET Page, they do not provide much help in 
+providing a clean HTML programming model.  As shown in the sample above, developers using 
+only &lt;% %&gt; code blocks must custom manage page state between round-trips and custom 
+interpret posted values.
+
+<!--BEGIN SECTION-->
+<br>
+<a name="serverctrls">
+<br>
+<span class="subhead">Introduction to ASP.NET Server Controls</span>
+<p>
+
+In addition to (or instead of) using &lt;% %&gt; code blocks to program dynamic content, ASP.NET Page developers can now leverage <b>ASP.NET
+Server Controls</b> to program web pages.  Server controls are declared within a .htm file using custom tags that contain a 
+<b>runat="server"</b> attribute value.  
+
+<p>
+
+The below sample uses four server controls: &lt;form runat=server&gt;, &lt;asp:textbox runat=server&gt;, 
+&lt;asp:dropdownlist runat=server&gt;, and &lt;asp:button runat=server&gt;.  At runtime these server controls
+automatically generate HTML content.  
+
+<p>
+
+
+<span>
+  
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/intro4.gif"><br>
+	</a>
+	<div class="caption">Intro4.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/webforms/intro/intro4aspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<p>
+
+<b>Important:</b> Note that these server controls automatically maintain any client-entered values between round-trips
+to the server.  This control state is <u>not</u> stored on the server (it is instead stored within a 
+&lt;hidden&gt; form field that is round-tripped between requests).  Note also that no client-side script was
+required on the client.
+
+<p>
+
+In addition to standard HTML input controls, ASP.NET enables developers to utilize richer custom controls on their 
+pages.  For example, the below sample demonstrates how the &lt;asp:adrotator&gt; control can be used to dynamically
+display rotating ads on a page:
+
+<p>
+
+<span>
+  
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/intro5.gif"><br>
+	</a>
+	<div class="caption">Intro5.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/webforms/intro/intro5aspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<p>
+
+<b>Important:</b> A detailed listing of all built-in server controls can be found in the "Web Forms Control Reference" section of 
+this quickstart. 
+
+<!--BEGIN SECTION-->
+<br>
+<a name="handlingevts">
+<br>
+<span class="subhead">Handling Server Control Events</span>
+
+<p>
+
+Each ASP.NET Server Control is capable of exposing an object model containing properties, methods and events.  ASP.NET developers can
+utilize this object model to cleanly modify and interact with the page.
+
+<p>
+
+The below example demonstrates how an ASP.NET Page developer can handle the <b>OnClick</b> 
+event from the &lt;asp:button runat=server&gt; control to manipulate the "text" property 
+of the &lt;asp:label runat=server&gt; control.
+
+<p>
+
+
+<span>
+  
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/intro6.gif"><br>
+	</a>
+	<div class="caption">Intro6.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/webforms/intro/intro6aspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<p>
+
+This simple sample is functionally equivalent to the "Intro3" sample demonstrated earlier in this section.  Note, however,
+how much cleaner and easier the code is with this new server-control based version.
+
+
+<!--BEGIN SECTION-->
+<br>
+<a name="customctrls">
+<br>
+<span class="subhead">Using Custom Server Controls</span>
+<p>
+
+ASP.NET ships with 45 built-in server controls that can be used out of the box (please review the <a href="webcontrolsref.htm">Web Forms Controls Reference</a>
+section for complete details).  In addition to the built-in ASP.NET controls, developers can also leverage controls developed
+by third-party vendors.
+
+<p> 
+
+The below sample demonstrates the use of a simple calendar control.  The calendar control has been declared within the page 
+using a &lt;acme:calendar runat=server&gt; tag.  Note that the &lt;% Register %&gt; directive at the top of the page is 
+responsible for registering the "Acme" XML tag prefix with the "Acme" code namespace of the control implementation.  The
+ASP.NET Page Parser will then utilize this namespace to load the calendar control class instance at runtime.  
+
+<p>
+
+
+<span>
+  
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/intro7.gif"><br>
+	</a>
+	<div class="caption">Intro7.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/webforms/intro/intro7aspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<p>
+
+The calendar control in this sample has been designed to work for both "uplevel" and "downlevel" browsers.  For
+uplevel browsers it generates DHTML output.  This DHTML output does not require round-trips back to the server when doing
+day selections and month navigations.  For downlevel browsers the control generates standard HTML 3.2.  This HTML 3.2 does
+require round-trips back to the server to handle client-side user interactions.
+
+<p>
+
+<b>Important:</b> The code a page developer writes is identical regardless of whether an "uplevel" or "downlevel" browser is
+used to access the page.  The calendar control itself encapsulates all of the logic required to handle the two
+scenarios.  
+
+<!--BEGIN SECTION-->
+<br>
+<a name="listsanddata">
+<br>
+<span class="subhead">Lists, Data, and Databinding</span>
+<p>
+
+ASP.NET ships with a built-in set of data  grid and list controls.  These can be used to provide custom UI driven from
+queries against a database or other datasource.  For example, the below sample demonstrates how a 
+&lt;asp:datagrid runat=server&gt; control can be used to databind book information collected using a SQL database
+query:
+
+<p>
+
+
+<span>
+  
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/intro75.gif"><br>
+	</a>
+	<div class="caption">Intro7.5.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/webforms/intro/intro75aspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<p>
+
+The &lt;asp:datagrid runat=server&gt; <b>DataGrid</b> control provides an easy way to quickly display data results using
+a traditional grid-control UI.  ASP.NET Developers can alternatively use the &lt;asp:DataList runat=server&gt; <b>DataList</b> control
+and a custom "ItemTemplate" template to customize data information:
+
+<p>
+
+
+<span>
+  
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/intro8.gif"><br>
+	</a>
+	<div class="caption">Intro8.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/webforms/intro/intro8aspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<p>
+
+Note that the &lt;asp:datalist runat=server&gt; control enables end-users to exactly control the structure
+and layout of each item within the list (via the the <b>ItemTemplate</b> template property).  The control also 
+automatically handles the two-column wrapping of content (users can control the number of columns using
+the <b>Repeatcolumn</b> property on the datalist).
+
+<p>
+
+An alternate view of the &lt;asp:datalist runat=server&gt; control can be seen with the below sample:
+
+<p>
+
+
+<span>
+  
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/intro9.gif"><br>
+	</a>
+	<div class="caption">Intro9.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/webforms/intro/intro9aspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<p>
+
+Note that the exact same control, datamodel and page user code was used in this example as in the previous.  The
+only difference was that alternative templates were declaratively supplied to the code.
+
+<!--BEGIN SECTION-->
+<br>
+<a name="formvalidate">
+<br>
+<span class="subhead">Form Validation Controls</span>
+<p>
+
+The ASP.NET Web Forms Page framework provides a set of validation server controls that provide an easy-to-use 
+but powerful way to check input forms for errors, and if necessary, display messages to the user. 
+
+<p>
+
+Validation controls are added to an ASP.NET Page like other server controls. There are 
+controls for specific types of validation, such as range checking or pattern matching, 
+plus a <b>RequiredFieldValidator</b> that ensures a user does not skip an entry field.
+
+<p>
+
+The below example demonstrates how two &lt;asp:requirefieldvalidator runat=server&gt; controls can be used
+on a page to validate the contents of the <b>TextBox</b> and <b>DropDownList</b> controls:
+
+<p>
+
+
+<span>
+  
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/intro10.gif"><br>
+	</a>
+	<div class="caption">Intro10.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/webforms/intro/intro10aspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<p>
+
+Note that the validation controls have both "uplevel" and "downlevel" client support.  Uplevel browsers will
+perform validation on the client (using javascript and DHTML).  Downlevel browsers will perform the validation
+on the server.  The programming model for both scenarios is identical.
+
+<p>
+
+Note that ASP.NET Page developers can optionally check the <b>Page.IsValid</b> property at runtime to determine whether <u>all</u>
+validation server controls on a page are currently valid.  This provides a simple "one line" way to determine
+whether or not to proceed with business logic.  For example, the below sample performs a Page.IsValid check before
+executing a database lookup on the selected category:
+
+<p>
+
+
+<span>
+  
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/intro11.gif"><br>
+	</a>
+	<div class="caption">Intro11.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/webforms/intro/intro11aspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+
+<!--BEGIN SECTION-->
+<br>
+<a name="codebehind">
+<br>
+<span class="subhead">Code-Behind Web Forms</span>
+<p>
+
+ASP.NET supports two methods of authoring dynamic pages.  The first is the method you've seen in the above samples -- 
+where the page code is physically declared within the originating .htm file.  An alternative approach --
+known as the <b>Code-behind</b> method -- enables the page code to be more cleanly separated from the HTML content
+into a separate file altogether.  
+
+<p>
+
+The below sample demonstrates the use of the Code-behind method of writing ASP.NET Page code:
+
+<p>
+
+
+<span>
+  
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/intro12.gif"><br>
+	</a>
+	<div class="caption">Intro12.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/webforms/intro/intro12aspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<p>
+<!--BEGIN SECTION-->
+<a name="endofsection">
+
+<h4>Section Summary</h4>
+<ol>
+<li> ASP.NET Web Forms provides an easy and powerful way to build dynamic Web UI
+<li> ASP.NET Web Form Pages can target any browser client (no script library or cookie requirements)
+<li> ASP.NET Web Form Pages provides syntax compatibility with existing ASP Pages
+<li> ASP.NET Server Controls provide an easy way to encapsulate common functionality
+<li> ASP.NET ships with 45 built-in server controls.  Developers can also use controls built by third-parties
+<li> ASP.NET Server Controls are capable of automatically projecting both "uplevel" and "downlevel" HTML
+<li> ASP.NET Templates provide an easy way to customize the look and feel of list server controls
+<li> ASP.NET Validation controls provide an easy way to do declarative client or server data validation
+</ol>
+<p>
+
+<!--END FOOTER-->
+<p>
+<hr>
+<p>
+</div>
+</td>
+</tr>
+</table>
+</BODY>
+</html>
+<!--END FOOTER-->

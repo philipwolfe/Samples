@@ -1,0 +1,112 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Xml/LoadXmlDocument/LoadXmlDocument.src&file=VB/LoadXmlDocument.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvTG9hZFhtbERvY3VtZW50LmFzcFx4eF9feHhfeHhfeF9feA==effa43d5" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/LoadXmlDocument.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../howto/samples/xml/loadxmldocument/loadxmldocumentcssource.htm'>LoadXmlDocument.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../howto/samples/xml/loadxmldocument/vb/loadxmldocumentvbsource.htm'>VB/LoadXmlDocument.vb</a> &nbsp;&nbsp<a href='../../../../../howto/samples/xml/loadxmldocument/vb/loadxmldocumentaspxsource.htm'>VB/LoadXmlDocument.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>XML data: </b></td>
+        <td><a href='../../../../../howto/samples/xml/loadxmldocument/booksxmlsource.htm'>books.xml</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Import Namespace="System" %>
+<%@ Import Namespace="System.IO" %>
+<%@ Assembly Name="System.Xml" %>
+<%@ Import Namespace="System.Xml" %>
+
+<script language="VB" runat=server>
+Public Class XmlDocumentSample
+
+	Private m_Document As String = ""
+	Private writer As StringWriter
+	
+	Public Function Start(args As String) As String
+	
+		Dim xmldocument As XmlDataDocument
+		
+		m_Document = args
+		writer = new StringWriter()
+		Console.SetOut(writer)
+
+        Try
+            ' Load the XML from file
+			Console.WriteLine ()
+            Console.WriteLine ("Loading file {0} ...", m_Document)
+
+            xmldocument = new XmlDataDocument()
+            xmldocument.Load (m_Document)
+
+            Console.WriteLine ("XmlDataDocument loaded with XML data successfully ...")
+        
+        Catch e As Exception
+            Console.WriteLine ("Exception: {0}", e.ToString())
+        
+        End Try
+
+		Return(writer.ToString())
+		
+	End Function
+
+End Class
+ 
+</script>
+<html>
+<head>
+      	<link rel="stylesheet" href="intro.css">
+</head>
+<body style="background-color:f6e4c6">
+
+       	<form action="LoadXmlDocument.htm" method="post" runat="server">
+       	<font>Input file: </font> 
+        <a href="../../../../../howto/samples/xml/loadxmldocument/books.xml">books.xml</a>
+	<center>
+		&nbsp&nbsp&nbsp&nbsp<asp:button type=submit text="Run" OnClick="SubmitBtn_Click" runat="server"/></br>
+       	</form>
+	</center>
+	<p>
+
+	<table align="center">
+	<tr><th><span>Output from loading file...</span></th></tr>
+	<tr><th><span></span></th></tr>
+	<tr><td><h4><xmp id="output" runat="server"/></h4></td></tr>
+	</table>
+
+</body>
+</html>
+
+<script language="VB" runat=server>
+
+Private Sub SubmitBtn_Click(sender As Object, e As EventArgs)
+
+	Dim myXmlDocumentSample As XmlDocumentSample
+	
+	myXmlDocumentSample= new XmlDocumentSample()
+	output.InnerHtml = myXmlDocumentSample.Start(Server.MapPath("books.xml"))
+
+End Sub
+
+</script>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

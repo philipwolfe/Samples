@@ -1,0 +1,79 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Exceptions/Throw/throw.src&file=VB%5Cthrow.vb" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkJcXHRocm93LnZieF9feHhfeHhfeF9feA==bd38096e" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB\throw.vb</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../howto/samples/exceptions/throw/throwcssource.htm'>throw.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../howto/samples/exceptions/throw/vb/throwvbsource.htm'>VB\throw.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>Imports System
+
+Public Class Throws
+
+	Public Shared Function  SeeIfIntIsOne(i as Integer) As String
+	
+		Dim s As String 
+		s = "You passed in 1"
+		If i = 1
+		   return s
+		
+		Else Throw New ArgumentException("Your integer was not 1")
+		' it should be noted that this exception does not utilize the Runtime's resource
+		' system which would make the text of the exception easily localizable.
+		' For examples of using resources, see the Resources section of Quickstart.
+		End If
+	End Function
+
+	Public Shared Sub Main ()
+	
+		'this code shows how to catch an exception
+		Try 
+		
+			Console.WriteLine("We're going to call our mehod with two args, one valid and one invalid")
+			Console.WriteLine()
+			Console.WriteLine("Trying to call the method wih an argument of 1")
+			Console.WriteLine(SeeIfIntIsOne(1))
+			Console.WriteLine()
+			Console.WriteLine("Trying to call the method with an argument of 2")
+			Console.WriteLine(SeeIfIntIsOne(2))	
+		
+		Catch e As Exception 
+		
+			Console.WriteLine("The following error occured:")
+			Console.WriteLine(e.ToString())
+		
+		Finally 
+		
+			Console.WriteLine()
+			Console.WriteLine("Now we can Continue")
+		End Try
+
+		Console.WriteLine ()
+		Console.WriteLine ("Press Return to exit.")
+		Console.Read()
+	End Sub ' end Main
+
+End Class 'Throws
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

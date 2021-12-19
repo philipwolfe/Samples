@@ -1,0 +1,52 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Services/Tracing/trace/trace.src&file=VB%5CTrace.vb" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkJcXFRyYWNlLnZieF9feHhfeHhfeF9feA==463769fe" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB\Trace.vb</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../howto/samples/services/tracing/trace/tracecssource.htm'>Trace.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../howto/samples/services/tracing/trace/vb/tracevbsource.htm'>VB\Trace.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>Imports System
+Imports System.Diagnostics
+
+public class TraceSample
+       	public shared sub Main() 
+		Debug.Listeners.Add(new TextWriterTraceListener(Console.Out))
+	
+		Debug.WriteLine("The app was compiled with DEBUG directive!")
+		Trace.WriteLine("The app was compiled with TRACE directive!")
+		
+		Dim doTrace As boolean
+
+		doTrace = false
+		Trace.WriteLineIf(doTrace, "This should not show up!")
+		Debug.WriteLineIf(doTrace, "This should not show up!")
+	
+		doTrace = true
+		Trace.WriteLineIf(doTrace, "The app was indeed compiled with TRACE directive!")
+		Debug.WriteLineIf(doTrace, "The app was indded compiled with DEBUG directive!")			
+       	end sub
+end class
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

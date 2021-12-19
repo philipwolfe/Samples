@@ -1,0 +1,1338 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 9">
+<meta name=Originator content="Microsoft Word 9">
+<link rel=File-List href="./Readme_files/filelist.xml">
+<title>Code Access Security Sample</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author></o:Author>
+  <o:Template>Normal</o:Template>
+  <o:LastAuthor></o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>33</o:TotalTime>
+  <o:Created>2000-03-30T16:20:00Z</o:Created>
+  <o:LastSaved>2000-03-30T16:20:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>198</o:Words>
+  <o:Characters>1134</o:Characters>
+  <o:Company></o:Company>
+  <o:Lines>9</o:Lines>
+  <o:Paragraphs>2</o:Paragraphs>
+  <o:CharactersWithSpaces>1392</o:CharactersWithSpaces>
+  <o:Version>9.2720</o:Version>
+ </o:DocumentProperties>
+ <o:OfficeDocumentSettings>
+  <o:RelyOnVML/>
+  <o:AllowPNG/>
+ </o:OfficeDocumentSettings>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+@font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:2;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:0 268435456 0 0 -2147483648 0;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:553679495 -2147483648 8 0 66047 0;}
+@font-face
+	{font-family:Verdana;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:536871559 0 0 0 415 0;}
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Tahoma;
+	mso-fareast-font-family:"Times New Roman";}
+h1
+	{mso-style-parent:"";
+	mso-style-next:"Text\,t";
+	margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	line-height:24.0pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:22.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Verdana;
+	mso-bidi-font-family:Tahoma;
+	mso-font-kerning:12.0pt;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+h2
+	{mso-style-parent:"Heading 1";
+	mso-style-next:"Text\,t";
+	margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	line-height:24.0pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	font-size:22.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Verdana;
+	mso-bidi-font-family:Tahoma;
+	color:gray;
+	mso-font-kerning:12.0pt;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+h3
+	{mso-style-parent:"Heading 1";
+	mso-style-next:"Text\,t";
+	margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	line-height:24.0pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:3;
+	font-size:22.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Verdana;
+	mso-bidi-font-family:Tahoma;
+	color:silver;
+	mso-font-kerning:12.0pt;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+h4
+	{mso-style-parent:"Heading 1";
+	mso-style-next:"Text\,t";
+	margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	line-height:20.0pt;
+	mso-pagination:widow-orphan;
+	mso-outline-level:4;
+	font-size:18.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Verdana;
+	mso-bidi-font-family:Tahoma;
+	mso-font-kerning:12.0pt;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+h5
+	{mso-style-parent:"Heading 1";
+	mso-style-next:"Text\,t";
+	margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	line-height:16.0pt;
+	mso-pagination:widow-orphan;
+	mso-outline-level:5;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Verdana;
+	mso-bidi-font-family:Tahoma;
+	mso-font-kerning:12.0pt;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+h6
+	{mso-style-parent:"Heading 1";
+	mso-style-next:"Text\,t";
+	margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-outline-level:6;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-bidi-font-family:Tahoma;
+	mso-font-kerning:12.0pt;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.MsoBodyTextIndent, li.MsoBodyTextIndent, div.MsoBodyTextIndent
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:12.0pt;
+	margin-left:.25in;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:Tahoma;
+	font-weight:bold;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{margin-right:0in;
+	mso-margin-top-alt:auto;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Tahoma;
+	mso-fareast-font-family:"Times New Roman";}
+p.Text, li.Text, div.Text
+	{mso-style-name:"Text\,t";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.Figure, li.Figure, div.Figure
+	{mso-style-name:"Figure\,fig";
+	mso-style-parent:"Text\,t";
+	mso-style-next:"Text\,t";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:12.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.Code, li.Code, div.Code
+	{mso-style-name:"Code\,c";
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	line-height:15.0pt;
+	mso-pagination:widow-orphan;
+	tab-stops:.25in .5in .75in 1.0in 1.25in 1.5in 1.75in 2.0in 2.25in;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.Label, li.Label, div.Label
+	{mso-style-name:"Label\,l";
+	mso-style-parent:"Text\,t";
+	mso-style-next:"Text\,t";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:navy;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.NumberedList1, li.NumberedList1, div.NumberedList1
+	{mso-style-name:"Numbered List 1\,nl1";
+	mso-style-parent:"Text\,t";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.25in;
+	text-indent:-.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l4 level1 lfo2;
+	tab-stops:.25in list .5in;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.LabelSpecial, li.LabelSpecial, div.LabelSpecial
+	{mso-style-name:"Label Special\,ls";
+	mso-style-parent:"Text\,t";
+	mso-style-next:"Numbered List 1\,nl1";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:maroon;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.NumberedList2, li.NumberedList2, div.NumberedList2
+	{mso-style-name:"Numbered List 2\,nl2";
+	mso-style-parent:"Text\,t";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.5in;
+	text-indent:-.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l5 level1 lfo4;
+	tab-stops:.5in list .75in;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.Syntax, li.Syntax, div.Syntax
+	{mso-style-name:"Syntax\,s";
+	mso-style-parent:"Text\,t";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.TableSpacingAfter, li.TableSpacingAfter, div.TableSpacingAfter
+	{mso-style-name:"Table Spacing After\,tsa";
+	mso-style-parent:"Text\,t";
+	mso-style-next:"Text\,t";
+	margin:0in;
+	margin-bottom:.0001pt;
+	line-height:6.0pt;
+	mso-pagination:widow-orphan;
+	font-size:6.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:olive;}
+p.CodeinList2, li.CodeinList2, div.CodeinList2
+	{mso-style-name:"Code in List 2\,c2";
+	mso-style-parent:"Code\,c";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	line-height:15.0pt;
+	mso-pagination:widow-orphan;
+	tab-stops:.75in 1.0in 1.25in 1.5in 1.75in 2.0in 2.25in 2.5in 2.75in;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.TextinList2, li.TextinList2, div.TextinList2
+	{mso-style-name:"Text in List 2\,t2";
+	mso-style-parent:"Text\,t";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.5in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.FigureinList2, li.FigureinList2, div.FigureinList2
+	{mso-style-name:"Figure in List 2\,fig2";
+	mso-style-parent:"Figure\,fig";
+	mso-style-next:"Text in List 2\,t2";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:12.0pt;
+	margin-left:.5in;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.FigureEmbedded, li.FigureEmbedded, div.FigureEmbedded
+	{mso-style-name:"Figure Embedded\,fige";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:12.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:olive;}
+p.TextinList1, li.TextinList1, div.TextinList1
+	{mso-style-name:"Text in List 1\,t1";
+	mso-style-parent:"Text\,t";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.LabelinList1, li.LabelinList1, div.LabelinList1
+	{mso-style-name:"Label in List 1\,l1";
+	mso-style-parent:"Label\,l";
+	mso-style-next:"Text in List 1\,t1";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:navy;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.CodeinList1, li.CodeinList1, div.CodeinList1
+	{mso-style-name:"Code in List 1\,c1";
+	mso-style-parent:"Code\,c";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.25in;
+	margin-bottom:.0001pt;
+	line-height:15.0pt;
+	mso-pagination:widow-orphan;
+	tab-stops:.5in .75in 1.0in 1.25in 1.5in 1.75in 2.0in 2.25in 2.5in;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.FigureinList1, li.FigureinList1, div.FigureinList1
+	{mso-style-name:"Figure in List 1\,fig1";
+	mso-style-parent:"Figure\,fig";
+	mso-style-next:"Text in List 1\,t1";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:12.0pt;
+	margin-left:.25in;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.AlertText, li.AlertText, div.AlertText
+	{mso-style-name:"Alert Text\,at";
+	mso-style-parent:"";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.AlertTextinList1, li.AlertTextinList1, div.AlertTextinList1
+	{mso-style-name:"Alert Text in List 1\,at1";
+	mso-style-parent:"Alert Text\,at";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.5in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.AlertTextinList2, li.AlertTextinList2, div.AlertTextinList2
+	{mso-style-name:"Alert Text in List 2\,at2";
+	mso-style-parent:"Alert Text\,at";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.75in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.RevisionHistory, li.RevisionHistory, div.RevisionHistory
+	{mso-style-name:"Revision History\,rh";
+	mso-style-parent:"Text\,t";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:purple;
+	display:none;
+	mso-hide:all;}
+p.BulletedList1, li.BulletedList1, div.BulletedList1
+	{mso-style-name:"Bulleted List 1\,bl1";
+	mso-style-parent:"Text\,t";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.25in;
+	text-indent:-.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l13 level1 lfo6;
+	tab-stops:list .25in .5in;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.TextIndented, li.TextIndented, div.TextIndented
+	{mso-style-name:"Text Indented\,ti";
+	mso-style-parent:"Text\,t";
+	margin-top:0in;
+	margin-right:.25in;
+	margin-bottom:6.0pt;
+	margin-left:.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.BulletedList2, li.BulletedList2, div.BulletedList2
+	{mso-style-name:"Bulleted List 2\,bl2";
+	mso-style-parent:"Text\,t";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.5in;
+	text-indent:-.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l10 level1 lfo8;
+	tab-stops:list .5in;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.DefinedTerm, li.DefinedTerm, div.DefinedTerm
+	{mso-style-name:"Defined Term\,dt";
+	mso-style-parent:"Text\,t";
+	mso-style-next:"Definition\,d";
+	margin:0in;
+	margin-bottom:.0001pt;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.Definition, li.Definition, div.Definition
+	{mso-style-name:"Definition\,d";
+	mso-style-parent:"Text\,t";
+	mso-style-next:"Defined Term\,dt";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.GlueLinkText, li.GlueLinkText, div.GlueLinkText
+	{mso-style-name:"Glue Link Text\,glt";
+	mso-style-parent:"Text\,t";
+	mso-style-next:"Text\,t";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.IndexTag, li.IndexTag, div.IndexTag
+	{mso-style-name:"Index Tag\,it";
+	mso-style-parent:"Text\,t";
+	margin-top:0in;
+	margin-right:1.0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	background:#DDFFFF;
+	mso-shading:windowtext;
+	mso-pattern:gray-25 aqua;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	display:none;
+	mso-hide:all;}
+p.Copyright, li.Copyright, div.Copyright
+	{mso-style-name:"Copyright\,copy";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:olive;}
+p.PrintDivisionTitle, li.PrintDivisionTitle, div.PrintDivisionTitle
+	{mso-style-name:"Print Division Title\,pdt";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:olive;}
+p.PrintDivisionNumber, li.PrintDivisionNumber, div.PrintDivisionNumber
+	{mso-style-name:"Print Division Number\,pdn";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:olive;}
+p.PrintMSCorp, li.PrintMSCorp, div.PrintMSCorp
+	{mso-style-name:"Print MS Corp\,pms";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:olive;}
+p.LabelinList2, li.LabelinList2, div.LabelinList2
+	{mso-style-name:"Label in List 2\,l2";
+	mso-style-parent:"Label\,l";
+	mso-style-next:"Text in List 2\,t2";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.5in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:navy;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+span.LinkText
+	{mso-style-name:"Link Text\,lt";
+	color:blue;
+	text-decoration:underline;
+	text-underline:double;}
+span.LinkID
+	{mso-style-name:"Link ID\,lid";
+	color:red;
+	display:none;
+	mso-hide:all;}
+span.Bold
+	{mso-style-name:"Bold\,b";
+	font-weight:bold;}
+span.BoldItalic
+	{mso-style-name:"Bold Italic\,bi";
+	font-weight:bold;
+	font-style:italic;}
+span.Italic
+	{mso-style-name:"Italic\,i";
+	font-style:italic;}
+p.TableFootnote, li.TableFootnote, div.TableFootnote
+	{mso-style-name:"Table Footnote\,tf";
+	margin-right:0in;
+	mso-margin-top-alt:auto;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Tahoma;
+	mso-fareast-font-family:"Times New Roman";}
+p.TableFootnoteinList1, li.TableFootnoteinList1, div.TableFootnoteinList1
+	{mso-style-name:"Table Footnote in List 1\,tf1";
+	mso-style-parent:"Table Footnote\,tf";
+	mso-style-next:"Text in List 1\,t1";
+	margin-top:2.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.25in;
+	line-height:9.0pt;
+	mso-pagination:widow-orphan;
+	border:none;
+	mso-border-top-alt:solid windowtext .5pt;
+	padding:0in;
+	mso-padding-alt:1.0pt 0in 0in 0in;
+	font-size:8.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.TableFootnoteinList2, li.TableFootnoteinList2, div.TableFootnoteinList2
+	{mso-style-name:"Table Footnote in List 2\,tf2";
+	mso-style-parent:"Table Footnote\,tf";
+	mso-style-next:"Text in List 2\,t2";
+	margin-top:2.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.5in;
+	line-height:9.0pt;
+	mso-pagination:widow-orphan;
+	border:none;
+	mso-border-top-alt:solid windowtext .5pt;
+	padding:0in;
+	mso-padding-alt:1.0pt 0in 0in 0in;
+	font-size:8.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+@list l0
+	{mso-list-id:77531098;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-888790202 -1504265372 2141381120 -601560872 1271972522 1861929804 -941749194 -235998520 -2121124850 2110012676;}
+@list l0:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l0:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1
+	{mso-list-id:109669096;
+	mso-list-type:hybrid;
+	mso-list-template-ids:165071710 1494542354 -1851386052 -715731300 -194061712 -1124671102 -24617434 777840368 413146956 -388476060;}
+@list l1:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l2
+	{mso-list-id:340665259;
+	mso-list-type:hybrid;
+	mso-list-template-ids:495851176 -1809676312 1761254388 1808143820 1984733066 505338232 1865031056 1826403326 -1057214548 974663940;}
+@list l2:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l3
+	{mso-list-id:356472287;
+	mso-list-type:hybrid;
+	mso-list-template-ids:708860168 525611294 -652436962 342766404 620905542 -1051834352 -162755024 1289488380 -1183409430 -1748868760;}
+@list l3:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l4
+	{mso-list-id:356852170;
+	mso-list-template-ids:-516918242;}
+@list l4:level1
+	{mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5
+	{mso-list-id:358627395;
+	mso-list-template-ids:759335382;}
+@list l5:level1
+	{mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l6
+	{mso-list-id:404648057;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1545488390 -1720809388 1715089704 1402255144 294808038 605084112 2106466464 -154207684 1681310872 1938337162;}
+@list l6:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l6:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:"Courier New";
+	mso-bidi-font-family:"Times New Roman";}
+@list l7
+	{mso-list-id:467281849;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1389775872 854327556 1026309256 -1359574590 1117712888 1287159878 1995765350 1424930378 -678791962 362807472;}
+@list l7:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l8
+	{mso-list-id:520290327;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1505935564 67698703 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l8:level1
+	{mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l9
+	{mso-list-id:582102817;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-2028689962 -2073795416 178312854 -119224504 -1704842686 -1945589246 2031919584 -1911910828 -1169546596 674004594;}
+@list l9:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l10
+	{mso-list-id:671183883;
+	mso-list-template-ids:858027426;}
+@list l10:level1
+	{mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l10:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l10:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l10:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l10:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l10:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l10:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l10:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l10:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l11
+	{mso-list-id:773592584;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1442676402 -86603758 -2008414970 712693402 1927311532 281849312 -433278660 -886397548 -909217988 -427889540;}
+@list l11:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l11:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l12
+	{mso-list-id:855466960;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-574877818 221811778 376214112 -368429068 339278114 502800134 1946732922 -308920764 402429946 -377311310;}
+@list l12:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l13
+	{mso-list-id:876819360;
+	mso-list-template-ids:1791795658;}
+@list l13:level1
+	{mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l13:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l13:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l13:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l13:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l13:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l13:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l13:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l13:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l14
+	{mso-list-id:901216116;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-772912334 1085579416 -1785403692 -658360138 217631752 30021836 -1733524306 -1638630260 -1451221948 -1670762686;}
+@list l14:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l14:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l15
+	{mso-list-id:1075709477;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-894406560 2140700792 -648744958 153363950 1687336902 -588362038 878603144 -1204383314 884614198 -1781241230;}
+@list l15:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l15:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l16
+	{mso-list-id:1270774397;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-520456616 -1397427528 644634876 1470255430 1582435606 1981737056 667066656 -951836832 562311640 -1794486880;}
+@list l16:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l17
+	{mso-list-id:1293439713;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1883604240 -560931160 1594681368 -1822111498 1004564852 -940822802 -1134690186 -64563494 -34411054 1054608778;}
+@list l17:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l18
+	{mso-list-id:1434202543;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1735681696 1674465158 1481437420 231746910 -1048966584 -1285933848 -254275976 -1742691746 -1868035966 -903968956;}
+@list l18:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l19
+	{mso-list-id:1435126755;
+	mso-list-type:hybrid;
+	mso-list-template-ids:40505132 1653118656 -1099692912 1895093730 -708402760 -1731136354 468106952 -1357632746 1016652202 -941358756;}
+@list l19:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l20
+	{mso-list-id:1501970134;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1003582328 -1072418560 909521892 1080035632 -228678770 451980224 2066765920 -1369044334 -103936416 -625302960;}
+@list l20:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l21
+	{mso-list-id:1505440394;
+	mso-list-type:hybrid;
+	mso-list-template-ids:788404020 -2067085838 -1992680924 941504048 403195732 -856885918 1772910196 -1032939426 -924166580 474353518;}
+@list l21:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l22
+	{mso-list-id:1592813720;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-538509852 -1354620522 -954008862 1841837338 -1963168958 695753306 -1122741758 -1861341774 1976967916 195056392;}
+@list l22:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l23
+	{mso-list-id:1595943801;
+	mso-list-type:hybrid;
+	mso-list-template-ids:450532468 -1678713732 591292324 1413760438 -325028566 1716015348 443579330 652354924 522461740 2002007814;}
+@list l23:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l24
+	{mso-list-id:1667855195;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1773081952 -1492848464 1506945732 -135481506 793030644 -1189438748 -1691813404 1064999126 -644565932 -1962784552;}
+@list l24:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l25
+	{mso-list-id:1701859751;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1419005344 1333720100 -970569588 2122107830 -1737834430 1073101146 -1551888256 -2058603044 -1156041490 -299739534;}
+@list l25:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l26
+	{mso-list-id:1851261782;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1505935564 67698689 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l26:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l0:level2 lfo12
+	{mso-level-start-at:0;
+	mso-level-number-format:bullet;
+	mso-level-numbering:continue;
+	mso-level-text:o;
+	mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:"Courier New";
+	mso-bidi-font-family:"Times New Roman";}
+@list l0:level2 lfo13
+	{mso-level-start-at:0;
+	mso-level-numbering:continue;
+	mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+</head>
+
+<body lang=EN-US link=blue vlink=purple style='tab-interval:.25in'>
+
+<div class=Section1>
+
+<h2 style='line-height:24.0pt;mso-line-height-rule:exactly'>Code Access Security Sample<o:p></o:p></h2>
+
+<p class=MsoNormal><span style='font-family:Verdana'>This document contains the
+release information for the COM+ 2.0 Code Access Security sample.<span
+style="mso-spacerun: yes">  </span>You will find the following sections below: <o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Verdana'><span style="mso-spacerun:
+yes"> </span><o:p></o:p></span></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l7 level1 lfo9;tab-stops:list .5in'><span style='font-family:
+     Verdana'><a href="#_Sample_Overview">Sample Overview</a><o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l7 level1 lfo9;tab-stops:list .5in'><a name=version></a><a
+     href="#_Location_of_Sample"><span style='mso-bookmark:version'><span
+     style='font-family:Verdana'>Location of the sample</span></span><span
+     style='mso-bookmark:version'></span></a><span style='mso-bookmark:version'><span
+     style='font-family:Verdana'><o:p></o:p></span></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l7 level1 lfo9;tab-stops:list .5in'><span style='mso-bookmark:
+     version'></span><a href="#_Building_the_Sample"><span style='mso-bookmark:
+     version'><span style='font-family:Verdana'>Building the sample</span></span><span
+     style='mso-bookmark:version'></span></a><span style='mso-bookmark:version'><span
+     style='font-family:Verdana'><o:p></o:p></span></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l7 level1 lfo9;tab-stops:list .5in'><span style='mso-bookmark:
+     version'></span><a href="#_Running_the_Sample"><span style='mso-bookmark:
+     version'><span style='font-family:Verdana'>Running the sample</span></span><span
+     style='mso-bookmark:version'></span></a><span style='mso-bookmark:version'><span
+     style='font-family:Verdana'><o:p></o:p></span></span></li>
+</ul>
+
+<h4><span style='mso-bookmark:version'><a name="_What_this_sample"></a><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></h4>
+
+<h4><span style='mso-bookmark:version'><a name="_What_this_sample_1"></a><a
+name="_Sample_Overview"></a>Sample Overview</span></h4>
+
+<p class=MsoNormal style='margin-bottom:12.0pt'><span style='mso-bookmark:version'><span
+style='font-family:Verdana'>The purpose of this sample is to introduce developers to the mechanics of code access security. Code access security is a mechanism that grants/denies access to resources within a method call. For example, code written by Microsoft may be allowed to write to the disk while code from another company may be forbidden from accessing the disk. This control is enforced even if the code from both companies is used within a single application.
+This sample repeatedly attempts to access a disk file and an environment variable. Before each attempt, the code access permissions are changed to see the affect.
+<span
+style="mso-spacerun: yes">  </span><o:p></o:p></span></span></p>
+
+<p class=Text><span style='mso-bookmark:version'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<h4><span style='mso-bookmark:version'><a name="_Getting_Started"></a><a
+name="_Location_of_Sample"></a>Location of the Sample</span></h4>
+
+<p class=MsoNormal style='margin-bottom:12.0pt'><span style='mso-bookmark:version'><span
+style='font-family:Verdana'>This sample list located in the <b>Permissions</b>
+directory of the COM+ 2.0 SDK sample directories.<o:p></o:p></span></span></p>
+
+<p class=TextinList1 style='margin-bottom:12.0pt;line-height:normal'><span
+style='mso-bookmark:version'><b><span style='mso-bidi-font-family:Tahoma'>For
+Example:<o:p></o:p></span></b></span></p>
+
+<p class=TextinList1 style='margin-bottom:12.0pt;line-height:normal'><span
+style='mso-bookmark:version'><b><span style='font-family:"Courier New"'>C:\Program Files\COM20SDK\Samples\Permissions<o:p></o:p></span></b></span></p>
+
+<p class=TextinList1 style='margin-bottom:12.0pt;line-height:normal'><span
+style='mso-bookmark:version'><b><span style='font-family:"Courier New"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></b></span></p>
+
+<h4><span style='mso-bookmark:version'><a name="_Building_the_Sample"></a>Building
+the Sample</span></h4>
+
+<p class=MsoNormal style='margin-bottom:12.0pt'><span style='mso-bookmark:version'><span
+style='font-family:Verdana'>In order to properly build and run this sample, the
+following steps need to be performed prior to building and running the sample…<o:p></o:p></span></span></p>
+
+<p class=NumberedList2 style='margin-bottom:12.0pt;line-height:normal;
+mso-list:l26 level1 lfo33;tab-stops:list .5in'><span style='mso-bookmark:version'><![if !supportLists]><span
+style='font-family:Symbol;mso-bidi-font-family:Tahoma'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]><span style='mso-bidi-font-family:Tahoma'>Type <b>NMAKE All</b> from the command line.<o:p></o:p></span></span></p>
+
+<p class=NumberedList2 style='margin-bottom:12.0pt;text-indent:0in;line-height:
+normal;mso-list:none;tab-stops:.25in'><span style='mso-bookmark:version'><b><span
+style='mso-bidi-font-family:Tahoma'>For Example:<o:p></o:p></span></b></span></p>
+
+<p class=TextinList1 style='margin-top:0in;margin-right:0in;margin-bottom:12.0pt;
+margin-left:.5in;line-height:normal'><span style='mso-bookmark:version'><b><span
+style='font-family:"Courier New"'>C:\Program Files\COM20SDK\Samples\Permissions\:&gt;NMAKE All<o:p></o:p></span></b></span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt'><span style='mso-bookmark:version'><span
+style='font-family:Verdana'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></span></p>
+
+<h4><span style='mso-bookmark:version'><a name="_Running_the_Sample"></a>Running
+the Sample</span></h4>
+
+<p class=MsoNormal style='margin-bottom:12.0pt'><span style='mso-bookmark:version'><span
+style='font-family:Verdana'>In order to run this sample, follow the
+instructions listed below.<o:p></o:p></span></span></p>
+
+<ul style='margin-top:0in' type=disc>
+ <li class=MsoNormal style='margin-bottom:12.0pt;mso-list:l26 level1 lfo33;
+     tab-stops:list .5in'><span style='mso-bookmark:version'><span
+     style='font-family:Verdana'>Type <b>Permissions</b> from the command line.<o:p></o:p></span></span></li>
+</ul>
+
+<p class=MsoBodyTextIndent style='margin-left:.5in'><span style='mso-bookmark:
+version'>For Example: </span></p>
+
+<p class=MsoBodyTextIndent style='margin-left:.5in'><span style='mso-bookmark:
+version'><span style='font-family:"Courier New"'>C:\Program Files\COM20SDK\Samples\Permissions\:&gt;Permissions<o:p></o:p></span></span></p>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,208 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/services/MathService/MathServiceClient.src&file=VB/MathService.sdl" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvTWF0aFNlcnZpY2Uuc2RseF9feHhfeHhfeF9feA==7a3419ac" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/MathService.sdl</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/services/mathservice/mathserviceclientaspxsource.htm'>MathServiceClient.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/services/mathservice/mathservicesdlsource.htm'>MathService.sdl</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/services/mathservice/mathservicecssource.htm'>MathService.cs</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/services/mathservice/makeservicebatsource.htm'>makeservice.bat</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/services/mathservice/vb/mathserviceclientaspxsource.htm'>VB/MathServiceClient.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/services/mathservice/vb/mathservicesdlsource.htm'>VB/MathService.sdl</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/services/mathservice/vb/mathservicevbsource.htm'>VB/MathService.vb</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/services/mathservice/vb/makeservicebatsource.htm'>VB/makeservice.bat</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><?xml version="1.0"?>
+<serviceDescription xmlns:s0="http://tempuri.org/" name="MathService" targetNamespace="http://tempuri.org/" xmlns="urn:schemas-xmlsoap-org:sdl.2000-01-25">
+  <soap xmlns="urn:schemas-xmlsoap-org:soap-sdl-2000-01-25">
+    <service>
+      <addresses>
+        <address uri="http://localhost/QuickStart/aspplus/samples/services/MathService/VB/MathService.asmx"/>
+      </addresses>
+      <requestResponse name="Add" soapAction="http://tempuri.org/Add">
+        <request ref="s0:Add"/>
+        <response ref="s0:AddResult"/>
+      </requestResponse>
+      <requestResponse name="Subtract" soapAction="http://tempuri.org/Subtract">
+        <request ref="s0:Subtract"/>
+        <response ref="s0:SubtractResult"/>
+      </requestResponse>
+      <requestResponse name="Multiply" soapAction="http://tempuri.org/Multiply">
+        <request ref="s0:Multiply"/>
+        <response ref="s0:MultiplyResult"/>
+      </requestResponse>
+      <requestResponse name="Divide" soapAction="http://tempuri.org/Divide">
+        <request ref="s0:Divide"/>
+        <response ref="s0:DivideResult"/>
+      </requestResponse>
+    </service>
+  </soap>
+  <httppost xmlns="urn:schemas-xmlsoap-org:post-sdl-2000-01-25">
+    <service>
+      <requestResponse name="Add" href="http://localhost/QuickStart/aspplus/samples/services/MathService/VB/MathService.asmx/Add">
+        <request>
+          <form>
+            <input name="A"/>
+            <input name="B"/>
+          </form>
+        </request>
+        <response>
+          <mimeXml ref="s0:int"/>
+        </response>
+      </requestResponse>
+      <requestResponse name="Subtract" href="http://localhost/QuickStart/aspplus/samples/services/MathService/VB/MathService.asmx/Subtract">
+        <request>
+          <form>
+            <input name="A"/>
+            <input name="B"/>
+          </form>
+        </request>
+        <response>
+          <mimeXml ref="s0:int"/>
+        </response>
+      </requestResponse>
+      <requestResponse name="Multiply" href="http://localhost/QuickStart/aspplus/samples/services/MathService/VB/MathService.asmx/Multiply">
+        <request>
+          <form>
+            <input name="A"/>
+            <input name="B"/>
+          </form>
+        </request>
+        <response>
+          <mimeXml ref="s0:int"/>
+        </response>
+      </requestResponse>
+      <requestResponse name="Divide" href="http://localhost/QuickStart/aspplus/samples/services/MathService/VB/MathService.asmx/Divide">
+        <request>
+          <form>
+            <input name="A"/>
+            <input name="B"/>
+          </form>
+        </request>
+        <response>
+          <mimeXml ref="s0:int"/>
+        </response>
+      </requestResponse>
+    </service>
+  </httppost>
+  <httpget xmlns="urn:schemas-xmlsoap-org:get-sdl-2000-01-25">
+    <service>
+      <requestResponse name="Add" href="http://localhost/QuickStart/aspplus/samples/services/MathService/VB/MathService.asmx/Add">
+        <request>
+          <param name="A"/>
+          <param name="B"/>
+        </request>
+        <response>
+          <mimeXml ref="s0:int"/>
+        </response>
+      </requestResponse>
+      <requestResponse name="Subtract" href="http://localhost/QuickStart/aspplus/samples/services/MathService/VB/MathService.asmx/Subtract">
+        <request>
+          <param name="A"/>
+          <param name="B"/>
+        </request>
+        <response>
+          <mimeXml ref="s0:int"/>
+        </response>
+      </requestResponse>
+      <requestResponse name="Multiply" href="http://localhost/QuickStart/aspplus/samples/services/MathService/VB/MathService.asmx/Multiply">
+        <request>
+          <param name="A"/>
+          <param name="B"/>
+        </request>
+        <response>
+          <mimeXml ref="s0:int"/>
+        </response>
+      </requestResponse>
+      <requestResponse name="Divide" href="http://localhost/QuickStart/aspplus/samples/services/MathService/VB/MathService.asmx/Divide">
+        <request>
+          <param name="A"/>
+          <param name="B"/>
+        </request>
+        <response>
+          <mimeXml ref="s0:int"/>
+        </response>
+      </requestResponse>
+    </service>
+  </httpget>
+  <schema targetNamespace="http://tempuri.org/" attributeFormDefault="qualified" elementFormDefault="qualified" xmlns="http://www.w3.org/1999/XMLSchema">
+    <element name="Add">
+      <complexType>
+        <all>
+          <element name="A" type="int"/>
+          <element name="B" type="int"/>
+        </all>
+      </complexType>
+    </element>
+    <element name="AddResult">
+      <complexType>
+        <all>
+          <element name="result" type="int"/>
+        </all>
+      </complexType>
+    </element>
+    <element name="int" type="int"/>
+    <element name="Subtract">
+      <complexType>
+        <all>
+          <element name="A" type="int"/>
+          <element name="B" type="int"/>
+        </all>
+      </complexType>
+    </element>
+    <element name="SubtractResult">
+      <complexType>
+        <all>
+          <element name="result" type="int"/>
+        </all>
+      </complexType>
+    </element>
+    <element name="Multiply">
+      <complexType>
+        <all>
+          <element name="A" type="int"/>
+          <element name="B" type="int"/>
+        </all>
+      </complexType>
+    </element>
+    <element name="MultiplyResult">
+      <complexType>
+        <all>
+          <element name="result" type="int"/>
+        </all>
+      </complexType>
+    </element>
+    <element name="Divide">
+      <complexType>
+        <all>
+          <element name="A" type="int"/>
+          <element name="B" type="int"/>
+        </all>
+      </complexType>
+    </element>
+    <element name="DivideResult">
+      <complexType>
+        <all>
+          <element name="result" type="int"/>
+        </all>
+      </complexType>
+    </element>
+  </schema>
+</serviceDescription>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

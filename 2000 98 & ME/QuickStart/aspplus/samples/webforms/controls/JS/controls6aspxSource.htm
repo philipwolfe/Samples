@@ -1,0 +1,87 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/controls/controls6.src&file=JS/controls6.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfSlMvY29udHJvbHM2LmFzcFx4eF9feHhfeHhfeF9feA==ade1ba50" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">JS/controls6.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/controls/controls6aspxsource.htm'>controls6.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/controls/controls_navigationtargetaspxsource.htm'>controls_navigationtarget.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/controls/vb/controls6aspxsource.htm'>VB/controls6.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/controls/vb/controls_navigationtargetaspxsource.htm'>VB/controls_navigationtarget.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/controls/js/controls6aspxsource.htm'>JS/controls6.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/controls/js/controls_navigationtargetaspxsource.htm'>JS/controls_navigationtarget.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><html>
+
+    <script language="JScript" runat="server">
+
+        function EnterBtn_Click(Src : Object, E : EventArgs) : void  {
+
+            // Navigate to a new page (passing name as a querystring argument) if
+            // user has entered a valid name value in the <asp:textbox>
+
+            if (Name.Text != "") {
+               var QueryString:String = System.Web.HttpUtility.UrlEncodeToString(Name.Text, System.Text.Encoding.UTF8);
+               Page.Navigate("Controls_NavigationTarget.htm?name=" + QueryString);
+            }
+            else {
+               Message.Text = "Hey! Please enter your name in the textbox!";
+            }
+        }
+
+    </script>
+
+    <body>
+
+       <h3><font face="Verdana">Performing Page Navigation (Scenario 2)</font></h3>
+
+       <p>
+
+       This sample demonstrates how to navigate to a new page from within a &lt;asp:button&gt; click event,
+       passing a &lt;asp:textbox&gt; value as a querystring argument (validating first that the a legal
+       textbox value has been specified).
+
+       <p>
+
+       <hr>
+
+       <form action="controls6.htm" runat=server>
+
+          <font face="Verdana"> 
+
+             Please enter your name: <asp:textbox id="Name" runat=server/> 
+                                     <asp:button text="Enter" Onclick="EnterBtn_Click" runat=server/>
+
+             <p>
+
+             <asp:label id="Message" forecolor="red" font-bold="true" runat=server/>
+
+          </font>
+
+       </form>
+
+    </body>
+
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

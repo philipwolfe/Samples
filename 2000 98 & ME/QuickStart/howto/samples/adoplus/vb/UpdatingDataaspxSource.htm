@@ -1,0 +1,120 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/adoplus/vb/updatingdata.src&file=UpdatingData.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVXBkYXRpbmdEYXRhLmFzcFx4eF9feHhfeHhfeF9feA==82aae2c7" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">UpdatingData.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../howto/samples/adoplus/vb/updatingdataaspxsource.htm'>UpdatingData.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../howto/samples/adoplus/cs/updatingdataaspxsource.htm'>..\CS\UpdatingData.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><html>
+<%@ Page Language="VB" Debug="true" %>
+<%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="System.Data.SQL" %>
+
+<head>
+<script language="VB" runat="server">
+
+	Dim dsCustomers as DataSet
+
+	protected sub Page_Load(Src as object, E as EventArgs)
+
+		'Create a new Connection and DataSetCommand
+		Dim myConnection as SQLConnection
+		Dim myDSC as SQLDataSetCommand
+		Dim workParam as SQLParameter
+
+		myConnection = new SQLConnection("server=localhost;uid=sa;pwd=;database=northwind")
+		myDSC = new SQLDataSetCommand("select * from Region", myConnection)
+
+		'Restore database to original format before continuing.
+		Cleanup(myConnection)
+
+		'Build the insert Command
+		myDSC.InsertCommand = new SQLCommand("Insert into Region (RegionID, RegionDescription) VALUES (@RegionID, @RegionDescription)", myConnection)
+
+		workParam = myDSC.InsertCommand.Parameters.Add(new SQLParameter("@RegionID", SQLDataType.Int))
+		workParam.SourceColumn = "RegionID"
+		workParam.SourceVersion = DataRowVersion.Current
+
+		workParam = myDSC.InsertCommand.Parameters.Add(new SQLParameter("@RegionDescription", SQLDataType.NChar, 50))
+		workParam.SourceVersion = DataRowVersion.Current
+		workParam.SourceColumn = "RegionDescription"
+
+		'Build the update command
+		myDSC.UpdateCommand = new SQLCommand("Update Region Set RegionDescription = @RegionDescription WHERE RegionID = @RegionID", myConnection)
+
+		workParam = myDSC.UpdateCommand.Parameters.Add(new SQLParameter("@RegionID", SQLDataType.Int))
+		workParam.SourceColumn = "RegionID"
+		workParam.SourceVersion = DataRowVersion.Original
+
+		workParam = myDSC.UpdateCommand.Parameters.Add(new SQLParameter("@RegionDescription", SQLDataType.NChar, 50))
+		workParam.SourceVersion = DataRowVersion.Current
+		workParam.SourceColumn = "RegionDescription"
+
+		Dim myDataSet as DataSet
+		myDataSet = new DataSet()
+
+		'//Set the MissingSchemaAction property to AddWithKey because FillDataSet will not cause primary key & unique key information to be retrieved unless AddWithKey is specified. 
+		myDSC.MissingSchemaAction = MissingSchemaAction.AddWithKey
+		myDSC.FillDataSet(myDataSet, "Region")
+
+		Dim changeRow as DataRow
+		changeRow = myDataSet.Tables("Region").Rows.Find(2)
+		changeRow(1) = "Changed this region desc"
+
+		Dim newRow as DataRow
+		newRow = myDataSet.Tables("Region").NewRow()
+		newRow(0) = 901
+		newRow(1) = "A new region"
+		myDataSet.Tables("Region").Rows.Add(newRow)
+
+		try
+			myDSC.Update(myDataSet, "Region")
+			Response.Write("DataSet transaction succeeded!")
+
+		catch myException as Exception
+			Response.Write(myException.ToString())
+		end try
+	end sub
+
+	protected sub Cleanup(myConnection as SQLConnection)
+		myConnection.Open()
+		Dim mySQLCommand as SQLCommand
+		mySQLCommand = new SQLCommand("DELETE FROM Region WHERE RegionID = '901'", myConnection)
+		mySQLCommand.ExecuteNonQuery()
+		myConnection.Close()
+	end sub
+
+</script>
+</head>
+
+<body>
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>
+</span>
+
+    </form>

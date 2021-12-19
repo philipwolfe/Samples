@@ -1,0 +1,61 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/config/browscaps.src&file=VB/BrowsCaps.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvQnJvd3NDYXBzLmFzcFx4eF9feHhfeHhfeF9feA==188d7793" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/BrowsCaps.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../aspplus/samples/config/browscapsaspxsource.htm'>BrowsCaps.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../aspplus/samples/config/vb/browscapsaspxsource.htm'>VB/BrowsCaps.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Page Language="VB" %>
+
+<html>
+<body style="font: 10pt verdana">
+
+  <h3>Retrieving Browser Capabilities</h3>
+
+  Boolean ActiveXControls = <%=Request.Browser.ActiveXControls.ToString()%><br>
+  Boolean AOL = <%=Request.Browser.AOL.ToString()%><br>
+  Boolean BackgroundSounds = <%=Request.Browser.BackgroundSounds.ToString()%><br>
+  Boolean Beta = <%=Request.Browser.Beta.ToString()%><br>
+  String Browser = <%=Request.Browser.Browser%><br>
+  Boolean CDF = <%=Request.Browser.CDF.ToString()%><br>
+  Boolean Cookies = <%=Request.Browser.Cookies.ToString()%><br>
+  Boolean Crawler = <%=Request.Browser.Crawler.ToString()%><br>
+  Boolean Frames = <%=Request.Browser.Frames.ToString()%><br>
+  Boolean JavaApplets = <%=Request.Browser.JavaApplets.ToString()%><br>
+  Boolean JavaScript = <%=Request.Browser.JavaScript.ToString()%><br>
+  Int32 MajorVersion = <%=Request.Browser.MajorVersion.ToString()%><br>
+  Double MinorVersion = <%=Request.Browser.MinorVersion.ToString()%><br>
+  String Platform = <%=Request.Browser.Platform%><br>
+  Boolean Tables = <%=Request.Browser.Tables.ToString()%><br>
+  String Type = <%=Request.Browser.Type%><br>
+  Boolean VBScript = <%=Request.Browser.VBScript.ToString()%><br>
+  String Version = <%=Request.Browser.Version%><br>
+  Boolean Win16 = <%=Request.Browser.Win16.ToString()%><br>
+  Boolean Win32 = <%=Request.Browser.Win32.ToString()%><br>
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

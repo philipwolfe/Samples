@@ -1,0 +1,217 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Xml/NavigateXmlDocument/NavigateXmlDocument.src&file=VB/NavigateXmlDocument.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvTmF2aWdhdGVYbWxEb2N1bWVudC5hc3BceHhfX3h4X3h4X3hfX3g=9c879db2" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/NavigateXmlDocument.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../howto/samples/xml/navigatexmldocument/navigatexmldocumentcssource.htm'>NavigateXmlDocument.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../howto/samples/xml/navigatexmldocument/vb/navigatexmldocumentvbsource.htm'>VB/NavigateXmlDocument.vb</a> &nbsp;&nbsp<a href='../../../../../howto/samples/xml/navigatexmldocument/vb/navigatexmldocumentaspxsource.htm'>VB/NavigateXmlDocument.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>XML data: </b></td>
+        <td><a href='../../../../../howto/samples/xml/navigatexmldocument/booksxmlsource.htm'>books.xml</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Import Namespace="System" %>
+<%@ Import Namespace="System.IO" %>
+<%@ Assembly Name="System.Xml" %>
+<%@ Import Namespace="System.Xml" %>
+
+<script language="VB" runat="server">
+Public Class XmlDocumentSample
+
+	Private m_Document As String = ""
+	Private writer As StringWriter
+	
+	Public Function Start(args As String) As String
+	
+		Dim xmldocument As XmlDocument
+		Dim navigator As DocumentNavigator
+		
+		m_Document = args
+		writer = new StringWriter()
+		Console.SetOut(writer)
+
+        Try
+        
+            ' Load the XML from file
+			Console.WriteLine ()
+            Console.WriteLine ("Loading file 0 ...", m_Document)
+
+            xmldocument = new XmlDocument()
+            xmldocument.Load (m_Document)
+
+            Console.WriteLine ("XmlDocument loaded with XML data successfully ...")
+
+            ' Get a DocumentNavigator from the XmlDocument
+            Console.WriteLine ("Create a Navigator ...")
+            navigator = new DocumentNavigator(xmldocument)
+
+            ' Display contents
+            Console.WriteLine ("Display contents of the file 0", m_Document)
+            Console.WriteLine ()
+
+            navigator.MoveToDocument() ' Initialize the Navigator to start at the root
+            DisplayTree(navigator) ' Display all the nodes
+            
+            ' Find the price of the first book. Start at the root node
+            Console.WriteLine ()
+            Console.WriteLine ("Find the price of the first book by navigating nodes ...")
+            navigator.MoveToDocument()
+            DisplayNode (true, navigator) ' root node
+            DisplayNode (navigator.MoveToFirstChild(), navigator) ' ?xml version='1.0'? node
+            DisplayNode (navigator.MoveToNext(), navigator) '!-- This file ... node
+            DisplayNode (navigator.MoveToNext(), navigator) ' bookstore element
+            DisplayNode (navigator.MoveToFirstChild(), navigator) ' book element
+            DisplayNode (navigator.MoveToFirstChild(), navigator) ' title element
+            DisplayNode (navigator.MoveToNext(), navigator)' author element
+            DisplayNode (navigator.MoveToNext(), navigator) ' price Element
+            DisplayNode (navigator.MoveToFirstChild(), navigator) ' value of price element
+
+            ' Select the book titles
+            Console.WriteLine(ControlChars.CrLf + "Select the book titles ...")
+            navigator.MoveToDocument()
+            navigator.Select ("descendant::book/title")
+
+            Do While (navigator.MoveToNextSelected())
+            
+                Console.Write("<" + navigator.Name + ">" + navigator.InnerText + ControlChars.CrLf)
+			Loop
+         
+        Catch e As Exception
+            Console.WriteLine ("Exception: 0", e.ToString())
+
+		End Try
+		
+		Return(writer.ToString())
+
+	End Function
+	
+
+    ' Walks the XmlNavigator tree recursively 
+    Public Sub DisplayTree (navigator As XmlNavigator)
+    
+        If (navigator.HasChildren) Then
+        
+            navigator.MoveToChild(0)
+            Format (navigator)
+            DisplayTree (navigator) 
+            navigator.MoveToParent()
+        
+        End If
+        
+        Do While (navigator.MoveToNext())
+        
+            Format (navigator)
+            DisplayTree (navigator) 
+
+        Loop
+    
+	End Sub
+	
+    ' Format the output
+    Private Sub Format (navigator As XmlNavigator)
+    
+		Dim I As Integer
+		
+        If Not(navigator.HasChildren) Then
+        
+            Console.Write("<" + navigator.Name + ">" + navigator.Value + ControlChars.CrLf)
+        
+        Else
+        
+            Console.Write("<" + navigator.Name + ">")
+
+            If (navigator.HasAttributes) Then
+            
+                Console.Write(ControlChars.CrLf & "Attributes of <" + navigator.Name + ">" & ControlChars.CrLf)
+
+                For I = 0 To navigator.AttributeCount-1
+                
+                    navigator.PushPosition()
+                    navigator.MoveToAttribute(i)
+                    Console.Write("<" + navigator.Name + "> " + navigator.Value + " ")
+                    navigator.PopPosition()
+                
+                Next
+                
+            End If
+        
+            Console.WriteLine()
+        
+        End If
+           
+	End Sub
+	
+    Private Sub DisplayNode(success As Boolean, navigator As XmlNavigator)
+    
+        If (success And (navigator.NodeType = XmlNodeType.Text)) Then
+            Console.Write("<" + navigator.Name + ">" + navigator.Value + ControlChars.CrLf)
+        Else If (success) Then
+            Console.Write("<" + navigator.Name + ">"  + ControlChars.CrLf)
+        Else
+            Console.WriteLine()
+        End If
+    
+	End Sub
+
+End Class
+	
+</script>
+<html>
+<head>
+      	<link rel="stylesheet" href="intro.css">
+</head>
+<body style="background-color:f6e4c6">
+
+       	<form action="NavigateXmlDocument.htm" method="post" runat="server">
+       	<font>Input file: </font> 
+        <a href="../../../../../howto/samples/xml/navigatexmldocument/books.xml">books.xml</a>
+	<center>
+		&nbsp&nbsp&nbsp&nbsp<asp:button type=submit text="Run" OnClick="SubmitBtn_Click" runat="server"/></br>
+       	</form>
+	</center>
+	<p>
+
+	<table align="center">
+	<tr><th>Output from navigating file...</th><tr>
+	<tr><th><span></span></th></tr>
+	<tr><td><h4><xmp id="output" runat="server"/></h4></td></tr>
+	</table>
+
+</body>
+</html>
+
+<script language="VB" runat="server">
+
+Private Sub SubmitBtn_Click(sender As Object, e As EventArgs)
+		
+	Dim myXmlDocumentSample As XmlDocumentSample
+	
+	myXmlDocumentSample= new XmlDocumentSample()
+	output.InnerHtml = myXmlDocumentSample.Start(Server.MapPath("books.xml"))
+
+End Sub
+
+</script>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

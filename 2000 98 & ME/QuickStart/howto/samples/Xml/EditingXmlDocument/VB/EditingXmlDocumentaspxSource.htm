@@ -1,0 +1,246 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Xml/EditingXmlDocument/EditingXmlDocument.src&file=VB/EditingXmlDocument.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvRWRpdGluZ1htbERvY3VtZW50LmFzcFx4eF9feHhfeHhfeF9feA==8aa9dadd" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/EditingXmlDocument.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../howto/samples/xml/editingxmldocument/editingxmldocumentcssource.htm'>EditingXmlDocument.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../howto/samples/xml/editingxmldocument/vb/editingxmldocumentvbsource.htm'>VB/EditingXmlDocument.vb</a> &nbsp;&nbsp<a href='../../../../../howto/samples/xml/editingxmldocument/vb/editingxmldocumentaspxsource.htm'>VB/EditingXmlDocument.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>XML data: </b></td>
+        <td><a href='../../../../../howto/samples/xml/editingxmldocument/booksxmlsource.htm'>books.xml</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>XML saved: </b></td>
+        <td><a href='../../../../../howto/samples/xml/editingxmldocument/updatebooksxmlsource.htm'>updatebooks.xml</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Import Namespace="System" %>
+<%@ Import Namespace="System.IO" %>
+<%@ Assembly Name="System.Xml" %>
+<%@ Import Namespace="System.Xml" %>
+
+<script language="VB" runat=server>
+Public Class XmlDocumentSample
+
+	Private m_Document As String = ""
+    Private m_UpdatedDocument As String = ""
+	Private writer As StringWriter
+	
+	Public Function Start(args() As String) As String
+	
+		Dim file As File
+		Dim xmldocument As XmlDocument
+		Dim navigator As DocumentNavigator
+		Dim writer As StringWriter
+		Dim price As Double
+		
+		m_Document = args(0)
+		m_UpdatedDocument = args(1)
+		writer = new StringWriter()
+		Console.SetOut(writer)
+
+        Try
+            ' Make file writable
+            file = New File (m_UpdatedDocument)
+            file.Attributes = FileSystemAttributes.Normal
+
+            ' Load the XML from file
+            Console.WriteLine ()
+            Console.WriteLine ("Loading file {0} ...", m_Document)
+
+            xmldocument = new XmlDocument()
+            xmldocument.Load (m_Document)
+
+            Console.WriteLine ("XmlDocument loaded with XML data successfully ...")
+
+            ' Get a DocumentNavigator from the XmlDocument
+            Console.WriteLine ("Create a Navigator ...")
+            navigator = new DocumentNavigator(xmldocument)
+
+            ' Display contents
+            Console.WriteLine ("Contents of file {0}", m_Document)
+            Console.WriteLine ()
+
+            navigator.MoveToDocument()
+            DisplayTree(navigator)
+            
+            ' Increase all the book prices by 2%
+            Console.WriteLine(ControlChars.CrLf + "Increase all the book prices by 2% ...")
+            navigator.PushPosition()
+
+            navigator.Select ("descendant::book/price")
+
+            Do While (navigator.MoveToNextSelected())
+           
+                navigator.MoveToFirstChild()
+                price = Double.Parse(navigator.Value)
+                navigator.Value = Double.Format(price * 1.02, "#.00")
+                navigator.MoveToParent()
+            
+            Loop
+
+            navigator.PopPosition()  
+                        
+            Console.WriteLine(ControlChars.CrLf + "Adding a new book to the bookstore ...")
+            
+            ' Navigate to add a new book at the start of the bookstore
+	        navigator.MoveToDocumentElement()
+
+            ' Insert the new book
+            navigator.Insert(TreePosition.FirstChild,XmlNodeType.Element,"book","","")
+            navigator.SetAttribute ("genre","Object-Orientated Technology")
+            navigator.SetAttribute ("publicationdate","1994")
+            navigator.SetAttribute ("ISBN","0-201-63361-2")
+            navigator.Insert(TreePosition.FirstChild,XmlNodeType.Element,"title","","")
+            navigator.Insert(TreePosition.FirstChild,XmlNodeType.Text,"title","","")
+            navigator.Value = "Design Patterns - Elements of Reusable Object-Orientated Software"
+            navigator.MoveToParent() 'author element node
+            navigator.Insert(TreePosition.After,XmlNodeType.Element,"author","","")
+            navigator.Insert(TreePosition.FirstChild,XmlNodeType.Element,"first-name","","")
+            navigator.Insert(TreePosition.FirstChild,XmlNodeType.Text,"first-name","","")
+            navigator.Value = "Eric"
+            navigator.MoveToParent() 'author element node
+            navigator.Insert(TreePosition.After,XmlNodeType.Element,"last-name","","")
+            navigator.Insert(TreePosition.FirstChild,XmlNodeType.Text,"last-name","","")
+            navigator.Value = "Gamma"
+            navigator.MoveToParent() 'author element node
+            navigator.MoveToParent() 'title element node
+            navigator.Insert(TreePosition.After,XmlNodeType.Element,"price","","")
+            navigator.Insert(TreePosition.FirstChild,XmlNodeType.Text,"price","","")
+            navigator.Value = "49.95"
+
+            ' Write out data as XML
+            xmldocument.Save(m_UpdatedDocument)
+            Console.WriteLine(ControlChars.CrLf + "New book and updated prices saved in file {0}" + ControlChars.CrLf, m_UpdatedDocument)
+
+            ' Display updated contents
+            Console.WriteLine ("Updated contents of file {0}", m_Document)
+            Console.WriteLine ()
+
+            navigator.MoveToDocument()
+            DisplayTree(navigator)
+            
+        Catch e As Exception
+            Console.WriteLine ("Exception: {0}", e.ToString())
+        
+        End Try
+
+		Return (writer.ToString())
+		
+	End Function
+	
+    ' Walks the XmlNavigator tree recursively 
+    Public Sub DisplayTree (navigator As XmlNavigator)
+    
+        if (navigator.HasChildren)
+        
+            navigator.MoveToChild(0)
+            Format(navigator)
+            DisplayTree (navigator)
+            navigator.MoveToParent()
+            
+        End If
+        
+        Do While (navigator.MoveToNext())
+        
+            Format (navigator)
+            DisplayTree (navigator)
+        
+        Loop
+        
+    End Sub
+
+    ' Format the output
+    Private Sub Format (navigator As XmlNavigator)
+    
+		Dim I As Integer
+		
+        If Not(navigator.HasChildren) Then
+        
+            Console.Write("<" + navigator.Name + ">" + navigator.Value + ControlChars.CrLf)
+        
+        Else
+        
+            Console.Write("<" + navigator.Name + ">")
+
+            If navigator.HasAttributes Then
+            
+                Console.Write(ControlChars.CrLf & "Attributes of <" + navigator.Name + ">" & ControlChars.CrLf)
+
+                For I=0 To navigator.AttributeCount-1
+                
+                    navigator.PushPosition()
+                    navigator.MoveToAttribute(i)
+                    Console.Write("<" + navigator.Name + "> " + navigator.Value + " ")
+                    navigator.PopPosition()
+                
+                Next
+                
+            End If
+            Console.WriteLine()
+            
+        End If
+        
+    End Sub
+    
+End Class
+</script>
+<html>
+<head>
+      	<link rel="stylesheet" href="intro.css">
+</head>
+<body style="background-color:f6e4c6">
+
+       	<form action="EditingXmlDocument.htm" method="post" runat="server">
+       	<font>Input file: </font> 
+        <a href="../../../../../howto/samples/xml/editingxmldocument/books.xml">books.xml</a>
+       	&nbsp&nbsp<font>Output file: </font> 
+        <a href="../../../../../howto/samples/xml/editingxmldocument/updatebooks.xml">updatebooks.xml</a>
+	<center>
+		&nbsp&nbsp&nbsp&nbsp<asp:button type=submit text="Run" OnClick="SubmitBtn_Click" runat="server"/></br>
+       	</form>
+	</center>
+	<table align="center">
+	<tr><th><span>Output from navigating and editing input file...</span></th></tr>
+	<tr><th><span></span></th></tr>
+	<tr><td><h4><xmp id="output" runat="server"/></h4></td></tr>
+	</table>
+
+</body>
+</html>
+
+<script language="VB" runat=server>
+
+Private Sub SubmitBtn_Click(sender As Object, e As EventArgs)
+
+    Dim myXmlDocumentSample As XmlDocumentSample
+    Dim args() As String = {Server.MapPath("books.xml"),Server.MapPath("updatebooks.xml")}
+
+	myXmlDocumentSample = new XmlDocumentSample()
+	output.InnerHtml = myXmlDocumentSample.Start(args)
+
+End Sub
+</script>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

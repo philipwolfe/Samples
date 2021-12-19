@@ -1,0 +1,255 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/winforms/samples/Cs/Data/Update/Update.src&file=UpdateCustomers.asmx" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVXBkYXRlQ3VzdG9tZXJzLmFzbVx4eF9feHhfeHhfeF9feA==e67d728d" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">UpdateCustomers.asmx</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>Win Form Source: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/data/update/updateformcssource.htm'>UpdateForm.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Northwind dataset: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/data/update/customersdatasetcssource.htm'>CustomersDataSet.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Northwind dataset Schema: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/data/update/customersdatasetxsdsource.htm'>CustomersDataSet.xsd</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>WebService: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/data/update/listcustomersasmxsource.htm'>ListCustomers.asmx</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>WebService: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/data/update/updatecustomersasmxsource.htm'>UpdateCustomers.asmx</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Web Service definition: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/data/update/listcustomerssdlsource.htm'>ListCustomers.SDL</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Web Service definition: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/data/update/updatecustomerssdlsource.htm'>UpdateCustomers.SDL</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ WebService Language="C#" class="UpdateCustomers"%>
+
+using System;
+using System.IO;
+using System.Web.Services;
+using System.Data;
+using System.Data.SQL;
+
+public class UpdateCustomers : WebService {
+
+
+    //Push Customers changes back into the database
+    [ WebMethod ]
+    public DataSet Save(DataSet customersDataSet) {
+          
+        SQLConnection con = new SQLConnection("server=localhost;uid=sa;pwd=;database=northwind");         
+       
+        //We want the update as part of a single transaction so open the connection
+        //first and pass it to the updates
+        con.Open();
+        con.BeginTransaction();
+        try {
+           
+           ApplyCustomerUpdates(customersDataSet, con) ;
+
+           //Don't commit if errors occured
+           if (!customersDataSet.HasErrors) {
+               //Commit the txn
+               con.CommitTransaction();
+           
+               //Commit the changes to the dataset
+               customersDataSet.AcceptChanges();
+
+           } else {
+
+               //Dataset has errors - roll back the transaction
+               con.RollbackTransaction();
+           }
+
+        } catch(Exception e) {
+	       
+           //Roll back the txn if we have a failure
+           con.RollbackTransaction();
+           throw e;
+        
+        } finally {
+            
+            //Make sure we close the connection no matter what
+            con.Close();
+        }
+        
+        return customersDataSet ;
+    }
+
+    //Update Customers
+    private void ApplyCustomerUpdates(DataSet ds, SQLConnection con) {
+
+        const string insertCustSQL = "INSERT INTO [Customers]([CustomerID], [CompanyName], [ContactName], [ContactTitle], [Address], [City], [Region], [PostalCode], [Country], [Phone], [Fax]) VALUES (@CustomerID, @CompanyName, @ContactName, @ContactTitle, @Address, @City, @Region, @PostalCode, @Country, @Phone, @Fax)";
+        const string updateCustSQL = "UPDATE [Customers] SET [CustomerID] = @CustomerID, [CompanyName] = @CompanyName, [ContactName] = @ContactName, [ContactTitle] = @ContactTitle, [Address] = @Address, [City] = @City, [Region] = @Region, [PostalCode] = @PostalCode, [Country] = @Country, [Phone] = @Phone, [Fax] = @Fax WHERE [CustomerID] = @oldCustomerID ";
+        const string deleteCustSQL = "DELETE FROM [Customers] WHERE [CustomerID] = @CustomerID ";
+
+        //Create the command
+        SQLDataSetCommand cmdCustomers = new SQLDataSetCommand("Select * from Customers", con);
+        
+        //Add the insert, update and delete commands
+        cmdCustomers.InsertCommand = new SQLCommand(insertCustSQL, con);
+        buildCustomersInsertParams(cmdCustomers.InsertCommand);
+        cmdCustomers.UpdateCommand = new SQLCommand(updateCustSQL, con);
+        buildCustomersUpdateParams(cmdCustomers.UpdateCommand);
+        cmdCustomers.DeleteCommand = new SQLCommand(deleteCustSQL, con);
+        buildCustomersDeleteParams(cmdCustomers.DeleteCommand);
+
+        //Catch the row update commands so that we can deal with errors
+        cmdCustomers.RowUpdated += new SQLRowUpdatedEventHandler(this.Customers_RowUpdated);
+
+        //Check for a bad post code - for US post code must be non-null & numeric
+        foreach (DataRow row in ds.Tables["Customers"].Rows) {
+            if (row["Country"].Equals("USA")) {
+                if (row.IsNull("PostalCode")) {
+                    row.RowError="Errors have occurred - deliberate error - See WebService";
+                    row["PostalCode"] = "Zip Code required";
+                    row.SetColumnError("PostalCode", "Zip Code required");
+                } else {
+                    //Attempt to convert the zip code to a number 
+                    try {
+                        ((string)(row["PostalCode"])).ToInt32();
+                    } catch(Exception) {
+                        row.RowError="Errors have occurred - deliberate error - See WebService";
+                        row.SetColumnError("PostalCode", "Invalid Zip Code");
+                    }
+                }
+            }
+        } 
+ 
+        //Apply the updates 
+        if (!ds.HasErrors) 
+            cmdCustomers.Update(ds, "Customers");
+
+    }
+
+    //Once the row update has been pushed back into the database look for errors
+    private void Customers_RowUpdated(object sender, SQLRowUpdatedEventArgs rue) {
+
+        if (rue.Status == UpdateStatus.ErrorsOccurred) {
+            rue.Status = UpdateStatus.Continue; 
+            rue.Row.RowError = rue.Errors.Message ;
+        }
+        else {
+            rue.Row.ClearErrors();
+        }
+    }
+     
+    private void buildCustomersUpdateParams(SQLCommand workCommand) {
+
+        SQLParameter workParam = null;
+        workParam = workCommand.Parameters.Add(new SQLParameter("@CustomerID", SQLDataType.NChar, 5));
+        workParam.Direction = ParameterDirection.Input;
+        workParam.SourceColumn = "CustomerID";
+        workParam = workCommand.Parameters.Add(new SQLParameter("@CompanyName", SQLDataType.NVarChar, 40));
+        workParam.Direction = ParameterDirection.Input;
+        workParam.SourceColumn = "CompanyName";
+        workParam = workCommand.Parameters.Add(new SQLParameter("@ContactName", SQLDataType.NVarChar, 30));
+        workParam.Direction = ParameterDirection.Input;
+        workParam.SourceColumn = "ContactName";
+        workParam = workCommand.Parameters.Add(new SQLParameter("@ContactTitle", SQLDataType.NVarChar, 30));
+        workParam.Direction = ParameterDirection.Input;
+        workParam.SourceColumn = "ContactTitle";
+        workParam = workCommand.Parameters.Add(new SQLParameter("@Address", SQLDataType.NVarChar, 60));
+        workParam.Direction = ParameterDirection.Input;
+        workParam.SourceColumn = "Address";
+        workParam = workCommand.Parameters.Add(new SQLParameter("@City", SQLDataType.NVarChar, 15));
+        workParam.Direction = ParameterDirection.Input;
+        workParam.SourceColumn = "City";
+        workParam = workCommand.Parameters.Add(new SQLParameter("@Region", SQLDataType.NVarChar, 15));
+        workParam.Direction = ParameterDirection.Input;
+        workParam.SourceColumn = "Region";
+        workParam = workCommand.Parameters.Add(new SQLParameter("@PostalCode", SQLDataType.NVarChar, 10));
+        workParam.Direction = ParameterDirection.Input;
+        workParam.SourceColumn = "PostalCode";
+        workParam = workCommand.Parameters.Add(new SQLParameter("@Country", SQLDataType.NVarChar, 15));
+        workParam.Direction = ParameterDirection.Input;
+        workParam.SourceColumn = "Country";
+        workParam = workCommand.Parameters.Add(new SQLParameter("@Phone", SQLDataType.NVarChar, 24));
+        workParam.Direction = ParameterDirection.Input;
+        workParam.SourceColumn = "Phone";
+        workParam = workCommand.Parameters.Add(new SQLParameter("@Fax", SQLDataType.NVarChar, 24));
+        workParam.Direction = ParameterDirection.Input;
+        workParam.SourceColumn = "Fax";
+        workParam = workCommand.Parameters.Add(new SQLParameter("@oldCustomerID", SQLDataType.NChar, 5));
+        workParam.Direction = ParameterDirection.Input;
+        workParam.SourceColumn = "CustomerID";
+    }
+
+    private void buildCustomersInsertParams(SQLCommand workCommand) {
+
+        SQLParameter workParam = null;
+        workParam = workCommand.Parameters.Add(new SQLParameter("@CustomerID", SQLDataType.NChar, 5));
+        workParam.Direction = ParameterDirection.Input;
+        workParam.SourceColumn = "CustomerID";
+        workParam = workCommand.Parameters.Add(new SQLParameter("@CompanyName", SQLDataType.NVarChar, 40));
+        workParam.Direction = ParameterDirection.Input;
+        workParam.SourceColumn = "CompanyName";
+        workParam = workCommand.Parameters.Add(new SQLParameter("@ContactName", SQLDataType.NVarChar, 30));
+        workParam.Direction = ParameterDirection.Input;
+        workParam.SourceColumn = "ContactName";
+        workParam = workCommand.Parameters.Add(new SQLParameter("@ContactTitle", SQLDataType.NVarChar, 30));
+        workParam.Direction = ParameterDirection.Input;
+        workParam.SourceColumn = "ContactTitle";
+        workParam = workCommand.Parameters.Add(new SQLParameter("@Address", SQLDataType.NVarChar, 60));
+        workParam.Direction = ParameterDirection.Input;
+        workParam.SourceColumn = "Address";
+        workParam = workCommand.Parameters.Add(new SQLParameter("@City", SQLDataType.NVarChar, 15));
+        workParam.Direction = ParameterDirection.Input;
+        workParam.SourceColumn = "City";
+        workParam = workCommand.Parameters.Add(new SQLParameter("@Region", SQLDataType.NVarChar, 15));
+        workParam.Direction = ParameterDirection.Input;
+        workParam.SourceColumn = "Region";
+        workParam = workCommand.Parameters.Add(new SQLParameter("@PostalCode", SQLDataType.NVarChar, 10));
+        workParam.Direction = ParameterDirection.Input;
+        workParam.SourceColumn = "PostalCode";
+        workParam = workCommand.Parameters.Add(new SQLParameter("@Country", SQLDataType.NVarChar, 15));
+        workParam.Direction = ParameterDirection.Input;
+        workParam.SourceColumn = "Country";
+        workParam = workCommand.Parameters.Add(new SQLParameter("@Phone", SQLDataType.NVarChar, 24));
+        workParam.Direction = ParameterDirection.Input;
+        workParam.SourceColumn = "Phone";
+        workParam = workCommand.Parameters.Add(new SQLParameter("@Fax", SQLDataType.NVarChar, 24));
+        workParam.Direction = ParameterDirection.Input;
+        workParam.SourceColumn = "Fax";
+
+    }
+
+    private void buildCustomersDeleteParams(SQLCommand workCommand) {
+
+        SQLParameter workParam = null;
+        workParam = workCommand.Parameters.Add(new SQLParameter("@CustomerID", SQLDataType.NChar, 5));
+        workParam.Direction = ParameterDirection.Input;
+        workParam.SourceColumn = "CustomerID";
+
+    }
+
+}
+
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

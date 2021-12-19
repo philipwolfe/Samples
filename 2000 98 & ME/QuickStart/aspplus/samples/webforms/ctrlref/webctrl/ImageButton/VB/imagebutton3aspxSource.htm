@@ -1,0 +1,108 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlref/webctrl/ImageButton/imagebutton3.src&file=VB%5Cimagebutton3.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkJcXGltYWdlYnV0dG9uMy5hc3BceHhfX3h4X3h4X3hfX3g=85a8eca2" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB\imagebutton3.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../../aspplus/samples/webforms/ctrlref/webctrl/imagebutton/imagebutton3aspxsource.htm'>imagebutton3.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../../aspplus/samples/webforms/ctrlref/webctrl/imagebutton/vb/imagebutton3aspxsource.htm'>VB\imagebutton3.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><html>
+<head>
+
+    <style>
+        .applyBorder { border:0.2cm solid blue }
+        .removeBorder { border:0.2cm solid gainsboro }
+    </style>
+
+    <script language="VB" runat="server">
+
+       Sub Button1_Click(sender As Object, e As ImageClickEventArgs)
+          Label1.Text="You clicked button1"
+       End Sub
+
+       Sub Button2_Click(sender As Object, e As ImageClickEventArgs)
+          Label1.Text="You clicked button2"
+       End Sub
+
+       Sub Button3_Click(sender As Object, e As ImageClickEventArgs)
+          Label1.Text="You clicked button3"
+       End Sub
+
+    </script>
+
+</head>
+<body>
+
+    <h3><font face="Verdana">Mouse-Over Effects on ImageButton</font></h3>
+
+    <form runat=server>
+
+        <asp:ImageButton id=Button1 runat="server"
+            ImageUrl="../../../../../../../aspplus/images/banana.jpg"
+            BorderWidth="0.2cm"
+            BorderColor="Gainsboro"
+            onmouseover="this.style.border='0.2cm solid black';"
+            onmouseout="this.style.border='0.2cm solid gainsboro';"
+            onclick="Button1_Click" />
+
+            &nbsp;&nbsp;
+            Applies an inline CSS style...
+
+        <br>
+
+        <asp:ImageButton id=Button2 runat="server"
+            ImageUrl="/quickstart/aspplus/images/banana.jpg"
+            CssClass="removeBorder"
+            onmouseover="this.className='applyBorder'"
+            onmouseout="this.className='removeBorder'"
+            onclick="Button2_Click" />
+
+            &nbsp;&nbsp;
+            Applies a predefined CSS style...
+
+        <br>
+
+        <asp:ImageButton id=Button3 runat="server"
+            ImageUrl="/quickstart/aspplus/images/banana.jpg"
+            BorderWidth="0.2cm"
+            BorderColor="Gainsboro"
+            onmouseover="this.src='../../../../../../../aspplus/images/mango.jpg';"
+            onmouseout="this.src='/quickstart/aspplus/images/banana.jpg';"
+            onclick="Button3_Click" />
+
+            &nbsp;&nbsp;
+            Changes the source image...
+
+        <p>
+        
+        <asp:Label id=Label1 runat=server />
+
+    </form>
+
+</body>
+</html>
+
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

@@ -1,0 +1,119 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/customize/style2.src&file=VB/Style2.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvU3R5bGUyLmFzcFx4eF9feHhfeHhfeF9feA==07e4c9fc" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/Style2.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/customize/style2aspxsource.htm'>Style2.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/customize/vb/style2aspxsource.htm'>VB/Style2.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/customize/js/style2aspxsource.htm'>JS/Style2.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>
+<html>
+<head>
+
+  <style>
+
+      .spanstyle   
+      { 
+          font: 12pt verdana; 
+          font-weight:700;
+          color:orange;
+      }
+
+      .buttonstyle 
+      { 
+          font: 8pt verdana;
+          background-color:lightgreen;
+          border-color:black;
+          width:100 
+      }
+      .inputstyle  
+      { 
+          font: 14pt verdana;
+          background-color:yellow;
+          border-style:dashed;
+          border-color:red;
+          width:300; 
+      }
+      .selectstyle 
+      { 
+          font: 14pt verdana;
+          background-color:lightblue;
+          color:purple; 
+      }
+      .radiostyle  
+      { 
+          width:50;
+          background-color:red;
+          zoom:200% 
+      }
+
+  </style>
+
+
+</head>
+<body>
+
+  <h3><font face="verdana">Applying Styles to HTML Controls</font></h3>
+
+  <p><font face="verdana"><h4>Styled Span</h4></font><p>
+
+  <span class="spanstyle" runat="server">
+      This is some literal text inside a styled span control
+  </span>
+
+  <p><font face="verdana"><h4>Styled Button</h4></font><p>
+
+  <button class="buttonstyle" runat="server">Click me!</button>
+
+  <p><font face="verdana"><h4>Styled Text Input</h4></font><p>
+
+  Enter some text: <p>
+  <input type="text" value="One, Two, Three" class="inputstyle" runat="server"/>
+
+  <p><font face="verdana"><h4>Styled Select Input</h4></font><p>
+
+  Select an item: <p>
+  <select class="selectstyle" runat="server">
+    <option>Item 1</option>
+    <option>Item 2</option>
+    <option>Item 3</option>
+  </select>
+
+  <p><font face="verdana"><h4>Styled Radio Buttons</h4></font><p>
+
+  Select an option: <p>
+  <span style="font: 16 pt verdana;font-weight:300">
+  <input type="radio" name="Mode" checked class="radiostyle" runat="server"/>Option 1<br>
+  <input type="radio" name="Mode" class="radiostyle" runat="server"/>Option 2<br>
+  <input type="radio" name="Mode" class="radiostyle" runat="server"/>Option 3
+  </span>
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

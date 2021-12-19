@@ -1,0 +1,363 @@
+
+
+<!--BEGIN HEADER-->
+<html>
+<head>
+<link rel="stylesheet" href="../../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+  <table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+<!--
+		<div style="padding:0,0,4,0"><a class="outer" style="color:darkred" href="../../../howto/doc/xml/overviewofxml.htm"><b>Introduction</a></b></a><br></div>
+         <p>
+		<div style="padding:0,0,4,0"><b>XML Readers and Writers</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/readxmlfile.htm">Read XML from a file</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/readxmlstream.htm">Read XML from a stream</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/writexmlfile.htm">Write XML to a file</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/validationreadingxml.htm">Apply validation when reading XML</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML Document Object Model (DOM)</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/dominterfacexmldocument.htm">Load and use the XmlDocument (W3C DOM)</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savexmldocument.htm">Save XML with the XmlDocument (W3C DOM)</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>Using the XmlDataDocument</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/loadxmldocument.htm">Load and use the XmlDataDocument</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/streamanxmldocument.htm">Read XML from an XmlDataDocument</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML Navigation and Editing</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/navigatexmldocument.htm">Navigate XML with the XmlNavigator</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/editingxmldocument.htm">Edit XML with the XmlNavigator</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XPath and XSL Transformations</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/queryxmldocumentxpath.htm">Query XML with an XPath expression</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/transformxml.htm">Apply an XSL transformation to XML</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML and Relational Data</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/xmldataset.htm">Use XML and the DataSet class</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/datasetmapxsdschema.htm">Create DataSet mappings from an XSD schema</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/loaddatasetxmldata.htm">Load a DataSet with XML</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/datasetmapxmldata.htm">Infer DataSet mappings from XML</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savedatasetmapxsdschema.htm">Save DataSet mappings to an XSD schema file</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savedatasetxml.htm">Save a DataSet as XML</a><br>
+-->
+
+		<div style="padding:0,0,4,0"><b>XML Data</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/overviewofxml.htm">Overview of XML</a><p>
+
+		<div style="padding:0,0,4,0"><b>XML Readers and Writers</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/readxmlfile.htm">Read XML from a file</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/readxmlstream.htm">Read XML from a stream</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/writexmlfile.htm">Write XML to a file</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/validationreadingxml.htm">Apply validation to XML</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML Document Object Model</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/dominterfacexmldocument.htm">Load XML with XmlDocument</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savexmldocument.htm">Save XML with XmlDocument</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>Using the XmlDataDocument</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/loadxmldocument.htm">Load the XmlDataDocument</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/streamanxmldocument.htm">Read from XmlDataDocument</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML Navigation and Editing</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/navigatexmldocument.htm">Navigate with XmlNavigator</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/editingxmldocument.htm">Edit with XmlNavigator</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XPath and XSL Transformations</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/queryxmldocumentxpath.htm">Query XML with an XPath</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/transformxml.htm">Apply XSL transformations</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML and Relational Data</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/xmldataset.htm">Use XML and the DataSet</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/datasetmapxsdschema.htm">Create DataSet mappings</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/loaddatasetxmldata.htm">Load a DataSet with XML</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/datasetmapxmldata.htm">Infer DataSet mappings</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savedatasetmapxsdschema.htm">Save DataSet mappings</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savedatasetxml.htm">Save a DataSet as XML</a><p>
+
+    <div style="padding:0,0,4,0"><a target="_top" style="color:darkred" href="../../../howto"><b>Back to Index</b></a><br></div>
+
+
+</div>
+
+</td>
+</tr>
+</table>
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<style>
+.mydd {  font: smaller verdana; }
+.code1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:blue;
+	}
+.codecomment1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:green;
+	}
+.issue {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background-color:RED;
+	color:WHITE;
+	font-weight:bold;
+	}
+
+
+body { font: smaller verdana }        
+
+</style>
+
+
+
+
+
+<h4>How Do I...Load XML data into an XmlDataDocument?</h4>
+
+
+This sample illustrates how to load XML into the XmlDataDocument class. This class extends the XmlDocument class, allowing structured data to be stored, 
+retrieved, and manipulated through a relational DataSet. Also see the <a href="XmlDataSet.htm">How Do I...Use XML and the DataSet class?</a> topic.
+<p>
+
+
+<span>
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../../images/genicon.gif"><br>
+	</a>
+	<div class="caption">LoadXmlDocument.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../../howto/samples/xml/loadxmldocument/loadxmldocumentcssource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+
+<p>
+The XmlDataDocument class provides an XML API onto loaded XML data by extending the XmlDocument (W3C DOM) class.
+(See <a target=content href="DOMInterfaceXmlDocument.htm">How Do I...Load and use the XmlDocument (W3C DOM)?</a>) and has a close affiliation with the DataSet
+class, which provides a relational view onto the loaded XML data.
+This combination allows for components to mix XML and relational views of the same underlying data, irrespective of the source of the
+data. As detailed in later topics, there are differences between these views. Most notable is that XML data that does not map to the relational view cannot
+be accessed via the relational objects (Tables and Rows). It is however, still possible to easily move from a relational row to the equivalent XML element
+and hence access this XML data.
+<p>
+ 
+
+The XmlDataDocument can be used anywhere an XmlDocument is used; all topics that describe the XmlDocument apply equally to the XmlDataDocument.
+<p>
+
+
+The following topics are related to this topic.
+
+
+<OL>
+<LI><A target=content href="DOMInterfaceXmlDocument.htm">How Do I...Load and use the XmlDocument (W3C DOM)?</A>
+<br clear="left"><br>
+<LI><A target=content href="SaveXmlDocument.htm">How Do I...Save XML with the XmlDocument (W3C DOM)?</A>
+<br clear="left"><br>
+<LI><A target=content href="StreamAnXmlDocument.htm">How Do I...Read XML from an XmlDataDocument?</A> 
+<br clear="left"><br>
+<LI><A target=content href="NavigateXmlDocument.htm">How Do I...Navigate XML with the XmlNavigator?</A>
+<br clear="left"><br>
+<LI><A target=content href="EditingXmlDocument.htm">How Do I...Edit XML with the XmlNavigator?</A> </LI>
+<br clear="left"><br>
+</OL>
+
+
+In this sample we are simply going to load the XmlDataDocument with XML data using the sample file 
+<a target="_blank" href="../../../util/srcctrlwin.htm?path=howto/samples/xml/loadxmldocument/&file=books.xml">books.xml</a>.
+The code below illustrates this.
+<p>
+
+
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl8" style="display:none">
+
+public class XmlDocumentSample {
+
+    private const String m_Document = "books.xml";
+
+    public static void Main(String[] args) {
+        XmlDocumentSample myxmldocument = new XmlDocumentSample(args);
+    }
+
+    public XmlDocumentSample(String[] args) {
+
+        try {
+            // Load the XML from file
+            Console.WriteLine ("Loading file {0} ...", m_Document);
+
+            XmlDataDocument xmldocument = new XmlDataDocument();
+            xmldocument.Load (m_Document);
+
+            Console.WriteLine ("XmlDataDocument loaded with XML data successfully ...");
+        }
+        catch (Exception e) {
+            Console.WriteLine ("Exception: {0}", e.ToString());
+        }
+    }
+} 
+</pre>
+<pre id="codectrl8" style="display:">
+
+Public Class XmlDocumentSample
+
+    Private Const m_Document As String = "books.xml"
+
+    Public Shared sub Main()
+        Dim xmldocument As XmlDocumentSample= new XmlDocumentSample()
+    End Sub
+    
+    Public Sub New ()
+        MyBase.New
+        Try        
+            'Load the XML from file
+            Console.WriteLine ("Loading file {0} ...", m_Document)
+
+            Dim xmldocument as XmlDataDocument = new XmlDataDocument()
+            xmldocument.Load (m_Document)
+
+            Console.WriteLine ("XmlDataDocument loaded with XML data successfully ...")
+        
+        Catch e As Exception        
+            Console.WriteLine ("Exception: {0}", e.ToString())
+        End Try
+    End Sub        
+End Class
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl8" onclick="doClick(0, 'ctrl8')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl8" onclick="doClick(1, 'ctrl8')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+
+
+<H4>Summary</H4>
+<OL>
+<LI>The XmlDataDocument class provides an in memory cache for XML data.
+<LI>The XmlDataDocument extends the XmlDocument (W3C DOM) class. It can be used anywhere the XmlDocument class is used.
+<LI>The XmlDataDocument and the DataSet classes are closely associated, and the XmlDataDocument can be regarded as a DataSet aware XmlDocument. 
+<LI>The DataDocumentNavigator class consumes XmlDataDocuments to provide implementations of common XML interfaces for integrated support
+with other XML objects.
+</LI></OL>
+
+<!--END FOOTER-->
+<p>
+<hr>
+<p>
+</div>
+</td>
+</tr>
+</table>
+</BODY>
+</html>
+<!--END FOOTER-->

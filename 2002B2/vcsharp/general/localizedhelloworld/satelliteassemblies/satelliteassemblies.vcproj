@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<VisualStudioProject
+	ProjectType="Visual C++"
+	Version="7.00"
+	Name="SatelliteAssemblies"
+	Keyword="win32">
+	<Platforms>
+		<Platform
+			Name="Win32"/>
+	</Platforms>
+	<Configurations>
+		<Configuration
+			Name="Debug|Win32"
+			OutputDirectory="Debug"
+			IntermediateDirectory="Debug"
+			ConfigurationType="10"
+			CharacterSet="1">
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+		</Configuration>
+		<Configuration
+			Name="Release|Win32"
+			OutputDirectory="..\bin\Release"
+			IntermediateDirectory="..\obj\Release"
+			ConfigurationType="10"
+			CharacterSet="1">
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+		</Configuration>
+	</Configurations>
+	<Files>
+		<Filter
+			Name="Resource Files"
+			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe">
+			<File
+				RelativePath="..\Resources\MyResources.en-US.resources">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Creating Satelite Assembly"
+						CommandLine="mkdir $(ProjectDir)..\bin\$(OutDir)\en-US
+al.exe /culture:en-US /out:&quot;$(ProjectDir)..\bin\$(OutDir)\en-US\HelloWorld.resources.dll&quot; /embed:&quot;$(InputPath)&quot;,&quot;HelloWorld.Resources.$(InputFileName)&quot; /template:&quot;$(ProjectDir)..\obj\$(IntDir)\HelloWorld.exe&quot;
+"
+						Outputs="$(ProjectDir)..\bin\$(OutDir)\en-US\HelloWorld.resources.dll"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Creating Satelite Assembly"
+						CommandLine="mkdir $(ProjectDir)..\bin\$(OutDir)\en-US
+al.exe /culture:en-US /out:&quot;$(ProjectDir)..\bin\$(OutDir)\en-US\HelloWorld.resources.dll&quot; /embed:&quot;$(InputPath)&quot;,&quot;HelloWorld.Resources.$(InputFileName)&quot; /template:&quot;$(ProjectDir)..\obj\$(IntDir)\HelloWorld.exe&quot;
+"
+						Outputs="$(ProjectDir)..\bin\$(OutDir)\en-US\HelloWorld.resources.dll"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\Resources\MyResources.en.resources">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Creating Satellite Assembly"
+						CommandLine="mkdir $(ProjectDir)..\bin\$(OutDir)\en
+al.exe /culture:en /out:&quot;$(ProjectDir)..\bin\$(OutDir)\en\HelloWorld.resources.dll&quot; /embed:&quot;$(InputPath)&quot;,&quot;HelloWorld.Resources.$(InputFileName)&quot; /template:&quot;$(ProjectDir)..\obj\$(IntDir)\HelloWorld.exe&quot;
+"
+						Outputs="$(ProjectDir)..\bin\$(OutDir)\en\HelloWorld.resources.dll"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Creating Satellite Assembly"
+						CommandLine="mkdir $(ProjectDir)..\bin\$(OutDir)\en
+al.exe /culture:en /out:&quot;$(ProjectDir)..\bin\$(OutDir)\en\HelloWorld.resources.dll&quot; /embed:&quot;$(InputPath)&quot;,&quot;HelloWorld.Resources.$(InputFileName)&quot; /template:&quot;$(ProjectDir)..\obj\$(IntDir)\HelloWorld.exe&quot;
+"
+						Outputs="$(ProjectDir)..\bin\$(OutDir)\en\HelloWorld.resources.dll"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\Resources\MyResources.ko-KR.resources">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Creating Satelite Assembly"
+						CommandLine="mkdir $(ProjectDir)..\bin\$(OutDir)\ko-KR
+al.exe /culture:ko-KR /out:&quot;$(ProjectDir)..\bin\$(OutDir)\ko-KR\HelloWorld.resources.dll&quot; /embed:&quot;$(InputPath)&quot;,&quot;HelloWorld.Resources.$(InputFileName)&quot; /template:&quot;$(ProjectDir)..\obj\$(IntDir)\HelloWorld.exe&quot;
+"
+						Outputs="$(ProjectDir)..\bin\$(OutDir)\ko-KR\HelloWorld.resources.dll"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Creating Satelite Assembly"
+						CommandLine="mkdir $(ProjectDir)..\bin\$(OutDir)\ko-KR
+al.exe /culture:ko-KR /out:&quot;$(ProjectDir)..\bin\$(OutDir)\ko-KR\HelloWorld.resources.dll&quot; /embed:&quot;$(InputPath)&quot;,&quot;HelloWorld.Resources.$(InputFileName)&quot; /template:&quot;$(ProjectDir)..\obj\$(IntDir)\HelloWorld.exe&quot;
+"
+						Outputs="$(ProjectDir)..\bin\$(OutDir)\ko-KR\HelloWorld.resources.dll"/>
+				</FileConfiguration>
+			</File>
+		</Filter>
+	</Files>
+	<Globals>
+	</Globals>
+</VisualStudioProject>

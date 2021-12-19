@@ -1,0 +1,146 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlref/webctrl/Repeater/repeater1.src&file=VB%5CRepeater1.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkJcXFJlcGVhdGVyMS5hc3BceHhfX3h4X3h4X3hfX3g=0c72a459" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB\Repeater1.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../../aspplus/samples/webforms/ctrlref/webctrl/repeater/repeater1aspxsource.htm'>Repeater1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../../aspplus/samples/webforms/ctrlref/webctrl/repeater/vb/repeater1aspxsource.htm'>VB\Repeater1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><html>
+<head>
+
+    <script language="VB" runat="server">
+
+        Sub Page_Load(sender As Object, e As EventArgs) 
+    
+            If Not IsPostBack Then            
+                Dim values As ArrayList = New ArrayList()
+
+                values.Add(new PositionData("Microsoft", "Msft"))
+                values.Add(new PositionData("Intel", "Intc"))
+                values.Add(new PositionData("Dell", "Dell"))
+
+                Repeater1.DataSource = values
+                Repeater1.DataBind
+                
+                Repeater2.DataSource = values
+                Repeater2.DataBind
+            End If
+        End Sub
+
+        class PositionData
+
+            Dim m_name As String
+            Dim m_ticker As String
+
+            Public Sub New(name As String, ticker As String)
+                MyBase.New
+                m_name = name
+                m_ticker = ticker
+            End Sub
+
+            ReadOnly Property Name As String
+              Get 
+                Return m_name
+              End Get
+            End Property
+            
+            ReadOnly Property Ticker As String
+              Get 
+                Return m_ticker
+              End Get
+            End Property
+                       
+        End Class
+        
+    </script>
+
+</head>
+<body>
+
+    <h3><font face="Verdana">Repeater Example</font></h3>
+
+    <form runat=server>
+
+        <b>Repeater1:</b>
+        
+        <p>
+        
+        <asp:Repeater id=Repeater1 runat="server">
+        
+            <template name="HeaderTemplate">
+            
+                <table border=1>
+                  <tr>
+                    <td><b>Company</b></td>
+                    <td><b>Symbol</b></td>
+                  </tr>
+
+            </template>
+            
+            <template name="ItemTemplate">
+            
+                <tr>
+                  <td> <%# DataBinder.Eval(Container.DataItem, "Name") %> </td>
+                  <td> <%# DataBinder.Eval(Container.DataItem, "Ticker") %> </td>
+                </tr>
+                
+            </template>
+            
+            <template name="FooterTemplate">
+            
+                </table>
+                
+            </template>
+            
+        </asp:Repeater>
+
+        <p>
+        
+        <b>Repeater2:</b>
+        
+        <p>
+        
+        <asp:Repeater id=Repeater2 runat="server">
+        
+            <template name="HeaderTemplate">
+                Company data:
+            </template>
+            
+            <template name="ItemTemplate">
+                <%# DataBinder.Eval(Container.DataItem, "Name") %> (<%# DataBinder.Eval(Container.DataItem, "Ticker") %>)
+            </template>
+            
+            <template name="SeparatorTemplate">, </template>
+            
+        </asp:Repeater>
+
+    </form>
+
+</body>
+</html>
+
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

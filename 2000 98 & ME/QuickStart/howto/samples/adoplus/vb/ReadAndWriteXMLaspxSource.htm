@@ -1,0 +1,89 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/adoplus/vb/readandwritexml.src&file=ReadAndWriteXMl.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfUmVhZEFuZFdyaXRlWE1sLmFzcFx4eF9feHhfeHhfeF9feA==ba2ac72a" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">ReadAndWriteXMl.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../howto/samples/adoplus/vb/readandwritexmlaspxsource.htm'>ReadAndWriteXMl.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../howto/samples/adoplus/cs/readandwritexmlaspxsource.htm'>..\CS\ReadAndWriteXMl.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>
+<%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="System.Data.SQL" %>
+
+<html>
+
+<script language="VB" runat="server">
+
+  protected sub Page_Load(Src as object, E as EventArgs ) 
+
+    try
+
+      Dim myConnection as SQLConnection
+      myConnection = new SQLConnection("server=localhost;uid=sa;pwd=;database=northwind")
+
+      Dim CustomersDSCommand as SQLDataSetCommand
+      CustomersDSCommand = new SQLDataSetCommand("select * from customers", myConnection)
+
+      Dim OrdersDSCommand as SQLDataSetCommand
+      OrdersDSCommand = new SQLDataSetCommand("select * from orders", myConnection)
+
+
+      Dim myDataSet as DataSet
+      myDataSet = new DataSet
+
+      Dim myCustomer as DataRow
+
+      CustomersDSCommand.FillDataSet(myDataSet,"Customers")
+      OrdersDSCommand.FillDataSet(myDataSet,"Orders")
+
+      Dim MyXMLData as string
+      Dim MyXMLSchema as string  
+
+      MyXMLData = myDataSet.XmlData
+      MyXMLSchema = myDataSet.XmlSchema
+
+      Response.Write("<B>Select View Source to see XMLSchema</b>")
+      Response.Write(MyXMLSchema)
+      Response.Write("<BR><B>Data</B><PRE>")
+      Response.Write(MyXMLData)
+
+    catch myException as Exception
+
+      Response.Write(myException.ToString())
+
+    end try  
+
+end sub
+
+</script>
+
+
+
+
+ 
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>
+</span>
+
+    </form>

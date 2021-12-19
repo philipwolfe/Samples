@@ -1,0 +1,157 @@
+
+
+<!--BEGIN HEADER-->
+<html>
+<head>
+<link rel="stylesheet" href="../../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+
+<table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+
+    <div style="padding:0,0,4,0"><b>Networking</b><br></div>
+    &nbsp; <a class="outer" href="../../../howto/doc/webrequests/clientget.htm">Make a GET request</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/webrequests/clientgetwithssl.htm">Make an SSL GET request</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/webrequests/clientgetwithntlm.htm">Make an NTLM GET request</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/webrequests/clientgetwithproxy.htm">Make a proxy GET request</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/webrequests/clientgetasync.htm">Make an async GET request</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/aspxnet/get.htm">Make a GET request in ASP.NET</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/aspxnet/getasync.htm">Async GET request in ASP.NET</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/webrequests/clientexception.htm">Handle WebExceptions</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/webrequests/clientpost.htm">Make a POST request</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/tcpudp/datetimeclient.htm">Write a TCPClient client</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/tcpudp/datetimeserver.htm">Write a TCPListener server</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/tcpudp/broadcastchatclient.htm">Write a UDPClient client</a><p>
+    <div style="padding:0,0,4,0"><a target="_top" style="color:darkred" href="../../../howto"><b>Back to Index</b></a><br></div>
+
+</div>
+
+</td>
+</tr>
+</table>
+
+
+
+
+
+
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<style>
+.mydd {  font: smaller verdana; }
+.code1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:blue;
+	}
+.codecomment1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:green;
+	}
+.issue {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background-color:RED;
+	color:WHITE;
+	font-weight:bold;
+	}
+
+
+body { font: smaller verdana }        
+
+</style>
+
+
+
+
+
+<h4>How Do I...Make a GET request?</h4>
+
+<div class="indent" style="width:660">
+
+<p>This sample illustrates using the <b>WebRequest</b> and <b>WebResponse</b> classes to make a GET request on a URI.</p>
+
+<p>The function <b>getPage</b> is where the specific details of making the request can be found. The rest 
+of the code in this sample is for taking command-line parameters, and displaying help usage for 
+the parameters as well. This sample program is a command-line utility that runs at the command prompt.</p>
+
+<p>The <b>getPage</b> function takes a string parameter, which is the URL (or URI) of the web page to 
+request. This URI is then included as a parameter in a call to <b>WebRequestFactory.Create</b> which 
+creates a <b>WebRequest</b> object.</p>
+
+<p>The <b>GetResponse</b> function of the <b>WebRequest</b> object is then used to get a <b>WebResponse</b> 
+object. This object can be used to get the status code of the response, as well as the actual response 
+stream, for instance a web page.</p>
+
+<p>Actually writing out the stream can take several different forms. This example reads a byte array 
+(of 512 bytes) into the read Byte[] variable with the <b>Read</b> function. It then writes 
+out the 512 bytes with the function: Console.Write(System.Text.Encoding.ASCII.GetString(read, 0, bytes));</p>
+
+<p>Note: behind a proxy server, only internal URI's will work with this sample.</p>
+
+</div>
+
+<h4>Example</h4>
+
+<span>
+  
+  
+
+        
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../../howto/samples/net/webrequests/vb">
+	<img style="border-color:black" border=1 src="../../../images/console.gif"><br>
+	</a>
+	<div class="caption">ClientGET.exe</div><br>
+	
+	
+		[<a target="_blank" href="../../../howto/samples/net/webrequests/vb">Run Sample</a>] | 
+		[<a target="_blank" href="../../../howto/samples/net/webrequests/clientgetcssource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+
+<!--END FOOTER-->
+<p>
+<hr>
+<p>
+</div>
+</td>
+</tr>
+</table>
+</BODY>
+</html>
+<!--END FOOTER-->

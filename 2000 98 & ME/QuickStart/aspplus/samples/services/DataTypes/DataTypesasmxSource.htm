@@ -1,0 +1,104 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/services/DataTypes/DataTypes.src&file=DataTypes.asmx" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfRGF0YVR5cGVzLmFzbVx4eF9feHhfeHhfeF9feA==29776b64" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">DataTypes.asmx</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../aspplus/samples/services/datatypes/datatypesasmxsource.htm'>DataTypes.asmx</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../aspplus/samples/services/datatypes/vb/datatypesasmxsource.htm'>VB/DataTypes.asmx</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ WebService Language="C#" Class="DataTypes" %>
+
+using System;
+using System.Web.Services;
+
+public enum Mode
+{
+    On = 1,
+    Off = 2
+}
+
+public class Order
+{
+   public int OrderID;
+   public double Price;
+}
+
+public class DataTypes {
+
+   [WebMethod]
+   public String SayHello() 
+   {
+       return "Hello World!";
+   }
+
+   [WebMethod]
+   public String SayHelloName(String name) 
+   {
+       return "Hello" + name;
+   }
+
+   [WebMethod]
+   public int[] GetIntArray() 
+   {
+       int[] a = new int[5];
+       for (int i=0; i<5; i++)
+           a[i] = i*10;
+       return a;
+   }
+
+   [WebMethod]
+   public Mode GetMode() 
+   {
+       return Mode.Off;
+   }
+
+   [WebMethod]
+   public Order GetOrder() 
+   {
+      Order myOrder = new Order();
+
+      myOrder.Price=34.5;
+      myOrder.OrderID = 323232;
+
+      return myOrder;
+   }
+
+   [WebMethod]
+   public Order[] GetOrders() 
+   {
+      Order [] myOrder = new Order[2];
+
+      myOrder[0] = new Order();
+      myOrder[0].Price=34.5;
+      myOrder[0].OrderID = 323232;
+      myOrder[1] = new Order();
+      myOrder[1].Price=99.4;
+      myOrder[1].OrderID = 645645;
+
+      return myOrder;
+   }
+
+}
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

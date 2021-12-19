@@ -1,0 +1,60 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Services/Timers/timer/timer.src&file=VB%5CTimer.vb" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkJcXFRpbWVyLnZieF9feHhfeHhfeF9feA==22526521" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB\Timer.vb</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../howto/samples/services/timers/timer/timercssource.htm'>Timer.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../howto/samples/services/timers/timer/vb/timervbsource.htm'>VB\Timer.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>Imports System
+Imports System.Threading
+Imports System.Timers
+	
+Namespace Timer
+
+    Module Timer
+
+        Public Sub Main()
+            Dim aTimer As System.Timers.Timer
+            aTimer = New System.Timers.Timer
+	
+            AddHandler aTimer.Tick, AddressOf OnTimer
+
+            aTimer.Interval = 1000
+            aTimer.Enabled = True
+		
+            Console.WriteLine("Press 'q' to quit the sample")
+            While (Console.Read() <> 113)
+            End While
+        End Sub
+
+        Public Sub OnTimer(ByVal source As Object, ByVal e As EventArgs)
+            Console.WriteLine("Hello World!")
+        End Sub
+
+    End Module
+
+End Namespace
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

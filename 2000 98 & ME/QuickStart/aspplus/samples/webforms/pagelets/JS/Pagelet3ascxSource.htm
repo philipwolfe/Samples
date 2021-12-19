@@ -1,0 +1,109 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/pagelets/pagelet3.src&file=JS/Pagelet3.ascx" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfSlMvUGFnZWxldDMuYXNjXHh4X194eF94eF94X1946c0bd4d0" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">JS/Pagelet3.ascx</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/pagelets/pagelet3aspxsource.htm'>Pagelet3.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/pagelets/pagelet3ascxsource.htm'>Pagelet3.ascx</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/pagelets/vb/pagelet3aspxsource.htm'>VB/Pagelet3.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/pagelets/vb/pagelet3ascxsource.htm'>VB/Pagelet3.ascx</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/pagelets/js/pagelet3aspxsource.htm'>JS/Pagelet3.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/pagelets/js/pagelet3ascxsource.htm'>JS/Pagelet3.ascx</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>
+<script language="JScript" runat="server">
+
+  public var Caption : String = "Address";
+
+  public function get Address() : String {
+     return TxtAddress.Value;
+  }
+
+  public function set Address(value : String) {
+      TxtAddress.Value = value;
+  }
+
+  public function get City() : String {
+      return TxtCity.Value;
+  }
+
+  public function set City(value : String) {
+      TxtCity.Value = value;
+  }
+
+  public function get StateName() : String  {
+      return TxtState.Value;
+  }
+
+  public function set StateName(value : String) {
+    TxtState.Value = value;
+  }
+
+  public function get Zip() : String {
+    return TxtZip.Value;
+  }
+  public function set Zip(value : String) {
+      TxtZip.Value = value;
+  }
+
+</script>
+
+<p>
+<table style="font: 10pt verdana">
+  <tr>
+    <td colspan="6" style="padding-bottom:10">
+      <b><%=Caption%></b>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Address: 
+    </td>
+    <td colspan="5">
+      <input id="TxtAddress" size="50" type="text" runat="server">
+    </td>
+  </tr>
+  <tr>
+    <td>
+      City: 
+    </td>
+    <td>
+      <input id="TxtCity" type="text" runat="server">
+    </td>
+    <td>
+      State: 
+    </td>
+    <td>
+      <input id="TxtState" size="2" type="text" runat="server">
+    </td>
+    <td>
+      Zip: 
+    </td>
+    <td>
+      <input id="TxtZip" size="5" type="text" runat="server">
+    </td>
+  </tr>
+</table>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

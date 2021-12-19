@@ -1,0 +1,53 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Remoting/interface/server.src&file=VB/object.vb" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvb2JqZWN0LnZieF9feHhfeHhfeF9feA==df00c1e9" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/object.vb</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../howto/samples/remoting/interface/objectcssource.htm'>object.cs</a> &nbsp;&nbsp<a href='../../../../../howto/samples/remoting/interface/servercssource.htm'>server.cs</a> &nbsp;&nbsp<a href='../../../../../howto/samples/remoting/interface/sharecssource.htm'>share.cs</a> &nbsp;&nbsp<a href='../../../../../howto/samples/remoting/interface/clientcssource.htm'>client.cs</a> &nbsp;&nbsp<a href='../../../../../howto/samples/remoting/interface/makefilesource.htm'>makefile</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../howto/samples/remoting/interface/vb/objectvbsource.htm'>VB/object.vb</a> &nbsp;&nbsp<a href='../../../../../howto/samples/remoting/interface/vb/servervbsource.htm'>VB/server.vb</a> &nbsp;&nbsp<a href='../../../../../howto/samples/remoting/interface/vb/sharevbsource.htm'>VB/share.vb</a> &nbsp;&nbsp<a href='../../../../../howto/samples/remoting/interface/vb/clientvbsource.htm'>VB/client.vb</a> &nbsp;&nbsp<a href='../../../../../howto/samples/remoting/interface/vb/makefilesource.htm'>VB/makefile</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>imports System
+imports System.Runtime.Remoting
+imports System.Runtime.Remoting.Channels.TCP
+
+namespace RemotingSamples
+
+  public class HelloServer 
+    inherits MarshalByRefObject
+    implements IHello
+
+    public sub HelloServer()
+      Console.WriteLine("HelloServer activated")
+    end sub  
+
+    public function HelloMethod(name as String) as String implements IHello.HelloMethod
+      Console.WriteLine("Hello.HelloMethod : {0}", name)
+      HelloMethod = "Hi there " + name
+    end function
+    
+  end class
+  
+end namespace
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

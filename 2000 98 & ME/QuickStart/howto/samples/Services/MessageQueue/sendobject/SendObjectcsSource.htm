@@ -1,0 +1,53 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Services/MessageQueue/sendobject/SendObject.src&file=SendObject.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfU2VuZE9iamVjdC5jc3hfX3h4X3h4X3hfX3g=fee4c56f" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">SendObject.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../howto/samples/services/messagequeue/sendobject/sendobjectcssource.htm'>SendObject.cs</a> &nbsp;&nbsp<a href='../../../../../howto/samples/services/messagequeue/sendobject/customercssource.htm'>Customer.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../howto/samples/services/messagequeue/sendobject/vb/sendobjectvbsource.htm'>VB\SendObject.vb</a> &nbsp;&nbsp<a href='../../../../../howto/samples/services/messagequeue/sendobject/vb/customervbsource.htm'>VB\Customer.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>using System;
+using System.Messaging;
+	
+public class SendObject
+{
+        public static void Main(String[] args) 
+	{
+		string mqPath = ".\\MQSendSample";
+
+		if(!MessageQueue.Exists(mqPath))
+		{
+			MessageQueue.Create(mqPath);
+		}
+		
+		MessageQueue mq = new MessageQueue(mqPath);
+
+		Customer customer = new Customer();
+		customer.LastName = "Copernicus";
+		customer.FirstName = "Nicolaus";		
+		mq.Send(customer);	
+        }
+}
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

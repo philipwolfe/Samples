@@ -1,0 +1,60 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlref/webctrl/LinkButton/linkbutton1.src&file=VB%5CLinkButton1.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkJcXExpbmtCdXR0b24xLmFzcFx4eF9feHhfeHhfeF9feA==9a0803ed" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB\LinkButton1.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../../aspplus/samples/webforms/ctrlref/webctrl/linkbutton/linkbutton1aspxsource.htm'>LinkButton1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../../aspplus/samples/webforms/ctrlref/webctrl/linkbutton/vb/linkbutton1aspxsource.htm'>VB\LinkButton1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><html>
+<head>
+    <script language="VB" runat="server">
+
+      Sub LinkButton1_Click(sender As Object, e As EventArgs)
+          Label1.Text="You clicked the link button"
+      End Sub
+
+    </script>
+
+</head>
+<body>
+
+    <h3><font face="Verdana">LinkButton Example</font></h3>
+
+    <form runat=server>
+
+        <asp:LinkButton Text="Click Me!" Font-Name="Verdana" Font-Size="14pt" onclick="LinkButton1_Click" runat="server"/>
+        
+        &nbsp;&nbsp;
+
+        <asp:Label id=Label1 runat=server />
+        
+    </form>
+
+</body>
+</html>
+
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

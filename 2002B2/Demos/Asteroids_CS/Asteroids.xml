@@ -1,0 +1,182 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Asteroids</name>
+    </assembly>
+    <members>
+        <member name="T:Asteroids.Sprite">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Asteroids.Sprite.Screen">
+            <summary>Dimensions of the graphics area.</summary>
+        </member>
+        <member name="F:Asteroids.Sprite.shape">
+            <summary>Initial sprite shape, centered at the origin (0,0).</summary>
+        </member>
+        <member name="F:Asteroids.Sprite.active">
+            <summary>Active flag.</summary>
+        </member>
+        <member name="F:Asteroids.Sprite.angle">
+            <summary>Current angle of rotation.</summary>
+        </member>
+        <member name="F:Asteroids.Sprite.deltaAngle">
+            <summary>Amount to change the rotation angle.</summary>
+        </member>
+        <member name="F:Asteroids.Sprite.currentX">
+            <summary>Current position on screen.</summary>
+        </member>
+        <member name="F:Asteroids.Sprite.currentY">
+            <summary>Current position on screen.</summary>
+        </member>
+        <member name="F:Asteroids.Sprite.deltaX">
+            <summary>Amount to change the screen position.</summary>
+        </member>
+        <member name="F:Asteroids.Sprite.deltaY">
+            <summary>Amount to change the screen position.</summary>
+        </member>
+        <member name="F:Asteroids.Sprite.sprite">
+            <summary>
+            Location of the sprite.
+            </summary>
+            <remarks>
+            Final location and shape of sprite after applying rotation and
+            moving to screen position. Used for drawing on the screen and
+            in detecting collisions.
+            </remarks>
+        </member>
+        <member name="M:Asteroids.Sprite.advance">
+            <summary>
+            Update the rotation and position.
+            </summary>
+            <remarks>
+            Update the rotation and position of the sprite based 
+            on the delta values. If the sprite moves off the edge 
+            of the screen, it is wrapped around to the other side.
+            </remarks>
+        </member>
+        <member name="M:Asteroids.Sprite.render">
+            <summary>
+            Render the sprite.
+            </summary>
+            <remarks>
+            <para>
+            Render the sprite's shape and location by
+            rotating and translating its render matrix.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Asteroids.Sprite.isColliding(Asteroids.Sprite)">
+            <summary>
+            Determine if one sprite overlaps with another, i.e., 
+            if any vertice of one sprite lands inside the other.
+            </summary>
+            <param name="s"> </param>
+        </member>
+        <member name="F:Asteroids.Asteroids.DELAY">
+            <summary>Milliseconds between screen updates.</summary>
+        </member>
+        <member name="F:Asteroids.Asteroids.MAX_SHIPS">
+            <summary>Starting number of ships per game.</summary>
+        </member>
+        <member name="F:Asteroids.Asteroids.MAX_SHOTS">
+            <summary>Maximum number of sprites for photons, asteroids, and explosions.</summary>
+        </member>
+        <member name="F:Asteroids.Asteroids.SCRAP_COUNT">
+            <summary>Counter starting values.</summary>
+        </member>
+        <member name="F:Asteroids.Asteroids.MIN_ROCK_SIDES">
+            <summary>Asteroid shape and size ranges.</summary>
+        </member>
+        <member name="F:Asteroids.Asteroids.BIG_POINTS">
+            <summary>Points for shooting different objects.</summary>
+        </member>
+        <member name="F:Asteroids.Asteroids.NEW_SHIP_POINTS">
+            <summary>Number of points needed to earn a new ship.</summary>
+        </member>
+        <member name="F:Asteroids.Asteroids.NEW_UFO_POINTS">
+            <summary>Number of points between flying saucers.</summary>
+        </member>
+        <member name="F:Asteroids.Asteroids.stars">
+            <summary>Background stars.</summary>
+        </member>
+        <member name="F:Asteroids.Asteroids.shipsLeft">
+            <summary>Number of ships left to play, including current one.</summary>
+        </member>
+        <member name="F:Asteroids.Asteroids.shipCounter">
+            <summary>Time counter for ship explosion.</summary>
+        </member>
+        <member name="F:Asteroids.Asteroids.hyperCounter">
+            <summary>Time counter for hyperspace.</summary>
+        </member>
+        <member name="F:Asteroids.Asteroids.photonCounter">
+            <summary>Time counter for life of a photon.</summary>
+        </member>
+        <member name="F:Asteroids.Asteroids.photonIndex">
+            <summary>Next available photon sprite.</summary>
+        </member>
+        <member name="F:Asteroids.Asteroids.ufoPassesLeft">
+            <summary>Number of flying saucer passes.</summary>
+        </member>
+        <member name="F:Asteroids.Asteroids.ufoCounter">
+            <summary>Time counter for each pass.</summary>
+        </member>
+        <member name="F:Asteroids.Asteroids.missleCounter">
+            <summary>Counter for life of missle.</summary>
+        </member>
+        <member name="F:Asteroids.Asteroids.asteroidIsSmall">
+            <summary>Asteroid size flag.</summary>
+        </member>
+        <member name="F:Asteroids.Asteroids.asteroidsCounter">
+            <summary>Break-time counter.</summary>
+        </member>
+        <member name="F:Asteroids.Asteroids.asteroidsSpeed">
+            <summary>Asteroid speed.</summary>
+        </member>
+        <member name="F:Asteroids.Asteroids.asteroidsLeft">
+            <summary>Number of active asteroids.</summary>
+        </member>
+        <member name="F:Asteroids.Asteroids.explosionCounter">
+            <summary>Time counters for explosions.</summary>
+        </member>
+        <member name="F:Asteroids.Asteroids.explosionIndex">
+            <summary>Next available explosion sprite.</summary>
+        </member>
+        <member name="M:Asteroids.Asteroids.Run">
+            <summary>
+            This is the main loop. 
+            </summary>
+        </member>
+        <member name="M:Asteroids.Asteroids.ProcessSprites">
+            <summary>Move and process all sprites.</summary>
+        </member>
+        <member name="M:Asteroids.Asteroids.ProcessStats">
+            <summary>
+            Check the score and advance high score, add a new ship 
+            or start the flying saucer as necessary.
+            </summary>
+        </member>
+        <member name="F:Asteroids.AsteroidsApp.components">
+            <summary>
+               Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Asteroids.AsteroidsApp.Dispose">
+            <summary>
+               Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:Asteroids.AsteroidsApp.InitializeComponent">
+            <summary>
+               Required method for Designer support - do not modify
+               the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:Asteroids.AsteroidsApp.Main(System.String[])">
+            <summary>
+            The main entry point for the application.
+            </summary>
+        </member>
+    </members>
+</doc>

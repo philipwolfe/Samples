@@ -1,0 +1,70 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Services/MessageQueue/mqreceive/MQReceive.src&file=MQReceive.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfTVFSZWNlaXZlLmNzeF9feHhfeHhfeF9feA==3c039b40" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">MQReceive.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../howto/samples/services/messagequeue/mqreceive/mqreceivecssource.htm'>MQReceive.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../howto/samples/services/messagequeue/mqreceive/vb/mqreceivevbsource.htm'>VB\MQReceive.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>using System;
+using System.Messaging;
+using System.IO;
+using System.Runtime.Serialization;
+
+public class MQReceive {
+    public static void Main(String[] args)
+    {
+        string appName = Environment.GetCommandLineArgs()[0];
+
+        if ( args.Length != 1 ) {
+            Console.WriteLine("Usage: " + appName +" <queue>");
+            return;
+        }
+
+        string mqPath = ".\\" + args[0];
+
+        if ( !MessageQueue.Exists(mqPath) ) {
+            Console.WriteLine("The queue '" + mqPath + "' does not exist!");
+            return;
+        }
+
+        MessageQueue mq = new MessageQueue(mqPath);
+        ((XmlMessageFormatter)mq.Formatter).TargetTypeNames = new string[]{"System.String"};
+
+        try {
+            Message m = mq.Receive(new TimeSpan(0,0,3));
+            Console.WriteLine("Message: " + (string)m.Body);
+        }
+        catch ( MessageQueueException ) {
+            Console.WriteLine("There are no messages in the queue");
+            return;
+        }
+        catch ( InvalidOperationException ) {
+            Console.WriteLine("The message removed from the queue is not a string");
+            return;
+        }
+    }
+}
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

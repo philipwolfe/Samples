@@ -1,0 +1,89 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Services/PerformanceCounters/pcdemo/pcdemo.src&file=VB/PCDemo.vb" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvUENEZW1vLnZieF9feHhfeHhfeF9feA==65972d20" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/PCDemo.vb</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../howto/samples/services/performancecounters/pcdemo/pcdemocssource.htm'>PCDemo.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../howto/samples/services/performancecounters/pcdemo/vb/pcdemovbsource.htm'>VB/PCDemo.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>Imports System
+Imports System.Diagnostics
+Imports System.Timers
+Imports System.Threading
+
+Public class PCDemo
+
+	shared theCounter as PerformanceCounter
+
+	public shared sub Main()
+		Dim objectName As String = "ACounterDemo"
+		Dim counterName As String = "CountPerSecond"
+		Dim instanceName As String = "_Total"
+		
+		if(not PerformanceCounter.CategoryExists(objectName)) then
+			Dim ccd As CounterCreationData = new CounterCreationData()
+			ccd.CounterName = counterName
+			ccd.CounterType = PerformanceCounterType.RateOfChangePerSecond32
+			Dim ccds(1) As CounterCreationData
+			ccds(0) = ccd
+
+			PerformanceCounterCategory.Create(objectName,"Sample Object",ccds)
+		end if
+		
+		theCounter = new PerformanceCounter(objectName, counterName ,instanceName)
+
+		Dim aTimer As new System.Timers.Timer
+		AddHandler aTimer.Tick, AddressOf OnTimer
+
+		aTimer.Interval = 100
+		aTimer.Enabled = true
+		aTimer.AutoReset = false
+
+		Console.WriteLine("Press '+' to increase the interval")
+		Console.WriteLine("Press '-' to decrease the interval")
+		Console.WriteLine("Press 'q' to quit the sample")
+		Console.WriteLine("Started")
+		
+		Dim command As Integer
+		do
+			command = Console.Read()
+			if(command=43) then			' + = ASCII 43
+				aTimer.Interval = Math.Max(1,aTimer.Interval/2)
+			elseif(command=45) then		' - = ASCII 45
+				aTimer.Interval *= 2
+			end if
+
+		loop until command=113
+		
+		PerformanceCounter.DeleteCategory(objectName)	  
+	end sub
+	
+	public shared sub OnTimer(source as Object, e As EventArgs)
+		theCounter.IncrementBy(1)
+		Dim theTimer As System.Timers.Timer = CType(source,System.Timers.Timer)
+		theTimer.Enabled = true
+	end sub
+end class
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

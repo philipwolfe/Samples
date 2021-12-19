@@ -1,0 +1,178 @@
+
+<!--BEGIN HEADER-->
+<html>
+<head>
+<link rel="stylesheet" href="../../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+
+<table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+
+    <div style="padding:0,0,4,0"><b>Remoting</b><br></div>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/mainfeatures.htm">Remoting Overview</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/nutshell.htm">How Remoting Works</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/quickstart.htm">Remoting Samples</a><p>
+    <div style="padding:0,0,4,0"><b>The Basics</b><br></div>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/firstserver.htm">Create a Remote Server</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/firstclient.htm">Create a Client of the Server</a><p>
+    <div style="padding:0,0,4,0"><b>Samples</b><br></div>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/singleton.htm">Create a Singleton Object</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/byreference.htm">Pass Objects By Reference</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/byvalue.htm">Pass Objects By Value</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/interface.htm">Compile Against an Interface</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/async.htm">Make an Asynchronous Call</a><p>
+    <div style="padding:0,0,4,0"><a target="_top" style="color:darkred" href="../../../howto"><b>Back to Index</b></a><br></div>
+
+</div>
+
+</td>
+</tr>
+</table>
+
+
+
+
+
+
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<style>
+.mydd {  font: smaller verdana; }
+.code1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:blue;
+	}
+.codecomment1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:green;
+	}
+.issue {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background-color:RED;
+	color:WHITE;
+	font-weight:bold;
+	}
+
+
+body { font: smaller verdana }        
+
+</style>
+
+
+
+
+
+<h4>How Do I...Create a Remote Object as a Singleton?</h4>
+
+Lets modify the simple <a href="firstserver.htm">Client/Server</a> example 
+by deploying the remote object as a 
+singleton.  The client starts 2 threads and calls the <b>CountMe</b> method on 
+the server on two different channels, TCP as well as HTTP.  
+
+Start the server and then run the client.  Although this example is very 
+simple, it does illustrate a few important concepts.<p>
+
+<ul>
+
+<li>The HelloServer object is only activated once and its destructor is never called.<p>
+
+<li>When you run the client, thread 2 appears to out perform thread 1.  The second 
+thread is indeed faster than the first since thread 1 uses the HTTP channel that 
+transports data in XML using SOAP while TCP uses a binary transport.  
+While TCP clearly outperforms HTTP, the latter is a more general and should be 
+used when communicating with unknown endpoints.<p>
+
+<li>The server object is locked while the counter is incremented in the <b>CountMe</b> call.<p>
+
+<li>Notice that the count returned by the server is not reset between different 
+invocations of the client.  This behavior demonstrates that the server does 
+indeed preserve its state during its lifetime.<p> 
+
+<li>Each client thread makes a call to the server and then yields control to 
+its partner to ensure they both get a chance to run.<p> 
+
+<li>Each thread registers its own channel and connects to the server using 
+different URI's.  These are <b>"http://localhost:8086/SayHello"</b> for thread 
+one and <b>"tcp://localhost:8085/SayHello"</b> for thread 2.<p> 
+
+<li>The client executable waits for both threads to finish before terminating.<p>
+
+</ul>
+
+<b>NOTE:</b> &nbsp;We do not specify a port number when registering the client channels.  The 
+framework uses the port number on the channels to determine if the 
+channel should listen or connect.  When the channel is registered with 
+a port number, the channel listens, if the port numebr is zero, it 
+attempts to connect to a remote channel at the specified URI.<p>
+
+
+<span>
+
+
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../../howto/samples/remoting/singleton/vb">
+	<img style="border-color:black" border=1 src="../../../images/genicon.gif"><br>
+	</a>
+	<div class="caption">Singleton Sample</div><br>
+	
+	
+		[<a target="_blank" href="../../../howto/samples/remoting/singleton/vb">Run Sample</a>] | 
+		[<a target="_blank" href="../../../howto/samples/remoting/singleton/objectcssource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+</span>
+<p>
+
+
+
+
+<p>
+
+
+<!--END FOOTER-->
+<p>
+<hr>
+<p>
+</div>
+</td>
+</tr>
+</table>
+</BODY>
+</html>
+<!--END FOOTER-->

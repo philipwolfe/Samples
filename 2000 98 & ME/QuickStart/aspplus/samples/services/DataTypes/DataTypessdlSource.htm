@@ -1,0 +1,267 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/services/DataTypes/DataTypesClient.src&file=DataTypes.sdl" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfRGF0YVR5cGVzLnNkbHhfX3h4X3h4X3hfX3g=258b4872" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">DataTypes.sdl</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../aspplus/samples/services/datatypes/datatypesclientaspxsource.htm'>DataTypesClient.htm</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/services/datatypes/datatypessdlsource.htm'>DataTypes.sdl</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/services/datatypes/datatypescssource.htm'>DataTypes.cs</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/services/datatypes/makeservicebatsource.htm'>makeservice.bat</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../aspplus/samples/services/datatypes/vb/datatypesclientaspxsource.htm'>VB/DataTypesClient.htm</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/services/datatypes/vb/datatypessdlsource.htm'>VB/DataTypes.sdl</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/services/datatypes/vb/datatypesvbsource.htm'>VB/DataTypes.vb</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/services/datatypes/vb/makeservicebatsource.htm'>VB/makeservice.bat</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><?xml version="1.0"?>
+<serviceDescription xmlns:s0="http://tempuri.org/" name="DataTypes" targetNamespace="http://tempuri.org/" xmlns="urn:schemas-xmlsoap-org:sdl.2000-01-25">
+  <soap xmlns="urn:schemas-xmlsoap-org:soap-sdl-2000-01-25">
+    <service>
+      <addresses>
+        <address uri="http://localhost/QuickStart/aspplus/samples/services/DataTypes/DataTypes.asmx"/>
+      </addresses>
+      <requestResponse name="SayHello" soapAction="http://tempuri.org/SayHello">
+        <request ref="s0:SayHello"/>
+        <response ref="s0:SayHelloResult"/>
+      </requestResponse>
+      <requestResponse name="SayHelloName" soapAction="http://tempuri.org/SayHelloName">
+        <request ref="s0:SayHelloName"/>
+        <response ref="s0:SayHelloNameResult"/>
+      </requestResponse>
+      <requestResponse name="GetIntArray" soapAction="http://tempuri.org/GetIntArray">
+        <request ref="s0:GetIntArray"/>
+        <response ref="s0:GetIntArrayResult"/>
+      </requestResponse>
+      <requestResponse name="GetMode" soapAction="http://tempuri.org/GetMode">
+        <request ref="s0:GetMode"/>
+        <response ref="s0:GetModeResult"/>
+      </requestResponse>
+      <requestResponse name="GetOrder" soapAction="http://tempuri.org/GetOrder">
+        <request ref="s0:GetOrder"/>
+        <response ref="s0:GetOrderResult"/>
+      </requestResponse>
+      <requestResponse name="GetOrders" soapAction="http://tempuri.org/GetOrders">
+        <request ref="s0:GetOrders"/>
+        <response ref="s0:GetOrdersResult"/>
+      </requestResponse>
+    </service>
+  </soap>
+  <httppost xmlns="urn:schemas-xmlsoap-org:post-sdl-2000-01-25">
+    <service>
+      <requestResponse name="SayHello" href="http://localhost/QuickStart/aspplus/samples/services/DataTypes/DataTypes.asmx/SayHello">
+        <request>
+          <form/>
+        </request>
+        <response>
+          <mimeXml ref="s0:string"/>
+        </response>
+      </requestResponse>
+      <requestResponse name="SayHelloName" href="http://localhost/QuickStart/aspplus/samples/services/DataTypes/DataTypes.asmx/SayHelloName">
+        <request>
+          <form>
+            <input name="name"/>
+          </form>
+        </request>
+        <response>
+          <mimeXml ref="s0:string"/>
+        </response>
+      </requestResponse>
+      <requestResponse name="GetIntArray" href="http://localhost/QuickStart/aspplus/samples/services/DataTypes/DataTypes.asmx/GetIntArray">
+        <request>
+          <form/>
+        </request>
+        <response>
+          <mimeXml ref="s0:ArrayOfInt"/>
+        </response>
+      </requestResponse>
+      <requestResponse name="GetMode" href="http://localhost/QuickStart/aspplus/samples/services/DataTypes/DataTypes.asmx/GetMode">
+        <request>
+          <form/>
+        </request>
+        <response>
+          <mimeXml ref="s0:Mode"/>
+        </response>
+      </requestResponse>
+      <requestResponse name="GetOrder" href="http://localhost/QuickStart/aspplus/samples/services/DataTypes/DataTypes.asmx/GetOrder">
+        <request>
+          <form/>
+        </request>
+        <response>
+          <mimeXml ref="s0:Order"/>
+        </response>
+      </requestResponse>
+      <requestResponse name="GetOrders" href="http://localhost/QuickStart/aspplus/samples/services/DataTypes/DataTypes.asmx/GetOrders">
+        <request>
+          <form/>
+        </request>
+        <response>
+          <mimeXml ref="s0:ArrayOfOrder"/>
+        </response>
+      </requestResponse>
+    </service>
+  </httppost>
+  <httpget xmlns="urn:schemas-xmlsoap-org:get-sdl-2000-01-25">
+    <service>
+      <requestResponse name="SayHello" href="http://localhost/QuickStart/aspplus/samples/services/DataTypes/DataTypes.asmx/SayHello">
+        <request/>
+        <response>
+          <mimeXml ref="s0:string"/>
+        </response>
+      </requestResponse>
+      <requestResponse name="SayHelloName" href="http://localhost/QuickStart/aspplus/samples/services/DataTypes/DataTypes.asmx/SayHelloName">
+        <request>
+          <param name="name"/>
+        </request>
+        <response>
+          <mimeXml ref="s0:string"/>
+        </response>
+      </requestResponse>
+      <requestResponse name="GetIntArray" href="http://localhost/QuickStart/aspplus/samples/services/DataTypes/DataTypes.asmx/GetIntArray">
+        <request/>
+        <response>
+          <mimeXml ref="s0:ArrayOfInt"/>
+        </response>
+      </requestResponse>
+      <requestResponse name="GetMode" href="http://localhost/QuickStart/aspplus/samples/services/DataTypes/DataTypes.asmx/GetMode">
+        <request/>
+        <response>
+          <mimeXml ref="s0:Mode"/>
+        </response>
+      </requestResponse>
+      <requestResponse name="GetOrder" href="http://localhost/QuickStart/aspplus/samples/services/DataTypes/DataTypes.asmx/GetOrder">
+        <request/>
+        <response>
+          <mimeXml ref="s0:Order"/>
+        </response>
+      </requestResponse>
+      <requestResponse name="GetOrders" href="http://localhost/QuickStart/aspplus/samples/services/DataTypes/DataTypes.asmx/GetOrders">
+        <request/>
+        <response>
+          <mimeXml ref="s0:ArrayOfOrder"/>
+        </response>
+      </requestResponse>
+    </service>
+  </httpget>
+  <schema targetNamespace="http://tempuri.org/" attributeFormDefault="qualified" elementFormDefault="qualified" xmlns="http://www.w3.org/1999/XMLSchema">
+    <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+    <element name="SayHello">
+      <complexType/>
+    </element>
+    <element name="SayHelloResult">
+      <complexType>
+        <all>
+          <element name="result" type="string" nullable="true"/>
+        </all>
+      </complexType>
+    </element>
+    <element name="string" type="string" nullable="true"/>
+    <element name="SayHelloName">
+      <complexType>
+        <all>
+          <element name="name" type="string" nullable="true"/>
+        </all>
+      </complexType>
+    </element>
+    <element name="SayHelloNameResult">
+      <complexType>
+        <all>
+          <element name="result" type="string" nullable="true"/>
+        </all>
+      </complexType>
+    </element>
+    <element name="GetIntArray">
+      <complexType/>
+    </element>
+    <element name="GetIntArrayResult">
+      <complexType>
+        <all>
+          <element name="result" nullable="true">
+            <complexType xmlns:q1="http://schemas.xmlsoap.org/soap/encoding/" base="q1:Array">
+              <all>
+                <element name="int" type="int" minOccurs="0" maxOccurs="unbounded"/>
+              </all>
+            </complexType>
+          </element>
+        </all>
+      </complexType>
+    </element>
+    <element name="ArrayOfInt" nullable="true">
+      <complexType xmlns:q2="http://schemas.xmlsoap.org/soap/encoding/" base="q2:Array">
+        <all>
+          <element name="int" type="int" minOccurs="0" maxOccurs="unbounded"/>
+        </all>
+      </complexType>
+    </element>
+    <element name="GetMode">
+      <complexType/>
+    </element>
+    <element name="GetModeResult">
+      <complexType>
+        <all>
+          <element name="result" type="s0:Mode"/>
+        </all>
+      </complexType>
+    </element>
+    <simpleType name="Mode" base="string">
+      <enumeration value="On"/>
+      <enumeration value="Off"/>
+    </simpleType>
+    <element name="Mode" type="s0:Mode"/>
+    <element name="GetOrder">
+      <complexType/>
+    </element>
+    <element name="GetOrderResult">
+      <complexType>
+        <all>
+          <element name="result" type="s0:Order" nullable="true"/>
+        </all>
+      </complexType>
+    </element>
+    <complexType name="Order">
+      <all>
+        <element name="OrderID" type="int"/>
+        <element name="Price" type="double"/>
+      </all>
+    </complexType>
+    <element name="Order" type="s0:Order" nullable="true"/>
+    <element name="GetOrders">
+      <complexType/>
+    </element>
+    <element name="GetOrdersResult">
+      <complexType>
+        <all>
+          <element name="result" nullable="true">
+            <complexType xmlns:q3="http://schemas.xmlsoap.org/soap/encoding/" base="q3:Array">
+              <all>
+                <element name="Order" type="s0:Order" nullable="true" minOccurs="0" maxOccurs="unbounded"/>
+              </all>
+            </complexType>
+          </element>
+        </all>
+      </complexType>
+    </element>
+    <element name="ArrayOfOrder" nullable="true">
+      <complexType xmlns:q4="http://schemas.xmlsoap.org/soap/encoding/" base="q4:Array">
+        <all>
+          <element name="Order" type="s0:Order" nullable="true" minOccurs="0" maxOccurs="unbounded"/>
+        </all>
+      </complexType>
+    </element>
+  </schema>
+</serviceDescription>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

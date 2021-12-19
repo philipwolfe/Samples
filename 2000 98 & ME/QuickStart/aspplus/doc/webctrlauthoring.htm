@@ -1,0 +1,1865 @@
+
+
+<!--BEGIN HEADER-->
+<html>
+<head>
+<link rel="stylesheet" href="../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+  <table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+
+            <div style="padding:0,0,4,0"><b>Getting Started</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/quickstart.htm">Introduction</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/whatisaspx.htm">What is ASP.NET?</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/langsupport.htm">Language Support</a><p>
+
+            <div style="padding:0,0,4,0"><b>ASP.NET Web Forms</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webformsintro.htm">Introducing Web Forms</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webserverctrls.htm">Working with Server Controls</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webtemplates.htm">Applying Styles to Controls</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webvalidation.htm">Server Control Form Validation</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webpagelets.htm">Web Forms User Controls</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webdatabinding.htm">Databinding Server Controls</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webdataaccess.htm">Server-Side Data Access</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webdatalist.htm">Data Access and Customization</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/businessobjs.htm">Working with Business Objects</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webctrlauthoring.htm">Authoring Custom Controls</a><br>
+<!--            &nbsp; <a class="outer" href="../../aspplus/doc/webformsandvs7.htm">Visual Studio 7.0 & Web Forms</a><br> -->
+            &nbsp; <a class="outer" href="../../aspplus/doc/webcontrolsref.htm">Web Forms Controls Reference</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webformssyntaxref.htm">Web Forms Syntax Reference</a><p>
+
+            <div style="padding:0,0,4,0"><b>ASP.NET Web Services</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webservicesintro.htm">Introducing Web Services</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/writingservices.htm">Writing a Simple Web Service</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webservicetypes.htm">Web Service Type Marshalling</a><br>
+<!--            &nbsp; <a class="outer" href="../../aspplus/doc/discoverservices.htm">Making Services Discoverable</a><br> -->
+            &nbsp; <a class="outer" href="../../aspplus/doc/servicesanddata.htm">Using Data in Web Services</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/servicesandobjs.htm">Using Objects and Intrinsics</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/htmlscraping.htm">HTML Pattern Matching</a><p>
+
+            <div style="padding:0,0,4,0"><b>ASP.NET Web Applications</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/applications.htm">Application Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/globalasax.htm">Using the Global.asax File</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/stateoverview.htm">Managing Application State</a><br>
+<!--            &nbsp; <a class="outer" href="../../aspplus/doc/httpmodules.htm">Handling HttpModule Events</a><br> -->
+            &nbsp; <a class="outer" href="../../aspplus/doc/httphandlers.htm">HttpHandlers and Factories</a><p>
+
+<!--
+            <div style="padding:0,0,4,0"><b>State Management</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/stateoverview.htm">State Management Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/pageviewstate.htm">Using Page-local View State</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/sessionappstate.htm">Session and Application State</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/usingcookies.htm">Using Client-side Cookies</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/choosingstate.htm">Choosing a Strategy</a><p>
+-->
+            <div style="padding:0,0,4,0"><b>Cache Services</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/cachingoverview.htm">Caching Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/outputcaching.htm">Page Output Caching</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/datacaching.htm">Page Data Caching</a><p>
+
+            <div style="padding:0,0,4,0"><b>Configuration</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/configoverview.htm">Configuration Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/configformat.htm">Configuration File Format</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/configretrieve.htm">Retrieving Configuration</a><p>
+
+            <div style="padding:0,0,4,0"><b>Deployment</b><br></div>
+<!--            &nbsp; <a class="outer" href="../../aspplus/doc/adminoverview.htm">Administration Overview</a><br> -->
+            &nbsp; <a class="outer" href="../../aspplus/doc/deployment.htm">Deploying ASP.NET Applications</a><p>
+
+            <div style="padding:0,0,4,0"><b>Security</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/securityoverview.htm">Security Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/authandauth.htm">Authentication & Authorization</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/windowsauth.htm">Windows-based Authentication</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/formsauth.htm">Forms-based Authentication</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/authorization.htm">Authorizing Users and Roles</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/impersonation.htm">User Account Impersonation</a><p>
+
+            <div style="padding:0,0,4,0"><b>Localization</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/internationalization.htm">Internationalization Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/cultureencoding.htm">Setting Culture and Encoding</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/localizingapps.htm">Localizing ASP.NET Applications</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/resourcefiles.htm">Working with Resource Files</a><p>
+
+            <div style="padding:0,0,4,0"><b>Tracing</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/tracingoverview.htm">Tracing Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/tracelogpage.htm">Trace Logging to Page Output</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/tracelogapp.htm">Application-level Trace Logging</a><p>
+
+            <div style="padding:0,0,4,0"><b>Debugging</b><br></div>
+<!--
+            &nbsp; <a class="outer" href="../../aspplus/doc/debuggingoverview.htm">Debugging Overview</a><br>
+-->
+            &nbsp; <a class="outer" href="../../aspplus/doc/debugcomsdk.htm">The SDK Debugger</a><p>
+<!--
+            &nbsp; <a class="outer" href="../../aspplus/doc/debugvisualstudio.htm">The Visual Studio 7 Debugger</a><p>
+-->
+
+<!--
+            <div style="padding:0,0,4,0"><b>Performance</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/perfoverview.htm">Performance Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/perfcounters.htm">Using Performance Counters</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/perftuning.htm">Performance Tuning Tips</a><p>
+
+            <div style="padding:0,0,4,0"><b>ASP to ASP.NET Migration</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/migrationoverview.htm">Migration Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/syntaxandsemantics.htm">Syntax and Semantics</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/languagecompat.htm">Language Compatibility</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/cominterop.htm">COM Interoperability</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/mtstransactions.htm">MTS Transactions</a><p>
+-->
+            <div style="padding:0,0,4,0"><b>Sample Applications</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/portalapp.htm">A Personalized Portal</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/ecommerceapp.htm">An E-Commerce Storefront</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/classbrowser.htm">A Class Browser Application</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/ibuyspy.htm">IBuySpy.com</a><p>
+
+</div>
+
+</td>
+</tr>
+</table>
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<h4>Authoring Custom Controls</h4>
+<p>
+
+
+<div class="indent" style="font-family:Verdana; font-size:8pt;">
+
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#simplectrl">Developing a Simple Custom Control</a><br>
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#properties">Defining Simple Properties</a><br>
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#classprops">Defining Class Properties</a><br>
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#innercontent">Retrieving Inner Content</a><br>
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#composition">Developing a Composite Control</a><br>
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#postbackevts">Handling Events in a Composite Control</a><br>
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#exposingevts">Raising Events from a Composite Control</a><br>
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#viewstate">Maintaining State</a><br>
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#noncomposition">Developing a Custom (Non-Composite) Control that Handles Post-back Data</a><br>
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#javascript">Generating Client-side JavaScript for Custom Post-back</a><br>
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#templated">Developing a Templated Control</a><br>
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#templatedlist">Developing a Templated Databound Control</a><br>
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#parsing">Overriding Control Parsing</a><br>
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#builder">Defining a Custom Control Builder</a><br>
+
+<!--
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#simplectrl">Writing a Simple Control</a><br>
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#properties">Adding Properties and Methods</a><br>
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#classprops">Adding Class Properties</a><br>
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#innercontent">Retrieving Inner Content</a><br>
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#composition">Control Composition</a><br>
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#postbackevts">Handling Postback Events</a><br>
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#exposingevts">Exposing Events to a Page</a><br>
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#viewstate">Maintaining Viewstate</a><br>
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#noncomposition">Non-Compositional Controls</a><br>
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#templated">Writing a Templated Control</a><br>
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#templatedlist">Writing a Templated List Control</a><br>
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#builder">Custom Parsing Controls </a><br>
+-->
+<!--
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#extending">Extending Existing Controls</a><br>
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#updwnlevel">Adding Up-level/Down-level Support</a><br>
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#vs7">Control Authoring in Visual Studio 7.0</a><br>
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#designtime">Implementing Design Time Support</a><p>
+-->
+</div>
+
+<p>
+<hr>
+
+This section of the Quick Start demonstrates how advanced developers can write their own 
+ASP.NET Server Controls that participate within the ASP.NET Page Framework. By writing your own 
+custom ASP.NET server controls you can encapsulate custom user interface and other custom 
+functionality in controls that can be re-used on ASP.NET pages. The Quick Start will give 
+you an introduction to authoring custom controls through hands-on examples. To learn 
+additional details about control authoring, see <b>Developing Web Forms Controls</b> in the 
+.NET Framework SDK documentation.
+
+<p>
+
+<!--BEGIN SECTION-->
+<a name="simplectrl">
+<span class="subhead">Developing a Simple Custom Control</span>
+<p>
+
+It is easy to start authoring your own ASP.NET server controls. To create a simple custom 
+control, all you have to do is to define a class that derives from <b>System.Web.UI.Control</b> 
+and override its <b>Render</b> method. The Render method takes one argument of type 
+<b>System.Web.UI.HtmlTextWriter</b>. The HTML that your control wants to send to the 
+client is passed as a string argument to the <b>Write</b> method of HtmlTextWriter.
+<p>
+The example below demonstrates a simple control that renders a message string.
+
+<p>
+
+<span>
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/ctrlauth1.gif"><br>
+	</a>
+	<div class="caption">Simple.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/webforms/ctrlauth/simple/simpleaspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+
+<!--BEGIN SECTION-->
+<p>
+<a name="properties">
+<br>
+<span class="subhead">Defining Simple Properties</span>
+<p>
+
+Properties are like "smart" fields that have accessor methods. You should expose 
+properties instead of public fields from your controls because properties allow 
+data hiding, can be versioned and are supported by visual designers. Properties 
+have get/set accessor methods that set and retrieve properties, as well as allow 
+additional program logic to be performed if needed.
+<p>
+The example below shows how to add simple properties that correspond to primitive 
+data types such as integer,boolean and string. The example defines three properties 
+- <code>Message</code> is of type string, <code>MessageSize</code>  is of type enumeration, 
+and <code>Iterations</code> is of type integer. Note the page syntax for setting simple and enumeration 
+properties.
+
+<p>
+
+<span>
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/ctrlauth2.gif"><br>
+	</a>
+	<div class="caption">SimpleProperty.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/webforms/ctrlauth/simple/simplepropertyaspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+
+<!--BEGIN SECTION-->
+<p>
+<a name="classprops">
+<br>
+<span class="subhead">Defining Class Properties</span>
+<p>
+
+If a class A has a property whose type is class B, then the properties of B (if any) are 
+called sub-properties of A. The example below defines a custom control <code>SimpleSubProperty</code> 
+that has a property of type <code>Format</code>. Format is a class that has two primitive properties 
+- <code>Color</code> and <code>Size</code>, which in turn become sub-properties of <code>SimpleSubProperty</code>.
+<p>
+ASP.NET has a special syntax for setting sub-properties. The fragment below shows how to 
+declaratively set the <code>Format.Color</code> and <code>Format.Size</code> sub-properties on SimpleSubProperty. 
+The "-" syntax denotes a sub-property. 
+<p>
+<code>
+&lt;SimpleControlSamples:SimpleSubProperty Message="Hello There" Format-Color="red" Format-Size="3" runat=server/&gt;
+</code>
+<p>
+
+<span>
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/ctrlauth3.gif"><br>
+	</a>
+	<div class="caption">SimpleSubProperty.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/webforms/ctrlauth/simple/simplesubpropertyaspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+
+<!--BEGIN SECTION-->
+<p>
+<a name="innercontent">
+<br>
+<span class="subhead">Retrieving Inner Content</span>
+<p>
+
+Every control has a Controls property that it inherits from <b>System.Web.UI.Control</b>. This 
+is a collection property that denotes the child controls (if any) of a control. On an 
+ASP.NET page, if controls are added declaratively within the tags of a control, say control 
+A, the ASP.NET page framework adds those controls to the <b>Controls</b> collection of A. Any 
+literal text between control tags is added as a <b>LiteralControl</b>. 
+<p>
+The example below shows a custom control, <code>SimpleInnerContent</code> that renders text added 
+between its tags by checking if a <b>LiteralControl</b> has been added to its <b>Controls</b> collection. 
+If so, it retrieves the <b>Text</b> property of the <b>LiteralControl</b>, and appends it to its output 
+string.
+
+<p>
+
+<span>
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/ctrlauth4.gif"><br>
+	</a>
+	<div class="caption">SimpleInnerContent.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/webforms/ctrlauth/simple/simpleinnercontentaspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<!--BEGIN SECTION-->
+<p>
+<a name="composition">
+<br>
+<span class="subhead">Developing a Composite Control</span>
+<p>
+
+You can author new controls by combining existing controls using class composition. 
+Composite controls are equivalent to User Controls that are authored using ASP.NET page 
+syntax. The main difference between User Controls and composite controls is that User 
+Controls are persisted as .ascx text files, whereas composite controls are compiled 
+and persisted in assemblies. 
+<p>
+The key steps in developing a composite control are:
+<ul>
+<li>Override the protected <b>CreateChildControls</b> method inherited from <b>Control</b> to create 
+instances of child controls and add them to the <b>Controls</b> collection.
+<li>If your composite control will be repeatedly instantiated on a page, implement the 
+<b>System.Web.UI.INamingContainer</b> interface. This is a tagging interface that has no methods. 
+When it is "implemented" by a control, the ASP.NET page framework creates a new naming scope 
+under that control. This ensures that the child controls will have unique IDs in the 
+hierarchical tree of controls.
+</ul>
+You do not have to override the <b>Render</b> method because child controls provide rendering 
+logic. You can expose properties that synthesize properties of the child controls. 
+<p>
+The example below defines a composite control, <code>Composition1</code>, that combines a 
+<b>System.Web.UI.LiteralControl</b> and a <b>System.Web.UI WebControls.TextBox</b>. <code>Composition1</code> 
+exposes a custom property, <code>Value</code>, of type integer, that maps to the <b>Text</b> property of 
+<b>TextBox</b>.
+
+<p>
+
+<span>
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/ctrlauth5.gif"><br>
+	</a>
+	<div class="caption">Composition1.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/webforms/ctrlauth/composition/composition1aspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+
+<!--BEGIN SECTION-->
+<p>
+<a name="postbackevts">
+<br>
+<span class="subhead">Handling Events in a Composite Control</span>
+<p>
+
+A composite control can handle events raised by its child controls. This is accomplished 
+by providing event handling methods and attaching delegates to the events raised by the 
+child controls.
+<p>
+The example below shows a composite control, <code>Composition2</code>, that adds two button controls 
+(named <code>Add</code> and <code>Subtract</code>) to the composite control from the previous example and provides 
+event handling methods for the <b>Click</b> events of the buttons. These methods increment and 
+decrement the <code>Value</code> property of <code>Composition2</code>. The <b>CreateChildControls</b> method of 
+<code>Composition2</code> instantiates event handlers (delegates) that reference these methods, and 
+attaches the delegates to the <b>Click</b> events of the <b>Button</b> instances. The end result is a 
+control that does its own event handling - when the <code>Add</code> button is clicked the value in 
+the textbox is incremented, and when the <code>Subtract</code> button is clicked the value is 
+decremented.
+
+<p>
+
+<span>
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/ctrlauth6.gif"><br>
+	</a>
+	<div class="caption">Composition2.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/webforms/ctrlauth/composition/composition2aspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<!--BEGIN SECTION-->
+<p>
+<a name="exposingevts">
+<br>
+<span class="subhead">Raising Custom Events from a Composite Control</span>
+<p>
+
+A composite control can define custom events that it raises in response to events raised 
+by its child controls.
+<p>
+The example below shows a composite control, <code>Composition3</code>, that raises a custom event, 
+<code>Change</code>, in response to the <b>TextChanged</b> event of the <b>TextBox</b> child control.
+<p>
+This is accomplished as follows:
+<ul>
+<li>the custom <code>Change</code> event is defined using the standard event pattern. (This pattern 
+includes the definition of a protected <code>OnChange</code> method that raises the <code>Change</code> event)
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 3;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:55%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="4">
+<pre id="codectrl19" style="display:none">
+
+public event EventHandler Change;
+protected void OnChange(EventArgs e) {
+    Change(this, e);
+}
+</pre>
+<pre id="codectrl19" style="display:">
+
+Public Event Change(Sender as Object, E as EventArgs)
+Protected Sub OnChange(e As EventArgs)
+    Change(Me, e)
+End Sub
+</pre>
+<pre id="codectrl19" style="display:none">
+
+Event handlers can only be consumed and not created in JScript.
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl19" onclick="doClick(0, 'ctrl19')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl19" onclick="doClick(1, 'ctrl19')">
+          <b>VB
+        </td>
+        <td class="backtab" id="tabctrl19" onclick="doClick(2, 'ctrl19')">
+          <b>JScript
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<li>an event handling method is defined for the <b>TextChanged</b> event of <b>TextBox</b>. This method 
+raises the Change event by invoking the OnChange method.
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 3;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:55%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="4">
+<pre id="codectrl21" style="display:none">
+
+private void TextBox_Change(Object sender, EventArgs e) {
+    OnChange(EventArgs.Empty);
+}
+</pre>
+<pre id="codectrl21" style="display:">
+
+Private Sub TextBox_Change(sender As Object, e As EventArgs)
+    OnChange(EventArgs.Empty)
+End Sub
+</pre>
+<pre id="codectrl21" style="display:none">
+
+private function TextBox_Change(sender:Object, e:EventArgs) : void {
+    OnChange(EventArgs.Empty);
+}
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl21" onclick="doClick(0, 'ctrl21')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl21" onclick="doClick(1, 'ctrl21')">
+          <b>VB
+        </td>
+        <td class="backtab" id="tabctrl21" onclick="doClick(2, 'ctrl21')">
+          <b>JScript
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<li>the <b>CreateChildControls</b> method instantiates an event handler that references the above 
+method, and attaches the event handler to the <b>TextChanged</b> event of the <b>TextBox</b> instance.
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 3;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:55%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="4">
+<pre id="codectrl23" style="display:none">
+
+protected override void CreateChildControls() {
+  ..
+  TextBox box = new TextBox();
+  box.TextChanged += new EventHandler(this.TextBox_Change);
+  ...
+}
+</pre>
+<pre id="codectrl23" style="display:">
+
+Protected Overrides Sub CreateChildControls()
+  ...
+  Dim box As New TextBox()
+  AddHandler Box.TextChanged, AddressOf TextBox_Change
+    ...
+End Sub
+</pre>
+<pre id="codectrl23" style="display:none">
+
+override protected function CreateChildControls() : void {
+  ..
+  var box:TextBox = new TextBox();
+  box.add_TextChanged(this.TextBox_Change);
+  ...
+}
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl23" onclick="doClick(0, 'ctrl23')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl23" onclick="doClick(1, 'ctrl23')">
+          <b>VB
+        </td>
+        <td class="backtab" id="tabctrl23" onclick="doClick(2, 'ctrl23')">
+          <b>JScript
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+</ul>
+The <code>Change</code> event can be handled by a page that hosts the control, as shown in the example 
+below. In the example, the page provides an event handling method for the <code>Change</code> event that 
+sets the <code>Value</code> property to zero if the number entered by the user is negative. 
+
+<p>
+
+<span>
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/ctrlauth7.gif"><br>
+	</a>
+	<div class="caption">Composition3.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/webforms/ctrlauth/composition/composition3aspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+
+<!--BEGIN SECTION-->
+<p>
+<a name="viewstate">
+<br>
+<span class="subhead">Maintaining State</span>
+<p>
+
+Every Web Forms controls has a <b>State</b> property (inherited from <b>Control</b>) that enables it to 
+participate in <b>State</b> management. The type of <b>State</b> is <b>Sytem.Web.UI.StateBag</b>, which is a 
+data structure equivalent to a hashtable. A control can save data in <b>State</b> as key/value 
+pairs. <b>State</b> is persisted to a string variable by the ASP.NET page framework and 
+round-tripped to the client as a hidden variable. Upon post-back, the page framework 
+parses the input string from the hidden variable and populates the <b>State</b> property of 
+each control in the control hierarchy of a page. A control can restore its state (set 
+properties and fields to their values before post-back) using the <b>State</b> property. 
+Control developers should be aware that there is a performance overhead in round 
+tripping data to the client, and be judicious about what they save in <b>State</b>.
+<p>
+The following code fragment shows a property that is saved in <b>State</b>:
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 3;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:55%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="4">
+<pre id="codectrl27" style="display:none">
+
+public String Text {
+  get {
+    return (String) State["Text"];
+  }
+  set {
+    State["Text"] = value;
+  }
+}
+</pre>
+<pre id="codectrl27" style="display:">
+
+Public Property Text As String
+  Get
+    Return CType(State("Text"), String))
+  End Get
+  Set
+    State("Text") = Value
+  End Set
+End Property
+</pre>
+<pre id="codectrl27" style="display:none">
+
+public function get Text() : String
+{
+  return String(State("Text"));
+}
+public function set Text(value:String) : void
+{
+  State("Text") = value;
+}
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl27" onclick="doClick(0, 'ctrl27')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl27" onclick="doClick(1, 'ctrl27')">
+          <b>VB
+        </td>
+        <td class="backtab" id="tabctrl27" onclick="doClick(2, 'ctrl27')">
+          <b>JScript
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+The example below shows a custom control, <code>Label</code>,  that has two properties, <code>Text</code> and 
+<code>FontSize</code> that are saved in <b>State</b>. The ASP.NET page that uses <b>Label</b> contains buttons that 
+have event handlers to increase the font size of the text in <b>Label</b> when a button is 
+clicked. Thus the font size increases every time a button is clicked. This is possible 
+only due to state management - <code>Label</code> needs to know what font size was before post-back 
+in order in order to render the next larger font-size after post-back.
+
+<p>
+
+<span>
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/ctrlauth8.gif"><br>
+	</a>
+	<div class="caption">Label.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/webforms/ctrlauth/viewstate/labelaspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+
+<!--BEGIN SECTION-->
+<p>
+<a name="noncomposition">
+<br>
+<span class="subhead">Developing a Custom (Non-Composite) Control that Handles Post-Back Data</span>
+<p>
+
+You authored a simple "do little" custom control at the beginning of this Quick Start. The 
+example below demonstrates a custom control that does something more meaningful - it 
+renders an input box, and reads in data entered by the user. A control that wants to 
+examine post-back (input) data must implement the <b>System.Web.UI.IPostBackDataHandler</b> 
+interface. This signals to the ASP.NET page framework that a control wants to participate 
+in post-back data handling. The page framework passes input data to the <b>LoadPostData</b> 
+method of this interface as key/value pairs. In its implementation of this method, 
+the control can examine the input data and update its properties as shown below:
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 3;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:55%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="4">
+<pre id="codectrl31" style="display:none">
+
+private int _value = 0;
+public bool LoadPostData(String postDataKey, NameValueCollection values) {
+    _value = Int32.Parse(values[this.UniqueID]);
+    return false;
+}
+</pre>
+<pre id="codectrl31" style="display:">
+
+Private _value As Integer = 0
+Public Function LoadPostData(postDataKey As String, values As NameValueCollection) As Boolean
+    _value = Int32.Parse(values(Me.UniqueID))
+    Return(False)
+End Function
+</pre>
+<pre id="codectrl31" style="display:none">
+
+private var _value:int = 0;
+public function LoadPostData(postDataKey:String, values:NameValueCollection) : Boolean {
+    _value = Int32.Parse(values[this.UniqueID]);
+    return false;
+}
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl31" onclick="doClick(0, 'ctrl31')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl31" onclick="doClick(1, 'ctrl31')">
+          <b>VB
+        </td>
+        <td class="backtab" id="tabctrl31" onclick="doClick(2, 'ctrl31')">
+          <b>JScript
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+The example below defines a custom control, <code>NonComposition1</code> that implements 
+<b>IPostBackDataHandler</b> and has one property <code>Value</code>. The control renders an 
+HTML input box whose text attribute is the string representation of <code>Value</code>. The 
+property is set by examining post-back input data. The page that uses 
+<code>NonComposition1</code> also has two buttons that have event handlers to increment 
+and decrement the <code>Value</code> property of <code>NonComposition1</code>.
+
+<p>
+
+<span>
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/ctrlauth9.gif"><br>
+	</a>
+	<div class="caption">NonComposition1.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/webforms/ctrlauth/noncomposition/noncomposition1aspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<p>
+
+
+<!--BEGIN SECTION-->
+<p>
+<a name="javascript">
+<br>
+<span class="subhead">Generating Client-side JavaScript for Custom Post-back</span>
+<p>
+
+
+If a control wants to capture post-back events (form submits from a client) it must 
+implement the <b>System.Web.UI.IPostBackEventHandler</b> interface. This signals to the ASP.NET 
+page framework that a control wants to be notified of a post-back event. The 
+<b>RaisePostBackEvent</b> method allows the control to handle the event, and/or raise 
+other events. Additionally, the ASP.NET page framework has a custom eventing 
+architecture that allows a control to generate client-side JavaScript that 
+initiates custom post-back. Normally, post-back is initiated only by a few 
+elements such as a submit button or an image button. However, by emitting 
+client-side JavaScript, a control can also initiate post-back from other 
+Html elements. 
+<p>
+The example below defines a custom control, <code>NonComposition2</code>, that builds on the 
+previous example, <code>NonComposition1</code>. In addition to the interface provided by 
+<code>NonComposition1</code>, it renders two Html buttons that generate client-side JavaScript 
+to cause post-back when clicked. The name attributes of these buttons are "Add" 
+and "Subtract". The name attribute is passed as a string argument to 
+<b>RaisePostBackEvent</b> by the page framework. <code>NonComposition2</code> implements 
+<b>RaisePostBackEvent</b> to increment the <code>Value</code> property if Add is clicked and to 
+decrement <code>Value</code> if Subtract is clicked as shown below.
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 3;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:55%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="4">
+<pre id="codectrl35" style="display:none">
+
+public void RaisePostBackEvent(String eventArgument) {
+    if (eventArgument == "Add") {
+        this.Value++; }
+    else {
+        this.Value--;
+    }
+}
+</pre>
+<pre id="codectrl35" style="display:">
+
+Public Sub RaisePostBackEvent(eventArgument As String)
+    If eventArgument = "Add" Then
+        Me.Value = Me.Value + 1
+    Else
+        Me.Value = Me.Value - 1
+    End If
+End Sub
+</pre>
+<pre id="codectrl35" style="display:none">
+
+public function RaisePostBackEvent(eventArgument:String) : void {
+    if (eventArgument == "Add") {
+        this.Value++; }
+    else {
+        this.Value--;
+    }
+}
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl35" onclick="doClick(0, 'ctrl35')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl35" onclick="doClick(1, 'ctrl35')">
+          <b>VB
+        </td>
+        <td class="backtab" id="tabctrl35" onclick="doClick(2, 'ctrl35')">
+          <b>JScript
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+The user interface that is presented to the client is identical with the previous 
+example, however the entire UI is rendered by one custom control that also handles 
+the post-back events. The page developer can simply add <code>NonComposition2</code> to the page, 
+without providing any event handling logic.
+
+<p>
+
+
+<span>
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/ctrlauth10.gif"><br>
+	</a>
+	<div class="caption">NonComposition2.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/webforms/ctrlauth/noncomposition/noncomposition2aspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+
+<!--BEGIN SECTION-->
+<p>
+<a name="templated">
+<br>
+<span class="subhead">Developing a Templated Control</span>
+<p>
+
+The ASP.NET page frameworks allows control developers to author control that separate the 
+user interface from the control logic through the use of "templates". Page developers 
+can customize the presentation of the control by providing the UI as parameters between 
+template tags.
+<p>
+Templated controls have one or more properties of type <b>System.Web.UI.ITemplate</b> as 
+shown below.
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 3;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:55%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="4">
+<pre id="codectrl39" style="display:none">
+
+[Template(typeof(Template1))] public ITemplate MessageTemplate {...}
+</pre>
+<pre id="codectrl39" style="display:">
+
+Public Property &lt;Template(GetType(Template1VB))&gt; MessageTemplate As ITemplate
+</pre>
+<pre id="codectrl39" style="display:none">
+
+Named parameters in custom attributes not currently supported in JScript.
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl39" onclick="doClick(0, 'ctrl39')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl39" onclick="doClick(1, 'ctrl39')">
+          <b>VB
+        </td>
+        <td class="backtab" id="tabctrl39" onclick="doClick(2, 'ctrl39')">
+          <b>JScript
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+The attribute (in square brackets above) specifies the type of the container (parent) 
+control.
+<p>
+The <b>ITemplate</b> interface has one method, <b>Initialize</b>, that creates a control instance 
+dynamically. This is invoked on the <b>ITemplate</b> property in the <b>CreateChildControls</b> 
+method as shown below.
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 3;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:55%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="4">
+<pre id="codectrl41" style="display:none">
+
+protected override void CreateChildControls() {
+    if (MessageTemplate != null) {
+        MessageTemplate.Initialize(this);
+    }
+    ...
+}
+</pre>
+<pre id="codectrl41" style="display:">
+
+Protected Overrides Sub CreateChildControls()
+    If MessageTemplate <> Null Then
+        MessageTemplate.Initialize(Me)
+    End if
+    ...
+End Sub
+</pre>
+<pre id="codectrl41" style="display:none">
+
+override protected function CreateChildControls() : void {
+    if (MessageTemplate != null) {
+        MessageTemplate.Initialize(this);
+    }
+    ...
+}
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl41" onclick="doClick(0, 'ctrl41')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl41" onclick="doClick(1, 'ctrl41')">
+          <b>VB
+        </td>
+        <td class="backtab" id="tabctrl41" onclick="doClick(2, 'ctrl41')">
+          <b>JScript
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+The example below shows a simple templated control and an ASP.NET page that uses it.
+
+<p>
+
+<span>
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/ctrlauth11.gif"><br>
+	</a>
+	<div class="caption">Template1.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/webforms/ctrlauth/templates/template1aspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+
+<!--BEGIN SECTION-->
+<p>
+<a name="templatedlist">
+<br>
+<span class="subhead">Developing a Templated Databound Control</span>
+<p>
+
+The example below shows a more complex use of templates to create a databound control. 
+The Repeater control defined in this example is similar to the 
+<b>System.Web.UI.WebControls.Repeater</b> control.
+
+<p>
+
+<span>
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/ctrlauth12.gif"><br>
+	</a>
+	<div class="caption">Repeater1.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/webforms/ctrlauth/templates/repeater1aspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<p>
+
+The below example demonstrates how the above example can be modified so that a page 
+consumer can walk its "Items" collection during postback to pull out values from it.
+
+<p>
+
+<span>
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/ctrlauth13.gif"><br>
+	</a>
+	<div class="caption">Repeater2.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/webforms/ctrlauth/templates/repeater2aspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+
+<!--BEGIN SECTION-->
+<p>
+<a name="parsing">
+<br>
+<span class="subhead">Overriding Control Parsing</span>
+<p>
+
+As you saw in <a href="#innercontent">Retrieving Inner Content</a> , if a control A has 
+nested controls within its 
+control tags on a page, the page parser adds instances of those controls to A's <b>Controls</b> 
+collection. This is done by invoking the <b>AddSubParsedObject</b> method of A. Every control 
+inherits this method from <b>Control</b>, the default implementation simply inserts a child 
+control into the control hierarchy tree. A control can override the default parsing 
+logic by overriding the <b>AddSubParsedObject</b> method. (Note: The discussion above is 
+somewhat simplified. More details are given in the next example.) 
+<p>
+The example below defines a custom control, <code>CustomParse1</code>, that overrides the default 
+parsing logic. When a child control of a certain type is parsed, it adds it to a 
+collection. The rendering logic of <code>CustomParse1</code> is based on the number of items in 
+that collection. A simple custom control, <code>Item</code>, is also defined in the example.
+
+<p>
+
+<span>
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/ctrlauth14.gif"><br>
+	</a>
+	<div class="caption">CustomParse1.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/webforms/ctrlauth/customparsing/customparse1aspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<p>
+
+<!--BEGIN SECTION-->
+<p>
+<a name="builder">
+<br>
+<span class="subhead">Defining a Custom Control Builder</span>
+<p>
+
+The ASP.NET page framework uses classes called control builders to process the declarations 
+within control tags on a page. Every Web Forms control is associated with a default 
+control builder class, <b>System.Web.UI.ControlBuilder</b>. The default control builder 
+adds a child control to the <b>Controls</b> collection for every nested control that it 
+encounters within control tags. Additionally, it adds Literal controls for text 
+between nested control tags. You can override this default behavior by associating 
+a custom control builder class with your control. This is done by applying a control 
+builder attribute to your control as shown below:
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 3;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:55%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="4">
+<pre id="codectrl51" style="display:none">
+
+[ControlBuilderAttribute(typeof(CustomParse2ControlBuilder))]
+  public class CustomParse2 : Control {...}
+</pre>
+<pre id="codectrl51" style="display:">
+
+Public Class &lt;ControlBuilderAttribute(GetType(CustomParse2ControlBuilderVB))&gt; _
+  CustomParse2VB : Inherits Control 
+</pre>
+<pre id="codectrl51" style="display:none">
+
+Named parameters in custom attributes not currently supported in JScript.
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl51" onclick="doClick(0, 'ctrl51')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl51" onclick="doClick(1, 'ctrl51')">
+          <b>VB
+        </td>
+        <td class="backtab" id="tabctrl51" onclick="doClick(2, 'ctrl51')">
+          <b>JScript
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+The element in square brackets above is a Common Language Runtime attribute that 
+associates the <code>CustomParse2ControlBuilder</code> class with the 
+<code>CustomParse2</code> control. 
+You can define your own custom control builder by deriving from <b>ControlBuilder</b> and 
+overriding its methods. 
+<p>
+The example below defines a custom control builder that overrides the 
+<b>GetChildControlType</b> method inherited from <b>ControlBuilder</b>. This method 
+returns the type of the control to be added and can be used to decide 
+which controls will be added. In the example, the control builder will 
+add a child control only if the tag name is "customitem". The code for 
+the control is very similar to the previous example, except for the addition 
+of the custom attribute. 
+
+<p>
+
+<span>
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/ctrlauth15.gif"><br>
+	</a>
+	<div class="caption">CustomParse2.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/webforms/ctrlauth/customparsing/customparse2aspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<!--END FOOTER-->
+<p>
+<hr>
+<p>
+</div>
+</td>
+</tr>
+</table>
+</BODY>
+</html>
+<!--END FOOTER-->

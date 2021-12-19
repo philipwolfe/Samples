@@ -1,0 +1,212 @@
+aspplus\doc\debugcomsdk.htm:Because many parts of an ASP.NET application are dynamically compiled at runtime (.htm and .asmx files, for example), you must 
+aspplus\doc\htmlscraping.htm:of authoring an .asmx file, you can create an SDL file that describes a current HTML 
+aspplus\doc\servicesanddata.htm:	<a target="_blank" href="../../aspplus/samples/services/dataservice/vb/dataservice.asmx">
+aspplus\doc\servicesanddata.htm:	<img style="border-color:black" border=1 src="../../aspplus/images/dataservice_asmx.gif"><br>
+aspplus\doc\servicesanddata.htm:	<div class="caption">DataService.asmx</div><br>
+aspplus\doc\servicesanddata.htm:		[<a target="_blank" href="../../aspplus/samples/services/dataservice/vb/dataservice.asmx">Run Sample</a>] | 
+aspplus\doc\servicesanddata.htm:		[<a target="_blank" href="../../aspplus/samples/services/dataservice/dataserviceasmxsource.htm">View Source</a>]
+aspplus\doc\servicesanddata.htm:	<a target="_blank" href="../../aspplus/samples/services/dataservice/vb/dataservice.asmx?sdl">
+aspplus\doc\servicesanddata.htm:		[<a target="_blank" href="../../aspplus/samples/services/dataservice/vb/dataservice.asmx?sdl">View Sample</a>] 
+aspplus\doc\servicesandobjs.htm:The first method in the sample .asmx file, <B>UpdateHitCounter</B> accesses the Session, and adds 1 to the "HitCounter" value. It then returns this value as a String. The second method, <B>UpdateAppCounter</B> does the same thing, but with the Application. Notice the following:
+aspplus\doc\servicesandobjs.htm:	<a target="_blank" href="../../aspplus/samples/services/intrinsics/vb/sessionservice1.asmx">
+aspplus\doc\servicesandobjs.htm:	<img style="border-color:black" border=1 src="../../aspplus/images/sessionservice_asmx.gif"><br>
+aspplus\doc\servicesandobjs.htm:	<div class="caption">SessionService.asmx</div><br>
+aspplus\doc\servicesandobjs.htm:		[<a target="_blank" href="../../aspplus/samples/services/intrinsics/vb/sessionservice1.asmx">Run Sample</a>] | 
+aspplus\doc\servicesandobjs.htm:		[<a target="_blank" href="../../aspplus/samples/services/intrinsics/sessionservice1asmxsource.htm">View Source</a>]
+aspplus\doc\servicesandobjs.htm:	<a target="_blank" href="../../aspplus/samples/services/intrinsics/vb/sessionservice1.asmx?sdl">
+aspplus\doc\servicesandobjs.htm:		[<a target="_blank" href="../../aspplus/samples/services/intrinsics/vb/sessionservice1.asmx?sdl">View Sample</a>] 
+aspplus\doc\webservicesintro.htm:ASP.NET provides support for Web Services with the .asmx file. An .asmx file 
+aspplus\doc\webservicesintro.htm:The following is a very simple example of an .asmx file:
+aspplus\doc\webservicesintro.htm:To make this service available, we might name the file HelloWorld.asmx 
+aspplus\doc\webservicesintro.htm:URL <B>http://Foo/Bar/HelloWorld.asmx</B> and the resulting page would 
+aspplus\doc\webservicesintro.htm:<B>http://Foo/Bar/HelloWorld.asmx?SDL</B> into the Internet Explorer 
+aspplus\doc\webservicesintro.htm:WebServiceUtil /c:proxy /pa:http://someDomain.com/someFolder/HelloWorld.asmx?SDL
+aspplus\doc\webservicetypes.htm:that because there is more than one public class defined in the .asmx file, we must specify which is to be treated as the WebService 
+aspplus\doc\webservicetypes.htm:	<a target="_blank" href="../../aspplus/samples/services/datatypes/vb/datatypes.asmx">
+aspplus\doc\webservicetypes.htm:	<img style="border-color:black" border=1 src="../../aspplus/images/datatypes_asmx.gif"><br>
+aspplus\doc\webservicetypes.htm:	<div class="caption">DataTypes.asmx</div><br>
+aspplus\doc\webservicetypes.htm:		[<a target="_blank" href="../../aspplus/samples/services/datatypes/vb/datatypes.asmx">Run Sample</a>] | 
+aspplus\doc\webservicetypes.htm:		[<a target="_blank" href="../../aspplus/samples/services/datatypes/datatypesasmxsource.htm">View Source</a>]
+aspplus\doc\webservicetypes.htm:	<a target="_blank" href="../../aspplus/samples/services/datatypes/vb/datatypes.asmx?sdl">
+aspplus\doc\webservicetypes.htm:		[<a target="_blank" href="../../aspplus/samples/services/datatypes/vb/datatypes.asmx?sdl">View Sample</a>] 
+aspplus\doc\writingservices.htm:Web Service files are saved under the <b>.asmx</b> file extension.  Like .htm files, these are automatically compiled by the ASP.NET 
+aspplus\doc\writingservices.htm:In the case of our simple MathService, we have defined the WebService class in the .asmx file itself.  Note that if an .asmx file is 
+aspplus\doc\writingservices.htm:	<a target="_blank" href="../../aspplus/samples/services/mathservice/vb/mathservice.asmx">
+aspplus\doc\writingservices.htm:	<img style="border-color:black" border=1 src="../../aspplus/images/mathservice_asmx.gif"><br>
+aspplus\doc\writingservices.htm:	<div class="caption">MathService.asmx</div><br>
+aspplus\doc\writingservices.htm:		[<a target="_blank" href="../../aspplus/samples/services/mathservice/vb/mathservice.asmx">Run Sample</a>] | 
+aspplus\doc\writingservices.htm:		[<a target="_blank" href="../../aspplus/samples/services/mathservice/mathserviceasmxsource.htm">View Source</a>]
+aspplus\doc\writingservices.htm:	<a target="_blank" href="../../aspplus/samples/services/mathservice/vb/mathservice.asmx?sdl">
+aspplus\doc\writingservices.htm:		[<a target="_blank" href="../../aspplus/samples/services/mathservice/vb/mathservice.asmx?sdl">View Sample</a>] 
+aspplus\doc\writingservices.htm:[WebMethod] methods) then you can simply create an .asmx file with only the following line:
+aspplus\doc\writingservices.htm:To consume this service is very simple. You simply use the WebServiceUtil application that is included on the SDK to create a proxy class that looks similar to the class defined in the .asmx file. (Though only the [WebMethod] methods will be there!) You then simply compile your code with this proxy class included.
+aspplus\samples\services\DataService\DataServiceasmxSource.htm:    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/services/DataService/DataService.src&file=DataService.asmx" id="Form">
+aspplus\samples\services\DataService\DataServiceasmxSource.htm:                <span id="Title">DataService.asmx</span>
+aspplus\samples\services\DataService\DataServiceasmxSource.htm:        <td><a href='../../../../aspplus/samples/services/dataservice/dataserviceasmxsource.htm'>DataService.asmx</a> &nbsp;&nbsp</td>
+aspplus\samples\services\DataService\DataServiceasmxSource.htm:        <td><a href='../../../../aspplus/samples/services/dataservice/vb/dataserviceasmxsource.htm'>VB/DataService.asmx</a> &nbsp;&nbsp</td>
+aspplus\samples\services\DataService\DataServicecsSource.htm:            this.Url = "http://localhost/QuickStart/aspplus/samples/services/DataService/DataService.asmx" +
+aspplus\samples\services\DataService\DataServicesdlSource.htm:        <address uri="http://localhost/QuickStart/aspplus/samples/services/DataService/DataService.asmx"/>
+aspplus\samples\services\DataService\DataServicesdlSource.htm:      <requestResponse name="GetTitleAuthors" href="http://localhost/QuickStart/aspplus/samples/services/DataService/DataService.asmx/GetTitleAuthors">
+aspplus\samples\services\DataService\DataServicesdlSource.htm:      <requestResponse name="GetTitleAuthors" href="http://localhost/QuickStart/aspplus/samples/services/DataService/DataService.asmx/GetTitleAuthors">
+aspplus\samples\services\DataService\VB\DataServiceasmxSource.htm:    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/services/DataService/DataService.src&file=VB/DataService.asmx" id="Form">
+aspplus\samples\services\DataService\VB\DataServiceasmxSource.htm:                <span id="Title">VB/DataService.asmx</span>
+aspplus\samples\services\DataService\VB\DataServiceasmxSource.htm:        <td><a href='../../../../../aspplus/samples/services/dataservice/dataserviceasmxsource.htm'>DataService.asmx</a> &nbsp;&nbsp</td>
+aspplus\samples\services\DataService\VB\DataServiceasmxSource.htm:        <td><a href='../../../../../aspplus/samples/services/dataservice/vb/dataserviceasmxsource.htm'>VB/DataService.asmx</a> &nbsp;&nbsp</td>
+aspplus\samples\services\DataService\VB\DataServicesdlSource.htm:        <address uri="http://localhost/QuickStart/aspplus/samples/services/DataService/VB/DataService.asmx"/>
+aspplus\samples\services\DataService\VB\DataServicesdlSource.htm:      <requestResponse name="GetTitleAuthors" href="http://localhost/QuickStart/aspplus/samples/services/DataService/VB/DataService.asmx/GetTitleAuthors">
+aspplus\samples\services\DataService\VB\DataServicesdlSource.htm:      <requestResponse name="GetTitleAuthors" href="http://localhost/QuickStart/aspplus/samples/services/DataService/VB/DataService.asmx/GetTitleAuthors">
+aspplus\samples\services\DataTypes\DataTypesasmxSource.htm:    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/services/DataTypes/DataTypes.src&file=DataTypes.asmx" id="Form">
+aspplus\samples\services\DataTypes\DataTypesasmxSource.htm:                <span id="Title">DataTypes.asmx</span>
+aspplus\samples\services\DataTypes\DataTypesasmxSource.htm:        <td><a href='../../../../aspplus/samples/services/datatypes/datatypesasmxsource.htm'>DataTypes.asmx</a> &nbsp;&nbsp</td>
+aspplus\samples\services\DataTypes\DataTypesasmxSource.htm:        <td><a href='../../../../aspplus/samples/services/datatypes/vb/datatypesasmxsource.htm'>VB/DataTypes.asmx</a> &nbsp;&nbsp</td>
+aspplus\samples\services\DataTypes\DataTypescsSource.htm:            this.Url = "http://localhost/QuickStart/aspplus/samples/services/DataTypes/DataTypes.asmx";
+aspplus\samples\services\DataTypes\DataTypessdlSource.htm:        <address uri="http://localhost/QuickStart/aspplus/samples/services/DataTypes/DataTypes.asmx"/>
+aspplus\samples\services\DataTypes\DataTypessdlSource.htm:      <requestResponse name="SayHello" href="http://localhost/QuickStart/aspplus/samples/services/DataTypes/DataTypes.asmx/SayHello">
+aspplus\samples\services\DataTypes\DataTypessdlSource.htm:      <requestResponse name="SayHelloName" href="http://localhost/QuickStart/aspplus/samples/services/DataTypes/DataTypes.asmx/SayHelloName">
+aspplus\samples\services\DataTypes\DataTypessdlSource.htm:      <requestResponse name="GetIntArray" href="http://localhost/QuickStart/aspplus/samples/services/DataTypes/DataTypes.asmx/GetIntArray">
+aspplus\samples\services\DataTypes\DataTypessdlSource.htm:      <requestResponse name="GetMode" href="http://localhost/QuickStart/aspplus/samples/services/DataTypes/DataTypes.asmx/GetMode">
+aspplus\samples\services\DataTypes\DataTypessdlSource.htm:      <requestResponse name="GetOrder" href="http://localhost/QuickStart/aspplus/samples/services/DataTypes/DataTypes.asmx/GetOrder">
+aspplus\samples\services\DataTypes\DataTypessdlSource.htm:      <requestResponse name="GetOrders" href="http://localhost/QuickStart/aspplus/samples/services/DataTypes/DataTypes.asmx/GetOrders">
+aspplus\samples\services\DataTypes\DataTypessdlSource.htm:      <requestResponse name="SayHello" href="http://localhost/QuickStart/aspplus/samples/services/DataTypes/DataTypes.asmx/SayHello">
+aspplus\samples\services\DataTypes\DataTypessdlSource.htm:      <requestResponse name="SayHelloName" href="http://localhost/QuickStart/aspplus/samples/services/DataTypes/DataTypes.asmx/SayHelloName">
+aspplus\samples\services\DataTypes\DataTypessdlSource.htm:      <requestResponse name="GetIntArray" href="http://localhost/QuickStart/aspplus/samples/services/DataTypes/DataTypes.asmx/GetIntArray">
+aspplus\samples\services\DataTypes\DataTypessdlSource.htm:      <requestResponse name="GetMode" href="http://localhost/QuickStart/aspplus/samples/services/DataTypes/DataTypes.asmx/GetMode">
+aspplus\samples\services\DataTypes\DataTypessdlSource.htm:      <requestResponse name="GetOrder" href="http://localhost/QuickStart/aspplus/samples/services/DataTypes/DataTypes.asmx/GetOrder">
+aspplus\samples\services\DataTypes\DataTypessdlSource.htm:      <requestResponse name="GetOrders" href="http://localhost/QuickStart/aspplus/samples/services/DataTypes/DataTypes.asmx/GetOrders">
+aspplus\samples\services\DataTypes\VB\DataTypesasmxSource.htm:    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/services/DataTypes/DataTypes.src&file=VB/DataTypes.asmx" id="Form">
+aspplus\samples\services\DataTypes\VB\DataTypesasmxSource.htm:                <span id="Title">VB/DataTypes.asmx</span>
+aspplus\samples\services\DataTypes\VB\DataTypesasmxSource.htm:        <td><a href='../../../../../aspplus/samples/services/datatypes/datatypesasmxsource.htm'>DataTypes.asmx</a> &nbsp;&nbsp</td>
+aspplus\samples\services\DataTypes\VB\DataTypesasmxSource.htm:        <td><a href='../../../../../aspplus/samples/services/datatypes/vb/datatypesasmxsource.htm'>VB/DataTypes.asmx</a> &nbsp;&nbsp</td>
+aspplus\samples\services\DataTypes\VB\DataTypessdlSource.htm:        <address uri="http://localhost/QuickStart/aspplus/samples/services/DataTypes/VB/DataTypes.asmx"/>
+aspplus\samples\services\DataTypes\VB\DataTypessdlSource.htm:      <requestResponse name="SayHello" href="http://localhost/QuickStart/aspplus/samples/services/DataTypes/VB/DataTypes.asmx/SayHello">
+aspplus\samples\services\DataTypes\VB\DataTypessdlSource.htm:      <requestResponse name="SayHelloName" href="http://localhost/QuickStart/aspplus/samples/services/DataTypes/VB/DataTypes.asmx/SayHelloName">
+aspplus\samples\services\DataTypes\VB\DataTypessdlSource.htm:      <requestResponse name="GetIntArray" href="http://localhost/QuickStart/aspplus/samples/services/DataTypes/VB/DataTypes.asmx/GetIntArray">
+aspplus\samples\services\DataTypes\VB\DataTypessdlSource.htm:      <requestResponse name="GetMode" href="http://localhost/QuickStart/aspplus/samples/services/DataTypes/VB/DataTypes.asmx/GetMode">
+aspplus\samples\services\DataTypes\VB\DataTypessdlSource.htm:      <requestResponse name="GetOrder" href="http://localhost/QuickStart/aspplus/samples/services/DataTypes/VB/DataTypes.asmx/GetOrder">
+aspplus\samples\services\DataTypes\VB\DataTypessdlSource.htm:      <requestResponse name="GetOrders" href="http://localhost/QuickStart/aspplus/samples/services/DataTypes/VB/DataTypes.asmx/GetOrders">
+aspplus\samples\services\DataTypes\VB\DataTypessdlSource.htm:      <requestResponse name="SayHello" href="http://localhost/QuickStart/aspplus/samples/services/DataTypes/VB/DataTypes.asmx/SayHello">
+aspplus\samples\services\DataTypes\VB\DataTypessdlSource.htm:      <requestResponse name="SayHelloName" href="http://localhost/QuickStart/aspplus/samples/services/DataTypes/VB/DataTypes.asmx/SayHelloName">
+aspplus\samples\services\DataTypes\VB\DataTypessdlSource.htm:      <requestResponse name="GetIntArray" href="http://localhost/QuickStart/aspplus/samples/services/DataTypes/VB/DataTypes.asmx/GetIntArray">
+aspplus\samples\services\DataTypes\VB\DataTypessdlSource.htm:      <requestResponse name="GetMode" href="http://localhost/QuickStart/aspplus/samples/services/DataTypes/VB/DataTypes.asmx/GetMode">
+aspplus\samples\services\DataTypes\VB\DataTypessdlSource.htm:      <requestResponse name="GetOrder" href="http://localhost/QuickStart/aspplus/samples/services/DataTypes/VB/DataTypes.asmx/GetOrder">
+aspplus\samples\services\DataTypes\VB\DataTypessdlSource.htm:      <requestResponse name="GetOrders" href="http://localhost/QuickStart/aspplus/samples/services/DataTypes/VB/DataTypes.asmx/GetOrders">
+aspplus\samples\services\DataTypes\VB\DataTypesvbSource.htm:            Me.Url = "http://localhost/QuickStart/aspplus/samples/services/DataTypes/VB/DataTypes.asmx"
+aspplus\samples\services\Intrinsics\SessionService1asmxSource.htm:    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/services/Intrinsics/SessionService1.src&file=SessionService1.asmx" id="Form">
+aspplus\samples\services\Intrinsics\SessionService1asmxSource.htm:                <span id="Title">SessionService1.asmx</span>
+aspplus\samples\services\Intrinsics\SessionService1asmxSource.htm:        <td><a href='../../../../aspplus/samples/services/intrinsics/sessionservice1asmxsource.htm'>SessionService1.asmx</a> &nbsp;&nbsp</td>
+aspplus\samples\services\Intrinsics\SessionService1asmxSource.htm:        <td><a href='../../../../aspplus/samples/services/intrinsics/vb/sessionservice1asmxsource.htm'>VB/SessionService1.asmx</a> &nbsp;&nbsp</td>
+aspplus\samples\services\Intrinsics\SessionService1sdlSource.htm:        <address uri="http://localhost/QuickStart/aspplus/samples/services/Intrinsics/SessionService1.asmx"/>
+aspplus\samples\services\Intrinsics\SessionService1sdlSource.htm:      <requestResponse name="UpdateHitCounter" href="http://localhost/QuickStart/aspplus/samples/services/Intrinsics/SessionService1.asmx/UpdateHitCounter">
+aspplus\samples\services\Intrinsics\SessionService1sdlSource.htm:      <requestResponse name="UpdateAppCounter" href="http://localhost/QuickStart/aspplus/samples/services/Intrinsics/SessionService1.asmx/UpdateAppCounter">
+aspplus\samples\services\Intrinsics\SessionService1sdlSource.htm:      <requestResponse name="UpdateHitCounter" href="http://localhost/QuickStart/aspplus/samples/services/Intrinsics/SessionService1.asmx/UpdateHitCounter">
+aspplus\samples\services\Intrinsics\SessionService1sdlSource.htm:      <requestResponse name="UpdateAppCounter" href="http://localhost/QuickStart/aspplus/samples/services/Intrinsics/SessionService1.asmx/UpdateAppCounter">
+aspplus\samples\services\Intrinsics\VB\SessionService1asmxSource.htm:    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/services/Intrinsics/SessionService1.src&file=VB/SessionService1.asmx" id="Form">
+aspplus\samples\services\Intrinsics\VB\SessionService1asmxSource.htm:                <span id="Title">VB/SessionService1.asmx</span>
+aspplus\samples\services\Intrinsics\VB\SessionService1asmxSource.htm:        <td><a href='../../../../../aspplus/samples/services/intrinsics/sessionservice1asmxsource.htm'>SessionService1.asmx</a> &nbsp;&nbsp</td>
+aspplus\samples\services\Intrinsics\VB\SessionService1asmxSource.htm:        <td><a href='../../../../../aspplus/samples/services/intrinsics/vb/sessionservice1asmxsource.htm'>VB/SessionService1.asmx</a> &nbsp;&nbsp</td>
+aspplus\samples\services\Intrinsics\VB\SessionService1sdlSource.htm:        <address uri="http://localhost/QuickStart/aspplus/samples/services/Intrinsics/VB/SessionService1.asmx"/>
+aspplus\samples\services\Intrinsics\VB\SessionService1sdlSource.htm:      <requestResponse name="UpdateHitCounter" href="http://localhost/QuickStart/aspplus/samples/services/Intrinsics/VB/SessionService1.asmx/UpdateHitCounter">
+aspplus\samples\services\Intrinsics\VB\SessionService1sdlSource.htm:      <requestResponse name="UpdateAppCounter" href="http://localhost/QuickStart/aspplus/samples/services/Intrinsics/VB/SessionService1.asmx/UpdateAppCounter">
+aspplus\samples\services\Intrinsics\VB\SessionService1sdlSource.htm:      <requestResponse name="UpdateHitCounter" href="http://localhost/QuickStart/aspplus/samples/services/Intrinsics/VB/SessionService1.asmx/UpdateHitCounter">
+aspplus\samples\services\Intrinsics\VB\SessionService1sdlSource.htm:      <requestResponse name="UpdateAppCounter" href="http://localhost/QuickStart/aspplus/samples/services/Intrinsics/VB/SessionService1.asmx/UpdateAppCounter">
+aspplus\samples\services\Intrinsics\VB\SessionService1vbSource.htm:"1.asmx"
+aspplus\samples\services\MathService\MathServiceasmxSource.htm:    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/services/MathService/MathService.src&file=MathService.asmx" id="Form">
+aspplus\samples\services\MathService\MathServiceasmxSource.htm:                <span id="Title">MathService.asmx</span>
+aspplus\samples\services\MathService\MathServiceasmxSource.htm:        <td><a href='../../../../aspplus/samples/services/mathservice/mathserviceasmxsource.htm'>MathService.asmx</a> &nbsp;&nbsp</td>
+aspplus\samples\services\MathService\MathServiceasmxSource.htm:        <td><a href='../../../../aspplus/samples/services/mathservice/vb/mathserviceasmxsource.htm'>VB/MathService.asmx</a> &nbsp;&nbsp</td>
+aspplus\samples\services\MathService\MathServicecsSource.htm:            this.Url = "http://localhost/QuickStart/aspplus/samples/services/MathService/MathService.asmx" +
+aspplus\samples\services\MathService\MathServicesdlSource.htm:        <address uri="http://localhost/QuickStart/aspplus/samples/services/MathService/MathService.asmx"/>
+aspplus\samples\services\MathService\MathServicesdlSource.htm:      <requestResponse name="Add" href="http://localhost/QuickStart/aspplus/samples/services/MathService/MathService.asmx/Add">
+aspplus\samples\services\MathService\MathServicesdlSource.htm:      <requestResponse name="Subtract" href="http://localhost/QuickStart/aspplus/samples/services/MathService/MathService.asmx/Subtract">
+aspplus\samples\services\MathService\MathServicesdlSource.htm:      <requestResponse name="Multiply" href="http://localhost/QuickStart/aspplus/samples/services/MathService/MathService.asmx/Multiply">
+aspplus\samples\services\MathService\MathServicesdlSource.htm:      <requestResponse name="Divide" href="http://localhost/QuickStart/aspplus/samples/services/MathService/MathService.asmx/Divide">
+aspplus\samples\services\MathService\MathServicesdlSource.htm:      <requestResponse name="Add" href="http://localhost/QuickStart/aspplus/samples/services/MathService/MathService.asmx/Add">
+aspplus\samples\services\MathService\MathServicesdlSource.htm:      <requestResponse name="Subtract" href="http://localhost/QuickStart/aspplus/samples/services/MathService/MathService.asmx/Subtract">
+aspplus\samples\services\MathService\MathServicesdlSource.htm:      <requestResponse name="Multiply" href="http://localhost/QuickStart/aspplus/samples/services/MathService/MathService.asmx/Multiply">
+aspplus\samples\services\MathService\MathServicesdlSource.htm:      <requestResponse name="Divide" href="http://localhost/QuickStart/aspplus/samples/services/MathService/MathService.asmx/Divide">
+aspplus\samples\services\MathService\VB\MathServiceasmxSource.htm:    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/services/MathService/MathService.src&file=VB/MathService.asmx" id="Form">
+aspplus\samples\services\MathService\VB\MathServiceasmxSource.htm:                <span id="Title">VB/MathService.asmx</span>
+aspplus\samples\services\MathService\VB\MathServiceasmxSource.htm:        <td><a href='../../../../../aspplus/samples/services/mathservice/mathserviceasmxsource.htm'>MathService.asmx</a> &nbsp;&nbsp</td>
+aspplus\samples\services\MathService\VB\MathServiceasmxSource.htm:        <td><a href='../../../../../aspplus/samples/services/mathservice/vb/mathserviceasmxsource.htm'>VB/MathService.asmx</a> &nbsp;&nbsp</td>
+aspplus\samples\services\MathService\VB\MathServicesdlSource.htm:        <address uri="http://localhost/QuickStart/aspplus/samples/services/MathService/VB/MathService.asmx"/>
+aspplus\samples\services\MathService\VB\MathServicesdlSource.htm:      <requestResponse name="Add" href="http://localhost/QuickStart/aspplus/samples/services/MathService/VB/MathService.asmx/Add">
+aspplus\samples\services\MathService\VB\MathServicesdlSource.htm:      <requestResponse name="Subtract" href="http://localhost/QuickStart/aspplus/samples/services/MathService/VB/MathService.asmx/Subtract">
+aspplus\samples\services\MathService\VB\MathServicesdlSource.htm:      <requestResponse name="Multiply" href="http://localhost/QuickStart/aspplus/samples/services/MathService/VB/MathService.asmx/Multiply">
+aspplus\samples\services\MathService\VB\MathServicesdlSource.htm:      <requestResponse name="Divide" href="http://localhost/QuickStart/aspplus/samples/services/MathService/VB/MathService.asmx/Divide">
+aspplus\samples\services\MathService\VB\MathServicesdlSource.htm:      <requestResponse name="Add" href="http://localhost/QuickStart/aspplus/samples/services/MathService/VB/MathService.asmx/Add">
+aspplus\samples\services\MathService\VB\MathServicesdlSource.htm:      <requestResponse name="Subtract" href="http://localhost/QuickStart/aspplus/samples/services/MathService/VB/MathService.asmx/Subtract">
+aspplus\samples\services\MathService\VB\MathServicesdlSource.htm:      <requestResponse name="Multiply" href="http://localhost/QuickStart/aspplus/samples/services/MathService/VB/MathService.asmx/Multiply">
+aspplus\samples\services\MathService\VB\MathServicesdlSource.htm:      <requestResponse name="Divide" href="http://localhost/QuickStart/aspplus/samples/services/MathService/VB/MathService.asmx/Divide">
+winforms\doc\WebServicesPlaceHolder.htm:ASP.NET provides support for Web Services with the .asmx file. An .asmx file 
+winforms\doc\WebServicesPlaceHolder.htm:The following is a very simple example of an .asmx file:
+winforms\doc\WebServicesPlaceHolder.htm:To make this service available, we might name the file HelloWorld.asmx 
+winforms\doc\WebServicesPlaceHolder.htm:URL <B>http://Foo/Bar/HelloWorld.asmx</B> and the resulting page would 
+winforms\doc\WebServicesPlaceHolder.htm:<B>http://Foo/Bar/HelloWorld.asmx?SDL</B> into the Internet Explorer 
+winforms\doc\WebServicesPlaceHolder.htm:WebServiceUtil /c:proxy /pa:http://someDomain.com/someFolder/HelloWorld.asmx?SDL
+winforms\doc\WinFormsData.htm:href="../../winforms/samples/cs/data/webservicebinding/simplecustomerswebservice.asmx">CustomersList</a></p> 
+winforms\doc\WinFormsData.htm:href="../../winforms/samples/cs/data/webservicebinding/simplecustomerswebservice.asmx?sdl">CustomersList 
+winforms\doc\WinFormsData.htm:  /URL:http://localhost/quickstart/winforms/Samples/Cs/Data/WebServiceBinding/SimpleCustomersWebService.asmx?SDL
+winforms\doc\WinFormsData.htm:  /URL:http://localhost/quickstart/winforms/Samples/VB/Data/WebServiceBinding/SimpleCustomersWebService.asmx?SDL
+winforms\samples\Cs\Data\MasterDetails\CustomersAndOrdersDataSetcsSource.htm:        <td><a href='../../../../../winforms/samples/cs/data/masterdetails/customersandorderswebserviceasmxsource.htm'>CustomersAndOrdersWebService.asmx</a> &nbsp;&nbsp</td>
+winforms\samples\Cs\Data\MasterDetails\CustomersAndOrdersDataSetxsdSource.htm:        <td><a href='../../../../../winforms/samples/cs/data/masterdetails/customersandorderswebserviceasmxsource.htm'>CustomersAndOrdersWebService.asmx</a> &nbsp;&nbsp</td>
+winforms\samples\Cs\Data\MasterDetails\CustomersAndOrdersWebServiceasmxSource.htm:    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/winforms/samples/Cs/Data/MasterDetails/MasterDetails.src&file=CustomersAndOrdersWebService.asmx" id="Form">
+winforms\samples\Cs\Data\MasterDetails\CustomersAndOrdersWebServiceasmxSource.htm:                <span id="Title">CustomersAndOrdersWebService.asmx</span>
+winforms\samples\Cs\Data\MasterDetails\CustomersAndOrdersWebServiceasmxSource.htm:        <td><a href='../../../../../winforms/samples/cs/data/masterdetails/customersandorderswebserviceasmxsource.htm'>CustomersAndOrdersWebService.asmx</a> &nbsp;&nbsp</td>
+winforms\samples\Cs\Data\MasterDetails\CustomersAndOrdersWebServiceSDLSource.htm:        <td><a href='../../../../../winforms/samples/cs/data/masterdetails/customersandorderswebserviceasmxsource.htm'>CustomersAndOrdersWebService.asmx</a> &nbsp;&nbsp</td>
+winforms\samples\Cs\Data\MasterDetails\CustomersAndOrdersWebServiceSDLSource.htm:        <address uri="http://localhost/QuickStart/winforms/samples/Cs/Data/MasterDetails/CustomersAndOrdersWebService.asmx"/>
+winforms\samples\Cs\Data\MasterDetails\CustomersAndOrdersWebServiceSDLSource.htm:      <requestResponse name="GetCustomersAndOrders" href="http://localhost/QuickStart/winforms/samples/Cs/Data/MasterDetails/CustomersAndOrdersWebService.asmx/GetCustomersAndOrders">
+winforms\samples\Cs\Data\MasterDetails\CustomersAndOrdersWebServiceSDLSource.htm:      <requestResponse name="GetCustomersAndOrders" href="http://localhost/QuickStart/winforms/samples/Cs/Data/MasterDetails/CustomersAndOrdersWebService.asmx/GetCustomersAndOrders">
+winforms\samples\Cs\Data\MasterDetails\CustomersFormcsSource.htm:        <td><a href='../../../../../winforms/samples/cs/data/masterdetails/customersandorderswebserviceasmxsource.htm'>CustomersAndOrdersWebService.asmx</a> &nbsp;&nbsp</td>
+winforms\samples\Cs\Data\Update\CustomersDataSetcsSource.htm:        <td><a href='../../../../../winforms/samples/cs/data/update/listcustomersasmxsource.htm'>ListCustomers.asmx</a> &nbsp;&nbsp</td>
+winforms\samples\Cs\Data\Update\CustomersDataSetcsSource.htm:        <td><a href='../../../../../winforms/samples/cs/data/update/updatecustomersasmxsource.htm'>UpdateCustomers.asmx</a> &nbsp;&nbsp</td>
+winforms\samples\Cs\Data\Update\CustomersDataSetxsdSource.htm:        <td><a href='../../../../../winforms/samples/cs/data/update/listcustomersasmxsource.htm'>ListCustomers.asmx</a> &nbsp;&nbsp</td>
+winforms\samples\Cs\Data\Update\CustomersDataSetxsdSource.htm:        <td><a href='../../../../../winforms/samples/cs/data/update/updatecustomersasmxsource.htm'>UpdateCustomers.asmx</a> &nbsp;&nbsp</td>
+winforms\samples\Cs\Data\Update\ListCustomersasmxSource.htm:    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/winforms/samples/Cs/Data/Update/Update.src&file=ListCustomers.asmx" id="Form">
+winforms\samples\Cs\Data\Update\ListCustomersasmxSource.htm:                <span id="Title">ListCustomers.asmx</span>
+winforms\samples\Cs\Data\Update\ListCustomersasmxSource.htm:        <td><a href='../../../../../winforms/samples/cs/data/update/listcustomersasmxsource.htm'>ListCustomers.asmx</a> &nbsp;&nbsp</td>
+winforms\samples\Cs\Data\Update\ListCustomersasmxSource.htm:        <td><a href='../../../../../winforms/samples/cs/data/update/updatecustomersasmxsource.htm'>UpdateCustomers.asmx</a> &nbsp;&nbsp</td>
+winforms\samples\Cs\Data\Update\ListCustomersSDLSource.htm:        <td><a href='../../../../../winforms/samples/cs/data/update/listcustomersasmxsource.htm'>ListCustomers.asmx</a> &nbsp;&nbsp</td>
+winforms\samples\Cs\Data\Update\ListCustomersSDLSource.htm:        <td><a href='../../../../../winforms/samples/cs/data/update/updatecustomersasmxsource.htm'>UpdateCustomers.asmx</a> &nbsp;&nbsp</td>
+winforms\samples\Cs\Data\Update\ListCustomersSDLSource.htm:        <address uri="http://localhost/QuickStart/winforms/samples/Cs/Data/Update/ListCustomers.asmx"/>
+winforms\samples\Cs\Data\Update\ListCustomersSDLSource.htm:      <requestResponse name="GetCustomers" href="http://localhost/QuickStart/winforms/samples/Cs/Data/Update/ListCustomers.asmx/GetCustomers">
+winforms\samples\Cs\Data\Update\ListCustomersSDLSource.htm:      <requestResponse name="GetCustomers" href="http://localhost/QuickStart/winforms/samples/Cs/Data/Update/ListCustomers.asmx/GetCustomers">
+winforms\samples\Cs\Data\Update\UpdateCustomersasmxSource.htm:    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/winforms/samples/Cs/Data/Update/Update.src&file=UpdateCustomers.asmx" id="Form">
+winforms\samples\Cs\Data\Update\UpdateCustomersasmxSource.htm:                <span id="Title">UpdateCustomers.asmx</span>
+winforms\samples\Cs\Data\Update\UpdateCustomersasmxSource.htm:        <td><a href='../../../../../winforms/samples/cs/data/update/listcustomersasmxsource.htm'>ListCustomers.asmx</a> &nbsp;&nbsp</td>
+winforms\samples\Cs\Data\Update\UpdateCustomersasmxSource.htm:        <td><a href='../../../../../winforms/samples/cs/data/update/updatecustomersasmxsource.htm'>UpdateCustomers.asmx</a> &nbsp;&nbsp</td>
+winforms\samples\Cs\Data\Update\UpdateCustomersSDLSource.htm:        <td><a href='../../../../../winforms/samples/cs/data/update/listcustomersasmxsource.htm'>ListCustomers.asmx</a> &nbsp;&nbsp</td>
+winforms\samples\Cs\Data\Update\UpdateCustomersSDLSource.htm:        <td><a href='../../../../../winforms/samples/cs/data/update/updatecustomersasmxsource.htm'>UpdateCustomers.asmx</a> &nbsp;&nbsp</td>
+winforms\samples\Cs\Data\Update\UpdateCustomersSDLSource.htm:        <address uri="http://localhost/QuickStart/winforms/samples/Cs/Data/Update/UpdateCustomers.asmx"/>
+winforms\samples\Cs\Data\Update\UpdateFormcsSource.htm:        <td><a href='../../../../../winforms/samples/cs/data/update/listcustomersasmxsource.htm'>ListCustomers.asmx</a> &nbsp;&nbsp</td>
+winforms\samples\Cs\Data\Update\UpdateFormcsSource.htm:        <td><a href='../../../../../winforms/samples/cs/data/update/updatecustomersasmxsource.htm'>UpdateCustomers.asmx</a> &nbsp;&nbsp</td>
+winforms\samples\Cs\Data\WebServiceBinding\CustomersDataSetcsSource.htm:        <td><a href='../../../../../winforms/samples/cs/data/webservicebinding/simplecustomerswebserviceasmxsource.htm'>SimpleCustomersWebService.asmx</a> &nbsp;&nbsp</td>
+winforms\samples\Cs\Data\WebServiceBinding\CustomersListcsSource.htm:        <td><a href='../../../../../winforms/samples/cs/data/webservicebinding/simplecustomerswebserviceasmxsource.htm'>SimpleCustomersWebService.asmx</a> &nbsp;&nbsp</td>
+winforms\samples\Cs\Data\WebServiceBinding\CustomersListcsSource.htm:"omersWebService.asmx";
+winforms\samples\Cs\Data\WebServiceBinding\SimpleCustomersWebServiceasmxSource.htm:    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/winforms/samples/Cs/Data/WebServiceBinding/WebServiceBinding.src&file=SimpleCustomersWebService.asmx" id="Form">
+winforms\samples\Cs\Data\WebServiceBinding\SimpleCustomersWebServiceasmxSource.htm:                <span id="Title">SimpleCustomersWebService.asmx</span>
+winforms\samples\Cs\Data\WebServiceBinding\SimpleCustomersWebServiceasmxSource.htm:        <td><a href='../../../../../winforms/samples/cs/data/webservicebinding/simplecustomerswebserviceasmxsource.htm'>SimpleCustomersWebService.asmx</a> &nbsp;&nbsp</td>
+winforms\samples\Cs\Data\WebServiceBinding\SimpleCustomersWebServiceSDLSource.htm:        <td><a href='../../../../../winforms/samples/cs/data/webservicebinding/simplecustomerswebserviceasmxsource.htm'>SimpleCustomersWebService.asmx</a> &nbsp;&nbsp</td>
+winforms\samples\Cs\Data\WebServiceBinding\SimpleCustomersWebServiceSDLSource.htm:        <address uri="http://localhost/QuickStart/winforms/samples/Cs/Data/WebServiceBinding/SimpleCustomersWebService.asmx"/>
+winforms\samples\Cs\Data\WebServiceBinding\SimpleCustomersWebServiceSDLSource.htm:      <requestResponse name="GetCustomers" href="http://localhost/QuickStart/winforms/samples/Cs/Data/WebServiceBinding/SimpleCustomersWebService.asmx/GetCustomers">
+winforms\samples\Cs\Data\WebServiceBinding\SimpleCustomersWebServiceSDLSource.htm:      <requestResponse name="GetCustomers" href="http://localhost/QuickStart/winforms/samples/Cs/Data/WebServiceBinding/SimpleCustomersWebService.asmx/GetCustomers">
+winforms\samples\Cs\Data\WebServiceBinding\WebServiceClientcsSource.htm:        <td><a href='../../../../../winforms/samples/cs/data/webservicebinding/simplecustomerswebserviceasmxsource.htm'>SimpleCustomersWebService.asmx</a> &nbsp;&nbsp</td>
+winforms\samples\VB\Data\MasterDetails\CustomersAndOrdersDataSetvbSource.htm:        <td><a href='../../../../../winforms/samples/vb/data/masterdetails/customersandorderswebserviceasmxsource.htm'>CustomersAndOrdersWebService.asmx</a> &nbsp;&nbsp</td>
+winforms\samples\VB\Data\MasterDetails\CustomersAndOrdersDataSetxsdSource.htm:        <td><a href='../../../../../winforms/samples/vb/data/masterdetails/customersandorderswebserviceasmxsource.htm'>CustomersAndOrdersWebService.asmx</a> &nbsp;&nbsp</td>
+winforms\samples\VB\Data\MasterDetails\CustomersAndOrdersWebServiceasmxSource.htm:    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/winforms/samples/VB/Data/MasterDetails/MasterDetails.src&file=CustomersAndOrdersWebService.asmx" id="Form">
+winforms\samples\VB\Data\MasterDetails\CustomersAndOrdersWebServiceasmxSource.htm:                <span id="Title">CustomersAndOrdersWebService.asmx</span>
+winforms\samples\VB\Data\MasterDetails\CustomersAndOrdersWebServiceasmxSource.htm:        <td><a href='../../../../../winforms/samples/vb/data/masterdetails/customersandorderswebserviceasmxsource.htm'>CustomersAndOrdersWebService.asmx</a> &nbsp;&nbsp</td>
+winforms\samples\VB\Data\MasterDetails\CustomersAndOrdersWebServiceSDLSource.htm:        <td><a href='../../../../../winforms/samples/vb/data/masterdetails/customersandorderswebserviceasmxsource.htm'>CustomersAndOrdersWebService.asmx</a> &nbsp;&nbsp</td>
+winforms\samples\VB\Data\MasterDetails\CustomersAndOrdersWebServiceSDLSource.htm:        <address uri="http://localhost/QuickStart/winforms/samples/VB/Data/MasterDetails/CustomersAndOrdersWebService.asmx"/>
+winforms\samples\VB\Data\MasterDetails\CustomersAndOrdersWebServiceSDLSource.htm:      <requestResponse name="GetCustomersAndOrders" href="http://localhost/QuickStart/winforms/samples/VB/Data/MasterDetails/CustomersAndOrdersWebService.asmx/GetCustomersAndOrders">
+winforms\samples\VB\Data\MasterDetails\CustomersAndOrdersWebServiceSDLSource.htm:      <requestResponse name="GetCustomersAndOrders" href="http://localhost/QuickStart/winforms/samples/VB/Data/MasterDetails/CustomersAndOrdersWebService.asmx/GetCustomersAndOrders">
+winforms\samples\VB\Data\MasterDetails\CustomersFormvbSource.htm:        <td><a href='../../../../../winforms/samples/vb/data/masterdetails/customersandorderswebserviceasmxsource.htm'>CustomersAndOrdersWebService.asmx</a> &nbsp;&nbsp</td>
+winforms\samples\VB\Data\WebServiceBinding\CustomersListvbSource.htm:        <td><a href='../../../../../winforms/samples/vb/data/webservicebinding/simplecustomerswebserviceasmxsource.htm'>SimpleCustomersWebService.asmx</a> &nbsp;&nbsp</td>
+winforms\samples\VB\Data\WebServiceBinding\CustomersListvbSource.htm:"omersWebService.asmx"
+winforms\samples\VB\Data\WebServiceBinding\SimpleCustomersWebServiceasmxSource.htm:    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/winforms/samples/VB/Data/WebServiceBinding/WebServiceBinding.src&file=SimpleCustomersWebService.asmx" id="Form">
+winforms\samples\VB\Data\WebServiceBinding\SimpleCustomersWebServiceasmxSource.htm:                <span id="Title">SimpleCustomersWebService.asmx</span>
+winforms\samples\VB\Data\WebServiceBinding\SimpleCustomersWebServiceasmxSource.htm:        <td><a href='../../../../../winforms/samples/vb/data/webservicebinding/simplecustomerswebserviceasmxsource.htm'>SimpleCustomersWebService.asmx</a> &nbsp;&nbsp</td>
+winforms\samples\VB\Data\WebServiceBinding\SimpleCustomersWebServiceSDLSource.htm:        <td><a href='../../../../../winforms/samples/vb/data/webservicebinding/simplecustomerswebserviceasmxsource.htm'>SimpleCustomersWebService.asmx</a> &nbsp;&nbsp</td>
+winforms\samples\VB\Data\WebServiceBinding\SimpleCustomersWebServiceSDLSource.htm:        <address uri="http://localhost/QuickStart/winforms/samples/VB/Data/WebServiceBinding/SimpleCustomersWebService.asmx"/>
+winforms\samples\VB\Data\WebServiceBinding\SimpleCustomersWebServiceSDLSource.htm:      <requestResponse name="GetCustomers" href="http://localhost/QuickStart/winforms/samples/VB/Data/WebServiceBinding/SimpleCustomersWebService.asmx/GetCustomers">
+winforms\samples\VB\Data\WebServiceBinding\SimpleCustomersWebServiceSDLSource.htm:      <requestResponse name="GetCustomers" href="http://localhost/QuickStart/winforms/samples/VB/Data/WebServiceBinding/SimpleCustomersWebService.asmx/GetCustomers">
+winforms\samples\VB\Data\WebServiceBinding\WebServiceClientvbSource.htm:        <td><a href='../../../../../winforms/samples/vb/data/webservicebinding/simplecustomerswebserviceasmxsource.htm'>SimpleCustomersWebService.asmx</a> &nbsp;&nbsp</td>

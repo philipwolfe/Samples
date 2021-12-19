@@ -1,0 +1,355 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 9">
+<meta name=Originator content="Microsoft Word 9">
+<link rel=File-List href="./Readme_files/filelist.xml">
+<title>SAMPLE: Using Excel 2000 as the COM Server for NGWS based Client</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:LastAuthor>Chris Waldron</o:LastAuthor>
+  <o:Revision>3</o:Revision>
+  <o:TotalTime>5</o:TotalTime>
+  <o:Created>2000-06-27T02:53:00Z</o:Created>
+  <o:LastSaved>2000-06-27T04:40:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>342</o:Words>
+  <o:Characters>1953</o:Characters>
+  <o:Company>Microsoft Corp.</o:Company>
+  <o:Lines>16</o:Lines>
+  <o:Paragraphs>3</o:Paragraphs>
+  <o:CharactersWithSpaces>2398</o:CharactersWithSpaces>
+  <o:Version>9.2720</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+@font-face
+	{font-family:"MS Mincho";
+	panose-1:0 0 0 0 0 0 0 0 0 0;
+	mso-font-alt:"\FF2D\FF33 \660E\671D";
+	mso-font-charset:128;
+	mso-generic-font-family:roman;
+	mso-font-format:other;
+	mso-font-pitch:fixed;
+	mso-font-signature:1 134676480 16 0 131072 0;}
+@font-face
+	{font-family:"\@MS Mincho";
+	panose-1:0 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:128;
+	mso-generic-font-family:roman;
+	mso-font-format:other;
+	mso-font-pitch:fixed;
+	mso-font-signature:1 134676480 16 0 131072 0;}
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+h1
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:16.0pt;
+	font-family:Arial;
+	mso-font-kerning:16.0pt;}
+h2
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	font-size:14.0pt;
+	font-family:Arial;
+	font-style:italic;}
+h3
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:3;
+	font-size:13.0pt;
+	font-family:Arial;}
+p.MsoList, li.MsoList, div.MsoList
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.25in;
+	margin-bottom:.0001pt;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoListBullet, li.MsoListBullet, div.MsoListBullet
+	{mso-style-update:auto;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.25in;
+	margin-bottom:.0001pt;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	mso-list:l0 level1 lfo3;
+	tab-stops:list .25in;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoBodyTextIndent, li.MsoBodyTextIndent, div.MsoBodyTextIndent
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.25in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoListContinue, li.MsoListContinue, div.MsoListContinue
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.25in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoPlainText, li.MsoPlainText, div.MsoPlainText
+	{margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:56.7pt 65.95pt 56.7pt 65.95pt;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+@list l0
+	{mso-list-id:-119;
+	mso-list-type:simple;
+	mso-list-template-ids:-1442824744;}
+@list l0:level1
+	{mso-level-number-format:bullet;
+	mso-level-style-link:"List Bullet";
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+</head>
+
+<body lang=EN-US style='tab-interval:.5in'>
+
+<div class=Section1>
+
+<h1><span style='mso-fareast-font-family:"MS Mincho"'>SAMPLE: Using Excel 2000
+as the COM Server for NGWS based Client<o:p></o:p></span></h1>
+
+<p class=MsoNormal><span style='mso-fareast-font-family:"MS Mincho"'><span
+style='mso-tab-count:2'>                        </span><o:p></o:p></span></p>
+
+<h2><span style='mso-fareast-font-family:"MS Mincho"'>OVERVIEW<o:p></o:p></span></h2>
+
+<p class=MsoBodyTextIndent><span style='mso-fareast-font-family:"MS Mincho"'>This
+sample demonstrates using Excel from a managed application. Excel is the
+spreadsheet component of Microsoft Office 2000. Most of Excel programmatic functionality
+is exposed through Automation via the type library Excel9.olb. The purpose of
+this sample is to demonstrate that a managed application can interact with
+Excel as a COM server.<o:p></o:p></span></p>
+
+<h3><span style='mso-fareast-font-family:"MS Mincho"'>The following
+functionality is exercised:<o:p></o:p></span></h3>
+
+<p class=MsoListBullet><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:"MS Mincho"'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]><span style='mso-fareast-font-family:"MS Mincho"'>Making
+Excel visible and invisible. <o:p></o:p></span></p>
+
+<p class=MsoListBullet><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:"MS Mincho"'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]><span style='mso-fareast-font-family:"MS Mincho"'>Taking
+from the user the control over application.<o:p></o:p></span></p>
+
+<p class=MsoListBullet><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:"MS Mincho"'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]><span style='mso-fareast-font-family:"MS Mincho"'>Creating
+new workbooks and worksheets<o:p></o:p></span></p>
+
+<p class=MsoListBullet><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:"MS Mincho"'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]><span style='mso-fareast-font-family:"MS Mincho"'>Filling
+specific cells and ranges of cells with different types of data<o:p></o:p></span></p>
+
+<p class=MsoListBullet><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:"MS Mincho"'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]><span style='mso-fareast-font-family:"MS Mincho"'>Getting
+the results of the calculations back to the managed app<o:p></o:p></span></p>
+
+<p class=MsoListBullet><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:"MS Mincho"'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]><span style='mso-fareast-font-family:"MS Mincho"'>Drawing
+of the chart<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='mso-fareast-font-family:"MS Mincho"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoBodyText><span style='mso-fareast-font-family:"MS Mincho"'>There
+are C# and VB7 versions of the sample.<o:p></o:p></span></p>
+
+<h2><span style='mso-fareast-font-family:"MS Mincho"'>HOW TO RUN THE SAMPLE:<o:p></o:p></span></h2>
+
+<p class=MsoBodyText><span style='mso-fareast-font-family:"MS Mincho"'>0. Both
+NGWS SDK and Office 2000 have to be properly installed to compile and run the
+sample.<o:p></o:p></span></p>
+
+<p class=MsoList><span style='mso-fareast-font-family:"MS Mincho"'>1.<span
+style='mso-tab-count:1'>   </span>Get Excel9.olb from “C:\Program
+Files\Microsoft Office\Office\” or other location where Office is installed<o:p></o:p></span></p>
+
+<p class=MsoList><span style='mso-fareast-font-family:"MS Mincho"'>2.<span
+style='mso-tab-count:1'>   </span>Run tlbimp EXCEL9.OLB<o:p></o:p></span></p>
+
+<p class=MsoListContinue><span style='mso-fareast-font-family:"MS Mincho"'>After
+importing Excel9.olb three different metadata files are created: Excel.dll,
+VBIDE.dll and Office.dll. <o:p></o:p></span></p>
+
+<p class=MsoBodyTextIndent><span style='mso-fareast-font-family:"MS Mincho"'>This
+sample is concentrated on the Excel.dll functionality.<o:p></o:p></span></p>
+
+<p class=MsoBodyText><span style='mso-fareast-font-family:"MS Mincho"'>3a.
+Compile AutoExcel.cs with cs.bat. This builds AutoExcel.exe using C# OR <o:p></o:p></span></p>
+
+<p class=MsoBodyText><span style='mso-fareast-font-family:"MS Mincho"'>3b.
+Compile AutoExcel.bas with vb.bat. This builds AutoExcel.exe using VB<o:p></o:p></span></p>
+
+<p class=MsoList><span style='mso-fareast-font-family:"MS Mincho"'>4.<span
+style='mso-tab-count:1'>   </span>Run AutoExcel.exe built using C# or VB. <o:p></o:p></span></p>
+
+<p class=MsoListContinue><span style='mso-fareast-font-family:"MS Mincho"'>IMPORTANT:
+See next paragraph how to close the sample correctly.<o:p></o:p></span></p>
+
+<p class=MsoList><span style='mso-fareast-font-family:"MS Mincho"'>5.<span
+style='mso-tab-count:1'>   </span>At the end of execution the sample keeps
+Excel window opened to show the results. Switch to the console window where the
+sample runs and press ENTER to close Excel and the sample to finish.<o:p></o:p></span></p>
+
+<h2><span style='mso-fareast-font-family:"MS Mincho"'>WHAT IT DOES:<o:p></o:p></span></h2>
+
+<p class=MsoListBullet><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:"MS Mincho"'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]><span style='mso-fareast-font-family:"MS Mincho"'>Starting
+a new instance of Excel from scratch<o:p></o:p></span></p>
+
+<p class=MsoListBullet><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:"MS Mincho"'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]><span style='mso-fareast-font-family:"MS Mincho"'>Making
+Excel visible and hiding from the user view<o:p></o:p></span></p>
+
+<p class=MsoListBullet><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:"MS Mincho"'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]><span style='mso-fareast-font-family:"MS Mincho"'>Accessing
+Workbooks collection<o:p></o:p></span></p>
+
+<p class=MsoListBullet><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:"MS Mincho"'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]><span style='mso-fareast-font-family:"MS Mincho"'>Creating
+new Workbook<o:p></o:p></span></p>
+
+<p class=MsoListBullet><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:"MS Mincho"'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]><span style='mso-fareast-font-family:"MS Mincho"'>Accessing
+Worksheets collection<o:p></o:p></span></p>
+
+<p class=MsoListBullet><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:"MS Mincho"'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]><span style='mso-fareast-font-family:"MS Mincho"'>Creating
+new Worksheet in the given Workbook<o:p></o:p></span></p>
+
+<p class=MsoListBullet><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:"MS Mincho"'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]><span style='mso-fareast-font-family:"MS Mincho"'>Accessing
+given Worksheet by name and number<o:p></o:p></span></p>
+
+<p class=MsoListBullet><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:"MS Mincho"'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]><span style='mso-fareast-font-family:"MS Mincho"'>Accessing
+single cell and multiple cell Ranges in the Worksheet<o:p></o:p></span></p>
+
+<p class=MsoListBullet><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:"MS Mincho"'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]><span style='mso-fareast-font-family:"MS Mincho"'>Assigning
+the value to the given cell<o:p></o:p></span></p>
+
+<p class=MsoListBullet><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:"MS Mincho"'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]><span style='mso-fareast-font-family:"MS Mincho"'>Assigning
+the array of values to the given row of cells<o:p></o:p></span></p>
+
+<p class=MsoListBullet><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:"MS Mincho"'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]><span style='mso-fareast-font-family:"MS Mincho"'>Assigning
+two dimensional array of values to the rectangular range of cells<o:p></o:p></span></p>
+
+<p class=MsoListBullet><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:"MS Mincho"'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]><span style='mso-fareast-font-family:"MS Mincho"'>Fetching
+the values of the rectangular cells area and storing it in the two dimensional
+array of Objects<o:p></o:p></span></p>
+
+<p class=MsoListBullet><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:"MS Mincho"'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]><span style='mso-fareast-font-family:"MS Mincho"'>Verification
+(comparison) of the sent and received data<o:p></o:p></span></p>
+
+<p class=MsoListBullet><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:"MS Mincho"'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]><span style='mso-fareast-font-family:"MS Mincho"'>Drawing
+of the Chart<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='mso-fareast-font-family:"MS Mincho"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+</div>
+
+</body>
+
+</html>

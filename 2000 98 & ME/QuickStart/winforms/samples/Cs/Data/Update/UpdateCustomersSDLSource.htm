@@ -1,0 +1,102 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/winforms/samples/Cs/Data/Update/Update.src&file=UpdateCustomers.SDL" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVXBkYXRlQ3VzdG9tZXJzLlNETHhfX3h4X3h4X3hfX3g=60780c81" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">UpdateCustomers.SDL</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>Win Form Source: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/data/update/updateformcssource.htm'>UpdateForm.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Northwind dataset: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/data/update/customersdatasetcssource.htm'>CustomersDataSet.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Northwind dataset Schema: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/data/update/customersdatasetxsdsource.htm'>CustomersDataSet.xsd</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>WebService: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/data/update/listcustomersasmxsource.htm'>ListCustomers.asmx</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>WebService: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/data/update/updatecustomersasmxsource.htm'>UpdateCustomers.asmx</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Web Service definition: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/data/update/listcustomerssdlsource.htm'>ListCustomers.SDL</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Web Service definition: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/data/update/updatecustomerssdlsource.htm'>UpdateCustomers.SDL</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><?xml version="1.0"?>
+<serviceDescription xmlns:s0="http://tempuri.org/" name="UpdateCustomers" targetNamespace="http://tempuri.org/" xmlns="urn:schemas-xmlsoap-org:sdl.2000-01-25">
+  <soap xmlns="urn:schemas-xmlsoap-org:soap-sdl-2000-01-25">
+    <service>
+      <addresses>
+        <address uri="http://localhost/QuickStart/winforms/samples/Cs/Data/Update/UpdateCustomers.asmx"/>
+      </addresses>
+      <requestResponse name="Save" soapAction="http://tempuri.org/Save">
+        <request ref="s0:Save"/>
+        <response ref="s0:SaveResult"/>
+      </requestResponse>
+    </service>
+  </soap>
+  <httppost xmlns="urn:schemas-xmlsoap-org:post-sdl-2000-01-25">
+    <service/>
+  </httppost>
+  <httpget xmlns="urn:schemas-xmlsoap-org:get-sdl-2000-01-25">
+    <service/>
+  </httpget>
+  <schema targetNamespace="http://tempuri.org/" attributeFormDefault="qualified" elementFormDefault="qualified" xmlns="http://www.w3.org/1999/XMLSchema">
+    <import namespace="http://www.w3.org/1999/XMLSchema"/>
+    <element name="Save">
+      <complexType>
+        <all>
+          <element name="customersDataSet" nullable="true">
+            <complexType>
+              <all>
+                <element ref="schema"/>
+                <any/>
+              </all>
+            </complexType>
+          </element>
+        </all>
+      </complexType>
+    </element>
+    <element name="SaveResult">
+      <complexType>
+        <all>
+          <element name="result" nullable="true">
+            <complexType>
+              <all>
+                <element ref="schema"/>
+                <any/>
+              </all>
+            </complexType>
+          </element>
+        </all>
+      </complexType>
+    </element>
+  </schema>
+</serviceDescription>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

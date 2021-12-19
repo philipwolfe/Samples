@@ -1,0 +1,71 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/intro/intro2.src&file=JS/Intro2.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfSlMvSW50cm8yLmFzcFx4eF9feHhfeHhfeF9feA==1951b7fc" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">JS/Intro2.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/intro/intro2aspxsource.htm'>Intro2.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/intro/vb/intro2aspxsource.htm'>VB/Intro2.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/intro/js/intro2aspxsource.htm'>JS/Intro2.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Page Language="JScript"%>
+
+<html>
+   <head>
+      <link rel="stylesheet"href="intro.css">
+   </head>
+
+   <body>
+
+       <center>
+
+       <form action="intro2.htm" method="post">
+
+           <h3> Name: <input id="Name" type=text>
+
+           Category:  <select id="Category" size=1>
+                          <option>psychology</option>
+                          <option>business</option>
+                          <option>popular_comp</option>
+                      </select>
+
+           <input type=submit value="Lookup">
+
+           <p>
+
+           <%  var i : int;
+               for (i=0; i <8; i++) { %>
+              <font size="<%=i%>"> Welcome to ASP.NET </font> <br>
+           <% }%>
+
+       </form>
+
+       </center>
+
+   </body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

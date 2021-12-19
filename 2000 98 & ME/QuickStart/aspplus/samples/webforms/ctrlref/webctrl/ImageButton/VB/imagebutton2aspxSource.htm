@@ -1,0 +1,106 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlref/webctrl/ImageButton/imagebutton2.src&file=VB%5Cimagebutton2.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkJcXGltYWdlYnV0dG9uMi5hc3BceHhfX3h4X3h4X3hfX3g=1bf31cb2" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB\imagebutton2.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../../aspplus/samples/webforms/ctrlref/webctrl/imagebutton/imagebutton2aspxsource.htm'>imagebutton2.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../../aspplus/samples/webforms/ctrlref/webctrl/imagebutton/vb/imagebutton2aspxsource.htm'>VB\imagebutton2.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><html>
+<head>
+
+    <script language="VB" runat="server">
+
+        Sub ImageButton1_OnClick(sender As Object, e As ImageClickEventArgs)        
+            Dim x As Integer = e.X
+            Dim y As Integer = e.Y
+
+            Label1.Text = "X: " + x.ToString
+            Label2.Text = "Y: " + y.ToString
+            Button1.ImageUrl = "/quickstart/aspplus/images/billg.gif"
+
+            ' Check to see if an eye, ear, nose or mouth was clicked.
+            If x>20 And x<35 And y>72 And y<88 Then 
+                Label3.Text = "You clicked Bill's ear."
+            Else if x>42 And x<58 And y>48 And y<64 Then
+                Label3.Text = "You clicked Bill's eye."
+            Else if x>62 And x<90 Then
+            
+                If y>46 And y<56 Then
+                    Label3.Text = "You clicked Bill's eye."
+                Else if y<72 And y>60 Then
+                    Label3.Text = "You clicked Bill's nose."
+                Else if y<92 And y>74 Then
+                    Button1.ImageUrl = "/quickstart/aspplus/images/billg_tongue.gif"
+                    Label3.Text = "Phfttttt-t-t-t-t-t!."
+                Else
+                    whoops()
+                End If
+                
+            Else if x>100 And x<108 And y>56 And y<72 Then
+                Label3.Text = "You clicked Bill's ear."
+            Else
+                whoops()
+            End If
+            
+        End Sub
+
+        Sub whoops()
+            Label3.Text = "You missed! Try clicking Bill's eyes, ears, nose or mouth."
+        End Sub
+
+    </script>
+
+</head>
+<body>
+
+    <h3><font face="Verdana">Using ImageButton as an Image Map</font></h3>
+
+    <form runat=server>
+
+        <table width="100%" border=0>
+          <tr>
+            <td width="25%">
+                <asp:ImageButton id=Button1 ImageUrl="/quickstart/aspplus/images/billg.gif" BorderWidth="2px" onclick="ImageButton1_OnClick" runat="server" />
+            </td>
+            <td>
+                <asp:Label id=Label1 Text="X:" runat="SERVER"/>
+                
+                <br>
+                
+                <asp:Label id=Label2 Text="Y:" runat="SERVER"/>
+            </td>
+          </tr>
+        </table>
+        
+        <asp:Label id=Label3 font-bold="true" Text="" runat="SERVER"/>
+        
+    </form>
+
+</body>
+</html>
+
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

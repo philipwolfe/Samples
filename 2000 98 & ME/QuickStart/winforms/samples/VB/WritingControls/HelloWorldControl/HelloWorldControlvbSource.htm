@@ -1,0 +1,63 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/winforms/samples/VB/WritingControls/HelloWorldControl/HelloWorldControl.src&file=HelloWorldControl.vb" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfSGVsbG9Xb3JsZENvbnRyb2wudmJ4X194eF94eF94X194b9373c7e" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">HelloWorldControl.vb</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>Control: </b></td>
+        <td><a href='../../../../../winforms/samples/vb/writingcontrols/helloworldcontrol/helloworldcontrolvbsource.htm'>HelloWorldControl.vb</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Host Application: </b></td>
+        <td><a href='../../../../../winforms/samples/vb/writingcontrols/helloworldcontrol/hostappvbsource.htm'>HostApp.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>'------------------------------------------------------------------------------
+'/ <copyright from='1997' to='2001' company='Microsoft Corporation'>           
+'/    Copyright (c) Microsoft Corporation. All Rights Reserved.                
+'/       
+'/    This source code is intended only as a supplement to Microsoft
+'/    Development Tools and/or on-line documentation.  See these other
+'/    materials for detailed information regarding Microsoft code samples.
+'/
+'/ </copyright>                                                                
+'------------------------------------------------------------------------------
+Imports System
+Imports System.ComponentModel
+Imports System.Drawing
+Imports System.WinForms
+
+Namespace Microsoft.Samples.WinForms.VB.HelloWorldControl 
+
+    public class HelloWorldControl 
+        Inherits RichControl 
+        
+        Overrides Protected Sub OnPaint(e As PaintEventArgs) 
+
+            'Paint the Text property on the control
+            Dim rect As RectangleF = new RectangleF(ClientRectangle.X, ClientRectangle.Y,ClientRectangle.Width,ClientRectangle.Height) 
+            e.Graphics.DrawString(Me.Text, Font, new SolidBrush(ForeColor), rect)
+            
+       End Sub
+       
+   End Class
+   
+End Namespace
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

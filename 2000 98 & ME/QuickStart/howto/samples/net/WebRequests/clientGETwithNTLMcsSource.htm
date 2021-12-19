@@ -1,0 +1,87 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/net/WebRequests/clientgetwithntlm.src&file=clientGETwithNTLM.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfY2xpZW50R0VUd2l0aE5UTE0uY3N4X194eF94eF94X19431f79006" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">clientGETwithNTLM.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../howto/samples/net/webrequests/clientgetwithntlmcssource.htm'>clientGETwithNTLM.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../howto/samples/net/webrequests/vb/clientgetwithntlmvbsource.htm'>VB/clientGETwithNTLM.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>using System;
+using System.Net;
+using System.IO;
+
+class ClientGETwithNTLM {
+    private static bool bShow;
+    
+    public static void Main(string[] args) {
+
+        if (args.Length < 4) {
+            showusage();
+            return;
+        }
+
+        if (args.Length > 4)
+            bShow = false;
+        else
+            bShow = true;
+
+        getPage(args[0], args[1], args[2], args[3]);
+
+        return;
+    }
+
+    public static void showusage() {
+        Console.WriteLine("Attempts to GET a URL with NTLM authentication");
+        Console.WriteLine("\r\nUsage:");
+        Console.WriteLine("ClientGETwithNTLM URL username password domain");
+        Console.WriteLine("Examples:");
+        Console.WriteLine("ClientGETwithNTLM http://www.microsoft.com/net/ Bobby BobbyLovesMangos THEDOMAIN");
+    }
+    
+    public static void getPage(String url, String username, String password, String Domain) {
+        WebRequest req = WebRequestFactory.Create(url);
+        SingleCredential sc = new SingleCredential(username, password, Domain);
+        req.Credentials = sc;
+        WebResponse result = req.GetResponse();
+        Stream ReceiveStream = result.GetResponseStream();
+        Console.WriteLine("Response stream received, Status code: " + result.Status);
+        if (bShow) 
+        {
+            Byte[] read = new Byte[512];
+            int bytes = ReceiveStream.Read(read, 0, 512);
+
+            Console.WriteLine("HTML...\r\n");
+        
+            while (bytes > 0) 
+            {
+                Console.Write(System.Text.Encoding.ASCII.GetString(read, 0, bytes));
+                bytes = ReceiveStream.Read(read, 0, 512);
+            }
+
+            Console.WriteLine();
+        }
+    }
+};
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

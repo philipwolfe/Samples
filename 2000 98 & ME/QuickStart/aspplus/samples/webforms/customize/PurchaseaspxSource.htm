@@ -1,0 +1,123 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/customize/datalist6.src&file=Purchase.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfUHVyY2hhc2UuYXNwXHh4X194eF94eF94X1948b964f9a" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">Purchase.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/customize/datalist6aspxsource.htm'>DataList6.htm</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/customize/headerincsource.htm'>Header.inc</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/customize/footerincsource.htm'>Footer.inc</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/customize/purchaseaspxsource.htm'>Purchase.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/customize/vb/datalist6aspxsource.htm'>VB/DataList6.htm</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/customize/vb/headerincsource.htm'>VB/Header.inc</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/customize/vb/footerincsource.htm'>VB/Footer.inc</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/customize/vb/purchaseaspxsource.htm'>VB/Purchase.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/customize/js/datalist6aspxsource.htm'>JS/DataList6.htm</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/customize/js/headerincsource.htm'>JS/Header.inc</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/customize/js/footerincsource.htm'>JS/Footer.inc</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/customize/js/purchaseaspxsource.htm'>JS/Purchase.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="System.Data.SQL" %>
+
+<html>
+
+<script language="C#" runat="server">
+
+    void Page_Load(Object sender, EventArgs e) {
+    
+        String query = "select * from Titles where title_id = '" + Request.QueryString["titleid"] + "'";
+
+        SQLConnection myConnection = new SQLConnection("server=localhost;uid=sa;pwd=;database=pubs");
+        SQLDataSetCommand myCommand = new SQLDataSetCommand(query, myConnection);
+
+        DataSet ds = new DataSet();
+        myCommand.FillDataSet(ds, "Titles");
+
+        MyDataList.DataSource = ds.Tables["Titles"].DefaultView;
+        MyDataList.DataBind();
+    }
+
+    void Submit_Click(Object Src, EventArgs E ) {
+          
+        Message.InnerHtml = "<h2>Purchase Made!!!</h2>";
+    }
+
+</script>
+
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0">
+
+  <!-- #include virtual="/quickstart/aspplus/samples/webforms/customize/header.inc" -->
+
+  <form runat="server">
+
+    <table>
+      <tr>
+        <td valign="top">
+
+          <ASP:DataList id="MyDataList" runat="server">
+
+              <template name="itemtemplate">
+      
+                <table cellpadding=10 style="font: 10pt verdana">
+                  <tr>
+                    <td width=1 bgcolor="BD8672"/>
+                    <td valign="top">
+                      <img align="top" src='<%# DataBinder.Eval(Container.DataItem, "title_id", "/quickstart/aspplus/images/title-{0}.gif") %>' >
+                    </td>
+                    <td valign="top">
+                      <b>Title: </b><%# DataBinder.Eval(Container.DataItem, "title") %><br>
+                      <b>Category: </b><%# DataBinder.Eval(Container.DataItem, "type") %><br>
+                      <b>Publisher ID: </b><%# DataBinder.Eval(Container.DataItem, "pub_id") %><br>
+                      <b>Price: </b><%# DataBinder.Eval(Container.DataItem, "price", "$ {0}") %><br>
+                    </td>
+                  </tr>
+                </table>
+
+              </template>
+
+          </ASP:DataList>
+
+        </td>
+        <td valign="top" style="padding-top:15;font: 10pt verdana">
+
+          Thank you for your business!  Please complete the form below to confirm your purchase.
+          <p>
+          <table style="font: 10pt verdana" cellpadding="3">
+            <tr><td><b>Name: </b></td><td><input size="30" type="text" runat="server"></td></tr>
+            <tr><td><b>Mailing Address: </b></td><td><input size="50" type="text" runat="server"></td></tr>
+            <tr><td><b>Account Number: </b></td><td><input size="10" type="text" runat="server"></td></tr>
+          </table>
+          <p>
+          <input type="submit" value="Purchase" runat="server" OnServerClick="Submit_Click"/>
+          <p>
+
+        </td>
+      </tr>
+
+    </table>
+
+    <div style="font: 10pt verdana;padding:0,15,15,15" id="Message" runat="server"/>
+  
+  </form>
+
+  <!-- #include virtual="/quickstart/aspplus/samples/webforms/customize/footer.inc" -->
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

@@ -1,0 +1,96 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/data/datagrid11.src&file=JS/datagrid11.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfSlMvZGF0YWdyaWQxMS5hc3BceHhfX3h4X3h4X3hfX3g=49e6fe40" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">JS/datagrid11.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/data/datagrid11aspxsource.htm'>datagrid11.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/data/vb/datagrid11aspxsource.htm'>VB/datagrid11.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/data/js/datagrid11aspxsource.htm'>JS/datagrid11.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>
+<%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="System.Data.SQL" %>
+
+<html>
+<script language="JScript" runat="server">
+
+    var myConnection : SQLConnection;
+
+    protected function Page_Load(Src : Object, E : EventArgs) : void 
+    {
+        myConnection = new SQLConnection("server=localhost;uid=sa;pwd=;database=pubs");
+
+        if (!IsPostBack)
+            BindGrid("au_id");
+    }
+
+    protected function MyDataGrid_Sort(Src : Object, E : DataGridSortCommandEventArgs) : void 
+    {
+        BindGrid(E.SortField);
+    }
+
+    public function BindGrid(sortfield : String) : void 
+    {
+        var myCommand : SQLDataSetCommand = new SQLDataSetCommand("select * from Authors", myConnection);
+
+        var ds : DataSet = new DataSet();
+        myCommand.FillDataSet(ds, "Authors");
+
+        var Source : DataView = ds.Tables("Authors").DefaultView;
+        Source.Sort = sortfield;
+
+        MyDataGrid.DataSource=Source;
+        MyDataGrid.DataBind();
+    }
+
+</script>
+
+<body>
+
+  <h3><font face="Verdana">Sorting Data in a DataGrid Control</font></h3>
+
+  <form runat="server">
+
+    <ASP:DataGrid id="MyDataGrid" runat="server" OnSortCommand="MyDataGrid_Sort"
+      Width="700"
+      BackColor="#ccccff" 
+      BorderColor="black"
+      ShowFooter="false" 
+      CellPadding=3 
+      CellSpacing="0"
+      Font-Name="Verdana"
+      Font-Size="8pt"
+      HeaderStyle-BackColor="#aaaadd"
+      AllowSorting="true" 
+    />
+
+  </form>
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

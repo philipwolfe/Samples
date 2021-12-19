@@ -1,0 +1,437 @@
+
+
+<!--BEGIN HEADER-->
+<html>
+<head>
+<link rel="stylesheet" href="../../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+  <table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+<!--
+		<div style="padding:0,0,4,0"><a class="outer" style="color:darkred" href="../../../howto/doc/xml/overviewofxml.htm"><b>Introduction</a></b></a><br></div>
+         <p>
+		<div style="padding:0,0,4,0"><b>XML Readers and Writers</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/readxmlfile.htm">Read XML from a file</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/readxmlstream.htm">Read XML from a stream</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/writexmlfile.htm">Write XML to a file</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/validationreadingxml.htm">Apply validation when reading XML</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML Document Object Model (DOM)</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/dominterfacexmldocument.htm">Load and use the XmlDocument (W3C DOM)</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savexmldocument.htm">Save XML with the XmlDocument (W3C DOM)</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>Using the XmlDataDocument</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/loadxmldocument.htm">Load and use the XmlDataDocument</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/streamanxmldocument.htm">Read XML from an XmlDataDocument</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML Navigation and Editing</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/navigatexmldocument.htm">Navigate XML with the XmlNavigator</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/editingxmldocument.htm">Edit XML with the XmlNavigator</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XPath and XSL Transformations</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/queryxmldocumentxpath.htm">Query XML with an XPath expression</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/transformxml.htm">Apply an XSL transformation to XML</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML and Relational Data</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/xmldataset.htm">Use XML and the DataSet class</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/datasetmapxsdschema.htm">Create DataSet mappings from an XSD schema</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/loaddatasetxmldata.htm">Load a DataSet with XML</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/datasetmapxmldata.htm">Infer DataSet mappings from XML</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savedatasetmapxsdschema.htm">Save DataSet mappings to an XSD schema file</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savedatasetxml.htm">Save a DataSet as XML</a><br>
+-->
+
+		<div style="padding:0,0,4,0"><b>XML Data</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/overviewofxml.htm">Overview of XML</a><p>
+
+		<div style="padding:0,0,4,0"><b>XML Readers and Writers</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/readxmlfile.htm">Read XML from a file</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/readxmlstream.htm">Read XML from a stream</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/writexmlfile.htm">Write XML to a file</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/validationreadingxml.htm">Apply validation to XML</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML Document Object Model</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/dominterfacexmldocument.htm">Load XML with XmlDocument</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savexmldocument.htm">Save XML with XmlDocument</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>Using the XmlDataDocument</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/loadxmldocument.htm">Load the XmlDataDocument</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/streamanxmldocument.htm">Read from XmlDataDocument</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML Navigation and Editing</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/navigatexmldocument.htm">Navigate with XmlNavigator</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/editingxmldocument.htm">Edit with XmlNavigator</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XPath and XSL Transformations</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/queryxmldocumentxpath.htm">Query XML with an XPath</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/transformxml.htm">Apply XSL transformations</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML and Relational Data</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/xmldataset.htm">Use XML and the DataSet</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/datasetmapxsdschema.htm">Create DataSet mappings</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/loaddatasetxmldata.htm">Load a DataSet with XML</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/datasetmapxmldata.htm">Infer DataSet mappings</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savedatasetmapxsdschema.htm">Save DataSet mappings</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savedatasetxml.htm">Save a DataSet as XML</a><p>
+
+    <div style="padding:0,0,4,0"><a target="_top" style="color:darkred" href="../../../howto"><b>Back to Index</b></a><br></div>
+
+
+</div>
+
+</td>
+</tr>
+</table>
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<style>
+.mydd {  font: smaller verdana; }
+.code1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:blue;
+	}
+.codecomment1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:green;
+	}
+.issue {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background-color:RED;
+	color:WHITE;
+	font-weight:bold;
+	}
+
+
+body { font: smaller verdana }        
+
+</style>
+
+
+
+
+
+<h4>How Do I...Write XML to a file?</h4>
+
+This sample illustrates how to write XML to a file using the XmlTextWriter class.
+The writer provides a fast, forward only way of generating XML and helps you to build XML documents that conform to the
+<A href="http://www.w3.org/TR/1998/REC-xml-19980210">W3C Extensible Markup Language (XML) 1.0</A> specification 
+and the <A href="http://www.w3.org/TR/REC-xml-names/">Namespaces in XML</A> specification.
+This writer provides stream write to XML rather than using an object model such as the XML DOM, and so gives better performance.
+See <a target=content href="DOMInterfaceXmlDocument.htm">How Do I...Load and use the XmlDocument (W3C DOM)?</a>.
+<p>
+
+<span>
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../../images/genicon.gif"><br>
+	</a>
+	<div class="caption">WriteXmlFile.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../../howto/samples/xml/writexmlfile/writexmlfilecssource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<p>
+Typically the XmlTextWriter is used if you need to write XML as 'raw' data without the overhead of a DOM and therefore provides a faster mechanism for writing XML.
+The XmlWriter class is the API which provides the XML writing to file, stream or a TextWriter. This provides numerous validation and checking rules to ensure
+that the written XML is well formed. When certain violations occur exceptions are thrown, which should be caught. The XmlTextWriter has different constructors
+to specify the location to write the XML data to. In this sample we are going to write XML to the
+<a target="_blank" href="../../../util/srcctrlwin.htm?path=howto/samples/xml/writexmlfile/&file=newbooks.xml">newbooks.xml</a> file.
+The sample code below constructs an XmlTextWriter with a string representing the file location.
+<p>
+
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl8" style="display:none">
+
+XmlTextWriter writer = new XmlTextWriter ("newbooks.xml", null);
+</pre>
+<pre id="codectrl8" style="display:">
+
+Dim writer As XmlTextWriter = New XmlTextWriter ("newbooks.xml", null)
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl8" onclick="doClick(0, 'ctrl8')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl8" onclick="doClick(1, 'ctrl8')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+
+<p>
+The constructor takes the filename that you want to write to, and the encoding that you would like to generate. If encoding is 'null' it writes out UTF-8.
+The XML 1.0 specification details how XML documents are encoded.
+<p>
+Here we are going to write another fragment of the bookstore XML file. For each XML type there are corresponding XML write methods. 
+For example, to write an element use the <b>WriteElementString</b> method and to write an attribute use the <b>WriteAttribute</b> method.
+For nested levels the <b>WriteStartElement</b>/<b>WriteEndElement</b> pair is used and equally for more complex attribute creation you can use the 
+<b>WriteStartAttribute</b>/<b>WriteEndAttribute</b> pair. The code sample below creates an XML file with a single book.
+<p>
+
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl10" style="display:none">
+
+writer.Formatting = Formatting.Indented;
+writer.WriteStartDocument(false);
+writer.WriteDocType("bookstore", null, "books.dtd", null);
+writer.WriteComment("This file represents another fragment of a book store inventory database");
+writer.WriteStartElement("bookstore");
+    writer.WriteStartElement("book", null);
+        writer.WriteAttribute("genre","autobiography");
+        writer.WriteAttribute("publicationdate","1979");
+        writer.WriteAttribute("ISBN","0-7356-0562-9");
+        writer.WriteElementString("title", null, "The Autobiography of Mark Twain");
+        writer.WriteStartElement("Author", null);
+            writer.WriteElementString("first-name", "Mark");
+            writer.WriteElementString("last-name", "Twain");
+        writer.WriteEndElement();
+        writer.WriteElementString("price", "7.99");
+    writer.WriteEndElement();
+writer.WriteEndElement();
+
+//Write the XML to file and close the writer
+writer.Flush();
+writer.Close();
+</pre>
+<pre id="codectrl10" style="display:">
+
+writer.Formatting = System.Xml.Formatting.Indented
+writer.WriteStartDocument(false)
+writer.WriteDocType("bookstore", nothing, "books.dtd", nothing)
+writer.WriteComment("This file represents another fragment of a book store inventory database")
+writer.WriteStartElement("bookstore")
+    writer.WriteStartElement("book", nothing)
+        writer.WriteAttribute("genre","autobiography")
+        writer.WriteAttribute("publicationdate","1979")
+        writer.WriteAttribute("ISBN","0-7356-0562-9")
+        writer.WriteElementString("title", nothing, "The Autobiography of Mark Twain")
+        writer.WriteStartElement("Author", nothing)
+            writer.WriteElementString("first-name", "Mark")
+            writer.WriteElementString("last-name", "Twain")
+        writer.WriteEndElement()
+        writer.WriteElementString("price", "7.99")
+    writer.WriteEndElement()
+writer.WriteEndElement()
+
+'Write the XML to file and close the writer
+writer.Flush()
+writer.Close()
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl10" onclick="doClick(0, 'ctrl10')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl10" onclick="doClick(1, 'ctrl10')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+
+<p>
+First the XML declaration with the version "1.0" is written with the <b>WriteStartDocument</b> method.
+This method, although optional, must be the first write call before any others writes, otherwise an exception is thrown.
+Next the document type is written with the name "bookstore" with the method <b>WriteDocType</b>. The 3rd parameter writes SYSTEM "books.dtd" to indicate that there is
+an external DTD to validate against. The <b>Formatting</b> property sets the output to be formatted. This causes child elements to be indented using the <b>Indentation</b>
+and <b>IndentChar</b> properties. The <b>Flush</b> method persists the XML to file (here only the <b>Close</b> method is really required, however there are occassions
+whereby the XML generated so far needs to be persisted and the writer reused)
+<p>
+
+To check the output from the XmlTextWriter, we can perform a round trip test by reading in the generated file with an XmlTextReader to validate that the XML
+is well formed.
+
+<H4>Summary</H4>
+<OL>
+<LI>The XmlTextWriter provides a fast, forward only way of generating XML.
+<LI>The XmlTextWriter helps you to write XML documents that conform to the <A href="http://www.w3.org/TR/1998/REC-xml-19980210">W3C Extensible Markup 
+Language (XML) 1.0</A></A> specification and the <A><A href="http://www.w3.org/TR/REC-xml-names/">Namespaces in XML</A></A> specification. 
+<LI>The XmlTextWriter provides constructors to write XML to a file, a stream or a TextWriter.
+<LI>For each XML type there are corresponding XML write methods.
+</LI></OL>
+
+<!--END FOOTER-->
+<p>
+<hr>
+<p>
+</div>
+</td>
+</tr>
+</table>
+</BODY>
+</html>
+<!--END FOOTER-->
+</xml>
+

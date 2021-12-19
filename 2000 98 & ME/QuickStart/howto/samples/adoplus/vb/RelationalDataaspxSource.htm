@@ -1,0 +1,96 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/adoplus/vb/relationaldata.src&file=RelationalData.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfUmVsYXRpb25hbERhdGEuYXNwXHh4X194eF94eF94X194d7bdabcf" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">RelationalData.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../howto/samples/adoplus/vb/relationaldataaspxsource.htm'>RelationalData.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../howto/samples/adoplus/cs/relationaldataaspxsource.htm'>..\CS\RelationalData.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>
+<%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="System.Data.SQL" %>
+
+<html>
+<script language="VB" runat="server">
+
+    Dim dsCustomers as DataSet
+ 
+
+    protected sub Page_Load(Src as object, E as EventArgs ) 
+    
+	Dim myConnection as SQLConnection
+        myConnection = new SQLConnection("server=localhost;uid=sa;pwd=;database=northwind")
+
+	Dim CustomersDSCommand as SQLDataSetCommand
+	CustomersDSCommand = new SQLDataSetCommand("select * from customers", myConnection)
+
+	Dim OrdersDSCommand as SQLDataSetCommand
+	OrdersDSCommand = new SQLDataSetCommand("select * from orders", myConnection)
+
+
+	
+	dsCustomers = new DataSet
+
+	
+	CustomersDSCommand.FillDataSet(dsCustomers,"Customers")
+	OrdersDSCommand.FillDataSet(dsCustomers,"Orders")
+
+	'//ADD RELATION
+	dsCustomers.Relations.Add("CustOrders",dsCustomers.Tables("Customers").Columns("CustomerId"),dsCustomers.Tables("Orders").Columns("CustomerId"))
+
+
+
+	Dim Customer as DataRow
+	Dim Order as object
+
+
+	'//Iterate over data of Customers and their orders
+	for each Customer in dsCustomers.Tables("Customers").Rows
+
+		Response.Write("<br>Customer: " + Customer("ContactName").ToString())
+		Response.Write("<blockquote>")
+
+		for each Order in Customer.GetChildRows(dsCustomers.Relations("CustOrders")) 
+			Response.Write("<br>Order #" + Order("OrderId").ToString())
+		next
+
+		Response.Write("</blockquote>")
+	next
+	
+    end sub
+
+</script>
+
+<body>
+
+
+
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>
+ed"></span>
+
+    </form>

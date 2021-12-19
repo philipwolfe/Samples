@@ -1,0 +1,93 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlref/webctrl/CustomValidator/customvalidator1.src&file=CustomValidator1.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfQ3VzdG9tVmFsaWRhdG9yMS5hc3BceHhfX3h4X3h4X3hfX3g=94504b02" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">CustomValidator1.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlref/webctrl/customvalidator/customvalidator1aspxsource.htm'>CustomValidator1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlref/webctrl/customvalidator/vb/customvalidator1aspxsource.htm'>VB\CustomValidator1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><html>
+<head>
+    <script language="C#" runat=server>
+
+        void ValidateBtn_OnClick(object sender, EventArgs e) {
+
+            if (Page.IsValid) {
+               lblOutput.Text = "Page is valid!";
+            }
+            else {
+               lblOutput.Text = "Page is not valid! :-(";
+            }
+        }
+
+        bool ServerValidate (object source, string value) {
+
+            try {
+               int num = Int32.FromString(value);
+               if (num%2 == 0)
+                  return true;
+            }
+            catch (Exception) {}
+
+            return false;
+        }
+        
+   </script>
+
+</head>
+<body>
+
+<h3><font face="Verdana">CustomValidator Example</font></h3>
+
+<form runat="server">
+
+    <asp:Label id=lblOutput runat="server" 
+        Text="Enter an even number:" 
+        Font-Name="Verdana" 
+        Font-Size="10pt" /><br>
+
+    <p>
+
+    <asp:TextBox id=Text1 runat="server" />
+    
+    &nbsp;&nbsp;
+
+    <asp:CustomValidator id="CustomValidator1" runat="server"
+        ControlToValidate="Text1"
+        OnServerValidate="ServerValidate"
+        Display="Static"
+        Font-Name="verdana" Font-Size="10pt">
+           Not an even number!
+    </asp:CustomValidator>
+
+    <p>
+
+    <asp:Button text="Validate" onclick="ValidateBtn_OnClick" runat="server" />
+
+</form>
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

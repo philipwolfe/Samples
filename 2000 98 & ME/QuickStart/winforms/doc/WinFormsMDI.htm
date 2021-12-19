@@ -1,0 +1,921 @@
+<!--BEGIN HEADER-->
+
+
+
+<html>
+<head>
+<link rel="stylesheet" href="../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+  <table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+
+            <div style="padding:0,0,0,0"><a class=outer style="color:darkred" href="../../winforms/doc/default.htm"><b>Introduction</b></a><br></div>
+            <p>
+            <div style="padding:0,0,4,0"><b>Getting Started</b><br></div>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsgettingstarted.htm">What is Windows Forms?</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformssimplehelloworld.htm">Writing a Hello World Form</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsapplicationmodel.htm">Windows Forms Application Model</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsusingwindes.htm">Using the Windows Forms Designer</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsformlayout.htm">Dynamic Layout in Windows Forms</a><br>            
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsmenus.htm">Adding Menus to a Form</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsmdi.htm">Writing MDI Applications</a><p>
+
+            <div style="padding:0,0,4,0"><b>Building Applications</b><br></div>
+            &nbsp; <a class="outer" href="../../winforms/doc/dataaccessplaceholder.htm">Data Access Overview</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/webservicesplaceholder.htm">Web Services Overview</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsdata.htm">Databinding in Windows Forms</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsaxhosting.htm">Using ActiveX Controls</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsgdiplus.htm">Working with Graphics</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsprinting.htm">Working with Printing</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformscreatingcontrols.htm">Creating Controls</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsmsaa.htm">Accessibility</a><p>
+
+            <div style="padding:0,0,0,0"><a class=outer style="color:darkred" href="../../winforms/doc/winformssamples.htm"><b>Control Reference</b></a><br></div>
+            <p>
+            <div style="padding:0,0,0,0"><a target=_top class=outer style="color:darkred" href="../../howto/default.htm"><b>How Do I...?</b></a><br></div>
+            <p>
+            <div style="padding:0,0,0,0"><a class=outer style="color:darkred" href="../../winforms/doc/winformsrelateddocs.htm"><b>Related Documentation</b></a><br></div>
+            <p>
+            
+</div>
+
+</td>
+</tr>
+</table>
+
+
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<style>
+.mydd {  font: smaller verdana; }
+
+.code1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	font-family:"Courier New";
+	color:darkred; 
+	}
+.codecomment1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	font-family:"Courier New";
+	color:green;
+	}
+.issue {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background-color:RED;
+	color:WHITE;
+	font-weight:bold;
+	}
+
+
+body { font: smaller verdana }        
+
+</style>
+
+
+
+
+
+<h4>Writing Multiple Document Interface Applications</h4>
+
+<P>Multiple Document Interface (MDI) applications have a single primary 
+window (the parent window) that visually contains a set of windows within 
+its client region (child windows).  Each child window is a form that is 
+constrained to appear only within the parent not the entire desktop.  
+Children typically share the menu bar, tool bar, and other parts of the 
+parent's interface.  Secondary windows like dialog boxes are not 
+constrained to the parent window's client region.</P> 
+
+<h5>Creating an MDI application</h5>
+
+ <P>You can create an MDI application by following these steps:
+ <ol>
+ <LI>Create a Form (MainForm) that represents the MDI parent window and 
+ set its IsMDIContainer property to true. The following code demonstrates
+ how to set this property: <BR><BR>
+
+<table  cellpadding=0 cellspacing=0 width="95%">
+<tr>
+<td>
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl6" style="display:none">
+
+this.IsMDIContainer = true;
+</pre>
+<pre id="codectrl6" style="display:">
+
+Me.IsMDIContainer = True
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl6" onclick="doClick(0, 'ctrl6')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl6" onclick="doClick(1, 'ctrl6')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+</td>
+</tr>
+</table>
+
+<p>
+<br>
+
+      
+<LI>Create child forms and set the MDI Parent property of each form to 
+reference the parent form. The following code demonstrates setting the
+  MDI parent for an instance of a child form: <BR><BR>
+          
+<p>
+<table cellpadding=0 cellspacing=0 width="95%">
+<tr>
+<td>
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl8" style="display:none">
+
+doc.MDIParent = this;
+</pre>
+<pre id="codectrl8" style="display:">
+
+doc.MDIParent = Me
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl8" onclick="doClick(0, 'ctrl8')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl8" onclick="doClick(1, 'ctrl8')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+</td>
+</tr>
+</table>
+
+</ol>
+
+If you have different types of data to display, you can have multiple 
+types of child forms.  To display a child form, create an instance of the 
+child form and call its Show method.</P> 
+      
+<H5>Standard MDI menus</H5> 
+      
+<P>Typically an MDI application has a <B>Windows</B> menu that allows the 
+user to arrange the open child windows by tiling and cascading.  The 
+Windows menu also allows you to navigate to any of the open child windows.  
+To create a Windows menu add the menu items for tiling and cascading to a 
+Windows menu in your main form and set the MDIList property to true for 
+the top level Windows menu.  The following code demonstrates how to create 
+a Windows menu in an MDI application: </P> 
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl10" style="display:none">
+
+....
+//Add Window Menu</span>
+MenuItem miWindow = mainMenu.MenuItems.Add("&Window");
+miWindow.MenuItems.Add("&Cascade", new EventHandler(this.WindowCascade_Clicked));
+miWindow.MenuItems.Add("Tile &Horizontal", new EventHandler(this.WindowTileH_Clicked));
+miWindow.MenuItems.Add("Tile &Vertical", new EventHandler(this.WindowTileV_Clicked));
+miWindow.MDIList = true ; //Adds the MDI Window List to the bottom of the menu</span>
+
+....
+
+protected void WindowCascade_Clicked(object sender, System.EventArgs e) {
+    this.LayoutMDI(MDILayout.Cascade);
+}
+
+
+protected void WindowTileH_Clicked(object sender, System.EventArgs e) {
+    this.LayoutMDI(MDILayout.TileHorizontal);
+}
+
+
+protected void WindowTileV_Clicked(object sender, System.EventArgs e) {
+    this.LayoutMDI(MDILayout.TileVertical);
+}
+
+....
+</pre>
+<pre id="codectrl10" style="display:">
+
+....
+'Add Window Menu
+Dim miWindow As MenuItem = mainMenu.MenuItems.Add("&Window")
+miWindow.MenuItems.Add("&Cascade", AddressOf Me.WindowCascade_Clicked)
+miWindow.MenuItems.Add("Tile &Horizontal", AddressOf Me.WindowTileH_Clicked)
+miWindow.MenuItems.Add("Tile &Vertical", AddressOf Me.WindowTileV_Clicked)
+miWindow.MDIList = true  'Adds the AxHosting Window List to the bottom of the menu
+
+....
+'Window->Cascade Menu item handler
+Protected Sub WindowCascade_Clicked(sender As object, e As System.EventArgs)
+    Me.LayoutMDI(MDILayout.Cascade)
+End Sub
+
+'Window->Tile Horizontally Menu item handler
+Protected Sub WindowTileH_Clicked(sender As object, e As System.EventArgs)
+    Me.LayoutMDI(MDILayout.TileHorizontal)
+End Sub
+
+
+'Window->Tile Vertically Menu item handler
+Protected Sub WindowTileV_Clicked(sender As object, e As System.EventArgs)
+    Me.LayoutMDI(MDILayout.TileVertical)
+End Sub
+....
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl10" onclick="doClick(0, 'ctrl10')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl10" onclick="doClick(1, 'ctrl10')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+<br>
+
+<h5>Child Window Activation</h5>
+
+<P>If you want your parent form to be notified when a child window is 
+activated by the user you can register an event-handling method for the 
+<B>MDIChildActivate</B> event.  You can determine which child window is 
+active using the <B>ActiveMDIChild</B> property of the Form class.  For 
+example, the following code updates a <b>StatusBar</b> control on the 
+parent form with the name of the child window:</P>
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl12" style="display:none">
+
+....
+
+this.MDIChildActivate += new EventHandler(this.MDIChildActivated);
+
+....
+
+protected void MDIChildActivated(object sender, System.EventArgs e) {
+    statusBar1.Text = this.ActiveMDIChild.Text;
+}
+
+....
+</pre>
+<pre id="codectrl12" style="display:">
+
+....
+
+AddHandler Me.MDIChildActivate, AddressOf Me.MDIChildActivated
+
+....
+
+Protected Sub MDIChildActivated(sender As object, e As System.EventArgs)
+    If (Me.ActiveMDIChild <> Nothing) Then statusBar1.Text = Me.ActiveMDIChild.Text
+End Sub
+
+....
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl12" onclick="doClick(0, 'ctrl12')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl12" onclick="doClick(1, 'ctrl12')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+<br>
+
+
+<h5>Menu Merging</h5>
+
+<P>If a child window has a set of menu items that should appear in the 
+parent window's main menu, you can create a <b> MainMenu</b> as part of 
+the child window form.  When the child window is activated, its MainMenu 
+will be merged with the MainMenu of the parent window.  For example, the 
+following code creates a &quot;Format&quot; menu item for each child 
+window:</P> 
+      
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl14" style="display:none">
+
+....
+MainMenu mainMenu = new MainMenu();
+this.Menu = mainMenu;
+
+//Add Formatting Menu
+MenuItem miFormat = mainMenu.MenuItems.Add("F&ormat (" + docName + ")");
+miFormat.MergeType = MenuMerge.Add ;
+
+//Font Face sub-menu
+MenuItem miArial = new MenuItem("&Arial", new EventHandler(this.FormatFont_Clicked));
+MenuItem miTimesNewRoman = new MenuItem("&Times New Roman", 
+                                         new EventHandler(this.FormatFont_Clicked));
+MenuItem miTahoma = new MenuItem("&Courier New", new EventHandler(this.FormatFont_Clicked));
+miArial.Checked = true ;
+miFormatFontChecked = miArial ;
+miArial.DefaultItem = true ;
+
+miFormat.MenuItems.Add( "Font &Face"
+        , new EventHandler(this.FormatFont_Clicked)
+        , (new MenuItem[]{ miArial, miTimesNewRoman, miTahoma }));
+....
+</pre>
+<pre id="codectrl14" style="display:">
+
+....
+Dim mainMenu As MainMenu = New MainMenu()
+Me.Menu = mainMenu
+
+'Add Formatting Menu
+Dim miFormat As MenuItem = mainMenu.MenuItems.Add("F&ormat (" + docName + ")")
+miFormat.MergeType = MenuMerge.Add
+
+'Font Face sub-menu
+Dim miArial As MenuItem  = new MenuItem("&Arial", AddressOf Me.FormatFont_Clicked)
+Dim miTimesNewRoman As MenuItem  = new MenuItem("&Times New Roman", _
+                                                 AddressOf Me.FormatFont_Clicked)
+Dim miCourier As MenuItem = new MenuItem("&Courier New", AddressOf Me.FormatFont_Clicked)
+miArial.Checked = true
+miFormatFontChecked = miArial
+miArial.DefaultItem = true
+
+miFormat.MenuItems.Add( "Font &Face" _
+        , new EventHandler(AddressOf Me.FormatFont_Clicked)  _
+        , (new MenuItem() {miArial, miTimesNewRoman, miCourier }))
+....
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl14" onclick="doClick(0, 'ctrl14')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl14" onclick="doClick(1, 'ctrl14')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+<br>
+
+<P>By default the child window menu is added to the parent window.  You 
+can control how the merge occurs using the <B>MergeOrder</B> and 
+<B>MergeType</B> properties.  For example, the following code creates a 
+child window File menu item that is merged with the parent window File 
+menu item:</P> 
+      
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl16" style="display:none">
+
+....
+
+Parent Form:
+
+    //Add File Menu
+    MenuItem miFile = mainMenu.MenuItems.Add("&File");
+    miFile.MergeOrder=0;
+    miFile.MergeType = MenuMerge.MergeItems;
+
+    MenuItem miAddDoc = new MenuItem("&Add Document", 
+                                      new EventHandler(this.FileAdd_Clicked), 
+                                      Shortcut.CtrlA);
+    miAddDoc.MergeOrder=100;
+
+    MenuItem miExit = new MenuItem("E&xit", 
+                                    new EventHandler(this.FileExit_Clicked), 
+                                    Shortcut.CtrlX);
+    miExit.MergeOrder=110;
+
+    miFile.MenuItems.Add(miAddDoc);
+    miFile.MenuItems.Add("-");     // Gives us a seperator
+    miFile.MenuItems.Add(miExit);
+
+....
+
+Child Form:
+
+    //Add File Menu
+    MenuItem miFile = mainMenu.MenuItems.Add("&File");
+    miFile.MergeType = MenuMerge.MergeItems;
+    miFile.MergeOrder = 0;
+
+    MenuItem miLoadDoc = miFile.MenuItems.Add( "&Load Document (" + docName + ")"
+                                              , new EventHandler(this.LoadDocument_Clicked));
+    miLoadDoc.MergeOrder = 105;
+    
+....
+</pre>
+<pre id="codectrl16" style="display:">
+
+....
+
+Parent Form:
+
+    'Add File Menu
+    Dim miFile As MenuItem = mainMenu.MenuItems.Add("&File")
+    miFile.MergeOrder=0
+    miFile.MergeType = MenuMerge.MergeItems
+
+    Dim miAddDoc As MenuItem = new MenuItem("&Add Document", _
+                                             new EventHandler( AddressOf Me.FileAdd_Clicked), _
+                                             Shortcut.CtrlA)
+    miAddDoc.MergeOrder=100
+
+    Dim miExit As MenuItem = new MenuItem("E&xit", _
+                                           new EventHandler(AddressOf Me.FileExit_Clicked), _
+                                           Shortcut.CtrlX)
+    miExit.MergeOrder=110
+
+    miFile.MenuItems.Add(miAddDoc)
+    miFile.MenuItems.Add("-")     ' Gives us a seperator
+    miFile.MenuItems.Add(miExit)
+
+....
+
+Child Form:
+
+    'Add File Menu
+    Dim miFile As MenuItem = mainMenu.MenuItems.Add("&File")
+    miFile.MergeType = MenuMerge.MergeItems
+    miFile.MergeOrder = 0
+
+    Dim miLoadDoc As MenuItem = miFile.MenuItems.Add( "&Load Document (" + docName + ")", _
+                                                       AddressOf Me.LoadDocument_Clicked)
+    miLoadDoc.MergeOrder = 105
+
+....
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl16" onclick="doClick(0, 'ctrl16')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl16" onclick="doClick(1, 'ctrl16')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+<br>
+
+
+<h5>A simple MDI application</h5>
+<P>The following sample illustrates the features mentioned previously.
+<br><br>
+
+<p>To view and run this sample:
+<br><br>
+<span>
+    
+    
+    
+    
+    
+
+        
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../winforms/samples/vb/mdi">
+	<img style="border-color:black" border=1 src="../../winforms/images/wflink.jpg"><br>
+	</a>
+	<div class="caption">VB MDI Apps</div><br>
+	
+	
+		[<a target="_blank" href="../../winforms/samples/vb/mdi">Run Sample</a>] | 
+		[<a target="_blank" href="../../winforms/samples/vb/mdi/mainformvbsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+    </span>
+
+<!--END FOOTER-->
+<p>
+<hr>
+<p>
+</div>
+</td>
+</tr>
+</table>
+</BODY>
+</html>
+<!--END FOOTER-->

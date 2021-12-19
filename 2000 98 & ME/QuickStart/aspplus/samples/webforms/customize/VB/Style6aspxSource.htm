@@ -1,0 +1,96 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/customize/style6.src&file=VB/Style6.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvU3R5bGU2LmFzcFx4eF9feHhfeHhfeF9feA==e9681777" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/Style6.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/customize/style6aspxsource.htm'>Style6.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/customize/vb/style6aspxsource.htm'>VB/Style6.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/customize/js/style6aspxsource.htm'>JS/Style6.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>
+<html>
+<body>
+
+  <form runat="server">
+
+      <h3><font face="verdana">Applying Styles to Web Controls</font></h3>
+
+      <p><font face="verdana"><h4>Style Sub-Properties</h4></font><p>
+
+      <ASP:Calendar id="MyCalendar" runat="server"
+
+           BackColor="Beige" 
+           ForeColor="Brown"
+           BorderWidth="3"
+           BorderStyle="Solid"
+           BorderColor="Black"
+           Height="450"
+           Width="450"
+           Font-Size="12pt"
+           Font-Name="Tahoma,Arial"
+           Font-Underline="false"
+           CellSpacing=2
+           CellPadding=2 
+           ShowGridLines=true
+       >
+
+           <property name="TitleStyle">
+               <asp:TableItemStyle BorderColor="darkolivegreen" BorderWidth="3" BackColor="olivedrab" Height="50px" />
+           </property>
+
+           <property name="DayHeaderStyle">
+               <asp:TableItemStyle BorderColor="darkolivegreen" BorderWidth="3" BackColor="olivedrab" ForeColor="black" Height="20px" />
+           </property>
+
+           <property name="WeekEndDayStyle">
+               <asp:TableItemStyle BackColor="palegoldenrod" Width="50px" Height="50px" />
+           </property>
+
+           <property name="DayStyle">
+               <asp:TableItemStyle Width="50px" Height="50px" />
+           </property>
+
+           <property name="TodayDayStyle">
+               <asp:TableItemStyle BorderWidth="3" />
+           </property>
+
+           <property name="SelectedDayStyle">
+               <asp:TableItemStyle BorderColor="firebrick" BorderWidth="3" />
+           </property>
+
+           <property name="OtherMonthDayStyle">
+               <asp:TableItemStyle Width="50px" Height="50px" />
+           </property>
+
+       </ASP:Calendar>
+
+    </form>
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

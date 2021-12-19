@@ -1,0 +1,192 @@
+
+
+<html>
+<head>
+
+    
+
+</head>
+<body>
+
+    <h3><font face="Verdana">Databinding Using DataBinder.Eval</font></h3>
+
+    <form name="ctrl2" method="post" action="databind7.htm" id="ctrl2">
+<input type="hidden" name="__VIEWSTATE" value="YTB6ODY5NjgxMjhfYTB6X2h6NXoyeF9hMHpfaHo1ejF4X2EwemEwemEwemh6RGF0YUtleXNfbHp4X0l0ZW1Db3VudF81ejl4eF9feF9fX19fX19feF9oejV6OHhfYTB6X2h6NXo1eF9hMHpJdGVtIDlfX3hfNXozeF9hMHo5LjAwX194XzV6MXhfYTB6MTAvMjUvMjAwMF9feHhfeF81ejd4X2Ewel9oejV6NXhfYTB6SXRlbSA4X194XzV6M3hfYTB6OC4wMF9feF81ejF4X2EwejEwLzI1LzIwMDBfX3h4X3hfNXo2eF9hMHpfaHo1ejV4X2Ewekl0ZW0gN19feF81ejN4X2EwejcuMDBfX3hfNXoxeF9hMHoxMC8yNS8yMDAwX194eF94XzV6NXhfYTB6X2h6NXo1eF9hMHpJdGVtIDZfX3hfNXozeF9hMHo2LjAwX194XzV6MXhfYTB6MTAvMjUvMjAwMF9feHhfeF81ejR4X2Ewel9oejV6NXhfYTB6SXRlbSA1X194XzV6M3hfYTB6NS4wMF9feF81ejF4X2EwejEwLzI1LzIwMDBfX3h4X3hfNXozeF9hMHpfaHo1ejV4X2Ewekl0ZW0gNF9feF81ejN4X2EwejQuMDBfX3hfNXoxeF9hMHoxMC8yNS8yMDAwX194eF94XzV6MnhfYTB6X2h6NXo1eF9hMHpJdGVtIDNfX3hfNXozeF9hMHozLjAwX194XzV6MXhfYTB6MTAvMjUvMjAwMF9feHhfeF81ejF4X2Ewel9oejV6NXhfYTB6SXRlbSAyX194XzV6M3hfYTB6Mi4wMF9feF81ejF4X2EwejEwLzI1LzIwMDBfX3h4X3hfNXoweF9hMHpfaHo1ejV4X2Ewekl0ZW0gMV9feF81ejN4X2EwejEuMDBfX3hfNXoxeF9hMHoxMC8yNS8yMDAwX194eF94eF94eF94eF94X2F6ZGF0YUxpc3QxOmN0cmwyOmNoazFfZGF0YUxpc3QxOmN0cmw2OmNoazFfZGF0YUxpc3QxOmN0cmwzOmNoazFfZGF0YUxpc3QxOmN0cmwwOmNoazFfZGF0YUxpc3QxOmN0cmwxOmNoazFfZGF0YUxpc3QxOmN0cmw1OmNoazFfZGF0YUxpc3QxOmN0cmw3OmNoazFfZGF0YUxpc3QxOmN0cmw4OmNoazFfZGF0YUxpc3QxOmN0cmw0OmNoazFfeF94c67058ed" />
+
+
+        <table cellspacing="0" cellpadding="4" rules="all" bordercolor="Black" border="1" width="80%">
+    <tr>
+        <td>
+            
+
+                Order Date: 10/25/2000
+
+                <p>
+
+                Quantity: 1.00
+
+                <p>
+
+                Item: Item 1
+
+                Order Date: <input type="checkbox" id="dataList1_ctrl0_chk1" checked="true" name="dataList1:ctrl0:chk1" />
+
+                <p>
+
+            
+        </td><td>
+            
+
+                Order Date: 10/25/2000
+
+                <p>
+
+                Quantity: 4.00
+
+                <p>
+
+                Item: Item 4
+
+                Order Date: <input type="checkbox" id="dataList1_ctrl3_chk1" name="dataList1:ctrl3:chk1" />
+
+                <p>
+
+            
+        </td><td>
+            
+
+                Order Date: 10/25/2000
+
+                <p>
+
+                Quantity: 7.00
+
+                <p>
+
+                Item: Item 7
+
+                Order Date: <input type="checkbox" id="dataList1_ctrl6_chk1" checked="true" name="dataList1:ctrl6:chk1" />
+
+                <p>
+
+            
+        </td>
+    </tr><tr>
+        <td>
+            
+
+                Order Date: 10/25/2000
+
+                <p>
+
+                Quantity: 2.00
+
+                <p>
+
+                Item: Item 2
+
+                Order Date: <input type="checkbox" id="dataList1_ctrl1_chk1" name="dataList1:ctrl1:chk1" />
+
+                <p>
+
+            
+        </td><td>
+            
+
+                Order Date: 10/25/2000
+
+                <p>
+
+                Quantity: 5.00
+
+                <p>
+
+                Item: Item 5
+
+                Order Date: <input type="checkbox" id="dataList1_ctrl4_chk1" checked="true" name="dataList1:ctrl4:chk1" />
+
+                <p>
+
+            
+        </td><td>
+            
+
+                Order Date: 10/25/2000
+
+                <p>
+
+                Quantity: 8.00
+
+                <p>
+
+                Item: Item 8
+
+                Order Date: <input type="checkbox" id="dataList1_ctrl7_chk1" name="dataList1:ctrl7:chk1" />
+
+                <p>
+
+            
+        </td>
+    </tr><tr>
+        <td>
+            
+
+                Order Date: 10/25/2000
+
+                <p>
+
+                Quantity: 3.00
+
+                <p>
+
+                Item: Item 3
+
+                Order Date: <input type="checkbox" id="dataList1_ctrl2_chk1" checked="true" name="dataList1:ctrl2:chk1" />
+
+                <p>
+
+            
+        </td><td>
+            
+
+                Order Date: 10/25/2000
+
+                <p>
+
+                Quantity: 6.00
+
+                <p>
+
+                Item: Item 6
+
+                Order Date: <input type="checkbox" id="dataList1_ctrl5_chk1" name="dataList1:ctrl5:chk1" />
+
+                <p>
+
+            
+        </td><td>
+            
+
+                Order Date: 10/25/2000
+
+                <p>
+
+                Quantity: 9.00
+
+                <p>
+
+                Item: Item 9
+
+                Order Date: <input type="checkbox" id="dataList1_ctrl8_chk1" checked="true" name="dataList1:ctrl8:chk1" />
+
+                <p>
+
+            
+        </td>
+    </tr>
+</table>
+
+    </form>
+
+</body>
+</html>

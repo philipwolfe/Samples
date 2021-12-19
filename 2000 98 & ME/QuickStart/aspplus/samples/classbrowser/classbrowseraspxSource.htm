@@ -1,0 +1,482 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/classbrowser/classbrowser.src&file=classbrowser.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfY2xhc3Nicm93c2VyLmFzcFx4eF9feHhfeHhfeF9feA==4ad01c00" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">classbrowser.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../aspplus/samples/classbrowser/classbrowseraspxsource.htm'>classbrowser.htm</a> &nbsp;&nbsp<a href='../../../aspplus/samples/classbrowser/classinfocssource.htm'>classInfo.cs</a> &nbsp;&nbsp<a href='../../../aspplus/samples/classbrowser/makesamplebatsource.htm'>makesample.bat</a> &nbsp;&nbsp<a href='../../../aspplus/samples/classbrowser/configwebsource.htm'>config.web</a> &nbsp;&nbsp<a href='../../../aspplus/samples/classbrowser/classstylecsssource.htm'>classstyle.css</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../aspplus/samples/classbrowser/vb/classbrowseraspxsource.htm'>VB/classbrowser.htm</a> &nbsp;&nbsp<a href='../../../aspplus/samples/classbrowser/vb/classinfocssource.htm'>VB/classInfo.cs</a> &nbsp;&nbsp<a href='../../../aspplus/samples/classbrowser/vb/makesamplebatsource.htm'>VB/makesample.bat</a> &nbsp;&nbsp<a href='../../../aspplus/samples/classbrowser/vb/configwebsource.htm'>VB/config.web</a> &nbsp;&nbsp<a href='../../../aspplus/samples/classbrowser/classstylecsssource.htm'>classstyle.css</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp> 
+<%@ Import NameSpace="ClassInfo" %>  
+<%@ Import NameSpace="System.Collections"  %> 
+<%@ Import NameSpace="System.Reflection" %> 
+
+<html>
+<head>
+
+    <title>.NET Framework Class Browser</title>  
+    <link rel="stylesheet" href="classstyle.css">
+
+    <script runat="server" language="C#">
+        
+        public String SelectedNameSpace;    
+        public ArrayList ModuleName = new ArrayList();
+        
+        protected void Page_Load(Object Sender, EventArgs e) { 
+
+            Hashtable ConfigSettings = new Hashtable();  
+            ConfigSettings = (Hashtable)Context.GetConfig("ClassBrowser");
+            IEnumerator SettingsEnum   = ConfigSettings.Values.GetEnumerator();
+
+            for (int i = 0; i < ConfigSettings.Count; i++) {
+                SettingsEnum.MoveNext(); 
+                ModuleName.Add(SettingsEnum.Current.ToString());
+            } 
+
+            DisplayNamespaces();  
+
+            if (Request.QueryString["namespace"] == null)
+                SelectedNameSpace = "System";
+            else
+                SelectedNameSpace = Request.QueryString["namespace"];
+
+            if (Request.QueryString["class"] != null)
+                DisplayClass(Request.QueryString["class"]);
+            else
+                DisplayClassList(SelectedNameSpace);
+        }
+       
+        private void DisplayNamespaces() {
+
+            ArrayList NameSpaceList   = new ArrayList();
+            Hashtable NameSpaceHash = new Hashtable();
+
+            for (int y = 0; y < ModuleName.Count; y++) {
+
+                Module[]  CorRuntime = Assembly.Load(ModuleName[y].ToString()).GetModules();
+                Type[]	  CorClasses = CorRuntime[0].GetTypes(); 
+
+                for( int x=0; x < CorClasses.Length; x++ ) {
+
+                    if (!NameSpaceHash.ContainsKey(CorClasses[x].Namespace) && CorClasses[x].IsPublic ) {
+                        NameSpaceHash.Add(CorClasses[x].Namespace,"");
+	                NameSpaceList.Add(CorClasses[x].Namespace); 
+                    }
+                }
+            }
+
+            NameSpaceList.Sort();
+            Namespace1.DataSource = NameSpaceList;
+            Namespace1.DataBind();
+        }
+ 
+        private void DisplayClassList(String CurrentNameSpace) {
+
+            ArrayList ClassList     = new ArrayList();
+            ArrayList InterfaceList = new ArrayList();
+
+            for( int y=0; y < ModuleName.Count; y++ ) {
+
+                Module[]  CorRuntime = Assembly.Load(ModuleName[y].ToString()).GetModules(); 
+                Type[]	  CorClasses = CorRuntime[0].GetTypes(); 
+
+                for (int x=0; x < CorClasses.Length; x++ ) {
+
+                    if ( CorClasses[x].Namespace == CurrentNameSpace && CorClasses[x].IsPublic) {
+
+                        if ( CorClasses[x].IsInterface ) 
+                            InterfaceList.Add(CorClasses[x].Name);  
+                        else
+                            ClassList.Add(CorClasses[x].Name);
+                    } 
+                }  
+            } 
+          
+            if (InterfaceList.Count > 0)
+                IHeader.Visible = true;
+
+            if (ClassList.Count > 0)
+               CHeader.Visible = true;
+
+            ClassList.Sort();
+            Classes.DataSource = ClassList;
+            Classes.DataBind();
+
+            InterfaceList.Sort();
+            Interfaces.DataSource = InterfaceList;
+            Interfaces.DataBind();
+        }
+  
+        private void DisplayClass(String className) {
+
+            Type ClassType = Type.GetType(SelectedNameSpace.ToString() + "." + className);
+            ArrayList SubClassDetails = new DisplaySubClasses(ClassType, ModuleName);
+
+            DisplayConstructors  ConstructorDetails =  new DisplayConstructors(ClassType); 
+            DisplayFields        FieldDetails       =  new DisplayFields(ClassType); 
+            DisplayProperties    PropertyDetails    =  new DisplayProperties(ClassType); 
+            DisplayMethods       MethodDetails      =  new DisplayMethods(ClassType, className);
+            DisplaySuperclasses  SuperClassDetails  =  new DisplaySuperclasses(ClassType);
+            DisplayInterfaces    InterfaceDetails   =  new DisplayInterfaces(ClassType);
+
+            if(ConstructorDetails.Count != 0 )
+                Constructors.DataSource = ConstructorDetails;
+            if(SubClassDetails.Count != 0 )
+                SubClasses.DataSource = SubClassDetails;
+            if(FieldDetails.Count != 0 )
+                Fields.DataSource = FieldDetails;
+            if(PropertyDetails.Count != 0 )
+                Properties.DataSource = PropertyDetails;
+            if(MethodDetails.Count != 0 ) 
+                Methods.DataSource = MethodDetails; 
+            if(InterfaceDetails.Count != 0 )
+                Interface1.DataSource = InterfaceDetails;
+            if(SuperClassDetails.Count != 0 )
+                SuperClasses.DataSource = SuperClassDetails; 
+           
+            DataBind();
+
+            if (ClassType.IsInterface) 
+                spnClassName.InnerHtml = "Interface " + SelectedNameSpace + "." + className;
+            else
+                spnClassName.InnerHtml = "Class " + SelectedNameSpace + "." + className;
+
+            NameSpacePanel.Visible=false;
+            ClassPanel.Visible=true;
+        }
+
+        public String GetUrl(Hashtable table) {
+            return "classbrowser.htm?namespace=" + table["Namespace"] + "&class=" + table["GetType"];
+        }
+
+    </script>
+
+</head>	
+<body> 
+  <form runat="server">
+    <table class="top" width=100% height="40" cellpadding=0 cellspacing=0>
+      <tr>
+        <td bgcolor=#000666>
+          <b><font size=5 color=white>.NET Framework Class Browser</b>
+        </td>
+      </tr>
+    </table>
+    
+    <table width=100% height=700 cellpadding=0 cellspacing=0>
+      <tr>
+        <td width=25% bgcolor=#CCCCFF valign=top > 
+          <br> 
+            <asp:DataList MaintainState="false" runat=server id="Namespace1" 
+               RepeatLayOut="flow" ItemStyle-Font-Size="9pt" HeaderStyle-Font-Size="12pt" >
+              <template name="headertemplate">
+                <div left-margin="10">  <font size=4> <b>Namespaces</b>  </font> <br>
+              </template>
+               
+              <template name="itemtemplate">
+                <asp:HyperLink runat="server" text=<%# Container.DataItem %> NavigateUrl=<%# "classbrowser.htm?namespace=" + Container.DataItem %> />
+              </template>
+                        
+              <template name="selecteditemtemplate">
+                <b><asp:HyperLink  runat=server text=<%# Container.DataItem %>/></b>
+              </template>
+            </asp:DataList>                         
+            <p>
+        </td>
+   
+        <td valign=top >
+
+         <div id="ClassPanel" style="margin-top:15;margin-left:10" visible="false" runat="server">
+            <b><font size=4 color="000666"><span style="text-indent:8" id="spnClassName" MaintainState="false" runat="server"/></font></b>
+         </div>
+
+          <div id="NameSpacePanel" runat="server">
+
+          <table class="main" width=100%>
+            <tr>
+              <td class="main_header"> 
+                <span runat=server id="CHeader" visible="false" style="text-indent:8"> <b><font size=4 color=#000666>Classes in 
+                  <%= SelectedNameSpace %>  </b> </font></span> 
+              </td>
+            </tr>
+            <tr>
+              <td align="left">
+                <asp:DataList MaintainState="false" runat=server id="Classes" RepeatColumns="3" Gridlines=None borderstyle=none borderwidth=0 >
+                  <template name="itemtemplate">
+                    <asp:HyperLink runat=server text=<%# Container.DataItem %> NavigateUrl=<%# "classbrowser.htm?namespace=" + SelectedNameSpace + "&class=" + Container.DataItem %> />
+                  </template>
+                </asp:DataList>
+              </td>
+            </tr>
+          </table>
+
+          <table class="main" width=100% >
+            <tr>
+              <td class="main_header" >
+                <span runat=server id="IHeader" visible="false" style="text-indent:8"> <b><font size=4 color=#000666>Interfaces in
+                   <%= SelectedNameSpace %>  </font> </b> </span>
+              </td>
+            </tr>
+            <tr>
+              <td align="left">  
+                <asp:DataList MaintainState="false" runat=server id="Interfaces" RepeatColumns="4" 
+                  Gridlines=None borderstyle=none borderwidth=0 >
+                  <template name="itemtemplate">
+                    <asp:HyperLink runat=server  text=<%# Container.DataItem %> NavigateUrl=<%# "classbrowser.htm?namespace=" + SelectedNameSpace + "&class=" + Container.DataItem %>/> 
+                  </template> 
+                </asp:DataList> 
+              </td>
+            </tr>
+          </table>
+
+          </div>
+
+          <table class="main" width=100% cellpadding=0 cellspacing=0 >
+            <tr>
+              <td class="main_header" valign="top" >
+                <asp:DataList MaintainState="false" id="Constructors" runat="server" Gridlines=None borderstyle="none" borderwidth=0  width="100%">
+                  <template name="headertemplate" >
+                    <table cellspacing=0 width="100%">
+                      <tr><td class="class_header"><b><font size=2> Constructors </font></b></td></tr>
+                      <tr bgcolor="eeeeee">
+                        <td width="75" > <b><u> Visibility     </u> </td>
+                        <td width="100"> <b><u> Constructor    </u> </td>
+                        <td> <b><u> Parameters     </u> </td>
+                      </tr>
+                  </template>
+
+                  <template name="itemtemplate">  
+                    <tr bgcolor="eeeeee">
+                      <td width="75">
+                        <span runat=server InnerHtml=<%# ((Hashtable)Container.DataItem)["Access"] %> /> 
+                      </td>
+                      <td width="100">
+                        <span runat=server InnerHtml =<%# ((Hashtable)Container.DataItem)["Name"] %> />                                                                                    </td>
+                      <td width="1000">  
+                        <asp:DataList MaintainState="false" runat=server RepeatDirection="Horizontal"  RepeatLayout=Flow  showfooter=true
+                           datasource=<%# ((Hashtable)Container.DataItem)["Params"]%> >
+                           <template name="headertemplate" > ( </template>    
+                           <template name="itemtemplate" runat=server>
+                             <asp:HyperLink text=<%# ((Hashtable)Container.DataItem)["ParamType"] %> NavigateUrl=<%# GetUrl((Hashtable)Container.DataItem) %> runat=server />  
+                             <span innerhtml=<%# ((Hashtable)Container.DataItem)["ParamName"] %> runat=server />
+                           </template>
+                           <template name="separatortemplate">, </template> 
+                           <template name="footertemplate" > ) </template>
+                         </asp:DataList>    
+                       </td>
+                     </tr>
+                   </template>
+                   <template name="footertemplate">
+                     </table>
+                   </template>
+                 </asp:DataList>  
+                                
+                 <p>
+
+                 <asp:DataList MaintainState="false" id="Fields" runat="server" 
+                   Gridlines=None BorderStyle="none"  width="100%" BorderWidth=0>
+           
+                   <template name="headertemplate">
+                     <table cellspacing=0  width="100%">
+                       <tr><td class="class_header"><b><font size=2> Fields </font></b></td></tr>
+                       <tr bgcolor="eeeeee">
+                         <td width="120" ><b><u> Visibility </td>
+                         <td width="100"><b><u> Type       </td>
+                         <td ><b><u> Name       </td>
+                       </tr>
+                     </template>
+      
+                     <template name="itemtemplate">   
+                       <tr bgcolor="eeeeee">
+                         <td width="120">
+                           <nobr><span InnerHTML=<%#((Hashtable)Container.DataItem)["Access"]%> runat=server /></nobr>
+                         </td>
+                         <td width="100">
+                           <asp:HyperLink text=<%#((Hashtable)Container.DataItem)["Type"] %> NavigateUrl=<%# GetUrl((Hashtable)Container.DataItem) %> runat=server/>   
+                         </td>
+                         <td>
+                           <span InnerHTML=<%#((Hashtable)Container.DataItem)["Name"] %> runat=server /> 
+                         </td>
+                      </tr>
+                    </template>  
+
+                    <template name="footertemplate">
+                      </table>
+                    </template>
+                  </asp:DataList> 
+                            
+                  <p>
+
+                  <asp:DataList MaintainState="false" id="Properties" runat="server" 
+                       Gridlines=None BorderStyle="none" BorderWidth=0 width="100%">
+
+                    <template name="headertemplate">
+                      <table cellspacing=0 width="100%" >
+                        <tr><td class="class_header"><b><font size=2> Properties </font></b></td></tr>
+                        <tr bgcolor="eeeeee">
+                          <td width="75"><b><u>Visibility</td>
+                          <td width="100"><b><u>Type</td>
+                          <td width="150"><b><u>Name</td>
+                          <td><b><u>Accessibility</td>
+                        </tr>
+                      </template>
+
+                      <template name="itemtemplate">   
+                        <tr bgcolor="eeeeee">
+                          <td width="75"><span InnerHTML=<%#((Hashtable)Container.DataItem)["Visibility"] %> runat=server /> </td>
+                          <td width="100">
+                            <asp:HyperLink runat=server runat="server" text=<%#((Hashtable)Container.DataItem)["Type"] %> NavigateUrl=<%# GetUrl((Hashtable)Container.DataItem) %>/> </td>
+                          <td width="150"><span InnerHTML=<%#((Hashtable)Container.DataItem)["Name"]%> runat=server/> 
+                            <asp:DataList MaintainState="false" runat=server RepeatLayout="Flow" ShowFooter=true
+                              RepeatDirection="Horizontal"  datasource=<%#((Hashtable)Container.DataItem)["Params"] %>>
+                              <template name="itemtemplate">                           
+                                [ <asp:HyperLink runat=server text=<%#((Hashtable)Container.DataItem)["ParamType"]%> NavigateUrl=<%# GetUrl((Hashtable)Container.DataItem) %>  />  
+                                <span InnerHtml=<%#((Hashtable)Container.DataItem)["ParamName"] %> runat=server /> ]
+                              </template>
+                            </asp:DataList>
+                                             
+                          </td>
+                          <td><span InnerHTML=<%#((Hashtable)Container.DataItem)["Access"]%> runat=server/></td>
+                         </tr>
+                       </template>  
+                     <template name="footertemplate">
+                       </table>
+                     </template>
+                   </asp:DataList>     
+                 
+                   <p>
+      
+                  <asp:DataList MaintainState="false" id="Methods" runat="server" 
+                    Gridlines=None borderstyle="none" borderwidth="0" width="100%">
+                   
+                    <template name="headertemplate">
+                      <table cellspacing=0  >
+                        <tr><td class="class_header"><b><font size=2> Methods </font></b></td></tr>
+                        <tr bgcolor="eeeeee">
+                          <td width="75" ><b><u>Visibility</td>
+                          <td width="100"><b><u>Return </td>
+                          <td width="100"><b><u>Name</td>
+                          <td width="600"><b><u>Parameters</td>
+                        </tr>
+                      </template>
+                      <template name="itemtemplate">   
+                        <tr bgcolor="eeeeee">
+                          <td  width="75"><nobr><span runat=server InnerHtml=<%#((Hashtable)Container.DataItem)["Access"]%> /></nobr></td>
+                          <td width="100">
+                            <asp:HyperLink runat=server NavigateUrl=<%# GetUrl((Hashtable)Container.DataItem) %> text=<%#((Hashtable)Container.DataItem)["Type"]%>/>
+                          </td> 
+                          <td width="100"><span runat=server InnerHtml=<%#((Hashtable)Container.DataItem)["Name"]%>/></td> 
+                          <td  width="900">
+                            <asp:DataList MaintainState="false" runat=server  
+                            datasource=<%#((Hashtable)Container.DataItem)["Params"] %>
+                            RepeatLayout=Flow RepeatDirection="Horizontal" showfooter=true >
+                              <template name="headertemplate">
+                                (
+                              </template>
+                              <template name="itemtemplate">
+                                <asp:HyperLink text=<%#((Hashtable)Container.DataItem)["ParamType"]%> NavigateUrl=<%# GetUrl((Hashtable)Container.DataItem) %> runat=server />  
+                                <span InnerHtml=<%#((Hashtable)Container.DataItem)["ParamName"] %>  runat=server />
+                              </template>
+                              <template name="separatortemplate"> ,</template>  
+                              <template name="footertemplate">
+                                )
+                              </template>
+                            </asp:DataList> 
+                          </td>
+                        </tr>
+                      </template>  
+                                    
+                      <template name="footertemplate" >
+                        </table>
+                      </template>
+                    </asp:DataList>  
+                                
+                    <p>   
+                     
+                    <asp:DataList MaintainState="false" id="SuperClasses" style="margin-left:10" runat="server" RepeatLayout="Flow"
+                       RepeatDirection="horizontal"  width="100%">
+                    
+                      <template name="headertemplate">
+                        <font size=2><b> Hierarchy </b></font> <br>
+                      </template>  
+
+                      <template name="itemtemplate">   
+                        <asp:HyperLink runat=server NavigateUrl=<%# GetUrl((Hashtable)Container.DataItem) %> text=<%#((Hashtable)Container.DataItem)["FullName"]%> /> 
+                      </template>  
+ 
+                      <template name="separatortemplate">   
+                        <font face="Verdana" style="font-size:8pt"><nobr>---></nobr> 
+                      </template>
+                    </asp:DataList>  
+                               
+                    <p>
+      
+                    <asp:DataList MaintainState="false" id="Interface1" runat=server style="margin-left:10" RepeatDirection="horizontal"
+                       RepeatLayout="Flow"  width="100%">
+                                     
+                      <template name="headertemplate">
+                        <font size=2><b> Implements </b></font> <br>
+                      </template> 
+
+                      <template name="itemtemplate">   
+                        <asp:HyperLink runat=server NavigateUrl=<%# GetUrl((Hashtable)Container.DataItem) %> text=<%#((Hashtable)Container.DataItem)["FullName"]%> /> 
+                      </template>  
+          
+                      <template name="separatortemplate">
+                        <font face="Verdana" style="font-size:8pt">,
+                      </template> 
+
+                    </asp:DataList>           
+
+                    <p>
+  
+                    <asp:DataList MaintainState="false" id="SubClasses" style="margin-left:10" runat=server
+                       RepeatLayout="Flow" RepeatDirection="horizontal"  width="100%">
+                      <template name="headertemplate">
+                        <font size=2> <b>Subclassed By </b></font>  <br>
+                      </template>  
+
+                      <template name="itemtemplate">   
+                        <asp:HyperLink runat=server NavigateUrl=<%# GetUrl((Hashtable)Container.DataItem) %> text=<%#((Hashtable)Container.DataItem)["FullName"]%> /> 
+                      </template>  
+
+                      <template name="separatortemplate">
+                        <font face="Verdana" style="font-size:8pt">,
+                      </template> 
+                    </asp:DataList>
+                               
+                    <p>
+                     
+                  </td>
+                </tr>
+              </table>
+
+            </td>
+          </tr>
+        </table>
+    </form>
+  </body>
+</html>	
+	         
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

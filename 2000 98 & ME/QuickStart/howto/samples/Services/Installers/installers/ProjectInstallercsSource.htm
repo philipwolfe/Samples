@@ -1,0 +1,65 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Services/Installers/installers/installers.src&file=ProjectInstaller.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfUHJvamVjdEluc3RhbGxlci5jc3hfX3h4X3h4X3hfX3g=684b812b" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">ProjectInstaller.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../howto/samples/services/installers/installers/installerscssource.htm'>Installers.cs</a> &nbsp;&nbsp<a href='../../../../../howto/samples/services/installers/installers/projectinstallercssource.htm'>ProjectInstaller.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../howto/samples/services/installers/installers/vb/installersvbsource.htm'>VB\Installers.vb</a> &nbsp;&nbsp<a href='../../../../../howto/samples/services/installers/installers/vb/projectinstallervbsource.htm'>VB\ProjectInstaller.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>using System;
+using System.Collections;
+using System.Configuration.Install;
+using System.Diagnostics;
+using System.Messaging;
+using System.ComponentModel;
+
+[RunInstaller(true)]
+public class ProjectInstaller: Installer {
+
+    private MessageQueueInstaller mqInstaller;
+    private EventLogInstaller elInstaller;
+
+    public ProjectInstaller() {
+
+        mqInstaller = new MessageQueueInstaller();
+
+        mqInstaller.Authenticate = true;
+        mqInstaller.EncryptionRequired = EncryptionRequired.Body;
+        mqInstaller.Label = "InstallersSample";
+        mqInstaller.Path = ".\\InstallersSample";
+        mqInstaller.Transactional = false;
+        mqInstaller.UseJournalQueue = true;
+
+        Installers.Add(mqInstaller);
+
+        elInstaller = new EventLogInstaller();
+
+        elInstaller.Log = "InstallersSample";
+        elInstaller.Source = "InstallersSample";
+
+        Installers.Add(elInstaller);
+    }
+}    
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

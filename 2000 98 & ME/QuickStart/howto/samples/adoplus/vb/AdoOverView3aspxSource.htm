@@ -1,0 +1,101 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/adoplus/vb/adooverview3.src&file=AdoOverView3.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfQWRvT3ZlclZpZXczLmFzcFx4eF9feHhfeHhfeF9feA==335c9cfb" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">AdoOverView3.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../howto/samples/adoplus/vb/adooverview3aspxsource.htm'>AdoOverView3.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../howto/samples/adoplus/cs/adooverview3aspxsource.htm'>..\CS\AdoOverView3.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp> 
+<%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="System.Data.SQL" %>
+
+<html>
+<script language="VB" runat="server">
+  
+    Dim MyReader as SQLDataReader
+
+
+    protected sub Page_Load(Src as object, E as EventArgs ) 
+
+
+	Dim mySQLConnection as SQLConnection
+	Dim mySQLCommand as SQLCommand
+    
+        mySQLConnection = new SQLConnection("server=localhost;uid=sa;pwd=;database=northwind")
+	mySQLCommand = new SQLCommand("select * from customers", mySQLConnection)
+
+	try
+	  mySQLConnection.Open()
+          mySQLCommand.Execute(MyReader)
+
+	  Response.Write("<Table>")
+          Response.Write("<TR>")
+	  Response.Write("<TD>")
+	  Response.Write("<B>Customer ID  </B>")
+	  Response.Write("</TD>")
+	  Response.Write("<TD>")
+	  Response.Write("<B>Company Name </B>")
+	  Response.Write("</TD>") 	     
+	  Response.Write("</TR>")
+
+
+	  do while (MyReader.Read())
+                Response.Write("<TR>")
+		Response.Write("<TD>")
+		Response.Write(MyReader("CustomerID").ToString() + " ")
+		Response.Write("</TD>")
+		Response.Write("<TD>")
+		Response.Write(MyReader("CompanyName").ToString() + " ")
+		Response.Write("</TD>")
+                Response.Write("</TR>")
+  	  loop
+	catch myException as Exception
+
+	  Console.WriteLine(myException.ToString())
+
+	finally
+
+	  MyReader.Close()
+	  mySQLConnection.Close()
+
+	End Try
+
+
+        Response.Write("</Table>")
+
+	
+	
+    end sub
+
+</script>
+
+<body>
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>
+</span>
+
+    </form>

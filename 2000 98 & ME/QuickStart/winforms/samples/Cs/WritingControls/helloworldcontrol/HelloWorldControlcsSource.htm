@@ -1,0 +1,57 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/winforms/samples/Cs/WritingControls/helloworldcontrol/helloworldcontrol.src&file=HelloWorldControl.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfSGVsbG9Xb3JsZENvbnRyb2wuY3N4X194eF94eF94X19409a15df9" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">HelloWorldControl.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>Control: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/writingcontrols/helloworldcontrol/helloworldcontrolcssource.htm'>HelloWorldControl.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Host Application: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/writingcontrols/helloworldcontrol/hostappcssource.htm'>HostApp.cs</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>//------------------------------------------------------------------------------
+/// <copyright from='1997' to='2001' company='Microsoft Corporation'>           
+///    Copyright (c) Microsoft Corporation. All Rights Reserved.                
+///       
+///    This source code is intended only as a supplement to Microsoft
+///    Development Tools and/or on-line documentation.  See these other
+///    materials for detailed information regarding Microsoft code samples.
+///
+/// </copyright>                                                                
+//------------------------------------------------------------------------------
+namespace Microsoft.Samples.WinForms.Cs.HelloWorldControl {
+   using System;
+   using System.WinForms;
+   using System.Drawing;
+
+   public class HelloWorldControl : RichControl {
+       protected override void OnPaint(PaintEventArgs e) {
+
+           //Paint the Text property on the control
+           e.Graphics.DrawString(Text, 
+                                 Font, 
+                                 new SolidBrush(ForeColor), 
+                                 ClientRectangle);
+       }
+   }
+}
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

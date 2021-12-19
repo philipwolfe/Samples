@@ -1,0 +1,127 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Xml/DOMInterfaceXmlDocument/DOMInterfaceXmlDocument.src&file=DOMInterfaceXmlDocument.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfRE9NSW50ZXJmYWNlWG1sRG9jdW1lbnQuY3N4X194eF94eF94X1949fd1ab4c" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">DOMInterfaceXmlDocument.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../howto/samples/xml/dominterfacexmldocument/dominterfacexmldocumentcssource.htm'>DOMInterfaceXmlDocument.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../howto/samples/xml/dominterfacexmldocument/vb/dominterfacexmldocumentvbsource.htm'>VB/DOMInterfaceXmlDocument.vb</a> &nbsp;&nbsp<a href='../../../../howto/samples/xml/dominterfacexmldocument/vb/dominterfacexmldocumentaspxsource.htm'>VB/DOMInterfaceXmlDocument.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>XML data: </b></td>
+        <td><a href='../../../../howto/samples/xml/dominterfacexmldocument/booksxmlsource.htm'>books.xml</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>/* Copyright (c) 2000, Microsoft Corporation. All Rights Reserved.*/
+
+namespace HowTo.Samples.XML
+{
+
+using System;
+using System.IO;
+using System.Xml;
+    
+public class XmlDocumentSample
+{
+    private const String m_Document = "books.xml";
+
+    public static void Main()
+    {
+        XmlDocumentSample xmldocument = new XmlDocumentSample();
+    }
+
+    public XmlDocumentSample()
+    {
+        XmlTextReader reader = null;
+
+        try
+        {
+            // Load the XML from file
+            Console.WriteLine ("Reading file {0} ...", m_Document);
+            reader = new XmlTextReader (m_Document);
+			reader.WhitespaceHandling = WhitespaceHandling.None;
+            Console.WriteLine ("File {0} read sucessfully ...", m_Document);
+
+            // Create an XmlDocument from the XmlTextReader
+            XmlDocument xmldocument = new XmlDocument();
+            xmldocument.Load (reader);
+            Console.WriteLine ("XmlDocument loaded with XML data successfully ...");
+
+            // Process the supplied XML file
+            Console.WriteLine ("Processing ...");
+            Console.WriteLine ();
+
+            // Start from the document Element
+            DisplayTree(xmldocument.DocumentElement);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine ("Exception: {0}", e.ToString());
+        }
+
+        finally
+        {
+            if (reader != null)
+                reader.Close();
+        }
+    }
+
+    public void DisplayTree(XmlNode node)
+    {       
+        if (node != null)
+            Format (node);
+
+        if (node.HasChildNodes)
+        {
+            node = node.FirstChild;
+            while (node != null)
+            {
+                DisplayTree(node);
+                node = node.NextSibling;
+            }
+        }
+    }
+
+    // Format the output
+    private void Format (XmlNode node)
+    {
+        if (!node.HasChildNodes)
+        {
+            Console.WriteLine("\t" + node.Name + "<" + node.Value + ">");
+        }
+
+        else
+        {
+            Console.Write(node.Name);
+            if (XmlNodeType.Element == node.NodeType)
+            {
+                XmlNamedNodeMap map = node.Attributes;
+                foreach (XmlNode attrnode in map)
+                    Console.Write(" " + attrnode.Name + "<" + attrnode.Value + "> ");
+            }
+            Console.WriteLine();
+        }
+    }
+} // End class XmlDocumentSample
+} // End namespace HowTo.Samples.XML
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

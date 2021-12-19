@@ -1,0 +1,58 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Services/MessageQueue/mqsend/MQSend.src&file=VB%5CMQSend.vb" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkJcXE1RU2VuZC52YnhfX3h4X3h4X3hfX3g=63ebba5b" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB\MQSend.vb</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../howto/samples/services/messagequeue/mqsend/mqsendcssource.htm'>MQSend.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../howto/samples/services/messagequeue/mqsend/vb/mqsendvbsource.htm'>VB\MQSend.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>Imports System
+Imports System.Messaging
+
+Public Class MQSend	
+
+    Shared Sub Main()
+
+        Dim appName As String = Environment.GetCommandLineArgs()(0)
+        Dim queuePath As String = Environment.GetCommandLineArgs()(1)
+        Dim message As String = Environment.GetCommandLineArgs()(2)
+        
+        if(Environment.GetCommandLineArgs().Length <> 3) then
+            Console.WriteLine("Usage: " + appName +" <queue> <message>")
+            Exit Sub
+        End if
+                              
+        Dim mqPath As String = ".\" + queuePath
+        if( Not MessageQueue.Exists(mqPath)) then       
+            MessageQueue.Create(mqPath)
+        End if
+		
+        Dim mq As MessageQueue = new MessageQueue(mqPath)
+        mq.Send(message)
+
+    End Sub
+
+End Class
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

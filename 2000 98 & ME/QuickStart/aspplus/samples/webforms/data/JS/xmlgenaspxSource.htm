@@ -1,0 +1,147 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/data/xmlgen.src&file=JS/xmlgen.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfSlMvXHhtbGdlbi5hc3BceHhfX3h4X3h4X3hfX3g=164e1413" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">JS/xmlgen.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/data/xmlgenaspxsource.htm'>xmlgen.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/data/vb/xmlgenaspxsource.htm'>VB/xmlgen.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/data/js/xmlgenaspxsource.htm'>JS/xmlgen.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="System.Data.SQL" %>
+
+<html>
+<head>
+
+    <script language="JScript" runat="server">
+
+        public var Source : DataView;
+        public var ds : DataSet;
+        public var getSchema : Boolean, getData : Boolean;
+
+        public function Submit_Click(sender : Object, evt : EventArgs) : void 
+        {
+            if (IsPostBack)
+            {
+                var myConnection : SQLConnection = new SQLConnection(ConnectString.Value);
+                var myCommand : SQLDataSetCommand = new SQLDataSetCommand(myText.Value, myConnection);
+
+                ds = new DataSet();
+                myCommand.FillDataSet(ds, "Table");
+
+                Source = new DataView(ds.Tables[0]);
+
+                getSchema = GetSchema.Checked;
+                getData = GetData.Checked;
+
+                MyDataGrid.DataSource=Source;
+                MyDataGrid.DataBind();
+            }
+         }
+
+    </script>
+
+</head>
+<body bgcolor="ffffcc">
+
+    <h3><font face="Verdana">SQL to XML Generator</font></h3>
+
+    <form runat="server">
+
+        <table border=0 cellpadding=5 style="font:10pt verdana">	
+        <tr>
+          <td colspan="2">
+            <b>Connect String:</b><br>
+            <input id="ConnectString" type="text" value="server=localhost;uid=sa;pwd=;database=pubs" size="85" runat="server">
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <b>Query:</b><br>
+            <input id="myText" type="text" value="select * from Authors" size="85" runat="server">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="radio" id="GetSchema" name="Mode" runat="server"/>Get XML Schema<br>
+            <input type="radio" id="GetData" name="Mode" runat="server"/>Get XML Data<br>
+            <input type="radio" id="GetBoth" name="Mode" checked runat="server"/>Get Both
+          </td>
+          <td valign="top">
+            <input type="submit" runat="server" OnServerClick="Submit_Click">
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+
+              <%  if (Page.IsPostBack) {  %>
+                  <b>Result:</b><br>
+                  <textarea cols=80 rows=25>
+              <%
+                  if (getSchema)
+                      ds.WriteXmlSchema(Response.Output);
+                  else if (getData)
+                      ds.WriteXmlData(Response.Output);
+                  else
+                      ds.WriteXml(Response.Output);   
+              %>
+                  </textarea>
+              <%  }  %>
+
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+
+              <%  if (Page.IsPostBack) {  %>
+                  <b>Data:</b><br>
+              <%  }  %>
+
+              <ASP:DataGrid id="MyDataGrid" 
+                BackColor="#EDBE7B" 
+                BorderColor="black"
+                ShowFooter="false" 
+                CellPadding=3 
+                CellSpacing="0"
+                Font-Name="Verdana"
+                Font-Size="8pt"
+                HeaderStyle-BackColor="#DC6035"
+                MaintainState="false"
+                runat="server"
+              />
+
+          </td>
+        <tr>
+        </table>
+
+    </form>
+
+</body>
+</html>
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

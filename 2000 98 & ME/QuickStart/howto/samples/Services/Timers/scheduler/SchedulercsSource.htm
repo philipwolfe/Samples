@@ -1,0 +1,75 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Services/Timers/scheduler/scheduler.src&file=Scheduler.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfU2NoZWR1bGVyLmNzeF9feHhfeHhfeF9feA==116ecf55" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">Scheduler.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../howto/samples/services/timers/scheduler/schedulercssource.htm'>Scheduler.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../howto/samples/services/timers/scheduler/vb/schedulervbsource.htm'>VB\Scheduler.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>using System;
+using System.Diagnostics;
+using System.Threading;
+using System.Timers;
+using System.Timers.Design;
+using System.WinForms;
+	
+public class Scheduler
+{
+    static string executablePath;
+    
+    public static void Main(String[] args) 
+    {
+        string sampleName = Environment.GetCommandLineArgs()[0];
+
+        if(args.Length != 1)
+        {
+            Console.WriteLine("Usage: " + sampleName +" <executable>");
+            return;
+        }
+        
+        executablePath = args[0];
+        
+        Schedule aSchedule = new Schedule(); 
+        RecurrencePatternsDialog dlg = new RecurrencePatternsDialog();
+        dlg.RecurrencePatterns = aSchedule.RecurrencePatterns;
+        dlg.ShowDialog();
+        
+        aSchedule.RecurrencePatterns.All = dlg.RecurrencePatterns.All; 
+        aSchedule.EventOccurred += new OccurredEventHandler(OnScheduledEvent);
+        aSchedule.Enabled = true;
+                
+        Console.WriteLine("Press \'q\' to quit the sample");	
+        while(Console.Read()!='q')
+        {
+            Thread.Sleep(500);	
+        }
+    }
+
+	public static void OnScheduledEvent(Object source, OccurredEventArgs e)
+	{
+        Process.Start(executablePath);		
+    }
+}
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

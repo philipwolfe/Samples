@@ -1,0 +1,567 @@
+
+
+<!--BEGIN HEADER-->
+<html>
+<head>
+<link rel="stylesheet" href="../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+
+<table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+
+    <div style="padding:0,0,4,0"><b>Messaging</b><br></div>
+    &nbsp; <a class="outer" href="../../howto/doc/mqsend.htm">Send a queued message</a><br>
+    &nbsp; <a class="outer" href="../../howto/doc/mqreceive.htm">Receive a queued message</a><br>
+    &nbsp; <a class="outer" href="../../howto/doc/sendobject.htm">Pass a complex type</a><br>
+    &nbsp; <a class="outer" href="../../howto/doc/mqasync.htm">Receive asynchronously</a><br>
+    &nbsp; <a class="outer" href="../../howto/doc/formatters.htm">Use message formatters</a><br>
+    &nbsp; <a class="outer" href="../../howto/doc/mqctrl.htm">Control a message queue</a><p>
+    <div style="padding:0,0,4,0"><a target="_top" style="color:darkred" href="../../howto"><b>Back to Index</b></a><br></div>
+</div>
+
+</td>
+</tr>
+</table>
+
+
+
+
+
+
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<style>
+.mydd {  font: smaller verdana; }
+.code1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:blue;
+	}
+.codecomment1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:green;
+	}
+.issue {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background-color:RED;
+	color:WHITE;
+	font-weight:bold;
+	}
+
+
+body { font: smaller verdana }        
+
+</style>
+
+
+
+
+
+<h4>How Do I...Receive asynchronously?</h4>
+
+Message queuing makes it easy for application developers to communicate with application
+programs quickly and reliably by sending and receiving messages. Messaging
+provides you with guaranteed message delivery and a robust, fail-safe way to
+carry out many of your business processes.</p>
+
+<p>The MessageQueue component allows you to easily incorporate message-based
+communication into your applications. Using this component and its associated
+language features, you can send and receive messages, explore existing queues,
+create and delete queues, and perform a variety of other operations using a
+simple programming model.</p>
+
+<p>The sample illustrates how to use the MessageQueue component to watch a message
+queue for arrival of new messages. To run the sample you have to have Message
+Queuing installed on your system. The sample is a command line application that
+takes one command line argument. The argument is the name of a public message
+queue on your local machine. For example you can run it as follows:</p>
+
+<div class="code"><pre>
+&gt; MQAsync.exe MyQueue
+</pre></div>
+
+<p>Now, use the MQSend sample to send a message
+to the MyQueue queue. The sample application
+will be notified when the message arrives at the queue and will output the
+message to the console.</p>
+
+<p>In its simplest form, asynchronously receiving a message from a message queue
+involves:</p>
+
+<ol>
+
+<li>Creating an instance of the MessageQueue component, and setting its Path property and the formatter:
+
+<p>
+
+<table cellpadding=0 cellspacing=0 width="95%">
+<tr>
+<td>
+
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl4" style="display:none">
+
+MessageQueue mq = new MessageQueue(&quot;.\\MyQueue&quot;);
+((XmlMessageFormatter)mq.Formatter).TargetTypeNames = new string[]{&quot;System.String&quot;};
+
+</pre>
+<pre id="codectrl4" style="display:">
+
+Dim mq As MessageQueue = New MessageQueue(&quot;.\\MyQueue&quot;);
+Dim formatter As XmlMessageFormatter = CType(mq.Formatter,XmlMessageFormatter)
+formatter.TargetTypeNames = new String(){"System.String"}
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl4" onclick="doClick(0, 'ctrl4')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl4" onclick="doClick(1, 'ctrl4')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+
+</td>
+</tr>
+</table>
+
+<p>
+
+<li>Setting up an event handler:
+
+<p>
+<table cellpadding=0 cellspacing=0 width="95%">
+<tr>
+<td>
+
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl6" style="display:none">
+
+mq.ReceiveCompleted += new ReceiveCompletedEventHandler(OnReceiveCompleted);
+</pre>
+<pre id="codectrl6" style="display:">
+
+AddHandler mq.ReceiveCompleted, New ReceiveCompletedEventHandler(AddressOf OnReceiveCompleted)
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl6" onclick="doClick(0, 'ctrl6')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl6" onclick="doClick(1, 'ctrl6')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+
+</td>
+</tr>
+</table>
+<p>
+
+<li>Implementing an event handler:
+
+<p>
+<table cellpadding=0 cellspacing=0 width="95%">
+<tr>
+<td>
+
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl8" style="display:none">
+
+public static void OnReceiveCompleted(Object source, ReceiveAsyncEventArgs asyncResult){
+    MessageQueue mq = (MessageQueue)source;
+    Message m = mq.EndReceive(asyncResult.AsyncResult);
+    Console.WriteLine(&quot;Message: &quot; + (string)m.Body);
+    mq.BeginReceive();
+}
+</pre>
+<pre id="codectrl8" style="display:">
+
+Public Shared Sub OnReceiveCompleted(source As Object, asyncResult As ReceiveAsyncEventArgs)
+    Dim mq As MessageQueue = CType(source,MessageQueue)
+    Dim m As Message = mq.EndReceive(asyncResult.AsyncResult)
+    Console.WriteLine("Message: " + CStr(m.Body))
+    mq.BeginReceive()
+End sub
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl8" onclick="doClick(0, 'ctrl8')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl8" onclick="doClick(1, 'ctrl8')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+
+</td>
+</tr>
+</table>
+<p>
+
+<li>Calling BeginReceive to start an asynchronous receive operation:
+
+<p>
+
+<table cellpadding=0 cellspacing=0 width="95%">
+<tr>
+<td>
+
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl10" style="display:none">
+
+mq.BeginReceive();
+</pre>
+<pre id="codectrl10" style="display:">
+
+mq.BeginReceive
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl10" onclick="doClick(0, 'ctrl10')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl10" onclick="doClick(1, 'ctrl10')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+
+</td>
+</tr>
+</table>
+<p>
+
+</ol>
+
+<p>Please note that BeginReceive will receive only one message. If you want to keep
+receiving messages, you have to call BeginReceive again (see the event handler
+implementation in step 3). </p>
+
+<h4>Example</h4>
+
+<span>
+  
+  
+
+        
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../howto/samples/services/messagequeue/mqasync/vb">
+	<img style="border-color:black" border=1 src="../../images/console.gif"><br>
+	</a>
+	<div class="caption">MQAsync.exe</div><br>
+	
+	
+		[<a target="_blank" href="../../howto/samples/services/messagequeue/mqasync/vb">Run Sample</a>] | 
+		[<a target="_blank" href="../../howto/samples/services/messagequeue/mqasync/mqasynccssource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<!--END FOOTER-->
+<p>
+<hr>
+<p>
+</div>
+</td>
+</tr>
+</table>
+</BODY>
+</html>
+<!--END FOOTER-->

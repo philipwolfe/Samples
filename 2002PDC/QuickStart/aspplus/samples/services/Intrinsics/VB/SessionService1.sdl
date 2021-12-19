@@ -1,0 +1,75 @@
+<?xml version="1.0" ?> 
+ <serviceDescription xmlns:s0="http://tempuri.org/main.xsd" xmlns:s1="" name="SessionService1" targetNamespace="" xmlns="urn:schemas-xmlsoap-org:sdl.2000-01-25">
+ <soap xmlns="urn:schemas-xmlsoap-org:soap-sdl-2000-01-25">
+ <service>
+ <addresses>
+  <address uri="http://localhost/quickstart/aspplus/samples/services/Intrinsics/vb/SessionService1.asmx" /> 
+  </addresses>
+ <requestResponse name="UpdateHitCounter" soapAction="http://tempuri.org/UpdateHitCounter">
+  <request ref="s0:UpdateHitCounter" /> 
+  <response ref="s0:UpdateHitCounterResult" /> 
+  </requestResponse>
+ <requestResponse name="UpdateAppCounter" soapAction="http://tempuri.org/UpdateAppCounter">
+  <request ref="s0:UpdateAppCounter" /> 
+  <response ref="s0:UpdateAppCounterResult" /> 
+  </requestResponse>
+  </service>
+  </soap>
+ <httppost xmlns="urn:schemas-xmlsoap-org:post-sdl-2000-01-25">
+ <service>
+ <requestResponse name="UpdateHitCounter" href="http://localhost/quickstart/aspplus/samples/services/Intrinsics/vb/SessionService1.asmx/UpdateHitCounter">
+ <request>
+  <form /> 
+  </request>
+ <response>
+  <mimeXml ref="s1:string" /> 
+  </response>
+  </requestResponse>
+ <requestResponse name="UpdateAppCounter" href="http://localhost/quickstart/aspplus/samples/services/Intrinsics/vb/SessionService1.asmx/UpdateAppCounter">
+ <request>
+  <form /> 
+  </request>
+ <response>
+  <mimeXml ref="s1:string" /> 
+  </response>
+  </requestResponse>
+  </service>
+  </httppost>
+ <httpget xmlns="urn:schemas-xmlsoap-org:get-sdl-2000-01-25">
+ <service>
+ <requestResponse name="UpdateHitCounter" href="http://localhost/quickstart/aspplus/samples/services/Intrinsics/vb/SessionService1.asmx/UpdateHitCounter">
+  <request /> 
+ <response>
+  <mimeXml ref="s1:string" /> 
+  </response>
+  </requestResponse>
+ <requestResponse name="UpdateAppCounter" href="http://localhost/quickstart/aspplus/samples/services/Intrinsics/vb/SessionService1.asmx/UpdateAppCounter">
+  <request /> 
+ <response>
+  <mimeXml ref="s1:string" /> 
+  </response>
+  </requestResponse>
+  </service>
+  </httpget>
+ <schema targetNamespace="http://tempuri.org/main.xsd" xmlns="http://www.w3.org/1999/XMLSchema">
+ <element name="UpdateHitCounter">
+  <complexType /> 
+  </element>
+ <element name="UpdateHitCounterResult">
+ <complexType>
+  <element name="result" type="string" nullable="true" /> 
+  </complexType>
+  </element>
+ <element name="UpdateAppCounter">
+  <complexType /> 
+  </element>
+ <element name="UpdateAppCounterResult">
+ <complexType>
+  <element name="result" type="string" nullable="true" /> 
+  </complexType>
+  </element>
+  </schema>
+ <schema targetNamespace="" xmlns="http://www.w3.org/1999/XMLSchema">
+  <element name="string" type="string" nullable="true" /> 
+  </schema>
+  </serviceDescription>

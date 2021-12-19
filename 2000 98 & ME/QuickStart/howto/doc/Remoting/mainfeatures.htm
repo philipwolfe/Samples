@@ -1,0 +1,201 @@
+
+<!--BEGIN HEADER-->
+<html>
+<head>
+<link rel="stylesheet" href="../../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+
+<table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+
+    <div style="padding:0,0,4,0"><b>Remoting</b><br></div>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/mainfeatures.htm">Remoting Overview</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/nutshell.htm">How Remoting Works</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/quickstart.htm">Remoting Samples</a><p>
+    <div style="padding:0,0,4,0"><b>The Basics</b><br></div>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/firstserver.htm">Create a Remote Server</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/firstclient.htm">Create a Client of the Server</a><p>
+    <div style="padding:0,0,4,0"><b>Samples</b><br></div>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/singleton.htm">Create a Singleton Object</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/byreference.htm">Pass Objects By Reference</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/byvalue.htm">Pass Objects By Value</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/interface.htm">Compile Against an Interface</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/async.htm">Make an Asynchronous Call</a><p>
+    <div style="padding:0,0,4,0"><a target="_top" style="color:darkred" href="../../../howto"><b>Back to Index</b></a><br></div>
+
+</div>
+
+</td>
+</tr>
+</table>
+
+
+
+
+
+
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<style>
+.mydd {  font: smaller verdana; }
+.code1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:blue;
+	}
+.codecomment1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:green;
+	}
+.issue {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background-color:RED;
+	color:WHITE;
+	font-weight:bold;
+	}
+
+
+body { font: smaller verdana }        
+
+</style>
+
+
+
+
+
+<h4>Remoting Overview</h4>
+
+
+The Common Language Runtime Remoting infrastructure provides a rich set 
+of classes that allow developers to ignore most of the complexities of 
+deploying and managing remote objects.  Even though we are dealing with 
+applications running against different runtime environments, calling methods 
+on remote objects is nearly identical to calling local methods.  The aim of 
+this QuickStart is give the reader a brief introduction into remoting by using 
+a few simple examples and describing the principles involved in sufficient
+detail to enable you to build more sophisticated applications when the
+need arises.  Readers are expected to have some experience with remote
+objects, HTTP, TCP and URL's although this is not a strict requirement for
+understanding these examples.
+<br><br>
+
+Remoting is a framework built into the Common Language Runtime that can be 
+used to build sophisticated distributed applications and network services.  
+Although it has a number of features in common with similar frameworks on 
+other platforms, it offers a unique set of features not available anywhere 
+else:<br><br> 
+
+<ul>
+
+<li><b>Proxy objects.  </b> When a client instantiates a remote object, it 
+receives a proxy to the class instance on the server.  All methods called 
+on the proxy will automatically be forwarded to the remote class and any 
+results will be returned to the client.  From the client's perspective, 
+this process is no different than making a local call.  Any exceptions 
+thrown by the remote object will automatically be returned to the client.  
+This enables the client to use normal try and catch blocks around sections 
+of the code to trap and deal with exceptions.<br><br>
+
+<li><b>Object passing.  </b> All objects instantiated remotely are 
+returned by reference and have to derive from MarshallByRefObject.  
+Objects passed as parameters to a remote method call can be forwarded by 
+value or by reference.  The default behavior is pass by value provided the 
+object in question is marked by the custom attribute 
+[serializable]. Additionally, the object could implement the 
+ISerializable interface which provides flexibility in how the object 
+should be serialized and deserialized.  Objects that are not marshal by 
+reference or marshal by value are not remotable.<br><br> 
+
+<li><b>Activation models.  </b> Remote objects can easily be instantiated 
+from a client by simply calling <em>new</em>.  The framework contains 
+enough "intelligence" to realize we are dealing with a remote object and 
+will ensure the object gets instantiated in the relevant remote 
+application.  Instantiating remote objects is not limited to default 
+constructors, you can even instantiate an object using a constructor that 
+requires one or more parameters.  The Activator class contains two methods 
+namely CreateInstance and GetObject that can also be used to instantiate 
+remote objects.  The former can be used in place of new to create an 
+object instance while the latter is normally used to connect to an object 
+at a specified URL.<br><br> 
+
+<li><b>Stateless and Stateful objects.  </b>The framework makes provision 
+for creating remote objects as stateless.  When an object is configured as 
+SingleCall, it will be instantiated when a method is called on that 
+object.  The object processes the call, returns an optional result and 
+will then be collected by the garbage collector.  This way the client is 
+always connected to a fresh object with each call.  Configuring an object 
+as a Singleton ensures that all clients will be connected to the same 
+object whenever a call is made to that object.  ClientActivated objects 
+allow the client to pass parameters to the constructor of a remote object 
+when it gets instantiated.  Each activation request for a client activated 
+object (Activator.CreateInstance or new in combination with entries in the 
+configuration file) on the client results in a new object on the 
+server.<br><br> 
+
+<li><b>Channels and Serialization.  </b>When a client calls a method on a 
+remote object, the remoting framework automatically serializes any data 
+associated with the request and transports the data to the remote object 
+via a channel.  Some of the more popular channels supported are HTTP, TCP, 
+SMTP.  In the case of HTTP, the framework uses the SOAP protocol 
+to transport data in XML format from the client to the server and back.  
+Different serialization formatters are available, the default for HTTP is 
+a SOAP formatter.  Since programmers can create custom formatters for use 
+with any channel, the remoting framework can be configured to work with 
+any external frameworks on other platforms.  The TCP channel uses plain 
+sockets and Binary Serialization by default and can be used to communicate 
+with any object on a remote server.<br><br>
+
+<li><b>Lease based Lifetime.  </b>The lifetime of remote objects are 
+controlled by a leasing mechanism.  When an object is first created, it is 
+given a lease time.  When the lease time of the object reaches zero, the 
+object will be disconnected from the remoting infrastructure and when all 
+references to the object has been freed within the AppDomain, it will be 
+collected by the GC.  A number of mechanisms are provided whereby the 
+client can extend the lease on the object, thereby sustaining its life.<br><br>
+
+<li><b>Hosting objects in IIS.  </b>Remote objects can easily be hosted 
+in IIS.  This allows any client to connect to the object using normal 
+HTTP on port 80.  It is also possible to create WEB pages that allow a 
+user to connect to a remote object using Internet Explorer.<br><br>
+
+</ul>
+
+In the remainder of the QuickStart, we'll see practical examples of the above 
+concepts.  Continue reading to see how .NET Remoting can work for you!
+<!--END FOOTER-->
+<p>
+<hr>
+<p>
+</div>
+</td>
+</tr>
+</table>
+</BODY>
+</html>
+<!--END FOOTER-->

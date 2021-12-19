@@ -1,0 +1,78 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/busobjs/ThreeTier.src&file=VB/BusObj.vb" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvQnVzT2JqLnZieF9feHhfeHhfeF9feA==1e4a6d9f" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/BusObj.vb</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/busobjs/threetieraspxsource.htm'>ThreeTier.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/busobjs/busobjcssource.htm'>BusObj.cs</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/busobjs/dataobjcssource.htm'>DataObj.cs</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/busobjs/makesamplebatsource.htm'>makesample.bat</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/busobjs/vb/threetieraspxsource.htm'>VB/ThreeTier.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/busobjs/vb/busobjvbsource.htm'>VB/BusObj.vb</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/busobjs/vb/dataobjvbsource.htm'>VB/DataObj.vb</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/busobjs/vb/makesamplebatsource.htm'>VB/makesample.bat</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>Imports System
+Imports System.Data
+Imports System.Data.SQL
+Imports DataLayer
+
+Namespace BusinessLayer 
+
+  Public Class BusObjVB
+
+    Private Data As DataObjVB
+
+    Public Sub New() 
+
+      MyBase.New()
+      Data = New DataObjVB("server=localhost;uid=sa;pwd=;database=grocertogo")
+    End Sub
+
+    Public Function GetCategories() As DataView
+
+       Return Data.GetCategories()
+    End Function
+
+    Public Function GetProductsForCategory(Category As String, CustomerId As Integer) As DataView
+
+       Dim View As DataView
+       View = Data.GetProductsForCategory(Category)
+
+       Dim Discount As Double = 0
+       If (CustomerId >= 25) And (CustomerId < 50)
+         Discount = .50
+       Else If (CustomerId >= 50) And (CustomerId < 75)
+         Discount = 1.00 
+       Else If (CustomerId >= 75) And (CustomerId < 100)
+         Discount = 1.50
+       End If
+
+       Dim I As Integer
+       For I = 0 To View.Count - 1
+         View(I)("UnitPrice") = CDbl(View(I)("UnitPrice").ToString()) - Discount
+       Next
+
+       Return View
+    End Function
+
+  End Class
+
+End Namespace
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

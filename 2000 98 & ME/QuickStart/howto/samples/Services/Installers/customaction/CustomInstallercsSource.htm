@@ -1,0 +1,49 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Services/Installers/customaction/customaction.src&file=CustomInstaller.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfQ3VzdG9tSW5zdGFsbGVyLmNzeF9feHhfeHhfeF9feA==f4c5a120" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">CustomInstaller.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../howto/samples/services/installers/customaction/customactioncssource.htm'>CustomAction.cs</a> &nbsp;&nbsp<a href='../../../../../howto/samples/services/installers/customaction/custominstallercssource.htm'>CustomInstaller.cs</a> &nbsp;&nbsp<a href='../../../../../howto/samples/services/installers/customaction/projectinstallercssource.htm'>ProjectInstaller.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../howto/samples/services/installers/customaction/vb/customactionvbsource.htm'>VB\CustomAction.vb</a> &nbsp;&nbsp<a href='../../../../../howto/samples/services/installers/customaction/vb/custominstallervbsource.htm'>VB\CustomInstaller.vb</a> &nbsp;&nbsp<a href='../../../../../howto/samples/services/installers/customaction/vb/projectinstallervbsource.htm'>VB\ProjectInstaller.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>using System;
+using System.Collections;
+using System.Configuration.Install;
+
+public class CustomInstaller: Installer{
+
+	public override void Install(IDictionary state) {
+		Context.LogMessage("Installing");
+		base.Install(state);
+		Console.WriteLine("Installing: Any code could be executed here!");
+	}
+
+	public override void Uninstall(IDictionary state) {
+		Context.LogMessage("Uninstalling");
+		Console.WriteLine("Uninstalling: Any code could be executed here!");
+		base.Uninstall(state);
+	}
+}
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

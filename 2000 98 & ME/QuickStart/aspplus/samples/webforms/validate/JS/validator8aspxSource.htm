@@ -1,0 +1,114 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/validate/validator8.src&file=JS%5Cvalidator8.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfSlNcXHZhbGlkYXRvcjguYXNwXHh4X194eF94eF94X1943e3a311e" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">JS\validator8.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/validate/validator8aspxsource.htm'>validator8.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/validate/vb/validator8aspxsource.htm'>VB\validator8.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/validate/js/validator8aspxsource.htm'>JS\validator8.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><html>
+<head>
+    <script language="JScript" runat=server>
+
+        function ValidateBtn_OnClick(Sender : Object , e : EventArgs) : void {
+ 
+            if (Page.IsValid) {
+               lblOutput.Text = "Page is valid!";
+            }
+            else {
+               lblOutput.Text = "Page is not valid! :-(";
+            }
+        }
+
+        function ServerValidate (source : Object, value : String) : Boolean {
+
+            // even number?
+            try {
+                var num : int = Int32.FromString(value);
+                if (num%2 == 0)
+                    return true;
+            }
+            catch (Exception) {}
+
+            return false;
+        }
+        
+   </script>
+
+</head>
+<body>
+
+<h3><font face="Verdana">CustomValidator Example</font></h3>
+<p>
+
+<form runat="server">
+
+    <asp:Label id=lblOutput runat="server" 
+        Text="Enter an even number:" 
+        Font-Name="Verdana" 
+        Font-Size="10pt" /><br>
+
+    <p>
+
+    <asp:TextBox id=Text1 runat="server" />
+    
+    &nbsp;&nbsp;
+
+    <asp:CustomValidator id="CustomValidator1" runat="server"
+        ControlToValidate="Text1"
+        ClientValidationFunction="ClientValidate"
+        OnServerValidate="ServerValidate"
+        Display="Static"
+        Font-Name="verdana" Font-Size="10pt">
+           Not an even number!
+    </asp:CustomValidator>
+
+    <p>
+
+    <asp:Button text="Validate" onclick="ValidateBtn_OnClick" runat="server" />
+
+    <script language="javascript">
+
+       function ClientValidate(source, value)
+       {
+          // even number?
+          if (value%2 == 0)
+            return true;
+          else
+            return false;
+       }
+
+    </script>
+
+</form>
+
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

@@ -1,0 +1,160 @@
+
+
+<html>
+
+
+<body>
+
+    <h3><font face="Verdana">Custom Paging with DataGrid</font></h3>
+
+    <form name="ctrl2" method="post" action="datagrid12.htm" id="ctrl2">
+<input type="hidden" name="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQzMzIzNjQ0Nl9hMHpfaHo1ejJ4X2Ewel9oejV6OXhfYTB6YTB6aHowX0FsbG93Q3VzdG9tUGFnaW5nIGlzIFRydWV4X194X194XzV6N3hfYTB6YTB6aHowX1BhZ2VDb3VudCBpcyAyMHhfX3hfX3hfNXo1eF9hMHphMHpoejBfQ3VycmVudFBhZ2VJbmRlXHggaXMgMHhfX3hfX3hfNXozeF9hMHphMHpoejBfQWxsb3dQYWdpbmcgaXMgVHJ1ZXhfX3hfX3hfNXoxM3hfYTB6YTB6aHowX1ZpcnR1YWxJdGVtQ291bnQgaXMgMjAweF9feF9feF81ejF4X2EwemEwemEwemh6RGF0YUtleXNfbHp4X0l0ZW1Db3VudF81ejEweF9WaXJ0dWFsSXRlbUNvdW50XzV6MjAweF9EYXRhU291cmNlSXRlbUNvdW50XzV6MjAweHhfX3hfX19fX19fX19hMHphMHpoejFfSW50ZWdlclZhbHVlXzJfSW50ZWdlclZhbHVlXzNfSW50ZWdlclZhbHVlXzRfNTB6RmFsc2V4eF9fX194X2Ewemh6MV9TdHJpbmdWYWx1ZV8yX1N0cmluZ1ZhbHVlXzNfU3RyaW5nVmFsdWVfNF81MHpGYWxzZXh4X19fX3hfYTB6aHoxX0RhdGVUaW1lVmFsdWVfMl9EYXRlVGltZVZhbHVlXzNfRGF0ZVRpbWVWYWx1ZV80XzUwekZhbHNleHhfX19feF9hMHpoejFfQm9vbFZhbHVlXzJfQm9vbFZhbHVlXzNfQm9vbFZhbHVlXzRfNTB6RmFsc2V4eF9fX194X3hfeF9oejV6MHhfYTB6X2h6NXoxMXhfYTB6X2h6NXozeF9hMHphMHpoejBfVHJ1ZXhfX3hfX3hfNXoyeF9hMHphMHpoejBfMTAvMjUvMjAwMHhfX3hfX3hfNXoxeF9hMHphMHpoejBfSXRlbSA5eF9feF9feF81ejB4X2EwemEwemh6MF85eF9feF9feHhfeF81ejEweF9hMHpfaHo1ejN4X2EwemEwemh6MF9GYWxzZXhfX3hfX3hfNXoyeF9hMHphMHpoejBfMTAvMjUvMjAwMHhfX3hfX3hfNXoxeF9hMHphMHpoejBfSXRlbSA4eF9feF9feF81ejB4X2EwemEwemh6MF84eF9feF9feHhfeF81ejl4X2Ewel9oejV6M3hfYTB6YTB6aHowX1RydWV4X194X194XzV6MnhfYTB6YTB6aHowXzEwLzI1LzIwMDB4X194X194XzV6MXhfYTB6YTB6aHowX0l0ZW0gN3hfX3hfX3hfNXoweF9hMHphMHpoejBfN3hfX3hfX3h4X3hfNXo4eF9hMHpfaHo1ejN4X2EwemEwemh6MF9GYWxzZXhfX3hfX3hfNXoyeF9hMHphMHpoejBfMTAvMjUvMjAwMHhfX3hfX3hfNXoxeF9hMHphMHpoejBfSXRlbSA2eF9feF9feF81ejB4X2EwemEwemh6MF82eF9feF9feHhfeF81ejd4X2Ewel9oejV6M3hfYTB6YTB6aHowX1RydWV4X194X194XzV6MnhfYTB6YTB6aHowXzEwLzI1LzIwMDB4X194X194XzV6MXhfYTB6YTB6aHowX0l0ZW0gNXhfX3hfX3hfNXoweF9hMHphMHpoejBfNXhfX3hfX3h4X3hfNXo2eF9hMHpfaHo1ejN4X2EwemEwemh6MF9GYWxzZXhfX3hfX3hfNXoyeF9hMHphMHpoejBfMTAvMjUvMjAwMHhfX3hfX3hfNXoxeF9hMHphMHpoejBfSXRlbSA0eF9feF9feF81ejB4X2EwemEwemh6MF80eF9feF9feHhfeF81ejV4X2Ewel9oejV6M3hfYTB6YTB6aHowX1RydWV4X194X194XzV6MnhfYTB6YTB6aHowXzEwLzI1LzIwMDB4X194X194XzV6MXhfYTB6YTB6aHowX0l0ZW0gM3hfX3hfX3hfNXoweF9hMHphMHpoejBfM3hfX3hfX3h4X3hfNXo0eF9hMHpfaHo1ejN4X2EwemEwemh6MF9GYWxzZXhfX3hfX3hfNXoyeF9hMHphMHpoejBfMTAvMjUvMjAwMHhfX3hfX3hfNXoxeF9hMHphMHpoejBfSXRlbSAyeF9feF9feF81ejB4X2EwemEwemh6MF8yeF9feF9feHhfeF81ejN4X2Ewel9oejV6M3hfYTB6YTB6aHowX1RydWV4X194X194XzV6MnhfYTB6YTB6aHowXzEwLzI1LzIwMDB4X194X194XzV6MXhfYTB6YTB6aHowX0l0ZW0gMXhfX3hfX3hfNXoweF9hMHphMHpoejBfMXhfX3hfX3h4X3hfNXoyeF9hMHpfaHo1ejN4X2EwemEwemh6MF9GYWxzZXhfX3hfX3hfNXoyeF9hMHphMHpoejBfMTAvMjUvMjAwMHhfX3hfX3hfNXoxeF9hMHphMHpoejBfSXRlbSAweF9feF9feF81ejB4X2EwemEwemh6MF8weF9feF9feHhfeHhfeHhfeF81ejExeF9hMHphMHpoejBfUGFnZVNpXHplIGlzIDEweF9feF9feHhfeHhfeF9feFx0NTBfU3lzdGVtLkJvb2xlYW5cbjBfVGVceHRfMV9IZWFkZXJUZVx4dF8yX1NvcnRGaWVsZF8zX0RhdGFGaWVsZF80X1JlYWRPbmx563432079" />
+
+<script language="javascript">
+<!--
+	function __doPostBack(eventTarget, eventArgument) {
+		var theform = document.ctrl2
+		theform.__EVENTTARGET.value = eventTarget
+		theform.__EVENTARGUMENT.value = eventArgument
+		theform.submit()
+	}
+// -->
+</script>
+
+
+      <table cellspacing="0" cellpadding="3" rules="all" bordercolor="Black" border="1">
+    <tr bgcolor="#AAAADD">
+        <td><font face="Verdana" size="1">
+            IntegerValue
+        </font></td><td><font face="Verdana" size="1">
+            StringValue
+        </font></td><td><font face="Verdana" size="1">
+            DateTimeValue
+        </font></td><td><font face="Verdana" size="1">
+            BoolValue
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            0
+        </font></td><td><font face="Verdana" size="1">
+            Item 0
+        </font></td><td><font face="Verdana" size="1">
+            10/25/2000
+        </font></td><td><font face="Verdana" size="1">
+            False
+        </font></td>
+    </tr><tr bgcolor="#EEEEEE">
+        <td><font face="Verdana" size="1">
+            1
+        </font></td><td><font face="Verdana" size="1">
+            Item 1
+        </font></td><td><font face="Verdana" size="1">
+            10/25/2000
+        </font></td><td><font face="Verdana" size="1">
+            True
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            2
+        </font></td><td><font face="Verdana" size="1">
+            Item 2
+        </font></td><td><font face="Verdana" size="1">
+            10/25/2000
+        </font></td><td><font face="Verdana" size="1">
+            False
+        </font></td>
+    </tr><tr bgcolor="#EEEEEE">
+        <td><font face="Verdana" size="1">
+            3
+        </font></td><td><font face="Verdana" size="1">
+            Item 3
+        </font></td><td><font face="Verdana" size="1">
+            10/25/2000
+        </font></td><td><font face="Verdana" size="1">
+            True
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            4
+        </font></td><td><font face="Verdana" size="1">
+            Item 4
+        </font></td><td><font face="Verdana" size="1">
+            10/25/2000
+        </font></td><td><font face="Verdana" size="1">
+            False
+        </font></td>
+    </tr><tr bgcolor="#EEEEEE">
+        <td><font face="Verdana" size="1">
+            5
+        </font></td><td><font face="Verdana" size="1">
+            Item 5
+        </font></td><td><font face="Verdana" size="1">
+            10/25/2000
+        </font></td><td><font face="Verdana" size="1">
+            True
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            6
+        </font></td><td><font face="Verdana" size="1">
+            Item 6
+        </font></td><td><font face="Verdana" size="1">
+            10/25/2000
+        </font></td><td><font face="Verdana" size="1">
+            False
+        </font></td>
+    </tr><tr bgcolor="#EEEEEE">
+        <td><font face="Verdana" size="1">
+            7
+        </font></td><td><font face="Verdana" size="1">
+            Item 7
+        </font></td><td><font face="Verdana" size="1">
+            10/25/2000
+        </font></td><td><font face="Verdana" size="1">
+            True
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            8
+        </font></td><td><font face="Verdana" size="1">
+            Item 8
+        </font></td><td><font face="Verdana" size="1">
+            10/25/2000
+        </font></td><td><font face="Verdana" size="1">
+            False
+        </font></td>
+    </tr><tr bgcolor="#EEEEEE">
+        <td><font face="Verdana" size="1">
+            9
+        </font></td><td><font face="Verdana" size="1">
+            Item 9
+        </font></td><td><font face="Verdana" size="1">
+            10/25/2000
+        </font></td><td><font face="Verdana" size="1">
+            True
+        </font></td>
+    </tr><tr align="Right">
+        <td colspan="4"><font face="Verdana" size="1">
+            <span>1</span>&nbsp;<a href="javascript:__doPostBack('MyDataGrid:ctrl14:ctrl3','')">2</a>&nbsp;<a href="javascript:__doPostBack('MyDataGrid:ctrl14:ctrl5','')">3</a>&nbsp;<a href="javascript:__doPostBack('MyDataGrid:ctrl14:ctrl7','')">4</a>&nbsp;<a href="javascript:__doPostBack('MyDataGrid:ctrl14:ctrl9','')">5</a>&nbsp;<a href="javascript:__doPostBack('MyDataGrid:ctrl14:ctrl11','')">6</a>&nbsp;<a href="javascript:__doPostBack('MyDataGrid:ctrl14:ctrl13','')">7</a>&nbsp;<a href="javascript:__doPostBack('MyDataGrid:ctrl14:ctrl15','')">8</a>&nbsp;<a href="javascript:__doPostBack('MyDataGrid:ctrl14:ctrl17','')">9</a>&nbsp;<a href="javascript:__doPostBack('MyDataGrid:ctrl14:ctrl19','')">10</a>&nbsp;<a href="javascript:__doPostBack('MyDataGrid:ctrl14:ctrl21','')">...</a>
+        </font></td>
+    </tr>
+</table>
+
+      <p>
+      <table bgcolor="#eeeeee" cellpadding="6"><tr><td nowrap><font face="Verdana" size="-2">
+
+        <span id="lblEnabled">AllowPaging is True</span><br>
+        <span id="lblCurrentIndex">CurrentPageIndex is 0</span><br>
+        <span id="lblPageCount">PageCount is 20</span><br>
+        <hr noshade color="#cccccc">
+        <span id="lblCustom">AllowCustomPaging is True</span><br>
+        <span id="lblPageSize">PageSize is 10</span><br>
+        <span id="lblVirtual">VirtualItemCount is 200</span>
+
+      </font></td></tr></table>
+  </form>
+
+</body>
+</html>

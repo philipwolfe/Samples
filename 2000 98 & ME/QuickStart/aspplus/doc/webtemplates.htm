@@ -1,0 +1,780 @@
+
+
+
+<!--BEGIN HEADER-->
+<html>
+<head>
+<link rel="stylesheet" href="../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+  <table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+
+            <div style="padding:0,0,4,0"><b>Getting Started</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/quickstart.htm">Introduction</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/whatisaspx.htm">What is ASP.NET?</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/langsupport.htm">Language Support</a><p>
+
+            <div style="padding:0,0,4,0"><b>ASP.NET Web Forms</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webformsintro.htm">Introducing Web Forms</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webserverctrls.htm">Working with Server Controls</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webtemplates.htm">Applying Styles to Controls</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webvalidation.htm">Server Control Form Validation</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webpagelets.htm">Web Forms User Controls</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webdatabinding.htm">Databinding Server Controls</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webdataaccess.htm">Server-Side Data Access</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webdatalist.htm">Data Access and Customization</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/businessobjs.htm">Working with Business Objects</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webctrlauthoring.htm">Authoring Custom Controls</a><br>
+<!--            &nbsp; <a class="outer" href="../../aspplus/doc/webformsandvs7.htm">Visual Studio 7.0 & Web Forms</a><br> -->
+            &nbsp; <a class="outer" href="../../aspplus/doc/webcontrolsref.htm">Web Forms Controls Reference</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webformssyntaxref.htm">Web Forms Syntax Reference</a><p>
+
+            <div style="padding:0,0,4,0"><b>ASP.NET Web Services</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webservicesintro.htm">Introducing Web Services</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/writingservices.htm">Writing a Simple Web Service</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webservicetypes.htm">Web Service Type Marshalling</a><br>
+<!--            &nbsp; <a class="outer" href="../../aspplus/doc/discoverservices.htm">Making Services Discoverable</a><br> -->
+            &nbsp; <a class="outer" href="../../aspplus/doc/servicesanddata.htm">Using Data in Web Services</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/servicesandobjs.htm">Using Objects and Intrinsics</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/htmlscraping.htm">HTML Pattern Matching</a><p>
+
+            <div style="padding:0,0,4,0"><b>ASP.NET Web Applications</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/applications.htm">Application Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/globalasax.htm">Using the Global.asax File</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/stateoverview.htm">Managing Application State</a><br>
+<!--            &nbsp; <a class="outer" href="../../aspplus/doc/httpmodules.htm">Handling HttpModule Events</a><br> -->
+            &nbsp; <a class="outer" href="../../aspplus/doc/httphandlers.htm">HttpHandlers and Factories</a><p>
+
+<!--
+            <div style="padding:0,0,4,0"><b>State Management</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/stateoverview.htm">State Management Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/pageviewstate.htm">Using Page-local View State</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/sessionappstate.htm">Session and Application State</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/usingcookies.htm">Using Client-side Cookies</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/choosingstate.htm">Choosing a Strategy</a><p>
+-->
+            <div style="padding:0,0,4,0"><b>Cache Services</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/cachingoverview.htm">Caching Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/outputcaching.htm">Page Output Caching</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/datacaching.htm">Page Data Caching</a><p>
+
+            <div style="padding:0,0,4,0"><b>Configuration</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/configoverview.htm">Configuration Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/configformat.htm">Configuration File Format</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/configretrieve.htm">Retrieving Configuration</a><p>
+
+            <div style="padding:0,0,4,0"><b>Deployment</b><br></div>
+<!--            &nbsp; <a class="outer" href="../../aspplus/doc/adminoverview.htm">Administration Overview</a><br> -->
+            &nbsp; <a class="outer" href="../../aspplus/doc/deployment.htm">Deploying ASP.NET Applications</a><p>
+
+            <div style="padding:0,0,4,0"><b>Security</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/securityoverview.htm">Security Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/authandauth.htm">Authentication & Authorization</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/windowsauth.htm">Windows-based Authentication</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/formsauth.htm">Forms-based Authentication</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/authorization.htm">Authorizing Users and Roles</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/impersonation.htm">User Account Impersonation</a><p>
+
+            <div style="padding:0,0,4,0"><b>Localization</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/internationalization.htm">Internationalization Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/cultureencoding.htm">Setting Culture and Encoding</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/localizingapps.htm">Localizing ASP.NET Applications</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/resourcefiles.htm">Working with Resource Files</a><p>
+
+            <div style="padding:0,0,4,0"><b>Tracing</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/tracingoverview.htm">Tracing Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/tracelogpage.htm">Trace Logging to Page Output</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/tracelogapp.htm">Application-level Trace Logging</a><p>
+
+            <div style="padding:0,0,4,0"><b>Debugging</b><br></div>
+<!--
+            &nbsp; <a class="outer" href="../../aspplus/doc/debuggingoverview.htm">Debugging Overview</a><br>
+-->
+            &nbsp; <a class="outer" href="../../aspplus/doc/debugcomsdk.htm">The SDK Debugger</a><p>
+<!--
+            &nbsp; <a class="outer" href="../../aspplus/doc/debugvisualstudio.htm">The Visual Studio 7 Debugger</a><p>
+-->
+
+<!--
+            <div style="padding:0,0,4,0"><b>Performance</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/perfoverview.htm">Performance Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/perfcounters.htm">Using Performance Counters</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/perftuning.htm">Performance Tuning Tips</a><p>
+
+            <div style="padding:0,0,4,0"><b>ASP to ASP.NET Migration</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/migrationoverview.htm">Migration Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/syntaxandsemantics.htm">Syntax and Semantics</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/languagecompat.htm">Language Compatibility</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/cominterop.htm">COM Interoperability</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/mtstransactions.htm">MTS Transactions</a><p>
+-->
+            <div style="padding:0,0,4,0"><b>Sample Applications</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/portalapp.htm">A Personalized Portal</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/ecommerceapp.htm">An E-Commerce Storefront</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/classbrowser.htm">A Class Browser Application</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/ibuyspy.htm">IBuySpy.com</a><p>
+
+</div>
+
+</td>
+</tr>
+</table>
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<h4>Applying Styles to Controls</h4>
+<p>
+
+<div class="indent" style="font-family:Verdana; font-size:8pt;">
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#htmlstyles">Applying Styles to HTMLControls</a><br>
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#webstyles">Applying Styles to Web Controls</a><br>
+</div>
+<p>
+<hr>
+
+The web is an extremely flexible environment for user interfaces, with extreme variations in look-and-feel across web sites.  The 
+widespread adoption of Cascading Style Sheets (CSS) is largely responsible for the rich designs we encounter on the web.  ASP.NET
+has been designed to provide first-class support for CSS styles in all of its HTML Controls and Web Controls.  In this section we demonstrate
+the use of styles in conjunction with server controls, and how it is possible to have very fine control over the look-and-feel of your
+Web Forms.
+
+<!--BEGIN SECTION-->
+<br>
+<a name="htmlstyles">
+<br>
+<span class="subhead">Applying Styles to HTML Controls</span>
+<p>
+
+Standard HTML tags support CSS through a "style" attribute, which can be set to a semicolon-delimited list of attribute/value pairs.
+A good resource for learning about the various CSS attributes supported by the Internet Explorer  browser can be found on
+MSDN Web Workshop's <a target="_blank" href="http://msdn.microsoft.com/workshop/author/css/reference/attributes.asp">CSS Attributes Reference</a> page.
+All of the ASP.NET HTML Controls can accept styles in exactly the same manner as standard HTML tags.  The following example
+illustrates a number of styles applied to various HTML Controls.  If you "view source" on the page returned to the client, you'll note
+that these styles are passed along to the browser in the control's rendering.
+<p>
+
+
+<span>
+  
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/style1.gif"><br>
+	</a>
+	<div class="caption">Style1.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/webforms/customize/style1aspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+
+<p>
+CSS also defines a "class" attribute, which can be set to a CSS style definition contained in a &lt;style&gt;...&lt;/style&gt; section of
+the document.  The class attribute makes it easy to define styles once and apply them to several tags without the need to redefine the
+style itself.  Styles on HTML Controls may also be set in this manner, as demonstrated by the sample below.
+<p>
+
+
+<span>
+  
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/style2.gif"><br>
+	</a>
+	<div class="caption">Style2.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/webforms/customize/style2aspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<p>
+When an ASP.NET page is parsed, the style information is populated into a <b>Style</b> property (of type <b>CssStyleCollection</b>)
+on the <b>System.Web.UI.HtmlControls.HtmlControl</b> class.  This property is essentially a dictionary which exposes the control's
+styles as String-indexed collection of values for each style-attribute key.  For example, you could do the following to set and 
+subsequently retrieve the width style-attribute on an HtmlInputText control:
+
+<p>
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 3;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:55%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="4">
+<pre id="codectrl10" style="display:none">
+
+&lt;script language="C#" runat="server&gt;
+
+    void Page_Load(Object sender, EventArgs E) {
+        MyText.Style["width"] = "90px";
+        Response.Write(MyText.Style["width"]);
+    }
+
+&lt;/script&gt;
+
+&lt;input type="text" id="MyText" runat="server"/&gt;
+</pre>
+<pre id="codectrl10" style="display:">
+
+&lt;script language="VB" runat="server&gt;
+
+    Sub Page_Load(Sender As Object, E As EventArgs)
+        MyText.Style("width") = "90px"
+        Response.Write(MyText.Style("width"))
+    End Sub
+
+&lt;/script&gt;
+
+&lt;input type="text" id="MyText" runat="server"/&gt;
+</pre>
+<pre id="codectrl10" style="display:none">
+
+&lt;script language="JScript" runat="server"&gt;
+
+    function Page_Load(sender : Object, E : EventArgs) : void {
+        MyText.Style("width") = "90px";
+        Response.Write(MyText.Style("width"));
+    }
+
+&lt;/script&gt;
+
+&lt;input type="text" id="MyText" runat="server"/&gt;
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl10" onclick="doClick(0, 'ctrl10')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl10" onclick="doClick(1, 'ctrl10')">
+          <b>VB
+        </td>
+        <td class="backtab" id="tabctrl10" onclick="doClick(2, 'ctrl10')">
+          <b>JScript
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+
+<p>
+This next sample shows how you can programmatically manipulate the style for an HTML Control using this Style collection 
+property.
+<p>
+
+
+<span>
+  
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/style3.gif"><br>
+	</a>
+	<div class="caption">Style3.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/webforms/customize/style3aspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<!--BEGIN SECTION-->
+<br>
+<a name="webstyles">
+<br>
+<span class="subhead">Applying Styles to Web Controls</span>
+<p>
+
+ASP.NET Web Controls provide an additional level of support for styles by adding several strongly-typed properties for commonly used
+style settings, such as background and forground color, font name and size, width, height, etc.  These style properties represent a 
+sub-set of all style behavior available in HTML, and are represented as "flat" properties exposed directly on the 
+<b>System.Web.UI.WebControls.WebControl</b> base class.  The advantage to using these properties is that they provide 
+compile-time type checking and statement completion in development tools, such as Microsoft Visual Studio 7.
+<p>
+This next sample shows a WebCalendar control with several styles applied to it (a calendar without styles applied is included for 
+contrast).  Note that when setting a property which is a class-type like "Font", we use the sub-property syntax
+ <i>PropertyName-SubPropertyName</i> .
+<p>
+
+
+<span>
+  
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/style4.gif"><br>
+	</a>
+	<div class="caption">Style4.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/webforms/customize/style4aspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<p>
+The System.Web.UI.WebControls namespace includes a <b>Style</b> base class which encapsulates common style
+attributes (additional style classes, such as <b>TableStyle</b> and <b>TableItemStyle</b> inherit from 
+this common base class).  Many Web Controls expose properties of this type for specifying the style of individual rendering
+elements of the control.  For example, the WebCalendar exposes many such Style properties: <b>DayStyle</b>, 
+<b>WeekendDayStyle</b>, <b>TodayDayStyle</b>, <b>SelectedDayStyle</b>, <b>OtherMonthDayStyle</b>, 
+and <b>NextPrevStyle</b>.  We can set individual properties of these Styles using the sub-property syntax: 
+<i>PropertyName-SubPropertyName</i>.  The following sample demonstrates this:
+<p>
+
+
+<span>
+  
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/style5.gif"><br>
+	</a>
+	<div class="caption">Style5.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/webforms/customize/style5aspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<p>
+The sub-property syntax can get a little unwieldy when setting many Style properties at once.  A slightly different syntax allows
+each Style property to be declared as a child control to the Web Control:
+
+<p>
+<div class="code"><pre>
+&lt;ASP:Calendar ... runat="server"&gt;
+    &lt;property name="TitleStyle"&gt;
+        &lt;ASP:TableItemStyle BorderColor="darkolivegreen" BorderWidth="3" 
+            BackColor="olivedrab" Height="50px" /&gt;
+    &lt;/property&gt;
+&lt;/ASP:Calendar&gt;
+</pre></div>
+<p>
+
+The following sample is functionally equivalent to the preceding sample, using this alternative syntax:
+<p>
+
+
+<span>
+  
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/style6.gif"><br>
+	</a>
+	<div class="caption">Style6.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/webforms/customize/style6aspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<p>
+Just as you can apply styles to HTML Controls using a CSS class definition, you can also do this with Web Controls.  The
+WebControl base class exposes a String property named <b>CssClass</b> for setting the style class:
+<p>
+
+
+<span>
+  
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/style7.gif"><br>
+	</a>
+	<div class="caption">Style7.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/webforms/customize/style7aspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<p>
+If an attribute is set on a server control which does not correspond to any strongly-typed property on the control, the attribute
+and value are populated in the <b>Attributes</b> collection of the control.  By default, server controls will render these attributes
+unmodified in the HTML returned to the requesting browser client.  This means that the "style" and "class" attributes may be
+set on Web Controls directly instead of using the strongly-typed properties.  While this requires some understanding of the actual
+rendering of the control, it can be a flexible way to apply styles as well.  It is especially useful for the standard form input controls, 
+as illustrated in the sample below:
+<p>
+
+
+<span>
+  
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/style8.gif"><br>
+	</a>
+	<div class="caption">Style8.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/webforms/customize/style8aspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<p>
+Web Control Styles may also be set programmatically, using the <b>ApplyStyle</b> method of the base WebControl class.  
+For example:
+<p>
+
+<p>
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 3;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:55%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="4">
+<pre id="codectrl24" style="display:none">
+
+&lt;script language="C#" runat="server"&gt;
+    void Page_Load(Object Src, EventArgs E ) {
+        Style style = new Style();
+        style.BorderColor = Color.Black;
+        style.BorderStyle = BorderStyle.Dashed;
+        style.BorderWidth = 1;
+
+        MyLogin.ApplyStyle (style);
+        MyPassword.ApplyStyle (style);
+        MySubmit.ApplyStyle (style);
+    }
+&lt;/script&gt;
+
+Login: &lt;ASP:TextBox id="MyLogin" runat="server" /&gt;/&lt;p/&gt;
+Password: &lt;ASP:TextBox id="MyPassword" TextMode="Password" runat="server" /&gt;
+View:  &lt;ASP:DropDownList id="MySelect" runat="server"&gt;  ...  &lt;/ASP:DropDownList&gt;
+</pre>
+<pre id="codectrl24" style="display:">
+
+&lt;script language="VB" runat="server"&gt;
+    Sub Page_Load(Src As Object, E As EventArgs)
+        Dim MyStyle As New Style
+        MyStyle.BorderColor = Color.Black
+        MyStyle.BorderStyle = BorderStyle.Dashed
+        MyStyle.BorderWidth = New Unit(1)
+
+        MyLogin.ApplyStyle (MyStyle)
+        MyPassword.ApplyStyle (MyStyle)
+        MySubmit.ApplyStyle (MyStyle)
+    End Sub
+&lt;/script&gt;
+
+Login: &lt;ASP:TextBox id="MyLogin" runat="server" /&gt;/&lt;p/&gt;
+Password: &lt;ASP:TextBox id="MyPassword" TextMode="Password" runat="server" /&gt;
+View:  &lt;ASP:DropDownList id="MySelect" runat="server"&gt;  ...  &lt;/ASP:DropDownList&gt;
+</pre>
+<pre id="codectrl24" style="display:none">
+
+&lt;script language="JScript" runat="server"&gt;
+    function Page_Load(sender : Object, E : EventArgs) : void {
+        Style style = new Style();
+        style.BorderColor = Color.Black;
+        style.BorderStyle = BorderStyle.Dashed;
+        style.BorderWidth = 1;
+
+        MyLogin.ApplyStyle (style);
+        MyPassword.ApplyStyle (style);
+        MySubmit.ApplyStyle (style);
+    }
+&lt;/script&gt;
+
+Login: &lt;ASP:TextBox id="MyLogin" runat="server" /&gt;/&lt;p/&gt;
+Password: &lt;ASP:TextBox id="MyPassword" TextMode="Password" runat="server" /&gt;
+View:  &lt;ASP:DropDownList id="MySelect" runat="server"&gt;  ...  &lt;/ASP:DropDownList&gt;
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl24" onclick="doClick(0, 'ctrl24')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl24" onclick="doClick(1, 'ctrl24')">
+          <b>VB
+        </td>
+        <td class="backtab" id="tabctrl24" onclick="doClick(2, 'ctrl24')">
+          <b>JScript
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+
+<p>
+The following example demonstrates the above code:
+<p>
+
+
+<span>
+  
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/style9.gif"><br>
+	</a>
+	<div class="caption">Style9.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/webforms/customize/style9aspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<!--BEGIN SECTION-->
+<a name="endofsection">
+
+<h4>Section Summary</h4>
+<ol>
+<li>ASP.NET provides first-class support for CSS styles in both its HTML Controls and Web Controls families.
+<li>Styles may be applied by setting either the "style" or "class" attributes of a controls.  These settings are accessible
+programmatically through the control's Attributes collection.  In the case of HTML Controls, individual values for style-attribute
+keys may be retrieved from the control's Style collection.
+<li>Most commonly used style settings are exposed on Web Controls as strongly-typed properties of the control itself.
+<li>The System.Web.UI.WebControls namespace includes a Style base class which encapsulates common style
+attributes.  Many Web Controls expose properties of this type to to control individual rendering elements.
+<li>Styles may be set programmatically on Web Controls using the ApplyStyle method of the WebControl base class.
+</ol>
+<p>
+
+<!--END FOOTER-->
+<p>
+<hr>
+<p>
+</div>
+</td>
+</tr>
+</table>
+</BODY>
+</html>
+<!--END FOOTER-->

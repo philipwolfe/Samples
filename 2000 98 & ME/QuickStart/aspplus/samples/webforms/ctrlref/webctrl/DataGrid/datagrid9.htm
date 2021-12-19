@@ -1,0 +1,135 @@
+
+
+<html>
+
+
+<body>
+
+    <h3><font face="Verdana">Custom Sorting in DataGrid</font></h3>
+
+    <form name="ctrl2" method="post" action="datagrid9.htm" id="ctrl2">
+<input type="hidden" name="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" value="YTB6LTgzMTMwNjA5MV9hMHpfaHo1ejJ4X2Ewel9oejV6MXhfYTB6YTB6YTB6aHpEYXRhS2V5c19senhfSXRlbUNvdW50XzV6OXhfRGF0YVNvdXJjZUl0ZW1Db3VudF81ejl4eF9feF9fX19fX19fX194X2h6NXoweF9hMHpfaHo1ejl4X2Ewel9oejV6MnhfYTB6X2h6NXoxeF9hMHphMHpoejBfSXRlbSA4eF9feF9feHhfeF81ejF4X2EwemEwemh6MF8yMDAwLTAxLTAxVDAwOjAwOjAweF9feF9feF81ejB4X2EwemEwemh6MF8xeF9feF9feHhfeF81ejh4X2Ewel9oejV6MnhfYTB6X2h6NXoxeF9hMHphMHpoejBfSXRlbSA3eF9feF9feHhfeF81ejF4X2EwemEwemh6MF8yMDAwLTAxLTAxVDAwOjAwOjAweF9feF9feF81ejB4X2EwemEwemh6MF8yeF9feF9feHhfeF81ejd4X2Ewel9oejV6MnhfYTB6X2h6NXoxeF9hMHphMHpoejBfSXRlbSA2eF9feF9feHhfeF81ejF4X2EwemEwemh6MF8yMDAwLTAxLTAxVDAwOjAwOjAweF9feF9feF81ejB4X2EwemEwemh6MF8zeF9feF9feHhfeF81ejZ4X2Ewel9oejV6MnhfYTB6X2h6NXoxeF9hMHphMHpoejBfSXRlbSA1eF9feF9feHhfeF81ejF4X2EwemEwemh6MF8yMDAwLTAxLTAxVDAwOjAwOjAweF9feF9feF81ejB4X2EwemEwemh6MF80eF9feF9feHhfeF81ejV4X2Ewel9oejV6MnhfYTB6X2h6NXoxeF9hMHphMHpoejBfSXRlbSA0eF9feF9feHhfeF81ejF4X2EwemEwemh6MF8yMDAwLTAxLTAxVDAwOjAwOjAweF9feF9feF81ejB4X2EwemEwemh6MF81eF9feF9feHhfeF81ejR4X2Ewel9oejV6MnhfYTB6X2h6NXoxeF9hMHphMHpoejBfSXRlbSAzeF9feF9feHhfeF81ejF4X2EwemEwemh6MF8yMDAwLTAxLTAxVDAwOjAwOjAweF9feF9feF81ejB4X2EwemEwemh6MF82eF9feF9feHhfeF81ejN4X2Ewel9oejV6MnhfYTB6X2h6NXoxeF9hMHphMHpoejBfSXRlbSAyeF9feF9feHhfeF81ejF4X2EwemEwemh6MF8yMDAwLTAxLTAxVDAwOjAwOjAweF9feF9feF81ejB4X2EwemEwemh6MF83eF9feF9feHhfeF81ejJ4X2Ewel9oejV6MnhfYTB6X2h6NXoxeF9hMHphMHpoejBfSXRlbSAxeF9feF9feHhfeF81ejF4X2EwemEwemh6MF8yMDAwLTAxLTAxVDAwOjAwOjAweF9feF9feF81ejB4X2EwemEwemh6MF84eF9feF9feHhfeF81ejF4X2Ewel9oejV6MnhfYTB6X2h6NXoxeF9hMHphMHpoejBfSXRlbSAweF9feF9feHhfeF81ejF4X2EwemEwemh6MF8yMDAwLTAxLTAxVDAwOjAwOjAweF9feF9feF81ejB4X2EwemEwemh6MF85eF9feF9feHhfeHhfeHhfeHhfeHhfeF9hek15RGF0YUdyaWQ6Y3RybDE6U29ydEJ1dHRvbjFfeF94XG4wX1RlXHh0c6c78a7b" />
+
+<script language="javascript">
+<!--
+	function __doPostBack(eventTarget, eventArgument) {
+		var theform = document.ctrl2
+		theform.__EVENTTARGET.value = eventTarget
+		theform.__EVENTARGUMENT.value = eventArgument
+		theform.submit()
+	}
+// -->
+</script>
+
+
+      <table cellspacing="0" cellpadding="3" rules="all" bordercolor="Black" border="1">
+    <tr bgcolor="#CCCCCC">
+        <td><font face="Verdana" color="Black" size="1">
+            <a id="MyDataGrid_ctrl1_Column0Control" href="javascript:__doPostBack('MyDataGrid:ctrl1:Column0Control','')"><font color="Black">Sortable</font></a>
+        </font></td><td><font face="Verdana" color="Black" size="1">
+            Not Sortable
+        </font></td><td><font face="Verdana" color="Black" size="1">
+            
+                    Click to sort -->
+                    <input type="image" name="MyDataGrid:ctrl1:SortButton1" id="MyDataGrid_ctrl1_SortButton1" src="../../../../../../aspplus/images/arrow1.gif" border="0" />
+                
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            9
+        </font></td><td><font face="Verdana" size="1">
+            2000-01-01T00:00:00
+        </font></td><td><font face="Verdana" size="1">
+            
+                    <span>Item 0</span>
+                
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            8
+        </font></td><td><font face="Verdana" size="1">
+            2000-01-01T00:00:00
+        </font></td><td><font face="Verdana" size="1">
+            
+                    <span>Item 1</span>
+                
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            7
+        </font></td><td><font face="Verdana" size="1">
+            2000-01-01T00:00:00
+        </font></td><td><font face="Verdana" size="1">
+            
+                    <span>Item 2</span>
+                
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            6
+        </font></td><td><font face="Verdana" size="1">
+            2000-01-01T00:00:00
+        </font></td><td><font face="Verdana" size="1">
+            
+                    <span>Item 3</span>
+                
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            5
+        </font></td><td><font face="Verdana" size="1">
+            2000-01-01T00:00:00
+        </font></td><td><font face="Verdana" size="1">
+            
+                    <span>Item 4</span>
+                
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            4
+        </font></td><td><font face="Verdana" size="1">
+            2000-01-01T00:00:00
+        </font></td><td><font face="Verdana" size="1">
+            
+                    <span>Item 5</span>
+                
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            3
+        </font></td><td><font face="Verdana" size="1">
+            2000-01-01T00:00:00
+        </font></td><td><font face="Verdana" size="1">
+            
+                    <span>Item 6</span>
+                
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            2
+        </font></td><td><font face="Verdana" size="1">
+            2000-01-01T00:00:00
+        </font></td><td><font face="Verdana" size="1">
+            
+                    <span>Item 7</span>
+                
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            1
+        </font></td><td><font face="Verdana" size="1">
+            2000-01-01T00:00:00
+        </font></td><td><font face="Verdana" size="1">
+            
+                    <span>Item 8</span>
+                
+        </font></td>
+    </tr>
+</table>
+
+  </form>
+
+</body>
+</html>

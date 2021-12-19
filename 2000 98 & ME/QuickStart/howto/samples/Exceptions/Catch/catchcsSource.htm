@@ -1,0 +1,64 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Exceptions/Catch/catch.src&file=catch.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfY2F0Y2guY3N4X194eF94eF94X1940f923f52" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">catch.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../howto/samples/exceptions/catch/catchcssource.htm'>catch.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../howto/samples/exceptions/catch/vb/catchvbsource.htm'>VB\catch.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>using System;
+
+class ExceptionTest{
+
+    public static void Main(String []args)
+    {
+        //This code shows how to catch an exception
+        try 
+        {
+            Console.WriteLine("We're going to divide 10 by 0 and see what happens...");
+            Console.WriteLine();
+            int i = 10;
+            int j = 0;
+            int k = i/j;
+            
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("The following error occured:");
+            Console.WriteLine(e.ToString());
+        }
+        finally 
+        {
+            Console.WriteLine();
+            Console.WriteLine("Now we can continue");
+        }
+
+        Console.WriteLine ("\r\nPress Return to exit.");
+        Console.Read();
+    } // end Main
+
+
+} // end class ExceptionTest
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

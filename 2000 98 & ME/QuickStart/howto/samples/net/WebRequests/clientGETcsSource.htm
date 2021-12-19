@@ -1,0 +1,85 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/net/WebRequests/clientget.src&file=clientGET.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfY2xpZW50R0VULmNzeF9feHhfeHhfeF9feA==351c9cdd" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">clientGET.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../howto/samples/net/webrequests/clientgetcssource.htm'>clientGET.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../howto/samples/net/webrequests/vb/clientgetvbsource.htm'>VB/clientGET.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>using System;
+using System.Net;
+using System.IO;
+
+class ClientGET {
+    private static bool bShow;
+    
+    public static void Main(string[] args) {
+        
+        if (args.Length < 1) {
+            showusage();
+            return;
+        }   
+        
+        if (args.Length == 2)
+            bShow = false;
+        else
+            bShow = true;
+        
+        getPage(args[0]);
+        
+        return;
+    }
+    
+    public static void showusage() {
+        Console.WriteLine("Attempts to GET a URL");
+        Console.WriteLine("\r\nUsage:");
+        Console.WriteLine("ClientGET URL");
+        Console.WriteLine("Examples:");
+        Console.WriteLine("ClientGET http://www.microsoft.com/net/");
+    }
+    
+    public static void getPage(String url) {
+        WebRequest req = WebRequestFactory.Create(url);
+        WebResponse result = req.GetResponse();
+        Stream ReceiveStream = result.GetResponseStream();
+        Console.WriteLine("\r\nResponse stream received, Status code: " + result.Status);
+        if (bShow) 
+        {
+            Byte[] read = new Byte[512];
+            int bytes = ReceiveStream.Read(read, 0, 512);
+            
+            Console.WriteLine("HTML...\r\n");
+            
+            while (bytes > 0)
+            {
+                Console.Write(System.Text.Encoding.ASCII.GetString(read, 0, bytes));
+                bytes = ReceiveStream.Read(read, 0, 512);
+            }
+            
+            Console.WriteLine("");
+        }
+    }
+};
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

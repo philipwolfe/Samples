@@ -1,0 +1,1 @@
+csc /debug /r:Excel.dll AutoExcel.cs

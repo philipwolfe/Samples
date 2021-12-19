@@ -1,0 +1,428 @@
+<!--BEGIN HEADER-->
+
+
+
+<html>
+<head>
+<link rel="stylesheet" href="../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+  <table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+
+            <div style="padding:0,0,0,0"><a class=outer style="color:darkred" href="../../winforms/doc/default.htm"><b>Introduction</b></a><br></div>
+            <p>
+            <div style="padding:0,0,4,0"><b>Getting Started</b><br></div>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsgettingstarted.htm">What is Windows Forms?</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformssimplehelloworld.htm">Writing a Hello World Form</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsapplicationmodel.htm">Windows Forms Application Model</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsusingwindes.htm">Using the Windows Forms Designer</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsformlayout.htm">Dynamic Layout in Windows Forms</a><br>            
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsmenus.htm">Adding Menus to a Form</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsmdi.htm">Writing MDI Applications</a><p>
+
+            <div style="padding:0,0,4,0"><b>Building Applications</b><br></div>
+            &nbsp; <a class="outer" href="../../winforms/doc/dataaccessplaceholder.htm">Data Access Overview</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/webservicesplaceholder.htm">Web Services Overview</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsdata.htm">Databinding in Windows Forms</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsaxhosting.htm">Using ActiveX Controls</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsgdiplus.htm">Working with Graphics</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsprinting.htm">Working with Printing</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformscreatingcontrols.htm">Creating Controls</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsmsaa.htm">Accessibility</a><p>
+
+            <div style="padding:0,0,0,0"><a class=outer style="color:darkred" href="../../winforms/doc/winformssamples.htm"><b>Control Reference</b></a><br></div>
+            <p>
+            <div style="padding:0,0,0,0"><a target=_top class=outer style="color:darkred" href="../../howto/default.htm"><b>How Do I...?</b></a><br></div>
+            <p>
+            <div style="padding:0,0,0,0"><a class=outer style="color:darkred" href="../../winforms/doc/winformsrelateddocs.htm"><b>Related Documentation</b></a><br></div>
+            <p>
+            
+</div>
+
+</td>
+</tr>
+</table>
+
+
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<style>
+.mydd {  font: smaller verdana; }
+
+.code1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	font-family:"Courier New";
+	color:darkred; 
+	}
+.codecomment1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	font-family:"Courier New";
+	color:green;
+	}
+.issue {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background-color:RED;
+	color:WHITE;
+	font-weight:bold;
+	}
+
+
+body { font: smaller verdana }        
+
+</style>
+
+
+
+
+
+<h4>ASP.NET Web Services Overview</h4>
+
+<p>This section introduces ASP.NET Web Services. For more information on creating/exposing Web Services, see
+the <a href="../../aspplus" target="_top">ASP.NET Quick Start</a>. For more information on using Web Services 
+with Windows Forms see the <a href="../../winforms/doc/winformsdata.htm">Windows Forms and Data Access Quick Start</a>.
+      
+
+
+
+
+<p>
+The Internet is quickly evolving from today's Web sites that just deliver 
+UI Pages to browsers to a next generation of programmable Web sites that 
+directly link organizations, applications, services, and devices with one 
+another.  These programmable Web sites become more than passively accessed 
+sites - they become reusable, intelligent Web Services.
+</P>
+<P>
+The Common Language Runtime provides built-in support for creating and exposing Web 
+Services - using a programming abstraction that is consistent and familiar 
+to both ASP.NET Web Forms developers and existing VB users.  The resulting model 
+is both scalable and extensible - and embraces open Internet standards (HTTP, 
+XML, SOAP, SDL) so that it can be accessed and consumed from any client or 
+Internet enabled device.
+</P>
+<H5>ASP.NET Web Services</H5>
+<P>
+ASP.NET provides support for Web Services with the .asmx file. An .asmx file 
+is a text file that is similar to an .htm file. These files can be part of 
+an ASP.NET application that includes .htm files. These files are then 
+URI-addressable, just as .htm are.
+</P>
+<P>
+The following is a very simple example of an .asmx file:
+</P>
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 3;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:55%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="4">
+<pre id="codectrl7" style="display:none">
+
+&lt;%@ WebService Language=&quot;C#&quot; Class=&quot;HelloWorld&quot; %&gt;
+
+using System;
+using System.Web.Services;
+
+public class HelloWorld : WebService {
+
+     [WebMethod] public String SayHelloWorld() {
+          return &quot;Hello World&quot;;
+     }
+
+}
+</pre>
+<pre id="codectrl7" style="display:">
+
+&lt;%@ WebService Language=&quot;VB&quot; Class=&quot;HelloWorld&quot; %&gt;
+
+Imports System.Web.Services
+
+Public Class HelloWorld :Inherits WebService
+
+     Public Function &lt;WebMethod()&gt; SayHelloWorld() As String
+          Return(&quot;Hello World&quot;)
+     End Function
+
+End Class
+</pre>
+<pre id="codectrl7" style="display:none">
+
+&lt;%@ WebService Language=&quot;JScript&quot; Class=&quot;HelloWorld&quot; %&gt;
+
+import System;
+import System.Web.Services;
+
+public class HelloWorld extends WebService {
+
+     WebMethodAttribute public function SayHelloWorld() : String {
+          return &quot;Hello World&quot;;
+     }
+
+}
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl7" onclick="doClick(0, 'ctrl7')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl7" onclick="doClick(1, 'ctrl7')">
+          <b>VB
+        </td>
+        <td class="backtab" id="tabctrl7" onclick="doClick(2, 'ctrl7')">
+          <b>JScript
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<P>
+This file starts with an ASP.NET directive <I>WebService</I>, and sets 
+the language to C# (you could also set the language to VB or C). Next, 
+it imports the namespace System.Web.Services. This namespace is needed 
+and you must include it. Next, the class <B>HelloWorld</B> is declared. 
+This class is derived from the base class <B>WebService</B>. Finally, 
+any methods that will be accessible as part of the service have the 
+custom attribute <B>[WebMethod]</B> (or <"WebMethod()>" in Visual Basic) 
+in front of their signatures.
+</P>
+<P>
+To make this service available, we might name the file HelloWorld.asmx 
+and place it on a server called <B>Foo</B> inside a virtual directory 
+called <B>Bar</B>. With Internet Explorer 5, you could then enter the 
+URL <B>http://Foo/Bar/HelloWorld.asmx</B> and the resulting page would 
+show the public methods for this Web Service (those marked with the 
+WebMethod attribute), as well which protocols (such as SOAP, or HTTP 
+GET) you can use to invoke these methods. Entering 
+<B>http://Foo/Bar/HelloWorld.asmx?SDL</B> into the Internet Explorer 
+address location produces the same information as an XML file, based 
+on the Service Description Language (SDL) grammar. This SDL file is 
+very important, and is used by clients that will access the service.
+</P>
+<H5>Accessing Web Services</H5>
+<P>
+Besides technology that allows developers to create Web Services, Microsoft .NET Framework 
+provides a sophisticated set of tools and code to consume, or access as 
+a client, Web Services. Because Web Services are based on open protocols 
+such as the Simple Object Access Protocol (SOAP) and HTTP, this client 
+technology can also be used to consume non-ASP.NET Web Services. Of course, 
+the level of integration between ASP.NET Web Services and the client 
+technology is extremely high.
+</P>
+<P>
+With the SDK, there is a tool called WebServiceUtil.exe. This program can 
+be used to download the SDL description of a Web Service, and create a 
+proxy class that addresses this service. For example, you could enter: 
+</P>
+
+<div class="code"><pre>
+WebServiceUtil /c:proxy /pa:http://someDomain.com/someFolder/HelloWorld.asmx?SDL
+</pre></div>
+
+<P>A Proxy class called HelloWorld.cs would then be created.</P>
+
+<P>This class would look very similar to the class created in the previous 
+section. It would contain a method called <B>SayHelloWorld</B> that returns 
+a String. Compiling this proxy class into an application, and then calling 
+this proxy class's method results in the proxy class packaging a SOAP 
+request across HTTP and receiving the SOAP-encoded response, which is then 
+marshalled as a string.</P>
+
+<P>From the client perspective, the code would be simple:</p>
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 3;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:55%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="4">
+<pre id="codectrl9" style="display:none">
+
+HelloWorld myHelloWorld = new HelloWorld();
+String sReturn = myHelloWorld.SayHelloWorld();
+</pre>
+<pre id="codectrl9" style="display:">
+
+Dim myHelloWorld As New HelloWorld()
+Dim sReturn As String = myHelloWorld.SayHelloWorld()
+</pre>
+<pre id="codectrl9" style="display:none">
+
+var myHelloWorld:HelloWorld = new HelloWorld();
+var sReturn:String = myHelloWorld.SayHelloWorld();
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl9" onclick="doClick(0, 'ctrl9')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl9" onclick="doClick(1, 'ctrl9')">
+          <b>VB
+        </td>
+        <td class="backtab" id="tabctrl9" onclick="doClick(2, 'ctrl9')">
+          <b>JScript
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<P>And the return would be "Hello World".</p>
+<P>
+The rest of this section deals with more advanced topics with Web Services, 
+such as sending and receiving complex datatypes. There is also a section on 
+Text Pattern Matching, which is an exciting technology to address <i>any</I> 
+URI that returns text as if it were a Web Service. You can also perform data 
+binding operations with Web Services, and that is discussed in the Data section.</p>
+
+<!--END FOOTER-->
+<p>
+<hr>
+<p>
+</div>
+</td>
+</tr>
+</table>
+</BODY>
+</html>
+<!--END FOOTER-->

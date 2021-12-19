@@ -1,0 +1,67 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlauth/CustomParsing/CustomParse1.src&file=CustomParse1.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfQ3VzdG9tUGFyc2UxLmNzeF9feHhfeHhfeF9feA==54cb1e46" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">CustomParse1.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/ctrlauth/customparsing/customparse1aspxsource.htm'>CustomParse1.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/ctrlauth/customparsing/customparse1cssource.htm'>CustomParse1.cs</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/ctrlauth/customparsing/itemcssource.htm'>Item.cs</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/ctrlauth/customparsing/makesamplebatsource.htm'>makesample.bat</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/ctrlauth/customparsing/vb/customparse1aspxsource.htm'>VB/CustomParse1.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/ctrlauth/customparsing/vb/customparse1vbsource.htm'>VB/CustomParse1.vb</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/ctrlauth/customparsing/vb/itemvbsource.htm'>VB/Item.vb</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/ctrlauth/customparsing/vb/makesamplebatsource.htm'>VB/makesample.bat</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>using System;
+using System.Collections;
+using System.Web;
+using System.Web.UI;
+
+namespace CustomParsingControlSamples {
+
+    public class CustomParse1 : Control {
+
+       private ArrayList _items         = new ArrayList();
+       private int       _selectedIndex = 0;
+
+       public int SelectedIndex { 
+           get {
+              return _selectedIndex;
+           }
+           set {
+              _selectedIndex = value;
+           }
+       }
+
+       public override void AddParsedSubObject(Object obj) {
+
+           if (obj is Item) {
+              _items.Add(obj);
+           }
+       }
+
+       protected override void Render(HtmlTextWriter output) {
+
+           if (SelectedIndex < _items.Count) {
+              output.Write( ((Item) _items[SelectedIndex]).Message );
+           }
+       }
+    }    
+}
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

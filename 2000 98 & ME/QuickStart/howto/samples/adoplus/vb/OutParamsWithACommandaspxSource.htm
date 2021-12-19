@@ -1,0 +1,110 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/adoplus/vb/outparamswithacommand.src&file=OutParamsWithACommand.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfT3V0UGFyYW1zV2l0aEFDb21tYW5kLmFzcFx4eF9feHhfeHhfeF9feA==16f6fa44" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">OutParamsWithACommand.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../howto/samples/adoplus/vb/outparamswithacommandaspxsource.htm'>OutParamsWithACommand.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../howto/samples/adoplus/cs/outparamswithacommandaspxsource.htm'>..\CS\OutParamsWithACommand.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>
+<%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="System.Data.SQL" %>
+
+<html>
+
+<script language="VB" runat="server">
+
+  protected sub Page_Load(Src as object, E as EventArgs ) 
+
+
+	'// Create a new Connection and DataSetCOmmand
+	Dim myConnection as SQLConnection
+	myConnection = new SQLConnection("server=localhost;uid=sa;pwd=;database=northwind")
+
+	'// Create stored procedure with out parameter
+	'// this command will create the sproc with the out parameter
+	Dim CreateProcCommand as SQLCommand
+
+	myConnection.Open()
+
+
+	Dim sql as string
+	sql = "drop procedure [dbo].[GetCompanyName] "
+
+	CreateProcCommand = new SQLCommand(SQL, myConnection)
+
+	try
+	  CreateProcCommand.ExecuteNonQuery()
+	catch myException as Exception
+	end try
+
+
+	sql = "CREATE PROCEDURE GetCompanyName  @CustomerId nchar(5), @CompanyName nchar(40) out as select @CompanyName = CompanyName from Customers where CustomerId = @CustomerId "
+
+	CreateProcCommand.CommandText = sql
+
+	CreateProcCommand.ExecuteNonQuery()
+
+
+	Dim myCommand as SQLCommand
+	myCommand = new SQLCommand("GetCompanyName", myConnection)
+	myCommand.CommandType = CommandType.StoredProcedure
+
+	'// fill the parameters collection based upon stord procedure
+	Dim workParam as SQLParameter
+
+	workParam = myCommand.Parameters.Add(new SQLParameter("@CustomerID", SQLDataType.NChar, 5))
+	workParam.Direction = ParameterDirection.Input
+	workParam.Value = "ANATR"
+	
+
+	workParam = myCommand.Parameters.Add(new SQLParameter("@CompanyName", SQLDataType.NChar, 40))
+	workParam.Direction = ParameterDirection.Output
+
+	try
+          myCommand.ExecuteNonQuery()
+	  Response.Write("CompayName= " + myCommand.Parameters("@CompanyName").Value.ToString())
+	catch myException2 as Exception
+	  Response.Write(myException2.ToString())
+	finally
+	  myConnection.Close()
+	end try
+
+
+   end sub
+	
+
+</script>
+
+</BODY>
+</HTML>
+
+
+
+ 
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>
+</span>
+
+    </form>

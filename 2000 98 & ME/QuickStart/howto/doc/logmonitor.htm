@@ -1,0 +1,462 @@
+
+
+<!--BEGIN HEADER-->
+<html>
+<head>
+<link rel="stylesheet" href="../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+
+<table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+
+    <div style="padding:0,0,4,0"><b>Diagnostics</b><br></div>
+    &nbsp; <a class="outer" href="../../howto/doc/logwrite.htm">Write to an event log</a><br>
+    &nbsp; <a class="outer" href="../../howto/doc/loginfo.htm">Read from an event log</a><br>
+    &nbsp; <a class="outer" href="../../howto/doc/logmonitor.htm">Monitor an event log</a><br>
+    &nbsp; <a class="outer" href="../../howto/doc/pcwrite.htm">Write to a perf counter</a><br>
+    &nbsp; <a class="outer" href="../../howto/doc/pcread.htm">Read from a perf counter</a><br>
+    &nbsp; <a class="outer" href="../../howto/doc/pcdemo.htm">Count rate of change</a><br>
+    &nbsp; <a class="outer" href="../../howto/doc/trace.htm">Work with tracing</a><br>
+    &nbsp; <a class="outer" href="../../howto/doc/switches.htm">Use trace switches/listeners</a><br>
+    &nbsp; <a class="outer" href="../../howto/doc/tracedemo.htm">Instrument an application</a><br>
+    &nbsp; <a class="outer" href="../../howto/doc/processdemo.htm">Start and stop a process</a><br>
+    &nbsp; <a class="outer" href="../../howto/doc/prinfo.htm">Get process information</a><p>
+    <div style="padding:0,0,4,0"><a target="_top" style="color:darkred" href="../../howto"><b>Back to Index</b></a><br></div>
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<style>
+.mydd {  font: smaller verdana; }
+.code1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:blue;
+	}
+.codecomment1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:green;
+	}
+.issue {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background-color:RED;
+	color:WHITE;
+	font-weight:bold;
+	}
+
+
+body { font: smaller verdana }        
+
+</style>
+
+
+
+
+
+<h4>How Do I...Monitor an event log?</h4>
+
+Event logging provides a standard, centralized way for you to have your applications
+record important software and hardware events. Windows supplies a standard user
+interface for viewing the logs (Event Log Viewer). Using the Common Language Runtime's EventLog
+component, you can easily connect to existing event logs on both local and
+remote computers and receive event notifications when a new entry is written to
+the log.
+<p>
+
+This sample illustrates how to monitor an event log for new entries being written.
+It's a small console application that can be run from a command prompt. The
+application takes two command line arguments. The first argument is the name of
+the log that you want to monitor. The second is optional and allows you to
+specify the machine name of the server on which the log resides.
+<p>
+
+Try running the sample as follows:
+<p>
+
+<div class="code"><pre>
+&gt; LogMonitor.exe Application
+</pre></div>
+
+<p>
+Now, run the LogWrite.exe sample and write a new entry to the application log. You
+will see that the LogMonitor is being notified about the new entry being
+written.
+<p>
+
+In its simplest form, monitoring an event log involves:
+
+<ol>
+
+<li>Instantiating an EventLog component and pointing it to a appropriate event log:
+
+<p>
+<table cellpadding=0 cellspacing=0 width="95%">
+<tr>
+<td>
+
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl4" style="display:none">
+
+String log, machine;
+...
+EventLog aLog = new EventLog();
+aLog.Log = log;
+aLog.MachineName = machine;
+</pre>
+<pre id="codectrl4" style="display:">
+
+Dim log, machine As String 
+...
+Dim aLog As New EventLog
+aLog.Log = log
+aLog.MachineName = machine
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl4" onclick="doClick(0, 'ctrl4')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl4" onclick="doClick(1, 'ctrl4')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+
+</td>
+</tr>
+</table>
+<p>
+
+<li>Adding an event handler:
+
+<p>
+<table cellpadding=0 cellspacing=0 width="95%">
+<tr>
+<td>
+
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl6" style="display:none">
+
+aLog.EntryWritten += new EventLogEventHandler(OnEntryWritten);
+</pre>
+<pre id="codectrl6" style="display:">
+
+AddHandler aLog.EntryWritten, AddressOf OnEntryWritten
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl6" onclick="doClick(0, 'ctrl6')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl6" onclick="doClick(1, 'ctrl6')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+
+</td>
+</tr>
+</table>
+<p>
+
+<li>Handling the event notification in your event handler:
+
+<p>
+<table cellpadding=0 cellspacing=0 width="95%">
+<tr>
+<td>
+
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl8" style="display:none">
+
+public static void OnEntryWritten(Object source, EventLogEvent e) {
+    Console.WriteLine("Written: " + e.Entry.Message);
+}
+</pre>
+<pre id="codectrl8" style="display:">
+
+Sub OnEntryWritten(ByVal source As Object, ByVal e As EventLogEvent)
+    Console.WriteLine("Written: " + e.Entry.Message)
+End Sub
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl8" onclick="doClick(0, 'ctrl8')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl8" onclick="doClick(1, 'ctrl8')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+
+</td>
+</tr>
+</table>
+
+</ol>
+
+<h4>Example</h4>
+
+<span>
+  
+  
+
+        
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../howto/samples/services/eventlog/logmonitor/vb">
+	<img style="border-color:black" border=1 src="../../images/console.gif"><br>
+	</a>
+	<div class="caption">LogMonitor.exe</div><br>
+	
+	
+		[<a target="_blank" href="../../howto/samples/services/eventlog/logmonitor/vb">Run Sample</a>] | 
+		[<a target="_blank" href="../../howto/samples/services/eventlog/logmonitor/logmonitorcssource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<!--END FOOTER-->
+<p>
+<hr>
+<p>
+</div>
+</td>
+</tr>
+</table>
+</BODY>
+</html>
+<!--END FOOTER-->

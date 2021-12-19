@@ -1,0 +1,48 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/XMLSerialization/ReadWriteXML.src&file=cs/ReadWriteXml.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfY3MvUmVhZFdyaXRlWG1sLmNzeF9feHhfeHhfeF9feA==cbf80b94" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">cs/ReadWriteXml.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>CSharp Source: </b></td>
+        <td><a href='../../../../howto/samples/xmlserialization/cs/readwritexmlcssource.htm'>cs/ReadWriteXml.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../howto/samples/xmlserialization/vb/readwritexmlvbsource.htm'>vb/ReadWriteXml.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>using System.Xml.Serialization;
+using System.IO;
+using XmlSerializationHowTo;
+
+public class Test {
+    public static void Main(string[] args) {
+        XmlSerializer serializer = new XmlSerializer(typeof(PurchaseOrder));
+
+        TextReader reader = new StreamReader("..\\PurchaseOrder.xml");
+        PurchaseOrder po = (PurchaseOrder)serializer.Deserialize(reader);
+        reader.Close();
+
+        TextWriter writer = new StreamWriter("PurchaseOrder2.xml");
+        serializer.Serialize(writer, po);
+        writer.Close();
+    }
+}
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

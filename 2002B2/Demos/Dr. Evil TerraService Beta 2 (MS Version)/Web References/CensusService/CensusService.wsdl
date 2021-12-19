@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s0="http://terraservice.net/censusserver/" targetNamespace="http://terraservice.net/censusserver/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://terraservice.net/censusserver/">
+      <s:element name="GetPoliticalUnitFactsByName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="pu" type="s0:PoliticalUnit" />
+            <s:element minOccurs="1" maxOccurs="1" name="name" nillable="true" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ParentName" nillable="true" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="year" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="PoliticalUnit">
+        <s:restriction base="s:string">
+          <s:enumeration value="Unknown" />
+          <s:enumeration value="State" />
+          <s:enumeration value="County" />
+          <s:enumeration value="City" />
+          <s:enumeration value="CensusTract" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetPoliticalUnitFactsByNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetPoliticalUnitFactsByNameResult" type="s0:CensusFacts" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CensusFacts">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Pu" type="s0:PoliticalUnit" />
+          <s:element minOccurs="1" maxOccurs="1" name="Fips" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="StateFips" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CountyFips" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Name" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SecondaryName" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Area" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Year" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Population1990" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Population1999" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Population1990_PerSquareMile" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Households" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Males" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Females" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="White" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Black" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="NativeAmericans" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="AsianPolynesianIslands" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Hispanic" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Other" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Age_Under5" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Age_5_17" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Age_18_29" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Age_30_49" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Age_50_64" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Age_65_Up" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="NeverMarry" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Married" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Separated" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Widowed" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Divorced" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="HouseHolds_1Male" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="HouseHolds_1Female" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Married_Households_Child" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Married_households_NoChild" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Male_Households_Child" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Female_HouseHolds_Child" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Household_Units" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Vacant" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="OwnerOccupied" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RenterOccupied" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MedianValue" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MedianRent" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Units_1Detach" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Units_1Attach" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Units_2" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Units_3_9" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Units_10_49" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Units_50_Up" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MobileHome" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="No_Farms87" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Avg_Farm_Size87" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Crop_Acre87" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Avg_Sale87" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Shape" type="s0:ShapeType" />
+          <s:element minOccurs="1" maxOccurs="1" name="Rect" type="s0:BoundingRect" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ShapeType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Null" />
+          <s:enumeration value="Point" />
+          <s:enumeration value="PolyLine" />
+          <s:enumeration value="Polygon" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="BoundingRect">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="UpperLeft" type="s0:LonLatPt" />
+          <s:element minOccurs="1" maxOccurs="1" name="LowerRight" type="s0:LonLatPt" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LonLatPt">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Lon" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Lat" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetPoliticalUnitFactsByRect">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="pu" type="s0:PoliticalUnit" />
+            <s:element minOccurs="1" maxOccurs="1" name="rect" type="s0:BoundingRect" />
+            <s:element minOccurs="1" maxOccurs="1" name="year" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPoliticalUnitFactsByRectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetPoliticalUnitFactsByRectResult" nillable="true" type="s0:ArrayOfCensusFacts" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCensusFacts">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CensusFacts" type="s0:CensusFacts" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CountOfPoliticalUnitByRect">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="pu" type="s0:PoliticalUnit" />
+            <s:element minOccurs="1" maxOccurs="1" name="rect" type="s0:BoundingRect" />
+            <s:element minOccurs="1" maxOccurs="1" name="year" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CountOfPoliticalUnitByRectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CountOfPoliticalUnitByRectResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CountOfPoliticalUnit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="pu" type="s0:PoliticalUnit" />
+            <s:element minOccurs="1" maxOccurs="1" name="year" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CountOfPoliticalUnitResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CountOfPoliticalUnitResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CensusFacts" type="s0:CensusFacts" />
+      <s:element name="int" type="s:int" />
+    </s:schema>
+  </types>
+  <message name="GetPoliticalUnitFactsByNameSoapIn">
+    <part name="parameters" element="s0:GetPoliticalUnitFactsByName" />
+  </message>
+  <message name="GetPoliticalUnitFactsByNameSoapOut">
+    <part name="parameters" element="s0:GetPoliticalUnitFactsByNameResponse" />
+  </message>
+  <message name="GetPoliticalUnitFactsByRectSoapIn">
+    <part name="parameters" element="s0:GetPoliticalUnitFactsByRect" />
+  </message>
+  <message name="GetPoliticalUnitFactsByRectSoapOut">
+    <part name="parameters" element="s0:GetPoliticalUnitFactsByRectResponse" />
+  </message>
+  <message name="CountOfPoliticalUnitByRectSoapIn">
+    <part name="parameters" element="s0:CountOfPoliticalUnitByRect" />
+  </message>
+  <message name="CountOfPoliticalUnitByRectSoapOut">
+    <part name="parameters" element="s0:CountOfPoliticalUnitByRectResponse" />
+  </message>
+  <message name="CountOfPoliticalUnitSoapIn">
+    <part name="parameters" element="s0:CountOfPoliticalUnit" />
+  </message>
+  <message name="CountOfPoliticalUnitSoapOut">
+    <part name="parameters" element="s0:CountOfPoliticalUnitResponse" />
+  </message>
+  <message name="GetPoliticalUnitFactsByNameHttpGetIn">
+    <part name="pu" type="s:string" />
+    <part name="name" type="s:string" />
+    <part name="ParentName" type="s:string" />
+    <part name="year" type="s:string" />
+  </message>
+  <message name="GetPoliticalUnitFactsByNameHttpGetOut">
+    <part name="Body" element="s0:CensusFacts" />
+  </message>
+  <message name="CountOfPoliticalUnitHttpGetIn">
+    <part name="pu" type="s:string" />
+    <part name="year" type="s:string" />
+  </message>
+  <message name="CountOfPoliticalUnitHttpGetOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <message name="GetPoliticalUnitFactsByNameHttpPostIn">
+    <part name="pu" type="s:string" />
+    <part name="name" type="s:string" />
+    <part name="ParentName" type="s:string" />
+    <part name="year" type="s:string" />
+  </message>
+  <message name="GetPoliticalUnitFactsByNameHttpPostOut">
+    <part name="Body" element="s0:CensusFacts" />
+  </message>
+  <message name="CountOfPoliticalUnitHttpPostIn">
+    <part name="pu" type="s:string" />
+    <part name="year" type="s:string" />
+  </message>
+  <message name="CountOfPoliticalUnitHttpPostOut">
+    <part name="Body" element="s0:int" />
+  </message>
+  <portType name="CensusServiceSoap">
+    <operation name="GetPoliticalUnitFactsByName">
+      <input message="s0:GetPoliticalUnitFactsByNameSoapIn" />
+      <output message="s0:GetPoliticalUnitFactsByNameSoapOut" />
+    </operation>
+    <operation name="GetPoliticalUnitFactsByRect">
+      <input message="s0:GetPoliticalUnitFactsByRectSoapIn" />
+      <output message="s0:GetPoliticalUnitFactsByRectSoapOut" />
+    </operation>
+    <operation name="CountOfPoliticalUnitByRect">
+      <input message="s0:CountOfPoliticalUnitByRectSoapIn" />
+      <output message="s0:CountOfPoliticalUnitByRectSoapOut" />
+    </operation>
+    <operation name="CountOfPoliticalUnit">
+      <input message="s0:CountOfPoliticalUnitSoapIn" />
+      <output message="s0:CountOfPoliticalUnitSoapOut" />
+    </operation>
+  </portType>
+  <portType name="CensusServiceHttpGet">
+    <operation name="GetPoliticalUnitFactsByName">
+      <input message="s0:GetPoliticalUnitFactsByNameHttpGetIn" />
+      <output message="s0:GetPoliticalUnitFactsByNameHttpGetOut" />
+    </operation>
+    <operation name="CountOfPoliticalUnit">
+      <input message="s0:CountOfPoliticalUnitHttpGetIn" />
+      <output message="s0:CountOfPoliticalUnitHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="CensusServiceHttpPost">
+    <operation name="GetPoliticalUnitFactsByName">
+      <input message="s0:GetPoliticalUnitFactsByNameHttpPostIn" />
+      <output message="s0:GetPoliticalUnitFactsByNameHttpPostOut" />
+    </operation>
+    <operation name="CountOfPoliticalUnit">
+      <input message="s0:CountOfPoliticalUnitHttpPostIn" />
+      <output message="s0:CountOfPoliticalUnitHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="CensusServiceSoap" type="s0:CensusServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetPoliticalUnitFactsByName">
+      <soap:operation soapAction="http://terraservice.net/censusserver/GetPoliticalUnitFactsByName" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetPoliticalUnitFactsByRect">
+      <soap:operation soapAction="http://terraservice.net/censusserver/GetPoliticalUnitFactsByRect" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CountOfPoliticalUnitByRect">
+      <soap:operation soapAction="http://terraservice.net/censusserver/CountOfPoliticalUnitByRect" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CountOfPoliticalUnit">
+      <soap:operation soapAction="http://terraservice.net/censusserver/CountOfPoliticalUnit" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="CensusServiceHttpGet" type="s0:CensusServiceHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetPoliticalUnitFactsByName">
+      <http:operation location="/GetPoliticalUnitFactsByName" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CountOfPoliticalUnit">
+      <http:operation location="/CountOfPoliticalUnit" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="CensusServiceHttpPost" type="s0:CensusServiceHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetPoliticalUnitFactsByName">
+      <http:operation location="/GetPoliticalUnitFactsByName" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CountOfPoliticalUnit">
+      <http:operation location="/CountOfPoliticalUnit" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="CensusService">
+    <port name="CensusServiceSoap" binding="s0:CensusServiceSoap">
+      <soap:address location="http://terraservice.net/CensusService.asmx" />
+    </port>
+    <port name="CensusServiceHttpGet" binding="s0:CensusServiceHttpGet">
+      <http:address location="http://terraservice.net/CensusService.asmx" />
+    </port>
+    <port name="CensusServiceHttpPost" binding="s0:CensusServiceHttpPost">
+      <http:address location="http://terraservice.net/CensusService.asmx" />
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,69 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/net/ASPXNet/webrequest.src&file=VB/webrequest.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvd2VicmVxdWVzdC5hc3BceHhfX3h4X3h4X3hfX3g=0ce6e78e" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/webrequest.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../howto/samples/net/aspxnet/webrequestaspxsource.htm'>webrequest.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../howto/samples/net/aspxnet/vb/webrequestaspxsource.htm'>VB/webrequest.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Page language="VB" %>
+<%@ Import Namespace="System.Net" %>
+<%@ Import Namespace="System.IO" %>
+<%@ Assembly Name="System.Net.dll" %>
+
+<html>
+<head>
+
+<SCRIPT runat="server">
+	Sub btnSubmit_Click(sender As Object,  e As EventArgs) 
+		Dim req As WebRequest = WebRequestFactory.Create(txtURI.Text)
+		Dim result As WebResponse  = req.GetResponse()
+		Dim ReceiveStream As Stream = result.GetResponseStream()
+
+		Dim read() as Byte = new Byte(512) {}
+		Dim bytes As Integer  = ReceiveStream.Read(read, 0, 512)
+
+		txtHTML.InnerHtml = ""
+		While (bytes > 0) 
+			txtHTML.InnerHtml = txtHTML.InnerHtml & System.Text.Encoding.ASCII.GetString(read, 0, bytes)
+			bytes = ReceiveStream.Read(read, 0, 512)
+		End While
+	end sub
+</SCRIPT>
+</head>
+
+<body>
+
+	<form method="post" action="Webrequest.htm" runat="server">
+		Please enter a URI -
+		<asp:TextBox runat=server ID="txtURI"></asp:TextBox>
+		<asp:Button runat=server Text="Submit" ID="btnSubmit" onClick="btnSubmit_Click"></asp:button>
+		<br><br>
+		<TextArea runat=server ID="txtHTML" Rows="30" Cols="80" MaintainState="false"  Wrap="True"></TextArea>
+	</form>
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

@@ -1,0 +1,84 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/data/datagrid18.src&file=datagrid18.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfZGF0YWdyaWQxOC5hc3BceHhfX3h4X3h4X3hfX3g=cac45dd6" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">datagrid18.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/data/datagrid18aspxsource.htm'>datagrid18.htm</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/data/schemaxmlsource.htm'>schema.xml</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/data/dataxmlsource.htm'>data.xml</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/data/vb/datagrid18aspxsource.htm'>VB/datagrid18.htm</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/data/schemaxmlsource.htm'>schema.xml</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/data/dataxmlsource.htm'>data.xml</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/data/js/datagrid18aspxsource.htm'>js/datagrid18.htm</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/data/schemaxmlsource.htm'>schema.xml</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/data/dataxmlsource.htm'>data.xml</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>
+<%@ Import Namespace="System.IO" %>
+<%@ Import Namespace="System.Data" %>
+
+<html>
+<script language="C#" runat="server">
+
+    protected void Page_Load(Object Src, EventArgs E) 
+    {
+        DataSet ds = new DataSet();
+
+        FileStream fs = new FileStream(Server.MapPath("schema.xml"),FileMode.Open,FileAccess.Read);
+        StreamReader schema = new StreamReader(fs);
+        ds.ReadXmlSchema(schema);
+        fs.Close();
+
+        fs = new FileStream(Server.MapPath("data.xml"),FileMode.Open,FileAccess.Read);
+        StreamReader reader = new StreamReader(fs);
+        ds.ReadXmlData(reader);
+        fs.Close();
+
+        DataView Source = new DataView(ds.Tables[0]);
+
+        MySpan.InnerHtml = Source.Table.TableName;
+        MyDataGrid.DataSource = Source;
+        MyDataGrid.DataBind(); 
+    }
+
+</script>
+
+<body>
+
+  <h3><font face="Verdana">XML Data for Table: <span runat="server" id="MySpan"/></font></h3>
+
+  <ASP:DataGrid id="MyDataGrid" runat="server"
+    Width="900"
+    BackColor="#ccccff" 
+    BorderColor="black"
+    ShowFooter="false" 
+    CellPadding=3 
+    CellSpacing="0"
+    Font-Name="Verdana"
+    Font-Size="8pt"
+    HeaderStyle-BackColor="#aaaadd"
+    MaintainState="false"
+  />
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

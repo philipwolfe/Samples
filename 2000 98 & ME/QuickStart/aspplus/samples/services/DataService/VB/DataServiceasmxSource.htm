@@ -1,0 +1,59 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/services/DataService/DataService.src&file=VB/DataService.asmx" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvRGF0YVNlcnZpY2UuYXNtXHh4X194eF94eF94X194b14a5771" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/DataService.asmx</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/services/dataservice/dataserviceasmxsource.htm'>DataService.asmx</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/services/dataservice/vb/dataserviceasmxsource.htm'>VB/DataService.asmx</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ WebService Language="VB" Class="DataService" %>
+
+Imports System
+Imports System.Data
+Imports System.Data.SQL
+Imports System.Web.Services
+
+Public Class DataService
+
+   Public Function <WebMethod()> GetTitleAuthors() As DataSet
+
+        Dim MyConnection As SQLConnection = New SQLConnection("server=localhost;uid=sa;pwd=;database=pubs")
+        Dim MyCommand1 As SQLDataSetCommand = New SQLDataSetCommand("select * from Authors", MyConnection)
+        Dim MyCommand2 As SQLDataSetCommand = New SQLDataSetCommand("select * from Titles", MyConnection)
+
+        Dim DS As New DataSet
+        MyCommand1.FillDataSet(DS, "Authors")
+        MyCommand2.FillDataSet(DS, "Titles")
+
+        Return DS
+   End Function
+   
+   Public Function <WebMethod()> PutTitleAuthors(DS As DataSet) As Integer
+    ' TODO: Do something interesting here...
+        Return DS.Tables(0).Rows.Count
+   End Function
+
+End Class
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

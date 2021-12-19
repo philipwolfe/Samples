@@ -1,0 +1,95 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlref/webctrl/HyperLink/hyperlink2.src&file=HyperLink2.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfSHlwZXJMaW5rMi5hc3BceHhfX3h4X3h4X3hfX3g=bc29a8ed" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">HyperLink2.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlref/webctrl/hyperlink/hyperlink2aspxsource.htm'>HyperLink2.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlref/webctrl/hyperlink/vb/hyperlink2aspxsource.htm'>VB\HyperLink2.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Import Namespace="System.Data" %>
+
+<html>
+
+<script language="C#" runat="server">
+
+    void Page_Load(Object Src, EventArgs E) {
+
+        DataTable dt = new DataTable();
+        DataRow dr;
+
+        dt.Columns.Add(new DataColumn("IntegerValue", typeof(Int32)));
+        dt.Columns.Add(new DataColumn("StringValue", typeof(string)));
+        dt.Columns.Add(new DataColumn("DateTimeValue", typeof(DateTime)));
+        dt.Columns.Add(new DataColumn("BoolValue", typeof(bool)));
+        dt.Columns.Add(new DataColumn("CurrencyValue", typeof(double)));
+
+        for (int i = 0; i < 9; i++) {
+
+            dr = dt.NewRow();
+
+            dr[0] = i;
+            dr[1] = "Item " + Int32.ToString(i);
+            dr[2] = DateTime.Now;
+            dr[3] = (i % 2 != 0) ? true : false;
+            dr[4] = 1.23 * (i+1);
+
+            dt.Rows.Add(dr);
+        }
+
+        MyRepeater.DataSource=new DataView(dt);
+        MyRepeater.DataBind();
+    }
+
+</script>
+
+<body>
+
+    <h3><font face="Verdana">DataBinding HtmlAnchor</font></h3>
+
+    <p>
+
+    <form runat=server>
+
+        <asp:Repeater id="MyRepeater" runat="server">
+
+            <template name="ItemTemplate">
+
+                Link for
+
+                <asp:HyperLink id=HyperLink1 Text='<%# DataBinder.Eval(Container.DataItem, "StringValue") %>' NavigateUrl='<%# DataBinder.Eval(Container.DataItem,"StringValue","detailspage.htm?id={0}") %>' runat="server" />
+
+                <p>
+
+            </template>
+
+        </asp:Repeater>
+
+    </form>
+
+</body>
+</html>
+
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

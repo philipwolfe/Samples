@@ -1,0 +1,74 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/adoplus/vb/filterdatatable.src&file=..%5CCS%5Cfilterdatatable.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfLi5cXENTXFxmaWx0ZXJkYXRhdGFibGUuYXNwXHh4X194eF94eF94X1949218fb62" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">..\CS\filterdatatable.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../howto/samples/adoplus/vb/filterdatatableaspxsource.htm'>filterdatatable.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../howto/samples/adoplus/cs/filterdatatableaspxsource.htm'>..\CS\filterdatatable.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>
+<%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="System.Data.SQL" %>
+
+<html>
+
+<script language="C#" runat="server">
+
+    protected void Page_Load(Object Src, EventArgs E ) 
+
+	{
+
+	// Create a new Connection and DataSetCommand
+        SQLConnection myConnection = new SQLConnection("server=localhost;uid=sa;pwd=;database=northwind");
+	SQLDataSetCommand myDataSetCommand = new SQLDataSetCommand("select * from customers", myConnection);
+
+	// Create the new instance of the DataSet
+	DataSet myDataSet = new DataSet();
+	
+	// Load the customer table from the database into a table called Customers in the dataset	
+	myDataSetCommand.FillDataSet(myDataSet,"Customers");
+	
+	// Create a new dataview instance on the Customers table that was just created
+	DataView dataView1 = new DataView(myDataSet.Tables["Customers"]);
+
+	// Sort the view based on the FirstName column
+	dataView1.Sort = "CustomerID";
+
+	// Filter the dataview to only show customers with the lastname = Smith
+	dataView1.RowFilter = "CustomerID='ALFKI'";
+	
+	
+	for (int i = 0; i < dataView1.Count; i++)
+	{
+
+	  Response.Write(dataView1[i]["CustomerID"] + " - " + dataView1[i]["CompanyName"]);
+
+	}
+	
+	}
+
+ </script>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

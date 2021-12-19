@@ -1,0 +1,1 @@
+C:\CustAttr-VB\CustAttr\bin>vbc /target:exe /out:bin\CustAttr.exe /Import:Microsoft.VisualBasic CustAttr.vb

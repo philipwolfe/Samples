@@ -1,0 +1,121 @@
+
+11    Imports System                                                                                                                     
+12    Imports System.ComponentModel                                                                                                      
+13    Imports System.WinForms                                                                                                            
+14    Imports System.Drawing                                                                                                             
+15    Imports System.Drawing.Printing                                                                                                    
+16    Imports System.IO                                                                                                                  
+17                                                                                                                                       
+18    Namespace Microsoft.Samples.WinForms.VB.PrintingExample1                                                                           
+19                                                                                                                                       
+20        Public Class PrintingExample1                                                                                                  
+21            Inherits System.WinForms.Form                                                                                              
+22                                                                                                                                       
+23            private components As System.ComponentModel.Container                                                                      
+24            private printButton As System.WinForms.Button                                                                              
+25                                                                                                                                       
+26            private printFont As Font                                                                                                  
+27            private streamToPrint As StreamReader                                                                                      
+28                                                                                                                                       
+29            Public Sub New ()                                                                                                          
+30                                                                                                                                       
+31                MyBase.New                                                                                                             
+32                                                                                                                                       
+33                ' This call is required by the Windows Forms Designer.                                                                     
+34                InitializeComponent()                                                                                                  
+35                                                                                                                                       
+36            End Sub                                                                                                                    
+37                                                                                                                                       
+38                                                                                                                                       
+39            'Event fired when the user presses the print button                                                                        
+40            Private Sub printButton_Click(sender As object, e As System.EventArgs)                                                     
+41                                                                                                                                       
+42                Try                                                                                                                    
+43                    streamToPrint = new StreamReader ("PrintMe.Txt")                                                                   
+44                    Try                                                                                                                
+45                        printFont = new Font("Arial", 10)                                                                              
+46                        Dim pd as PrintDocument = new PrintDocument() 'Assumes the default printer                                     
+47                        pd.AddOnPrintPage(AddressOf Me.pd_PrintPage)                                                                   
+48                        pd.Print()                                                                                                     
+49                    Finally                                                                                                            
+50                        streamToPrint.Close()                                                                                          
+51                    End Try                                                                                                            
+52                                                                                                                                       
+53                Catch ex As Exception                                                                                                  
+54                    MessageBox.Show("An error occurred printing the file - " + ex.Message)                                             
+55                End Try                                                                                                                
+56                                                                                                                                       
+57            End Sub                                                                                                                    
+58                                                                                                                                       
+59            'Event fired for each page to print                                                                                        
+60            Private Sub pd_PrintPage(sender As object, ev As System.Drawing.Printing.PrintPageEventArgs)                               
+61                                                                                                                                       
+62                Dim lpp As Single = 0                                                                                                  
+63                Dim yPos As Single =  0                                                                                                
+64                Dim count As Integer = 0                                                                                               
+65                Dim leftMargin As Single = ev.MarginBounds.Left                                                                        
+66                Dim topMargin As Single = ev.MarginBounds.Top                                                                          
+67                Dim line as String                                                                                                     
+68                                                                                                                                       
+69                'Work out the number of lines per page                                                                                 
+70                'Use the MarginBounds on the event to do this                                                                          
+71                lpp = ev.MarginBounds.Height  / printFont.GetHeight(ev.Graphics)                                                       
+72                                                                                                                                       
+73                'Now iterate over the file printing out each line                                                                      
+74                'NOTE WELL: This assumes that a single line is not wider than the page width                                           
+75                'Check count first so that we don't read line that we won't print                                                      
+76                while (count < lpp AND ((line=streamToPrint.ReadLine()) <> Nothing))                                                   
+77                    yPos = topMargin + (count * printFont.GetHeight(ev.Graphics))                                                      
+78                    ev.Graphics.DrawString (line, printFont, Brushes.Black, leftMargin, yPos)                                          
+79                    count = count + 1                                                                                                  
+80                End While                                                                                                              
+81                                                                                                                                       
+82                'If we have more lines then print another page                                                                         
+83                If (line <> Nothing) Then                                                                                              
+84                    ev.HasMorePages = True                                                                                             
+85                Else                                                                                                                   
+86                    ev.HasMorePages = False                                                                                            
+87                End If                                                                                                                 
+88                                                                                                                                       
+89            End Sub                                                                                                                    
+90                                                                                                                                       
+91                                                                                                                                       
+92            Overrides Public Sub Dispose()                                                                                             
+93                MyBase.Dispose                                                                                                         
+94                components.Dispose                                                                                                     
+95            End Sub                                                                                                                    
+96                                                                                                                                        
+97                                                                                                                                        
+98            ' NOTE: The following code is required by the Windows Forms Designer                                                           
+99            ' Do not modify it                                                                                                         
+100           Private Sub InitializeComponent()                                                                                          
+11                                                                                                                                       
+12                Me.components = new System.ComponentModel.Container()                                                                  
+13                Me.printButton = new System.WinForms.Button()                                                                          
+14                                                                                                                                       
+15                Me.AutoScaleBaseSize = new System.Drawing.Size(5, 13)                                                                  
+16                Me.ClientSize = new System.Drawing.Size(504, 381)                                                                      
+17                Me.Text = "Print Example 1"                                                                                            
+18                                                                                                                                       
+19                printButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft                                                    
+110               printButton.Location = new System.Drawing.Point(32, 110)                                                               
+111               printButton.FlatStyle = System.WinForms.FlatStyle.Flat                                                                 
+112               printButton.TabIndex = 0                                                                                               
+113               printButton.Text = "Print the file"                                                                                    
+114               printButton.Size = new System.Drawing.Size(136, 40)                                                                    
+115               printButton.AddOnClick(AddressOf printButton_Click)                                                                    
+116                                                                                                                                      
+117               Me.Controls.Add(printButton)                                                                                           
+118                                                                                                                                      
+119           End Sub                                                                                                                    
+120                                                                                                                                      
+121           'The main entry point for the application                                                                                  
+122           Shared Sub Main()                                                                                                          
+123               System.WinForms.Application.Run(New PrintingExample1())                                                                
+124           End Sub                                                                                                                    
+125                                                                                                                                      
+126                                                                                                                                      
+127       End Class                                                                                                                      
+128                                                                                                                                      
+129   End Namespace                                                                                                                      
+130   

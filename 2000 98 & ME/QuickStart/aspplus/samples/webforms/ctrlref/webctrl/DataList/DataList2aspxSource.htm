@@ -1,0 +1,128 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlref/webctrl/DataList/DataList2.src&file=DataList2.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfRGF0YUxpc3QyLmFzcFx4eF9feHhfeHhfeF9feA==9a79ed29" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">DataList2.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlref/webctrl/datalist/datalist2aspxsource.htm'>DataList2.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlref/webctrl/datalist/vb/datalist2aspxsource.htm'>VB\DataList2.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Import Namespace="System.Data" %>
+
+<html>
+<head>
+
+    <script language="C#" runat="server">
+
+    ICollection CreateDataSource() {
+        DataTable dt = new DataTable();
+        DataRow dr;
+
+        dt.Columns.Add(new DataColumn("IntegerValue", typeof(Int32)));
+        dt.Columns.Add(new DataColumn("StringValue", typeof(string)));
+        dt.Columns.Add(new DataColumn("DateTimeValue", typeof(DateTime)));
+
+        for (int i = 0; i < 9; i++) {
+            dr = dt.NewRow();
+
+            dr[0] = i;
+            dr[1] = "Item " + Int32.ToString(i);
+            dr[2] = DateTime.Now;
+
+            dt.Rows.Add(dr);
+        }
+
+        DataView dv = new DataView(dt);
+        return dv;
+    }
+
+    void Page_Load(Object Sender, EventArgs e) {
+        if (!IsPostBack)
+            BindList();
+    }
+
+    void BindList() {
+        DataList1.DataSource= CreateDataSource();
+        DataList1.DataBind();
+    }
+
+    void DataList_ItemCommand(object Sender, DataListCommandEventArgs e) {
+        string cmd = ((LinkButton)e.CommandSource).CommandName;
+        if (cmd == "select")
+            DataList1.SelectedIndex = e.Item.ItemIndex;
+        BindList();
+    }
+
+    </script>
+
+</head>
+<body>
+
+    <h3><font face="Verdana">Using a SelectedItemTemplate with DataList</font></h3>
+
+    <form runat=server>
+    <font face="Verdana" size="-1">
+
+        <asp:DataList id="DataList1" runat="server"
+            BorderColor="black"
+            BorderWidth="1"
+            GridLines="Both"
+            CellPadding="3"
+            Font-Name="Verdana"
+            Font-Size="8pt"
+            Width="150px"
+            HeaderStyle-BackColor="#aaaadd"
+            AlternatingItemStyle-BackColor="Gainsboro"
+            SelectedItemStyle-BackColor="yellow"
+            OnItemCommand="DataList_ItemCommand"
+            >
+              <template name="HeaderTemplate">
+                Items
+              </template>
+              <template name="ItemTemplate">
+                <asp:LinkButton id="button1" runat="server" Text="Show details" CommandName="select" />
+                <%# DataBinder.Eval(Container.DataItem, "StringValue") %>
+              </template>
+              <template name="SelectedItemTemplate">
+                Item:
+                <%# ((DataRowView)Container.DataItem)["StringValue"]  %>
+                <br>
+                Order Date:
+                <%# DataBinder.Eval(Container.DataItem, "DateTimeValue", "{0:d}") %>
+                <br>
+                Quantity:
+                <%# DataBinder.Eval(Container.DataItem, "IntegerValue", "{0:N1}") %>
+                <br>
+              </template>
+
+        </asp:DataList>
+
+    </font>
+    </form>
+
+</body>
+</html>
+
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

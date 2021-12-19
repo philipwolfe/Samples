@@ -1,0 +1,76 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Services/EventLog/logwrite/logwrite.src&file=VB%5CLogWrite.vb" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkJcXExvZ1dyaXRlLnZieF9feHhfeHhfeF9feA==96c33305" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB\LogWrite.vb</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../howto/samples/services/eventlog/logwrite/logwritecssource.htm'>LogWrite.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../howto/samples/services/eventlog/logwrite/vb/logwritevbsource.htm'>VB\LogWrite.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>Imports System
+Imports System.Diagnostics
+
+Namespace LogWrite
+
+    Module LogWrite
+
+        Public Sub Main()
+
+            Dim args As String()
+            Dim appName As String
+            args = Environment.GetCommandLineArgs()
+            appName = args(0)
+
+            If (args.Length <> 4) Then
+                Console.WriteLine("Usage: " + appName + " <log> <message> <source>")
+                Exit Sub
+            End If
+
+            Dim log As String
+            Dim source As String
+
+            log = args(1)
+            source = args(3)
+
+            If (Not EventLog.SourceExists(source)) Then
+                EventLog.CreateEventSource(source, log)
+            End If
+
+            Dim aLog As EventLog
+            aLog = New EventLog
+            aLog.Source = source
+
+            If (aLog.Log.ToUpper() <> log.ToUpper()) Then
+                Console.WriteLine("Some other application is using the source!")
+                Exit Sub
+            End If
+
+            aLog.WriteEntry(args(2), EventLogEntryType.Information)
+            Console.WriteLine("Entry written successfuly!")
+        End Sub
+
+    End Module
+
+End Namespace
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

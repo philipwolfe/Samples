@@ -1,0 +1,179 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Xml/QueryXmlDocumentXPath/QueryXmlDocumentXPath.src&file=VB/QueryXmlDocumentXPath.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvUXVlcnlYbWxEb2N1bWVudFhQYXRoLmFzcFx4eF9feHhfeHhfeF9feA==b2e712cd" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/QueryXmlDocumentXPath.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../howto/samples/xml/queryxmldocumentxpath/queryxmldocumentxpathcssource.htm'>QueryXmlDocumentXPath.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../howto/samples/xml/queryxmldocumentxpath/vb/queryxmldocumentxpathvbsource.htm'>VB/QueryXmlDocumentXPath.vb</a> &nbsp;&nbsp<a href='../../../../../howto/samples/xml/queryxmldocumentxpath/vb/queryxmldocumentxpathaspxsource.htm'>VB/QueryXmlDocumentXPath.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>XML data: </b></td>
+        <td><a href='../../../../../howto/samples/xml/queryxmldocumentxpath/booksxmlsource.htm'>books.xml</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Import Namespace="System" %>
+<%@ Import Namespace="System.IO" %>
+<%@ Assembly Name="System.Xml" %>
+<%@ Import Namespace="System.Xml" %>
+
+<script language="VB" runat="server">
+Public Class XmlXPathSample	
+
+	Private m_Document As String = ""
+	
+	Public Function Start(args As String()) As String
+	
+		Dim xmldocument As XmlDocument
+		Dim navigator As DocumentNavigator
+		Dim writer As StringWriter 
+		
+		m_Document = args(0)
+		writer = new StringWriter()
+		Console.SetOut(writer)
+
+        xmldocument = new XmlDocument()
+        xmldocument.Load (m_Document)
+        navigator = new DocumentNavigator(xmldocument)
+
+		' Perform the query
+        XPathQuery(navigator, args(1))
+
+		Return(writer.ToString())
+	
+	End Function
+	
+    Private Sub XPathQuery(navigator As XmlNavigator , xpathexpr As String)
+    
+        Try
+            ' Save context node position
+            navigator.PushPosition()
+            navigator.Select (xpathexpr)
+            FormatXml(navigator)
+
+            ' Restore context node position
+            navigator.PopPosition()        
+
+        Catch e As Exception
+            Console.WriteLine ("Exception: {0}", e.ToString())
+
+		End Try
+		
+    End Sub
+    
+    Private Sub FormatXml (navigator As XmlNavigator)
+    
+        Do While (navigator.MoveToNextSelected())
+
+            Select Case navigator.NodeType
+				Case XmlNodeType.ProcessingInstruction:
+				    Format (navigator, "ProcessingInstruction")
+				    
+				Case XmlNodeType.DocumentType:
+				    Format (navigator, "DocumentType")
+				    
+				Case XmlNodeType.Document:
+				    Format (navigator, "Document")
+				    
+				Case XmlNodeType.Comment:
+				    Format (navigator, "Comment")
+				    
+				Case XmlNodeType.Element:
+				    Format (navigator, "Element")
+				    
+				Case XmlNodeType.Text:
+				    Format (navigator, "Text")
+				    
+				Case XmlNodeType.Whitespace:
+				    Format (navigator, "Whitespace")
+				    
+            End Select
+        
+        Loop
+        Console.WriteLine()
+    
+    End Sub
+
+    ' Format the output
+    Private Sub Format (navigator As XmlNavigator, NodeType As String)
+    
+        Dim value As String = String.Empty
+        Dim  name As String = String.Empty
+
+        If navigator.HasChildren Then
+            name = navigator.Name
+            navigator.MoveToFirstChild()
+            If navigator.HasValue Then value = navigator.Value
+
+		Else
+            If navigator.HasValue Then
+                value = navigator.Value
+                name = navigator.Name
+			End if
+
+		End If
+        Console.WriteLine(NodeType + "<" + name + ">" + value)
+    
+    End Sub
+
+End Class
+ 
+</script>
+<html>
+<head>
+      	<link rel="stylesheet" href="intro.css">
+</head>
+
+<body style="background-color:f6e4c6">
+
+       	<form action="QueryXmlDocumentXPath.htm" method="post" runat="server">
+       	<font>Input file: </font> 
+        <a href="../../../../../howto/samples/xml/queryxmldocumentxpath/books.xml">books.xml</a>
+	<center>
+	    &nbsp&nbsp<font>XPath Query:</font> <asp:textbox width=200 id="Query" AutoPostBack= "false" Text="descendant::book/price" runat="server"/> 
+		&nbsp&nbsp<asp:button type=submit text="Query" OnClick="SubmitBtn_Click" runat="server"/>
+       	</form>
+	</center>		
+	<table align="center">
+	<tr><th><span>Output From Query...</span></th></tr>
+	<tr><th><span></span></th></tr>
+	<tr><td><h4><xmp id="output" runat="server"/></h4></td></tr>
+	</table>
+
+</body>
+</html>
+
+<script language="VB" runat="server">
+
+Private Sub SubmitBtn_Click(sender As Object, e As EventArgs)
+
+	Dim myXmlXPathSample As XmlXPathSample
+	Dim args As String() = {Server.MapPath("books.xml"), Query.Text}
+	
+	myXmlXPathSample= new XmlXPathSample()
+	output.InnerHtml = myXmlXPathSample.Start(args)
+
+End Sub
+
+</script>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

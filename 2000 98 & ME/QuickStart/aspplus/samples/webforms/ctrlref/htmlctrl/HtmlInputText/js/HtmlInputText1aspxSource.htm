@@ -1,0 +1,75 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlref/htmlctrl/HtmlInputText/HtmlInputText1.src&file=JS%5CHtmlInputText1.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfSlNcXEh0bWxJbnB1dFRlXHh0MS5hc3BceHhfX3h4X3h4X3hfX3g=b7e14998" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">JS\HtmlInputText1.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../../aspplus/samples/webforms/ctrlref/htmlctrl/htmlinputtext/htmlinputtext1aspxsource.htm'>HtmlInputText1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../../aspplus/samples/webforms/ctrlref/htmlctrl/htmlinputtext/vb/htmlinputtext1aspxsource.htm'>VB\HtmlInputText1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../../../../aspplus/samples/webforms/ctrlref/htmlctrl/htmlinputtext/js/htmlinputtext1aspxsource.htm'>JS\HtmlInputText1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><html>
+<head>
+
+    <script language="JScript" runat="server">
+
+       function SubmitBtn_Click(Source:Object, e:EventArgs) : void {
+
+         if (Password.Value == "ASP.NET")
+            Span1.InnerHtml="Password correct";
+         else
+            Span1.InnerHtml="That password is not correct";
+       }
+
+    </script>
+
+</head>
+<body>
+
+    <h3><font face="Verdana">Text and Password HtmlInputText Example</font></h3>
+
+    <form runat=server>
+
+        Enter Name: <input id="Name" type=text size=40 runat=server>
+
+        <p>
+
+        Enter Password: <input id="Password" type=password size=40 runat=server> &nbsp;(pssst! it's "ASP.NET")
+
+        <p>
+        <input type=submit value="Enter" OnServerClick="SubmitBtn_Click" runat=server>
+
+        <p>
+        <span id="Span1" style="color:red" runat=server></span>
+
+    </form>
+
+</body>
+</html>
+
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

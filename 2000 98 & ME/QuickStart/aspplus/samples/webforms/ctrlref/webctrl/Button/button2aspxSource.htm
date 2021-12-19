@@ -1,0 +1,125 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlref/webctrl/Button/button2.src&file=button2.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfYnV0dG9uMi5hc3BceHhfX3h4X3h4X3hfX3g=0dcb4b87" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">button2.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlref/webctrl/button/button2aspxsource.htm'>button2.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlref/webctrl/button/vb/button2aspxsource.htm'>VB\button2.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><html>
+<head>
+    <script language="C#" runat="server">
+
+        void Page_Load(Object Sender, EventArgs e) {
+        
+            if (!Page.IsPostBack) {
+            
+                ArrayList values = new ArrayList();
+
+                values.Add(new PositionData("Microsoft", "Msft", "150 shares"));
+                values.Add(new PositionData("Intel", "Intc", "25 shares"));
+                values.Add(new PositionData("Dell", "Dell", "115 shares"));
+
+                repeater1.DataSource = values;
+                repeater1.DataBind();
+            }
+        }
+
+        void Repeater1_ItemCommand(object sender, RepeaterCommandEventArgs e) {
+                         
+            lblResult.Text = "<u>Command</u> is: <b>" + e.CommandName + "</b>, <u>CommandArgument</u> is: <b>" + e.CommandArgument + "</b>";
+        }
+
+        public class PositionData {
+
+            private string name;
+            private string ticker;
+            private string shares;
+
+            public PositionData(string name, string ticker, string shares) {
+                this.name = name;
+                this.ticker = ticker;
+                this.shares = shares;
+            }
+
+            public string Name {
+                get {
+                    return name;
+                }
+            }
+
+            public string Ticker {
+                get {
+                    return ticker;
+                }
+            }
+
+            public string Shares {
+                get {
+                    return shares;
+                }
+            }
+        }
+        
+    </script>
+
+</head>
+<body>
+
+    <h3><font face="Verdana">Bubbling Button Clicks Within a List</font></h3>
+    <p></p>
+
+    <form runat=server>
+      <font face="Verdana" size="-1">
+        
+        <asp:Repeater id=repeater1 onitemcommand="Repeater1_ItemCommand" runat="server">
+
+            <template name="ItemTemplate">
+                <asp:Button id=btnBuy Text="Buy" CommandName="buy" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "Ticker") %>' runat="server" />
+                    
+                &nbsp;&nbsp;
+
+                <asp:Button id=btnSell Text="Sell" CommandName="sell" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "Shares") %>' runat="server" />
+                
+                &nbsp;&nbsp;
+
+                <asp:Label id=lblCompany Text='<%# DataBinder.Eval(Container.DataItem, "Name") %>' Font-Bold="true" runat=server />
+
+                <p>
+
+            </template>
+            
+        </asp:Repeater>
+               
+        <asp:Label id=lblResult runat="server" />
+        
+      </font>
+    </form>
+
+</body>
+</html>
+
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

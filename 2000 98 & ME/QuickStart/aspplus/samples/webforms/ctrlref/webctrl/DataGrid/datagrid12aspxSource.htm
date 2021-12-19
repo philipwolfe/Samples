@@ -1,0 +1,134 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlref/webctrl/DataGrid/datagrid12.src&file=datagrid12.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfZGF0YWdyaWQxMi5hc3BceHhfX3h4X3h4X3hfX3g=60416abe" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">datagrid12.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlref/webctrl/datagrid/datagrid12aspxsource.htm'>datagrid12.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlref/webctrl/datagrid/vb/datagrid12aspxsource.htm'>VB\datagrid12.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Import Namespace="System.Data" %>
+
+<html>
+<script language="C#" runat="server">
+
+    int startIndex;
+
+    ICollection CreateDataSource() {
+        DataTable dt = new DataTable();
+        DataRow dr;
+
+        dt.Columns.Add(new DataColumn("IntegerValue", typeof(Int32)));
+        dt.Columns.Add(new DataColumn("StringValue", typeof(string)));
+        dt.Columns.Add(new DataColumn("DateTimeValue", typeof(string)));
+        dt.Columns.Add(new DataColumn("BoolValue", typeof(bool)));
+
+        //"query" should return one page of data, beginning at the start index
+        for (int i = startIndex; i < startIndex+MyDataGrid.PageSize; i++) {
+            dr = dt.NewRow();
+
+            dr[0] = i;
+            dr[1] = "Item " + Int32.ToString(i);
+            dr[2] = DateTime.Now.ToShortDateString();
+            dr[3] = (i % 2 != 0) ? true : false;
+
+            dt.Rows.Add(dr);
+        }
+
+        DataView dv = new DataView(dt);
+        return dv;
+    }
+
+    void Page_Load(Object sender, EventArgs E ) {
+        if (!IsPostBack) {
+            startIndex=0;
+            MyDataGrid.VirtualItemCount=200;
+        }
+        BindGrid();
+    }
+
+    void MyDataGrid_Page(Object sender, DataGridPageChangedEventArgs e) {
+        startIndex=(MyDataGrid.CurrentPageIndex*MyDataGrid.PageSize);
+        BindGrid();
+    }
+
+    void BindGrid() {
+        MyDataGrid.DataSource = CreateDataSource();
+        MyDataGrid.DataBind();
+        ShowStats();
+    }
+
+    void ShowStats() {
+        lblEnabled.Text = "AllowPaging is " + MyDataGrid.AllowPaging;
+        lblCustom.Text = "AllowCustomPaging is " + MyDataGrid.AllowCustomPaging;
+        lblCurrentIndex.Text = "CurrentPageIndex is " + MyDataGrid.CurrentPageIndex;
+        lblPageCount.Text = "PageCount is " + MyDataGrid.PageCount;
+        lblVirtual.Text = "VirtualItemCount is " + MyDataGrid.VirtualItemCount;
+        lblPageSize.Text = "PageSize is " + MyDataGrid.PageSize;
+    }
+
+
+</script>
+
+<body>
+
+    <h3><font face="Verdana">Custom Paging with DataGrid</font></h3>
+
+    <form runat=server>
+
+      <ASP:DataGrid id="MyDataGrid" runat="server"
+        AllowPaging="True"
+        AllowCustomPaging="True"
+        PageSize="10"
+        PagerStyle-Mode="NumericPages"
+        PagerStyle-HorizontalAlign="Right"
+        OnPageIndexChanged="MyDataGrid_Page"
+        BorderColor="black"
+        BorderWidth="1"
+        GridLines="Both"
+        CellPadding="3"
+        CellSpacing="0"
+        Font-Name="Verdana"
+        Font-Size="8pt"
+        HeaderStyle-BackColor="#aaaadd"
+        AlternatingItemStyle-BackColor="#eeeeee"
+        />
+
+      <p>
+      <table bgcolor="#eeeeee" cellpadding="6"><tr><td nowrap><font face="Verdana" size="-2">
+
+        <asp:Label id="lblEnabled" runat="server" /><br>
+        <asp:Label id="lblCurrentIndex" runat="server" /><br>
+        <asp:Label id="lblPageCount" runat="server" /><br>
+        <hr noshade color="#cccccc">
+        <asp:Label id="lblCustom" runat="server" /><br>
+        <asp:Label id="lblPageSize" runat="server" /><br>
+        <asp:Label id="lblVirtual" runat="server" />
+
+      </font></td></tr></table>
+  </form>
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

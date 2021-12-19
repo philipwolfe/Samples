@@ -1,0 +1,113 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/apps/cookies1.src&file=Cookies1/Cookies1.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfQ29va2llczEvQ29va2llczEuYXNwXHh4X194eF94eF94X1941ff091f1" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">Cookies1/Cookies1.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../aspplus/samples/apps/cookies1/cookies1aspxsource.htm'>Cookies1/Cookies1.htm</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/apps/cookies1/customizeaspxsource.htm'>Cookies1/Customize.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../aspplus/samples/apps/vb/cookies1/cookies1aspxsource.htm'>VB/Cookies1/Cookies1.htm</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/apps/vb/cookies1/customizeaspxsource.htm'>VB/Cookies1/Customize.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><html>
+
+  <script language="C#" runat="server">
+
+      void Page_Load(Object sender, EventArgs E) {
+      
+        if (Request.Cookies["preferences1"] == null) {
+        
+          HttpCookie cookie = new HttpCookie("preferences1");
+          cookie.Values.Add("ForeColor","black");
+          cookie.Values.Add("BackColor","beige");
+          cookie.Values.Add("LinkColor","blue");
+          cookie.Values.Add("FontSize","8pt");
+          cookie.Values.Add("FontName","Verdana");
+          Response.AppendCookie(cookie);
+        }
+      }
+
+      protected String GetStyle(String key) {
+      
+        HttpCookie cookie = Request.Cookies["preferences1"];
+     
+        if (cookie != null) {
+        
+          switch (key) {
+          
+            case "ForeColor" : 
+              return cookie.Values["ForeColor"]; 
+              break;
+              
+            case "BackColor" : 
+              return cookie.Values["BackColor"]; 
+              break;
+              
+            case "LinkColor" : 
+              return cookie.Values["LinkColor"]; 
+              break;
+              
+            case "FontSize" : 
+              return cookie.Values["FontSize"]; 
+              break;
+              
+            case "FontName" : 
+              return cookie.Values["FontName"]; 
+              break;
+          }
+        }
+        
+        return "";
+      }
+
+  </script>
+
+  <style>
+
+    body {
+      font: <%=GetStyle("FontSize")%> <%=GetStyle("FontName")%>;
+      background-color: <%=GetStyle("BackColor")%>;
+    }
+
+    a { color: <%=GetStyle("LinkColor")%> }
+
+  </style>
+
+  <body style="color:<%=GetStyle("ForeColor")%>">
+
+    <h3><font face="Verdana">Storing Volatile Data with Client-Side Cookies</font></h3>
+
+    <b><a href="customize.htm">Customize This Page</a></b><p>
+
+    Imagine some content here ...<br>
+    Imagine some content here ...<br>
+    Imagine some content here ...<br>
+    Imagine some content here ...<br>
+    Imagine some content here ...<br>
+    Imagine some content here ...<br>
+    Imagine some content here ...<br>
+    Imagine some content here ...<br>
+
+  </body>
+  
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

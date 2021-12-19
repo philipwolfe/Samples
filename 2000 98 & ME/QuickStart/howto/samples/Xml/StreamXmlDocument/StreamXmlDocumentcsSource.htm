@@ -1,0 +1,149 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Xml/StreamXmlDocument/StreamXmlDocument.src&file=StreamXmlDocument.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfU3RyZWFtWG1sRG9jdW1lbnQuY3N4X194eF94eF94X19451f8abb6" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">StreamXmlDocument.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../howto/samples/xml/streamxmldocument/streamxmldocumentcssource.htm'>StreamXmlDocument.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../howto/samples/xml/streamxmldocument/vb/streamxmldocumentvbsource.htm'>VB/StreamXmlDocument.vb</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>XML data: </b></td>
+        <td><a href='../../../../howto/samples/xml/streamxmldocument/booksxmlsource.htm'>books.xml</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>XML Stylesheet: </b></td>
+        <td><a href='../../../../howto/samples/xml/streamxmldocument/identityxslsource.htm'>identity.xsl</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>/* Copyright (c) 2000, Microsoft Corporation. All Rights Reserved.*/
+
+namespace HowTo.Samples.XML
+{
+
+using System;
+using System.IO;
+using System.Xml;
+using System.Xml.Xsl;    
+
+public class XmlDocumentSample
+{
+    private const String m_Document = "books.xml";
+    private const String m_Stylesheet = "identity.xsl";
+
+    public static void Main()
+    {
+        XmlDocumentSample xmldocument = new XmlDocumentSample();
+    }
+
+    public XmlDocumentSample()
+    {
+        XmlReader docreader = null;
+
+        try
+        {
+            // Load the XML from file
+            Console.WriteLine ("Loading file {0} ...", m_Document);
+
+            XmlDataDocument xmldocument = new XmlDataDocument();
+            xmldocument.Load (m_Document);
+
+            Console.WriteLine ("XmlDataDocument loaded with XML data successfully ...\r\n");
+
+            // The use of an XslTransform is a work-around for getting an XmlReader from XmlDataDocument
+            // until DataDocumentReader is implemented.
+            // DataDocumentReader docreader = DataDocumentReader(xmldocument);
+
+            Console.WriteLine ("Reading XML ...\r\n");
+
+            XslTransform   xsltransform = new XslTransform();
+            xsltransform.Load(m_Stylesheet);
+            docreader = xsltransform.Transform(new DataDocumentNavigator(xmldocument), null);
+            FormatXml (docreader);
+        }
+
+        catch (Exception e)
+        {
+            Console.WriteLine ("Exception: {0}", e.ToString());
+        }
+
+        finally
+        {
+            // Close the reader
+            if (docreader != null)
+                docreader.Close();
+        }
+    }
+
+    private static void FormatXml (XmlReader reader)
+    {
+        while (reader.Read())
+        {
+            switch (reader.NodeType)
+            {
+            case XmlNodeType.ProcessingInstruction:
+                Format (reader, "ProcessingInstruction");
+                break;
+            case XmlNodeType.DocumentType:
+                Format (reader, "DocumentType");
+                break;
+            case XmlNodeType.Document:
+                Format (reader, "Document");
+                break;
+            case XmlNodeType.Comment:
+                Format (reader, "Comment");
+                break;
+            case XmlNodeType.Element:
+                Format (reader, "Element");
+				while(reader.MoveToNextAttribute())
+                {
+                    Format (reader, "Attribute");
+				}
+                break;
+            case XmlNodeType.Text:
+                Format (reader, "Text");
+                break;
+            case XmlNodeType.Whitespace:
+                Format (reader, "Whitespace");
+                break;
+            }
+        }
+    }
+
+    // Format the output
+    private static void Format(XmlReader reader, String NodeType)
+    {
+        // Format the output
+        Console.Write(reader.Depth + " ");
+        Console.Write(reader.AttributeCount + " ");
+        for (int i=0; i < reader.Depth; i++)
+        { 
+            Console.Write('\t');
+        }
+
+        Console.Write(NodeType + "<" + reader.Name + ">" + reader.Value);
+        Console.WriteLine();
+    }
+} // End class XmlDocumentSample
+} // End namespace HowTo.Samples.XML
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

@@ -1,0 +1,78 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlref/htmlctrl/HtmlInputHidden/HtmlInputHidden1.src&file=VB%5CHtmlInputHidden1.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkJcXEh0bWxJbnB1dEhpZGRlbjEuYXNwXHh4X194eF94eF94X1945c61ac19" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB\HtmlInputHidden1.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../../aspplus/samples/webforms/ctrlref/htmlctrl/htmlinputhidden/htmlinputhidden1aspxsource.htm'>HtmlInputHidden1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../../aspplus/samples/webforms/ctrlref/htmlctrl/htmlinputhidden/vb/htmlinputhidden1aspxsource.htm'>VB\HtmlInputHidden1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../../../../aspplus/samples/webforms/ctrlref/htmlctrl/htmlinputhidden/js/htmlinputhidden1aspxsource.htm'>JS\HtmlInputHidden1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><html>
+<head>
+
+    <script language="VB" runat="server">
+
+       Sub Page_Load(sender As Object, e As EventArgs) 
+
+          If IsPostBack Then
+             Span1.InnerHtml="Hidden value: <b>" & HiddenValue.Value & "</b>"
+          End If
+       End Sub
+
+       Sub SubmitBtn_Click(sender As Object, e As EventArgs) 
+
+          HiddenValue.Value = StringContents.Value
+       End Sub
+
+    </script>
+
+</head>
+
+<body>
+
+    <h3><font face="Verdana">Simple HtmlInputHidden Sample</font></h3>
+
+    <form runat=server>
+
+        <input id="HiddenValue" type=hidden value="Initial Value" runat=server>
+
+        Enter a string: <input id="StringContents" type=text size=40 runat=server>
+
+        <p>
+        <input type=submit value="Enter" OnServerClick="SubmitBtn_Click" runat=server>
+
+        <p>
+        <span id=Span1 runat=server>This label will display the previously entered string.</span>
+
+    </form>
+
+</body>
+</html>
+
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

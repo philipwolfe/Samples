@@ -1,0 +1,80 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Remoting/singleton/server.src&file=client.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfY2xpZW50LmNzeF9feHhfeHhfeF9feA==f7a2e23c" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">client.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../howto/samples/remoting/singleton/objectcssource.htm'>object.cs</a> &nbsp;&nbsp<a href='../../../../howto/samples/remoting/singleton/servercssource.htm'>server.cs</a> &nbsp;&nbsp<a href='../../../../howto/samples/remoting/singleton/clientcssource.htm'>client.cs</a> &nbsp;&nbsp<a href='../../../../howto/samples/remoting/singleton/makefilesource.htm'>makefile</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../howto/samples/remoting/singleton/vb/objectvbsource.htm'>VB/object.vb</a> &nbsp;&nbsp<a href='../../../../howto/samples/remoting/singleton/vb/servervbsource.htm'>VB/server.vb</a> &nbsp;&nbsp<a href='../../../../howto/samples/remoting/singleton/vb/clientvbsource.htm'>VB/client.vb</a> &nbsp;&nbsp<a href='../../../../howto/samples/remoting/singleton/vb/makefilesource.htm'>VB/makefile</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>using System;
+using System.Threading;
+using System.Runtime.Remoting;
+using System.Runtime.Remoting.Channels.HTTP;
+using System.Runtime.Remoting.Channels.TCP;
+
+namespace RemotingSamples {
+  public class Client {
+    
+    public bool init = false;
+    public static Thread thread1 = null;
+    public static Thread thread2 = null;
+    
+    public static int Main(string [] args)
+    {
+      Client c = new Client();  
+      thread1 = new Thread(new ThreadStart(c.RunMe));
+      thread2 = new Thread(new ThreadStart(c.RunMe)); 
+      thread1.Start();
+      thread2.Start();
+      return 0;
+    } 
+    
+    
+    public void RunMe()
+    {
+      if (Thread.CurrentThread == thread1) {
+        HTTPChannel chan = new HTTPChannel();
+        ChannelServices.RegisterChannel(chan);
+        Console.WriteLine("I am thread one");
+        HelloServer obj = (HelloServer)Activator.GetObject(typeof(HelloServer), "http://localhost:8086/SayHello");
+        for (int i = 0; i < 1000; i++) {
+          Console.WriteLine(obj.CountMe() + " - from thread 1 "); 
+          Thread.Sleep(0);
+        }  
+      }  
+      else if (Thread.CurrentThread == thread2) {
+        TCPChannel chan = new TCPChannel();
+        ChannelServices.RegisterChannel(chan);
+        Console.WriteLine("I am thread two");
+        HelloServer obj = (HelloServer)Activator.GetObject(typeof(HelloServer), "tcp://localhost:8085/SayHello");
+        for (int i = 0; i < 1000; i++) {
+          Console.WriteLine(obj.CountMe() + " - from thread 2 "); 
+          Thread.Sleep(0);
+        }  
+      }  
+    }
+  }
+}
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

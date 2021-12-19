@@ -1,0 +1,56 @@
+<HTML>
+<HEAD>
+<!--<LINK REL="Configuration" HREF="http://localhost/karimira/rothira.cfg" /> -->
+<META NAME="GENERATOR" Content="Microsoft Visual Studio 6.0">
+<TITLE></TITLE>
+</HEAD>
+<SCRIPT LANGUAGE=javascript>
+<!--
+function Init()
+{
+	txtName.value = oAnalyzer.Name;
+	txtAGI.value  = oAnalyzer.AGI;
+	
+	var status = oAnalyzer.FilingStatus;
+	
+	if (status == 0)
+		txtFilingStatus.value = "Married Filing Jointly";
+	else if (status == 1)
+		txtFilingStatus.value = "Married Filing Separately";
+	else
+		txtFilingStatus.value = "Single";	
+		
+	txtAmount.value = oAnalyzer.GetAmount();
+	
+	var canConvert = oAnalyzer.GetCanConvert();		
+
+	if (canConvert)
+		txtCanConvert.value = "are";
+	else
+		txtCanConvert.value = "are not";	
+}
+
+//-->
+</SCRIPT>
+
+<BODY onload=Init()>
+<OBJECT classid=http:analyzer.dll#Samples.Assemblies.Download.Analyzer.CRothAnalyzer id=oAnalyzer></OBJECT>
+
+<P align=center><FONT color=darkblue size=6>Roth IRA Eligibility Calculator 
+- Results</FONT></P>
+<P><STRONG>Name:&nbsp; </STRONG><INPUT id=txtName name=txtName></P>
+<P><STRONG>Filing Status: <INPUT 
+id=txtFilingStatus name=txtFilingStatus>  
+ </STRONG></P>
+<P><STRONG>Adjust Gross Income:&nbsp; </STRONG><INPUT id=txtAGI name=txtAGI></P>
+<P>&nbsp;</P>
+<P>You are eligible to contribute <INPUT id=txtAmount 
+name=txtAmount style="HEIGHT: 22px; WIDTH: 64px">dollars to a Roth 
+in the current tax year.</P>
+<P>You <INPUT id=txtCanConvert name=txtCanConvert 
+style="HEIGHT: 22px; WIDTH: 62px">   eligible to convert your existing IRA to a 
+Roth this year.</P>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,61 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/controls/controls2.src&file=controls2.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfY29udHJvbHMyLmFzcFx4eF9feHhfeHhfeF9feA==8e5ccd9f" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">controls2.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/controls/controls2aspxsource.htm'>controls2.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/controls/vb/controls2aspxsource.htm'>VB/controls2.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/controls/js/controls2aspxsource.htm'>JS/controls2.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><html>
+
+    <script language="C#" runat="server">
+
+        void Page_Load(Object Src, EventArgs E) {
+            Message.Text = "You last accessed this page at: " + DateTime.Now;
+        }
+
+    </script>
+
+    <body>
+
+       <h3><font face="Verdana">Manipulating Server Controls</font></h3>
+
+       This sample demonstrates how to manipulate the &lt;asp:label&gt; server control within 
+       the Page_Load event to output the current time.
+
+       <p>
+
+       <hr>
+
+       <asp:label id="Message" font-size="24" font-bold="true" runat=server/>
+
+    </body>
+
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

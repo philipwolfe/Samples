@@ -1,0 +1,79 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/busobjs/HelloObj.src&file=HelloObj.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfSGVsbG9PYmouYXNwXHh4X194eF94eF94X1947a42e621" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">HelloObj.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/busobjs/helloobjaspxsource.htm'>HelloObj.htm</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/busobjs/helloobjcssource.htm'>HelloObj.cs</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/busobjs/configwebsource.htm'>config.web</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/busobjs/makesamplebatsource.htm'>makesample.bat</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/busobjs/vb/helloobjaspxsource.htm'>VB/HelloObj.htm</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/busobjs/vb/helloobjvbsource.htm'>VB/HelloObj.vb</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/busobjs/vb/configwebsource.htm'>VB/config.web</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/busobjs/vb/makesamplebatsource.htm'>VB/makesample.bat</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Import Namespace="HelloWorld" %>
+
+<html>
+
+<style>
+
+  div 
+  { 
+    font: 8pt verdana;
+    background-color:cccccc;
+    border-color:black;
+    border-width:1;
+    border-style:solid;
+    padding:10,10,10,10; 
+  }
+
+</style>
+
+<script language="C#" runat="server">
+
+  public void Page_Load(Object sender, EventArgs E)
+  {
+    HelloObj comp = new HelloObj();
+
+    Message.InnerHtml += comp.SayHello() + "<p>";
+
+    comp.FirstName = "Microsoft .NET Framework";
+    Message.InnerHtml += comp.SayHello() + "<p>";
+
+    comp.FirstName = "ASP.NET";
+    Message.InnerHtml += comp.SayHello() + "<p>";
+
+    comp.FirstName = "World!!!";
+    Message.InnerHtml += comp.SayHello();
+  }
+
+</script>
+
+<body style="font: 10pt verdana">
+
+  <h3>A Simple Managed Component</h3>
+
+  <h5>Object Output: </h5>
+
+  <div id="Message" runat="server"/>
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

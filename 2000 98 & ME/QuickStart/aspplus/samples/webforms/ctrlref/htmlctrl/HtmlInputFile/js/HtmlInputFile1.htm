@@ -1,0 +1,44 @@
+<html>
+<head>
+
+    
+
+</head>
+<body>
+
+    <h3><font face="Verdana">HtmlInputFile Sample</font></h3>
+
+    <form name="ctrl2" method="post" action="HtmlInputFile1.htm" id="ctrl2" enctype="multipart/form-data">
+<input type="hidden" name="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" value="YTB6LTE2NTY4NjU0MzdfX194b1788874" />
+
+<script language="javascript">
+<!--
+	function __doPostBack(eventTarget, eventArgument) {
+		var theform = document.ctrl2
+		theform.__EVENTTARGET.value = eventTarget
+		theform.__EVENTARGUMENT.value = eventArgument
+		theform.submit()
+	}
+// -->
+</script>
+
+
+        Select File to Upload: <input name="File1" id="File1" type="file" />
+
+        <p>
+        Save as filename (no path): <input name="Text1" id="Text1" type="text" />
+
+        <p>
+        <span id="Span1" style="font: 8pt verdana;"></span>
+
+        <p>
+        <input name="Button1" id="Button1" type="button" value="Upload" / onclick="javascript:__doPostBack('Button1','')">
+
+    </form>
+
+</body>
+</html>
+
+

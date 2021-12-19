@@ -1,0 +1,61 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Xml/DataSetMapXSDSchema/DataSetMapXSDSchema.src&file=books.xsd" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfYm9va3MuXHhzZHhfX3h4X3h4X3hfX3g=f4007add" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">books.xsd</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../howto/samples/xml/datasetmapxsdschema/datasetmapxsdschemacssource.htm'>DataSetMapXSDSchema.cs</a> &nbsp;&nbsp<a href='../../../../howto/samples/xml/datasetmapxsdschema/datasetmapxsdschemaaspxsource.htm'>DataSetMapXSDSchema.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../howto/samples/xml/datasetmapxsdschema/vb/datasetmapxsdschemavbsource.htm'>VB/DataSetMapXSDSchema.vb</a> &nbsp;&nbsp<a href='../../../../howto/samples/xml/datasetmapxsdschema/vb/datasetmapxsdschemaaspxsource.htm'>VB/DataSetMapXSDSchema.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>XML schema: </b></td>
+        <td><a href='../../../../howto/samples/xml/datasetmapxsdschema/booksxsdsource.htm'>books.xsd</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><schema id="" targetNamespace="" xmlns="http://www.w3.org/1999/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <element name="book">
+    <complexType content="elementOnly">
+      <all>
+        <element name="title" minOccurs="0" type="string"/>
+        <element name="author">
+          <complexType content="elementOnly">
+            <all>
+              <element name="first-name" minOccurs="0" type="string"/>
+              <element name="last-name" minOccurs="0" type="string"/>
+            </all>
+          </complexType>
+        </element>
+        <element name="price" minOccurs="0" type="string"/>
+      </all>
+      <attribute name="genre" type="string"/>
+      <attribute name="publicationdate" type="string"/>
+      <attribute name="ISBN" type="string"/>
+    </complexType>
+  </element>
+  <annotation>
+    <appinfo></appinfo>
+  </annotation>
+</schema>
+
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

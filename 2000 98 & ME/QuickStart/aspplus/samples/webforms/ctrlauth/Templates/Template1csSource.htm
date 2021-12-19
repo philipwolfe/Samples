@@ -1,0 +1,79 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlauth/Templates/Template1.src&file=Template1.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVGVtcGxhdGUxLmNzeF9feHhfeHhfeF9feA==3a0adede" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">Template1.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/ctrlauth/templates/template1aspxsource.htm'>Template1.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/ctrlauth/templates/template1cssource.htm'>Template1.cs</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/ctrlauth/templates/makesamplebatsource.htm'>makesample.bat</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/ctrlauth/templates/vb/template1aspxsource.htm'>VB/Template1.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/ctrlauth/templates/vb/template1vbsource.htm'>VB/Template1.vb</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/ctrlauth/templates/vb/makesamplebatsource.htm'>VB/makesample.bat</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>using System;
+using System.Web;
+using System.Web.UI;
+
+namespace TemplateControlSamples {
+
+    public class Template1 : Control, INamingContainer {
+
+        private ITemplate  _messageTemplate = null;      
+        private String     _message         = null;   
+
+        public String Message {
+
+           get {
+              return _message;
+           }
+           set {
+              _message = value;
+           }
+        }
+
+        [
+            Template(typeof(Template1))
+        ]
+        public ITemplate MessageTemplate {
+
+           get {
+              return _messageTemplate;
+           }
+           set {
+              _messageTemplate = value;
+           }
+        }
+
+        protected override void CreateChildControls() {
+
+           // If a template has been specified, use it to create children.
+           // Otherwise, create a single literalcontrol with message value
+
+           if (MessageTemplate != null) {
+              MessageTemplate.Initialize(this);
+           }
+           else {
+              this.Controls.Add(new LiteralControl(this.Message));
+           }
+        }
+    }    
+}
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

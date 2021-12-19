@@ -1,0 +1,384 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/winforms/samples/VB/Data/MasterDetails/MasterDetails.src&file=CustomersAndOrdersWebService.asmx" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfQ3VzdG9tZXJzQW5kT3JkZXJzV2ViU2VydmljZS5hc21ceHhfX3h4X3h4X3hfX3g=70c576a4" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">CustomersAndOrdersWebService.asmx</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>Form: </b></td>
+        <td><a href='../../../../../winforms/samples/vb/data/masterdetails/customersformvbsource.htm'>CustomersForm.vb</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>DataSet: </b></td>
+        <td><a href='../../../../../winforms/samples/vb/data/masterdetails/customersandordersdatasetvbsource.htm'>CustomersAndOrdersDataSet.vb</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Schema: </b></td>
+        <td><a href='../../../../../winforms/samples/vb/data/masterdetails/customersandordersdatasetxsdsource.htm'>CustomersAndOrdersDataSet.xsd</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>WebService: </b></td>
+        <td><a href='../../../../../winforms/samples/vb/data/masterdetails/customersandorderswebserviceasmxsource.htm'>CustomersAndOrdersWebService.asmx</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>WebServiceDefinition: </b></td>
+        <td><a href='../../../../../winforms/samples/vb/data/masterdetails/customersandorderswebservicesdlsource.htm'>CustomersAndOrdersWebService.SDL</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ WebService Language="VB" Class=CustomersAndOrders %>
+
+Imports System
+Imports System.IO
+Imports System.Web.Services
+Imports System.Data
+Imports System.Data.SQL
+
+Imports Microsoft.Samples.WinForms.VB.MasterDetails.Data 
+
+Public Class CustomersAndOrders
+        Inherits WebService 
+
+     'Retrieve Customers and Orders
+     Public Function <WebMethod()> GetCustomersAndOrders() As DataSet
+         Dim customersAndOrdersDataSet1 As New CustomersAndOrdersDataSet
+         Dim con As SQLConnection = new SQLConnection("server=localhost;uid=sa;pwd=;database=northwind")
+         Dim cmdCustomers As SQLDataSetCommand  = new SQLDataSetCommand("Select * from Customers", con)
+         Dim cmdOrders As SQLDataSetCommand = new SQLDataSetCommand("Select * from Orders", con)
+         cmdCustomers.FillDataSet(customersAndOrdersDataSet1, "Customers")
+         cmdOrders.FillDataSet(customersAndOrdersDataSet1, "Orders")
+         return customersAndOrdersDataSet1 
+     End Function
+
+    'Push Customers and Orders changes back into the database
+    Public Function <WebMethod()> UpdateCustomersAndOrders(ds as DataSet) As DataSet
+          
+        Dim con As SQLConnection = new SQLConnection("server=localhost;uid=sa;pwd=;database=northwind")
+       
+        'We want the update as part of a single transaction so open the connection
+        'first and pass it to the updates
+        con.Open
+        con.BeginTransaction
+        Try 
+           
+           UpdateCustomers(ds, con) 
+           UpdateOrders(ds, con) 
+
+           'Don't commit if errors occured
+           If Not (ds.HasErrors) Then
+               'Commit the txn
+               con.CommitTransaction
+           
+               'Commit the changes to the dataset
+               ds.AcceptChanges
+           Else
+               'Dataset has errors - roll back the transaction
+               con.RollbackTransaction
+           End If
+
+        Catch e As Exception
+	       
+           'Roll back the txn if we have a failure
+           con.RollbackTransaction
+           Throw e
+        
+        Finally
+            
+            'Make sure we close the connection no matter what
+            con.Close
+
+        End Try
+        
+        return ds 
+
+    End Function
+
+    'Update Customers
+    Private Sub UpdateCustomers(ds As DataSet, con As SQLConnection) 
+ 
+        Dim insertCustSQL As String = "INSERT INTO [Customers]([CustomerID], [CompanyName], [ContactName], [ContactTitle], [Address], [City], [Region], [PostalCode], [Country], [Phone], [Fax]) VALUES (@CustomerID, @CompanyName, @ContactName, @ContactTitle, @Address, @City, @Region, @PostalCode, @Country, @Phone, @Fax)"
+        Dim updateCustSQL As String = "UPDATE [Customers] SET [CustomerID] = @CustomerID, [CompanyName] = @CompanyName, [ContactName] = @ContactName, [ContactTitle] = @ContactTitle, [Address] = @Address, [City] = @City, [Region] = @Region, [PostalCode] = @PostalCode, [Country] = @Country, [Phone] = @Phone, [Fax] = @Fax WHERE [CustomerID] = @oldCustomerID "
+        Dim deleteCustSQL As String = "DELETE FROM [Customers] WHERE [CustomerID] = @CustomerID "
+ 
+        'Create the command
+        Dim cmdCustomers As SQLDataSetCommand  = new SQLDataSetCommand("Select * from Customers", con)
+        
+        'Add the insert, update and delete commands
+        cmdCustomers.InsertCommand = new SQLCommand(insertCustSQL, con)
+        buildCustomersInsertParams(cmdCustomers.InsertCommand)
+        cmdCustomers.UpdateCommand = new SQLCommand(updateCustSQL, con)
+        buildCustomersUpdateParams(cmdCustomers.UpdateCommand)
+        cmdCustomers.DeleteCommand = new SQLCommand(deleteCustSQL, con)
+        buildCustomersDeleteParams(cmdCustomers.DeleteCommand)
+ 
+        'Catch the row update commands so that we can deal with errors
+        'cmdCustomers.AddOnRowUpdated(AddressOf Me.CustomersAndOrders_RowUpdated)
+
+         AddHandler cmdCustomers.RowUpdated, new SQLRowUpdatedEventHandler(AddressOf Me.CustomersAndOrders_RowUpdated)
+
+        'Apply the updates
+        cmdCustomers.Update(ds, "Customers")
+ 
+    End Sub
+ 
+ 
+    'Update Orders
+    Private Sub UpdateOrders(ds As DataSet, con As SQLConnection)
+ 
+        Dim insertOrderSQL As String = "INSERT INTO [Orders]([OrderID], [CustomerID], [EmployeeID], [OrderDate], [RequiredDate], [ShippedDate], [ShipVia], [Freight], [ShipName], [ShipAddress], [ShipCity], [ShipRegion], [ShipPostalCode], [ShipCountry]) VALUES (@OrderID, @CustomerID, @EmployeeID, @OrderDate, @RequiredDate, @ShippedDate, @ShipVia, @Freight, @ShipName, @ShipAddress, @ShipCity, @ShipRegion, @ShipPostalCode, @ShipCountry)"
+        
+        'Note this update command causes an error that is displayed in the grid
+        Dim updateOrderSQL As String = "UPDATE [Orders] SET [OrderID] = @OrderID, [CustomerID] = @CustomerID, [EmployeeID] = @EmployeeID, [OrderDate] = @OrderDate, [RequiredDate] = @RequiredDate, [ShippedDate] = @ShippedDate, [ShipVia] = @ShipVia, [Freight] = @Freight, [ShipName] = @ShipName, [ShipAddress] = @ShipAddress, [ShipCity] = @ShipCity, [ShipRegion] = @ShipRegion, [ShipPostalCode] = @ShipPostalCode, [ShipCountry] = @ShipCountry  WHERE [OrderID] = @oldOrderID  "
+ 
+        'This command does not cause an error
+        'Dim updateOrderSQL As String  = "UPDATE [Orders] SET [CustomerID] = @CustomerID, [EmployeeID] = @EmployeeID, [OrderDate] = @OrderDate, [RequiredDate] = @RequiredDate, [ShippedDate] = @ShippedDate, [ShipVia] = @ShipVia, [Freight] = @Freight, [ShipName] = @ShipName, [ShipAddress] = @ShipAddress, [ShipCity] = @ShipCity, [ShipRegion] = @ShipRegion, [ShipPostalCode] = @ShipPostalCode, [ShipCountry] = @ShipCountry  WHERE [OrderID] = @oldOrderID  "
+ 
+        Dim deleteOrderSQL As String = "DELETE FROM [Orders] WHERE [OrderID] = @OrderID "
+ 
+        'Create the command
+        Dim cmdOrders As SQLDataSetCommand = new SQLDataSetCommand("Select * from Orders", con)
+        
+        'Add the insert, update and delete commands
+        cmdOrders.InsertCommand = new SQLCommand(insertOrderSQL, con)
+        buildOrdersInsertParams(cmdOrders.InsertCommand)
+        cmdOrders.UpdateCommand = new SQLCommand(updateOrderSQL, con)
+        buildOrdersUpdateParams(cmdOrders.UpdateCommand)
+        cmdOrders.DeleteCommand = new SQLCommand(deleteOrderSQL, con)
+        buildOrdersDeleteParams(cmdOrders.DeleteCommand)
+ 
+        'Catch the row update commands so that we can deal with errors
+        'cmdOrders.AddOnRowUpdated(AddressOf Me.CustomersAndOrders_RowUpdated)
+
+        AddHandler cmdOrders.RowUpdated, new SQLRowUpdatedEventHandler(AddressOf Me.CustomersAndOrders_RowUpdated)
+ 
+        'Apply the updates
+        cmdOrders.Update(ds, "Orders")
+    End Sub
+ 
+    'Once the row update has been pushed back into the database look for errors
+    Private Sub CustomersAndOrders_RowUpdated(sender As object, rue As SQLRowUpdatedEventArgs) 
+ 
+        If (rue.Status = UpdateStatus.ErrorsOccurred) Then
+             rue.Status = UpdateStatus.Continue 
+             rue.Row.RowError = rue.Errors.Message + " - Deliberate error see WebService for details"
+        Else
+            rue.Row.ClearErrors()
+        End If
+    End Sub 
+     
+    Private Sub buildCustomersUpdateParams(workCommand As SQLCommand) 
+ 
+        Dim workParam As SQLParameter 
+        workParam = workCommand.Parameters.Add(new SQLParameter("@CustomerID", SQLDataType.NChar, 5))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "CustomerID"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@CompanyName", SQLDataType.NVarChar, 40))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "CompanyName"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@ContactName", SQLDataType.NVarChar, 30))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "ContactName"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@ContactTitle", SQLDataType.NVarChar, 30))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "ContactTitle"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@Address", SQLDataType.NVarChar, 60))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "Address"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@City", SQLDataType.NVarChar, 15))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "City"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@Region", SQLDataType.NVarChar, 15))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "Region"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@PostalCode", SQLDataType.NVarChar, 10))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "PostalCode"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@Country", SQLDataType.NVarChar, 15))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "Country"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@Phone", SQLDataType.NVarChar, 24))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "Phone"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@Fax", SQLDataType.NVarChar, 24))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "Fax"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@oldCustomerID", SQLDataType.NChar, 5))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "CustomerID"
+    End Sub
+ 
+    Private Sub buildCustomersInsertParams(workCommand As SQLCommand) 
+ 
+        Dim workParam As SQLParameter 
+        workParam = workCommand.Parameters.Add(new SQLParameter("@CustomerID", SQLDataType.NChar, 5))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "CustomerID"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@CompanyName", SQLDataType.NVarChar, 40))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "CompanyName"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@ContactName", SQLDataType.NVarChar, 30))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "ContactName"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@ContactTitle", SQLDataType.NVarChar, 30))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "ContactTitle"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@Address", SQLDataType.NVarChar, 60))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "Address"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@City", SQLDataType.NVarChar, 15))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "City"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@Region", SQLDataType.NVarChar, 15))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "Region"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@PostalCode", SQLDataType.NVarChar, 10))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "PostalCode"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@Country", SQLDataType.NVarChar, 15))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "Country"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@Phone", SQLDataType.NVarChar, 24))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "Phone"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@Fax", SQLDataType.NVarChar, 24))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "Fax"
+ 
+    End Sub
+ 
+    Private Sub buildCustomersDeleteParams(workCommand As SQLCommand) 
+ 
+        Dim workParam As SQLParameter 
+        workParam = workCommand.Parameters.Add(new SQLParameter("@CustomerID", SQLDataType.NChar, 5))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "CustomerID"
+ 
+    End Sub
+ 
+    Private Sub buildOrdersUpdateParams(workCommand As SQLCommand) 
+ 
+        Dim workParam As SQLParameter 
+        workParam = workCommand.Parameters.Add(new SQLParameter("@OrderID", SQLDataType.Int, 4))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "OrderID"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@CustomerID", SQLDataType.NChar, 5))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "CustomerID"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@EmployeeID", SQLDataType.Int, 4))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "EmployeeID"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@OrderDate", SQLDataType.DateTime, 8))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "OrderDate"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@RequiredDate", SQLDataType.DateTime, 8))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "RequiredDate"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@ShippedDate", SQLDataType.DateTime, 8))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "ShippedDate"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@ShipVia", SQLDataType.Int, 4))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "ShipVia"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@Freight", SQLDataType.Money, 8))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "Freight"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@ShipName", SQLDataType.NVarChar, 40))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "ShipName"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@ShipAddress", SQLDataType.NVarChar, 60))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "ShipAddress"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@ShipCity", SQLDataType.NVarChar, 15))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "ShipCity"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@ShipRegion", SQLDataType.NVarChar, 15))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "ShipRegion"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@ShipPostalCode", SQLDataType.NVarChar, 10))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "ShipPostalCode"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@ShipCountry", SQLDataType.NVarChar, 15))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "ShipCountry"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@oldOrderID", SQLDataType.Int, 4))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "OrderID"
+ 
+    End Sub
+ 
+    Private Sub buildOrdersInsertParams(workCommand As SQLCommand) 
+ 
+        Dim workParam As SQLParameter 
+        workParam = workCommand.Parameters.Add(new SQLParameter("@OrderID", SQLDataType.Int, 4))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "OrderID"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@CustomerID", SQLDataType.NChar, 5))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "CustomerID"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@EmployeeID", SQLDataType.Int, 4))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "EmployeeID"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@OrderDate", SQLDataType.DateTime, 8))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "OrderDate"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@RequiredDate", SQLDataType.DateTime, 8))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "RequiredDate"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@ShippedDate", SQLDataType.DateTime, 8))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "ShippedDate"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@ShipVia", SQLDataType.Int, 4))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "ShipVia"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@Freight", SQLDataType.Money, 8))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "Freight"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@ShipName", SQLDataType.NVarChar, 40))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "ShipName"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@ShipAddress", SQLDataType.NVarChar, 60))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "ShipAddress"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@ShipCity", SQLDataType.NVarChar, 15))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "ShipCity"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@ShipRegion", SQLDataType.NVarChar, 15))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "ShipRegion"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@ShipPostalCode", SQLDataType.NVarChar, 10))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "ShipPostalCode"
+        workParam = workCommand.Parameters.Add(new SQLParameter("@ShipCountry", SQLDataType.NVarChar, 15))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "ShipCountry"
+ 
+    End Sub
+ 
+    Private Sub buildOrdersDeleteParams(workCommand As SQLCommand) 
+ 
+        Dim workParam As SQLParameter 
+        workParam = workCommand.Parameters.Add(new SQLParameter("@OrderID", SQLDataType.Int, 4))
+        workParam.Direction = ParameterDirection.Input
+        workParam.SourceColumn = "OrderID"
+ 
+    End Sub
+
+     
+End Class
+
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

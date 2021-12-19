@@ -1,0 +1,69 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Services/MessageQueue/mqasync/MQAsync.src&file=MQAsync.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfTVFBc3luYy5jc3hfX3h4X3h4X3hfX3g=072db13c" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">MQAsync.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../howto/samples/services/messagequeue/mqasync/mqasynccssource.htm'>MQAsync.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../howto/samples/services/messagequeue/mqasync/vb/mqasyncvbsource.htm'>VB\MQAsync.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>using System;
+using System.Messaging;
+using System.Threading;
+
+public class MQReceive {
+    public static void Main(String[] args)
+    {
+        string appName = Environment.GetCommandLineArgs()[0];
+
+        if ( args.Length != 1 ) {
+            Console.WriteLine("Usage: " + appName +" <queue>");
+            return;
+        }
+
+        string mqPath = ".\\" + args[0];
+
+        if ( !MessageQueue.Exists(mqPath) ) {
+            Console.WriteLine("The queue '" + mqPath + "' does not exist!");
+        }
+        else {
+            MessageQueue mq = new MessageQueue(mqPath);
+            ((XmlMessageFormatter)mq.Formatter).TargetTypeNames = new string[]{"System.String"};
+
+            mq.ReceiveCompleted += new ReceiveCompletedEventHandler(OnReceiveCompleted);
+            mq.BeginReceive();
+        }
+
+        Console.WriteLine("Press Enter to quit the sample");
+        Console.ReadLine();
+    }
+
+    public static void OnReceiveCompleted(Object source, ReceiveAsyncEventArgs asyncResult){
+        MessageQueue mq = (MessageQueue)source;
+        Message m = mq.EndReceive(asyncResult.AsyncResult);
+        Console.WriteLine("Message: " + (string)m.Body);
+        mq.BeginReceive();
+    }
+}
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

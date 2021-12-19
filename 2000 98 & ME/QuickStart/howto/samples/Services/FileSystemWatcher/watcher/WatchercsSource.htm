@@ -1,0 +1,71 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Services/FileSystemWatcher/watcher/watcher.src&file=Watcher.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfV2F0Y2hlci5jc3hfX3h4X3h4X3hfX3g=49075d64" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">Watcher.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../howto/samples/services/filesystemwatcher/watcher/watchercssource.htm'>Watcher.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../howto/samples/services/filesystemwatcher/watcher/vb/watchervbsource.htm'>VB\Watcher.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>using System;
+using System.Diagnostics;
+using System.IO;
+using System.Threading;
+
+public class Watcher
+{
+    public static void Main(String[] args) 
+    {
+        if(args.Length < 1)
+            Console.WriteLine("Usage: Watcher.exe <directory>");
+
+        else {
+            FileSystemWatcher watcher = new FileSystemWatcher();
+            watcher.Path= args[0];
+            watcher.Target = WatcherTarget.File;
+            watcher.ChangedFilter = ChangedFilters.Attributes | ChangedFilters.LastAccess | ChangedFilters.LastWrite | ChangedFilters.Security | ChangedFilters.Size;
+
+            watcher.Changed += new FileSystemEventHandler(OnChanged);
+            watcher.Created += new FileSystemEventHandler(OnChanged);
+            watcher.Deleted += new FileSystemEventHandler(OnChanged);
+            watcher.Renamed += new RenamedEventHandler(OnRenamed);
+
+            watcher.Enabled = true;
+        }
+
+        Console.WriteLine("Press Enter to quit the sample\r\n");
+        Console.ReadLine();
+    }
+
+    public static void OnChanged(object source, FileSystemEventArgs e)
+    {
+        Console.WriteLine("File: {0} {1}", e.FullPath, e.ChangeType.Format());
+    }
+
+    public static void OnRenamed(Object source, RenamedEventArgs e)
+    {
+        Console.WriteLine("File: {0} renamed to {1}", e.OldFullPath, e.FullPath);
+    }
+}
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

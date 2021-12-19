@@ -1,0 +1,154 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/customize/datalist7.src&file=VB/DataList7.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvRGF0YUxpc3Q3LmFzcFx4eF9feHhfeHhfeF9feA==7e018401" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/DataList7.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/customize/datalist7aspxsource.htm'>DataList7.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/customize/headerincsource.htm'>Header.inc</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/customize/footerincsource.htm'>Footer.inc</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/customize/vb/datalist7aspxsource.htm'>VB/DataList7.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/customize/vb/headerincsource.htm'>VB/Header.inc</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/customize/vb/footerincsource.htm'>VB/Footer.inc</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/customize/js/datalist7aspxsource.htm'>JS/DataList7.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/customize/js/headerincsource.htm'>JS/Header.inc</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/customize/js/footerincsource.htm'>JS/Footer.inc</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="System.Data.SQL" %>
+
+<html>
+
+<script language="VB" runat="server">
+
+    Sub PopulateList()
+    
+        Dim DS As DataSet
+        Dim MyConnection As SQLConnection
+        Dim MyCommand As SQLDataSetCommand
+
+        MyConnection = New SQLConnection("server=localhost;uid=sa;pwd=;database=pubs")
+        MyCommand = New SQLDataSetCommand("select * from Titles where type = 'business'", MyConnection)
+
+        DS = New DataSet()
+        MyCommand.FillDataSet(DS, "Titles")
+
+        MyDataList.DataSource = DS.Tables("Titles").DefaultView
+        MyDataList.DataBind()
+    End Sub
+
+    Sub Page_Load(Sender As Object, E As EventArgs)
+    
+        If Not (Page.IsPostBack)
+          PopulateList()
+        End If
+    End Sub
+
+    Sub MyDataList_Edit(Sender As Object, E As DataListCommandEventArgs)
+    
+        MyDataList.EditItemIndex = CInt(e.Item.ItemIndex)
+        PopulateList()
+    End Sub
+
+    Sub MyDataList_Update(Sender As Object, E As DataListCommandEventArgs)
+    
+        ' database update left out for simplicity's sake...
+
+        Dim EditText As HtmlInputText
+        EditText = E.Item.FindControl("edit_price")
+
+        Message.InnerHtml = "Price Updated: " & EditText.Value
+        MyDataList.EditItemIndex = -1
+        PopulateList()
+    End Sub
+
+    Sub MyDataList_Cancel(Sender As Object, E As DataListCommandEventArgs)
+    
+        MyDataList.EditItemIndex = -1
+        PopulateList()
+    End Sub
+
+</script>
+
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0">
+
+  <form runat="server">
+
+  <!-- #include virtual="/quickstart/aspplus/samples/webforms/customize/header.inc" -->
+
+  <ASP:DataList id="MyDataList" RepeatColumns="2" OnEditCommand="MyDataList_Edit" OnUpdateCommand="MyDataList_Update" OnCancelCommand="MyDataList_Cancel" runat="server">
+
+      <template name="itemtemplate">
+
+        <table cellpadding=10 style="font: 10pt verdana">
+          <tr>
+            <td width=1 bgcolor="BD8672"/>
+            <td valign="top">
+              <img align="top" src='<%# DataBinder.Eval(Container.DataItem, "title_id", "/quickstart/aspplus/images/title-{0}.gif") %>' >
+            </td>
+            <td valign="top">
+              <b>Title: </b><%# DataBinder.Eval(Container.DataItem, "title") %><br>
+              <b>Category: </b><%# DataBinder.Eval(Container.DataItem, "type") %><br>
+              <b>Publisher ID: </b><%# DataBinder.Eval(Container.DataItem, "pub_id") %><br>
+              <b>Price: </b><%# DataBinder.Eval(Container.DataItem, "price", "$ {0}") %>
+              <p>
+              <asp:linkbutton CommandName="Edit" runat="server">
+                <img border="0" src="../../../../../aspplus/images/edit_book.gif" >
+              </asp:linkbutton>
+            </td>
+          </tr>
+        </table>
+
+      </template>
+
+      <template name="edititemtemplate">
+
+        <table cellpadding=10 style="font: 10pt verdana">
+          <tr>
+            <td width=1 bgcolor="BD8672"/>
+            <td valign="top">
+              <img align="top" src='<%# DataBinder.Eval(Container.DataItem, "title_id", "/quickstart/aspplus/images/title-{0}.gif") %>' >
+            </td>
+            <td valign="top">
+              <b>Title: </b><%# DataBinder.Eval(Container.DataItem, "title") %><br>
+              <b>Category: </b><%# DataBinder.Eval(Container.DataItem, "type") %><br>
+              <b>Publisher ID: </b><%# DataBinder.Eval(Container.DataItem, "pub_id") %><br>
+              <b>Price: </b><input id="edit_price" type="text" value='<%# DataBinder.Eval(Container.DataItem, "price", "$ {0}") %>' runat="server"/>
+              <p>
+              <asp:linkbutton CommandName="Update" runat="server"><img border="0" src="../../../../../aspplus/images/update_book.gif" ></asp:linkbutton>
+              <asp:linkbutton CommandName="Cancel" runat="server"><img border="0" src="../../../../../aspplus/images/cancel_book.gif" ></asp:linkbutton>
+            </td>
+          </tr>
+        </table>
+
+      </template>
+
+  </ASP:DataList>
+
+  <!-- #include virtual="/quickstart/aspplus/samples/webforms/customize/footer.inc" -->
+
+  </form>
+
+  <div style="font: 10pt verdana;padding:0,15,15,15" id="Message" runat="server"/>
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

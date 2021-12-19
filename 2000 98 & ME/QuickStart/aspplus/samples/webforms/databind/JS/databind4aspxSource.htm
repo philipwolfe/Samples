@@ -1,0 +1,87 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/databind/databind4.src&file=JS%5Cdatabind4.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfSlNcXGRhdGFiaW5kNC5hc3BceHhfX3h4X3h4X3hfX3g=3a476c43" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">JS\databind4.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/databind/databind4aspxsource.htm'>databind4.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/databind/vb/databind4aspxsource.htm'>VB\databind4.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/databind/js/databind4aspxsource.htm'>JS\databind4.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Import namespace="System.Data" %>
+
+<html>
+<head>
+
+    <script language="JScript" runat="server">
+
+        function Page_Load(Src : Object, E : EventArgs) : void {
+        
+            if (!Page.IsPostBack) {
+            
+                var dt : DataTable = new DataTable();
+                var dr : DataRow;
+
+                dt.Columns.Add(new DataColumn("DataColumn1", System.Int32));
+                dt.Columns.Add(new DataColumn("DataColumn2", System.String));
+                dt.Columns.Add(new DataColumn("DataColumn3", System.DateTime));
+                dt.Columns.Add(new DataColumn("DataColumn4", System.Boolean));
+
+                var i : int;
+                for (i = 0; i < 12; i++) {
+                
+                    dr = dt.NewRow();
+
+                    dr[0] = i;
+                    dr[1] = "Item " + Int32.ToString(i);
+                    dr[2] = DateTime.Now;
+                    dr[3] = (i % 2 != 0) ? true : false;
+
+                    dt.Rows.Add(dr);
+                }
+           
+                dataGrid1.DataSource = new DataView(dt);
+                dataGrid1.DataBind();
+            }
+        }
+
+    </script>
+
+</head>
+<body>
+
+    <h3><font face="Verdana">Databinding to a DataView</font></h3>
+
+    <form runat=server>
+
+        <asp:DataGrid id=dataGrid1 runat="server" />
+
+    </form>
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

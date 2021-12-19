@@ -1,0 +1,71 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Serialization/Serialize/serialize.src&file=VB%5CSerialize.vb" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkJcXFNlcmlhbGlcemUudmJ4X194eF94eF94X19412fb6551" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB\Serialize.vb</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../howto/samples/serialization/serialize/serializecssource.htm'>Serialize.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../howto/samples/serialization/serialize/vb/serializevbsource.htm'>VB\Serialize.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>Imports System
+Imports System.IO
+Imports System.Collections
+Imports System.Runtime.Serialization
+Imports System.Runtime.Serialization.Formatters.Binary
+
+Namespace ClassLibrary1
+    Public Class SerializeTest
+        Public Shared Sub Main()
+            Console.WriteLine("Create object graph")
+            Dim l As New ArrayList
+            Dim x As Integer
+            For x = 0 To 9
+                Console.WriteLine(x)
+                l.Add(x)
+            Next x
+            Console.Write("Serializing object graph to disk..")
+            Dim s As Stream = (New File("foo.bin")).Open(FileMode.Create)
+            Dim b As BinaryFormatter = New BinaryFormatter
+            b.Serialize(s, l)
+            s.Close()
+            Console.WriteLine("Complete.")
+        
+            Console.Write("Deserializing object graph from disk..")
+            Dim r As Stream = (New File("foo.bin")).Open(FileMode.Open)
+            Dim c As New BinaryFormatter
+            Dim p As ArrayList = CType(c.Deserialize(r), ArrayList)
+            Console.WriteLine("Complete.")
+            Dim i As Object
+            For Each i In p
+                Console.WriteLine(i)
+            Next i
+		
+            r.Close()
+        
+            Console.WriteLine(Microsoft.VisualBasic.ControlChars.CrLf & "Press Return to exit.")
+            Console.Read()
+        End Sub
+    End Class
+End Namespace
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

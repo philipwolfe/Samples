@@ -1,0 +1,1 @@
+csc /w:0 /time /debug /r:mscorlib.dll /r:System.DLL /r:System.Drawing.DLL /r:System.Windows.Forms.DLL  /linkres:scribble.resx /out:Scribble.exe *.cs

@@ -1,0 +1,63 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlref/webctrl/TextBox/textbox1.src&file=TextBox1.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVGVceHRCb1x4MS5hc3BceHhfX3h4X3h4X3hfX3g=6ca5e664" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">TextBox1.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlref/webctrl/textbox/textbox1aspxsource.htm'>TextBox1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlref/webctrl/textbox/vb/textbox1aspxsource.htm'>VB\TextBox1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><html>
+<head>
+
+    <script language="C#" runat="server">
+
+        void SubmitBtn_Click(Object Sender, EventArgs e) {
+            Label1.Text = "Text1.Text = " + Text1.Text;
+        }
+
+    </script>
+
+</head>
+<body>
+
+    <h3><font face="Verdana">TextBox Sample</font></h3>
+
+    <form runat="server">
+
+      <asp:TextBox id="Text1" Text="Copy this text to the label" Width="200px" runat="server"/>
+
+      <asp:Button OnClick="SubmitBtn_Click" Text="Copy Text to Label" Runat="server"/>
+
+      <p>
+      
+      <asp:Label id="Label1" Text="Label1" runat="server"/>
+
+    </form>
+
+</body>
+</html>
+
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

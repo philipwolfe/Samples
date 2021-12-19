@@ -1,0 +1,350 @@
+VERSION 5.00
+Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "mscomctl.ocx"
+Begin VB.UserDocument Document 
+   ClientHeight    =   2880
+   ClientLeft      =   0
+   ClientTop       =   0
+   ClientWidth     =   1260
+   HScrollSmallChange=   225
+   ScaleHeight     =   2880
+   ScaleWidth      =   1260
+   VScrollSmallChange=   225
+   Begin MSComctlLib.TreeView CommandTree 
+      Height          =   255
+      Left            =   0
+      TabIndex        =   10
+      Top             =   0
+      Width           =   1215
+      _ExtentX        =   2143
+      _ExtentY        =   450
+      _Version        =   393217
+      Style           =   7
+      Appearance      =   1
+   End
+   Begin VB.CommandButton RefreshButton 
+      Caption         =   "Refresh"
+      Height          =   495
+      Left            =   600
+      TabIndex        =   9
+      Top             =   360
+      Width           =   615
+   End
+   Begin VB.TextBox NameText 
+      Appearance      =   0  'Flat
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   375
+      Left            =   960
+      TabIndex        =   8
+      Top             =   960
+      Width           =   255
+   End
+   Begin VB.CommandButton ExecuteButton 
+      Caption         =   "Execute"
+      Enabled         =   0   'False
+      Height          =   495
+      Left            =   0
+      TabIndex        =   6
+      Top             =   360
+      Width           =   615
+   End
+   Begin VB.TextBox MnemonicText 
+      Appearance      =   0  'Flat
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   375
+      Left            =   960
+      TabIndex        =   5
+      Top             =   2400
+      Width           =   255
+   End
+   Begin VB.TextBox IDText 
+      Appearance      =   0  'Flat
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   375
+      Left            =   960
+      TabIndex        =   3
+      Top             =   1920
+      Width           =   255
+   End
+   Begin VB.TextBox GUIDText 
+      Appearance      =   0  'Flat
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   375
+      Left            =   960
+      TabIndex        =   2
+      Top             =   1440
+      Width           =   255
+   End
+   Begin VB.Label NameLabel 
+      Caption         =   "Name:"
+      Height          =   255
+      Left            =   0
+      TabIndex        =   7
+      Top             =   1080
+      Width           =   615
+   End
+   Begin VB.Label MnemonicLabel 
+      Caption         =   "Mnemonic:"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   255
+      Left            =   0
+      TabIndex        =   4
+      Top             =   2520
+      Width           =   855
+   End
+   Begin VB.Label IDLabel 
+      Caption         =   "ID:"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   255
+      Left            =   0
+      TabIndex        =   1
+      Top             =   2040
+      Width           =   495
+   End
+   Begin VB.Label GUIDLabel 
+      Caption         =   "GUID:"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   255
+      Left            =   0
+      TabIndex        =   0
+      Top             =   1560
+      Width           =   495
+   End
+End
+Attribute VB_Name = "Document"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = True
+Attribute VB_PredeclaredId = False
+Attribute VB_Exposed = True
+Option Explicit
+Private Key As Long
+Public VSInstance             As EnvDTE.DTE
+Private MenuBarNode           As Node
+
+Private Sub RecursiveInsert(ByVal item As Object, ByVal ParentNode As Node, ByVal ParentKey As Long)
+    Dim CommandBarobj As CommandBar
+    Dim CommandBarControlsObj As CommandBarControls
+    Dim CommandBarControlObj As CommandBarControl
+    Dim CommandBarPopupObj As CommandBarPopup
+    Dim i As Long
+    Dim LocalParentNode As Node
+    Dim GUID As String
+    Dim ID As Long
+    Dim SavedKey As Long
+    Dim Shortcut As String
+    If (TypeOf item Is CommandBar) Then
+        Set CommandBarobj = item
+        Key = Key + 1
+        Set LocalParentNode = CommandTree.Nodes.Add("Key" + CStr(ParentKey), tvwChild, "Key" + CStr(Key), CommandBarobj.Name)
+        If (CommandBarobj.Name = "MenuBar") Then
+            Set MenuBarNode = LocalParentNode
+        End If
+        SavedKey = Key
+        For i = 1 To CommandBarobj.Controls.Count
+            RecursiveInsert CommandBarobj.Controls.item(i), LocalParentNode, SavedKey
+        Next
+    ElseIf (TypeOf item Is CommandBarPopup) Then
+        Set CommandBarPopupObj = item
+        Key = Key + 1
+        Set LocalParentNode = CommandTree.Nodes.Add("Key" + CStr(ParentKey), tvwChild, "Key" + CStr(Key), CommandBarPopupObj.Caption)
+        SavedKey = Key
+        For i = 1 To CommandBarPopupObj.Controls.Count
+            RecursiveInsert CommandBarPopupObj.Controls.item(i), LocalParentNode, SavedKey
+        Next
+    ElseIf (TypeOf item Is CommandBarControl) Then
+        Set CommandBarControlObj = item
+        GUID = ""
+        ID = 0
+        'The command may not have a GUID/ID. Protect from this
+        On Error Resume Next
+        VSInstance.Commands.CommandInfo CommandBarControlObj, GUID, ID
+        On Error GoTo 0
+        Shortcut = ""
+        'The command may not have a Shortcut. Protect from this
+        On Error Resume Next
+        Shortcut = CommandBarControlObj.ShortcutText
+        On Error GoTo 0
+        CommandTree.Nodes.Add "Key" + CStr(ParentKey), tvwChild, GUID + "," + CStr(ID) + "," + Shortcut + "," + CStr(Key), CommandBarControlObj.Caption
+        Key = Key + 1
+        On Error GoTo 0
+    Else
+        MsgBox "1"
+    End If
+    'Key = Key + 1
+End Sub
+
+Public Sub Populate()
+    Key = 0
+    Dim i As Integer
+    Dim ParentKey As Long
+    Dim RootNode As Node
+    UserDocument_Resize
+    Set RootNode = CommandTree.Nodes.Add(, , "Key" + CStr(Key), "Commands")
+    RootNode.Expanded = True
+    Key = Key + 1
+    For i = 1 To VSInstance.CommandBars.Count
+        'The command bar "Analyzer Context" references itself, causing a
+        '   infinite recursion. If we follow along with it, a stack overflow
+        '   occurs. So we will ignore it...
+        If (VSInstance.CommandBars.item(i).Name <> "Analyzer Context") And (VSInstance.CommandBars.item(i).Name <> "Data Set") Then
+            RecursiveInsert VSInstance.CommandBars.item(i), RootNode, 0
+            Key = Key + 1
+        End If
+    Next
+    RootNode.Sorted = True
+    MenuBarNode.Expanded = True
+    RootNode.EnsureVisible ' (True)
+End Sub
+
+
+
+
+
+Private Sub CommandTree_NodeClick(ByVal Node As MSComctlLib.Node)
+    Dim GUID As String
+    Dim ID As String
+    Dim Mnemonic As String
+    Dim Temp As String
+    Dim Temp2 As String
+    Dim loc As Long
+    Dim CommandObj As Command
+    Temp = Node.Key
+    loc = InStr(1, Temp, ",")
+    If (loc <> 0) Then
+        GUID = Left(Temp, loc - 1)
+        Temp = Right(Temp, Len(Temp) - loc)
+        loc = InStr(1, Temp, ",")
+        ID = Left(Temp, loc - 1)
+        Temp = Right(Temp, Len(Temp) - loc)
+        loc = InStr(1, Temp, ",")
+        Mnemonic = Left(Temp, loc - 1)
+        GUIDText = GUID
+        IDText = ID
+        MnemonicText = Mnemonic
+        Set CommandObj = VSInstance.Commands.item(GUID, CLng(ID))
+        NameText = CommandObj.Name
+        ExecuteButton.Enabled = CommandObj.IsAvailable
+    Else
+        GUIDText = ""
+        IDText = ""
+        MnemonicText = ""
+        NameText = ""
+        ExecuteButton.Enabled = False
+    End If
+End Sub
+
+Private Sub ExecuteButton_Click()
+    Dim ID As Long
+    Dim CustomIn As Variant
+    Dim CustomOut As Variant
+    If (GUIDText <> "") Then
+        On Error GoTo ErrorRaise
+        VSInstance.Commands.Raise GUIDText, CInt(IDText), CustomIn, CustomOut
+        On Error GoTo 0
+    End If
+    Exit Sub
+ErrorRaise:
+    MsgBox "Error raising command. Command could be disabled", vbExclamation + vbOKOnly, "Command Browser"
+    On Error GoTo 0
+End Sub
+
+
+Private Sub GUIDText_Validate(Cancel As Boolean)
+    Cancel = True
+End Sub
+
+
+Private Sub IDText_Validate(Cancel As Boolean)
+    Cancel = True
+End Sub
+
+Private Sub MnemonicText_Validate(Cancel As Boolean)
+    Cancel = True
+End Sub
+
+Private Sub RefreshButton_Click()
+    CommandTree.Nodes.Clear
+    Populate
+End Sub
+
+Private Sub UserDocument_Resize()
+    CommandTree.Width = UserDocument.Width - 4
+    'CommandTree.Height = UserDocument.Height - 4
+    
+    NameText.Width = UserDocument.Width - NameText.Left
+    GUIDText.Width = UserDocument.Width - GUIDText.Left
+    ExecuteButton.Width = UserDocument.Width / 2 - 4
+    RefreshButton.Left = UserDocument.Width / 2 + 4
+    RefreshButton.Width = UserDocument.Width / 2 - 4
+    IDText.Width = UserDocument.Width - IDText.Left
+    MnemonicText.Width = UserDocument.Width - MnemonicText.Left
+    
+    IDText.Top = UserDocument.Height - IDText.Height - MnemonicText.Height - 8
+    IDLabel.Top = UserDocument.Height - IDText.Height + (IDText.Height / 4) - MnemonicText.Height - 8
+    GUIDText.Top = UserDocument.Height - IDText.Height - GUIDText.Height - 50 - MnemonicText.Height - 4
+    GUIDLabel.Top = UserDocument.Height - IDText.Height - GUIDText.Height - 50 + (GUIDText.Height / 4) - MnemonicText.Height - 4
+    NameText.Top = UserDocument.Height - IDText.Height - GUIDText.Height - 50 - NameText.Height - 30 - MnemonicText.Height - 4
+    NameLabel.Top = UserDocument.Height - IDText.Height - GUIDText.Height - 50 - NameText.Height + (NameText.Height / 4) - MnemonicText.Height - 4
+    MnemonicText.Top = UserDocument.Height - IDText.Height
+    MnemonicLabel.Top = UserDocument.Height - IDText.Height + (IDText.Height / 4)
+    
+    CommandTree.Height = UserDocument.Height - IDText.Height - GUIDText.Height - ExecuteButton.Height - 50 - NameText.Height - 70 - 50 - NameText.Height
+    ExecuteButton.Top = UserDocument.Height - IDText.Height - GUIDText.Height - 50 - NameText.Height - 70 - ExecuteButton.Height - NameText.Height
+    RefreshButton.Top = UserDocument.Height - IDText.Height - GUIDText.Height - 50 - NameText.Height - 70 - RefreshButton.Height - NameText.Height
+    
+End Sub

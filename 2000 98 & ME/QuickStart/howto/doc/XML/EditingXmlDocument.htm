@@ -1,0 +1,590 @@
+
+
+<!--BEGIN HEADER-->
+<html>
+<head>
+<link rel="stylesheet" href="../../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+  <table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+<!--
+		<div style="padding:0,0,4,0"><a class="outer" style="color:darkred" href="../../../howto/doc/xml/overviewofxml.htm"><b>Introduction</a></b></a><br></div>
+         <p>
+		<div style="padding:0,0,4,0"><b>XML Readers and Writers</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/readxmlfile.htm">Read XML from a file</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/readxmlstream.htm">Read XML from a stream</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/writexmlfile.htm">Write XML to a file</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/validationreadingxml.htm">Apply validation when reading XML</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML Document Object Model (DOM)</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/dominterfacexmldocument.htm">Load and use the XmlDocument (W3C DOM)</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savexmldocument.htm">Save XML with the XmlDocument (W3C DOM)</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>Using the XmlDataDocument</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/loadxmldocument.htm">Load and use the XmlDataDocument</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/streamanxmldocument.htm">Read XML from an XmlDataDocument</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML Navigation and Editing</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/navigatexmldocument.htm">Navigate XML with the XmlNavigator</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/editingxmldocument.htm">Edit XML with the XmlNavigator</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XPath and XSL Transformations</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/queryxmldocumentxpath.htm">Query XML with an XPath expression</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/transformxml.htm">Apply an XSL transformation to XML</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML and Relational Data</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/xmldataset.htm">Use XML and the DataSet class</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/datasetmapxsdschema.htm">Create DataSet mappings from an XSD schema</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/loaddatasetxmldata.htm">Load a DataSet with XML</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/datasetmapxmldata.htm">Infer DataSet mappings from XML</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savedatasetmapxsdschema.htm">Save DataSet mappings to an XSD schema file</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savedatasetxml.htm">Save a DataSet as XML</a><br>
+-->
+
+		<div style="padding:0,0,4,0"><b>XML Data</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/overviewofxml.htm">Overview of XML</a><p>
+
+		<div style="padding:0,0,4,0"><b>XML Readers and Writers</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/readxmlfile.htm">Read XML from a file</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/readxmlstream.htm">Read XML from a stream</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/writexmlfile.htm">Write XML to a file</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/validationreadingxml.htm">Apply validation to XML</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML Document Object Model</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/dominterfacexmldocument.htm">Load XML with XmlDocument</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savexmldocument.htm">Save XML with XmlDocument</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>Using the XmlDataDocument</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/loadxmldocument.htm">Load the XmlDataDocument</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/streamanxmldocument.htm">Read from XmlDataDocument</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML Navigation and Editing</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/navigatexmldocument.htm">Navigate with XmlNavigator</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/editingxmldocument.htm">Edit with XmlNavigator</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XPath and XSL Transformations</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/queryxmldocumentxpath.htm">Query XML with an XPath</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/transformxml.htm">Apply XSL transformations</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML and Relational Data</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/xmldataset.htm">Use XML and the DataSet</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/datasetmapxsdschema.htm">Create DataSet mappings</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/loaddatasetxmldata.htm">Load a DataSet with XML</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/datasetmapxmldata.htm">Infer DataSet mappings</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savedatasetmapxsdschema.htm">Save DataSet mappings</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savedatasetxml.htm">Save a DataSet as XML</a><p>
+
+    <div style="padding:0,0,4,0"><a target="_top" style="color:darkred" href="../../../howto"><b>Back to Index</b></a><br></div>
+
+
+</div>
+
+</td>
+</tr>
+</table>
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<style>
+.mydd {  font: smaller verdana; }
+.code1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:blue;
+	}
+.codecomment1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:green;
+	}
+.issue {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background-color:RED;
+	color:WHITE;
+	font-weight:bold;
+	}
+
+
+body { font: smaller verdana }        
+
+</style>
+
+
+
+
+
+<h4>How Do I...Edit XML with the XmlNavigator?</h4>
+
+This sample illustrates how to edit XML documents with an XmlNavigator using the DocumentNavigator and DataDocumentNavigator classes.
+This sample follows on from the <a href="NavigateXmlDocument.htm">How Do I...Navigate XML with the XmlNavigator?</a> topic.
+<p>
+
+
+<span>
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../../images/genicon.gif"><br>
+	</a>
+	<div class="caption">EditingXmlDocument.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../../howto/samples/xml/editingxmldocument/editingxmldocumentcssource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+
+
+<p>
+Here we are going to use the editing methods on the XmlNavigator to edit the XML document. First, using an XPath expression, all the books prices are selected in the 
+bookstore and the prices of the books are increased by 2%. Second a new book is added to the bookstore. The sample code shows the XPath expression.
+<p>
+
+
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl8" style="display:none">
+
+navigator.Select ("descendant::book/price");
+
+while (navigator.MoveToNextSelected()) {
+    navigator.MoveToFirstChild();
+    Double price = Double.Parse(navigator.Value);
+    navigator.Value = Double.Format(price * 1.02, "#.00");
+    navigator.MoveToParent();
+}
+</pre>
+<pre id="codectrl8" style="display:">
+
+navigator.Select ("descendant::book/price")
+
+While (navigator.MoveToNextSelected())
+    navigator.MoveToFirstChild()
+    Dim price As Double = System.Double.Parse(navigator.Value)
+    navigator.Value = System.Double.Format(price * 1.02, "#.00")
+    navigator.MoveToParent()
+End While
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl8" onclick="doClick(0, 'ctrl8')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl8" onclick="doClick(1, 'ctrl8')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+
+
+<p>
+Here we move to the first text node (the book's price) with the <b>MoveToFirstChild</b> method, update it's value and then move back to the parent node with
+the <b>MoveToParent</b> method. The formatting on the string ensures that only two decimal places are written.
+
+<p>
+Next we are going to insert a new book into the bookstore using the <b>Insert</b> method. This method creates a new node and inserts it at the specified
+position in the tree relative to the current position and moves the current node to point at this newly inserted node.
+
+<p>
+The relative position is determined by the TreePosition enumeration shown in the table below.
+
+<p>
+<TABLE class=table2
+width="418">
+<TBODY>
+<TR>
+<TH width="100"><nobr>TreePosition Enum</nobr></TH>
+<TH width="308">Description</TH>
+<TH width="10">Value</TH>
+</TR>
+  <tr>
+    <td height="17"><font size="1">None</font></td>
+    <td height="17"><font size="1">No position</font></td>
+    <td height="17"><font size="1">0</font></td>
+  </tr>
+  <tr>
+    <td width="100" height="19"><font size="1">Before</font></td>
+    <td width="308" height="19"><font size="1">The sibling immediately before the current node</font></td>
+    <td width="10" height="17"><font size="1">1</font></td>
+  </tr>
+  <tr>
+    <td width="100" height="19"><font size="1">After</font></td>
+    <td width="308" height="19"><font size="1">The sibling immediately after the current node</font></td>
+    <td width="10" height="17"><font size="1">2</font></td>
+  </tr>
+  <tr>
+    <td width="100" height="19"><font size="1">FirstChild</font></td>
+    <td width="308" height="19"><font size="1">The first child of the current node</font></td>
+    <td width="10" height="17"><font size="1">3</font></td>
+  </tr>
+  <tr>
+    <td width="100" height="19"><font size="1">LastChild</font></td>
+    <td width="308" height="19"><font size="1">The last child of the current node</font></td>
+    <td width="10" height="17"><font size="1">4</font></td>
+  </tr>
+  <tr>
+    <td width="100" height="19"><font size="1">Parent</font></td>
+    <td width="308" height="19"><font size="1">The parent of the current node</font></td>
+    <td width="10" height="17"><font size="1">5</font></td>
+  </tr>
+  <tr>
+    <td width="100" height="19"><font size="1">FirstAttribute</font></td>
+    <td width="1000" height="19"><font size="1">The first attribute of the current node</font></td>
+    <td width="10" height="17"><font size="1">6</font></td>
+  </tr>
+  <tr>
+    <td width="100" height="19"><font size="1">LastAttribute</font></td>
+    <td width="1000" height="19"><font size="1">The last attribute of the current node</font></td>
+    <td width="10" height="17"><font size="1">7</font></td>
+  </tr>
+  </TBODY></TABLE>
+  
+<p>
+The code sample below starts at the document node and moves thorough the XML tree inserting element and attribute nodes to insert a new book into the XML document.
+Once updated the XML data is written out to a new file called 
+<a target="_blank" href="../../../util/srcctrlwin.htm?path=howto/samples/xml/editingxmldocument/&file=updatebooks.xml">updatebooks.xml</a>.
+<p>
+
+
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl10" style="display:none">
+
+// Navigate to add a new book at the start of the bookstore
+navigator.MoveToDocumentElement();
+
+// Insert the new book
+navigator.Insert(TreePosition.FirstChild,XmlNodeType.Element,"book","","");
+navigator.SetAttribute ("genre","Object-Orientated Technology");
+navigator.SetAttribute ("publicationdate","1994");
+navigator.SetAttribute ("ISBN","0-201-63361-2");
+navigator.Insert(TreePosition.FirstChild,XmlNodeType.Element,"title","","");
+navigator.Insert(TreePosition.FirstChild,XmlNodeType.Text,"title","","");
+navigator.Value = "Design Patterns - Elements of Reusable Object-Orientated Software";
+navigator.MoveToParent(); //author element node
+navigator.Insert(TreePosition.After,XmlNodeType.Element,"author","","");
+navigator.Insert(TreePosition.FirstChild,XmlNodeType.Element,"first-name","","");
+navigator.Insert(TreePosition.FirstChild,XmlNodeType.Text,"first-name","","");
+navigator.Value = "Eric";
+navigator.MoveToParent(); //author element node
+navigator.Insert(TreePosition.After,XmlNodeType.Element,"last-name","","");
+navigator.Insert(TreePosition.FirstChild,XmlNodeType.Text,"last-name","","");
+navigator.Value = "Gamma";
+navigator.MoveToParent(); //author element node
+navigator.MoveToParent(); //title element node
+navigator.Insert(TreePosition.After,XmlNodeType.Element,"price","","");
+navigator.Insert(TreePosition.FirstChild,XmlNodeType.Text,"price","","");
+navigator.Value = "49.95";
+</pre>
+<pre id="codectrl10" style="display:">
+
+' Navigate to add a new book at the start of the bookstore
+navigator.MoveToDocumentElement()
+
+' Insert the new book
+navigator.Insert(TreePosition.FirstChild,XmlNodeType.Element,"book","","")
+navigator.SetAttribute ("genre","Object-Orientated Technology")
+navigator.SetAttribute ("publicationdate","1994")
+navigator.SetAttribute ("ISBN","0-201-63361-2")
+navigator.Insert(TreePosition.FirstChild,XmlNodeType.Element,"title","","")
+navigator.Insert(TreePosition.FirstChild,XmlNodeType.Text,"title","","")
+navigator.Value = "Design Patterns - Elements of Reusable Object-Orientated Software"
+navigator.MoveToParent() 'author element node
+navigator.Insert(TreePosition.After,XmlNodeType.Element,"author","","")
+navigator.Insert(TreePosition.FirstChild,XmlNodeType.Element,"first-name","","")
+navigator.Insert(TreePosition.FirstChild,XmlNodeType.Text,"first-name","","")
+navigator.Value = "Eric"
+navigator.MoveToParent() 'author element node
+navigator.Insert(TreePosition.After,XmlNodeType.Element,"last-name","","")
+navigator.Insert(TreePosition.FirstChild,XmlNodeType.Text,"last-name","","")
+navigator.Value = "Gamma"
+navigator.MoveToParent() 'author element node
+navigator.MoveToParent() 'title element node
+navigator.Insert(TreePosition.After,XmlNodeType.Element,"price","","")
+navigator.Insert(TreePosition.FirstChild,XmlNodeType.Text,"price","","")
+navigator.Value = "49.95"
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl10" onclick="doClick(0, 'ctrl10')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl10" onclick="doClick(1, 'ctrl10')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+<p>
+
+Finally the changes are written to a file.
+
+<p>
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl12" style="display:none">
+
+xmldocument.Save(m_UpdatedDocument);
+</pre>
+<pre id="codectrl12" style="display:">
+
+xmldocument.Save(m_UpdatedDocument)
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl12" onclick="doClick(0, 'ctrl12')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl12" onclick="doClick(1, 'ctrl12')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+<p>
+
+<H4>Summary</H4>
+<OL>
+<LI>The XmlNavigator provides a cursor style model to navigate an XML in-memory tree. 
+<LI>The Select method applies the XPath query to the XML document. This is the best method for retrieving a set of nodes to perform editing operations on.
+<LI>Insert and Remove methods allow you to perform editing operations on the XML document. 
+<LI>Editing operations can also be performed with the W3C DOM, however the use of XPath queries with the XmlNavigator makes this a more intuitive approach. 
+</LI></OL>
+
+<!--END FOOTER-->
+<p>
+<hr>
+<p>
+</div>
+</td>
+</tr>
+</table>
+</BODY>
+</html>
+<!--END FOOTER-->

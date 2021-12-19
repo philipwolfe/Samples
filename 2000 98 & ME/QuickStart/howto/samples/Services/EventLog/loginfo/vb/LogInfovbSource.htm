@@ -1,0 +1,84 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Services/EventLog/loginfo/loginfo.src&file=VB%5CLogInfo.vb" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkJcXExvZ0luZm8udmJ4X194eF94eF94X19462eefd9f" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB\LogInfo.vb</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../howto/samples/services/eventlog/loginfo/loginfocssource.htm'>LogInfo.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../howto/samples/services/eventlog/loginfo/vb/loginfovbsource.htm'>VB\LogInfo.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>Imports System
+Imports System.Environment
+Imports System.Diagnostics
+
+Namespace LogInfo
+
+    Module LogInfo
+
+        Public Sub Main()
+
+            Dim appName As String
+            Dim args As String()
+
+            args = Environment.GetCommandLineArgs()
+            appName = args(0)
+
+            If (args.Length <> 2 And args.Length <> 3) Then
+                Console.WriteLine("Usage: " + appName + " <log> [<machine>]")
+                Exit Sub
+            End If
+
+            Dim log As String
+            log = args(1)
+
+            Dim machine As String
+            If (args.Length = 3) Then
+                machine = args(2)
+            Else
+                machine = "." ' local machine
+            End If
+				
+            If (Not EventLog.Exists(log, machine)) Then
+                Console.WriteLine("The log does not exist!")
+                Exit Sub
+            End If
+
+            Dim aLog As EventLog
+            aLog = New EventLog
+            aLog.Log = log
+            aLog.MachineName = machine
+		
+            Console.WriteLine("There are " + CStr(aLog.Entries.Count) + " entr[y|ies] in the log:")
+            Dim entry As EventLogEntry
+
+            For Each entry In alog.entries
+                Console.WriteLine("    Entry: " + entry.Message)
+            Next entry
+
+        End Sub
+
+    End Module
+
+End Namespace
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

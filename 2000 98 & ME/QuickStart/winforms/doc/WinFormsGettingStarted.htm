@@ -1,0 +1,165 @@
+<!--BEGIN HEADER-->
+
+
+
+<html>
+<head>
+<link rel="stylesheet" href="../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+  <table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+
+            <div style="padding:0,0,0,0"><a class=outer style="color:darkred" href="../../winforms/doc/default.htm"><b>Introduction</b></a><br></div>
+            <p>
+            <div style="padding:0,0,4,0"><b>Getting Started</b><br></div>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsgettingstarted.htm">What is Windows Forms?</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformssimplehelloworld.htm">Writing a Hello World Form</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsapplicationmodel.htm">Windows Forms Application Model</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsusingwindes.htm">Using the Windows Forms Designer</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsformlayout.htm">Dynamic Layout in Windows Forms</a><br>            
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsmenus.htm">Adding Menus to a Form</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsmdi.htm">Writing MDI Applications</a><p>
+
+            <div style="padding:0,0,4,0"><b>Building Applications</b><br></div>
+            &nbsp; <a class="outer" href="../../winforms/doc/dataaccessplaceholder.htm">Data Access Overview</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/webservicesplaceholder.htm">Web Services Overview</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsdata.htm">Databinding in Windows Forms</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsaxhosting.htm">Using ActiveX Controls</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsgdiplus.htm">Working with Graphics</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsprinting.htm">Working with Printing</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformscreatingcontrols.htm">Creating Controls</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsmsaa.htm">Accessibility</a><p>
+
+            <div style="padding:0,0,0,0"><a class=outer style="color:darkred" href="../../winforms/doc/winformssamples.htm"><b>Control Reference</b></a><br></div>
+            <p>
+            <div style="padding:0,0,0,0"><a target=_top class=outer style="color:darkred" href="../../howto/default.htm"><b>How Do I...?</b></a><br></div>
+            <p>
+            <div style="padding:0,0,0,0"><a class=outer style="color:darkred" href="../../winforms/doc/winformsrelateddocs.htm"><b>Related Documentation</b></a><br></div>
+            <p>
+            
+</div>
+
+</td>
+</tr>
+</table>
+
+
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<style>
+.mydd {  font: smaller verdana; }
+
+.code1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	font-family:"Courier New";
+	color:darkred; 
+	}
+.codecomment1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	font-family:"Courier New";
+	color:green;
+	}
+.issue {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background-color:RED;
+	color:WHITE;
+	font-weight:bold;
+	}
+
+
+body { font: smaller verdana }        
+
+</style>
+
+
+
+
+
+      <H4>What is Windows Forms?</H4>
+      <P>Windows Forms is a framework for building Windows client applications
+      that utilize the Common Language Runtime. Windows Forms applications can be written in 
+      any language that supports the Common Language Runtime. Some of the advantages of
+      using Windows Forms include:</P>
+
+<ul>
+  <li><B>Simplicity and power: </B>Windows Forms offers a programming model for 
+      developing Windows applications that has the simplicity of the Visual 
+      Basic 6 programming model and the full power and flexibility of the Common 
+      Language Runtime.</P>
+  <li><B>Lower TCO: </B>Windows Forms takes advantage of the versioning and 
+      deployment features of the Common Language Runtime to offer reduced deployment 
+      costs and higher application robustness over time. This significantly impacts the
+      maintenance costs (Total Cost of Ownership) for applications 
+      written in Windows Forms.</P>
+  <li><B>Architecture for Controls: </B>Windows Forms offers an architecture for
+      controls and control containers based on concrete implementation of the
+      control and container classes. This significantly reduces
+      control-container interoperability issues.</P>
+  <li><B>Secure: </B>Windows Forms takes full advantage of the security features 
+      of the Common Language Runtime. This means that Windows Forms can be used implement 
+      everything from an untrusted control running in the browser to a fully 
+      trusted application installed on a user's hard drive.</P>
+  <li><B>WebServices Support: </B>Windows Forms offers full support for quickly 
+      and easily connecting to Web Services.</P>
+  <li><B>Rich Graphics: </B>Windows Forms is one of the first ship vehicles for 
+      GDI+, a new version of the Windows Graphical Device Interface (GDI) that 
+      supports Alpha blending, texture brushes, advanced transforms, Rich Text 
+      support, and more.</P>
+  <li><B>Controls: </B>Windows Forms offers a rich set of controls that encompass 
+      all of the controls offered by Windows and new features such as new 
+      &quot;flat look" styles for Buttons, Radio Buttons and Checkboxes.  Refer 
+      to <a href="../../winforms/doc/winformssamples.htm" 
+      style="color:darkred">Control Samples </A>for the complete list of 
+      controls.  </P> 
+  <li><B>Data Aware: </B>Windows Forms offers full support for the ADO.NET data 
+      model.</P>
+  <li><B>ActiveX Support: </B>Windows Forms offers full support for ActiveX
+      controls. You can easily host ActiveX controls in a Windows Forms application.
+      You can also host a Win Form control as an ActiveX control. </P>
+  <li><B>Licensing: </B>Windows Forms takes advantage of the Common Language Runtime 
+      enhanced licensing model. </P>
+      <P><B>Printing: </B>Windows Forms offers a printing framework that enables 
+      applications to provide comprehensive reports.</P>
+  <li><B>Accessibility: </B>Windows Forms controls implement the interfaces 
+      defined by Microsoft Active Accessibility (MSAA) making it straightforward 
+      to build applications that support accessibility aids such as screen 
+      readers.</P>
+  <li><B>Design-time: </B>Windows Forms takes full advantage of the "Meta-data" 
+      and Component Model features offered by the Common Language Runtime to provide
+      thorough design-time support both for control users and for control implementers.</P>
+</ul>
+
+<!--END FOOTER-->
+<p>
+<hr>
+<p>
+</div>
+</td>
+</tr>
+</table>
+</BODY>
+</html>
+<!--END FOOTER-->

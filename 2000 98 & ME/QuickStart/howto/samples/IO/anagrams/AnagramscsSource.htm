@@ -1,0 +1,62 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/IO/anagrams/anagrams.src&file=Anagrams.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfQW5hZ3JhbXMuY3N4X194eF94eF94X194e000e6a4" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">Anagrams.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../howto/samples/io/anagrams/anagramscssource.htm'>Anagrams.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../howto/samples/io/anagrams/vb/anagramsvbsource.htm'>VB\Anagrams.vb</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Word List: </b></td>
+        <td><a href='../../../../howto/samples/io/anagrams/wordstxtsource.htm'>words.txt</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>using System;
+using System.IO;
+using System.Collections;
+
+class Anagrams 
+{
+    
+    public static void Main(String[] args)
+    {
+        StreamReader din = File.OpenText ("words.txt");
+        String str;
+        StringTable st = new StringTable(); 
+        
+        Console.WriteLine("Reading data and insterting into a StringTable.");
+        while ((str=din.ReadLine()) != null) {
+            st.Add(str);
+        }
+        Console.WriteLine("Printing out the StringTable.");
+        foreach (string s in st)
+        {
+            Console.WriteLine (s);
+        }
+        
+		Console.WriteLine ("\r\nPress Return to exit.");
+		Console.Read();
+    }
+}
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

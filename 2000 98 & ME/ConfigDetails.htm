@@ -1,0 +1,210 @@
+<html>
+<head>
+    <title>Microsoft.NET Framework SDK Samples Configuration Details</title>
+    <style>
+        a:hover { color:#ff0000; }
+    </style>
+</head>
+
+<body topmargin="0" leftmargin="0">
+
+	<p>
+	    <DIV style="FONT-WEIGHT: bold; FONT-SIZE: medium; MARGIN-LEFT: 10px; FONT-FAMILY: Tahoma, Verdana, Arial, Helvetica" align=left>
+			.NET Framework SDK Samples Configuration Details</DIV>
+<DIV 
+style="FONT-WEIGHT: normal; FONT-SIZE: medium; MARGIN-LEFT: 10px; FONT-FAMILY: Tahoma, Verdana, Arial, Helvetica" 
+align=left><FONT size=2></FONT>&nbsp;</DIV>
+<DIV 
+style="FONT-WEIGHT: normal; FONT-SIZE: medium; MARGIN-LEFT: 10px; FONT-FAMILY: Tahoma, Verdana, Arial, Helvetica" 
+align=left><FONT size=2>This page provides a detailed listing of the 
+configuration steps performed by the SDK samples setup program.</FONT></DIV>
+<P></P>
+
+	<p>
+		<ul><FONT face=Tahoma size=2>
+		<A href="#Require">System Requirements</A><BR> 
+		<A href="#VRoot">Creating the IIS Virtual Directories<BR></A><A href="#SQL">Attaching the SQL Server 
+  databases<BR></A><A href="#ConfigWeb">Modifying config.web<BR></A><A 
+  href="#Registry">Adding the Registry keys<BR></A><A href="#Compile">Compiling 
+  the Samples</A><BR></FONT>
+		</ul>
+<UL><FONT face=Tahoma size=2><br></FONT></UL>
+		
+<P></P>
+	
+	<p>
+		<DIV style="FONT-WEIGHT: bold; FONT-SIZE: x-small; MARGIN-LEFT: 10px; FONT-FAMILY: Tahoma, Verdana, Arial, Helvetica" align=left><A name=Require><FONT 
+size=3>System Requirements</FONT></A><A name=Require></A></A>
+			 </DIV>
+<UL>
+  <LI>
+		<DIV style=
+			                 "FONT-WEIGHT: normal; FONT-SIZE: x-small; 
+			MARGIN-LEFT: 10px; FONT-FAMILY: Tahoma, Verdana, Arial, Helvetica" align=  
+			left>          
+			            
+			   The samples require a machine running IIS 4.0 or higher.</DIV>
+  <LI>
+		<DIV style=
+			                 "FONT-WEIGHT: normal; FONT-SIZE: x-small; 
+			MARGIN-LEFT: 10px; FONT-FAMILY: Tahoma, Verdana, Arial, Helvetica" align=  
+			left>    The samples demonstrating database access require 
+			SQL Server 7.0 (or higher) or MSDE.&nbsp; If SQL Server is not 
+			installed on your machine, you will be given the option to install MSDE.&nbsp;</DIV>
+  <LI>
+		<DIV style="FONT-WEIGHT: normal; FONT-SIZE: x-small; MARGIN-LEFT: 10px; FONT-FAMILY: Tahoma, Verdana, Arial, Helvetica" align=left>
+			The samples assume that a local SQL Server is 
+  using the credentials: username=sa and password=
+			                &lt;blank&gt;. The samples will not 
+			run properly if your database server uses different  
+			credentials.          
+			            
+			            </DIV></LI></UL>
+<P 
+style="FONT-WEIGHT: normal; FONT-SIZE: x-small; MARGIN-LEFT: 10px; FONT-FAMILY: Tahoma, Verdana, Arial, Helvetica" 
+align=left>&nbsp;</P>
+<P></P>
+	
+	<p></p><A name=Compile>
+		<DIV style="FONT-WEIGHT: bold; FONT-SIZE: x-small; MARGIN-LEFT: 10px; FONT-FAMILY: Tahoma, Verdana, Arial, Helvetica" align=left><A name=VRoot><FONT size=3>Creating the IIS 
+Virtual Directories</FONT> </A>
+			     </DIV>
+		<DIV style="FONT-WEIGHT: normal; FONT-SIZE: x-small; MARGIN-LEFT: 10px; FONT-FAMILY: Tahoma, Verdana, Arial, Helvetica" align=left>         
+			Create the following IIS virtual directories. 
+			The paths for the virtual directories all stem from the Microsoft.NET\FrameworkSDK\Samples directory. </DIV>
+		<ul>
+			<DIV style="FONT-WEIGHT: normal; FONT-SIZE: x-small; FONT-FAMILY: Tahoma, Verdana, Arial, Helvetica" align=left>
+				For example:</DIV>
+			<DIV style="FONT-WEIGHT: bold; FONT-SIZE: x-small; FONT-FAMILY: Tahoma, Verdana, Arial, Helvetica" align=left>
+				C:\Program Files\Microsoft.NET\FrameworkSDK\Samples\ClsView</DIV>
+			<DIV style="FONT-WEIGHT: normal; FONT-SIZE: x-small; FONT-FAMILY: Tahoma, Verdana, Arial, Helvetica" align=left><U>
+				<br>Virtual Roots</U></DIV>
+			<DIV style="FONT-WEIGHT: normal; FONT-SIZE: x-small; FONT-FAMILY: Tahoma, Verdana, Arial, Helvetica" align=left>
+				Assemblies\RothIra<br>
+				ClsView<br>
+				CrossLang<br>
+				Interop\ado\AdoP2Asp<br>
+				Interop\ado\ASPXToADO<br>
+				Remoting\RemStart<br>
+				Remoting\HomeMedia<br>
+				Remoting\MyMedia<br>
+				Remoting\ComZone<br>
+				Remoting\MyCom<br>
+				Remoting\Trader<br>
+				Remoting\MyStock<br>
+				Remoting\ObjectZone<br>
+				Remoting\MyObject<br>
+				Remoting\HelloService<br>
+				Remoting\MyHello<br>
+				QuickStart<br>
+				QuickStart\ASPPlus<br>
+				QuickStart\Winforms<br>
+				QuickStart\Howto<br>
+				Quickstart\ASPPlus\samples\grocertogo<br>
+				Quickstart\ASPPlus\samples\portal<br>
+				Quickstart\ASPPlus\samples\apps\application1<br>
+				Quickstart\ASPPlus\samples\apps\application2<br>
+				Quickstart\ASPPlus\samples\apps\session1<br>
+				Quickstart\ASPPlus\samples\localize\resources<br>
+				QuickStart\ASPPlus\Samples\Security\CookieAuth<br>
+				QuickStart\ASPPlus\Samples\Security\UserAuth<br>
+				QuickStart\ASPPlus\Samples\Security\WindowsAuth<br>
+				QuickStart\ASPPlus\samples\apps\VB\application1<br>
+				QuickStart\ASPPlus\samples\apps\VB\application2<br>
+				QuickStart\ASPPlus\samples\apps\VB\session1<br>
+				QuickStart\ASPPlus\samples\grocertogo\VB<br>
+				QuickStart\ASPPlus\samples\security\VB\cookieauth<br>
+				QuickStart\ASPPlus\samples\security\VB\windowsauth<br>
+				QuickStart\ASPPlus\samples\security\VB\userauth</DIV>
+  <DIV 
+  style="FONT-WEIGHT: normal; FONT-SIZE: x-small; FONT-FAMILY: Tahoma, Verdana, Arial, Helvetica" 
+  align=left>&nbsp;</DIV>
+		</ul>
+<P></P>
+	
+	<p>
+		<DIV style="FONT-WEIGHT: bold; FONT-SIZE: x-small; MARGIN-LEFT: 10px; FONT-FAMILY: Tahoma, Verdana, Arial, Helvetica" align=left><A name=SQL><FONT size=3>Configuring the SQL 
+Server Databases</FONT></A>
+			    </DIV>          
+		<DIV style="FONT-WEIGHT: normal; FONT-SIZE: x-small; MARGIN-LEFT: 10px; FONT-FAMILY: Tahoma, Verdana, Arial, Helvetica" align=left>
+			Four databases are used throughout the samples: The two default 
+			databases: pubs and northwind; And two custom databases: GrocerToGo and 
+			Portal. Install these databases using SQL Server Enterprise Manager. 
+			The samples setup program copies the database files into the SQL Server's default data directory.</DIV>
+		<ul>
+			<DIV style="FONT-WEIGHT: normal; FONT-SIZE: x-small; MARGIN-LEFT: 10px; FONT-FAMILY: Tahoma, Verdana, Arial, Helvetica" align=left>
+				For example:</DIV>
+			<DIV style="FONT-WEIGHT: bold; FONT-SIZE: x-small; MARGIN-LEFT: 10px; FONT-FAMILY: Tahoma, Verdana, Arial, Helvetica" align=left>
+				C:\Program Files\Microsoft SQL Server\MSSQL\Data</DIV>
+  <DIV 
+  style="FONT-WEIGHT: bold; FONT-SIZE: x-small; MARGIN-LEFT: 10px; FONT-FAMILY: Tahoma, Verdana, Arial, Helvetica" 
+  align=left>&nbsp;</DIV>
+		</ul>
+<P></P>
+	
+	<p>
+		<DIV style="FONT-WEIGHT: bold; FONT-SIZE: x-small; MARGIN-LEFT: 10px; FONT-FAMILY: Tahoma, Verdana, Arial, Helvetica" align=left><A name=ConfigWeb><FONT size=3>Modifying 
+Config.web</FONT></A>
+			   </DIV>
+		<DIV style="FONT-WEIGHT: normal; FONT-SIZE: x-small; MARGIN-LEFT: 10px; FONT-FAMILY: Tahoma, Verdana, Arial, Helvetica" align=left>The config.web file in the quickstart directory 
+is modified to reflect the samples installation directory.</DIV>
+<BLOCKQUOTE dir=ltr style="MARGIN-RIGHT: 0px">
+		<DIV style="FONT-WEIGHT: normal; FONT-SIZE: x-small; MARGIN-LEFT: 10px; FONT-FAMILY: Tahoma, Verdana, Arial, Helvetica" align=left>       . . .<BR>&lt;sourceview&gt;</DIV>
+  <DIV 
+  style="FONT-WEIGHT: normal; FONT-SIZE: x-small; MARGIN-LEFT: 10px; FONT-FAMILY: Tahoma, Verdana, Arial, Helvetica" 
+  align=left>&nbsp;&nbsp;&nbsp; &lt;add key="root" value="C:\Program 
+  Files\Microsoft.Net\FrameworkSDK\Samples\QuickStart" /&gt;</DIV>
+  <DIV 
+  style="FONT-WEIGHT: normal; FONT-SIZE: x-small; MARGIN-LEFT: 10px; FONT-FAMILY: Tahoma, Verdana, Arial, Helvetica" 
+  align=left>&lt;/sourceview&gt;</DIV>
+  <DIV 
+  style="FONT-WEIGHT: normal; FONT-SIZE: x-small; MARGIN-LEFT: 10px; FONT-FAMILY: Tahoma, Verdana, Arial, Helvetica" 
+  align=left>. . .</DIV></BLOCKQUOTE>
+		<DIV style="FONT-WEIGHT: normal; FONT-SIZE: x-small; MARGIN-LEFT: 10px; FONT-FAMILY: Tahoma, Verdana, Arial, Helvetica" align=left>       &nbsp;</DIV>
+<DIV 
+style="FONT-WEIGHT: bold; FONT-SIZE: x-small; MARGIN-LEFT: 10px; FONT-FAMILY: Tahoma, Verdana, Arial, Helvetica" 
+align=left><A name=Registry><FONT size=3>Adding the Registry Keys</FONT></A> 
+</DIV>
+<DIV 
+style="FONT-WEIGHT: normal; FONT-SIZE: x-small; MARGIN-LEFT: 10px; FONT-FAMILY: Tahoma, Verdana, Arial, Helvetica" 
+align=left>The addition of four registry keys are required.</DIV>
+<UL>
+  <DIV 
+  style="FONT-WEIGHT: normal; FONT-SIZE: x-small; MARGIN-LEFT: 10px; FONT-FAMILY: Tahoma, Verdana, Arial, Helvetica" 
+  align=left>DWORD 
+  HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\COMPlus\Switches\ABooleanSwitch = 
+  1<BR>DWORD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\COMPlus\Switches\ATraceSwitch 
+  = 4<BR>DWORD 
+  HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\COMPlus\Switches\TraceMethods = 
+  1<BR>DWORD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\COMPlus\Switches\Arithmetic = 
+  4</DIV>
+  <DIV 
+  style="FONT-WEIGHT: normal; FONT-SIZE: x-small; MARGIN-LEFT: 10px; FONT-FAMILY: Tahoma, Verdana, Arial, Helvetica" 
+  align=left>&nbsp;</DIV></UL><DIV 
+  style="FONT-WEIGHT: normal; FONT-SIZE: x-small; MARGIN-LEFT: 10px; FONT-FAMILY: Tahoma, Verdana, Arial, Helvetica" 
+  align=left><FONT size=3><A name=Compile><STRONG>Compiling the Samples</STRONG>  </FONT> </DIV>
+<DIV 
+style="FONT-WEIGHT: normal; FONT-SIZE: x-small; MARGIN-LEFT: 10px; FONT-FAMILY: Tahoma, Verdana, Arial, Helvetica" 
+align=left>To compile the samples run the NMAKE program from the samples 
+installation directory.<BR>
+<UL>For Example:<BR><B>C:\Program Files\Microsoft.NET\FrameworkSDK\Samples&gt; 
+  NMAKE all</B> <BR><BR>Note:&nbsp; On Windows 9x, it may be necessary to run 
+  corvars.bat located in the SDK bin directory prior to running NMAKE. </UL>
+<UL><BR><BR></UL>
+<UL></UL>
+<UL></UL></DIV>
+<P></P>
+<P>
+<DIV 
+style="FONT-WEIGHT: bold; FONT-SIZE: x-small; MARGIN-LEFT: 10px; FONT-FAMILY: Tahoma, Verdana, Arial, Helvetica" 
+align=left></A>
+		<hr>
+</DIV>
+		<DIV style="FONT-WEIGHT: normal; FONT-SIZE: x-small; MARGIN-LEFT: 10px; FONT-STYLE: normal; FONT-FAMILY: Tahoma, Verdana, Arial, Helvetica">
+			Copyright © 2000 Microsoft Corporation. All rights reserved.</DIV>
+<P></P>
+
+	<br><br><br>
+	
+</body>
+</html>

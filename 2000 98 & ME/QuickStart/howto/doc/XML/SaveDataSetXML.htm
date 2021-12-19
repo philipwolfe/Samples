@@ -1,0 +1,512 @@
+
+
+<!--BEGIN HEADER-->
+<html>
+<head>
+<link rel="stylesheet" href="../../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+  <table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+<!--
+		<div style="padding:0,0,4,0"><a class="outer" style="color:darkred" href="../../../howto/doc/xml/overviewofxml.htm"><b>Introduction</a></b></a><br></div>
+         <p>
+		<div style="padding:0,0,4,0"><b>XML Readers and Writers</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/readxmlfile.htm">Read XML from a file</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/readxmlstream.htm">Read XML from a stream</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/writexmlfile.htm">Write XML to a file</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/validationreadingxml.htm">Apply validation when reading XML</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML Document Object Model (DOM)</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/dominterfacexmldocument.htm">Load and use the XmlDocument (W3C DOM)</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savexmldocument.htm">Save XML with the XmlDocument (W3C DOM)</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>Using the XmlDataDocument</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/loadxmldocument.htm">Load and use the XmlDataDocument</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/streamanxmldocument.htm">Read XML from an XmlDataDocument</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML Navigation and Editing</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/navigatexmldocument.htm">Navigate XML with the XmlNavigator</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/editingxmldocument.htm">Edit XML with the XmlNavigator</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XPath and XSL Transformations</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/queryxmldocumentxpath.htm">Query XML with an XPath expression</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/transformxml.htm">Apply an XSL transformation to XML</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML and Relational Data</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/xmldataset.htm">Use XML and the DataSet class</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/datasetmapxsdschema.htm">Create DataSet mappings from an XSD schema</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/loaddatasetxmldata.htm">Load a DataSet with XML</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/datasetmapxmldata.htm">Infer DataSet mappings from XML</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savedatasetmapxsdschema.htm">Save DataSet mappings to an XSD schema file</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savedatasetxml.htm">Save a DataSet as XML</a><br>
+-->
+
+		<div style="padding:0,0,4,0"><b>XML Data</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/overviewofxml.htm">Overview of XML</a><p>
+
+		<div style="padding:0,0,4,0"><b>XML Readers and Writers</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/readxmlfile.htm">Read XML from a file</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/readxmlstream.htm">Read XML from a stream</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/writexmlfile.htm">Write XML to a file</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/validationreadingxml.htm">Apply validation to XML</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML Document Object Model</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/dominterfacexmldocument.htm">Load XML with XmlDocument</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savexmldocument.htm">Save XML with XmlDocument</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>Using the XmlDataDocument</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/loadxmldocument.htm">Load the XmlDataDocument</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/streamanxmldocument.htm">Read from XmlDataDocument</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML Navigation and Editing</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/navigatexmldocument.htm">Navigate with XmlNavigator</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/editingxmldocument.htm">Edit with XmlNavigator</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XPath and XSL Transformations</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/queryxmldocumentxpath.htm">Query XML with an XPath</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/transformxml.htm">Apply XSL transformations</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML and Relational Data</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/xmldataset.htm">Use XML and the DataSet</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/datasetmapxsdschema.htm">Create DataSet mappings</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/loaddatasetxmldata.htm">Load a DataSet with XML</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/datasetmapxmldata.htm">Infer DataSet mappings</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savedatasetmapxsdschema.htm">Save DataSet mappings</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savedatasetxml.htm">Save a DataSet as XML</a><p>
+
+    <div style="padding:0,0,4,0"><a target="_top" style="color:darkred" href="../../../howto"><b>Back to Index</b></a><br></div>
+
+
+</div>
+
+</td>
+</tr>
+</table>
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<style>
+.mydd {  font: smaller verdana; }
+.code1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:blue;
+	}
+.codecomment1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:green;
+	}
+.issue {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background-color:RED;
+	color:WHITE;
+	font-weight:bold;
+	}
+
+
+body { font: smaller verdana }        
+
+</style>
+
+
+
+
+
+<h4>How Do I...Save a DataSet as XML?</h4>
+
+
+This sample illustrates how to save relational data loaded into a DataSet to a file as XML using the XmlDataDocument. This demonstrates the transition between
+relationally mapped data and XML data.
+<p>
+This example follows on from the <a href="../../../howto/doc/xml/savedatasetmapxsdschema.htm">How Do I...Save DataSet mappings to an XSD schema file?</a> topic.
+<p>
+
+<span>
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../../images/genicon.gif"><br>
+	</a>
+	<div class="caption">SaveDataSetXMLData.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../../howto/samples/xml/savedatasetxmldata/savedatasetxmldatacssource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+
+<p>
+Having built the relational tables in the DataSet then we can now save these as XML data. This is the generation of hierarchical XML based upon and validated
+against the internally generated XSD schema. First an XmlDataDocument is created for the DataSet.
+<p>
+
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl8" style="display:none">
+
+// Load the DataSet with relation data
+DataSet dataset = new DataSet();
+LoadDataSet(dataset);
+// Create an XmlDataDocument for the DataSet
+XmlDataDocument datadoc = new XmlDataDocument(dataset);
+</pre>
+<pre id="codectrl8" style="display:">
+
+' Load the DataSet with relation data
+Dim dataset As New DataSet
+LoadDataSet(dataset)
+' Create an XmlDataDocument for the DataSet
+Dim datadoc As XmlDataDocument = New XmlDataDocument(dataset)
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl8" onclick="doClick(0, 'ctrl8')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl8" onclick="doClick(1, 'ctrl8')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+
+
+<p>
+To save the XML to a file the XmlDataDocument <b>Save</b> method is called with a StreamWriter representing the file.
+<p>
+
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl10" style="display:none">
+
+// Write data as XML
+internal void WriteXMLData(XmlDataDocument datadoc) {
+
+    StreamWriter writer = null;
+
+    try {
+        Console.WriteLine("Writing the XML data to {0} ...", m_NewDocument);
+        writer = new StreamWriter(m_NewDocument);
+        datadoc.Save(writer);
+    }
+    catch (Exception e) {
+        Console.WriteLine ("Exception: {0}", e.ToString());
+    }
+    finally {
+        if (writer != null)
+            writer.Close();
+
+    }
+}
+</pre>
+<pre id="codectrl10" style="display:">
+
+'Write data as XML
+Private Sub WriteXMLData(datadoc As System.Xml.XmlDataDocument)
+
+    Dim writer As StreamWriter = nothing
+
+    Try   
+        Console.WriteLine("Writing the XML data to {0} ...", m_NewDocument) 
+        writer = new StreamWriter(m_NewDocument) 
+        datadoc.Save (writer) 
+        
+    Catch e As Exception
+        Console.WriteLine("Exception: ", e.ToString()) 
+
+    Finally
+        If Not (writer = nothing)
+            writer.Close()
+        End If
+    End Try
+End Sub
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl10" onclick="doClick(0, 'ctrl10')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl10" onclick="doClick(1, 'ctrl10')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+
+<p>
+The XML is written to the file
+<a target="_blank" href="../../../util/srcctrlwin.htm?path=howto/samples/xml/savedatasetxmldata/&file=personpet.xml">PersonPet.xml</a>.
+The XML in the XmlDataDocument can now be read with an XmlReader and displayed, showing the XML for the relational data.
+See <A target=content href="StreamAnXmlDocument.htm">How do I...Read XML from an XmlDataDocument?</A> The output from this is shown below.
+<p>
+
+<div class="code"><pre>
+Writing the XML data to PersonPet.xml ...
+Element&llt;PersonPet&gt;
+        Element&llt;Person&gt;
+                Element&llt;ID&gt;
+                        Text&llt;#text&gt;0
+                Element&llt;Name&gt;
+                        Text&llt;#text&gt;Mark
+                Element&llt;Age&gt;
+                        Text&llt;#text&gt;18
+        Element&llt;Person&gt;
+                Element&llt;ID&gt;
+                        Text&llt;#text&gt;1
+                Element&llt;Name&gt;
+                        Text&llt;#text&gt;William
+                Element&llt;Age&gt;
+                        Text&llt;#text&gt;12
+        Element&llt;Person&gt;
+                Element&llt;ID&gt;
+                        Text&llt;#text&gt;2
+                Element&llt;Name&gt;
+                        Text&llt;#text&gt;James
+                Element&llt;Age&gt;
+                        Text&llt;#text&gt;7
+        Element&llt;Person&gt;
+                Element&llt;ID&gt;
+                        Text&llt;#text&gt;3
+                Element&llt;Name&gt;
+                        Text&llt;#text&gt;Levi
+                Element&llt;Age&gt;
+                        Text&llt;#text&gt;4
+        Element&llt;Pet&gt;
+                Element&llt;ID&gt;
+                        Text&llt;#text&gt;0
+                Element&llt;OwnerID&gt;
+                        Text&llt;#text&gt;0
+                Element&llt;Name&gt;
+                        Text&llt;#text&gt;Frank
+                Element&llt;Type&gt;
+                        Text&llt;#text&gt;cat
+        Element&llt;Pet&gt;
+                Element&llt;ID&gt;
+                        Text&llt;#text&gt;1
+                Element&llt;OwnerID&gt;
+                        Text&llt;#text&gt;1
+                Element&llt;Name&gt;
+                        Text&llt;#text&gt;Rex
+                Element&llt;Type&gt;
+                        Text&llt;#text&gt;dog
+        Element&llt;Pet&gt;
+                Element&llt;ID&gt;
+                        Text&llt;#text&gt;2
+                Element&llt;OwnerID&gt;
+                        Text&llt;#text&gt;2
+                Element&llt;Name&gt;
+                        Text&llt;#text&gt;Cottontail
+                Element&llt;Type&gt;
+                        Text&llt;#text&gt;rabbit
+        Element&llt;Pet&gt;
+                Element&llt;ID&gt;
+                        Text&llt;#text&gt;3
+                Element&llt;OwnerID&gt;
+                        Text&llt;#text&gt;3
+                Element&llt;Name&gt;
+                        Text&llt;#text&gt;Sid
+                Element&llt;Type&gt;
+                        Text&llt;#text&gt;snake
+        Element&llt;Pet&gt;
+                Element&llt;ID&gt;
+                        Text&llt;#text&gt;4
+                Element&llt;OwnerID&gt;
+                        Text&llt;#text&gt;3
+                Element&llt;Name&gt;
+                        Text&llt;#text&gt;Tickles
+                Element&llt;Type&gt;
+                        Text&llt;#text&gt;spider
+        Element&llt;Pet&gt;
+                Element&llt;ID&gt;
+                        Text&llt;#text&gt;5
+                Element&llt;OwnerID&gt;
+                        Text&llt;#text&gt;1
+                Element&llt;Name&gt;
+                        Text&llt;#text&gt;Tweetie
+                Element&llt;Type&gt;
+                        Text&llt;#text&gt;canary
+</xmp></div>
+
+<H4>Summary</H4>
+<OL>
+<LI>The XmlDataDocument can be constructed from a DataSet to provide an XML API onto the relational data.
+<LI>Data that is entered via the relation methods on the DataSet can be accessed via the XML methods on the XmlDataDocument.
+<LI>XML Data can be saved from both the DataSet with the WriteXmlData method and the XmlDataDocument with the Save method. The former saves a 
+normalized view of the relationally mapped data, whilst the latter saves the XML with full fidelity. If the data has only been entered via the
+DataSet, then these methods are equivalent.
+</LI></OL>
+
+<!--END FOOTER-->
+<p>
+<hr>
+<p>
+</div>
+</td>
+</tr>
+</table>
+</BODY>
+</html>
+<!--END FOOTER-->

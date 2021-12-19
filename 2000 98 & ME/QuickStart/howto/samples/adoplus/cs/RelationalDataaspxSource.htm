@@ -1,0 +1,79 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/adoplus/vb/relationaldata.src&file=..%5CCS%5CRelationalData.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfLi5cXENTXFxSZWxhdGlvbmFsRGF0YS5hc3BceHhfX3h4X3h4X3hfX3g=8ee9bd4b" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">..\CS\RelationalData.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../howto/samples/adoplus/vb/relationaldataaspxsource.htm'>RelationalData.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../howto/samples/adoplus/cs/relationaldataaspxsource.htm'>..\CS\RelationalData.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>
+<%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="System.Data.SQL" %>
+
+<html>
+<script language="C#" runat="server">
+
+    public DataSet dsCustomers; 
+ 
+
+    protected void Page_Load(Object Src, EventArgs E ) 
+    {
+        SQLConnection myConnection = new SQLConnection("server=localhost;uid=sa;pwd=;database=northwind");
+	SQLDataSetCommand CustomersDSCommand = new SQLDataSetCommand("select * from customers", myConnection);
+	SQLDataSetCommand OrdersDSCommand = new SQLDataSetCommand("select * from orders", myConnection);
+
+	dsCustomers = new DataSet();
+
+	
+	CustomersDSCommand.FillDataSet(dsCustomers,"Customers");
+	OrdersDSCommand.FillDataSet(dsCustomers,"Orders");
+
+	//ADD RELATION
+	dsCustomers.Relations.Add("CustOrders",dsCustomers.Tables["Customers"].Columns["CustomerId"],dsCustomers.Tables["Orders"].Columns["CustomerId"]);
+
+	//Iterate over data of Customers and their orders
+	foreach (DataRow Customer in dsCustomers.Tables["Customers"].Rows)
+	{
+		Response.Write("<br>Customer: " + Customer["ContactName"].ToString());
+		Response.Write("<blockquote>");
+		// Iterate over orders data
+		foreach (DataRow Order in Customer.GetChildRows(dsCustomers.Relations["CustOrders"]))
+		{
+			Response.Write("<br>Order #" + Order["OrderId"].ToString());
+		}
+		Response.Write("</blockquote>");
+	}
+    }
+
+</script>
+
+<body>
+
+
+
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

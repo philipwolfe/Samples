@@ -1,0 +1,101 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlref/webctrl/RegexValidator/regexvalidator1.src&file=RegexValidator1.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfUmVnZVx4VmFsaWRhdG9yMS5hc3BceHhfX3h4X3h4X3hfX3g=dc1b7542" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">RegexValidator1.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlref/webctrl/regexvalidator/regexvalidator1aspxsource.htm'>RegexValidator1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlref/webctrl/regexvalidator/vb/regexvalidator1aspxsource.htm'>VB\RegexValidator1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><html>
+<head>
+    <script language="C#" runat=server>
+
+        void ValidateBtn_Click(Object Src, EventArgs E) {
+
+           if (Page.IsValid) {
+              lblOutput.Text = "Page is Valid!";
+           }
+           else {
+              lblOutput.Text = "Page is InValid! :-(";
+           }
+        }
+
+   </script>
+
+</head>
+<body>
+
+<h3><font face="Verdana">Simple RegularExpressionValidator Sample</font></h3>
+
+<form runat="server">
+
+    <table bgcolor="#eeeeee" cellpadding=10>
+    
+      <tr valign="top">
+        <td colspan=3>
+          <asp:Label ID="lblOutput" Text="Enter a 5 digit zip code" Font-Name="Verdana" Font-Size="10pt" runat="server"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan=3>
+          <font face=Verdana size=2><b>Personal Information</b></font>
+        </td>
+      </tr>
+      
+      <tr>
+        <td align=right>
+          <font face=Verdana size=2>Zip Code:</font>
+        </td>
+        <td>
+          <ASP:TextBox id=TextBox1 runat=server />
+        </td>
+        <td>
+          <asp:RegularExpressionValidator id="RegularExpressionValidator1" runat="server"
+              ControlToValidate="TextBox1"
+              ValidationExpression="^\d{5}$"
+              Display="Static"
+              Font-Name="verdana" 
+              Font-Size="10pt">
+                 Zip code must be 5 numeric digits
+          </asp:RegularExpressionValidator>
+        </td>
+      </tr>
+      
+      <tr>
+        <td></td>
+        <td>
+          <ASP:Button text="Validate" OnClick="ValidateBtn_Click" runat=server />
+        </td>
+        <td></td>
+      </tr>
+      
+    </table>
+
+</form>
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

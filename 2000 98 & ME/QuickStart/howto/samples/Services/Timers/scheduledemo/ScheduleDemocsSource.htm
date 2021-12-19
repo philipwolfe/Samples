@@ -1,0 +1,69 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Services/Timers/scheduledemo/scheduledemo.src&file=ScheduleDemo.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfU2NoZWR1bGVEZW1vLmNzeF9feHhfeHhfeF9feA==5ea0e3c3" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">ScheduleDemo.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../howto/samples/services/timers/scheduledemo/scheduledemocssource.htm'>ScheduleDemo.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../howto/samples/services/timers/scheduledemo/vb/scheduledemovbsource.htm'>VB\ScheduleDemo.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>using System;
+using System.Diagnostics;
+using System.Threading;
+using System.Timers;
+	
+// Every Wednesday from 7:00am till 6:00pm prints "Hello World" every 5 seconds
+
+public class Scheduler
+{
+       	public static void Main(String[] args) 
+	{
+		Schedule aSchedule = new Schedule();
+	    aSchedule.Enabled = false;
+        
+		aSchedule.EventOccurred += new OccurredEventHandler(OnScheduledEvent);
+
+		WeeklyPattern days = new WeeklyPattern(DaysOfWeek.Wednesday,1);
+		days.StartTime = new TimeSpan(7,0,0);
+		days.EndTime = new TimeSpan(18,0,0);
+		days.Interval = new TimeSpan(0,0,5);
+		days.ValidFrom = new DateTime(1900,1,1);
+
+		aSchedule.RecurrencePatterns.Add(days);
+
+        aSchedule.Enabled = false;
+		Console.WriteLine("Move the system clock to a Wednesday between 7:00am and 6:00pm and press \'r\'");
+		while(Console.In.Read()!='r');
+		aSchedule.Enabled = true;
+				
+		Console.WriteLine("Press \'q\' and Enter to quit the sample");	
+		while(Console.Read()!='q');
+    }
+
+	public static void OnScheduledEvent(Object source, OccurredEventArgs e)
+	{
+		Console.WriteLine("Hello World!");
+	}
+}
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

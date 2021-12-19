@@ -1,0 +1,168 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Xml/ValidationReadingXML/ValidationReadingXML.src&file=ValidationReadingXML.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVmFsaWRhdGlvblJlYWRpbmdYTUwuY3N4X194eF94eF94X194f328ca38" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">ValidationReadingXML.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../howto/samples/xml/validationreadingxml/validationreadingxmlcssource.htm'>ValidationReadingXML.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../howto/samples/xml/validationreadingxml/vb/validationreadingxmlvbsource.htm'>VB/ValidationReadingXML.vb</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>XML Data: </b></td>
+        <td><a href='../../../../howto/samples/xml/validationreadingxml/booksxmlsource.htm '>books.xml </a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>XML document that validates against the books.dtd: </b></td>
+        <td><a href='../../../../howto/samples/xml/validationreadingxml/booksdtdxmlsource.htm'>booksDTD.xml</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>DTD for booksDTD.xml: </b></td>
+        <td><a href='../../../../howto/samples/xml/validationreadingxml/booksdtdsource.htm'>books.dtd</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>XML document that fails validation against the books.dtd: </b></td>
+        <td><a href='../../../../howto/samples/xml/validationreadingxml/booksdtdfailxmlsource.htm'>booksDTDFail.xml</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>XML document that validates against the schema.xml: </b></td>
+        <td><a href='../../../../howto/samples/xml/validationreadingxml/booksschemaxmlsource.htm'>booksSchema.xml</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Schema for booksSchema.xml: </b></td>
+        <td><a href='../../../../howto/samples/xml/validationreadingxml/schemaxmlsource.htm'>schema.xml</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>XML document that fails validation against the schema.xml: </b></td>
+        <td><a href='../../../../howto/samples/xml/validationreadingxml/booksschemafailxmlsource.htm'>booksSchemaFail.xml</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>/* Copyright (c) 2000, Microsoft Corporation. All Rights Reserved.*/
+
+namespace HowTo.Samples.XML
+{
+
+using System;
+using System.IO;
+using System.Xml;
+
+public class ValidationReadingXMLSample
+{
+    private const String m_Document1 = "booksDTD.xml";
+    private const String m_Document2 = "booksDTDFail.xml";
+    private const String m_Document3 = "booksSchema.xml";
+    private const String m_Document4 = "booksSchemaFail.xml";
+
+    private XmlTextReader m_reader = null;
+    private Boolean m_success = true;
+
+    public ValidationReadingXMLSample ()
+    {
+        try
+        {
+            // Validate the XML file with the DTD
+            Console.WriteLine();
+            Console.WriteLine("Validating XML file booksDTD.xml with DTD file books.dtd ...");
+            m_reader = new XmlTextReader (m_Document1);
+            Validate();
+
+            // DTD Validation failure
+            m_success = true;
+            Console.WriteLine();
+            Console.WriteLine("Validation XML file booksDTDFail.xml with DTD file books.dtd ...");
+            m_reader = new XmlTextReader (m_Document2);
+            m_reader.Validation = Validation.DTD;
+            Validate();
+
+            // Validate the XML file with the schema
+            m_success = true;
+            Console.WriteLine();
+            Console.WriteLine("Validation XML file booksSchema.xml with schema file schema.xml ...");
+            m_reader = new XmlTextReader (m_Document3);
+            m_reader.Validation = Validation.Schema;
+            Validate();
+
+            // Schema Validaiton failure
+            m_success = true;
+            Console.WriteLine();
+            Console.WriteLine("Validation XML file booksSchemaFail.xml with schema file schema.xml ...");
+            m_reader = new XmlTextReader (m_Document4);
+            m_reader.Validation = Validation.Schema;
+            Validate();
+        }
+
+        catch (Exception e)
+        {
+            Console.WriteLine("Exception: " + e.ToString());
+        }
+
+        finally
+        {
+            // Finished with XmlTextReader
+            if (m_reader != null)
+                m_reader.Close();
+        }
+    }    
+
+    public static void Main ()
+    {
+        ValidationReadingXMLSample validation = new ValidationReadingXMLSample();
+    }
+
+    private void Validate()
+    {
+        try
+        {
+            // Set the validation event handler
+            m_reader.ValidationEventHandler += new ValidationEventHandler (this.ValidationEventHandle);
+
+            // Read XML data
+            while (m_reader.Read()){}
+            Console.WriteLine ("Validation finished. Validation {0}", (m_success==true ? "successful" : "failed"));
+        }
+        catch (XmlException e)
+        {
+            Console.WriteLine ("XmlException: " + e.ToString());
+        }
+
+        catch (Exception e)
+        {
+            Console.WriteLine ("Exception: " + e.ToString());
+        }
+    }
+
+    public void ValidationEventHandle (object sender, ValidationEventArgs args)
+    {
+        m_success = false;
+
+        Console.Write("\r\n\tValidation error: " + args.Message);
+
+        if (m_reader.LineNumber > 0)
+        {
+            Console.WriteLine("Line: "+ m_reader.LineNumber + " Position: " + m_reader.LinePos);
+        }
+    }
+
+}// End class ValidationReadingXMLSample
+}// End of HowTo.Samples.XML
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

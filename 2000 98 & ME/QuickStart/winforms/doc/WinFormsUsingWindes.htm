@@ -1,0 +1,183 @@
+<!--BEGIN HEADER-->
+
+
+
+<html>
+<head>
+<link rel="stylesheet" href="../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+  <table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+
+            <div style="padding:0,0,0,0"><a class=outer style="color:darkred" href="../../winforms/doc/default.htm"><b>Introduction</b></a><br></div>
+            <p>
+            <div style="padding:0,0,4,0"><b>Getting Started</b><br></div>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsgettingstarted.htm">What is Windows Forms?</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformssimplehelloworld.htm">Writing a Hello World Form</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsapplicationmodel.htm">Windows Forms Application Model</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsusingwindes.htm">Using the Windows Forms Designer</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsformlayout.htm">Dynamic Layout in Windows Forms</a><br>            
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsmenus.htm">Adding Menus to a Form</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsmdi.htm">Writing MDI Applications</a><p>
+
+            <div style="padding:0,0,4,0"><b>Building Applications</b><br></div>
+            &nbsp; <a class="outer" href="../../winforms/doc/dataaccessplaceholder.htm">Data Access Overview</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/webservicesplaceholder.htm">Web Services Overview</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsdata.htm">Databinding in Windows Forms</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsaxhosting.htm">Using ActiveX Controls</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsgdiplus.htm">Working with Graphics</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsprinting.htm">Working with Printing</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformscreatingcontrols.htm">Creating Controls</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsmsaa.htm">Accessibility</a><p>
+
+            <div style="padding:0,0,0,0"><a class=outer style="color:darkred" href="../../winforms/doc/winformssamples.htm"><b>Control Reference</b></a><br></div>
+            <p>
+            <div style="padding:0,0,0,0"><a target=_top class=outer style="color:darkred" href="../../howto/default.htm"><b>How Do I...?</b></a><br></div>
+            <p>
+            <div style="padding:0,0,0,0"><a class=outer style="color:darkred" href="../../winforms/doc/winformsrelateddocs.htm"><b>Related Documentation</b></a><br></div>
+            <p>
+            
+</div>
+
+</td>
+</tr>
+</table>
+
+
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<style>
+.mydd {  font: smaller verdana; }
+
+.code1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	font-family:"Courier New";
+	color:darkred; 
+	}
+.codecomment1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	font-family:"Courier New";
+	color:green;
+	}
+.issue {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background-color:RED;
+	color:WHITE;
+	font-weight:bold;
+	}
+
+
+body { font: smaller verdana }        
+
+</style>
+
+
+
+
+      <H4>Using the Windows Forms Designer</H4>
+      <P>The .Net Framework SDK includes an application called <B>WinDes</B>. The
+      WinDes application provides form designer, Properties window, and Toolbox to perform design time testing of Windows Forms controls
+        that you have authored. You can
+        use these tools to add your control to a form and set its 
+      properties in the property browser. In addition to providing a way to view
+      and set your control's properties, the Properties window also allows you to
+      view custom 
+      designers and UI Type Editors you have defined for your control.<P>In addition to providing
+        a way to test the controls you have designed, you can also use the
+        WinDes Form Designer to create the user interface for a Windows Forms application.
+      WinDes uses the same underlying code base as the Windows Forms designer in 
+      Visual Studio.
+      <H5>Running WinDes</H5>
+      <P>To run WinDes, navigate to the bin directory where you have installed
+      the .Net Framework SDK. Type WinDes.</P>
+      <H5>Creating Forms</H5>
+      <P>In Windes, you can add a Form by clicking <b>New C#</b> or <b>New VB</b>
+      from the File menu. Once the form designer is displayed, you can add controls to the form by double-clicking on a control
+      in the Toolbox or by 
+      selecting a control in the Toolbox and drawing the control on the form.
+      You can set the properties of a control by selecting the control in the
+      form designer and setting the 
+      properties in the Properties window. To create an event-handling method
+      for an event of a control double-click on the 
+      control. This will create an even-handling method for the default event of
+      the control. You can also create an event-handling method by using the Events tab (Lightning Bolt) on
+      the Properties window. 
+      <H5>Adding Controls to the Toolbox</H5>
+      <P>You can add your controls to the Toolbox for use with the WinDes Form
+      Designer.</P>
+      <ol>
+        <li>Click <b>Add Library</b> from the <b>Edit</b> menu.&nbsp;</li>
+        <li>In the dialog box displayed, select the DLL that contains the
+          control you want to add to the Toolbox.</li>
+      </ol>
+      <P>The control will appear at the bottom of the Toolbox. 
+      <H5>Code Layout</H5>
+      <P>The Form Designer generates code as a result of your actions. This code is placed in a method called 
+      <B>InitializeComponent</B>. If you edit this method WinDes may not be able 
+      to understand your code and thus may not be able to display the form in
+      the form designer. The following example demonstrates what the format for
+      the InitializeComponent method that WinDes expects to see code in. </P>
+      <P>To view and run this sample: <BR><BR>
+
+<span>
+    
+    
+    
+    
+    
+
+        
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../winforms/samples/vb/designablehelloworld">
+	<img style="border-color:black" border=1 src="../../winforms/images/wflink.jpg"><br>
+	</a>
+	<div class="caption">VB Hello World</div><br>
+	
+	
+		[<a target="_blank" href="../../winforms/samples/vb/designablehelloworld">Run Sample</a>] | 
+		[<a target="_blank" href="../../winforms/samples/vb/designablehelloworld/designablehelloworldvbsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+    </span>
+
+<!--END FOOTER-->
+<p>
+<hr>
+<p>
+</div>
+</td>
+</tr>
+</table>
+</BODY>
+</html>
+<!--END FOOTER-->

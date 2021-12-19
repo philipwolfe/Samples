@@ -1,0 +1,102 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/busobjs/TwoTier.src&file=DataObj.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfRGF0YU9iai5jc3hfX3h4X3h4X3hfX3g=b2487e04" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">DataObj.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/busobjs/twotieraspxsource.htm'>TwoTier.htm</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/busobjs/dataobjcssource.htm'>DataObj.cs</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/busobjs/makesamplebatsource.htm'>makesample.bat</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/busobjs/vb/twotieraspxsource.htm'>VB/TwoTier.htm</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/busobjs/vb/dataobjvbsource.htm'>VB/DataObj.vb</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/busobjs/vb/makesamplebatsource.htm'>VB/makesample.bat</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>
+namespace DataLayer 
+{
+using System;
+using System.Data;
+using System.Data.SQL;
+
+  public class DataObj 
+  {
+    private String _connStr;
+
+    public DataObj() 
+    {
+      _connStr = null;
+    }
+
+    public DataObj(String connStr) 
+    {
+      _connStr = connStr;
+    }
+
+    public String ConnectionString 
+    {
+      get 
+      {
+        return _connStr;
+      }
+      set 
+      {
+        _connStr = value;
+      }
+    }
+
+    public DataView GetCategories() 
+    {
+      SQLConnection myConnection = new SQLConnection(_connStr);
+      SQLDataSetCommand myCommand = new SQLDataSetCommand("select distinct CategoryName from Categories", myConnection);
+
+      DataSet ds = new DataSet();
+      myCommand.FillDataSet(ds, "Categories");
+
+      return ds.Tables["Categories"].DefaultView;
+    }
+
+    public DataView GetProductsForCategory(String category) 
+    {
+      SQLConnection myConnection = new SQLConnection(_connStr);
+      SQLDataSetCommand myCommand = new SQLDataSetCommand("select ProductName, ImagePath, UnitPrice, c.CategoryId  from Products p, Categories c where c.CategoryName='" + category + "' and p.CategoryId = c.CategoryId", myConnection);
+
+      DataSet ds = new DataSet();
+      myCommand.FillDataSet(ds, "Products");
+
+      return ds.Tables["Products"].DefaultView;
+    }
+  }
+
+}
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>
+ c where c.CategoryName='" + category + "' and p.CategoryId = c.CategoryId", myConnection);
+
+      DataSet ds = new DataSet();
+      myCommand.FillDataSet(ds, "Products");
+
+      return ds.Tables["Products"].DefaultView;
+    }
+  }
+
+}
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

@@ -1,0 +1,77 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Services/EventLog/loginfo/loginfo.src&file=LogInfo.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfTG9nSW5mby5jc3hfX3h4X3h4X3hfX3g=8ecc0630" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">LogInfo.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../howto/samples/services/eventlog/loginfo/loginfocssource.htm'>LogInfo.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../howto/samples/services/eventlog/loginfo/vb/loginfovbsource.htm'>VB\LogInfo.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>using System;
+using System.Diagnostics;
+	
+public class LogInfo
+{
+       	public static void Main(String[] args) 
+	{
+		string appName = Environment.GetCommandLineArgs()[0];
+
+		if(args.Length != 1 && args.Length != 2)
+		{
+			Console.WriteLine("Usage: " + appName + " <log> [<machine>]");
+			return;
+		}
+
+		string log = args[0];
+
+		string machine;
+		if(args.Length == 2)
+		{
+			machine= args[1];
+		}
+		else
+		{
+			machine = "."; // local machine
+		}
+				
+		if(!EventLog.Exists(log,machine))
+		{
+			Console.WriteLine("The log does not exist!");
+			return;
+		}
+	
+		EventLog aLog = new EventLog();
+		aLog.Log = log;
+		aLog.MachineName = machine;
+		
+		Console.WriteLine("There are " + aLog.Entries.Count + " entr[y|ies] in the log:");  
+		foreach (EventLogEntry entry in aLog.Entries) 
+		{
+			Console.WriteLine("\tEntry: " + entry.Message);
+		}
+
+       	}
+}
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

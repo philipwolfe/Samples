@@ -1,0 +1,147 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Xml/DataSetMapXMLData/DataSetMapXMLData.src&file=VB/DataSetMapXMLData.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvRGF0YVNldE1hcFhNTERhdGEuYXNwXHh4X194eF94eF94X194171abf5d" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/DataSetMapXMLData.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../howto/samples/xml/datasetmapxmldata/datasetmapxmldatacssource.htm'>DataSetMapXMLData.cs</a> &nbsp;&nbsp<a href='../../../../../howto/samples/xml/datasetmapxmldata/datasetmapxmldataaspxsource.htm'>DataSetMapXMLData.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../howto/samples/xml/datasetmapxmldata/vb/datasetmapxmldatavbsource.htm'>VB/DataSetMapXMLData.vb</a> &nbsp;&nbsp<a href='../../../../../howto/samples/xml/datasetmapxmldata/vb/datasetmapxmldataaspxsource.htm'>VB/DataSetMapXMLData.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>XML Data: </b></td>
+        <td><a href='../../../../../howto/samples/xml/datasetmapxmldata/booksxmlsource.htm'>books.xml</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Import Namespace="System" %>
+<%@ Import Namespace="System.IO" %>
+<%@ Import Namespace="System.Data" %>
+<%@ Assembly Name="System.Xml" %>
+<%@ Import Namespace="System.Xml" %>
+
+<script language="VB" runat="server">
+Public Class LoadDataSetXMLDataSample	
+
+	Private m_Document As String = ""
+	Private dataset As DataSet
+	Private writer As StringWriter
+	
+	Public Function Start(args As String) As String
+
+		m_Document = args
+		writer = New StringWriter()
+		Console.SetOut(writer)
+
+        Try
+            Console.WriteLine("Creating an XmlDataDocument ...")
+            datadoc = new XmlDataDocument()
+
+            'Infer the DataSet schema from the XML data and load the XML Data
+            datadoc.DataSet.ReadXml(new StreamReader(m_Document))
+
+            DisplayTables(datadoc.DataSet)
+        
+        Catch e As Exception
+            Console.WriteLine ("Exception: {0}", e.ToString())
+
+		End Try
+		
+		Return(writer.ToString())
+	End Function
+
+    ' Displays the contents of the DataSet tables
+    Private Sub DisplayTables(dataset As DataSet)
+    
+		Dim table As DataTable
+		Dim column As DataColumn 
+		Dim row As DataRow
+		Dim value As Object
+		
+        'Navigate Dataset
+        Console.WriteLine("Content of Tables ..." & ControlChars.CrLf)
+
+        For Each table in dataset.Tables
+        
+            Console.WriteLine("TableName = " + table.TableName)
+            Console.WriteLine ("{0}", "---------")
+            Console.WriteLine("Columns ..." & ControlChars.CrLf)
+            
+            For Each column in table.Columns
+                Console.Write("{0,-22}",column.ColumnName)
+            Next
+            
+            Console.WriteLine("")
+            Console.WriteLine(ControlChars.CrLf & "Number of rows = {0}", table.Rows.All.Length)
+            Console.WriteLine("Rows .." & ControlChars.CrLf)
+            
+            For Each row in table.Rows
+            
+                For Each value in row.ItemArray
+                    Console.Write("{0,-22}",value.ToString())
+                Next
+                Console.WriteLine()
+                
+            Next
+            
+            Console.WriteLine()
+        
+        Next
+    
+    End Sub
+    
+End Class
+</script>
+<html>
+<head>
+      	<link rel="stylesheet" href="intro.css">
+</head>
+<body style="background-color:f6e4c6">
+
+       	<form action="DataSetMapXMLData.htm" method="post" runat="server">
+       	<font>Schema file: </font> 
+        <a href="../../../../../howto/samples/xml/datasetmapxmldata/books.xml">books.xml</a>
+	<center>
+		&nbsp;&nbsp;&nbsp;&nbsp;<asp:button type=submit text="Run" OnClick="SubmitBtn_Click" runat="server"/></br>
+       	</form>
+	</center>
+	<p>
+
+	<table align="center">
+	<tr><th><span>Output from infering schema and creating tables...</span></th></tr>
+	<tr><th><span></span></th></tr>
+	<tr><td><h4><xmp id="output" runat="server"/></h4></td></tr>
+	</table>
+
+</body>
+</html>
+
+<script language="VB" runat="server">
+
+Private Sub SubmitBtn_Click(sender As Object, e As EventArgs)
+
+	myLoadDataSetXMLDataSample = New LoadDataSetXMLDataSample()
+	Output.InnerHtml = myLoadDataSetXMLDataSample.Start(Server.MapPath("books.xml"))
+
+End Sub
+
+</script>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

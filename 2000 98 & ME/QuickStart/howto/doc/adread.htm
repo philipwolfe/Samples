@@ -1,0 +1,357 @@
+
+
+<!--BEGIN HEADER-->
+<html>
+<head>
+<link rel="stylesheet" href="../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+
+
+
+
+
+
+<table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+
+		<div style="padding:0,0,4,0"><b>Active Directory</b><br></div>
+		&nbsp; <a class="outer" href="../../howto/doc/adread.htm">Access Active Directory</a><br>
+		&nbsp; <a class="outer" href="../../howto/doc/adwrite.htm">Modify Active Directory</a><p>
+		<div style="padding:0,0,4,0"><a target="_top" style="color:darkred" href="../../howto"><b>Back to Index</b></a><br></div>
+</div>
+
+</td>
+</tr>
+</table>
+
+
+
+
+
+
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<style>
+.mydd {  font: smaller verdana; }
+.code1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:blue;
+	}
+.codecomment1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:green;
+	}
+.issue {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background-color:RED;
+	color:WHITE;
+	font-weight:bold;
+	}
+
+
+body { font: smaller verdana }        
+
+</style>
+
+
+
+
+
+<h4>How Do I...Access Active Directory?</h4>
+
+Active Directory Service Interfaces (ADSI) accesses the capabilities of directory services from different
+network providers in a distributed computing environment, to present a single
+set of directory service interfaces for managing network resources.
+Administrators and developers can use ADSI services to enumerate and manage the
+resources in a directory service, no matter which network environment contains
+the resource. Use Active Directory to perform common administrative tasks, such
+as locating resources throughout the distributed computing environment.
+<p>
+This sample illustrates how to locate resources in the Active Directory. It's
+a small console application that can be run from a command prompt. The
+application takes one command line argument. The first argument has to be a
+valid path to an active directory entry.
+
+<p>
+Try running the following command substituting the path for a valid Active Directory
+path for your particular network:
+
+<div class="code"><pre>
+&gt; ADRead.exe &quot;LDAP://DC=Microsoft,DC=COM&quot;
+</pre></div>
+
+In its simplest form, reading from the Active Directory involves:
+
+<ol>
+<li>Creating a new DirectoryEntry:
+
+<p>
+<table cellpadding=0 cellspacing=0 width="95%">
+<tr>
+<td>
+
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl4" style="display:none">
+
+DirectoryEntry entry = new DirectoryEntry(path);
+</pre>
+<pre id="codectrl4" style="display:">
+
+Dim entry As DirectoryEntry = New DirectoryEntry(path)
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl4" onclick="doClick(0, 'ctrl4')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl4" onclick="doClick(1, 'ctrl4')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+
+</td>
+</tr>
+</table>
+<p>
+
+<li>Reading the information from the Active Directory and printing it to the screen:
+
+<p>
+<table cellpadding=0 cellspacing=0 width="95%">
+<tr>
+<td>
+
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl6" style="display:none">
+
+foreach(DirectoryEntryProperty objP in objDirEnt.Properties) {
+    Console.Write(tab + objP.Name + " = ");
+    Console.WriteLine("");	
+    foreach(Object objValue in objP.Values) {
+        Console.WriteLine(tab + tab + objValue);
+    }
+}
+</pre>
+<pre id="codectrl6" style="display:">
+
+For Each objP in objDirEnt.Properties
+    Console.Write(tab & objP.Name & " = ")
+    Console.WriteLine("")
+    For Each objValue in objP.Values
+        Console.WriteLine(tab & tab & objValue.ToString())
+    Next objValue
+Next objP
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl6" onclick="doClick(0, 'ctrl6')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl6" onclick="doClick(1, 'ctrl6')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+
+</td>
+</tr>
+</table>
+
+</ol>
+
+<h4>Example</h4>
+
+<span>
+  
+  
+
+        
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../howto/samples/services/directoryservices/adread/vb">
+	<img style="border-color:black" border=1 src="../../images/console.gif"><br>
+	</a>
+	<div class="caption">ADRead.exe</div><br>
+	
+	
+		[<a target="_blank" href="../../howto/samples/services/directoryservices/adread/vb">Run Sample</a>] | 
+		[<a target="_blank" href="../../howto/samples/services/directoryservices/adread/adreadcssource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<!--END FOOTER-->
+<p>
+<hr>
+<p>
+</div>
+</td>
+</tr>
+</table>
+</BODY>
+</html>
+<!--END FOOTER-->

@@ -1,0 +1,89 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/busobjs/TwoTier.src&file=TwoTier.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVHdvVGllci5hc3BceHhfX3h4X3h4X3hfX3g=9872c30a" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">TwoTier.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/busobjs/twotieraspxsource.htm'>TwoTier.htm</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/busobjs/dataobjcssource.htm'>DataObj.cs</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/busobjs/makesamplebatsource.htm'>makesample.bat</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/busobjs/vb/twotieraspxsource.htm'>VB/TwoTier.htm</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/busobjs/vb/dataobjvbsource.htm'>VB/DataObj.vb</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/busobjs/vb/makesamplebatsource.htm'>VB/makesample.bat</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Import Namespace="DataLayer" %>
+
+<html>
+
+<script language="C#" runat="server">
+
+  public void Page_Load(Object sender, EventArgs E)
+  {
+    if (!IsPostBack)
+    {
+      DataObj data = new DataObj("server=localhost;uid=sa;pwd=;database=grocertogo");
+      Categories.DataSource = data.GetCategories();
+      Categories.DataBind();
+    }
+  }
+
+  public void Submit_Click(Object sender, EventArgs E)
+  {
+    DataObj data = new DataObj("server=localhost;uid=sa;pwd=;database=grocertogo");
+    Products.DataSource = data.GetProductsForCategory(Categories.SelectedItem.Value);
+    Products.DataBind();
+  }
+
+</script>
+
+<body style="font: 10pt verdana" bgcolor="ffffcc">
+
+  <form runat="server">
+
+  <h3>A Simple Two-Tier WebForm</h3>
+
+  Select a Category: 
+
+  <ASP:DropDownList id="Categories" DataValueField="CategoryName" runat="server"/>
+
+  <input type="Submit" OnServerClick="Submit_Click" Value="Get Products" runat="server"/><p>
+
+  <ASP:DataList id="Products" ShowHeader=false ShowFooter=false RepeatColumns="2" RepeatDirection="horizontal" BorderWidth=0 runat="server">
+
+    <template name="itemtemplate">
+      <table>
+        <tr>
+          <td width="150" style="text-align:center; font-size:8pt; vertical-align:top; height:200">
+            <ASP:ImageButton borderwidth=6 bordercolor="#ffffcc" command="Select" ImageUrl='<%# DataBinder.Eval(Container.DataItem, "ImagePath") %>' runat="server"/>
+            <p>
+            <%# DataBinder.Eval(Container.DataItem, "ProductName") %> <br>
+            <%# DataBinder.Eval(Container.DataItem, "UnitPrice", "{0:C}").ToString() %>
+          </td>
+        </tr>
+      </table>
+    </template>
+                                             
+  </ASP:DataList>
+
+  </form> 
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

@@ -1,0 +1,63 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/winforms/samples/VB/Data/WebServiceBinding/WebServiceBinding.src&file=SimpleCustomersWebService.asmx" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfU2ltcGxlQ3VzdG9tZXJzV2ViU2VydmljZS5hc21ceHhfX3h4X3h4X3hfX3g=bce00647" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">SimpleCustomersWebService.asmx</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>Win Form Source: </b></td>
+        <td><a href='../../../../../winforms/samples/vb/data/webservicebinding/webserviceclientvbsource.htm'>WebServiceClient.vb</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Web Service: </b></td>
+        <td><a href='../../../../../winforms/samples/vb/data/webservicebinding/simplecustomerswebserviceasmxsource.htm'>SimpleCustomersWebService.asmx</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Web Service definition: </b></td>
+        <td><a href='../../../../../winforms/samples/vb/data/webservicebinding/simplecustomerswebservicesdlsource.htm'>SimpleCustomersWebService.SDL</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Client Proxy: </b></td>
+        <td><a href='../../../../../winforms/samples/vb/data/webservicebinding/customerslistvbsource.htm'>CustomersList.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ WebService Language="VB" Class="CustomersList"%>
+
+Imports System.Web.Services
+Imports System.Data
+Imports System.Data.SQL
+Imports Microsoft.Samples.WinForms.VB.WebServiceBinding.Data
+
+public class CustomersList 
+        Inherits WebService 
+
+     Public Function <WebMethod()> GetCustomers() As DataSet
+         Dim customersDataSet1 As New CustomersDataSet
+         Dim con As SQLConnection = new SQLConnection("server=localhost;uid=sa;pwd=;database=northwind")
+         Dim cmdCustomers As SQLDataSetCommand  = new SQLDataSetCommand("Select * from Customers", con)
+         Dim cmdOrders As SQLDataSetCommand = new SQLDataSetCommand("Select * from Orders", con)
+         cmdCustomers.FillDataSet(customersDataSet1, "Customers")
+         cmdOrders.FillDataSet(customersDataSet1, "Orders")
+         return customersDataSet1 
+     End Function
+     
+End Class                                              
+
+
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

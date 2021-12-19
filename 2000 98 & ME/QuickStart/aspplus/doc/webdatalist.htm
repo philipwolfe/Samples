@@ -1,0 +1,874 @@
+
+
+<!--BEGIN HEADER-->
+<html>
+<head>
+<link rel="stylesheet" href="../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+  <table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+
+            <div style="padding:0,0,4,0"><b>Getting Started</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/quickstart.htm">Introduction</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/whatisaspx.htm">What is ASP.NET?</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/langsupport.htm">Language Support</a><p>
+
+            <div style="padding:0,0,4,0"><b>ASP.NET Web Forms</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webformsintro.htm">Introducing Web Forms</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webserverctrls.htm">Working with Server Controls</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webtemplates.htm">Applying Styles to Controls</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webvalidation.htm">Server Control Form Validation</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webpagelets.htm">Web Forms User Controls</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webdatabinding.htm">Databinding Server Controls</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webdataaccess.htm">Server-Side Data Access</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webdatalist.htm">Data Access and Customization</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/businessobjs.htm">Working with Business Objects</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webctrlauthoring.htm">Authoring Custom Controls</a><br>
+<!--            &nbsp; <a class="outer" href="../../aspplus/doc/webformsandvs7.htm">Visual Studio 7.0 & Web Forms</a><br> -->
+            &nbsp; <a class="outer" href="../../aspplus/doc/webcontrolsref.htm">Web Forms Controls Reference</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webformssyntaxref.htm">Web Forms Syntax Reference</a><p>
+
+            <div style="padding:0,0,4,0"><b>ASP.NET Web Services</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webservicesintro.htm">Introducing Web Services</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/writingservices.htm">Writing a Simple Web Service</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webservicetypes.htm">Web Service Type Marshalling</a><br>
+<!--            &nbsp; <a class="outer" href="../../aspplus/doc/discoverservices.htm">Making Services Discoverable</a><br> -->
+            &nbsp; <a class="outer" href="../../aspplus/doc/servicesanddata.htm">Using Data in Web Services</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/servicesandobjs.htm">Using Objects and Intrinsics</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/htmlscraping.htm">HTML Pattern Matching</a><p>
+
+            <div style="padding:0,0,4,0"><b>ASP.NET Web Applications</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/applications.htm">Application Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/globalasax.htm">Using the Global.asax File</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/stateoverview.htm">Managing Application State</a><br>
+<!--            &nbsp; <a class="outer" href="../../aspplus/doc/httpmodules.htm">Handling HttpModule Events</a><br> -->
+            &nbsp; <a class="outer" href="../../aspplus/doc/httphandlers.htm">HttpHandlers and Factories</a><p>
+
+<!--
+            <div style="padding:0,0,4,0"><b>State Management</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/stateoverview.htm">State Management Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/pageviewstate.htm">Using Page-local View State</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/sessionappstate.htm">Session and Application State</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/usingcookies.htm">Using Client-side Cookies</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/choosingstate.htm">Choosing a Strategy</a><p>
+-->
+            <div style="padding:0,0,4,0"><b>Cache Services</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/cachingoverview.htm">Caching Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/outputcaching.htm">Page Output Caching</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/datacaching.htm">Page Data Caching</a><p>
+
+            <div style="padding:0,0,4,0"><b>Configuration</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/configoverview.htm">Configuration Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/configformat.htm">Configuration File Format</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/configretrieve.htm">Retrieving Configuration</a><p>
+
+            <div style="padding:0,0,4,0"><b>Deployment</b><br></div>
+<!--            &nbsp; <a class="outer" href="../../aspplus/doc/adminoverview.htm">Administration Overview</a><br> -->
+            &nbsp; <a class="outer" href="../../aspplus/doc/deployment.htm">Deploying ASP.NET Applications</a><p>
+
+            <div style="padding:0,0,4,0"><b>Security</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/securityoverview.htm">Security Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/authandauth.htm">Authentication & Authorization</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/windowsauth.htm">Windows-based Authentication</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/formsauth.htm">Forms-based Authentication</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/authorization.htm">Authorizing Users and Roles</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/impersonation.htm">User Account Impersonation</a><p>
+
+            <div style="padding:0,0,4,0"><b>Localization</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/internationalization.htm">Internationalization Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/cultureencoding.htm">Setting Culture and Encoding</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/localizingapps.htm">Localizing ASP.NET Applications</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/resourcefiles.htm">Working with Resource Files</a><p>
+
+            <div style="padding:0,0,4,0"><b>Tracing</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/tracingoverview.htm">Tracing Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/tracelogpage.htm">Trace Logging to Page Output</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/tracelogapp.htm">Application-level Trace Logging</a><p>
+
+            <div style="padding:0,0,4,0"><b>Debugging</b><br></div>
+<!--
+            &nbsp; <a class="outer" href="../../aspplus/doc/debuggingoverview.htm">Debugging Overview</a><br>
+-->
+            &nbsp; <a class="outer" href="../../aspplus/doc/debugcomsdk.htm">The SDK Debugger</a><p>
+<!--
+            &nbsp; <a class="outer" href="../../aspplus/doc/debugvisualstudio.htm">The Visual Studio 7 Debugger</a><p>
+-->
+
+<!--
+            <div style="padding:0,0,4,0"><b>Performance</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/perfoverview.htm">Performance Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/perfcounters.htm">Using Performance Counters</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/perftuning.htm">Performance Tuning Tips</a><p>
+
+            <div style="padding:0,0,4,0"><b>ASP to ASP.NET Migration</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/migrationoverview.htm">Migration Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/syntaxandsemantics.htm">Syntax and Semantics</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/languagecompat.htm">Language Compatibility</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/cominterop.htm">COM Interoperability</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/mtstransactions.htm">MTS Transactions</a><p>
+-->
+            <div style="padding:0,0,4,0"><b>Sample Applications</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/portalapp.htm">A Personalized Portal</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/ecommerceapp.htm">An E-Commerce Storefront</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/classbrowser.htm">A Class Browser Application</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/ibuyspy.htm">IBuySpy.com</a><p>
+
+</div>
+
+</td>
+</tr>
+</table>
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<h4>Data Access and Customization</h4>
+<p>
+
+<div class="indent" style="font-family:Verdana; font-size:8pt;">
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#templates">Introduction to Templated Controls</a><br>
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#postback">Handling Postbacks from a Template</a><br>
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#selectandedit">Using Select and Edit Templates</a><br>
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#finding">Finding a Control Inside a Template</a><p>
+</div>
+<p>
+<hr>
+
+<!--BEGIN SECTION-->
+<a name="templates">
+<span class="subhead">Introduction to Templated Controls</span>
+<p>
+While the DataGrid server control demonstrated in the previous section is suitable for many web application secnarios where a 
+grid-like representation of data is appropriate, many times the presentation of data needs to be much more rich.  ASP.NET offers 
+two controls, <b>DataList</b> and <b>Repeater</b>, which give the developer greater flexibility over the rendering of list-like 
+data.  We call these controls "look-less", because they have no default rendering of their own.  The way data is rendered is 
+completely determined by the developer's implementation of the control's <b>templates</b>, which describe how to present
+data items.
+<p>
+Like the DataGrid, DataList and Repeater support a <b>DataSource</b> property, which can be set to any ICollection type.  The data in this 
+DataSource is bound to the control using the it's <b>DataBind</b> method.  Once the data is bound, the format of each data item is 
+described by a <b>template</b>.  
+<p>
+The <b>ItemTemplate</b> controls the rendering of each item in the DataSource collection.  Inside an ItemTemplate, we can define 
+any arbitrary presentation code (HTML or otherwise).  Using the ASP.NET databinding syntax, we can insert values from the data bound to 
+the DataList or Repeater control.  For example:
+<p>
+
+<div class="code"><pre>
+&lt;ASP:Repeater id="MyRepeater" runat="server"&gt;
+
+    &lt;template name="itemtemplate"&gt;
+        Hello &lt;%# DataBinder.Eval(Container.DataItem, "name") %&gt; !
+    &lt;/template&gt;
+
+&lt;/ASP:Repeater&gt;
+</pre></div>
+
+<p>
+The <b>Container</b> represents the first control in the immediate hierarchy that supports the 
+<b>System.Web.UI.INamingContainer</b> marker interface.  In this case, the Container resolves to an object of type 
+<b>System.Web.UI.WebControls.RepeaterItem</b>, which has a <b>DataItem</b> property.  As the Repeater iterates
+over the DataSource collection, the DataItem contains the current item in this collection.  For example, if the DataSource is set to 
+an ArrayList of Employee objects, the DataItem will be of type Employees.  When bound to a DataView, the DataItem is of type
+<b>DataRowView</b>.
+<p>
+The following example demonstrates a Repeater control bound to a DataView (returned from a SQL query).  We have also defined a
+<b>HeaderTemplate</b> and <b>FooterTemplate </b> which render at the beginning and end of the list, respectively.
+<p>
+
+<span>
+  
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/datalist1.gif"><br>
+	</a>
+	<div class="caption">Repeater1.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/webforms/customize/datalist1aspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<p>
+The Repeater control just iterates over the bound data, rendering the itemtemplate once for each item in the DataSource collection.
+It does not render anything besides the elements contained in its templates.  While the Repeater is a general purpose iterator, 
+the DataList provides some additional features for controlling the layout of the list.  Unlike the Repeater, DataList renders additonal
+elements, like table rows and cells and spans containing style attributes, outside of the template definition to enable this richer 
+formatting.  For example, DataList supports <b>RepeatColumns</b> and <b>RepeatDirection</b>properties that specify whether 
+data should be rendered in multiple columns, and in which direction (vertical or horizontal) to render the data items.  DataList also
+supports style attributes:
+<p>
+
+<div class="code"><pre>
+&lt;ASP:DataList runat="server" DataSource="&lt;%#MyData%&gt;" 
+    RepeatColumns="2" 
+    RepeatDirection="Horizontal" 
+    ItemStyle-Font-Size="10pt" 
+    ItemStyle-Font-Name="Verdana"
+&gt;
+    ...
+&lt;/ASP:DataList&gt;
+</pre></div>
+
+<p>
+<b>Note: </b> For the remainder of this section we concentrate on the many features of the DataList control.  For more information about the 
+Repeater control, refer to the <a href="../../aspplus/samples/webforms/ctrlref/webctrl/repeater/doc_repeater.htm">Repeater</a> 
+section of the <a href="webcontrolsref.htm">Web Forms Controls Reference</a> section of this tutorial.
+<p>
+
+The following sample demonstrates the use of the DataList control.  Notice that we've changed the look of the data items 
+from the previous example by simply changing the contents of the control's ItemTemplate.  The RepeatDirection and RepeatColumns 
+properties determine how the ItemTemplates are laid out:
+<p>
+
+<span>
+  
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/datalist2.gif"><br>
+	</a>
+	<div class="caption">Datalist2.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/webforms/customize/datalist2aspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<p>
+To drive home the idea that template's are infinitely flexible, consider the next example, which changes the itemtemplate once again.
+This time, we've substituted the "src" attribute of an &lt;img&gt; tag with one of the DataItem's values.  We've also used the 
+<b>Format</b> String parameter of <b>DataBinder.Eval</b> to substitute a DataItem value in the querystring for a URL.
+<p>
+
+<span>
+  
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/datalist3.gif"><br>
+	</a>
+	<div class="caption">Datalist3.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/webforms/customize/datalist3aspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<!--BEGIN SECTION-->
+<br>
+<a name="postback">
+<br>
+<span class="subhead">Handling Postbacks from a Template</span>
+<p>
+Like the DataGrid, you can fire a <b>Command</b> from inside a DataList template that is passed to an event handler wired to the 
+DataList itself.  For example, a LinkButton inside the itemtemplate might fire a <b>Select</b> command.  By setting the 
+<b>OnSelectedIndexChanged</b> property of the DataList, we can call an event handler in response to this command.
+
+<p>
+
+<div class="code"><pre>
+&lt;ASP:DataList id="MyDataList" OnSelectedIndexChanged="MyDataList_Select" runat="server"&gt;
+
+    &lt;template name="itemtemplate"&gt;
+
+        &lt;asp:linkbutton Command="Select" runat="server"&gt;
+            &lt;%# DataBinder.Eval(Container.DataItem, "title") %&gt;
+        &lt;/asp:linkbutton&gt;
+
+    &lt;/template&gt;
+
+&lt;/ASP:DataList&gt;
+</pre></div>
+
+<p>
+To see this code in action, view the sample below.  In the MyDataList_Select event handler we populate several other server controls
+with the details about the particular selected item.
+<p>
+
+
+<span>
+  
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/datalist4.gif"><br>
+	</a>
+	<div class="caption">Datalist4.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/webforms/customize/datalist4aspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<p>
+Note that while the DataList recognizes a few special commands such as Select and Edit/Update/Cancel, the Command String fired inside a template 
+can be any arbitrary String.  For all commands, the DataList's <b>OnItemCommand</b> is fired.  We can wire this event to a handler
+as in the previous example:
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 3;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:55%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="4">
+<pre id="codectrl15" style="display:none">
+
+&lt;script runat="server"&gt;
+
+    protected void MyDataList_ItemCommand(Object Src, DataListCommandEventArgs E ) {
+        String command = ((LinkButton)E.CommandSource).Text;
+
+        switch(command) {
+          case "Discussions":
+            ShowDiscussions((DataRowView)E.Item.DataItem);  break;
+          case "Ratings":
+            ShowRatings((DataRowView)E.Item.DataItem);  break;
+        }    
+    }
+
+&lt;/script&gt;
+
+&lt;ASP:DataList id="MyDataList" OnItemCommand="MyDataList_ItemCommand" runat="server"&gt;
+
+    &lt;template name="itemtemplate"&gt;
+
+        &lt;asp:linkbutton Command="Ratings" runat="server"&gt;
+            View Ratings
+        &lt;/asp:linkbutton&gt;
+        |
+        &lt;asp:linkbutton Command="Discussions" runat="server"&gt;
+            View Discussions
+        &lt;/asp:linkbutton&gt;
+
+    &lt;/template&gt;
+
+&lt;/ASP:DataList&gt;
+</pre>
+<pre id="codectrl15" style="display:">
+
+&lt;script runat="server"&gt;
+
+    Protected Sub MyDataList_ItemCommand(Src As Object, E As DataListCommandEventArgs)
+        Dim command As String = E.CommandSource.Text
+		
+        Select Case command
+            Case "Discussions"
+                ShowDiscussions(E.Item.DataItem)
+            Case "Ratings"
+                ShowRatings(E.Item.DataItem)
+        End Select
+    End Sub
+
+&lt;/script&gt;
+
+&lt;ASP:DataList id="MyDataList" OnItemCommand="MyDataList_ItemCommand" runat="server"&gt;
+
+    &lt;template name="itemtemplate"&gt;
+
+        &lt;asp:linkbutton Command="Ratings" runat="server"&gt;
+            View Ratings
+        &lt;/asp:linkbutton&gt;
+        |
+        &lt;asp:linkbutton Command="Discussions" runat="server"&gt;
+            View Discussions
+        &lt;/asp:linkbutton&gt;
+
+    &lt;/template&gt;
+
+&lt;/ASP:DataList&gt;
+</pre>
+<pre id="codectrl15" style="display:none">
+
+&lt;script runat="server"&gt;
+
+    protected function MyDataList_ItemCommand(Src:Object, E:DataListCommandEventArgs ) : void {
+        var command:String = (LinkButton(E.CommandSource)).Text;
+
+        switch(command) {
+          case "Discussions":
+            ShowDiscussions(DataRowView(E.Item.DataItem));  break;
+          case "Ratings":
+            ShowRatings(DataRowView(E.Item.DataItem));  break;
+        }    
+    }
+
+&lt;/script&gt;
+
+&lt;ASP:DataList id="MyDataList" OnItemCommand="MyDataList_ItemCommand" runat="server"&gt;
+
+    &lt;template name="itemtemplate"&gt;
+
+        &lt;asp:linkbutton Command="Ratings" runat="server"&gt;
+            View Ratings
+        &lt;/asp:linkbutton&gt;
+        |
+        &lt;asp:linkbutton Command="Discussions" runat="server"&gt;
+            View Discussions
+        &lt;/asp:linkbutton&gt;
+
+    &lt;/template&gt;
+
+&lt;/ASP:DataList&gt;
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl15" onclick="doClick(0, 'ctrl15')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl15" onclick="doClick(1, 'ctrl15')">
+          <b>VB
+        </td>
+        <td class="backtab" id="tabctrl15" onclick="doClick(2, 'ctrl15')">
+          <b>JScript
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<p>
+Notice that because more than one Command can fire this event handler, we must employ a switch statement to determine the 
+particular Command that was fired.  To see this code in action, view the sample below:
+<p>
+
+<span>
+  
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/datalist5.gif"><br>
+	</a>
+	<div class="caption">Datalist5.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/webforms/customize/datalist5aspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<!--BEGIN SECTION-->
+<br>
+<a name="selectandedit">
+<br>
+<span class="subhead">Using Select and Edit Templates</span>
+<p>
+
+In addition to handling the Select Command using a page-level event handler, the DataList can respond to this event internally.  If a 
+<b>SelectedItemTemplate</b> is defined for the DataList, the DataList will render this template for the item that fired the Select 
+Command.  In this next example we use the SelectedItemTemplate to embolden the title of the selected book:
+<p>
+
+<span>
+  
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/datalist6.gif"><br>
+	</a>
+	<div class="caption">Datalist6.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/webforms/customize/datalist6aspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<p>
+DataList also supports an <b>EditItemTemplate</b> for rendering an item whose index is equal to the DataList's <b>EditItemIndex</b> 
+property.  For details about how editing and updating works, refer the the <a href="webdataaccess.htm#update">Updating Data</a> 
+topic of the <a href="webdataaccess.htm">Data Access</a> section of this tutorial.
+<p>
+
+<span>
+  
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/datalist7.gif"><br>
+	</a>
+	<div class="caption">Datalist7.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/webforms/customize/datalist7aspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+
+<!--BEGIN SECTION-->
+<br>
+<a name="finding">
+<br>
+<span class="subhead">Finding a Control Inside a Template</span>
+<p>
+
+Sometimes it is necessary to locate a control contained inside a template.  If a control is given an ID in a template, that control may be
+retrieved from its Container (the first control in the parent hierarchy that supports <b>INamingContainer</b>).  In this case, the 
+Container is the DataListItem control.  Note that even though there are several controls with the same ID (by virtue of the DataList's 
+repetition), each is contained logically in the namespace of the DataListItem Container control.
+  
+<p>
+We can go through the DataList's <b>Items</b> collection to retrieve the DataListItem for a given index, and then call 
+the DataListItem's <b>FindControl</b> method (inherited from the base Control class) to retrieve a control with a particular ID.
+<p>
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 3;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:55%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="4">
+<pre id="codectrl23" style="display:none">
+
+&lt;script runat="server"&gt;
+
+    public void Page_Load(Object sender, EventArgs E)) {
+        // set datasource and call databind here
+
+        for (int i=0; i&lt;MyDataList.Items.Count; i++) {
+           String isChecked = ((CheckBox) MyDataList.Items[i].FindControl("Save")).Checked.ToString();
+           If (isChecked == "True") {
+             ...
+           }
+        }
+    }
+&lt;/script&gt;
+
+&lt;ASP:DataList id="MyDataList" runat="server"&gt;
+
+    &lt;template name="itemtemplate"&gt;
+         &lt;asp:CheckBox id="Save" runat="server"/&gt; &lt;b&gt;Save to Favorites&lt;/b&gt;
+    &lt;/template&gt;
+
+&lt;/ASP:DataList&gt;
+</pre>
+<pre id="codectrl23" style="display:">
+
+&lt;script runat="server"&gt;
+
+    Public Sub Page_Load(sender As Object, E As EventArgs))
+        ' set datasource and call databind here
+
+        For I=0 To MyDataList.Items.Count-1
+           Dim IsChecked As String =  MyDataList.Items(i).FindControl("Save").Checked.ToString()
+           If IsChecked = "True" Then
+             ...
+           End If
+        Next
+    End Sub
+&lt;/script&gt;
+
+&lt;ASP:DataList id="MyDataList" runat="server"&gt;
+
+    &lt;template name="itemtemplate"&gt;
+         &lt;asp:CheckBox id="Save" runat="server"/&gt; &lt;b&gt;Save to Favorites&lt;/b&gt;
+    &lt;/template&gt;
+
+&lt;/ASP:DataList&gt;
+</pre>
+<pre id="codectrl23" style="display:none">
+
+&lt;script runat="server"&gt;
+
+    public function Page_Load(sender:Object, E:EventArgs)) : void {
+        // set datasource and call databind here
+
+        for (var i:int=0; i&lt;MyDataList.Items.Count; i++) {
+           var isChecked:String = (CheckBox(MyDataList.Items[i].FindControl("Save"))).Checked.ToString();
+           If (isChecked == "True") {
+             ...
+           }
+        }
+    }
+&lt;/script&gt;
+
+&lt;ASP:DataList id="MyDataList" runat="server"&gt;
+
+    &lt;template name="itemtemplate"&gt;
+         &lt;asp:CheckBox id="Save" runat="server"/&gt; &lt;b&gt;Save to Favorites&lt;/b&gt;
+    &lt;/template&gt;
+
+&lt;/ASP:DataList&gt;
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl23" onclick="doClick(0, 'ctrl23')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl23" onclick="doClick(1, 'ctrl23')">
+          <b>VB
+        </td>
+        <td class="backtab" id="tabctrl23" onclick="doClick(2, 'ctrl23')">
+          <b>JScript
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<p>
+To see how this works, view the sample below:
+<p>
+
+<span>
+  
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/datalist8.gif"><br>
+	</a>
+	<div class="caption">Datalist8.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/webforms/customize/datalist8aspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<!--BEGIN SECTION-->
+<a name="endofsection">
+
+<h4>Section Summary</h4>
+<ol>
+<li>The DataList and Repeater controls provide developers fine-tuned control over the rendering of databound lists.
+<li>Rendering of bound data is controlled using a template, such as the HeaderTemplate, FooterTemplate, or ItemTemplate.
+<li>The Repeater control is a general-purpose iterator, and does not inject anything in its rendering that is not contained in a template.
+<li>The DataList control offers more control over the layout and style of items, and outputs it's own rendering code for formatting.
+<li>The DataList supports the Select, Edit/Update/Cancel, and Item Command events, which may be handled at the page-level by
+wiring event handlers to the DataList's Command events.
+<li>DataList supports a SelectedItemTemplate and EditItemTemplate for control over the rendering of a selected or editable item.
+<li>Controls may be programmatically retrieved from a template using the Control.FindControl method.  This should be called on
+a DataListItem retrieved from the DataList's Items collection.
+</ol>
+<p>
+
+<!--END FOOTER-->
+<p>
+<hr>
+<p>
+</div>
+</td>
+</tr>
+</table>
+</BODY>
+</html>
+<!--END FOOTER-->

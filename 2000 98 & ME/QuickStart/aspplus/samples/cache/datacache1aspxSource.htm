@@ -1,0 +1,96 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/cache/datacache1.src&file=datacache1.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfZGF0YWNhY2hlMS5hc3BceHhfX3h4X3h4X3hfX3g=1aa84b2f" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">datacache1.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../aspplus/samples/cache/datacache1aspxsource.htm'>datacache1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../aspplus/samples/cache/vb/datacache1aspxsource.htm'>VB\datacache1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="System.Data.SQL" %>
+
+<html>
+
+  <script language="C#" runat="server">
+  
+    void Page_Load(Object Src, EventArgs E) {
+
+      DataView Source;
+
+      // try to retrieve item from cache
+      // if it's not there, add it	
+    	
+      Source = (DataView)Cache["MyDataSet"];
+    	
+      if (Source == null) {
+    	
+        SQLConnection myConnection = new SQLConnection("server=localhost;uid=sa;pwd=;database=pubs");
+        SQLDataSetCommand myCommand = new SQLDataSetCommand("select * from Authors", myConnection);
+    		
+        DataSet ds = new DataSet();
+        myCommand.FillDataSet(ds, "Authors");
+
+        Source = new DataView(ds.Tables["Authors"]);
+        Cache["MyDataSet"] = Source;
+    	
+        CacheMsg.Text = "Dataset created explicitly";   	
+      }
+      else {
+        CacheMsg.Text = "Dataset retrieved from cache";
+      }
+
+      MyDataGrid.DataSource=Source;
+      MyDataGrid.DataBind();
+    }
+
+  </script>
+
+  <body>
+  
+    <form method="GET" runat="server">
+    
+      <h3><font face="Verdana">Caching Data</font></h3>
+
+      <ASP:DataGrid id="MyDataGrid" runat="server"
+      	Width="700"
+      	BackColor="#ccccff" 
+      	BorderColor="black"
+      	ShowFooter="false" 
+      	CellPadding=3 
+      	CellSpacing="0"
+      	Font-Name="Verdana"
+      	Font-Size="8pt"
+      	HeaderStyle-BackColor="#aaaad" />
+          
+      <p>
+      
+      <i><asp:label id="CacheMsg" runat="server"/></i>
+    
+    </form>
+  </body>
+</html>
+
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

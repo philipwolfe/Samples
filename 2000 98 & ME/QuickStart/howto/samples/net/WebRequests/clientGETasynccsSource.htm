@@ -1,0 +1,77 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/net/WebRequests/clientgetasync.src&file=clientGETasync.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfY2xpZW50R0VUYXN5bmMuY3N4X194eF94eF94X1949c523b51" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">clientGETasync.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../howto/samples/net/webrequests/clientgetasynccssource.htm'>clientGETasync.cs</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>using System;
+using System.Net;
+using System.Threading;
+using System.IO;
+
+class ClientGetAsync {
+
+    const int MAX = 20;
+    
+    public static void Main(string[] args) {
+
+        if (args.Length < 1) {
+            showusage();
+            return;
+        }
+
+        URI HttpSite = new URI(args[0]);
+        HttpWebRequest wreq = (HttpWebRequest) WebRequestFactory.Create(HttpSite);
+        IAsyncResult r = (IAsyncResult) wreq.BeginGetResponse(new AsyncCallback(RespCallback), null);
+        Thread.Sleep(3000);
+        Console.WriteLine("Exiting.");
+    }
+
+    public static void showusage() {
+        Console.WriteLine("Attempts to GET a URL");
+        Console.WriteLine("\r\nUsage:");
+        Console.WriteLine("ClientGetAsync URL");
+        Console.WriteLine("Examples:");
+        Console.WriteLine("ClientGetAsync http://www.microsoft.com/net/");
+    }
+
+    private static void RespCallback(IAsyncResult ar)
+    {
+        HttpWebRequest req = (HttpWebRequest) ar.AsyncObject;
+        HttpWebResponse resp = (HttpWebResponse) req.EndGetResponse(ar);
+        
+        int BytesRead = 0;
+        char[] Buffer = new char[MAX];
+
+        StreamReader Reader = new StreamReader(resp.GetResponseStream(), System.Text.Encoding.UTF8);
+        StringWriter Writer = new StringWriter();
+        
+        BytesRead = Reader.Read(Buffer, 0, MAX);
+        while (BytesRead != 0 ) {
+            Writer.Write(Buffer, 0, MAX);
+            BytesRead = Reader.Read(Buffer, 0, MAX);
+        }
+        Console.WriteLine("Message = " + Writer.ToString());
+    }
+}
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

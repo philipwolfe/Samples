@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:s0="http://terraservice.net/landmarkserver/" targetNamespace="http://terraservice.net/landmarkserver/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://terraservice.net/landmarkserver/">
+      <s:element name="GetLandmarkTypes">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetLandmarkTypesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetLandmarkTypesResult" nillable="true" type="s0:ArrayOfLandmarkType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfLandmarkType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LandmarkType" type="s0:LandmarkType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LandmarkType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ShapeType" type="s0:ShapeType" />
+          <s:element minOccurs="1" maxOccurs="1" name="Type" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ShapeType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Null" />
+          <s:enumeration value="Point" />
+          <s:enumeration value="PolyLine" />
+          <s:enumeration value="Polygon" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="CountOfLandmarkPointsByRect">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="rect" type="s0:BoundingRect" />
+            <s:element minOccurs="1" maxOccurs="1" name="types" nillable="true" type="s0:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="BoundingRect">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="UpperLeft" type="s0:LonLatPt" />
+          <s:element minOccurs="1" maxOccurs="1" name="LowerRight" type="s0:LonLatPt" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LonLatPt">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Lon" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Lat" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CountOfLandmarkPointsByRectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CountOfLandmarkPointsByRectResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLandmarkPointsByRect">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="rect" type="s0:BoundingRect" />
+            <s:element minOccurs="1" maxOccurs="1" name="types" nillable="true" type="s0:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLandmarkPointsByRectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetLandmarkPointsByRectResult" nillable="true" type="s0:ArrayOfLandmarkPoint" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfLandmarkPoint">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LandmarkPoint" nillable="true" type="s0:LandmarkPoint" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LandmarkPoint">
+        <s:complexContent mixed="false">
+          <s:extension base="s0:LandmarkBase">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Point" type="s0:LonLatPt" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="LandmarkBase">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Type" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Name" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FipsCode" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TypeDescription" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ShapeType" type="s0:ShapeType" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CountOfLandmarkShapesByRect">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="rect" type="s0:BoundingRect" />
+            <s:element minOccurs="1" maxOccurs="1" name="types" nillable="true" type="s0:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CountOfLandmarkShapesByRectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CountOfLandmarkShapesByRectResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ArrayOfLandmarkType" nillable="true" type="s0:ArrayOfLandmarkType" />
+    </s:schema>
+  </types>
+  <message name="GetLandmarkTypesSoapIn">
+    <part name="parameters" element="s0:GetLandmarkTypes" />
+  </message>
+  <message name="GetLandmarkTypesSoapOut">
+    <part name="parameters" element="s0:GetLandmarkTypesResponse" />
+  </message>
+  <message name="CountOfLandmarkPointsByRectSoapIn">
+    <part name="parameters" element="s0:CountOfLandmarkPointsByRect" />
+  </message>
+  <message name="CountOfLandmarkPointsByRectSoapOut">
+    <part name="parameters" element="s0:CountOfLandmarkPointsByRectResponse" />
+  </message>
+  <message name="GetLandmarkPointsByRectSoapIn">
+    <part name="parameters" element="s0:GetLandmarkPointsByRect" />
+  </message>
+  <message name="GetLandmarkPointsByRectSoapOut">
+    <part name="parameters" element="s0:GetLandmarkPointsByRectResponse" />
+  </message>
+  <message name="CountOfLandmarkShapesByRectSoapIn">
+    <part name="parameters" element="s0:CountOfLandmarkShapesByRect" />
+  </message>
+  <message name="CountOfLandmarkShapesByRectSoapOut">
+    <part name="parameters" element="s0:CountOfLandmarkShapesByRectResponse" />
+  </message>
+  <message name="GetLandmarkTypesHttpGetIn" />
+  <message name="GetLandmarkTypesHttpGetOut">
+    <part name="Body" element="s0:ArrayOfLandmarkType" />
+  </message>
+  <message name="GetLandmarkTypesHttpPostIn" />
+  <message name="GetLandmarkTypesHttpPostOut">
+    <part name="Body" element="s0:ArrayOfLandmarkType" />
+  </message>
+  <portType name="LandmarkServiceSoap">
+    <operation name="GetLandmarkTypes">
+      <input message="s0:GetLandmarkTypesSoapIn" />
+      <output message="s0:GetLandmarkTypesSoapOut" />
+    </operation>
+    <operation name="CountOfLandmarkPointsByRect">
+      <input message="s0:CountOfLandmarkPointsByRectSoapIn" />
+      <output message="s0:CountOfLandmarkPointsByRectSoapOut" />
+    </operation>
+    <operation name="GetLandmarkPointsByRect">
+      <input message="s0:GetLandmarkPointsByRectSoapIn" />
+      <output message="s0:GetLandmarkPointsByRectSoapOut" />
+    </operation>
+    <operation name="CountOfLandmarkShapesByRect">
+      <input message="s0:CountOfLandmarkShapesByRectSoapIn" />
+      <output message="s0:CountOfLandmarkShapesByRectSoapOut" />
+    </operation>
+  </portType>
+  <portType name="LandmarkServiceHttpGet">
+    <operation name="GetLandmarkTypes">
+      <input message="s0:GetLandmarkTypesHttpGetIn" />
+      <output message="s0:GetLandmarkTypesHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="LandmarkServiceHttpPost">
+    <operation name="GetLandmarkTypes">
+      <input message="s0:GetLandmarkTypesHttpPostIn" />
+      <output message="s0:GetLandmarkTypesHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="LandmarkServiceSoap" type="s0:LandmarkServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetLandmarkTypes">
+      <soap:operation soapAction="http://terraservice.net/landmarkserver/GetLandmarkTypes" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CountOfLandmarkPointsByRect">
+      <soap:operation soapAction="http://terraservice.net/landmarkserver/CountOfLandmarkPointsByRect" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetLandmarkPointsByRect">
+      <soap:operation soapAction="http://terraservice.net/landmarkserver/GetLandmarkPointsByRect" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CountOfLandmarkShapesByRect">
+      <soap:operation soapAction="http://terraservice.net/landmarkserver/CountOfLandmarkShapesByRect" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="LandmarkServiceHttpGet" type="s0:LandmarkServiceHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetLandmarkTypes">
+      <http:operation location="/GetLandmarkTypes" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="LandmarkServiceHttpPost" type="s0:LandmarkServiceHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetLandmarkTypes">
+      <http:operation location="/GetLandmarkTypes" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="LandmarkService">
+    <port name="LandmarkServiceSoap" binding="s0:LandmarkServiceSoap">
+      <soap:address location="http://207.46.235.39/LandmarkService.asmx" />
+    </port>
+    <port name="LandmarkServiceHttpGet" binding="s0:LandmarkServiceHttpGet">
+      <http:address location="http://207.46.235.39/LandmarkService.asmx" />
+    </port>
+    <port name="LandmarkServiceHttpPost" binding="s0:LandmarkServiceHttpPost">
+      <http:address location="http://207.46.235.39/LandmarkService.asmx" />
+    </port>
+  </service>
+</definitions>

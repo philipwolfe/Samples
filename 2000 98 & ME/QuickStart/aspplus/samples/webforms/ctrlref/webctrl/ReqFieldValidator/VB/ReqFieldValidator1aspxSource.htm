@@ -1,0 +1,54 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlref/webctrl/ReqFieldValidator/reqfieldvalidator1.src&file=VB%5CReqFieldValidator1.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkJcXFJlcUZpZWxkVmFsaWRhdG9yMS5hc3BceHhfX3h4X3h4X3hfX3g=90413fac" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB\ReqFieldValidator1.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../../aspplus/samples/webforms/ctrlref/webctrl/reqfieldvalidator/reqfieldvalidator1aspxsource.htm'>ReqFieldValidator1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../../aspplus/samples/webforms/ctrlref/webctrl/reqfieldvalidator/vb/reqfieldvalidator1aspxsource.htm'>VB\ReqFieldValidator1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><html>
+<body>
+
+    <h3><font face="Verdana">RequiredFieldValidator Example</font></h3>
+
+    <form runat=server>
+
+        Name: <asp:TextBox id=Text1 runat="server"/>
+
+        <asp:RequiredFieldValidator id="RequiredFieldValidator1" ControlToValidate="Text1" Font-Name="Arial" Font-Size="11" runat="server">
+            Required field!
+        </asp:RequiredFieldValidator>
+
+        <p>
+        
+        <asp:Button id="Button1" runat="server" Text="Validate" />
+
+    </form>
+
+</body>
+</html>
+
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

@@ -1,0 +1,92 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlref/htmlctrl/HtmlForm/HtmlForm1.src&file=HtmlForm1.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfSHRtbEZvcm0xLmFzcFx4eF9feHhfeHhfeF9feA==a4907aa6" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">HtmlForm1.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlref/htmlctrl/htmlform/htmlform1aspxsource.htm'>HtmlForm1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlref/htmlctrl/htmlform/vb/htmlform1aspxsource.htm'>VB\HtmlForm1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlref/htmlctrl/htmlform/js/htmlform1aspxsource.htm'>JS\HtmlForm1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><html>
+
+<head>
+
+    <script language="C#" runat="server">
+
+       void Button1_OnClick(object Source, EventArgs e) {
+          Span1.InnerHtml="You clicked Button1";
+       }
+
+       void Button2_OnClick(object Source, EventArgs e) {
+          Span2.InnerHtml="You clicked Button2";
+       }
+
+       void Button3_OnClick(object Source, EventArgs e) {
+          Span3.InnerHtml="You clicked Button3";
+       }
+
+    </script>
+
+</head>
+
+<body>
+
+    <h3><font face="Verdana">Simple HtmlForm Sample</font></h3>
+
+    <form id=ServerForm runat=server>
+       
+        <button id=Button1 runat="server" onServerClick="Button1_OnClick">Button1</button>
+
+        &nbsp;&nbsp;
+
+        <span id=Span1 runat=server />
+
+        <p>
+
+        <button id=Button2 runat="server" onServerClick="Button2_OnClick">Button2</button>
+
+        &nbsp;&nbsp;
+
+        <span id=Span2 runat=server />
+
+        <p>
+
+        <button id=Button3 runat="server" onServerClick="Button3_OnClick">Button3</button>
+
+        &nbsp;&nbsp;
+
+        <span id=Span3 runat=server />
+
+    </form>
+
+</body>
+
+</html>
+
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

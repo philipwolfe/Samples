@@ -1,0 +1,59 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlref/webctrl/Button/button1.src&file=button1.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfYnV0dG9uMS5hc3BceHhfX3h4X3h4X3hfX3g=4a0f3dbd" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">button1.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlref/webctrl/button/button1aspxsource.htm'>button1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlref/webctrl/button/vb/button1aspxsource.htm'>VB\button1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><html>
+<head>
+
+    <script language="C#" runat="server">
+
+       void Button1_Click(object Source, EventArgs e) {
+          Label1.Text="You clicked the button";
+       }
+
+    </script>
+
+</head>
+<body>
+
+    <h3><font face="Verdana">PostBack Using Button</font></h3>
+
+    <form runat=server>
+
+        <asp:Button id=Button1 Text="Click Me" onclick="Button1_Click" runat="server" />
+        
+        <asp:Label id=Label1 runat=server />
+
+    </form>
+
+</body>
+</html>
+
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

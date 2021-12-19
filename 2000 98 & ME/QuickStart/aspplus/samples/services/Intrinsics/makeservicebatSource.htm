@@ -1,0 +1,33 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/services/Intrinsics/SessionService1Client.src&file=makeservice.bat" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfbWFrZXNlcnZpY2UuYmF0eF9feHhfeHhfeF9feA==74d163cd" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">makeservice.bat</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../aspplus/samples/services/intrinsics/sessionservice1clientaspxsource.htm'>SessionService1Client.htm</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/services/intrinsics/sessionservice1sdlsource.htm'>SessionService1.sdl</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/services/intrinsics/sessionservice1cssource.htm'>SessionService1.cs</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/services/intrinsics/makeservicebatsource.htm'>makeservice.bat</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../aspplus/samples/services/intrinsics/vb/sessionservice1clientaspxsource.htm'>VB/SessionService1Client.htm</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/services/intrinsics/vb/sessionservice1sdlsource.htm'>VB/SessionService1.sdl</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/services/intrinsics/vb/sessionservice1vbsource.htm'>VB/SessionService1.vb</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/services/intrinsics/vb/makeservicebatsource.htm'>VB/makeservice.bat</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>webserviceutil -c:proxy /pa:SessionService1.sdl /l:CSharp /n:SessionService1Space
+csc /out:..\..\..\bin\SessionService1.dll /t:library /r:system.web.services.dll /r:system.xml.serialization.dll SessionService1.cs
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

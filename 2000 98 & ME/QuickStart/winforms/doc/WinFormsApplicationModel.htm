@@ -1,0 +1,1133 @@
+<!--BEGIN HEADER-->
+
+
+
+<html>
+<head>
+<link rel="stylesheet" href="../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+  <table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+
+            <div style="padding:0,0,0,0"><a class=outer style="color:darkred" href="../../winforms/doc/default.htm"><b>Introduction</b></a><br></div>
+            <p>
+            <div style="padding:0,0,4,0"><b>Getting Started</b><br></div>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsgettingstarted.htm">What is Windows Forms?</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformssimplehelloworld.htm">Writing a Hello World Form</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsapplicationmodel.htm">Windows Forms Application Model</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsusingwindes.htm">Using the Windows Forms Designer</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsformlayout.htm">Dynamic Layout in Windows Forms</a><br>            
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsmenus.htm">Adding Menus to a Form</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsmdi.htm">Writing MDI Applications</a><p>
+
+            <div style="padding:0,0,4,0"><b>Building Applications</b><br></div>
+            &nbsp; <a class="outer" href="../../winforms/doc/dataaccessplaceholder.htm">Data Access Overview</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/webservicesplaceholder.htm">Web Services Overview</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsdata.htm">Databinding in Windows Forms</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsaxhosting.htm">Using ActiveX Controls</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsgdiplus.htm">Working with Graphics</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsprinting.htm">Working with Printing</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformscreatingcontrols.htm">Creating Controls</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsmsaa.htm">Accessibility</a><p>
+
+            <div style="padding:0,0,0,0"><a class=outer style="color:darkred" href="../../winforms/doc/winformssamples.htm"><b>Control Reference</b></a><br></div>
+            <p>
+            <div style="padding:0,0,0,0"><a target=_top class=outer style="color:darkred" href="../../howto/default.htm"><b>How Do I...?</b></a><br></div>
+            <p>
+            <div style="padding:0,0,0,0"><a class=outer style="color:darkred" href="../../winforms/doc/winformsrelateddocs.htm"><b>Related Documentation</b></a><br></div>
+            <p>
+            
+</div>
+
+</td>
+</tr>
+</table>
+
+
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<style>
+.mydd {  font: smaller verdana; }
+
+.code1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	font-family:"Courier New";
+	color:darkred; 
+	}
+.codecomment1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	font-family:"Courier New";
+	color:green;
+	}
+.issue {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background-color:RED;
+	color:WHITE;
+	font-weight:bold;
+	}
+
+
+body { font: smaller verdana }        
+
+</style>
+
+
+
+
+      
+<H4>The Windows Forms Application Model</H4>
+
+The application programming model for Windows Forms is primarily comprised 
+of forms, controls, and their events.&nbsp; The following areas of the Win 
+Forms application model are covered in this topic:</P> 
+
+<p>The Windows Forms programming model centers around Forms, Controls and Events:</p>
+
+<ul>
+    <li><a href="#Forms">Forms</a>
+    <li><a href="#Controls">Controls</a>
+    <li><a href="#Events">Events</a>
+    <li><a href="#Deterministic lifetime and Dispose">Deterministic lifetime and Dispose</a>
+    <li><a href="#Sample">A Simple Sample Application</a>
+</ul>
+
+
+<a name="Forms">
+<h5>Forms</h5>
+
+<P>In Windows Forms, the top level windows in your application are called 
+<b>Forms</b>.  The Form class is a representation of any window displayed 
+in your application.  You can use the <b>BorderStyle</b> property of the 
+Form class to create standard, tool, borderless, and floating windows.  
+You can also use the Form class to create modal windows such as a dialog 
+box.  A special kind of form, the <a ref=WinFormsMDI.htm>MDI form</a> can 
+be created by setting the <b>MDIContainer</b> property of the Form class.  
+An MDI form can contain other forms called MDI child forms within its 
+client area.  The Form class provides built in support for keyboard 
+handling (tab order) and scrolling of the contents of the form.</P> 
+
+<P>When designing the user interface for your application, you typically 
+create a class that derives from form.  You can then add controls to the 
+form, set properties, create event handlers and add programming logic to 
+your form.</P> 
+
+<!--CONTROLS-->
+<a name="Controls">
+<h5>Controls</h5>
+
+<P>The components that are added to a form, such as <b>Button</b>, 
+<b>TextBox</b>, and <b>RadioButton</b> are called controls.  Windows Forms 
+includes all of the standard Windows controls as well as custom controls 
+such as the Windows Forms <b>DataGrid</b>.</P> 
+      
+<P>You typically interact with controls by setting properties to alter 
+their appearance and behavior.  For example,&nbsp; the following subclass 
+of Form adds a Button control to the form, sets its <b>Size</b> and 
+<b>Location</b>, and adds it to the form:</P>
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl6" style="display:none">
+
+public class HelloWorldForm : Form {
+
+    private Button button1 = new Button() ;
+
+    public HelloWorldForm() {
+
+        this.Text = "Hello Windows Forms World";
+        this.AutoScaleBaseSize = new Size(5, 13);
+        this.ClientSize = new Size(392, 117);
+
+        button1.Location = new Point(256, 64);
+        button1.Size = new Size(120, 40);
+        button1.TabIndex = 1;
+        button1.Text = "Click Me!";
+
+        this.Controls.Add(button1);
+    }
+
+
+    public static int Main(string[] args) {
+        Application.Run(new HelloWorldForm()); return 0;
+    }
+    
+}
+</pre>
+<pre id="codectrl6" style="display:">
+
+Public Class HelloWorldForm
+    Inherits Form
+
+    Private button1 As New Button
+
+    Public Sub New()
+
+        MyBase.New
+
+        Me.Text = "Hello WinForms World"
+        Me.AutoScaleBaseSize = new Size(5, 13)
+        Me.ClientSize = new Size(392, 117)
+
+        button1.Location = new Point(256, 64)
+        button1.Size = new Size(120, 40)
+        button1.TabIndex = 2
+        button1.Text = "Click Me!"
+
+        Me.Controls.Add(button1)
+
+    End Sub
+
+    'When the application is started show the Form
+    Shared Sub Main()
+        System.WinForms.Application.Run(New HelloWorldForm())
+    End Sub
+
+End Class
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl6" onclick="doClick(0, 'ctrl6')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl6" onclick="doClick(1, 'ctrl6')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<h6>Control state is modeless</h6>
+
+<P>Windows Forms provide limited restrictions as to when you can set 
+properties for controls.  Controls do not have modes that prevent their 
+state from being updated.  There are no properties that can only be set 
+before you display a control, or that can only be set after you display a 
+control, or that can only be set once a control has been added to a Form 
+and so on.  As soon as you have created a new instance of a control you 
+can alter its state.  For example the following code provides two examples 
+that demonstrate valid ways of creating a Button control:</P> 
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl8" style="display:none">
+
+Button button1 = new Button();
+button1.Location = new Point(256, 64);
+button1.Size = new Size(120, 40);
+button1.TabIndex = 1;
+button1.Text = "Click Me!";
+this.Controls.Add(button1);
+</pre>
+<pre id="codectrl8" style="display:">
+
+Dim button1 As New Button
+button1.Location = New Point(256, 64)
+button1.Size = New Size(120, 40)
+button1.TabIndex = 1
+button1.Text = "Click Me!"
+Me.Controls.Add(button1)
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl8" onclick="doClick(0, 'ctrl8')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl8" onclick="doClick(1, 'ctrl8')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+<br>
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl10" style="display:none">
+
+Button button1 = new Button();
+this.Controls.Add(button1);
+button1.Location = new Point(256, 64);
+button1.Size = new Size(120, 40);
+button1.TabIndex = 1;
+button1.Text = "Click Me!";
+</pre>
+<pre id="codectrl10" style="display:">
+
+Dim button1 As New Button
+Me.Controls.Add(button1)
+button1.Location = New Point(256, 64)
+button1.Size = New Size(120, 40)
+button1.TabIndex = 1
+button1.Text = "Click Me!"
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl10" onclick="doClick(0, 'ctrl10')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl10" onclick="doClick(1, 'ctrl10')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<P>Windows Forms ensures that the code you create is valid.  For 
+example,&nbsp; if you set a property that sets a Windows style bit for a 
+Windows control that can only be set when it is created, the Windows Forms 
+control will "throw away" the underlying Windows control and create a new 
+one for you.  The only time that this capability potentially is 
+undesirable is if you bypass Windows Forms and directly access the underlying 
+HWND for the control.  You cannot keep a reference to the HWND as it may 
+be made invalid by a property set in your code.</P> 
+
+
+<!--EVENTS-->
+
+<a name="Events">
+<h5>Events</h5>
+
+<P>The Windows Forms programming model is event based.  When a control changes 
+state, such as when the user clicks on a button, the control raises an 
+event.  In order to handle an event your application registers an 
+event-handling method for that event.  
+
+<span>
+    
+    
+    
+    
+
+        
+
+
+
+        In Visual Basic there are three ways to register an event handling method:
+        
+        <ul>
+        <li>If you declare the control variable using the WithEvents keyword and declare a 
+        method with a name that follows the pattern "&lt;controlname&gt;_&lt;eventname&gt;" then
+        the Visual Basic compiler will register the event handling method for you.</li><br><br>
+        
+        <li>If you declare the control variable using the WithEvents keyword  
+        you can use the <b>Handles</b> keyword on the declaration of a method to
+        register it as the event handling method. This allows you to use method names that 
+        are not limited to the "&lt;controlname&gt;_&lt;eventname&gt;" pattern.
+        </li><br><br>
+        
+        <li>You can use <b>AddHandler</b> to register event handling methods 
+        at runtime.</li><br><br>
+        
+        
+        </ul>
+        
+        The following code illustrates all three ways to register an event handling method:        
+        </span>
+
+</P> 
+
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl14" style="display:none">
+
+....
+//Create the button
+Button button1 = new Button() ;
+button1.Location = new Point(256, 64);
+button1.Size = new Size(120, 40);
+button1.Text = "Click Me!";
+this.Controls.Add(button1);
+
+//Register the event handler
+button1.Click += new System.EventHandler(button1_Click);
+....
+
+//The event handling method
+private void button1_Click(object sender, EventArgs evArgs) {
+    MessageBox.Show("Hello Windows Forms World!");
+}
+</pre>
+<pre id="codectrl14" style="display:">
+
+....
+'Declare the buttons using WithEvents so that the compiler registers the event handlers
+Private WithEvents button1 as Button
+Private WithEvents button2 As Button
+....
+
+'The event handling method for button1 - registered by the compiler
+'because the name matches "&lt;controlname&gt;_&lt;eventname&gt;"
+Private Sub button1_Click(sender As Object, evArgs As EventArgs) 
+    
+    'Disable button1 - we only want to add one button
+    button1.Enabled=False
+    
+    'Add the new button and add an event handler using AddHandler                             
+    Dim newButton As new Button
+    newButton = new Button()
+    newButton.Location = new Point(256, 64)
+    newButton.Size = new Size(90, 40)
+    newButton.TabIndex = 4
+    newButton.Text = "Click Me Three!"
+    Me.Controls.Add(newButton)
+    
+    AddHandler newButton.Click, AddressOf Me.clickNewbutton
+End Sub
+
+'The event handling method for button2 - registered using Handles
+Private Sub OnButton2Click(sender As Object, ByVal evArgs As EventArgs) Handles button2.Click
+    MessageBox.Show("Text is: '" + textBox1.Text + "'")
+End Sub
+
+'The event handling method for the new button -  registered using AddHandler
+Private Sub clickNewbutton(sender As Object, evArgs As EventArgs)
+    MessageBox.Show("Hello from the new Button")
+End Sub
+
+....
+
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl14" onclick="doClick(0, 'ctrl14')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl14" onclick="doClick(1, 'ctrl14')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+
+<P>An event-handling method is only called for a specific event for a 
+specific control.  This allows you to avoid having a single method in your 
+form that handles all events for all controls.  This feature makes your 
+code easier to understand and maintain.  Furthermore because the Windows Forms 
+event architecture is based on <B>Delegates</B>, your event-handling 
+methods are type safe and can be declared as private.  This capability 
+allows your compiler to detect method signature mismatches at compile 
+time.  It also keeps the public interface of your Form class uncluttered 
+with public event-handling methods.  You can find more information about 
+delegates in the .NET Framework SDK documentation. </p>
+
+<p><span>
+    
+    
+    
+    
+
+
+
+        In Visual Basic you use <b>RemoveHandler</b> to unregister your event handling 
+        method.  
+        
+    </span></p>
+
+<h6>Event classes</h6>
+
+<P>Each event has 2 supporting classes: 
+<UL>
+  <LI><B>The EventHandler delegate class</B> that is used to register your
+  event-handling method. The signature of the EventHandler dictates the 
+  signature of your event handling method.</li><br><br>
+  
+  <LI><B>The EventArgs class</B> that contains data about the event 
+  that has been raised. </LI>
+
+</UL>
+
+<P>The signature for an EventHandler is that the first argument contains a 
+reference to the object that fired the event (the sender) and that&nbsp; 
+the second argument contains data about the event, an instance of an 
+EventArgs.  For example,&nbsp; the <b>Click</b> event on a Button uses the 
+the following event handler: </p> 
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl18" style="display:none">
+
+public delegate void EventHandler(object sender, EventArgs e);
+</pre>
+<pre id="codectrl18" style="display:">
+
+Public Delegate Sub EventHandler(sender As object, e As EventArgs)
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl18" onclick="doClick(0, 'ctrl18')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl18" onclick="doClick(1, 'ctrl18')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+<br>
+As a result, any event-handling method for the Click event must have the following signature: 
+<br><br>
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl20" style="display:none">
+
+&lt;access&gt; void &lt;name&gt;(object sender, EventArgs evArgs)
+</pre>
+<pre id="codectrl20" style="display:">
+
+&lt;access&gt; Sub &lt;name&gt;(sender As object, e As EventArgs)
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl20" onclick="doClick(0, 'ctrl20')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl20" onclick="doClick(1, 'ctrl20')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<p>For strongly typed languages, a compile time error will occur if the 
+event-handling method's signature does not match the delegate 
+signature.</p> 
+    
+<P>Many events use the generic EventHandler and EventArgs classes.  
+However, some events require additional information specific to the type 
+of event that is raised.  For example, the mouse movement events include 
+information about the position of the mouse.  These events define their 
+own classes that inherit from the EventHandler and EventArg classes.  For 
+example,&nbsp; the <b> MouseDown</b> event uses the <b> 
+MouseEventHandler</b> and <b>MouseEventArgs</b>.  All EventArgs must 
+derive from the EventArgs class.  
+
+<h6>Event naming conventions</h6>
+
+<P>Some state changes cause an event to be raised both before and after 
+the state change.  The event that is raised prior to a state change is 
+typically suffixed with "ing".  The event that is raised after a state 
+change is typically suffixed with "ed".  For example, the 
+<b>SessionEnding</b> event and <b> SessionEnded</b> event.  If a state 
+change causes only a single event to be raised then that event typically 
+does not have a suffix.  For example, the <b> Click</b> event.</P> 
+
+<h6>Cancellable Events</h6> 
+
+<P>Depending on the situation in your application, you may want to cancel 
+an event.  Certain events can be cancelled.  These events use the <b> 
+CancelEventHandler</b> and <b>CancelEventArgs</b> classes.  The 
+CancelEventArgs contains a property called <B>Cancel</B>.  If this 
+property is is set to <b> true</b>, when the event-handling method 
+returns, the event will be cancelled.  Typically only events that are 
+raised prior to a state change are cancellable.  Cancelling the event 
+cancels the state change.  </p>
+
+<h6>Handling multiple events with a single event handling method</h6>
+
+<P>If you wish to handle multiple events with a single event handler you 
+can do this by registering the same method with multiple events.  Both 
+events would have to have the same signature.  When you use a single 
+event-handling method for multiple events you can determine which control 
+raised&nbsp; the event from the sender parameter.  The following example 
+shows a single event-handling method being used to handle events from 2 
+Button controls:</P> 
+      
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl22" style="display:none">
+
+....
+Button button1 = new Button() ;
+Button button2 = new Button() ;
+....
+button1.Click += new System.EventHandler(button_Click);
+button2.Click += new System.EventHandler(button_Click);
+....
+
+//The event handling method</span>
+private void button_Click(object sender, EventArgs evArgs) {
+    if (sender==button1) {
+        MessageBox.Show("Button1 Pushed!");
+    } else if (sender==button2) {
+        MessageBox.Show("Button2 Pushed!");
+    }
+}
+</pre>
+<pre id="codectrl22" style="display:">
+
+....
+Dim button1 As New Button
+Dim button2 As New Button
+....
+AddHandler button1.Click, AddressOf button_Click
+AddHandler button2.Click, AddressOf button_Click
+....
+
+'The event handling method
+Private Sub button_Click(sender As Object, evArgs As EventArgs)
+    If (sender = button1) Then
+        MessageBox.Show("Button1 Pushed!")
+    Else If (sender = button2) Then
+        MessageBox.Show("Button2 Pushed!")
+    End If
+End Sub
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl22" onclick="doClick(0, 'ctrl22')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl22" onclick="doClick(1, 'ctrl22')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<h6>Creating your own events</h6>
+<p>The <a href="WinFormsCreatingControls.htm">Creating Controls</a> section of the Windows Forms
+Quickstart describes how to define your own events</p>
+
+<br>
+<a name="Deterministic lifetime and Dispose">
+<h5>Deterministic lifetime and Dispose</h5> 
+
+<p>The Common Language Runtime garbage collection system will automatically 
+release any memory used by an object when that object is no longer required.
+
+For some classes that use system resources (files, database connections and so on) 
+it is good practice to free those resources as soon as possible.
+
+The Component class provides the Dispose method for this purpose. You can call 
+the Dispose method when a component is no longer required. 
+
+<p>Typically you should call Form.Dispose when you have finished using a Form. 
+If you know a Form is not going to be used after it has been closed then you can 
+add your cleanup code to the Closed event handler. Win Forms only calls Dispose 
+automatically for the Form you pass to Application.Run</p>
+
+<p>You should keep the code in your Dispose method as simple and robust as possible because if 
+the Dispose method fails, resources may not be released.</p>
+
+
+<a name="Sample">
+<h5>Putting it all together - a simple Windows Forms application</h5>
+
+<P>The following sample demonstrates the concepts mentioned previously.  
+It shows how to: 
+<UL>
+<LI>Create and display a Form as the main entry point of an application 
+<LI>Add controls to a Form 
+<LI>Set properties on the controls 
+<LI>Register event-handling methods with controls 
+<LI>Get property values from a control 
+<LI>Display text in a Message Box 
+<LI>Add code to the Dispose method that gets executed when the form is 
+closed. 
+</UL>
+
+<span>
+    
+    
+    
+    
+    
+
+        
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../winforms/samples/vb/helloworldform">
+	<img style="border-color:black" border=1 src="../../winforms/images/wflink.jpg"><br>
+	</a>
+	<div class="caption">VB Hello World</div><br>
+	
+	
+		[<a target="_blank" href="../../winforms/samples/vb/helloworldform">Run Sample</a>] | 
+		[<a target="_blank" href="../../winforms/samples/vb/helloworldform/helloworldformvbsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+    </span>
+
+
+<!--END FOOTER-->
+<p>
+<hr>
+<p>
+</div>
+</td>
+</tr>
+</table>
+</BODY>
+</html>
+<!--END FOOTER-->

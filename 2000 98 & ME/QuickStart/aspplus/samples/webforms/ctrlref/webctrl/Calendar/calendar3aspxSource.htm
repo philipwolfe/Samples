@@ -1,0 +1,91 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlref/webctrl/Calendar/calendar3.src&file=calendar3.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfY2FsZW5kYXIzLmFzcFx4eF9feHhfeHhfeF9feA==00cda029" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">calendar3.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlref/webctrl/calendar/calendar3aspxsource.htm'>calendar3.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlref/webctrl/calendar/vb/calendar3aspxsource.htm'>VB\calendar3.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><html>
+<head>
+    <script language="C#" runat="server">
+
+        void Date_Selected(object sender, EventArgs e) {
+        
+            switch (Calendar1.SelectedDates.Count) {
+            
+                case (0):   //None
+                    Label1.Text = "No dates are currently selected";
+                    break;
+                case (1):   //Day
+                    Label1.Text = "The selected date is " + Calendar1.SelectedDate.ToShortDateString();
+                    break;
+                case (7):   //Week
+                    Label1.Text = "The selection is a week beginning " + Calendar1.SelectedDate.ToShortDateString();
+                    break;
+                default:    //Month
+                    Label1.Text = "The selection is a month beginning " + Calendar1.SelectedDate.ToShortDateString();
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+
+    <h3><font face="Verdana">Selection Link Graphics</font></h3>
+    <p>
+
+    <form runat=server>
+
+        <asp:Calendar id=Calendar1 runat="server"
+            onselectionchanged="Date_Selected"
+            DayNameFormat="Short"
+            SelectionMode="DayWeekMonth"
+            Font-Name="Verdana;Arial" Font-Size="12px"
+            Height="180px" Width="230px"
+            TodayDayStyle-Font-Bold="True"
+            DayHeaderStyle-Font-Bold="True"
+            OtherMonthDayStyle-ForeColor="gray"
+            TitleStyle-BackColor="#3366ff"
+            TitleStyle-ForeColor="white"
+            TitleStyle-Font-Bold="True"
+            SelectedDayStyle-BackColor="#ffcc66"
+            SelectedDayStyle-Font-Bold="True"
+            NextMonthText = "<img src='../../../../../../aspplus/images/monthright.gif' border=0>"
+            PrevMonthText = "<img src='../../../../../../aspplus/images/monthleft.gif' border=0>"
+            SelectorStyle-BackColor="#99ccff"
+            SelectWeekText = "<img src='../../../../../../aspplus/images/selweek.gif' border=0 onmouseover=this.style.backgroundColor='#ffcc66' onmouseout=this.style.backgroundColor='#99ccff'>"
+            SelectMonthText = "<img src='../../../../../../aspplus/images/selmonth.gif' border=0 onmouseover=this.style.backgroundColor='#ffcc66' onmouseout=this.style.backgroundColor='#99ccff'>"
+            />
+
+        <p>
+        
+        <asp:Label id=Label1 runat="server" />
+        
+    </form>
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

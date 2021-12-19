@@ -1,0 +1,68 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/IO/Directory/directory.src&file=Directory.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfRGlyZWN0b3J5LmNzeF9feHhfeHhfeF9feA==1e04824a" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">Directory.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../howto/samples/io/directory/directorycssource.htm'>Directory.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../howto/samples/io/directory/vb/directoryvbsource.htm'>VB\Directory.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>using System;
+using System.IO;
+
+
+
+class DirectoryLister
+{
+    
+    public static void Main(String[] args)
+    {
+        Directory dir = new Directory(".");
+        PrintFiles (dir);
+        
+        Console.WriteLine ("\r\nPress Return to exit.");
+        Console.Read();
+    }
+    public static void PrintFiles (Directory dir)
+    {
+        foreach (FileSystemEntry d in dir.GetFileSystemEntries ()) {
+            if (d is File)
+            {
+                File f = (File) d;
+                string name = f.FullName;
+                long size = f.Length;
+                DateTime creationTime = f.CreationTime;
+                Console.WriteLine("{0,-12:N0} {1,-20:g} {2}", size, creationTime, name);
+            }
+            else //it must be a directory
+            {
+                PrintFiles ((Directory) d);
+            }
+            
+        }
+    }
+}
+
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

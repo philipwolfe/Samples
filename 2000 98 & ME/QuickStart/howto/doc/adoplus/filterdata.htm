@@ -1,0 +1,581 @@
+
+
+<!--BEGIN HEADER-->
+<html>
+<head>
+<link rel="stylesheet" href="../../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+
+<table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+
+    <div style="padding:0,0,4,0"><b>Data and ADO.NET</b><br></div>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/adoplusoverview.htm">Overview of ADO.NET</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/executecommand.htm">Execute a Command</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/outparams.htm">Stored proc out params</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/getdatafromdb.htm">Retrieve from a Database</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/updatedatafromdb.htm">Update Data in a Database</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/readandwritexml.htm">Read and Write XML</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/databasetrans.htm">Use Database Transactions</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/handleerrors.htm">Handling Errors</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/relationaldata.htm">Work with Relational Data</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/typeddata.htm">Work with typed Data</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/filterdata.htm">Filter Data</a><p>
+    <div style="padding:0,0,4,0"><a target="_top" style="color:darkred" href="../../../howto"><b>Back to Index</b></a><br></div>
+
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<style>
+.mydd {  font: smaller verdana; }
+.code1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:blue;
+	}
+.codecomment1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:green;
+	}
+.issue {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background-color:RED;
+	color:WHITE;
+	font-weight:bold;
+	}
+
+
+body { font: smaller verdana }        
+
+</style>
+
+
+
+
+
+<h4>ADO.NET: Filtering Data</h4>
+
+There are several ways to filter data. One way is to filter data at the database command level, by using a WHERE clause on your query. A second way is to filter the data after it is in the DataSet. This topic covers filtering in the DataSet.
+<p>
+Once data is in a DataSet you can use methods on the DataSet to get at subsets of that data. Consider a DataSet with Customers and Orders tables.  To filter on Data with Customers with FirstName is Kelly, you can use the Select method which returns an array of rows.
+<P>
+
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl4" style="display:none">
+
+MyRowArray = dsCustomers.Select("ContactName like 'Kelly%'");
+</pre>
+<pre id="codectrl4" style="display:">
+
+MyRowArray = dsCustomers.Select("ContactName like 'Kelly%'")
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl4" onclick="doClick(0, 'ctrl4')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl4" onclick="doClick(1, 'ctrl4')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+
+<p>
+Notice that the statements are ANSI-SQL like. They are essentially a subset of ANSI-SQL, with the following difference: because the DataSet can hold multiple related tables, the filter can also filter over these related tables. In this example, we filter the orders as well as the customers by using the Child keyword:
+<p>
+
+
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl6" style="display:none">
+
+MyRowArray = dsCustomers.Select("ContactName like 'Kelly%' AND [child].OrderDate = '7/26/68'");
+</pre>
+<pre id="codectrl6" style="display:">
+
+MyRowArray = dsCustomers.Select("ContactName like 'Kelly%' AND [child].OrderDate = '7/26/68'")
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl6" onclick="doClick(0, 'ctrl6')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl6" onclick="doClick(1, 'ctrl6')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+
+
+<p>
+These functions return an array of rows, you can iterate through the array by using the For Each statement.
+<p>
+Another object, DataView, allows you to place multiple filters on a DataSet, set up databinding to them, and so forth. A DataView can be filtered using the same query language rules as in the Select, but the filter is dynamic. Thus, if a row is added to the data, and it qualifies with the filter, it is visible in the view. Views can be sorted and filtered. Filters include data filters and version filters (CURRENT, NEW, MODIFIED, DELETED). To set up a DataView, construct it by handing it a DataTable within a DataSet:
+<p>
+
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl8" style="display:none">
+
+DataView dataView1 = new DataView(myDataSet.Tables["Customers"]);
+</pre>
+<pre id="codectrl8" style="display:">
+
+Dim dataView1 As DataView = New DataView(myDataSet.Tables("Customers"))
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl8" onclick="doClick(0, 'ctrl8')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl8" onclick="doClick(1, 'ctrl8')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+
+<p>
+You can set up a filter with the RowFilter property using the same query filter language as in the example above. To set up a sort, you can use a comma -delimited list of column sorts, followed by ASC (default and optional) or DESC for ascending and descending order.
+<p>
+
+
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl10" style="display:none">
+
+// Sort the view based on the FirstName column
+dataView1.Sort = "CustomerID";
+
+// Filter the dataview to only show customers with the lastname = Smith
+dataView1.RowFilter = "CustomerID='ALFKI'";
+</pre>
+<pre id="codectrl10" style="display:">
+
+' Sort the view based on the FirstName column
+dataView1.Sort = "CustomerID"
+
+' Filter the dataview to only show customers with the lastname = Smith
+dataView1.RowFilter = "CustomerID='ALFKI'"
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl10" onclick="doClick(0, 'ctrl10')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl10" onclick="doClick(1, 'ctrl10')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+
+<p>
+You can also filter based on the state of the rows (deleted, new, and so forth). Here is an example of a Filter on Deleted rows:
+<p>
+
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl12" style="display:none">
+
+dataView1.RowStateFilter = DataViewRowState.Deleted;
+</pre>
+<pre id="codectrl12" style="display:">
+
+dataView1.RowStateFilter = DataViewRowState.Deleted
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl12" onclick="doClick(0, 'ctrl12')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl12" onclick="doClick(1, 'ctrl12')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+
+
+<p>
+The sample below shows filling a DataSet, and then filtering it with a DataView. Note that a DataView can easily be databound. See the databinding topics in Windows Forms or ASP.NET.
+
+<p>
+
+<span>
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../../images/genicon.gif"><br>
+	</a>
+	<div class="caption">FilterDataTable.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../../howto/samples/adoplus/cs/filterdatatableaspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+
+<p>

@@ -1,0 +1,92 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/services/MathService/MathServiceClient.src&file=MathServiceClient.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfTWF0aFNlcnZpY2VDbGllbnQuYXNwXHh4X194eF94eF94X19419dd2691" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">MathServiceClient.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../aspplus/samples/services/mathservice/mathserviceclientaspxsource.htm'>MathServiceClient.htm</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/services/mathservice/mathservicesdlsource.htm'>MathService.sdl</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/services/mathservice/mathservicecssource.htm'>MathService.cs</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/services/mathservice/makeservicebatsource.htm'>makeservice.bat</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../aspplus/samples/services/mathservice/vb/mathserviceclientaspxsource.htm'>VB/MathServiceClient.htm</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/services/mathservice/vb/mathservicesdlsource.htm'>VB/MathService.sdl</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/services/mathservice/vb/mathservicevbsource.htm'>VB/MathService.vb</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/services/mathservice/vb/makeservicebatsource.htm'>VB/makeservice.bat</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Import Namespace="MathServiceSpace" %>
+
+<html>
+
+<script language="C#" runat="server">
+
+  int operand1 = 0;
+  int operand2 = 0;
+
+  public void Submit_Click(Object sender, EventArgs E)
+  {
+      try 
+      {
+        operand1 = Int32.Parse(Operand1.Text);
+        operand2 = Int32.Parse(Operand2.Text);
+      }
+      catch (Exception) { /* ignored */ }
+
+      MathService service = new MathService();
+   
+
+        switch (((Control)sender).ID)
+        {
+          case "Add"      : Result.Text = "<b>Result</b> = " + service.Add(operand1, operand2).ToString(); break;
+          case "Subtract" : Result.Text = "<b>Result</b> = " + service.Subtract(operand1, operand2).ToString(); break;
+          case "Multiply" : Result.Text = "<b>Result</b> = " + service.Multiply(operand1, operand2).ToString(); break;
+          case "Divide"   : Result.Text = "<b>Result</b> = " + service.Divide(operand1, operand2).ToString(); break;
+        }
+  }
+
+
+</script>
+
+<body style="font: 10pt verdana">
+
+  <h4>Using a Simple Math Service </h4>
+
+  <form runat="server">  
+
+  <div style="padding:15,15,15,15;background-color:beige;width:300;border-color:black;border-width:1;border-style:solid">
+
+    Operand 1: <br><asp:TextBox id="Operand1" Text="15" runat="server"/><br>
+    Operand 2: <br><asp:TextBox id="Operand2" Text="5" runat="server"/><p>
+
+    <input type="submit" id="Add" value="Add" OnServerClick="Submit_Click" runat="server">
+    <input type="submit" id="Subtract" value="Subtract" OnServerClick="Submit_Click" runat="server">
+    <input type="submit" id="Multiply" value="Multiply" OnServerClick="Submit_Click" runat="server">
+    <input type="submit" id="Divide" value="Divide" OnServerClick="Submit_Click" runat="server">
+
+    <p>
+
+    <asp:Label id="Result" runat="server"/>
+
+  </div>
+
+  </form>
+
+</body>
+</html>
+
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

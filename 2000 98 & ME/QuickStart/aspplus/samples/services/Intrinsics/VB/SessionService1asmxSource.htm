@@ -1,0 +1,61 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/services/Intrinsics/SessionService1.src&file=VB/SessionService1.asmx" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvU2Vzc2lvblNlcnZpY2UxLmFzbVx4eF9feHhfeHhfeF9feA==663baae8" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/SessionService1.asmx</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/services/intrinsics/sessionservice1asmxsource.htm'>SessionService1.asmx</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/services/intrinsics/vb/sessionservice1asmxsource.htm'>VB/SessionService1.asmx</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ WebService Language="VB" Class="SessionService1" %>
+
+Imports System
+Imports System.Web.Services
+
+Public Class SessionService1 : Inherits WebService
+
+    Public Function <WebMethod(EnableSession:=true)> UpdateHitCounter() As String
+
+        If Session("HitCounter") Is Nothing
+            Session("HitCounter") = 1
+        Else
+            Session("HitCounter") = Cint(Session("HitCounter")) + 1
+        End If
+
+        Return "You have accessed this service " & Session("HitCounter").ToString() & " times."
+   End Function
+
+   Public Function <WebMethod(EnableSession:=false)> UpdateAppCounter() As String
+
+        If Application("HitCounter") = Nothing
+            Application("HitCounter") = 1
+        Else
+            Application("HitCounter") = CInt(Application("HitCounter")) + 1
+        End If
+
+        Return "This service has been accessed " & Application("HitCounter").ToString() & " times."
+   End Function
+
+End Class
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

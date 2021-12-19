@@ -1,0 +1,52 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/cache/outputcache1.src&file=VB%5Coutputcache1.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkJcXG91dHB1dGNhY2hlMS5hc3BceHhfX3h4X3h4X3hfX3g=e7ff6af5" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB\outputcache1.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../aspplus/samples/cache/outputcache1aspxsource.htm'>outputcache1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../aspplus/samples/cache/vb/outputcache1aspxsource.htm'>VB\outputcache1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ OutputCache Duration="10" %>
+
+<html>
+
+  <script language="VB" runat="server">
+    
+    Sub Page_Load(Src As Object, E As EventArgs)
+          TimeMsg.Text = DateTime.Now.ToString()
+    End Sub
+
+  </script>
+  
+  <body>
+  
+    <h3><font face="Verdana">Using the Output Cache</font></h3>
+    
+    <p><i>Last generated on:</i> <asp:label id="TimeMsg" runat="server"/>
+    
+  </body>
+
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

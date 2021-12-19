@@ -1,0 +1,160 @@
+
+
+<!--BEGIN HEADER-->
+<html>
+<head>
+<link rel="stylesheet" href="../../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+
+<table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+
+    <div style="padding:0,0,4,0"><b>Networking</b><br></div>
+    &nbsp; <a class="outer" href="../../../howto/doc/webrequests/clientget.htm">Make a GET request</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/webrequests/clientgetwithssl.htm">Make an SSL GET request</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/webrequests/clientgetwithntlm.htm">Make an NTLM GET request</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/webrequests/clientgetwithproxy.htm">Make a proxy GET request</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/webrequests/clientgetasync.htm">Make an async GET request</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/aspxnet/get.htm">Make a GET request in ASP.NET</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/aspxnet/getasync.htm">Async GET request in ASP.NET</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/webrequests/clientexception.htm">Handle WebExceptions</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/webrequests/clientpost.htm">Make a POST request</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/tcpudp/datetimeclient.htm">Write a TCPClient client</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/tcpudp/datetimeserver.htm">Write a TCPListener server</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/tcpudp/broadcastchatclient.htm">Write a UDPClient client</a><p>
+    <div style="padding:0,0,4,0"><a target="_top" style="color:darkred" href="../../../howto"><b>Back to Index</b></a><br></div>
+
+</div>
+
+</td>
+</tr>
+</table>
+
+
+
+
+
+
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<style>
+.mydd {  font: smaller verdana; }
+.code1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:blue;
+	}
+.codecomment1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:green;
+	}
+.issue {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background-color:RED;
+	color:WHITE;
+	font-weight:bold;
+	}
+
+
+body { font: smaller verdana }        
+
+</style>
+
+
+
+
+
+<h4>How Do I...Make a chat client with UDPClient?</h4>
+
+<div class="indent" style="width:660">
+
+<P>This sample illustrates using the UDPClient class to create a chat client.</P>
+
+<P>This sample is a complete and fully functional chat client. It uses UDP to 
+send and receive chat messages with other users that are also using the client. 
+The program illustrates many important Microsoft .NET Framework concepts, but the most important 
+(for this How To) is the use of the <B>UDPClient</B> class.</P>
+
+<P>THe UDPCLient object is initialized with a constructor call that sets the 
+port the object will listen on. Then the object joins a Multicast group. 
+This code can be found in the Initialize function of the sample code.</P>
+
+<P>Once initialized, the UDPClient listens for incoming messages with the 
+<B>Receive</B> function, which can be found in the Listener function of 
+the sample code. The Receive function returns an array of bytes, 
+containing the data sent. This data can be converted into a String with 
+the ASCII object GetString function.</P>
+
+<P>Sending data is just as easy. The UDPClient includes a function called 
+<B>Send</B> which sends out a byte array to every class that is listening 
+on the Multicast group.</P> 
+
+<p>To run the sample, execute Chat.exe.</p>
+
+</div>
+
+<h4>Example</h4>
+
+<span>
+  
+  
+
+        
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../../howto/samples/net/tcpudp/vb">
+	<img style="border-color:black" border=1 src="../../../images/console.gif"><br>
+	</a>
+	<div class="caption">Chat.exe</div><br>
+	
+	
+		[<a target="_blank" href="../../../howto/samples/net/tcpudp/vb">Run Sample</a>] | 
+		[<a target="_blank" href="../../../howto/samples/net/tcpudp/chatcssource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+
+<!--END FOOTER-->
+<p>
+<hr>
+<p>
+</div>
+</td>
+</tr>
+</table>
+</BODY>
+</html>
+<!--END FOOTER-->

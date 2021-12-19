@@ -1,0 +1,187 @@
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" Content="Microsoft Developer Studio">
+<META HTTP-EQUIV="Content-Type" content="text/html; charset=iso-8859-1">
+<TITLE>Document Title</TITLE>
+<style>
+p,ol {font-family:Tahoma,Arial,Helvetica;color=666666;font-size:10pt;}
+td {font-family:Tahoma,Arial,Helvetica;color=006699;font-size:10pt;font-weight:bold;}
+h2,h3 {font-family:Tahoma,Arial,Helvetica;color=666666;font-size:14pt;}
+h4  {font-family:Arial,Helvetica;color=000000;font-size:10pt;}
+
+</style>
+</HEAD>
+<body bgcolor=#ffffff text=#000000 link=#0000ee vlink=#551a8b><center>
+<img src="images/census/cb_head.gif" alt="This is a mockup of a potential U.S. Census application">
+<!-- Insert HTML here -->
+<h2>Census .NET Web Service Documentation</h2>
+</center>
+<p>
+The Census .NET Web Service provides programmable methods to access the 1990 Census data via the Internet.  There are four methods:
+<ol>
+	<li><a href="#GetPoliticalUnitFactsByName">GetPoliticalUnitFactsByName </a> - Return a Census data-row for a specific State, County, City, or Census Tract.  Method requires the name of the political unit, e.g. &quot;State&quot;, &quot;City&quot;, &quot;County&quot;, and &quot;CensusTract&quot;.
+	<li><a href="#GetPoliticalUnitFactsByRect">GetPoliticalUnitFactsByRect</a> - Return a set of Census data-rows that overlap the geographic rectangle (longitude and latitude).  Method requires the name of the political unit, the longitude &amp; latitude of the upper left corner, and the longitude &amp; latitude of the lower right corner.  Also requires an integer specifying the maximum number of rows to return.
+	<li><a href="#CountOfPoliticalUnitByRect">CountOfPoliticalUnitByRect</a> - Return the count (Integer) of the number of Census data-rows that would be returned by a call to <i>GetPoliticalUnitFactsByRect</i>.  This is useful to determine the value to pass to <i>GetPoliticalUnitFactsByRect</i>.
+	<li><a href="#CountOfPoliticalUnit">CountOfPoliticalUnit</a> - Return the number of rows by Political Unit type, i.e. count of Counties.
+</ol>
+<hr width=75%> 
+<h3>Census Methods</h3>
+<a name="GetPoliticalUnitFactsByName">
+<h4>GetPoliticalUnitFactsByName</h4>
+<p> 
+<pre><a href="#CensusFacts">CensusFacts</a> = GetPoliticalUnitFactsByName ( <a href="#PoliticalUnit">PoliticalUnit</a> pu, String name, String ParentName, Int32 Year)
+</pre>
+<p>
+The year parameter identifies the census year of interest.  Currently, our Census database only contains data for 1990.  Therefore, always pass 1990 in this parameter.
+<p><b>Test:</b>
+Display XML document listing the statistics for <a href="http://terraweb/terranet/censusservice.asmx/GetPoliticalUnitFactsByName?pu=City&name=San+Francisco&parentname=California&year=1990">San Francisco, California (city)</a>.
+<a name="GetPoliticalUnitFactsByRect">
+<h4>GetPoliticalUnitFactsByRect</h4>
+<p> 
+<pre>
+public <a href="#CensusFacts">CensusFacts</a>[] GetPoliticalUnitFactsByRect( <a href="#PoliticalUnit">PoliticalUnit</a> pu, <a href="#BoundingRect">BoundingRect</a> rect, Int32 year) {
+
+</pre>
+<p> Returns an array of <a href="#CensusFacts">CensusFacts</a> structs that overlap the geographic area defined by <a href="#BoundingRec">BoundingRect</a> parameter.  The <a href="#PoliticalUnit">PoliticalUnit</a> parameter, pu, identifies the type of Census Facts to return.
+If the <a href="#BoundingRect">BoundingRect</a> does not cover the United States, or is too small, e.g. defines a point, then the method will throw an exception.
+The number of elements in the array are limited by the type of Political Unit being accessed.  No more than 52 state values, 3200 county, 3200 city, or 5000 census tracts will be returned in one call to GetPoliticalUnitByRect.
+The year parameter identifies the census year of interest.  Currently, our Census database only contains data for 1990.  Therefore, always pass 1990 in this parameter.
+<a name="CountOfPoliticalUnitByRect">
+<h4>CountOfPoliticalUnitByRect</h4>
+<p> 
+<pre>
+public Int32 CountOfPoliticalUnitByRect( <a href="#PoliticalUnit">PoliticalUnit</a> pu, <a href="#BoundingRect">BoundingRect</a> rect, Int32 year) {
+</pre>
+<p> Returns the count of the Political Unit's that overlap the area described in the <a href=#BoundingRect">BoundingRect</a> parameter.
+The year parameter identifies the census year of interest.  Currently, our Census database only contains data for 1990.  Therefore, always pass 1990 in this parameter.
+<a name="CountOfPoliticalUnit">
+<h4>CountOfPoliticalUnit</h4>
+<p> 
+<pre>
+public Int32 CountOfPoliticalUnit( PoliticalUnit pu, Int32 year)
+</pre>
+<p>
+Returns the count of Political Unit's by type.  
+The year parameter identifies the census year of interest.  Currently, our Census database only contains data for 1990.  Therefore, always pass 1990 in this parameter.
+
+<h3>Data Structures</h3>
+<a name="CensusFacts">
+<h4>CensusFacts</h4>
+<pre>
+	public struct CensusFacts {
+		public <a href="#PoliticalUnit">PoliticalUnit</a>	Pu;							// Political Unit being reported
+		public String		Fips;							// The political unit's fips code
+		public String		StateFips;						// StateFips code, maybe = Fips code when pu = State
+		public String		CountyFips;						// County Fips code, maybe = Fips code when pu = County
+		public String		Name;							// Name of the political unit, might be a Tract #
+		public String		SecondaryName;					// Dependent on the Political Unit as to what this is
+		public Double		Area;							// Area in square miles
+		public Int32		Year;							// Year of the census
+		public Int32		Population1990;
+		public Int32		Population1999;
+		public Int32		Population1990_PerSquareMile;
+		public Int32		Households;
+		public Int32		Males;
+		public Int32		Females;
+		public Int32		White;
+		public Int32		Black;
+		public Int32		NativeAmericans;
+		public Int32		AsianPolynesianIslands;
+		public Int32		Hispanic;
+		public Int32		Other;
+		public Int32		Age_Under5;
+		public Int32		Age_5_17;
+		public Int32		Age_18_29;
+		public Int32		Age_30_49;
+		public Int32		Age_50_64;
+		public Int32		Age_65_Up;
+		public Int32		NeverMarry;
+		public Int32		Married;
+		public Int32		Separated;
+		public Int32		Widowed;
+		public Int32		Divorced;
+		public Int32		HouseHolds_1Male;
+		public Int32		HouseHolds_1Female;
+		public Int32		Married_Households_Child;
+		public Int32		Married_households_NoChild;
+		public Int32		Male_Households_Child;
+		public Int32		Female_HouseHolds_Child;
+		public Int32		Household_Units;
+		public Int32		Vacant;
+		public Int32		OwnerOccupied;
+		public Int32		RenterOccupied;
+		public Int32		MedianValue;
+		public Int32		MedianRent;
+		public Int32		Units_1Detach;
+		public Int32		Units_1Attach;
+		public Int32		Units_2;
+		public Int32		Units_3_9;
+		public Int32		Units_10_49;
+		public Int32		Units_50_Up;
+		public Int32		MobileHome;
+		public Int32		No_Farms87;
+		public Int32		Avg_Farm_Size87;
+		public Int32		Crop_Acre87;
+		public Int32		Avg_Sale87;
+		public ShapeType	Shape;
+		public <a href="#BoundingRect">BoundingRect</a>	Rect;
+	}
+</pre>
+<a name="PoliticalUnit">
+<h4>Political Unit</h4>
+<pre>
+    public enum PoliticalUnit {		// Type of Political Units we have census data for, e.g. State, County, CensusTract, CongressionalDistrict, etc.
+        Unknown,                    // Unknown/unspecified PoliticalUnit
+        State,                      // State government
+        County,                     // County government
+        City,                       // City government
+        CensusTract                 // Census Bureau Tracts
+    }
+</pre>
+<a name="BoundingRect"</a>
+<h4>Bounding Rect</h4>
+<pre>
+public struct BoundingRect {
+	public LonLatPt	UpperLeft;
+	public LonLatPt	LowerRight;
+}
+</pre>
+<p> BoundingRect describes a geographic area on the globe.  <i>UpperLeft</i> field is the <a href="#LonLatPt">Longitude and Latitude</a> of the top left corner of the area.
+<i>LowerRight</i> is the <a href="#LonLatPt">Longitude and Latitude</a> of the bottom right corner of the area.  When used as an input parameter, 
+the <i>UpperLeft</i> point must have a longitude value that is less than the <i>LowerRight's</i> longitude value.  The <i>UpperLeft's</i> latitude must be greater than the
+<i>LowerRight's</i> latitude value.  If not, then an exception is thrown by the Census web service method.
+<a name="LonLatPt">
+<h4>LonLatPt</h4>
+<pre>
+public struct LonLatPt {
+    public Double Lon;
+    public Double Lat;
+</pre>
+<p>The LonLatPt structure is a field in the <a href="#BoundingRect">BoundingRect</a> structure.  It is the geographic coordinate specified in degrees.  The
+valid <i>Lon</i> values range from -180.0 thru 180.0.  The valid <i>Lat</i> values range from -90.0 thru 90.0.
+
+<center>
+<h3>Other Links</h3>
+<p>
+<table cellpadding=3 cellspacing=3 border=0 width=90%>
+<tr><td><a href="CensusHome.htm">Home Page</a></td>
+	<td>Census Web Service home page.</td>
+</tr>
+<tr><td><a href="CensusSample1.aspx">Sample Web Form</a></td>
+	<td>A sample ASP+ page that calls the Census Services</td>
+</tr>
+<tr><td><a href="CensusService.asmx">ASP CensusService Test Page</td>
+	<td>The ASP+ Web Service test execution page.  This page is auto-generated by the ASP+ service.</td>
+</tr>
+</table>
+</center>
+<center>
+<hr width="75%">
+<table cellpadding=0 cellspacing=0 width=100%>
+<tr><td align=left width=33%>&nbsp;</td>
+	<td align=center width=33%><IMG SRC="images/census/wordmarktl.gif" ALT="U.S. Census Bureau: Helping You Make Informed Decisions" align="center"></td>
+	<td align=right width=33%><img src="images/ts4/bnrWindowsNgws1_sm.gif" align="right" width=118 height=60 alt="Microsoft .NET" border=0></td>
+</tr>
+</table>
+</BODY>
+</HTML>

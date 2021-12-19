@@ -1,0 +1,102 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Xml/SaveXmlDocument/SaveXmlDocument.src&file=SaveXmlDocument.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfU2F2ZVhtbERvY3VtZW50LmNzeF9feHhfeHhfeF9feA==2cd82cf7" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">SaveXmlDocument.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../howto/samples/xml/savexmldocument/savexmldocumentcssource.htm'>SaveXmlDocument.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../howto/samples/xml/savexmldocument/vb/savexmldocumentvbsource.htm'>VB/SaveXmlDocument.vb</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>XML data: </b></td>
+        <td><a href='../../../../howto/samples/xml/savexmldocument/booksxmlsource.htm'>books.xml</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>XML saved: </b></td>
+        <td><a href='../../../../howto/samples/xml/savexmldocument/updatebooksxmlsource.htm'>updatebooks.xml</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>/* Copyright (c) 2000, Microsoft Corporation. All Rights Reserved.*/
+
+namespace HowTo.Samples.XML
+{
+
+using System;
+using System.IO;
+using System.Xml;
+    
+public class XmlDocumentSample
+{
+    private const String m_Document = "books.xml";
+    private const String m_UpdatedDocument = "updatebooks.xml";
+
+    public static void Main()
+    {
+        XmlDocumentSample xmldocument = new XmlDocumentSample();
+    }
+
+    public XmlDocumentSample()
+    {
+        try
+        {
+            // Create XmlDocument and load the XML from file
+            XmlDocument xmldocument = new XmlDocument();
+            xmldocument.Load (new XmlTextReader (m_Document));
+            Console.WriteLine ("XmlDocument loaded with XML data successfully ...");
+            Console.WriteLine();
+
+            IncreasePrice(xmldocument.DocumentElement);
+
+            // Write out data as XML
+            xmldocument.Save(m_UpdatedDocument);
+            Console.WriteLine();
+            Console.WriteLine("Updated prices saved in file {0}", m_UpdatedDocument);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine ("Exception: {0}", e.ToString());
+        }
+    }
+
+    public void IncreasePrice(XmlNode node)
+    {       
+        if (node.Name == "price")
+        {
+            node = node.FirstChild;
+            Decimal price = Decimal.Parse(node.Value);
+            // Increase all the book prices by 2%
+            String newprice = Decimal.Format(price*(new Decimal(1.02)),"#.00");
+            Console.WriteLine("Old Price = " + node.Value + "\tNew price = " + newprice);
+            node.Value = newprice;
+        }
+
+        node = node.FirstChild;
+        while (node != null)
+        {
+            IncreasePrice(node);
+            node = node.NextSibling;
+        }
+    }
+} // End class XmlDocumentSample
+} // End namespace HowTo.Samples.XML
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

@@ -1,0 +1,125 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlref/webctrl/DataGrid/datagrid7.src&file=VB%5Cdatagrid7.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkJcXGRhdGFncmlkNy5hc3BceHhfX3h4X3h4X3hfX3g=beab03d9" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB\datagrid7.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../../aspplus/samples/webforms/ctrlref/webctrl/datagrid/datagrid7aspxsource.htm'>datagrid7.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../../aspplus/samples/webforms/ctrlref/webctrl/datagrid/vb/datagrid7aspxsource.htm'>VB\datagrid7.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Import Namespace="System.Data" %>
+
+<html>
+<script language="VB" runat="server">
+
+    Function CreateDataSource() As ICollection
+        
+        Dim dt As DataTable
+        Dim dr As DataRow
+        Dim i As Integer
+
+        'create a DataTable
+        dt = New DataTable
+        dt.Columns.Add(New DataColumn("IntegerValue", GetType(Integer)))
+        dt.Columns.Add(New DataColumn("StringValue", GetType(String)))
+        dt.Columns.Add(New DataColumn("DateTimeValue", GetType(DateTime)))
+        dt.Columns.Add(New DataColumn("BoolValue", GetType(Boolean)))
+        dt.Columns.Add(new DataColumn("CurrencyValue", GetType(Double)))
+
+        'Make some rows and put some sample data in
+        For i = 1 To 9
+            dr = dt.NewRow()
+            dr(0) = i
+            dr(1) = "Item " & i.ToString()
+            dr(2) = DateTime.Now.ToShortTimeString
+            If (i Mod 2 <> 0) Then
+                dr(3) = True
+            Else
+                dr(3) = False
+            End If
+            dr(4) = 1.23 * (i + 1)
+            'add the row to the datatable
+            dt.Rows.Add(dr)
+        Next
+
+        'return a DataView to the DataTable
+        CreateDataSource = New DataView(dt)
+        
+    End Function
+
+    Sub Page_Load(sender As Object, e As EventArgs) 
+        
+        If Not IsPostBack Then
+            MyDataGrid.DataSource = CreateDataSource()
+            MyDataGrid.DataBind
+        End If
+
+    End Sub
+
+    Sub Button1_Col1Vis(sender As Object, e As EventArgs)
+    
+        MyDataGrid.Columns(1).Visible = Not MyDataGrid.Columns(1).Visible
+        Label1.Text = "Column 1's visible property is set to " & MyDataGrid.Columns(1).Visible.ToString
+    
+    End Sub
+
+</script>
+
+<body>
+
+    <h3><font face="Verdana">Hiding Columns in DataGrid</font></h3>
+
+    <form runat=server>
+
+      <ASP:DataGrid id="MyDataGrid" runat="server"
+        BorderColor="black"
+        BorderWidth="1"
+        GridLines="Both"
+        CellPadding="3"
+        CellSpacing="0"
+        Font-Name="Verdana"
+        Font-Size="8pt"
+        HeaderStyle-BackColor="#aaaadd"
+        AutoGenerateColumns="false"
+      >
+          <property name="Columns">
+            <asp:BoundColumn HeaderText="Integer" DataField="IntegerValue" />
+            <asp:BoundColumn HeaderText="Date/Time (Column1)" DataField="DateTimeValue"/>
+            <asp:BoundColumn HeaderText="String" DataField="StringValue"/>
+            <asp:BoundColumn HeaderText="True/False" DataField="BoolValue"/>
+            <!-- format Price as currency-->
+            <asp:BoundColumn HeaderText="Price" DataField="CurrencyValue" DataFormatString="{0:c}" ItemStyle-HorizontalAlign="right" />
+          </property>
+      </asp:DataGrid>
+
+      <br>
+      <asp:Button id="Button1" Text="Toggle Column1 Visibility" OnClick="Button1_Col1Vis" runat="server" />
+
+      <br>
+      <asp:Label id="Label1" runat="server" />
+  </form>
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

@@ -1,0 +1,76 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/controls/controls3.src&file=controls3.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfY29udHJvbHMzLmFzcFx4eF9feHhfeHhfeF9feA==19ad245c" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">controls3.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/controls/controls3aspxsource.htm'>controls3.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/controls/vb/controls3aspxsource.htm'>VB/controls3.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/controls/js/controls3aspxsource.htm'>JS/controls3.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><html>
+
+    <script language="C#" runat="server">
+
+        void EnterBtn_Click(Object Src, EventArgs E) {
+            Message.Text = "Hi " + Name.Text + ", welcome to ASP.NET!";
+        }
+
+    </script>
+
+    <body>
+
+       <h3><font face="Verdana">Handling Control Action Events</font></h3>
+
+       <p>
+
+       This sample demonstrates how to access a &lt;asp:textbox&gt; server control within the "Click" 
+       event of a &lt;asp:button&gt;, and use its content to modify the text of a &lt;asp:label&gt;.
+
+       <p>
+
+       <hr>
+
+       <form action="controls3.htm" runat=server>
+
+          <font face="Verdana"> 
+
+             Please enter your name: <asp:textbox id="Name" runat=server/> 
+                                     <asp:button text="Enter" Onclick="EnterBtn_Click" runat=server/>
+
+             <p>
+
+             <asp:label id="Message"  runat=server/>
+
+          </font>
+
+       </form>
+
+    </body>
+
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

@@ -1,0 +1,90 @@
+<?xml version='1.0' ?>
+<!--
+<biztalk_1 xmlns="urn:biztalk-org:biztalk:biztalk_1">
+-->
+<biztalk_1>
+    <header>
+        <delivery>
+            <message>
+                <messageID>xyzzy:8</messageID>
+                <sent>1999-01-02T19:00:01+02:00</sent>
+                <subject>Purchase Order</subject>
+            </message>
+            <to>
+                <address>http://www.fabrikam.com/recv.asp</address>
+                <state>
+                    <referenceID/>
+                    <handle/>
+                    <process/>
+                </state>
+            </to>
+            <from>
+                <address>mailto:foo@contoso.com</address>
+                <state>
+                    <referenceID>123</referenceID>
+                    <handle>7</handle>
+                    <process>myprocess</process>
+                </state>
+            </from>
+        </delivery>
+        <manifest>
+            <document>
+                <name>PO</name>
+                <description>Purchase Order</description>
+            </document>
+        </manifest>
+    </header>
+    <body>
+<!--
+        <PO xmlns="x-schema:http://localhost/c:/pdc/poschema.xml">
+-->
+        <PO>
+            <POHeader refPromise="0" 
+                      fromCust="111111111" 
+                      poNumber="PO# 12345" 
+                      description="" 
+                      paymentType="INVOICE" 
+                      shipType="AIR1D" /> 
+
+            <Contact contactName="" contactPhone="" contactEmail="" /> 
+
+            <POShipTo street1="200 Smith Rd" 
+                      street2="" 
+                      street3="" 
+                      street4="" 
+                      attn="Bob Smith" 
+                      city="Anytown" 
+                      stateProvince="" 
+                      postalCode="54321" 
+                      country="USA" /> 
+            <POBillTo street1="1500 what st" 
+                      street2="" 
+                      street3="" 
+                      street4="" 
+                      attn="Joe Accountant" 
+                      city="Somewhere" 
+                      stateProvince="" 
+                      postalCode="12345" 
+                      country="USA" /> 
+            <POLines count="2" startAt="1">
+                <Item line="1" 
+                      partno="mcdunna1" 
+                      qty="150" 
+                      unitPrice="30" 
+                      uom="PC" 
+                      discount="0.0" 
+                      needAfter="1999-07-31T12:00:00+08:00" 
+                      needBefore="1999-09-29T12:00:00+08:00" /> 
+
+                <Item line="2" 
+                      partno="ikypop1" 
+                      qty="500" 
+                      unitPrice="14.5" 
+                      uom="PC" 
+                      discount="0" 
+                      needAfter="1999-07-31T12:00:00+08:00" 
+                      needBefore="1999-09-29T12:00:00+08:00" /> 
+            </POLines>
+        </PO>
+    </body>
+</biztalk_1>

@@ -1,0 +1,49 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Remoting/hello/client.src&file=client.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfY2xpZW50LmNzeF9feHhfeHhfeF9feA==f7a2e23c" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">client.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../howto/samples/remoting/hello/clientcssource.htm'>client.cs</a> &nbsp;&nbsp<a href='../../../../howto/samples/remoting/hello/makefilesource.htm'>makefile</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../howto/samples/remoting/hello/vb/clientvbsource.htm'>VB\client.vb</a> &nbsp;&nbsp<a href='../../../../howto/samples/remoting/hello/vb/makefilesource.htm'>VB\makefile</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>using System;
+using System.Runtime.Remoting;
+using System.Runtime.Remoting.Channels.TCP;
+
+namespace RemotingSamples {
+  public class Client
+  {
+    public static int Main(string [] args)
+    {
+      TCPChannel chan = new TCPChannel();
+      ChannelServices.RegisterChannel(chan);
+      HelloServer obj = (HelloServer)Activator.GetObject(typeof(RemotingSamples.HelloServer), "tcp://localhost:8085/SayHello");
+      if (obj == null) System.Console.WriteLine("Could not locate server");
+      else Console.WriteLine(obj.HelloMethod("Caveman"));
+      return 0;
+    } 
+  }
+}
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

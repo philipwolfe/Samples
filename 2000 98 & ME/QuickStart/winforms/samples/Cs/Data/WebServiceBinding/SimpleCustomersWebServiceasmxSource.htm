@@ -1,0 +1,66 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/winforms/samples/Cs/Data/WebServiceBinding/WebServiceBinding.src&file=SimpleCustomersWebService.asmx" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfU2ltcGxlQ3VzdG9tZXJzV2ViU2VydmljZS5hc21ceHhfX3h4X3h4X3hfX3g=bce00647" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">SimpleCustomersWebService.asmx</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>Win Form Source: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/data/webservicebinding/webserviceclientcssource.htm'>WebServiceClient.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Northwind dataset: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/data/webservicebinding/customersdatasetcssource.htm'>CustomersDataSet.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Web Service: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/data/webservicebinding/simplecustomerswebserviceasmxsource.htm'>SimpleCustomersWebService.asmx</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Web Service definition: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/data/webservicebinding/simplecustomerswebservicesdlsource.htm'>SimpleCustomersWebService.SDL</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Client Proxy: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/data/webservicebinding/customerslistcssource.htm'>CustomersList.cs</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ WebService Language="C#" class="CustomersList" %>
+
+using System.Web.Services;
+using System.Data;
+using System.Data.SQL;
+using Microsoft.Samples.WinForms.Cs.WebServiceBinding.Data;
+
+public class CustomersList : WebService {
+
+     [ WebMethod ]
+     public DataSet GetCustomers() {
+         CustomersDataSet customersDataSet1 = new CustomersDataSet();
+         SQLConnection con = new SQLConnection("server=localhost;uid=sa;pwd=;database=northwind");
+         SQLDataSetCommand cmdCustomers = new SQLDataSetCommand("Select * from Customers", con);
+         SQLDataSetCommand cmdOrders = new SQLDataSetCommand("Select * from Orders", con);
+         cmdCustomers.FillDataSet(customersDataSet1, "Customers");
+         cmdOrders.FillDataSet(customersDataSet1, "Orders");
+         return customersDataSet1 ;
+     }
+     
+}
+
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

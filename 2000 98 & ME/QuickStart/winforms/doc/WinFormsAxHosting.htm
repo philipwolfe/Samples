@@ -1,0 +1,417 @@
+<!--BEGIN HEADER-->
+
+
+
+<html>
+<head>
+<link rel="stylesheet" href="../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+  <table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+
+            <div style="padding:0,0,0,0"><a class=outer style="color:darkred" href="../../winforms/doc/default.htm"><b>Introduction</b></a><br></div>
+            <p>
+            <div style="padding:0,0,4,0"><b>Getting Started</b><br></div>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsgettingstarted.htm">What is Windows Forms?</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformssimplehelloworld.htm">Writing a Hello World Form</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsapplicationmodel.htm">Windows Forms Application Model</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsusingwindes.htm">Using the Windows Forms Designer</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsformlayout.htm">Dynamic Layout in Windows Forms</a><br>            
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsmenus.htm">Adding Menus to a Form</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsmdi.htm">Writing MDI Applications</a><p>
+
+            <div style="padding:0,0,4,0"><b>Building Applications</b><br></div>
+            &nbsp; <a class="outer" href="../../winforms/doc/dataaccessplaceholder.htm">Data Access Overview</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/webservicesplaceholder.htm">Web Services Overview</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsdata.htm">Databinding in Windows Forms</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsaxhosting.htm">Using ActiveX Controls</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsgdiplus.htm">Working with Graphics</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsprinting.htm">Working with Printing</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformscreatingcontrols.htm">Creating Controls</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsmsaa.htm">Accessibility</a><p>
+
+            <div style="padding:0,0,0,0"><a class=outer style="color:darkred" href="../../winforms/doc/winformssamples.htm"><b>Control Reference</b></a><br></div>
+            <p>
+            <div style="padding:0,0,0,0"><a target=_top class=outer style="color:darkred" href="../../howto/default.htm"><b>How Do I...?</b></a><br></div>
+            <p>
+            <div style="padding:0,0,0,0"><a class=outer style="color:darkred" href="../../winforms/doc/winformsrelateddocs.htm"><b>Related Documentation</b></a><br></div>
+            <p>
+            
+</div>
+
+</td>
+</tr>
+</table>
+
+
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<style>
+.mydd {  font: smaller verdana; }
+
+.code1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	font-family:"Courier New";
+	color:darkred; 
+	}
+.codecomment1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	font-family:"Courier New";
+	color:green;
+	}
+.issue {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background-color:RED;
+	color:WHITE;
+	font-weight:bold;
+	}
+
+
+body { font: smaller verdana }        
+
+</style>
+
+
+
+
+
+<h4>Hosting an ActiveX Control on a Win Form</h4>
+      
+<P>This topic demonstrates how to host the <b> WebBrowser</b> ActiveX 
+control in a form by building an MDI WebBrowser application.  
+
+<h5>Windows Forms and ActiveX Controls</h5>
+
+<p>Windows Forms can only host Windows Forms controls.  All Windows Forms controls are 
+classes that are derived from the <b>System.WinForms.Control</b> class.  
+In order for an ActiveX control to be hosted on a form, it must appear to 
+be a Windows Forms control.  Conversely an ActiveX control must appear to be 
+hosted in an ActiveX control container.  The <b> 
+System.WinForms.AxHost</b> class (which derives from 
+<b>System.WinForms.RichControl</b>) is a Windows Forms control "on the 
+outside" and an ActiveX control container "on the inside".  In order to 
+host an ActiveX Control you need to create a &quot;wrapper&quot; class 
+that derives from <b>System.WinForms.AxHost</b>.  This control hosts the 
+ActiveX control and exposes its properties, methods, and events (PMEs) as 
+PMEs of the generated conrtrol: <BR> 
+      
+<br>
+<img src=../../winforms/images/aximp.gif>
+<br>
+
+<P>All conversions are done for an entire ActiveX control type library at 
+one time.  You cannot use <b> aximp</b> to generate type information for a 
+subset of the types defined within a single type library.  The output of 
+aximp is a set of binary files that contain the metadata and control 
+implementation for the types defined within the original type library.  
+The generated files are named according to the following pattern: 
+      
+ <UL>
+   <LI>Common Language Runtime proxy for COM2 types: <PROGID>.dll 
+   <LI>Windows Forms proxy for ActiveX Control: Ax<PROGID>.dll 
+</LI></UL>
+
+<P>You can examine these files with tools such as Metainfo.exe or 
+Ildasm.exe.  
+      
+<P><B>Beta Warning: If the name of the COM2 type library progid has the 
+same name as the output proxy name - for instance SHDOCVW.DLL - then the 
+original type library may be overwritten.  Do not use aximp in the 
+directory that contains your type library.  </B></P> 
+
+<h5>Creating an ActiveX Control Wrapper</h5>
+
+<P>You create the the ActiveX control wrapper using the aximp.exe tool 
+included in the SDK.  The following is an example of how to call aximp: </p>
+
+<div class="code"><pre>
+aximp c:\winnt\system32\shdocvw.dll
+</pre></div>
+<br>
+
+<h5>Using Wrapper Control</h5>
+
+<P>Once you have created the control&nbsp; wrapper class you can use it in 
+the same way that you would any Windows Forms control.  The following example 
+demonstrates how to add a <b> WebBrowser</b> control to a Form:</P> 
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl6" style="display:none">
+
+....
+using AxSHDocVw;
+....
+AxWebBrowser1.BeginInit();
+....
+AxWebBrowser AxWebBrowser1= new AxWebBrowser();
+AxWebBrowser1.Size = new System.Drawing.Size(292, 273);
+AxWebBrowser1.TabIndex = 0;
+AxWebBrowser1.Dock = System.WinForms.DockStyle.Fill;
+....
+this.Controls.Add(AxWebBrowser1);
+....
+AxWebBrowser1.EndInit();
+....
+</pre>
+<pre id="codectrl6" style="display:">
+
+....
+Imports AxSHDocVw
+....
+AxWebBrowser1.BeginInit()
+....
+AxWebBrowser1.Location = New System.Drawing.Point(0, 24)
+AxWebBrowser1.Size = New System.Drawing.Size(650, 456)
+AxWebBrowser1.Dock = System.WinForms.DockStyle.Fill
+AxWebBrowser1.TabIndex = 3
+....
+Me.Controls.Add(AxWebBrowser1)
+....
+AxWebBrowser1.EndInit()
+....
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl6" onclick="doClick(0, 'ctrl6')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl6" onclick="doClick(1, 'ctrl6')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<P>Once you have finished writing the code for your form you can build it 
+and pass in references to the wrapper DLLs:</P> 
+      
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl8" style="display:none">
+
+csc.exe /debug+   /R:System.DLL /R:System.WinForms.DLL /R:System.Drawing.DLL
+/R:Microsoft.Win32.InterOp.DLL /R:shdocvw.dll /R:AxShDocVw.DLL
+/out:MDIBrowser.exe *.cs
+</pre>
+<pre id="codectrl8" style="display:">
+
+vbc.exe /debug+  /R:System.DLL /R:System.WinForms.DLL /R:System.Drawing.DLL
+/R:Microsoft.Win32.InterOp.DLL /R:shdocvw.dll /R:AxShDocVw.DLL
+/out:MDIBrowser.exe *.VB
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl8" onclick="doClick(0, 'ctrl8')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl8" onclick="doClick(1, 'ctrl8')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+
+<h5>Web Browser Control Sample</h5>
+<P>The following sample demonstrates how to host an ActiveX control. <BR><BR>
+<P>To view and run this sample: </p>
+
+<span>
+    
+    
+    
+    
+    
+
+        
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../winforms/samples/vb/axhosting">
+	<img style="border-color:black" border=1 src="../../winforms/images/wflink.jpg"><br>
+	</a>
+	<div class="caption">VB Browser Sample</div><br>
+	
+	
+		[<a target="_blank" href="../../winforms/samples/vb/axhosting">Run Sample</a>] | 
+		[<a target="_blank" href="../../winforms/samples/vb/axhosting/mainformvbsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+    </span>
+
+<h5>Beta Caveats</h5> 
+
+<P>The Windows Forms team is testing ActiveX Control Hosting compatibility 
+with a wide range of ActiveX controls.  However this testing is in 
+progress and so some ActiveX Controls may work better than others.  </P>
+      
+<P>If you find issues with a control that you are trying to use, please 
+report the problem via the Beta bug reporting process.</P> 
+
+
+<!--END FOOTER-->
+<p>
+<hr>
+<p>
+</div>
+</td>
+</tr>
+</table>
+</BODY>
+</html>
+<!--END FOOTER-->

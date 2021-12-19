@@ -1,0 +1,94 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlauth/Simple/SimpleProperty.src&file=SimpleProperty.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfU2ltcGxlUHJvcGVydHkuY3N4X194eF94eF94X1945ac124e1" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">SimpleProperty.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/ctrlauth/simple/simplepropertyaspxsource.htm'>SimpleProperty.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/ctrlauth/simple/simplepropertycssource.htm'>SimpleProperty.cs</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/ctrlauth/simple/makesamplebatsource.htm'>makesample.bat</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/ctrlauth/simple/vb/simplepropertyaspxsource.htm'>VB/SimpleProperty.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/ctrlauth/simple/vb/simplepropertyvbsource.htm'>VB/SimpleProperty.vb</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/ctrlauth/simple/vb/makesamplebatsource.htm'>VB/makesample.bat</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>using System;
+using System.Web;
+using System.Web.UI;
+
+namespace SimpleControlSamples {
+
+    public enum MessageSize {
+
+        Small = 0,
+        Medium = 1,
+        Large = 2
+    }
+
+    public class SimpleProperty : Control {
+
+       private String      _message;
+       private MessageSize _messageSize;
+       private int         _iterations = 1;
+
+       public String Message {
+           get {
+              return _message;
+           }
+           set {
+              _message = value;
+           }
+       }
+
+       public MessageSize MessageSize {
+           get {
+              return _messageSize;
+           }
+           set {
+              _messageSize = value;
+           }
+       }
+
+       public int Iterations {
+           get {
+              return _iterations;
+           }
+           set {
+              _iterations = value;
+           }
+       }
+
+       protected override void Render(HtmlTextWriter output) {
+
+           String htmlSize;
+
+           if (_messageSize == MessageSize.Small)
+              htmlSize="H5";
+           else if (_messageSize == MessageSize.Medium) 
+              htmlSize="H3";
+           else
+              htmlSize="H1";
+
+           for (int i=0; i<_iterations; i++) {
+              output.Write("<" + htmlSize + ">" + _message + "</" + htmlSize + ">");
+           }
+       }
+    }    
+}
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

@@ -1,0 +1,53 @@
+
+
+<html>
+<head>
+    
+
+</head>
+<body>
+
+    <h3><font face="Verdana">CompareValidator Example</font></h3>
+    <p>Type a value in each textbox, select a comparison operator, then click "Validate" to test.</p>
+
+    <form name="ctrl2" method="post" action="validator4.htm" id="ctrl2">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTg3ODMwNjgxNl9hMHpfaHo1ejJ4X2Ewel9oejV6M3hfYTB6YTB6YTB6aHpTSV9hNXo1ejB4X3h4X194X3hfX3h4X3h4X3hfX3g=13c99976" />
+
+
+      <table bgcolor="#eeeeee" cellpadding=10>
+      <tr valign="top">
+        <td>
+            <h5><font face="Verdana">String 1:</font></h5>
+            <input name="txtComp" type="text" id="txtComp" Selected="" />
+        </td>
+        <td>
+            <h5><font face="Verdana">Comparison Operator:</font></h5>
+
+            <select name="lstOperator" id="lstOperator" size="5">
+    <option selected value="Equal">Equal</option>
+    <option value="NotEqual">NotEqual</option>
+    <option value="GreaterThan">GreaterThan</option>
+    <option value="GreaterThanEqual">GreaterThanEqual</option>
+    <option value="LessThan">LessThan</option>
+    <option value="LessThanEqual">LessThanEqual</option>
+    
+</select>
+        </td>
+        <td>
+            <h5><font face="Verdana">String 2:</font></h5>
+            <input name="txtCompTo" type="text" id="txtCompTo" /><p>
+            <input type="submit" name="Button1" value="Validate" id="Button1" />
+        </td>
+      </tr>
+      </table>
+
+      &nbsp;
+
+      <br>
+      
+      <span id="lblOutput"><font face="verdana" size="2"></font></span>
+
+    </form>
+
+</body>
+</html>

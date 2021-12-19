@@ -1,0 +1,108 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Xml/DataSetMapXMLData/DataSetMapXMLData.src&file=VB/DataSetMapXMLData.vb" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvRGF0YVNldE1hcFhNTERhdGEudmJ4X194eF94eF94X194a4cf1cbe" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/DataSetMapXMLData.vb</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../howto/samples/xml/datasetmapxmldata/datasetmapxmldatacssource.htm'>DataSetMapXMLData.cs</a> &nbsp;&nbsp<a href='../../../../../howto/samples/xml/datasetmapxmldata/datasetmapxmldataaspxsource.htm'>DataSetMapXMLData.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../howto/samples/xml/datasetmapxmldata/vb/datasetmapxmldatavbsource.htm'>VB/DataSetMapXMLData.vb</a> &nbsp;&nbsp<a href='../../../../../howto/samples/xml/datasetmapxmldata/vb/datasetmapxmldataaspxsource.htm'>VB/DataSetMapXMLData.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>XML Data: </b></td>
+        <td><a href='../../../../../howto/samples/xml/datasetmapxmldata/booksxmlsource.htm'>books.xml</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>' Copyright (c) 2000, Microsoft Corporation. All Rights Reserved.
+Option Strict off
+
+Imports System
+Imports System.IO
+Imports System.Data
+Imports System.Xml
+
+Namespace HowTo.Samples.XML.DataSet
+
+public class DataSetMapXMLDataSample
+
+    private const m_Document as String = "books.xml"
+
+    public sub New()
+    MyBase.New
+        try
+            Console.WriteLine("Creating an XmlDataDocument ...")
+            Dim datadoc as new System.Xml.XmlDataDocument
+
+            ' Infer the DataSet schema from the XML data and load the XML Data
+            datadoc.DataSet.ReadXml(new StreamReader(m_Document))
+
+            DisplayTables(datadoc.DataSet)
+
+        catch e as Exception
+                Console.WriteLine ("Exception: " & e.toString() )
+        end try
+    end sub
+
+    Shared sub Main
+        dim args as String()
+        dim xmltransform as DataSetMapXMLDataSample
+        xmltransform = new DataSetMapXMLDataSample()
+    end sub
+
+    ' Displays the contents of the DataSet tables
+    private sub DisplayTables(ds as system.data.DataSet)
+    ' Navigate Dataset
+        Console.WriteLine("Content of Tables ...")
+
+        Dim table
+        Console.writeline()
+
+            for each table in ds.Tables
+                Console.WriteLine("TableName = " & table.TableName.ToString())
+                Console.WriteLine ("---------")
+                Console.WriteLine("Columns ...")
+
+            Dim column as object
+
+                for each column in table.Columns            
+                    Console.Write("{0,-22}",column.ColumnName.ToString())
+                next
+        
+                Console.WriteLine()
+                Console.WriteLine("Number of rows = " & table.Rows.Count.ToString())
+                Console.WriteLine("Rows ...")
+            
+            Dim row as Object
+                for each row in table.Rows
+
+            Dim value as Object
+                    for each value in row.ItemArray                
+                        Console.Write("{0,-22}",value.ToString())
+                    next
+                    Console.WriteLine()
+                next
+                Console.WriteLine()
+            next
+    end sub
+end class
+end namespace
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

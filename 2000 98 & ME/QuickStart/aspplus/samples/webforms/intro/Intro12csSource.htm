@@ -1,0 +1,67 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/intro/intro12.src&file=Intro12.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfSW50cm8xMi5jc3hfX3h4X3h4X3hfX3g=fb38c278" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">Intro12.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/intro/intro12aspxsource.htm'>Intro12.htm</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/intro/intro12cssource.htm'>Intro12.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/intro/vb/intro12aspxsource.htm'>VB/Intro12.htm</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/intro/vb/intro12vbsource.htm'>VB/Intro12.vb</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/intro/js/intro12aspxsource.htm'>JS/Intro12.htm</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/intro/js/intro12jssource.htm'>JS/Intro12.js</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Ads File: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/intro/adsxmlsource.htm'>ads.xml</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>using System;
+using System.Data;
+using System.Data.SQL;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.UI.HtmlControls;
+
+public class MyCodeBehind : Page {
+
+    public TextBox      Name;
+    public DropDownList Category;
+    public DataList     MyList;
+
+    public void SubmitBtn_Click(Object sender, EventArgs e) {
+
+        if (Page.IsValid) {
+
+           SQLConnection myConnection = new SQLConnection("server=localhost;uid=sa;pwd=;database=pubs");
+           SQLDataSetCommand myCommand = new SQLDataSetCommand("select * from Titles where type='" + Category.SelectedItem.Value + "'", myConnection);
+
+           DataSet ds = new DataSet();
+           myCommand.FillDataSet(ds, "Titles");
+
+           MyList.DataSource = ds.Tables["Titles"].DefaultView;
+           MyList.DataBind();
+        }
+    }
+}
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

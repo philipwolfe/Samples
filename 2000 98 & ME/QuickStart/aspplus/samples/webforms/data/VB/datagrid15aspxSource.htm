@@ -1,0 +1,118 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/data/datagrid15.src&file=VB/datagrid15.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvZGF0YWdyaWQxNS5hc3BceHhfX3h4X3h4X3hfX3g=65d16085" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/datagrid15.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/data/datagrid15aspxsource.htm'>datagrid15.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/data/vb/datagrid15aspxsource.htm'>VB/datagrid15.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/data/js/datagrid15aspxsource.htm'>JS/datagrid15.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>
+<%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="System.Data.SQL" %>
+
+<html>
+<script language="VB" runat="server">
+
+    Sub GetEmployees_Click(Src As Object, E As EventArgs) 
+
+        Dim DS As DataSet
+        Dim MyConnection As SQLConnection
+        Dim MyCommand As SQLDataSetCommand
+
+        MyConnection = New SQLConnection("server=localhost;uid=sa;pwd=;database=Northwind")
+        MyCommand = New SQLDataSetCommand("SalesByCategory", MyConnection)
+
+        MyCommand.SelectCommand.CommandType = CommandType.StoredProcedure
+
+        MyCommand.SelectCommand.Parameters.Add(New SQLParameter("@CategoryName", SQLDataType.NVarChar, 15))
+        MyCommand.SelectCommand.Parameters("@CategoryName").Value = SelectCategory.Value
+
+        MyCommand.SelectCommand.Parameters.Add(New SQLParameter("@OrdYear", SQLDataType.NVarChar, 4))
+        MyCommand.SelectCommand.Parameters("@OrdYear").Value = SelectYear.Value
+
+        DS = new DataSet()
+        MyCommand.FillDataSet(DS, "Sales")
+
+        MyDataGrid.DataSource=DS.Tables("Sales").DefaultView
+        MyDataGrid.DataBind()
+    End Sub
+
+</script>
+
+<body style="font: 10pt verdana">
+
+  <form runat="server">
+
+  <h3><font face="Verdana">Parameterized Stored Proc Select to a DataGrid Control</font></h3>
+
+  Select a Category: 
+
+  <select id="SelectCategory" runat="server">
+    <option>Beverages</option>
+    <option>Condiments</option>
+    <option>Confections</option>
+    <option>Dairy Products</option>
+    <option>Grains/Cereals</option>
+    <option>Meat/Poultry</option>
+    <option>Produce</option>
+    <option>Seafood</option>
+  </select>
+
+  &nbsp;
+
+  Select a Year: 
+
+  <select id="SelectYear" runat="server">
+    <option>1996</option>
+    <option>1997</option>  
+    <option>1998</option>  
+  </select>
+
+  &nbsp;
+
+  <input type="submit" OnServerClick="GetEmployees_Click" Value="Get Sales" runat="server"/><p>
+
+  <ASP:DataGrid id="MyDataGrid" runat="server"
+    Width="650"
+    BackColor="#ccccff" 
+    BorderColor="black"
+    ShowFooter="false" 
+    CellPadding=3 
+    CellSpacing="0"
+    Font-Name="Verdana"
+    Font-Size="8pt"
+    HeaderStyle-BackColor="#aaaadd"
+    MaintainState="false"
+  />
+
+  </form>
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

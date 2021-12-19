@@ -1,0 +1,141 @@
+
+
+<html>
+
+
+<body>
+
+    <h3><font face="Verdana">Simple DataGrid Example</font></h3>
+
+    <form name="ctrl2" method="post" action="datagrid1.htm" id="ctrl2">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQzMzIzNjQ0Nl9hMHpfaHo1ejJ4X2Ewel9oejV6MXhfYTB6YTB6YTB6aHpEYXRhS2V5c19senhfSXRlbUNvdW50XzV6OXhfRGF0YVNvdXJjZUl0ZW1Db3VudF81ejl4eF9feF9fX19fX19fX2EwemEwemh6MF9JbnRlZ2VyVmFsdWVfMV9JbnRlZ2VyVmFsdWVfMl9JbnRlZ2VyVmFsdWVfM181MHpGYWxzZXh4X19fX3hfYTB6aHowX1N0cmluZ1ZhbHVlXzFfU3RyaW5nVmFsdWVfMl9TdHJpbmdWYWx1ZV8zXzUwekZhbHNleHhfX19feF9hMHpoejBfRGF0ZVRpbWVWYWx1ZV8xX0RhdGVUaW1lVmFsdWVfMl9EYXRlVGltZVZhbHVlXzNfNTB6RmFsc2V4eF9fX194X2Ewemh6MF9Cb29sVmFsdWVfMV9Cb29sVmFsdWVfMl9Cb29sVmFsdWVfM181MHpGYWxzZXh4X19fX3hfYTB6aHowX0N1cnJlbmN5VmFsdWVfMV9DdXJyZW5jeVZhbHVlXzJfQ3VycmVuY3lWYWx1ZV8zXzUwekZhbHNleHhfX19feF94X3hfaHo1ejB4X2Ewel9oejV6OXhfYTB6X2h6NXo0eF9hMHphMHpoejRfMTEuMDd4X194X194XzV6M3hfYTB6YTB6aHo0X0ZhbHNleF9feF9feF81ejJ4X2EwemEwemh6NF8yMDAwLTEwLTI1VDE2OjQ3OjQzeF9feF9feF81ejF4X2EwemEwemh6NF9JdGVtIDh4X194X194XzV6MHhfYTB6YTB6aHo0Xzh4X194X194eF94XzV6OHhfYTB6X2h6NXo0eF9hMHphMHpoejRfOS44NHhfX3hfX3hfNXozeF9hMHphMHpoejRfVHJ1ZXhfX3hfX3hfNXoyeF9hMHphMHpoejRfMjAwMC0xMC0yNVQxNjo0Nzo0M3hfX3hfX3hfNXoxeF9hMHphMHpoejRfSXRlbSA3eF9feF9feF81ejB4X2EwemEwemh6NF83eF9feF9feHhfeF81ejd4X2Ewel9oejV6NHhfYTB6YTB6aHo0XzguNjF4X194X194XzV6M3hfYTB6YTB6aHo0X0ZhbHNleF9feF9feF81ejJ4X2EwemEwemh6NF8yMDAwLTEwLTI1VDE2OjQ3OjQzeF9feF9feF81ejF4X2EwemEwemh6NF9JdGVtIDZ4X194X194XzV6MHhfYTB6YTB6aHo0XzZ4X194X194eF94XzV6NnhfYTB6X2h6NXo0eF9hMHphMHpoejRfNy4zOHhfX3hfX3hfNXozeF9hMHphMHpoejRfVHJ1ZXhfX3hfX3hfNXoyeF9hMHphMHpoejRfMjAwMC0xMC0yNVQxNjo0Nzo0M3hfX3hfX3hfNXoxeF9hMHphMHpoejRfSXRlbSA1eF9feF9feF81ejB4X2EwemEwemh6NF81eF9feF9feHhfeF81ejV4X2Ewel9oejV6NHhfYTB6YTB6aHo0XzYuMTV4X194X194XzV6M3hfYTB6YTB6aHo0X0ZhbHNleF9feF9feF81ejJ4X2EwemEwemh6NF8yMDAwLTEwLTI1VDE2OjQ3OjQzeF9feF9feF81ejF4X2EwemEwemh6NF9JdGVtIDR4X194X194XzV6MHhfYTB6YTB6aHo0XzR4X194X194eF94XzV6NHhfYTB6X2h6NXo0eF9hMHphMHpoejRfNC45MnhfX3hfX3hfNXozeF9hMHphMHpoejRfVHJ1ZXhfX3hfX3hfNXoyeF9hMHphMHpoejRfMjAwMC0xMC0yNVQxNjo0Nzo0M3hfX3hfX3hfNXoxeF9hMHphMHpoejRfSXRlbSAzeF9feF9feF81ejB4X2EwemEwemh6NF8zeF9feF9feHhfeF81ejN4X2Ewel9oejV6NHhfYTB6YTB6aHo0XzMuNjl4X194X194XzV6M3hfYTB6YTB6aHo0X0ZhbHNleF9feF9feF81ejJ4X2EwemEwemh6NF8yMDAwLTEwLTI1VDE2OjQ3OjQzeF9feF9feF81ejF4X2EwemEwemh6NF9JdGVtIDJ4X194X194XzV6MHhfYTB6YTB6aHo0XzJ4X194X194eF94XzV6MnhfYTB6X2h6NXo0eF9hMHphMHpoejRfMi40NnhfX3hfX3hfNXozeF9hMHphMHpoejRfVHJ1ZXhfX3hfX3hfNXoyeF9hMHphMHpoejRfMjAwMC0xMC0yNVQxNjo0Nzo0M3hfX3hfX3hfNXoxeF9hMHphMHpoejRfSXRlbSAxeF9feF9feF81ejB4X2EwemEwemh6NF8xeF9feF9feHhfeF81ejF4X2Ewel9oejV6NHhfYTB6YTB6aHo0XzEuMjN4X194X194XzV6M3hfYTB6YTB6aHo0X0ZhbHNleF9feF9feF81ejJ4X2EwemEwemh6NF8yMDAwLTEwLTI1VDE2OjQ3OjQzeF9feF9feF81ejF4X2EwemEwemh6NF9JdGVtIDB4X194X194XzV6MHhfYTB6YTB6aHo0XzB4X194X194eF94eF94eF94eF94eF94X194XHQ1MF9TeXN0ZW0uQm9vbGVhblxuMF9IZWFkZXJUZVx4dF8xX1NvcnRGaWVsZF8yX0RhdGFGaWVsZF8zX1JlYWRPbmx5XzRfVGVceHQ=fb7f1fbf" />
+
+
+      <table cellspacing="0" cellpadding="3" rules="all" bordercolor="Black" border="1">
+    <tr bgcolor="#AAAADD">
+        <td><font face="Verdana" size="1">
+            IntegerValue
+        </font></td><td><font face="Verdana" size="1">
+            StringValue
+        </font></td><td><font face="Verdana" size="1">
+            DateTimeValue
+        </font></td><td><font face="Verdana" size="1">
+            BoolValue
+        </font></td><td><font face="Verdana" size="1">
+            CurrencyValue
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            0
+        </font></td><td><font face="Verdana" size="1">
+            Item 0
+        </font></td><td><font face="Verdana" size="1">
+            2000-10-25T16:47:43
+        </font></td><td><font face="Verdana" size="1">
+            False
+        </font></td><td><font face="Verdana" size="1">
+            1.23
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            1
+        </font></td><td><font face="Verdana" size="1">
+            Item 1
+        </font></td><td><font face="Verdana" size="1">
+            2000-10-25T16:47:43
+        </font></td><td><font face="Verdana" size="1">
+            True
+        </font></td><td><font face="Verdana" size="1">
+            2.46
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            2
+        </font></td><td><font face="Verdana" size="1">
+            Item 2
+        </font></td><td><font face="Verdana" size="1">
+            2000-10-25T16:47:43
+        </font></td><td><font face="Verdana" size="1">
+            False
+        </font></td><td><font face="Verdana" size="1">
+            3.69
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            3
+        </font></td><td><font face="Verdana" size="1">
+            Item 3
+        </font></td><td><font face="Verdana" size="1">
+            2000-10-25T16:47:43
+        </font></td><td><font face="Verdana" size="1">
+            True
+        </font></td><td><font face="Verdana" size="1">
+            4.92
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            4
+        </font></td><td><font face="Verdana" size="1">
+            Item 4
+        </font></td><td><font face="Verdana" size="1">
+            2000-10-25T16:47:43
+        </font></td><td><font face="Verdana" size="1">
+            False
+        </font></td><td><font face="Verdana" size="1">
+            6.15
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            5
+        </font></td><td><font face="Verdana" size="1">
+            Item 5
+        </font></td><td><font face="Verdana" size="1">
+            2000-10-25T16:47:43
+        </font></td><td><font face="Verdana" size="1">
+            True
+        </font></td><td><font face="Verdana" size="1">
+            7.38
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            6
+        </font></td><td><font face="Verdana" size="1">
+            Item 6
+        </font></td><td><font face="Verdana" size="1">
+            2000-10-25T16:47:43
+        </font></td><td><font face="Verdana" size="1">
+            False
+        </font></td><td><font face="Verdana" size="1">
+            8.61
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            7
+        </font></td><td><font face="Verdana" size="1">
+            Item 7
+        </font></td><td><font face="Verdana" size="1">
+            2000-10-25T16:47:43
+        </font></td><td><font face="Verdana" size="1">
+            True
+        </font></td><td><font face="Verdana" size="1">
+            9.84
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            8
+        </font></td><td><font face="Verdana" size="1">
+            Item 8
+        </font></td><td><font face="Verdana" size="1">
+            2000-10-25T16:47:43
+        </font></td><td><font face="Verdana" size="1">
+            False
+        </font></td><td><font face="Verdana" size="1">
+            11.07
+        </font></td>
+    </tr>
+</table>
+
+  </form>
+
+</body>
+</html>

@@ -1,0 +1,974 @@
+
+
+<!--BEGIN HEADER-->
+<html>
+<head>
+<link rel="stylesheet" href="../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+  <table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+
+            <div style="padding:0,0,4,0"><b>Getting Started</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/quickstart.htm">Introduction</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/whatisaspx.htm">What is ASP.NET?</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/langsupport.htm">Language Support</a><p>
+
+            <div style="padding:0,0,4,0"><b>ASP.NET Web Forms</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webformsintro.htm">Introducing Web Forms</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webserverctrls.htm">Working with Server Controls</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webtemplates.htm">Applying Styles to Controls</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webvalidation.htm">Server Control Form Validation</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webpagelets.htm">Web Forms User Controls</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webdatabinding.htm">Databinding Server Controls</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webdataaccess.htm">Server-Side Data Access</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webdatalist.htm">Data Access and Customization</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/businessobjs.htm">Working with Business Objects</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webctrlauthoring.htm">Authoring Custom Controls</a><br>
+<!--            &nbsp; <a class="outer" href="../../aspplus/doc/webformsandvs7.htm">Visual Studio 7.0 & Web Forms</a><br> -->
+            &nbsp; <a class="outer" href="../../aspplus/doc/webcontrolsref.htm">Web Forms Controls Reference</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webformssyntaxref.htm">Web Forms Syntax Reference</a><p>
+
+            <div style="padding:0,0,4,0"><b>ASP.NET Web Services</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webservicesintro.htm">Introducing Web Services</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/writingservices.htm">Writing a Simple Web Service</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webservicetypes.htm">Web Service Type Marshalling</a><br>
+<!--            &nbsp; <a class="outer" href="../../aspplus/doc/discoverservices.htm">Making Services Discoverable</a><br> -->
+            &nbsp; <a class="outer" href="../../aspplus/doc/servicesanddata.htm">Using Data in Web Services</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/servicesandobjs.htm">Using Objects and Intrinsics</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/htmlscraping.htm">HTML Pattern Matching</a><p>
+
+            <div style="padding:0,0,4,0"><b>ASP.NET Web Applications</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/applications.htm">Application Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/globalasax.htm">Using the Global.asax File</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/stateoverview.htm">Managing Application State</a><br>
+<!--            &nbsp; <a class="outer" href="../../aspplus/doc/httpmodules.htm">Handling HttpModule Events</a><br> -->
+            &nbsp; <a class="outer" href="../../aspplus/doc/httphandlers.htm">HttpHandlers and Factories</a><p>
+
+<!--
+            <div style="padding:0,0,4,0"><b>State Management</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/stateoverview.htm">State Management Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/pageviewstate.htm">Using Page-local View State</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/sessionappstate.htm">Session and Application State</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/usingcookies.htm">Using Client-side Cookies</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/choosingstate.htm">Choosing a Strategy</a><p>
+-->
+            <div style="padding:0,0,4,0"><b>Cache Services</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/cachingoverview.htm">Caching Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/outputcaching.htm">Page Output Caching</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/datacaching.htm">Page Data Caching</a><p>
+
+            <div style="padding:0,0,4,0"><b>Configuration</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/configoverview.htm">Configuration Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/configformat.htm">Configuration File Format</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/configretrieve.htm">Retrieving Configuration</a><p>
+
+            <div style="padding:0,0,4,0"><b>Deployment</b><br></div>
+<!--            &nbsp; <a class="outer" href="../../aspplus/doc/adminoverview.htm">Administration Overview</a><br> -->
+            &nbsp; <a class="outer" href="../../aspplus/doc/deployment.htm">Deploying ASP.NET Applications</a><p>
+
+            <div style="padding:0,0,4,0"><b>Security</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/securityoverview.htm">Security Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/authandauth.htm">Authentication & Authorization</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/windowsauth.htm">Windows-based Authentication</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/formsauth.htm">Forms-based Authentication</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/authorization.htm">Authorizing Users and Roles</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/impersonation.htm">User Account Impersonation</a><p>
+
+            <div style="padding:0,0,4,0"><b>Localization</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/internationalization.htm">Internationalization Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/cultureencoding.htm">Setting Culture and Encoding</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/localizingapps.htm">Localizing ASP.NET Applications</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/resourcefiles.htm">Working with Resource Files</a><p>
+
+            <div style="padding:0,0,4,0"><b>Tracing</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/tracingoverview.htm">Tracing Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/tracelogpage.htm">Trace Logging to Page Output</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/tracelogapp.htm">Application-level Trace Logging</a><p>
+
+            <div style="padding:0,0,4,0"><b>Debugging</b><br></div>
+<!--
+            &nbsp; <a class="outer" href="../../aspplus/doc/debuggingoverview.htm">Debugging Overview</a><br>
+-->
+            &nbsp; <a class="outer" href="../../aspplus/doc/debugcomsdk.htm">The SDK Debugger</a><p>
+<!--
+            &nbsp; <a class="outer" href="../../aspplus/doc/debugvisualstudio.htm">The Visual Studio 7 Debugger</a><p>
+-->
+
+<!--
+            <div style="padding:0,0,4,0"><b>Performance</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/perfoverview.htm">Performance Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/perfcounters.htm">Using Performance Counters</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/perftuning.htm">Performance Tuning Tips</a><p>
+
+            <div style="padding:0,0,4,0"><b>ASP to ASP.NET Migration</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/migrationoverview.htm">Migration Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/syntaxandsemantics.htm">Syntax and Semantics</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/languagecompat.htm">Language Compatibility</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/cominterop.htm">COM Interoperability</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/mtstransactions.htm">MTS Transactions</a><p>
+-->
+            <div style="padding:0,0,4,0"><b>Sample Applications</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/portalapp.htm">A Personalized Portal</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/ecommerceapp.htm">An E-Commerce Storefront</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/classbrowser.htm">A Class Browser Application</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/ibuyspy.htm">IBuySpy.com</a><p>
+
+</div>
+
+</td>
+</tr>
+</table>
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<h4>Page Data Caching</h4>
+
+<div class="indent" style="font-family:Verdana; font-size:8pt;">
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#intro">Introduction to Data Caching</a><br>
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#samples">Using the Data Cache</a><br>
+    <b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b><a class="toc2" href="#race">Avoiding Race Conditions</a><br>
+</div>
+<p>
+<hr>
+
+<a name="intro">
+<span class="subhead">Introduction to Data Caching</span>
+<p>
+
+ASP.NET provides a full featured cache engine that can be utilized by pages to store and retrieve arbitrary objects across HTTP requests.  The ASP.NET cache is private to each application and stores objects in memory.  The lifetime of the cache is equivalent to the lifetime of the application--that is, when the application is restarted, the cache is recreated.
+<p>
+The cache provides a simple dictionary interface that allows programmers to easily place objects in the cache and later retrieve them from it.  In the simplest case, placing an item in the cache is just like adding an item to a dictionary:
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 3;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:55%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="4">
+<pre id="codectrl5" style="display:none">
+
+Cache["mykey"] = myValue;
+</pre>
+<pre id="codectrl5" style="display:">
+
+Cache("mykey") = myValue
+</pre>
+<pre id="codectrl5" style="display:none">
+
+Cache("mykey") = myValue;
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl5" onclick="doClick(0, 'ctrl5')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl5" onclick="doClick(1, 'ctrl5')">
+          <b>VB
+        </td>
+        <td class="backtab" id="tabctrl5" onclick="doClick(2, 'ctrl5')">
+          <b>JScript
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+Retrieving the data is just as simple:
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 3;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:55%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="4">
+<pre id="codectrl7" style="display:none">
+
+myValue = Cache["mykey"];
+if(myValue != null ) {
+    DisplayData(myValue);
+}
+</pre>
+<pre id="codectrl7" style="display:">
+
+myValue = Cache("mykey")
+If myValue <> Null Then
+    DisplayData(myValue)
+End If
+</pre>
+<pre id="codectrl7" style="display:none">
+
+myValue = Cache("mykey");
+if(myValue != null ) {
+    DisplayData(myValue);
+}
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl7" onclick="doClick(0, 'ctrl7')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl7" onclick="doClick(1, 'ctrl7')">
+          <b>VB
+        </td>
+        <td class="backtab" id="tabctrl7" onclick="doClick(2, 'ctrl7')">
+          <b>JScript
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+For applications that need more sophisticated functionality, the ASP.NET cache supports scavenging, expiration, and file and key dependencies.  
+<p>
+<ul>
+<li><b>Scavenging</b> refers to the fact that the cache will attempt to remove infrequently-used or unimportant items if memory becomes scarce.  Programmers that wish to control how scavenging occurs can provide hints to the scavenger when items are inserted that indicate the relative cost of creating the item and the relative rate at which the item must be accessed to remain useful.
+<p>
+<li><b>Expiration</b> allows programmers to give cache items lifetimes, which can be explicit (expire at 6:00) or can be relative to an item's last use (expire 20 minutes after the item has last been accesssed).  After an item has expired, it will be removed from the cache and future attempts to retrieve it will return the null value unless the item is reinserted into the cache.
+<p>
+<li><b>File and key dependencies</b> allow the validity of a cache item to be based on an external file or upon another cache item.  If a dependency changes, the cache item is invalidated and removed from the cache.  As an example of how a programmer might use this functionality, consider the following scenario: an application reads financial information from an XML file that is periodically updated.  The application processes the data in the file and creates a graph of objects that represent that data in a consumable format.  The application caches that data and inserts a dependency on the file from which the data was read. When the file is updated, the data is removed from the cache and the application can re-read it and reinsert the updated copy of the data.
+</ul>
+
+<a name="samples">
+<span class="subhead">Using the Data Cache</span>
+<p>
+The following sample shows a simple use of the cache.  It executes a database query and caches the result, which it continues to use for the lifetime of the application. When you run the sample, note the message at the bottom of the page.  When first requested, it will indicate that the data was explicitly retrieved from the database server.  After refreshing the page, the page will note that the cached copy was used. 
+<p>
+<span>
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/datacache1.gif"><br>
+	</a>
+	<div class="caption">datacache1.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/cache/datacache1aspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<p>
+The next example shows a cache item that depends on an XML file.  It is similar to the first example, although in this case the data is retrieved from an XML data source instead of a database server.  When the data is cached, the XML file is added as a dependency.  
+<p>
+When a new record is added using the form at the bottom of the page, the XML file is updated and the cached item must be recreated.
+<p>
+
+<span>
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/datacache2.gif"><br>
+	</a>
+	<div class="caption">datacache2.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/cache/datacache2aspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+<p>
+Note that a file dependency is added by using <b>Cache.Insert</b> and supplying a <b>CacheDependency</b> object referencing the XML file.
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 3;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:55%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="4">
+<pre id="codectrl13" style="display:none">
+
+Cache.Insert("MyData", Source, new CacheDependency(Server.MapPath("authors.xml")));	
+</pre>
+<pre id="codectrl13" style="display:">
+
+Cache.Insert("MyData", Source, new CacheDependency(Server.MapPath("authors.xml")))
+</pre>
+<pre id="codectrl13" style="display:none">
+
+Cache.Insert("MyData", Source, new CacheDependency(Server.MapPath("authors.xml")));	
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl13" onclick="doClick(0, 'ctrl13')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl13" onclick="doClick(1, 'ctrl13')">
+          <b>VB
+        </td>
+        <td class="backtab" id="tabctrl13" onclick="doClick(2, 'ctrl13')">
+          <b>JScript
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+A cache item can depend on a single or multiple files or keys.  As mentioned above, an application can also set expiration policy on a cache item.  To set an absolute cache expiration time, code like the following could be used:
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 3;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:55%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="4">
+<pre id="codectrl15" style="display:none">
+
+Cache.Insert("MyData", Source, null, DateTime.Now.AddHours(1), TimeSpan.Zero);
+</pre>
+<pre id="codectrl15" style="display:">
+
+Cache.Insert("MyData", Source, null, DateTime.Now.AddHours(1), TimeSpan.Zero)
+</pre>
+<pre id="codectrl15" style="display:none">
+
+Cache.Insert("MyData", Source, null, DateTime.Now.AddHours(1), TimeSpan.Zero);
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl15" onclick="doClick(0, 'ctrl15')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl15" onclick="doClick(1, 'ctrl15')">
+          <b>VB
+        </td>
+        <td class="backtab" id="tabctrl15" onclick="doClick(2, 'ctrl15')">
+          <b>JScript
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+The relevant parameter is the call to DateTime.Now.AddHours(1), which indicates that the item expires 1 hour from the time it's inserted.  The final argument, TimeSpan.Zero indicates that there is no relative expiration policy on this item.
+<p>
+An example of setting a relative expiration policy is shown by the following code.  It inserts an item that expires 20 minutes after it's last accessed.  Note the use of DateTime.MaxValue, which indicates that there is no absolute expiration policy on this item.
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 3;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:55%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="4">
+<pre id="codectrl17" style="display:none">
+
+Cache.Insert("MyData", Source, null, DateTime.MaxValue, TimeSpan.FromMinutes(20));
+</pre>
+<pre id="codectrl17" style="display:">
+
+Cache.Insert("MyData", Source, null, DateTime.MaxValue, TimeSpan.FromMinutes(20))
+</pre>
+<pre id="codectrl17" style="display:none">
+
+Cache.Insert("MyData", Source, null, DateTime.MaxValue, TimeSpan.FromMinutes(20));
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl17" onclick="doClick(0, 'ctrl17')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl17" onclick="doClick(1, 'ctrl17')">
+          <b>VB
+        </td>
+        <td class="backtab" id="tabctrl17" onclick="doClick(2, 'ctrl17')">
+          <b>JScript
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<a name="race">
+<span class="subhead">Avoiding Race Conditions</span>
+<p>
+Developers should be aware that there is a race condition inherent to caching that can occur when items are created and cached when they're found to be absent.  Consider the following scenario: a page contains the following code:
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 3;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:55%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="4">
+<pre id="codectrl19" style="display:none">
+
+myValue = Cache["mykey"];
+if(myValue != null ) {
+    DoSomething(myValue);
+} else {		
+    myValue = CreateData();
+    Cache["mykey"] = myValue;
+}
+</pre>
+<pre id="codectrl19" style="display:">
+
+myValue = Cache("mykey")
+If myValue <> Null Then
+    DoSomething(myValue)
+Else		
+    myValue = CreateData()
+    Cache("mykey") = myValue
+End If
+</pre>
+<pre id="codectrl19" style="display:none">
+
+myValue = Cache("mykey");
+if(myValue != null ) {
+    DoSomething(myValue);
+} else {		
+    myValue = CreateData();
+    Cache("mykey") = myValue;
+}
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl19" onclick="doClick(0, 'ctrl19')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl19" onclick="doClick(1, 'ctrl19')">
+          <b>VB
+        </td>
+        <td class="backtab" id="tabctrl19" onclick="doClick(2, 'ctrl19')">
+          <b>JScript
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<p>
+If the data is not cached, and several requests are received in a short amount of time, the item can be created multiple times.  This can happen because in the amount of time it takes for the first request to create the item, the subsequent requests are handled and find the cache item missing, as well.  This may or may not be an issue for an application, depending on the cost of creating the item and the semantics it involves.  If it is an issue, applications should consider either creating the data at application startup (e.g. handle the <b>Application_OnStart</b> event) and caching it then or synchronizing access to the cached item using a technique similar to that shown in the following code.
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 3;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:55%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="4">
+<pre id="codectrl21" style="display:none">
+
+// assumes declaration of class/page level variable
+private static String cacheSynchronize = "myKey";
+
+myValue = Cache["mykey"];
+if(myValue != null ) {
+  DoSomething(myValue);
+}
+  else {
+
+  // item isn't cached: acquire lock, create and cache
+  lock(cacheSynchronize) {
+
+    // has it been updated before we got the lock?
+    myValue = Cache["mykey"];
+    if( null == myValue ) {
+      myValue = CreateData();
+      Cache["mykey"] = myValue;
+    }
+
+    DoSomething(myValue);
+    
+  }
+  
+}
+</pre>
+<pre id="codectrl21" style="display:">
+
+' assumes declaration of class/page level variable
+Private Static cacheSynchronize As String = "myKey"
+
+myValue = Cache("mykey")
+If myValue <> Null Then
+  DoSomething(myValue)
+
+Else
+
+  ' item isn't cached: acquire lock, create and cache
+  SyncLock(cacheSynchronize)
+
+    ' has it been updated before we got the lock?
+    myValue = Cache("mykey")
+    If Null = myValue Then
+      myValue = CreateData()
+      Cache("mykey") = myValue
+    End If
+
+    DoSomething(myValue)
+
+  End SyncLock
+  
+End If
+</pre>
+<pre id="codectrl21" style="display:none">
+
+To be ported
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl21" onclick="doClick(0, 'ctrl21')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl21" onclick="doClick(1, 'ctrl21')">
+          <b>VB
+        </td>
+        <td class="backtab" id="tabctrl21" onclick="doClick(2, 'ctrl21')">
+          <b>JScript
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<p>
+Note that is it's relatively cheap to create the item or if creating it multiple times has no adverse effects, than this race condition won't hurt you.
+
+<h4>Section Summary</h4>
+<ol>
+<li>Data Caching allows arbitrary objects to be cached programmatically
+<li>The ASP.NET cache supports expiration and dependencies
+<li>The cache is scoped to an application and its lifetime is equivalent to the lifetime of the application
+</ol>
+
+<!--END FOOTER-->
+<p>
+<hr>
+<p>
+</div>
+</td>
+</tr>
+</table>
+</BODY>
+</html>
+<!--END FOOTER-->

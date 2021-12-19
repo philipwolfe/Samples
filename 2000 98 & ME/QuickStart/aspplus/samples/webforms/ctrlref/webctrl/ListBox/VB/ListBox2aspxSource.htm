@@ -1,0 +1,81 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlref/webctrl/ListBox/listbox2.src&file=VB%5CListBox2.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkJcXExpc3RCb1x4Mi5hc3BceHhfX3h4X3h4X3hfX3g=f00b07c6" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB\ListBox2.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../../aspplus/samples/webforms/ctrlref/webctrl/listbox/listbox2aspxsource.htm'>ListBox2.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../../aspplus/samples/webforms/ctrlref/webctrl/listbox/vb/listbox2aspxsource.htm'>VB\ListBox2.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><html>
+<head>
+
+    <script language="VB" runat="server">
+
+        Sub Page_Load(sender As Object, e As EventArgs) 
+            If Not IsPostBack Then
+
+               Dim values as ArrayList= new ArrayList()
+
+               values.Add ("IN")
+               values.Add ("KS")
+               values.Add ("MD")
+               values.Add ("MI")
+               values.Add ("OR")
+               values.Add ("TN")
+
+               ListBox1.DataSource = values
+               ListBox1.DataBind
+            End If
+        End Sub
+
+        Sub SubmitBtn_Click(sender As Object, e As EventArgs)
+            If ListBox1.SelectedIndex > -1 Then
+                Label1.Text = "You chose: " + ListBox1.SelectedItem.Text
+            End If
+        End Sub
+
+    </script>
+
+</head>
+<body>
+
+    <h3><font face="Verdana">DataBinding ListBox</font></h3>
+
+    <form runat=server>
+    
+        <asp:ListBox id="ListBox1" Width="100px" runat="server" />
+
+        <asp:button Text="Submit" OnClick="SubmitBtn_Click" runat=server/>
+
+        <p>
+        
+        <asp:Label id=Label1 font-name="Verdana" font-size="10pt" runat="server" />
+
+    </form>
+
+</body>
+</html>
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

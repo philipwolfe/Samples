@@ -1,0 +1,45 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/services/TextMatching/MatchService.src&file=MatchService.sdl" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfTWF0Y2hTZXJ2aWNlLnNkbHhfX3h4X3h4X3hfX3g=4b131f3d" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">MatchService.sdl</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../aspplus/samples/services/textmatching/matchservicesdlsource.htm'>MatchService.sdl</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/services/textmatching/matchservicecssource.htm'>MatchService.cs</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/services/textmatching/matchclientaspxsource.htm'>MatchClient.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><?xml version="1.0"?>
+<serviceDescription xmlns:s0="http://tempuri.org/main.xsd" xmlns:s1="" name="MatchService" targetNamespace="" xmlns="urn:schemas-xmlsoap-org:sdl.2000-01-25">
+  <httpget xmlns="urn:schemas-xmlsoap-org:get-sdl-2000-01-25">
+    <service>
+      <requestResponse name="GetQuote" href="http://localhost/quickstart/aspplus/samples/services/TextMatching/MatchServer.html">
+        <request>
+         
+        </request>
+        <response>
+         <text>
+          <match name='Title' pattern='TITLE&gt;(.*)&lt;'/>
+          <match name='H1' pattern='H1&gt;(.*)&lt;'/>
+         </text>
+        </response>
+      </requestResponse>
+    </service>
+  </httpget>
+</serviceDescription>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

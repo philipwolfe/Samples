@@ -1,0 +1,1 @@
+<%@ Application Codebehind="Global.vb" Inherits="WebDataSetDemo.Global" %>

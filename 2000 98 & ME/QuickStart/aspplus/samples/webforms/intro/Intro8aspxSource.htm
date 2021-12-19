@@ -1,0 +1,117 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/intro/intro8.src&file=Intro8.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfSW50cm84LmFzcFx4eF9feHhfeHhfeF9feA==2ef92db5" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">Intro8.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/intro/intro8aspxsource.htm'>Intro8.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/intro/vb/intro8aspxsource.htm'>VB/Intro8.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/intro/js/intro8aspxsource.htm'>JS/Intro8.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Ads File: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/intro/adsxmlsource.htm'>ads.xml</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="System.Data.SQL" %>
+
+<html>
+   <head>
+      <link rel="stylesheet"href="intro.css">
+   </head>
+
+   <script language="C#" runat=server>
+
+       void SubmitBtn_Click(Object sender, EventArgs e) {
+
+          SQLConnection myConnection = new SQLConnection("server=localhost;uid=sa;pwd=;database=pubs");
+          SQLDataSetCommand myCommand = new SQLDataSetCommand("select * from Titles where type='" + Category.SelectedItem.Value + "'", myConnection);
+
+          DataSet ds = new DataSet();
+          myCommand.FillDataSet(ds, "Titles");
+
+          MyList.DataSource = ds.Tables["Titles"].DefaultView;
+          MyList.DataBind();
+       }
+
+   </script>
+
+   <body>
+
+       <center>
+
+       <form action="intro8.htm" method="post" runat="server">
+
+           <asp:adrotator AdvertisementFile="ads.xml" BorderColor="black" BorderWidth=1 runat="server"/>
+
+           <h3> Name: <asp:textbox id="Name" runat="server"/>
+
+           Category:  <asp:dropdownlist id="Category" runat=server>
+                         <asp:listitem >psychology</asp:listitem>
+                         <asp:listitem >business</asp:listitem>
+                         <asp:listitem >popular_comp</asp:listitem>
+                      </asp:dropdownlist>
+
+           <asp:button type=submit text="Lookup" OnClick="SubmitBtn_Click" runat="server"/>
+
+           <p>
+
+           <asp:datalist id="MyList" repeatcolumns="2" borderwidth="0" runat="server">
+
+             <template name="itemtemplate">
+
+                 <table>
+                   <tr>
+
+                     <td>
+                         <img src='<%# DataBinder.Eval(Container.DataItem, "title_id", "/quickstart/aspplus/images/title-{0}.gif") %>'> 
+                     </td>
+
+                     <td width=250 valign=top>
+
+                         <b><%# DataBinder.Eval(Container.DataItem, "title") %></b>
+
+                         <br><br>
+
+                         Price: <%# DataBinder.Eval(Container.DataItem, "price", "${0}") %> 
+                     </td>
+
+                   </tr>
+                 </table>
+
+             </template>
+
+           </asp:datalist>
+
+       </form>
+
+       </center>
+
+   </body>
+
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

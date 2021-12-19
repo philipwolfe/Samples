@@ -1,0 +1,131 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/data/datagrid16.src&file=datagrid16.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfZGF0YWdyaWQxNi5hc3BceHhfX3h4X3h4X3hfX3g=4169ef9d" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">datagrid16.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/data/datagrid16aspxsource.htm'>datagrid16.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/data/vb/datagrid16aspxsource.htm'>VB/datagrid16.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/data/js/datagrid16aspxsource.htm'>JS/datagrid16.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>
+<%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="System.Data.SQL" %>
+
+<html>
+<script language="C#" runat="server">
+
+    public void GetSales_Click(Object sender, EventArgs E) 
+    {
+        SQLConnection myConnection = new SQLConnection("server=localhost;uid=sa;pwd=;database=Northwind");
+        SQLDataSetCommand myCommand = new SQLDataSetCommand("Employee Sales By Country", myConnection);
+
+        myCommand.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+        myCommand.SelectCommand.Parameters.Add(new SQLParameter("@Beginning_Date", SQLDataType.DateTime));
+        myCommand.SelectCommand.Parameters["@Beginning_Date"].Value = BeginDate.SelectedDate;
+
+        myCommand.SelectCommand.Parameters.Add(new SQLParameter("@Ending_Date", SQLDataType.DateTime));
+        myCommand.SelectCommand.Parameters["@Ending_Date"].Value = EndDate.SelectedDate;
+
+        DataSet ds = new DataSet();
+        myCommand.FillDataSet(ds, "Sales");
+
+        MyDataGrid.DataSource=ds.Tables["Sales"].DefaultView;
+        MyDataGrid.DataBind();
+    }
+
+</script>
+
+<body>
+
+  <form runat="server">
+
+    <h3><font face="Verdana">Parameterized Stored Proc Select to a DataGrid Control</font></h3>
+
+    <table width="700">
+      <tr>
+        <td valign="top" >
+          <b>Start Date </b>
+          <ASP:Calendar id="BeginDate" 
+             BorderWidth="2"
+             BorderColor="lightblue"
+             Font-Size="8pt" 
+             TitleStyle-Font-Size="8pt" 
+             TitleStyle-BackColor="#cceecc" 
+             DayHeaderStyle-BackColor="#ddffdd"
+             DayHeaderStyle-Font-Size="10pt" 
+             WeekendDayStyle-BackColor="#ffffcc" 
+             SelectedDate="7/1/1996"
+             VisibleDate="7/1/1996"
+             SelectedDayStyle-BackColor="lightblue"
+             runat="server"/>
+        </td>
+        <td valign="top" >
+          <b>End Date</b>
+          <ASP:Calendar id="EndDate" 
+             BorderWidth="2"
+             BorderColor="lightblue"
+             Font-Size="8pt" 
+             TitleStyle-Font-Size="8pt" 
+             TitleStyle-BackColor="#cceecc" 
+             DayHeaderStyle-BackColor="#ddffdd"
+             DayHeaderStyle-Font-Size="10pt" 
+             WeekendDayStyle-BackColor="#ffffcc" 
+             SelectedDate="7/25/1996"
+             VisibleDate="7/25/1996"
+             SelectedDayStyle-BackColor="lightblue"
+             runat="server"/>
+
+        </td>
+        <td valign="top" style="padding-top:20">
+          <input type="submit" OnServerClick="GetSales_Click" Value="Get Employee Sales" runat="server"/><p>          
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3" style="padding-top:20">
+            <ASP:DataGrid id="MyDataGrid" runat="server"
+              Width="500"
+              BackColor="#ccccff" 
+              BorderColor="black"
+              ShowFooter="false" 
+              CellPadding=3 
+              CellSpacing="0"
+              Font-Name="Verdana"
+              Font-Size="8pt"
+              HeaderStyle-BackColor="#aaaadd"
+              MaintainState="false"
+            />
+        </td>
+      </tr>
+    </table>
+
+  </form>
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

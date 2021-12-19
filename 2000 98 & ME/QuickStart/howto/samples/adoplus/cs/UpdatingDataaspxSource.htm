@@ -1,0 +1,113 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/adoplus/vb/updatingdata.src&file=..%5CCS%5CUpdatingData.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfLi5cXENTXFxVcGRhdGluZ0RhdGEuYXNwXHh4X194eF94eF94X194ae807d71" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">..\CS\UpdatingData.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../howto/samples/adoplus/vb/updatingdataaspxsource.htm'>UpdatingData.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../howto/samples/adoplus/cs/updatingdataaspxsource.htm'>..\CS\UpdatingData.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><html>
+<%@ Page Language="C#" Debug="true" %>
+<%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="System.Data.SQL" %>
+
+<head>
+<script language="C#" runat="server">
+
+	public DataSet dsCustomers;
+
+	protected void Page_Load(Object Src, EventArgs E)
+	{
+		//Create a new Connection and DataSetCOmmand
+		SQLConnection myConnection = new SQLConnection("server=localhost;uid=sa;pwd=;database=northwind");
+		SQLDataSetCommand myDSC = new SQLDataSetCommand("Select * from Region", myConnection);
+		SQLParameter workParam = null;
+
+		Cleanup(myConnection);
+
+		//Build the insert Command
+		myDSC.InsertCommand = new SQLCommand("Insert into Region (RegionID, RegionDescription) VALUES (@RegionID, @RegionDescription)", myConnection);
+
+		workParam = myDSC.InsertCommand.Parameters.Add(new SQLParameter("@RegionID", SQLDataType.Int));
+		workParam.SourceColumn = "RegionID";
+		workParam.SourceVersion = DataRowVersion.Current;
+
+		workParam = myDSC.InsertCommand.Parameters.Add(new SQLParameter("@RegionDescription", SQLDataType.NChar, 50));
+		workParam.SourceVersion = DataRowVersion.Current;
+		workParam.SourceColumn = "RegionDescription";
+
+		//Build the update command
+		myDSC.UpdateCommand = new SQLCommand("Update Region Set RegionDescription = @RegionDescription WHERE RegionID = @RegionID" , myConnection);
+
+		workParam = myDSC.UpdateCommand.Parameters.Add(new SQLParameter("@RegionID", SQLDataType.Int));
+		workParam.SourceColumn = "RegionID";
+		workParam.SourceVersion = DataRowVersion.Original;
+
+		workParam = myDSC.UpdateCommand.Parameters.Add(new SQLParameter("@RegionDescription", SQLDataType.NChar, 50));
+		workParam.SourceVersion = DataRowVersion.Current;
+		workParam.SourceColumn = "RegionDescription";
+
+		DataSet myDataSet = new DataSet();
+
+		//Set the MissingSchemaAction property to AddWithKey because FillDataSet will not cause primary key & unique key information to be retrieved unless AddWithKey is specified. 
+		myDSC.MissingSchemaAction = MissingSchemaAction.AddWithKey;
+		myDSC.FillDataSet(myDataSet, "Region");
+
+		DataRow changeRow = myDataSet.Tables["Region"].Rows.Find(2);
+		changeRow[1] = "Changed this region desc";
+
+		DataRow newRow = myDataSet.Tables["Region"].NewRow();
+		newRow[0] = 901;
+		newRow[1] = "A new region";
+		myDataSet.Tables["Region"].Rows.Add(newRow);
+
+		try
+		{
+			myDSC.Update(myDataSet, "Region");
+			Response.Write("DataSet transaction succeeded!");
+		}
+		catch(Exception e)
+		{
+			Response.Write(e.ToString());
+		}
+	}
+
+	protected void Cleanup(SQLConnection myConnection)
+	{
+		myConnection.Open();
+		SQLCommand mySQLCommand = new SQLCommand("DELETE FROM Region WHERE RegionID = '901'", myConnection);
+		mySQLCommand.ExecuteNonQuery();
+		myConnection.Close();
+	}
+
+</script>
+</head>
+
+<body>
+
+</body>
+</html>
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

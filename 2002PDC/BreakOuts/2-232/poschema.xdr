@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="http://localhost/demo/xdr-schema.xsl"?>
+<!--
+<?xml-stylesheet type="text/xsl" href="http://schemas.biztalk.org/BizTalk/g9boxjl2.xsl"?>
+-->
+<Schema name = "poSample.biz"
+	 xmlns = "urn:schemas-microsoft-com:xml-data"
+	 xmlns:dt = "urn:schemas-microsoft-com:datatypes">
+	<ElementType name = "PO" content = "eltOnly" order = "seq">
+		<element type = "POHeader"/>
+		<element type = "Contact"/>
+		<element type = "POShipTo"/>
+		<element type = "POBillTo"/>
+		<element type = "POLines"/>
+	</ElementType>
+	<ElementType name = "POHeader" content = "empty">
+		<AttributeType name = "refPromise" dt:type = "string" required = "yes"/>
+		<AttributeType name = "description" dt:type = "string" required = "yes"/>
+		<AttributeType name = "paymentType" dt:type = "string" required = "yes"/>
+		<AttributeType name = "shipType" dt:type = "string" required = "yes"/>
+		<AttributeType name = "fromCust" dt:type = "string" required = "yes"/>
+		<AttributeType name = "poNumber" dt:type = "string" required = "yes"/>
+		<attribute type = "refPromise"/>
+		<attribute type = "description"/>
+		<attribute type = "paymentType"/>
+		<attribute type = "shipType"/>
+		<attribute type = "fromCust"/>
+		<attribute type = "poNumber"/>
+	</ElementType>
+	<ElementType name = "Contact" content = "empty">
+		<AttributeType name = "contactName" dt:type = "string" required = "yes"/>
+		<AttributeType name = "contactEmail" dt:type = "string" required = "yes"/>
+		<AttributeType name = "contactPhone" dt:type = "string" required = "yes"/>
+		<attribute type = "contactName"/>
+		<attribute type = "contactEmail"/>
+		<attribute type = "contactPhone"/>
+	</ElementType>
+	<AttributeType name = "city" dt:type = "string" required = "yes"/>
+	<AttributeType name = "attn" dt:type = "string" required = "yes"/>
+	<AttributeType name = "country" dt:type = "string" required = "yes"/>
+	<AttributeType name = "stateProvince" dt:type = "string" required = "yes"/>
+	<AttributeType name = "street4" dt:type = "string" required = "yes"/>
+	<AttributeType name = "street3" dt:type = "string" required = "yes"/>
+	<AttributeType name = "street2" dt:type = "string" required = "yes"/>
+	<AttributeType name = "street1" dt:type = "string" required = "yes"/>
+	<AttributeType name = "postalCode" dt:type = "string" required = "yes"/>
+	<ElementType name = "POShipTo" content = "empty">
+		<attribute type = "city"/>
+		<attribute type = "attn"/>
+		<attribute type = "country"/>
+		<attribute type = "stateProvince"/>
+		<attribute type = "street4"/>
+		<attribute type = "street3"/>
+		<attribute type = "street2"/>
+		<attribute type = "street1"/>
+		<attribute type = "postalCode"/>
+	</ElementType>
+	<ElementType name = "POBillTo" content = "empty">
+		<attribute type = "city"/>
+		<attribute type = "attn"/>
+		<attribute type = "country"/>
+		<attribute type = "stateProvince"/>
+		<attribute type = "street4"/>
+		<attribute type = "street3"/>
+		<attribute type = "street2"/>
+		<attribute type = "street1"/>
+		<attribute type = "postalCode"/>
+	</ElementType>
+	<ElementType name = "POLines" content = "eltOnly" order = "seq">
+		<AttributeType name = "startAt" dt:type = "int" required = "yes"/>
+		<AttributeType name = "count" dt:type = "int" required = "yes"/>
+		<attribute type = "startAt"/>
+		<attribute type = "count"/>
+		<element type = "Item" minOccurs = "1" maxOccurs = "*"/>
+	</ElementType>
+	<ElementType name = "Item" content = "empty">
+		<AttributeType name = "uom" dt:type = "enumeration" dt:values = "PC UNIT" required = "yes"/>
+		<AttributeType name = "unitPrice" dt:type = "float" required = "yes"/>
+		<AttributeType name = "qty" dt:type = "int" required = "yes"/>
+		<AttributeType name = "partno" dt:type = "string" required = "yes"/>
+		<AttributeType name = "needAfter" dt:type = "date" required = "yes"/>
+		<AttributeType name = "discount" dt:type = "float" required = "yes"/>
+		<AttributeType name = "line" dt:type = "int" required = "yes"/>
+		<AttributeType name = "needBefore" dt:type = "date" required = "yes"/>
+		<attribute type = "uom"/>
+		<attribute type = "unitPrice"/>
+		<attribute type = "qty"/>
+		<attribute type = "partno"/>
+		<attribute type = "needAfter"/>
+		<attribute type = "discount"/>
+		<attribute type = "line"/>
+		<attribute type = "needBefore"/>
+	</ElementType>
+</Schema>

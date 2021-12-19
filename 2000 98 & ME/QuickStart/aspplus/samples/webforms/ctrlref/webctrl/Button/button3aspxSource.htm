@@ -1,0 +1,88 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlref/webctrl/Button/button3.src&file=button3.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfYnV0dG9uMy5hc3BceHhfX3h4X3h4X3hfX3g=a4157b97" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">button3.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlref/webctrl/button/button3aspxsource.htm'>button3.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlref/webctrl/button/vb/button3aspxsource.htm'>VB\button3.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><html>
+<head>
+
+    <script language="C#" runat="server">
+
+       void Button1_Click(object s, EventArgs e) {
+          Label1.Text="You clicked Button1";
+       }
+
+       void Button2_Click(object s, EventArgs e) {
+          Label1.Text="You clicked Button2";
+       }
+
+    </script>
+
+</head>
+<body>
+
+    <h3><font face="Verdana">Mouse-Over Effects on Button</font></h3>
+    <p>Move your mouse over the buttons to observe the mouse-over effects.</p>
+    
+    <form runat=server>
+    <font face="Verdana" size="-1">
+
+        <asp:Button id=Button1 runat="server"
+            Text="Button1"
+            Width="100px"
+            onmouseover="this.style.backgroundColor='yellow'"
+            onmouseout="this.style.backgroundColor='buttonface'"
+            onclick="Button1_Click" />
+
+            &nbsp;&nbsp;
+            Applies an inline CSS style (button background color)...
+
+        <p>
+
+        <asp:Button id=Button2 runat="server"
+            Text="Button2"
+            Width="100px"
+            onmouseover="this.style.fontWeight='bold'"
+            onmouseout="this.style.fontWeight='normal'"
+            onclick="Button2_Click" />
+
+            &nbsp;&nbsp;
+            Applies an inline CSS style (button font bold)...
+
+        <p>
+        
+        <asp:Label id=Label1 runat=server />
+        
+    </font>
+    </form>
+
+</body>
+</html>
+
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

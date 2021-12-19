@@ -1,0 +1,77 @@
+// accountcom.idl : IDL source for accountcom.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (accountcom.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+
+
+[
+  uuid(1A837430-337A-46f3-B400-919B8C3547B9),
+  version(1.0),
+  helpstring("Complus Bank account interfaces"),
+]
+library ACCOUNTCom
+{
+	importlib("stdole2.tlb");
+
+    [
+      odl,
+      uuid(04CF0B72-1989-11D0-B917-0080C7394688),
+      helpstring("IAccount Interface"),
+      dual,
+      oleautomation
+    ]
+    interface IAccount : IDispatch {
+        [id(0x60020000)]
+        HRESULT Post(
+                        [in] long lAccount, 
+                        [in] long lAmount, 
+                        [out, retval] BSTR* pbstrResult);
+    };
+
+    [
+      odl,
+      uuid(04CF0B77-1989-11D0-B917-0080C7394688),
+      helpstring("IMoveMoney Interface"),
+      dual,
+      oleautomation
+    ]
+    interface IMoveMoney : IDispatch {
+        [id(0x60020000)]
+        HRESULT Perform(
+                        [in] long lPrimeAccount, 
+                        [in] long lSecondAccount, 
+                        [in] long lAmount, 
+                        [in] long lTranType, 
+                        [out, retval] BSTR* pbstrResult);
+    };
+
+    [
+      odl,
+      uuid(A81260B1-DDC8-11D0-B5A0-00C04FB957D8),
+      helpstring("IGetReceipt Interface"),
+      dual,
+      oleautomation
+    ]
+    interface IGetReceipt : IDispatch {
+        [id(0x60020000)]
+        HRESULT GetNextReceipt([out, retval] long* plReceiptNo);
+    };
+
+    [
+      odl,
+      uuid(A81260B7-DDC8-11D0-B5A0-00C04FB957D8),
+      helpstring("IUpdateReceipt Interface"),
+      dual,
+      oleautomation
+    ]
+    interface IUpdateReceipt : IDispatch {
+        [id(0x60020000)]
+        HRESULT Update([out, retval] long* plReceiptNo);
+    };
+
+};

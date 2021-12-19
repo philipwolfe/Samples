@@ -1,0 +1,84 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlref/htmlctrl/HtmlInputFile/HtmlInputFile1.src&file=HtmlInputFile1.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfSHRtbElucHV0RmlsZTEuYXNwXHh4X194eF94eF94X19433bddd82" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">HtmlInputFile1.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlref/htmlctrl/htmlinputfile/htmlinputfile1aspxsource.htm'>HtmlInputFile1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlref/htmlctrl/htmlinputfile/vb/htmlinputfile1aspxsource.htm'>VB\HtmlInputFile1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlref/htmlctrl/htmlinputfile/js/htmlinputfile1aspxsource.htm'>JS\HtmlInputFile1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><html>
+<head>
+
+    <script language="C#" runat="server">
+
+       void Button1_Click(object Source, EventArgs e) {
+
+          if (Text1.Value == "") {
+             Span1.InnerHtml = "Error: you must enter a file name";
+             return;
+          }
+
+          if (File1.PostedFile != null) {
+             try {
+                File1.PostedFile.SaveAs("c:\\temp\\"+Text1.Value);
+                Span1.InnerHtml = "File uploaded successfully to <b>c:\\temp\\"+Text1.Value+"</b> on the web server";
+             }
+             catch (Exception exc) {
+                Span1.InnerHtml = "Error saving file <b>c:\\temp\\"+Text1.Value+"</b><br>"+ exc.ToString();
+             }
+          }
+       }
+
+    </script>
+
+</head>
+<body>
+
+    <h3><font face="Verdana">HtmlInputFile Sample</font></h3>
+
+    <form enctype="multipart/form-data" runat="server">
+
+        Select File to Upload: <input id="File1" type=file runat="server">
+
+        <p>
+        Save as filename (no path): <input id="Text1" type="text" runat="server">
+
+        <p>
+        <span id=Span1 style="font: 8pt verdana;" runat="server" />
+
+        <p>
+        <input type=button id="Button1" value="Upload" OnServerClick="Button1_Click" runat="server">
+
+    </form>
+
+</body>
+</html>
+
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

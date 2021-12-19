@@ -1,0 +1,66 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/services/Intrinsics/SessionService1.src&file=SessionService1.asmx" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfU2Vzc2lvblNlcnZpY2UxLmFzbVx4eF9feHhfeHhfeF9feA==9637e8ca" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">SessionService1.asmx</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../aspplus/samples/services/intrinsics/sessionservice1asmxsource.htm'>SessionService1.asmx</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../aspplus/samples/services/intrinsics/vb/sessionservice1asmxsource.htm'>VB/SessionService1.asmx</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ WebService Language="C#" Class="SessionService1" %>
+
+using System;
+using System.Web.Services;
+
+public class SessionService1 : WebService
+{
+
+   [ WebMethod(EnableSession=true) ]
+   public String UpdateHitCounter() {
+
+        if (Session["HitCounter"] == null) {
+            Session["HitCounter"] = 1;
+        }
+        else {
+            Session["HitCounter"] = ((int) Session["HitCounter"]) + 1;
+        }
+
+        return "You have accessed this service " + Session["HitCounter"].ToString() + " times.";
+   }
+
+   [ WebMethod(EnableSession=false)]
+   public String UpdateAppCounter() {
+
+        if (Application["HitCounter"] == null) {
+            Application["HitCounter"] = 1;
+        }
+        else {
+            Application["HitCounter"] = ((int) Application["HitCounter"]) + 1;
+        }
+
+        return "This service has been accessed " + Application["HitCounter"].ToString() + " times.";
+   }
+
+}
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

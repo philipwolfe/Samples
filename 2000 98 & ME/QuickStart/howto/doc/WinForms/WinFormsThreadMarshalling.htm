@@ -1,0 +1,331 @@
+
+
+
+<!--BEGIN HEADER-->
+<html>
+<head>
+<link rel="stylesheet" href="../../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+
+<table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+
+    <div style="padding:0,0,4,0"><b>Windows Forms</b><br></div>
+    &nbsp; <a class="outer" href="../../../howto/doc/winforms/winformsapperrorhandler.htm">A default error handler</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/winforms/winformsownerdrawlistbox.htm">An Owner-drawn ListBox</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/winforms/winformsthreadmarshalling.htm">Call across thread boundaries</a><p>
+    <div style="padding:0,0,4,0"><a target="_top" style="color:darkred" href="../../../howto"><b>Back to Index</b></a><br></div>
+
+
+
+
+
+
+</div>
+
+</td>
+</tr>
+</table>
+
+
+
+
+
+
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<style>
+.mydd {  font: smaller verdana; }
+.code1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:blue;
+	}
+.codecomment1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:green;
+	}
+.issue {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background-color:RED;
+	color:WHITE;
+	font-weight:bold;
+	}
+
+
+body { font: smaller verdana }        
+
+</style>
+
+
+
+
+
+<h4>Making procedure calls across thread boundaries</h4>
+
+<P>WinForms controls can only execute on the thread on which they were 
+created - they are not thread safe.  If you want to get or set properties 
+or call methods on a control from a background thread the call must be 
+marshaled to the thread that created the control.</P> 
+      
+<P>There are five functions on a control that are safe to call from any 
+thread: <b>InvokeRequired</b>, <b>Invoke</b>, <b>BeginInvoke</b>, <b> 
+EndInvoke</b> and <b>CreateGraphics</b>.  For all other method calls, you 
+should use one of the invoke methods.</P> 
+
+<P>If you are making cross-thread calls to a control you must use one of the 
+Control.Invoke methods. The Invoke methods take a reference to a delegate - 
+typically this delegate is an instance of the <B>MethodInvoker</B> delegate.</P> 
+
+      
+      <TABLE border=0 cellPadding=5 class=mydd>
+        <TBODY>
+        <TR>
+          <TD vAlign=top><STRONG>InvokeRequired</STRONG></TD>
+          <TD>
+            <P>public bool InvokeRequired { get ; }</P>
+            <P>Returns true if the caller must call Invoke when making method 
+            calls to this control.</P></TD></TR>
+        <TR>
+          <TD vAlign=top><STRONG>BeginInvoke</STRONG></TD>
+          <TD>
+            <P>public IAsyncResult BeginInvoke(Delegate method)<BR>public 
+            IAsyncResult BeginInvoke(Delegate method, Object[] args)</P>
+            <P>Executes the given delegate on the thread that owns this 
+            Control's underlying window handle. The delegate is called 
+            asynchronously and this method returns immediately. You may call 
+            this from any thread, even the thread that owns the control's 
+            handle. If the control's handle doesn't exist yet, this will follow 
+            up the control's parent chain until it finds a control or form that 
+            does have a window handle. If no appropriate handle can be found, 
+            BeginInvoke will throw an exception. Exceptions within the delegate 
+            method are considered untrapped and will be sent to the 
+            application's untrapped exception handler. </P></TD></TR>
+        <TR>
+          <TD vAlign=top><STRONG>EndInvoke</STRONG></TD>
+          <TD>
+            <P>public Object EndInvoke(IAsyncResult 
+            asyncResult)<BR></P>Retrieves the return value of the asynchronous 
+            operation represented by the IAsyncResult interface passed. If the 
+            async operation has not been completed, this function will block 
+            until the result is available. 
+            <P></P></TD></TR>
+        <TR>
+          <TD vAlign=top><STRONG>Invoke</STRONG></TD>
+          <TD>
+            <P>public Object Invoke(Delegate method)<BR>public Object 
+            Invoke(Delegate method, Object[] args)<BR>
+            <P>Executes the given delegate on the thread that owns this 
+            Control's underlying window handle. The delegate is called 
+            synchronously and this method returns once the invoked method has 
+            returned. The return value is the result of the invoked method. It 
+            is an error to call this on the same thread that the control belongs 
+            to. </P></TD></TR></TBODY></TABLE><BR>
+      <P>The following example demonstrates how to create a background thread that uses a
+      <b> 
+      MethodInvoker</b> to update a <b>ProgressBar</b> control at regular
+      intervals:</P>
+      
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 1;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:85%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="2">
+<pre id="codectrl4" style="display:">
+
+
+ ....    
+    
+ //Start the background thread
+ timerThread = new Thread(new ThreadStart(ThreadProc));
+ timerThread.IsBackground = true;
+ timerThread.Start();
+    
+ ....    
+    
+ //This function is executed on a background thread - it marshalls calls to
+ //update the UI back to the foreground thread
+ public void ThreadProc() {
+        
+     try {
+         MethodInvoker mi = new MethodInvoker(this.UpdateProgress);
+         while (true) {
+            
+             //Call BeginInvoke on the Form
+             this.BeginInvoke(mi);
+             Thread.Sleep(500) ;
+         }
+     }
+     //Thrown when the thread is interupted by the main thread - exiting the loop
+     catch (ThreadInterruptedException e) {
+         //Simply exit....
+     }
+     catch (Exception we) {
+     }
+ }
+    
+ ....
+    
+ //This function is called from the background thread
+ private void UpdateProgress() {
+
+     //Reset to start if required
+     if (progressBar1.Value == progressBar1.Maximum) {
+         progressBar1.Value = progressBar1.Minimum ;
+     }
+
+
+     //Reset to start if required
+     progressBar1.PerformStep() ;
+ }
+
+ ....
+ 
+ //Make sure we clean up the background thread in Dispose
+ public override void Dispose() {
+    if (timerThread != null) {
+        timerThread.Interrupt();
+        timerThread = null;
+    }
+
+    base.Dispose();
+}
+
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="tab" id="tabctrl4" onclick="doClick(0, 'ctrl4')">
+          <b>C#
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<br><br>
+
+<span>
+    
+    
+    
+
+        
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../../howto/samples/winforms/cs/threadmarshal">
+	<img style="border-color:black" border=1 src="../../../winforms/images/wflink.jpg"><br>
+	</a>
+	<div class="caption">C# Threading Sample</div><br>
+	
+	
+		[<a target="_blank" href="../../../howto/samples/winforms/cs/threadmarshal">Run Sample</a>] | 
+		[<a target="_blank" href="../../../howto/samples/winforms/cs/threadmarshal/threadmarshalcssource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+    </span>
+
+
+
+<!--END FOOTER-->
+<p>
+<hr>
+<p>
+</div>
+</td>
+</tr>
+</table>
+</BODY>
+</html>
+<!--END FOOTER-->

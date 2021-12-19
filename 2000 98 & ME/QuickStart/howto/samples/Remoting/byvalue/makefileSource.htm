@@ -1,0 +1,49 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Remoting/byvalue/server.src&file=makefile" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfbWFrZWZpbGV4X194eF94eF94X194453369c7" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">makefile</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../howto/samples/remoting/byvalue/objectcssource.htm'>object.cs</a> &nbsp;&nbsp<a href='../../../../howto/samples/remoting/byvalue/servercssource.htm'>server.cs</a> &nbsp;&nbsp<a href='../../../../howto/samples/remoting/byvalue/sharecssource.htm'>share.cs</a> &nbsp;&nbsp<a href='../../../../howto/samples/remoting/byvalue/clientcssource.htm'>client.cs</a> &nbsp;&nbsp<a href='../../../../howto/samples/remoting/byvalue/makefilesource.htm'>makefile</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../howto/samples/remoting/byvalue/vb/objectvbsource.htm'>VB\object.vb</a> &nbsp;&nbsp<a href='../../../../howto/samples/remoting/byvalue/vb/servervbsource.htm'>VB\server.vb</a> &nbsp;&nbsp<a href='../../../../howto/samples/remoting/byvalue/vb/sharevbsource.htm'>VB\share.vb</a> &nbsp;&nbsp<a href='../../../../howto/samples/remoting/byvalue/vb/clientvbsource.htm'>VB\client.vb</a> &nbsp;&nbsp<a href='../../../../howto/samples/remoting/byvalue/vb/makefilesource.htm'>VB\makefile</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>!include ..\..\..\..\master.mak
+
+all: share.dll server.exe client.exe 
+
+object.dll: object.cs share.dll
+	$(_CS) $(_CS_DLL_FLAGS) /debug+ /r:share.dll /r:System.Runtime.Remoting.dll /out:object.dll object.cs
+
+share.dll: share.cs
+	$(_CS) $(_CS_DLL_FLAGS)  /debug+ /out:share.dll share.cs
+
+server.exe: server.cs object.dll
+	$(_CS) /debug+ /r:object.dll /r:System.Runtime.Remoting.dll server.cs
+
+client.exe: client.cs object.dll share.dll
+	$(_CS) /debug+ /r:share.dll /r:object.dll /r:System.Runtime.Remoting.dll client.cs
+
+
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

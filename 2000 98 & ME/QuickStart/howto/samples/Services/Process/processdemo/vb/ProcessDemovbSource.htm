@@ -1,0 +1,70 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Services/Process/processdemo/processdemo.src&file=VB/ProcessDemo.vb" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvUHJvY2Vzc0RlbW8udmJ4X194eF94eF94X1948f787720" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/ProcessDemo.vb</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../howto/samples/services/process/processdemo/processdemocssource.htm'>ProcessDemo.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../howto/samples/services/process/processdemo/vb/processdemovbsource.htm'>VB/ProcessDemo.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>Imports System
+Imports System.Diagnostics
+Imports System.Threading
+
+Namespace ProcessDemo
+
+    Module ProcessDemo
+
+        Public Sub Main()
+            Dim args As String()
+            Dim appName As String
+            args = Environment.GetCommandLineArgs()
+            appName = args(0)
+        
+            If (args.Length <> 2) Then
+                Console.WriteLine("Usage: " + appName + " <executable>")
+                Exit Sub
+            End If
+
+            Dim executableFilename As String
+            executableFilename = args(1)
+
+            Dim process As Process
+            process = New Process
+            process.StartInfo.FileName = executableFilename
+            process.Start()
+        
+            process.WaitForInputIdle()
+        
+            Thread.Sleep(1000)
+            If (Not process.CloseMainWindow()) Then
+                process.Kill()
+            End If
+
+        End Sub
+
+    End Module
+
+End Namespace
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

@@ -1,0 +1,44 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Win32Wrappers/Win32Call/win32call.src&file=Win32Call.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfV2luMzJDYWxsLmNzeF9feHhfeHhfeF9feA==17f92356" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">Win32Call.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../howto/samples/win32wrappers/win32call/win32callcssource.htm'>Win32Call.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../howto/samples/win32wrappers/win32call/vb/win32callvbsource.htm'>VB\Win32Call.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>using System;
+
+class MyClass
+{
+	[sysimport(dll="user32.dll")]
+	public static extern int MessageBoxA(int h, string m, string c, int type);
+
+	public static int Main() {
+        	
+		return MessageBoxA(0, "Hello World!", "Caption", 0);
+	}
+}
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

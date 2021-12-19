@@ -1,0 +1,79 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlref/htmlctrl/HtmlInputImage/HtmlInputImage1.src&file=VB%5CHtmlInputImage1.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkJcXEh0bWxJbnB1dEltYWdlMS5hc3BceHhfX3h4X3h4X3hfX3g=4f840a35" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB\HtmlInputImage1.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../../aspplus/samples/webforms/ctrlref/htmlctrl/htmlinputimage/htmlinputimage1aspxsource.htm'>HtmlInputImage1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../../aspplus/samples/webforms/ctrlref/htmlctrl/htmlinputimage/vb/htmlinputimage1aspxsource.htm'>VB\HtmlInputImage1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../../../../aspplus/samples/webforms/ctrlref/htmlctrl/htmlinputimage/js/htmlinputimage1aspxsource.htm'>JS\HtmlInputImage1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><html>
+<head>
+
+    <script language="VB" runat="server">
+
+       Sub Button1_Click(sender As Object, e As ImageClickEventArgs) 
+          Span1.InnerHtml="You clicked button1"
+       End Sub
+
+       Sub Button2_Click(sender As Object, e As ImageClickEventArgs) 
+          Span1.InnerHtml="You clicked button2"
+       End Sub
+
+    </script>
+
+</head>
+<body>
+
+    <h3><font face="Verdana">HtmlInputImage Sample</font></h3>
+
+    <form runat=server>
+
+        <input type=image id="InputImage1" src="../../../../../../../aspplus/images/mango.jpg" OnServerClick="Button1_Click" runat="server">
+        
+        <p>
+
+        <input type=image id="InputImage2" src="../../../../../../../aspplus/images/mango.jpg"
+            onmouseover="this.src='../../../../../../../aspplus/images/banana.jpg';"
+            onmouseout="this.src='../../../../../../../aspplus/images/mango.jpg';"
+            OnServerClick="Button2_Click"
+            runat="server">
+
+        &nbsp;With rollover effect (HTML 4.0)
+
+        <p>
+
+        <span id=Span1 runat=server />
+
+    </form>
+
+</body>
+</html>
+
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

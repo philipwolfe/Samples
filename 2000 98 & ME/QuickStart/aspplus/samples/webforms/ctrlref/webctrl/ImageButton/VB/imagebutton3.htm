@@ -1,0 +1,48 @@
+<html>
+<head>
+
+    <style>
+        .applyBorder { border:0.2cm solid blue }
+        .removeBorder { border:0.2cm solid gainsboro }
+    </style>
+
+    
+
+</head>
+<body>
+
+    <h3><font face="Verdana">Mouse-Over Effects on ImageButton</font></h3>
+
+    <form name="ctrl2" method="post" action="imagebutton3.htm" id="ctrl2">
+<input type="hidden" name="__VIEWSTATE" value="YTB6OTE5NTk0MjAxX19hekJ1dHRvbjNfQnV0dG9uMV9CdXR0b24yX3hfeA==c4ae8b38" />
+
+
+        <input type="image" name="Button1" id="Button1" onmouseover="this.style.border='0.2cm solid black';" onmouseout="this.style.border='0.2cm solid gainsboro';" src="../../../../../../../aspplus/images/banana.jpg" />
+
+            &nbsp;&nbsp;
+            Applies an inline CSS style...
+
+        <br>
+
+        <input type="image" name="Button2" id="Button2" class="removeBorder" onmouseover="this.className='applyBorder'" onmouseout="this.className='removeBorder'" src="../../../../../../../aspplus/images/banana.jpg" border="0" />
+
+            &nbsp;&nbsp;
+            Applies a predefined CSS style...
+
+        <br>
+
+        <input type="image" name="Button3" id="Button3" onmouseover="this.src='../../../../../../../aspplus/images/mango.jpg';" onmouseout="this.src='../../../../../../../aspplus/images/banana.jpg';" src="../../../../../../../aspplus/images/banana.jpg" />
+
+            &nbsp;&nbsp;
+            Changes the source image...
+
+        <p>
+        
+        <span id="Label1"></span>
+
+    </form>
+
+</body>
+</html>
+
+

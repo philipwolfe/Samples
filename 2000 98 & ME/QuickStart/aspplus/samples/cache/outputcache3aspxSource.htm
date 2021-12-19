@@ -1,0 +1,109 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/cache/outputcache3.src&file=outputcache3.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfb3V0cHV0Y2FjaGUzLmFzcFx4eF9feHhfeHhfeF9feA==cea75d22" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">outputcache3.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../aspplus/samples/cache/outputcache3aspxsource.htm'>outputcache3.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../aspplus/samples/cache/vb/outputcache3aspxsource.htm'>VB\outputcache3.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ OutputCache Duration="10" %>
+<%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="System.Data.SQL" %>
+
+<html>
+
+  <script language="C#" runat="server">
+
+    void Page_Load(Object Src, EventArgs E ) {
+    
+    	  String selectCmd;
+    	  String state = Request["state"];
+
+    	  if( state == null ) {
+    	      selectCmd = "select * from Authors";
+    	  }
+    	  else {
+    	  	  selectCmd = "select * from Authors where state = '" + state + "'";
+    	  }
+
+        SQLConnection myConnection = new 	SQLConnection("server=localhost;uid=sa;pwd=;database=pubs");
+        SQLDataSetCommand myCommand = new SQLDataSetCommand(selectCmd, myConnection);
+
+        DataSet ds = new DataSet();
+        myCommand.FillDataSet(ds, "Authors");
+
+        MyDataGrid.DataSource=new DataView(ds.Tables[0]);
+        MyDataGrid.DataBind();
+    	
+    	  // capture the time of the current request
+    	  // subsequent requests that are cached will show the
+    	  // original time
+    	
+    	  TimeMsg.Text = DateTime.Now.ToString();	
+    }
+
+  </script>
+
+  <body>
+    <h3><font face="Verdana">Using the Output Cache</font></h3>
+
+    <b>Authors by State:</b>
+    
+    <table cellspacing="0" cellpadding="3" rules="all" style="background-color:#AAAADD;border-color:black;border-color:black;width:700px;border-collapse:collapse;">
+    		<tr>
+    		  <td><a href="outputcache3.htm?state=CA">CA</a></td>
+    		  <td><a href="outputcache3.htm?state=IN">IN</a></td>
+    		  <td><a href="outputcache3.htm?state=KS">KS</a></td>
+    		  <td><a href="outputcache3.htm?state=MD">MD</a></td>
+    		  <td><a href="outputcache3.htm?state=MI">MI</a></td>
+    		  <td><a href="outputcache3.htm?state=OR">OR</a></td>
+    		  <td><a href="outputcache3.htm?state=TN">TN</a></td>
+    		  <td><a href="outputcache3.htm?state=UT">UT</a></td>
+    	</tr>
+    </table>
+    
+    <p>
+
+    <ASP:DataGrid id="MyDataGrid" runat="server"
+    	Width="700"
+    	BackColor="#ccccff" 
+    	BorderColor="black"
+    	ShowFooter="false" 
+    	CellPadding=3 
+    	CellSpacing="0"
+    	Font-Name="Verdana"
+    	Font-Size="8pt"
+    	HeaderStyle-BackColor="#aaaadd"
+    />
+        
+    <p>
+    
+    <i>Last generated on:</i> <asp:label id="TimeMsg" runat="server"/>
+    
+  </body>
+</html>
+
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

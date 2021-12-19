@@ -1,0 +1,61 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/apps/application1.src&file=VB/Application1/Global.asax" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvQXBwbGljYXRpb24xL0dsb2JhbC5hc2FceHhfX3h4X3h4X3hfX3g=b7842f42" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/Application1/Global.asax</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/apps/application1/globalasaxsource.htm'>Application1/Global.asax</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/apps/application1/application1aspxsource.htm'>Application1/Application1.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/apps/application1/errorpagehtmsource.htm'>Application1/ErrorPage.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/apps/application1/configwebsource.htm'>Application1/config.web</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/apps/vb/application1/globalasaxsource.htm'>VB/Application1/Global.asax</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/apps/vb/application1/application1aspxsource.htm'>VB/Application1/Application1.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/apps/vb/application1/errorpagehtmsource.htm'>VB/Application1/ErrorPage.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/apps/vb/application1/configwebsource.htm'>VB/Application1/config.web</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>
+<script language="VB" runat="server">
+
+    Sub Application_Start(Sender As Object, E As EventArgs)
+        ' Do application startup code here
+    End Sub
+
+    Sub Application_End(Sender As Object, E As EventArgs)
+        ' Clean up application resources here
+    End Sub
+
+    Sub Session_Start(Sender As Object, E As EventArgs)
+        Response.Write("Session is Starting...<br>")
+    End Sub
+
+    Sub Session_End(Sender As Object, E As EventArgs)
+        ' Clean up session resources here
+    End Sub
+
+    Sub Application_BeginRequest(Sender As Object, E As EventArgs)
+        Response.Write("<h3><font face='Verdana'>Using the Global.asax File</font></h3>")
+        Response.Write("Request is Starting...<br>")
+    End Sub
+
+    Sub Application_EndRequest(Sender As Object, E As EventArgs)
+        Response.Write("Request is Ending...<br>")
+    End Sub
+
+</script>
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

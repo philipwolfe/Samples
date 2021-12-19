@@ -1,0 +1,79 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/IO/LogFile/logfile.src&file=VB%5CLogfile.vb" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkJcXExvZ2ZpbGUudmJ4X194eF94eF94X19443b84bf1" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB\Logfile.vb</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../howto/samples/io/logfile/logfilecssource.htm'>Logfile.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../howto/samples/io/logfile/vb/logfilevbsource.htm'>VB\Logfile.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>Imports System
+Imports System.IO
+
+Module Directory
+
+	
+    Public Sub Main()
+        Dim fs As FileStream = New FileStream("log.txt", FileMode.OpenOrCreate, FileAccess.Write)
+        Dim w As StreamWriter = New StreamWriter(fs) ' create a Char writer 
+        w.BaseStream.Seek(0, SeekOrigin.End) ' set the file pointer to the end
+		
+        Log("Test1", w)
+        Log("Test2", w)
+        w.Close() 'close the writer and underlying file  
+		
+		
+        fs = New FileStream("log.txt", FileMode.OpenOrCreate, FileAccess.Read)
+		
+        Dim r As StreamReader = New StreamReader(fs) ' create a Char reader
+        r.BaseStream.Seek(0, SeekOrigin.Begin) ' set the file pointer to the beginning
+        DumpLog(r)
+		
+    End Sub
+
+    Public Sub Log(ByVal logMessage As String, ByVal w As StreamWriter)
+	
+        w.WriteLine()
+        w.Write("Log Entry : ")
+		w.WriteLine("{0} {1}", DateTime.Now.ToLongTimeString(), DateTime.Now.ToLongDateString())
+		w.WriteLine("  :")
+		w.WriteLine("  :{0}", logMessage)
+		w.WriteLine("-------------------------------")
+		w.Flush()  ' update underlying file
+	End Sub
+
+	Public Sub DumpLog(r As StreamReader)
+	
+		While r.Peek() > -1                      'while not at the end of the file
+			Console.WriteLine(r.ReadLine())
+		End While
+		
+		r.Close()
+		
+		Console.WriteLine()
+		Console.WriteLine("Press Return to exit.")
+		Console.Read()
+	End Sub
+End Module
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

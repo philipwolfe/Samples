@@ -1,0 +1,306 @@
+
+
+
+<!--BEGIN HEADER-->
+<html>
+<head>
+<link rel="stylesheet" href="../../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+
+<table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+
+    <div style="padding:0,0,4,0"><b>Windows Forms</b><br></div>
+    &nbsp; <a class="outer" href="../../../howto/doc/winforms/winformsapperrorhandler.htm">A default error handler</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/winforms/winformsownerdrawlistbox.htm">An Owner-drawn ListBox</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/winforms/winformsthreadmarshalling.htm">Call across thread boundaries</a><p>
+    <div style="padding:0,0,4,0"><a target="_top" style="color:darkred" href="../../../howto"><b>Back to Index</b></a><br></div>
+
+
+
+
+
+
+</div>
+
+</td>
+</tr>
+</table>
+
+
+
+
+
+
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<style>
+.mydd {  font: smaller verdana; }
+.code1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:blue;
+	}
+.codecomment1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:green;
+	}
+.issue {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background-color:RED;
+	color:WHITE;
+	font-weight:bold;
+	}
+
+
+body { font: smaller verdana }        
+
+</style>
+
+
+
+
+
+<h4>Creating an Owner-Drawn Listbox</h4>
+
+      <P>By default Listboxes display strings. If you want to display something 
+      else,&nbsp; such a bitmap for each item or paint each item in the 
+      list box in a different color, then you will need to draw each menu item in your code. This is known as an owner-drawn
+      ListBox.</P>
+      <P>In order to put a ListBox into owner-drawn mode you must set the <b> 
+      DrawMode</b> property to <B>DrawMode.OwnerDrawVariable</B> or 
+      <B>DrawMode.OwnerDrawFixed</B>. OwnerDrawFixed indicates that the ListBox 
+      will be owner-drawn and each item in the ListBox will be the same height. 
+      OwnerDrawVariable indicates that the ListBox will be owner-drawn and each 
+      item in the ListBox may be a different height. 
+      <P>There are two events that you need to handle for an owner-drawn list 
+      box:</P>
+      <TABLE border=0 cellPadding=5 class=mydd>
+        <TBODY>
+        <TR>
+          <TD vAlign=top><STRONG>DrawItem</STRONG></TD>
+          <TD>
+            <P>This event is raised every time the list box needs to paint an 
+            item. The handler for this event is passed a <B>DrawItemEventArgs</B> 
+            object. This object contains the information needed to draw the 
+            ListBox item including a <b> Graphics</b> object, the index of the item to 
+            be painted, the state of the item to be painted, and the bounds of the 
+            item to be painted. It also includes utility methods for 
+            painting the background of the item and its focus 
+        rectangle.</P>
+          </TD></TR>
+        <TR>
+          <TD vAlign=top><STRONG>MeasureItem</STRONG></TD>
+          <TD>
+            <P>This event is raised every time a ListBox item is created and the 
+            size of the list item need to be determined. You only need to handle 
+            this event if the Listbox DrawMode is <B>OwnerDrawVariable</B>. The handler for this
+            event is passed a 
+            <B>MeasureItemEventArgs</B> object. This object contains the 
+            information needed to determine the size of the item,&nbsp; a Graphics
+            object, and the index of the item to be measured. To set the height
+            and width of each item use the ItemHeight and ItemWidth properties on the MeasureItemEventArgs 
+            object.</TD></TR></TBODY></TABLE>
+      <P>The following example demonstrates how to create an owner-drawn ListBox that displays 
+      each item in the ListBox in a different color:</P>
+      
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 1;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:85%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="2">
+<pre id="codectrl4" style="display:">
+
+....    
+    
+//Set the DrawMode and add the event handlers
+listBox1.DrawMode=DrawMode.OwnerDrawVariable;
+listBox1.AddOnMeasureItem(new MeasureItemEventHandler(listBox1_MeasureItem));
+wlistBox1.AddOnDrawItem(new DrawItemEventHandler(listBox1_DrawItem));
+
+....    
+
+//The MeasureItem Event handler
+private void listBox1_MeasureItem(object sender, MeasureItemEventArgs e) {
+            
+    //Work out what the text will be
+    string displayText = "ITEM #" + e.Index;
+
+    //Get width & height of string
+    SizeF stringSize=e.Graphics.MeasureString(displayText, this.Font);
+
+    //Now set height to taller of default and text height
+    if (listBoxHeights[e.Index] > stringSize.Height)
+        e.ItemHeight = listBoxHeights[e.Index];
+    else 
+        e.ItemHeight = (int)stringSize.Height;
+
+}
+
+....
+    
+//The DrawItem Event handler
+private void listBox1_DrawItem(object sender, DrawItemEventArgs e) {
+        
+    // The following method should generally be called before drawing.
+    // It is actually superfluous here, since the subsequent drawing
+    // will completely cover the area of interest.
+    e.DrawBackground();
+        
+    //The system provides the Graphics object
+    //into which the list box item is drawn.
+    //The index of the item to be painted is e.Index.
+    //The painting should be done into the area described by e.Bounds.
+    Brush brush = listBoxBrushes[e.Index];
+    e.Graphics.FillRectangle(brush, e.Bounds);
+    e.Graphics.DrawRectangle(SystemPens.WindowText, e.Bounds);
+        
+    bool selected = ((e.State & DrawItemState.Selected) == DrawItemState.Selected) ? true : false;
+            
+    string displayText = "ITEM #" + e.Index;
+    displayText = displayText + (selected ? " SELECTED" : "");
+
+    e.Graphics.DrawString(displayText, this.Font, Brushes.Black,e.Bounds);
+
+    //Finally draw the focus rectangle for the item
+    e.DrawFocusRectangle();
+}
+
+....
+
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="tab" id="tabctrl4" onclick="doClick(0, 'ctrl4')">
+          <b>C#
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<br><br>
+
+<span>
+    
+    
+    
+
+        
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../../howto/samples/winforms/cs/ownerdrawlistbox">
+	<img style="border-color:black" border=1 src="../../../winforms/images/wflink.jpg"><br>
+	</a>
+	<div class="caption">C# OwnerDraw ListBox Sample</div><br>
+	
+	
+		[<a target="_blank" href="../../../howto/samples/winforms/cs/ownerdrawlistbox">Run Sample</a>] | 
+		[<a target="_blank" href="../../../howto/samples/winforms/cs/ownerdrawlistbox/ownerdrawlistboxcssource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+    </span>
+
+
+<!--END FOOTER-->
+<p>
+<hr>
+<p>
+</div>
+</td>
+</tr>
+</table>
+</BODY>
+</html>
+<!--END FOOTER-->

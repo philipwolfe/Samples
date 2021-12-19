@@ -1,0 +1,60 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Services/ServiceApplication/simpleservice/simpleservice.src&file=ProjectInstaller.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfUHJvamVjdEluc3RhbGxlci5jc3hfX3h4X3h4X3hfX3g=684b812b" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">ProjectInstaller.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../howto/samples/services/serviceapplication/simpleservice/simpleservicecssource.htm'>SimpleService.cs</a> &nbsp;&nbsp<a href='../../../../../howto/samples/services/serviceapplication/simpleservice/projectinstallercssource.htm'>ProjectInstaller.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../howto/samples/services/serviceapplication/simpleservice/vb/simpleservicevbsource.htm'>VB\SimpleService.vb</a> &nbsp;&nbsp<a href='../../../../../howto/samples/services/serviceapplication/simpleservice/vb/projectinstallervbsource.htm'>VB\ProjectInstaller.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>using System;
+using System.Collections;
+using System.Configuration.Install;
+using System.ServiceProcess;
+using System.ComponentModel;
+
+[RunInstallerAttribute(true)]
+public class ProjectInstaller: Installer{
+
+	private ServiceInstaller serviceInstaller;
+	private ServiceProcessInstaller processInstaller;
+
+	public ProjectInstaller(){
+		
+		processInstaller = new ServiceProcessInstaller();
+    	serviceInstaller = new ServiceInstaller();
+
+		// Service will run under system account
+    	processInstaller.RunUnderSystemAccount = true;
+
+		// Service will have Start Type of Manual
+        serviceInstaller.StartType = ServiceStart.Manual;
+    		
+		serviceInstaller.ServiceName = "Hello-World Service";
+
+    	Installers.Add(serviceInstaller);
+    	Installers.Add(processInstaller);
+	}
+}    
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

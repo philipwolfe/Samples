@@ -1,0 +1,134 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/intro/intro9.src&file=JS/Intro9.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfSlMvSW50cm85LmFzcFx4eF9feHhfeHhfeF9feA==9a5debb0" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">JS/Intro9.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/intro/intro9aspxsource.htm'>Intro9.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/intro/vb/intro9aspxsource.htm'>VB/Intro9.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/intro/js/intro9aspxsource.htm'>JS/Intro9.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Ads File: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/intro/adsxmlsource.htm'>ads.xml</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="System.Data.SQL" %>
+
+<html>
+   <head>
+      <link rel="stylesheet"href="intro.css">
+   </head>
+
+   <script language="JScript" runat=server>
+
+       function SubmitBtn_Click(sender : Object, e : EventArgs) : void {
+
+          var myConnection : SQLConnection  = new SQLConnection("server=localhost;uid=sa;pwd=;database=pubs");
+          var myCommand : SQLDataSetCommand = new SQLDataSetCommand("select * from Titles where type='" + Category.SelectedItem.Value + "'", myConnection);
+
+          var ds : DataSet = new DataSet();
+          myCommand.FillDataSet(ds, "Titles");
+
+          MyList.DataSource = ds.Tables("Titles").DefaultView;
+          MyList.DataBind();
+       }
+
+   </script>
+
+   <body>
+
+       <center>
+
+       <form action="intro9.htm" method="post" runat="server">
+
+           <asp:adrotator AdvertisementFile="ads.xml" BorderColor="black" BorderWidth=1 runat="server"/>
+
+           <h3> Name: <asp:textbox id="Name" runat="server"/>
+
+           Category:  <asp:dropdownlist id="Category" runat=server>
+                         <asp:listitem >psychology</asp:listitem>
+                         <asp:listitem >business</asp:listitem>
+                         <asp:listitem >popular_comp</asp:listitem>
+                      </asp:dropdownlist>
+
+           <asp:button type=submit text="Lookup" OnClick="SubmitBtn_Click" runat="server"/>
+
+           <p>
+
+           <asp:datalist id="MyList" layout="flow" showfooter=true borderwidth=0 runat=server>
+
+              <template name="headertemplate">
+
+                 <table cellpadding=1 cellspacing=0 >
+                    <tr>
+                       <td colspan=4>
+                          <b><font face="Verdana" size=3>Product Listing </font></b>
+                       </td>
+                    </tr>
+                    <tr>
+                       <td colspan=4 height=5 bgcolor="000000"></td>
+                    </tr>
+
+              </template>
+
+              <template name="itemtemplate">                  
+                      <tr>
+                          <td colspan=3 style="font-size:10pt">
+                              <b><%# DataBinder.Eval(Container.DataItem, "title_id") %></b>
+                              <span> <%# DataBinder.Eval(Container.DataItem, "title") %> </span> 
+                          </td>
+                          <td align=right style="font-size:10pt">
+                              <b><%# DataBinder.Eval(Container.DataItem, "price", "${0}") %> </b>
+                          </td>
+
+                      </tr>
+              </template>
+
+              <template name="separatortemplate">                  
+                      <tr>
+                          <td colspan=4 height=1 bgcolor="000000"></td>
+                      </tr>
+              </template>
+
+              <template name="footertemplate">                  
+                      <tr>
+                          <td colspan=4 height=5 bgcolor="000000"></td>
+                      </tr>
+                  </table>
+              </template>
+
+           </asp:datalist>
+
+       </form>
+
+       </center>
+
+   </body>
+
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

@@ -1,0 +1,67 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Services/Installers/installers/installers.src&file=VB%5CInstallers.vb" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkJcXEluc3RhbGxlcnMudmJ4X194eF94eF94X194b73611cf" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB\Installers.vb</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../howto/samples/services/installers/installers/installerscssource.htm'>Installers.cs</a> &nbsp;&nbsp<a href='../../../../../../howto/samples/services/installers/installers/projectinstallercssource.htm'>ProjectInstaller.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../howto/samples/services/installers/installers/vb/installersvbsource.htm'>VB\Installers.vb</a> &nbsp;&nbsp<a href='../../../../../../howto/samples/services/installers/installers/vb/projectinstallervbsource.htm'>VB\ProjectInstaller.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>Imports System
+Imports System.Diagnostics
+Imports System.Messaging
+
+' run InstallUtil.exe installers.exe
+' verify that the evnet log was created
+' verify that the message queue was created
+' run InstallUtil.exe /u installers.exe
+' verify that the message queue was removed
+' verify that the event log was removed
+public class Installers
+
+	public shared sub Main()
+
+		Dim resourcesInstalled As Boolean
+		resourcesInstalled = true
+
+		if (not MessageQueue.Exists(".\InstallersSample")) then
+			Console.WriteLine("This application requires InstallersSample Message Queue to be installed.")
+			resourcesInstalled = false
+		end if
+
+		if (not EventLog.SourceExists("InstallersSample")) then
+			Console.WriteLine("This application requires InstallersSample Event Log Source to be setup.")
+			resourcesInstalled = false
+		end if
+
+		if (not resourcesInstalled) then
+			Console.WriteLine("Please run InstallUtil.exe " + Environment.GetCommandLineArgs()(0))
+			return
+		end if
+
+		' the application may proceed!
+		Console.WriteLine("Message Queue and Event Log are installed!")
+	end sub
+end class
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

@@ -1,0 +1,180 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/validate/validator3.src&file=JS%5Cvalidator3.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfSlNcXHZhbGlkYXRvcjMuYXNwXHh4X194eF94eF94X194f68b6774" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">JS\validator3.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/validate/validator3aspxsource.htm'>validator3.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/validate/vb/validator3aspxsource.htm'>VB\validator3.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/validate/js/validator3aspxsource.htm'>JS\validator3.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Page clienttarget=downlevel%>
+
+
+<html>
+<head>
+    <script language="JScript" runat=server>
+
+        function ListFormat_SelectedIndexChanged(Sender : Object, E : EventArgs) : void {
+
+            // Change display mode of the validator summary when a new option
+            // is selected from the "ListFormat" dropdownlist
+            valSum.DisplayMode = ValidationSummaryDisplayMode(ListFormat.SelectedIndex);
+        }
+
+   </script>
+
+</head>
+<body>
+
+<h3><font face="Verdana">ValidationSummary Sample</font></h3>
+<p>
+
+<form runat="server">
+
+<table cellpadding=10>
+    <tr>
+        <td>
+            <table bgcolor="#eeeeee" cellpadding=10>
+
+            <tr>
+              <td colspan=3>
+              <font face=Verdana size=2><b>Credit Card Information</b></font>
+              </td>
+            </tr>
+            <tr>
+              <td align=right>
+                <font face=Verdana size=2>Card Type:</font>
+              </td>
+              <td>
+                <ASP:RadioButtonList id=RadioButtonList1 RepeatLayout="Flow" runat=server>
+                    <asp:ListItem>MasterCard</asp:ListItem>
+                    <asp:ListItem>Visa</asp:ListItem>
+                </ASP:RadioButtonList>
+              </td>
+              <td align=middle rowspan=1>
+                <asp:RequiredFieldValidator id="RequiredFieldValidator1"
+                    ControlToValidate="RadioButtonList1" 
+                    ErrorMessage="Card Type. "
+                    Display="Static"
+                    InitialValue="" Width="100%" runat=server>
+                    *
+                </asp:RequiredFieldValidator>
+              </td>
+            </tr>
+            <tr>
+              <td align=right>
+                <font face=Verdana size=2>Card Number:</font>
+              </td>
+              <td>
+                <ASP:TextBox id=TextBox1 runat=server />
+              </td>
+              <td>
+                <asp:RequiredFieldValidator id="RequiredFieldValidator2"
+                    ControlToValidate="TextBox1" 
+                    ErrorMessage="Card Number. "
+                    Display="Static"
+                    Width="100%" runat=server>
+                    *
+                </asp:RequiredFieldValidator>
+
+              </td>
+            </tr>
+            <tr>
+              <td align=right>
+                <font face=Verdana size=2>Expiration Date:</font>
+              </td>
+              <td>
+                <ASP:DropDownList id=DropDownList1 runat=server>
+                    <asp:ListItem></asp:ListItem>
+                    <asp:ListItem >06/00</asp:ListItem>
+                    <asp:ListItem >07/00</asp:ListItem>
+                    <asp:ListItem >08/00</asp:ListItem>
+                    <asp:ListItem >09/00</asp:ListItem>
+                    <asp:ListItem >10/00</asp:ListItem>
+                    <asp:ListItem >11/00</asp:ListItem>
+                    <asp:ListItem >01/01</asp:ListItem>
+                    <asp:ListItem >02/01</asp:ListItem>
+                    <asp:ListItem >03/01</asp:ListItem>
+                    <asp:ListItem >04/01</asp:ListItem>
+                    <asp:ListItem >05/01</asp:ListItem>
+                    <asp:ListItem >06/01</asp:ListItem>
+                    <asp:ListItem >07/01</asp:ListItem>
+                    <asp:ListItem >08/01</asp:ListItem>
+                    <asp:ListItem >09/01</asp:ListItem>
+                    <asp:ListItem >10/01</asp:ListItem>
+                    <asp:ListItem >11/01</asp:ListItem>
+                    <asp:ListItem >12/01</asp:ListItem>
+                </ASP:DropDownList>
+              </td>
+              <td>
+                <asp:RequiredFieldValidator id="RequiredFieldValidator3"
+                  ControlToValidate="DropDownList1" 
+                  ErrorMessage="Expiration Date. "
+                  Display="Static"
+                  InitialValue="" 
+                  Width="100%" 
+                  runat=server>
+                  *
+                </asp:RequiredFieldValidator>
+              </td>
+              <td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                <ASP:Button id=Button1 text="Validate" runat=server />
+              </td>
+              <td></td>
+            </tr>
+            </table>
+        </td>
+        <td valign=top>
+            <table cellpadding=20><tr><td>
+            <asp:ValidationSummary ID="valSum" runat="server"
+                HeaderText="You must enter a value in the following fields:"
+                Font-Name="verdana" 
+                Font-Size="12" 
+                />
+            </td></tr></table>
+        </td>
+    </tr>
+</table>
+
+<font face="verdana" size="-1">Select the type of validation summary display you wish: </font>
+
+<asp:DropDownList id="ListFormat" AutoPostBack=true OnSelectedIndexChanged="ListFormat_SelectedIndexChanged" runat=server >
+    <asp:ListItem>List</asp:ListItem>
+    <asp:ListItem selected>Bulleted List</asp:ListItem>
+    <asp:ListItem>Single Paragraph</asp:ListItem>
+</asp:DropDownList>
+
+</form>
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

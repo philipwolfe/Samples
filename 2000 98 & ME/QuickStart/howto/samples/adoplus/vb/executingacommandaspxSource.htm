@@ -1,0 +1,93 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/adoplus/vb/executingacommand.src&file=executingacommand.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfZVx4ZWN1dGluZ2Fjb21tYW5kLmFzcFx4eF9feHhfeHhfeF9feA==902264ff" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">executingacommand.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../howto/samples/adoplus/vb/executingacommandaspxsource.htm'>executingacommand.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../howto/samples/adoplus/cs/executingacommandaspxsource.htm'>..\CS\executingacommand.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>
+<%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="System.Data.SQL" %>
+
+<html>
+
+<script language="VB" runat="server">
+
+  protected sub Page_Load(Src as Object, E as EventArgs ) 
+
+
+    Dim myConnection as SQLConnection
+    myConnection = new SQLConnection("server=localhost;uid=sa;pwd=;database=northwind")
+
+
+    Dim myCommand as SQLCommand
+    myCommand = new SQLCommand("Insert into Region (RegionID, RegionDescription) VALUES (100, 'Description')", myConnection)
+
+    Cleanup(myConnection) '// restore database to near it's original condifition so sample will work correctly.
+
+    try
+
+      myConnection.Open()
+      myConnection.BeginTransaction()
+      myCommand.ExecuteNonQuery()
+      myCommand.CommandText = "Insert into Region (RegionID, RegionDescription) VALUES (101, 'Description')"
+      myCommand.ExecuteNonQuery()
+      myConnection.CommitTransaction()
+      Response.Write("Both Records written to database")
+
+    catch myException as Exception
+
+      myConnection.RollbackTransaction()
+      Response.Write(myException.ToString())
+      Response.Write("<p><p>Neither record written to database.  This will happen if you executed this page more than once.  Executing the page more than once may exibit the Rollback behavior.")
+
+    finally
+
+      myConnection.Close()
+
+    end try
+
+  end sub
+
+
+  protected sub Cleanup(myConnection as SQLConnection )
+
+    dim myCommand as SQLCommand
+    
+    myConnection.Open()
+    myCommand = new SQLCommand("DELETE FROM Region WHERE (RegionID = 100) OR (RegionID = 101)", myConnection)
+    myCommand.ExecuteNonQuery()
+    myConnection.Close()
+
+  end sub
+</script>
+
+</BODY>
+</HTML>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>
+</span>
+
+    </form>

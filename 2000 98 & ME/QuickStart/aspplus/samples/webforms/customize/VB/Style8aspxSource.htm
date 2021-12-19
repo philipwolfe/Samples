@@ -1,0 +1,85 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/customize/style8.src&file=VB/Style8.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvU3R5bGU4LmFzcFx4eF9feHhfeHhfeF9feA==163535f1" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/Style8.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/customize/style8aspxsource.htm'>Style8.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/customize/vb/style8aspxsource.htm'>VB/Style8.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/customize/js/style8aspxsource.htm'>JS/Style8.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>
+<html>
+
+<head>
+
+  <style>
+
+    .beige { background-color:beige }
+
+  </style>
+
+</head>
+
+<body>
+
+  <form runat="server">
+
+      <h3><font face="verdana">Applying Styles to Web Controls</font></h3>
+
+      <p><font face="verdana"><h4>Expando CSS Styles</h4></font><p>
+
+      <table style="font: 10pt verdana; background-color:tan" cellspacing=15>
+        <tr>
+          <td><b>Login: </b></td>
+          <td><ASP:TextBox runat="server" class="beige" style="font-weight:700;"/></td>
+        </tr>
+        <tr>
+          <td><b>Password: </b></td>
+          <td><ASP:TextBox TextMode="Password" runat="server" class="beige"/></td>
+        </tr>
+        <tr>
+          <td><b>Select a View: </b></td>
+          <td>
+            <ASP:DropDownList class="beige" runat="server">
+                <ASP:ListItem>Default Desktop</ASP:ListItem>
+                <ASP:ListItem>My Stock Portfolio</ASP:ListItem>
+                <ASP:ListItem>My Contact List</ASP:ListItem>
+            </ASP:DropDownList>
+          </td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td><ASP:Button Text="Submit" runat="server" class="beige"/></td>
+        </tr>
+      </table>
+
+    </form>
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

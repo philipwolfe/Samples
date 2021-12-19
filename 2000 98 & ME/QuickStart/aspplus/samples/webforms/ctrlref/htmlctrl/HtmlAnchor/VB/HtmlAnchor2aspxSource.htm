@@ -1,0 +1,108 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlref/htmlctrl/HtmlAnchor/HtmlAnchor2.src&file=VB%5CHtmlAnchor2.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkJcXEh0bWxBbmNob3IyLmFzcFx4eF9feHhfeHhfeF9feA==c4809567" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB\HtmlAnchor2.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../../aspplus/samples/webforms/ctrlref/htmlctrl/htmlanchor/htmlanchor2aspxsource.htm'>HtmlAnchor2.htm</a> &nbsp;&nbsp<a href='../../../../../../../aspplus/samples/webforms/ctrlref/htmlctrl/htmlanchor/detailspageaspxsource.htm'>DetailsPage.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../../aspplus/samples/webforms/ctrlref/htmlctrl/htmlanchor/vb/htmlanchor2aspxsource.htm'>VB\HtmlAnchor2.htm</a> &nbsp;&nbsp<a href='../../../../../../../aspplus/samples/webforms/ctrlref/htmlctrl/htmlanchor/vb/detailspageaspxsource.htm'>VB\DetailsPage.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../../../../aspplus/samples/webforms/ctrlref/htmlctrl/htmlanchor/js/htmlanchor2aspxsource.htm'>JS\HtmlAnchor2.htm</a> &nbsp;&nbsp<a href='../../../../../../../aspplus/samples/webforms/ctrlref/htmlctrl/htmlanchor/js/detailspageaspxsource.htm'>JS\DetailsPage.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Import Namespace="System.Data" %>
+
+<html>
+    <script language="VB" runat="server">
+
+    Sub Page_Load(sender As Object, e As EventArgs) 
+
+        Dim dt As DataTable
+        Dim dr As DataRow
+        Dim i As Integer
+
+        'create a DataTable
+        dt = New DataTable
+        dt.Columns.Add(New DataColumn("IntegerValue", GetType(Integer)))
+        dt.Columns.Add(New DataColumn("StringValue", GetType(String)))
+        dt.Columns.Add(New DataColumn("DateTimeValue", GetType(DateTime)))
+        dt.Columns.Add(New DataColumn("BoolValue", GetType(Boolean)))
+        dt.Columns.Add(new DataColumn("CurrencyValue", GetType(Double)))
+
+        'Make some rows and put some sample data in
+        For i = 1 To 9
+            dr = dt.NewRow()
+            dr(0) = i
+            dr(1) = "Item " + i.ToString()
+            dr(2) = DateTime.Now.ToShortTimeString
+            If (i Mod 2 <> 0) Then
+                dr(3) = True
+            Else
+                dr(3) = False
+            End If
+            dr(4) = 1.23 * (i+1)
+            'add the row to the datatable
+            dt.Rows.Add(dr)
+        Next
+
+        MyRepeater.DataSource=new DataView(dt)
+        MyRepeater.DataBind
+    End Sub
+
+</script>
+
+<body>
+
+    <h3><font face="Verdana">DataBinding HtmlAnchor</font></h3>
+
+    <p>
+
+    <form runat=server>
+    <font face="Verdana" size="-1">
+
+        <asp:Repeater id="MyRepeater" runat="server">
+
+            <template name="ItemTemplate">
+
+                Link for
+
+                <a href='<%# DataBinder.Eval(Container,"DataItem.StringValue","detailspage.htm?id={0}") %>' runat="server">
+                    <%# DataBinder.Eval(Container, "DataItem.StringValue") %>
+                </a>
+
+                <p>
+
+            </template>
+
+        </asp:Repeater>
+
+    </font>
+    </form>
+
+</body>
+</html>
+
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

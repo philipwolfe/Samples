@@ -1,0 +1,189 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/grocertogo/grocertogo.src&file=Market.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfTWFya2V0LmNzeF9feHhfeHhfeF9feA==c5701dfe" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">Market.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../aspplus/samples/grocertogo/grocertogoaspxsource.htm'>GrocerToGo.htm</a> &nbsp;&nbsp<a href='../../../aspplus/samples/grocertogo/marketcssource.htm'>Market.cs</a> &nbsp;&nbsp<a href='../../../aspplus/samples/grocertogo/globalasaxsource.htm'>Global.asax</a> &nbsp;&nbsp<a href='../../../aspplus/samples/grocertogo/grocerstylecsssource.htm'>GrocerStyle.css</a> &nbsp;&nbsp<a href='../../../aspplus/samples/grocertogo/makesamplebatsource.htm'>makesample.bat</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../aspplus/samples/grocertogo/vb/grocertogoaspxsource.htm'>VB/GrocerToGo.htm</a> &nbsp;&nbsp<a href='../../../aspplus/samples/grocertogo/vb/marketvbsource.htm'>VB/Market.vb</a> &nbsp;&nbsp<a href='../../../aspplus/samples/grocertogo/vb/globalasaxsource.htm'>VB/Global.asax</a> &nbsp;&nbsp<a href='../../../aspplus/samples/grocertogo/vb/grocerstylecsssource.htm'>VB/GrocerStyle.css</a> &nbsp;&nbsp<a href='../../../aspplus/samples/grocertogo/vb/makesamplebatsource.htm'>VB/makesample.bat</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>using System;
+using System.Data;
+using System.Data.SQL;
+using System.Collections;
+
+namespace Market
+{
+   public class InventoryDB 
+   {
+      public DataTable GetProducts(int categoryID) {
+
+          SQLConnection sqlConnection = new SQLConnection("server=localhost;uid=sa;pwd=;database=grocertogo");
+          SQLDataSetCommand sqlAdapter1 = new SQLDataSetCommand("Select * from Products where categoryid=" + categoryID, sqlConnection);
+
+          DataSet products = new DataSet();
+          sqlAdapter1.FillDataSet(products, "products");
+
+          return products.Tables[0];
+      }
+
+      public DataRow GetProduct(int productID) {
+
+          SQLConnection sqlConnection = new SQLConnection("server=localhost;uid=sa;pwd=;database=grocertogo");
+
+          SQLDataSetCommand sqlAdapter1 = new SQLDataSetCommand("Select * from Products where productID=" + productID, sqlConnection);
+          DataSet product = new DataSet();
+          sqlAdapter1.FillDataSet(product, "product");
+
+          return product.Tables[0].Rows[0];
+      }
+
+      public DataTable GetProductCalories(int productID) {
+
+          SQLConnection sqlConnection = new SQLConnection("server=localhost;uid=sa;pwd=;database=grocertogo");
+
+          SQLDataSetCommand sqlAdapter1 = new SQLDataSetCommand("Select * from ProductDetails where productID=" + productID, sqlConnection);
+          DataSet details = new DataSet();
+          sqlAdapter1.FillDataSet(details, "details");
+
+          return details.Tables[0];
+      }
+   }
+
+   public class OrderItem 
+   {
+      public int productID;
+      public int quantity;
+      public String name;
+      public double price;
+
+      public OrderItem(int productID, String name, double price, int quantity)
+      {
+         this.productID = productID;
+         this.quantity = quantity;
+         this.name = name;
+         this.price = price;
+      } 
+
+      public int ProductID
+      {
+         get { return ProductID; }
+      }
+
+      public int Quantity
+      {
+         get { return quantity; }
+         set { quantity=value; }
+      }
+
+      public String Name
+      {
+         get { return name; }
+      }
+
+      public double Price
+      {
+         get { return price; }
+      }
+
+      public double Total 
+      {
+         get { return quantity * price; }
+      }
+
+   }
+
+   public class OrderList  
+   {
+      private Hashtable orders    = new Hashtable();
+      private double    taxRate   = 0.08;
+
+      public double SubTotal 
+      {
+         get 
+         { 
+            if (orders.Count == 0)
+               return 0.0;
+
+            double subTotal = 0;
+
+            IEnumerator items = orders.Values.GetEnumerator();
+
+            while(items.MoveNext()) {
+
+               subTotal += ((OrderItem) items.Current).Price * ((OrderItem) items.Current).Quantity;
+            }
+            
+            return subTotal;
+         }
+      }
+
+      public double TaxRate 
+      {
+         get { return taxRate; }
+         set { taxRate = value; }
+      }
+
+      public double Tax 
+      {
+         get { return SubTotal * taxRate; }
+      }
+
+      public double Total 
+      {
+         get { return SubTotal * (1 + taxRate); }
+      }
+
+      public ICollection Values {
+         get {
+            return orders.Values;
+         }
+      }
+
+      public OrderItem this[String name] {
+         get {
+            return (OrderItem) orders[name];
+         }
+      }
+
+      public void Add(OrderItem value)
+      {
+         if (orders[value.Name] == null) {
+            orders.Add(value.Name, value);
+         }
+         else
+         {
+            OrderItem oI = (OrderItem)orders[value.Name]; 
+            oI.Quantity = oI.Quantity + 1;
+         }
+      }
+
+      public void ClearCart() {
+         orders.Clear();
+      }
+   }
+}
+
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

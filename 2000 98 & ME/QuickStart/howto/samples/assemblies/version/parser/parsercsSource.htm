@@ -1,0 +1,99 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/assemblies/version/version.src&file=parser/parser.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfcGFyc2VyL3BhcnNlci5jc3hfX3h4X3h4X3hfX3g=f21091c6" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">parser/parser.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../howto/samples/assemblies/version/mathcssource.htm'>math.cs</a> &nbsp;&nbsp<a href='../../../../../howto/samples/assemblies/version/mathcfgsource.htm'>math.cfg</a> &nbsp;&nbsp<a href='../../../../../howto/samples/assemblies/version/makefilesource.htm'>makefile</a> &nbsp;&nbsp<a href='../../../../../howto/samples/assemblies/version/parser/parsercssource.htm'>parser/parser.cs</a> &nbsp;&nbsp<a href='../../../../../howto/samples/assemblies/version/parser/makefilesource.htm'>parser/makefile</a> &nbsp;&nbsp<a href='../../../../../howto/samples/assemblies/version/calcrv5/calcrcssource.htm'>calcrv5/calcr.cs</a> &nbsp;&nbsp<a href='../../../../../howto/samples/assemblies/version/calcrv5/makefilesource.htm'>calcrv5/makefile</a> &nbsp;&nbsp<a href='../../../../../howto/samples/assemblies/version/calcrv6/calcrcssource.htm'>calcrv6/calcr.cs</a> &nbsp;&nbsp<a href='../../../../../howto/samples/assemblies/version/calcrv6/makefilesource.htm'>calcrv6/makefile</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>using System;
+
+namespace Samples.Math.Parser
+{
+	public class Arguments
+	{
+		private String m_arg1;
+		private Char   m_op;
+		private String m_arg2;
+
+		public String Arg1
+	    {
+			get 
+			{ 
+				return m_arg1;
+			}
+			set 
+			{ 
+				m_arg1 = value;
+				return; 
+			}
+		}
+
+		public Char Op
+	    {
+			get 
+			{ 
+				return m_op;
+			}
+			set 
+			{ 
+				m_op = value;
+				return; 
+			}
+		}
+
+		public String Arg2
+	    {
+			get 
+			{ 
+				return m_arg2;
+			}
+			set 
+			{ 
+				m_arg2 = value;
+				return; 
+			}
+		}
+	}
+
+	public class Parser
+	{
+		public Arguments Parse(String formula)
+		{
+			Arguments args = new Arguments();
+			// get the first arg
+			int spacePos = formula.IndexOf(' ');
+			args.Arg1 = formula.Substring(0, spacePos);
+
+	
+			// get the operator
+			args.Op = formula.Substring(spacePos+1, 1).ToChar();
+
+			// get the second arg
+			args.Arg2 = formula.Substring(spacePos+3);
+
+			return args;
+		}
+
+	}
+
+}
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

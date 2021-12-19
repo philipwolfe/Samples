@@ -1,0 +1,72 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/winforms/samples/Cs/Data/Update/Update.src&file=ListCustomers.asmx" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfTGlzdEN1c3RvbWVycy5hc21ceHhfX3h4X3h4X3hfX3g=8211af40" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">ListCustomers.asmx</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>Win Form Source: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/data/update/updateformcssource.htm'>UpdateForm.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Northwind dataset: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/data/update/customersdatasetcssource.htm'>CustomersDataSet.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Northwind dataset Schema: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/data/update/customersdatasetxsdsource.htm'>CustomersDataSet.xsd</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>WebService: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/data/update/listcustomersasmxsource.htm'>ListCustomers.asmx</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>WebService: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/data/update/updatecustomersasmxsource.htm'>UpdateCustomers.asmx</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Web Service definition: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/data/update/listcustomerssdlsource.htm'>ListCustomers.SDL</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Web Service definition: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/data/update/updatecustomerssdlsource.htm'>UpdateCustomers.SDL</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ WebService Language="C#" class="ListCustomers"%>
+
+using System.Web.Services;
+using System.Data;
+using System.Data.SQL;
+using Microsoft.Samples.WinForms.Cs.Data.Update.Data;
+                                           
+public class ListCustomers : WebService {
+
+     [ WebMethod ]
+     public DataSet GetCustomers() {
+         CustomersDataSet customersDataSet1 = new CustomersDataSet();
+         SQLConnection con = new SQLConnection("server=localhost;uid=sa;pwd=;database=northwind");
+         SQLDataSetCommand cmdCustomers = new SQLDataSetCommand("Select * from Customers where country='USA'", con);
+         cmdCustomers.FillDataSet(customersDataSet1, "Customers");
+         return customersDataSet1 ;
+     }
+     
+}
+
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

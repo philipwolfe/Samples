@@ -1,0 +1,64 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/reference/reference5.src&file=reference5.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfcmVmZXJlbmNlNS5hc3BceHhfX3h4X3h4X3hfX3g=993d87fc" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">reference5.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/reference/reference5aspxsource.htm'>reference5.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/reference/vb/reference5aspxsource.htm'>VB/reference5.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><html>
+
+   <script language="C#" runat=server>
+
+      void Page_Load(Object sender, EventArgs e) {
+
+         ArrayList items = new ArrayList();
+
+         items.Add("One");
+         items.Add("Two");
+         items.Add("Three");
+
+         MyList.DataSource = items;
+         MyList.DataBind();
+      }
+
+   </script>
+
+   <body>
+
+      <asp:datalist id="MyList" runat=server>
+
+         <template name="ItemTemplate">
+
+            Here is a value: <%# Container.DataItem %>
+
+         </template>
+
+      </asp:datalist>
+
+   </body>
+
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

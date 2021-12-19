@@ -1,0 +1,50 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Remoting/byreference/server.src&file=server.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfc2VydmVyLmNzeF9feHhfeHhfeF9feA==732aaaaf" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">server.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../howto/samples/remoting/byreference/objectcssource.htm'>object.cs</a> &nbsp;&nbsp<a href='../../../../howto/samples/remoting/byreference/servercssource.htm'>server.cs</a> &nbsp;&nbsp<a href='../../../../howto/samples/remoting/byreference/sharecssource.htm'>share.cs</a> &nbsp;&nbsp<a href='../../../../howto/samples/remoting/byreference/clientcssource.htm'>client.cs</a> &nbsp;&nbsp<a href='../../../../howto/samples/remoting/byreference/makefilesource.htm'>makefile</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../howto/samples/remoting/byreference/vb/servervbsource.htm'>VB/server.vb</a> &nbsp;&nbsp<a href='../../../../howto/samples/remoting/byreference/vb/objectvbsource.htm'>VB/object.vb</a> &nbsp;&nbsp<a href='../../../../howto/samples/remoting/byreference/vb/sharevbsource.htm'>VB/share.vb</a> &nbsp;&nbsp<a href='../../../../howto/samples/remoting/byreference/vb/clientvbsource.htm'>VB/client.vb</a> &nbsp;&nbsp<a href='../../../../howto/samples/remoting/byreference/vb/makefilesource.htm'>VB/makefile</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>using System;
+using System.Runtime.Remoting;
+using System.Runtime.Remoting.Channels.TCP;
+
+namespace RemotingSamples {
+  public class Sample {
+
+    public static int Main(string [] args) {
+
+      TCPChannel chan = new TCPChannel(8085);
+      ChannelServices.RegisterChannel(chan);
+      RemotingServices.RegisterWellKnownType("Object", "RemotingSamples.HelloServer", "SayHello", WellKnownObjectMode.SingleCall);
+      System.Console.WriteLine("Hit <enter> to exit...");
+      System.Console.ReadLine();
+      return 0;
+    }
+
+  }
+}
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

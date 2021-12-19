@@ -1,0 +1,60 @@
+
+
+<html>
+<head>
+
+    
+
+</head>
+<body bgcolor="ffffcc">
+
+    <h3><font face="Verdana">SQL to XML Generator</font></h3>
+
+    <form name="ctrl2" method="post" action="xmlgen.htm" id="ctrl2">
+<input type="hidden" name="__VIEWSTATE" value="YTB6LTgzMTAyMDAxX2Ewel9oejV6MnhfYTB6X2h6NXo0eF9hMHpoejBfR2V0Qm90aHhfX3hfNXozeF9hMHpoejBfR2V0RGF0YXhfX3hfNXoyeF9hMHpoejBfR2V0U2NoZW1heF9feHhfeHhfeF9hekdldEJvdGhfR2V0RGF0YV9HZXRTY2hlbWFfeF94XG4wX3ZhbHVla0f22085" />
+
+
+        <table border=0 cellpadding=5 style="font:10pt verdana">	
+        <tr>
+          <td colspan="2">
+            <b>Connect String:</b><br>
+            <input name="ConnectString" id="ConnectString" type="text" value="server=localhost;uid=sa;pwd=;database=pubs" size="85" />
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <b>Query:</b><br>
+            <input name="myText" id="myText" type="text" value="select * from Authors" size="85" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input name="Mode" id="GetSchema" type="radio" value="GetSchema" />Get XML Schema<br>
+            <input name="Mode" id="GetData" type="radio" value="GetData" />Get XML Data<br>
+            <input name="Mode" id="GetBoth" type="radio" checked="true" value="GetBoth" />Get Both
+          </td>
+          <td valign="top">
+            <input name="ctrl4" type="submit" />
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+
+              
+
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+
+              
+
+          </td>
+        <tr>
+        </table>
+
+    </form>
+
+</body>
+</html>
+

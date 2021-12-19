@@ -1,0 +1,55 @@
+<html>
+<head>
+
+    
+
+</head>
+<body>
+
+    <h3><font face="Verdana">Simple HtmlSelect Sample</font></h3>
+
+    <form name="ctrl2" method="post" action="HtmlSelect1.htm" id="ctrl2">
+<input type="hidden" name="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTI2Nzk2ODQ5OV9fX3g=16bb9e8b" />
+
+<script language="javascript">
+<!--
+	function __doPostBack(eventTarget, eventArgument) {
+		var theform = document.ctrl2
+		theform.__EVENTTARGET.value = eventTarget
+		theform.__EVENTARGUMENT.value = eventArgument
+		theform.submit()
+	}
+// -->
+</script>
+
+
+        Select a color:<br>
+
+        <select name="ColorSelect" id="ColorSelect">
+    <option value="SkyBlue">SkyBlue</option>
+    <option value="LightGreen">LightGreen</option>
+    <option value="Gainsboro">Gainsboro</option>
+    <option value="LemonChiffon">LemonChiffon</option>
+</select>
+
+        <input name="ctrl6" type="button" value="Apply" / onclick="javascript:__doPostBack('ctrl6','')">
+
+        <p>
+
+        Don't see your color in the list above?  You can add it here:<br>
+
+        <input name="Text1" id="Text1" type="text" />
+        <input name="ctrl9" type="button" value="Add to List" / onclick="javascript:__doPostBack('ctrl9','')">
+
+        <p>
+
+        <span id="Span1">Click the button to apply a background color to this span.</span>
+
+    </form>
+
+</body>
+</html>
+
+

@@ -1,0 +1,77 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/adoplus/vb/adooverview2.src&file=AdoOverView2.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfQWRvT3ZlclZpZXcyLmFzcFx4eF9feHhfeHhfeF9feA==9e716138" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">AdoOverView2.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../howto/samples/adoplus/vb/adooverview2aspxsource.htm'>AdoOverView2.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../howto/samples/adoplus/cs/adooverview2aspxsource.htm'>..\CS\AdoOverView2.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><html>
+<%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="System.Data.SQL" %>
+
+<head>
+<script language="VB" runat="server">
+
+	Dim Message as String
+
+	protected sub Page_Load(Src as object, E as EventArgs ) 
+
+	Dim myConnection as SQLConnection
+	Dim mySQLCommand as SQLCommand
+	Dim mySQLCleanup as SQLCommand
+
+	myConnection = new SQLConnection("server=localhost;uid=sa;pwd=;database=northwind")
+	mySQLCommand = new SQLCommand("INSERT INTO CUSTOMERS (CustomerId, CompanyName, Contactname, ContactTitle, Address) Values ('fd','FatDaddy', 'Penelope Smith', 'Princess','One My Way')", myConnection)
+	mySQLCleanup = new SQLCommand("DELETE FROM Customers WHERE CustomerId = 'fd'", myConnection)
+
+	try
+		myConnection.Open()
+		mySQLCleanup.ExecuteNonQuery()	'Remove record that may have been entered previously.
+		mySQLCommand.ExecuteNonQuery()
+		Message = "FatDaddy Record inserted into Customers table in northwind."
+
+	catch myException as Exception
+		Message = "<B>Couldn't insert record: </B>" + myException.ToString()
+
+	finally
+		myConnection.Close()
+	end try
+	
+	end sub
+
+</script>
+</head>
+
+<body>
+
+<% Response.Write(Message) %>
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>
+</span>
+
+    </form>

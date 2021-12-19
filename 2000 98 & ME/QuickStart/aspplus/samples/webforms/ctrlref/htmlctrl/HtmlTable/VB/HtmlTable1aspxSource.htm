@@ -1,0 +1,115 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlref/htmlctrl/HtmlTable/HtmlTable1.src&file=VB%5CHtmlTable1.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkJcXEh0bWxUYWJsZTEuYXNwXHh4X194eF94eF94X19433d864f2" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB\HtmlTable1.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../../aspplus/samples/webforms/ctrlref/htmlctrl/htmltable/htmltable1aspxsource.htm'>HtmlTable1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../../aspplus/samples/webforms/ctrlref/htmlctrl/htmltable/vb/htmltable1aspxsource.htm'>VB\HtmlTable1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../../../../aspplus/samples/webforms/ctrlref/htmlctrl/htmltable/js/htmltable1aspxsource.htm'>JS\HtmlTable1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><html>
+<head>
+
+    <script language="VB" runat="server">
+
+       Sub Page_Load(sender As Object, e As EventArgs) 
+
+            Dim numrows As Integer
+            Dim numcells As Integer
+            Dim i As Integer = 0
+            Dim j As Integer = 0
+            Dim Row As Integer = 0
+            Dim r As HtmlTableRow
+            Dim c As HtmlTableCell
+        
+            ' Generate rows and cells
+            numrows = CInt(Select1.Value)
+            numcells = CInt(Select2.Value)
+            
+            For j = 0 To numrows-1
+            
+                r = new HtmlTableRow()
+                            
+                If (row Mod 2 <> 0) Then
+                    r.BgColor = "Gainsboro"
+                End If
+                row += 1
+             
+                For i = 0 To numcells-1
+                    c = new HtmlTableCell()
+                    c.Controls.Add(new LiteralControl("row " & j & ", cell " & i))
+                    r.Cells.Add(c)
+                Next i
+                
+                Table1.Rows.Add(r)
+            Next j
+       End Sub
+
+    </script>
+
+</head>
+<body>
+
+    <h3><font face="Verdana">HtmlTable Example</font></h3>
+
+    <form runat=server>
+    <font face="Verdana" size="-1">
+        <p>
+
+        <table id="Table1" CellPadding=5 CellSpacing=0 Border="1" runat="server" />
+        
+        <p>
+        Table rows:
+        <select id="Select1" runat="server">
+            <option Value="1">1</option>
+            <option Value="2">2</option>
+            <option Value="3">3</option>
+            <option Value="4">4</option>
+            <option Value="5">5</option>
+        </select>
+
+        <br>
+        Table cells:
+        <select id="Select2" runat="server">
+            <option Value="1">1</option>
+            <option Value="2">2</option>
+            <option Value="3">3</option>
+            <option Value="4">4</option>
+            <option Value="5">5</option>
+        </select>
+        
+        <input type="submit" value="Generate Table" runat="server">
+
+    </font>
+    </form>
+
+</body>
+</html>
+
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

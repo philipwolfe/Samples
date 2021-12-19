@@ -1,0 +1,90 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlref/webctrl/DataGrid/datagrid1.src&file=datagrid1.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfZGF0YWdyaWQxLmFzcFx4eF9feHhfeHhfeF9feA==345831d1" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">datagrid1.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlref/webctrl/datagrid/datagrid1aspxsource.htm'>datagrid1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlref/webctrl/datagrid/vb/datagrid1aspxsource.htm'>VB\datagrid1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Import Namespace="System.Data" %>
+
+<html>
+<script language="C#" runat="server">
+
+    ICollection CreateDataSource() {
+        DataTable dt = new DataTable();
+        DataRow dr;
+
+        dt.Columns.Add(new DataColumn("IntegerValue", typeof(Int32)));
+        dt.Columns.Add(new DataColumn("StringValue", typeof(string)));
+        dt.Columns.Add(new DataColumn("DateTimeValue", typeof(DateTime)));
+        dt.Columns.Add(new DataColumn("BoolValue", typeof(bool)));
+        dt.Columns.Add(new DataColumn("CurrencyValue", typeof(double)));
+
+        for (int i = 0; i < 9; i++) {
+            dr = dt.NewRow();
+
+            dr[0] = i;
+            dr[1] = "Item " + Int32.ToString(i);
+            dr[2] = DateTime.Now;
+            dr[3] = (i % 2 != 0) ? true : false;
+            dr[4] = 1.23 * (i+1);
+
+            dt.Rows.Add(dr);
+        }
+
+        DataView dv = new DataView(dt);
+        return dv;
+    }
+
+    void Page_Load(Object sender, EventArgs e) {
+        MyDataGrid.DataSource = CreateDataSource();
+        MyDataGrid.DataBind();
+    }
+
+</script>
+
+<body>
+
+    <h3><font face="Verdana">Simple DataGrid Example</font></h3>
+
+    <form runat=server>
+
+      <ASP:DataGrid id="MyDataGrid" runat="server"
+        BorderColor="black"
+        BorderWidth="1"
+        GridLines="Both"
+        CellPadding="3"
+        CellSpacing="0"
+        Font-Name="Verdana"
+        Font-Size="8pt"
+        HeaderStyle-BackColor="#aaaadd"
+      />
+
+  </form>
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

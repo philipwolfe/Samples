@@ -1,0 +1,133 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlref/webctrl/DataGrid/datagrid9.src&file=datagrid9.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfZGF0YWdyaWQ5LmFzcFx4eF9feHhfeHhfeF9feA==96c3d5dc" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">datagrid9.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlref/webctrl/datagrid/datagrid9aspxsource.htm'>datagrid9.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlref/webctrl/datagrid/vb/datagrid9aspxsource.htm'>VB\datagrid9.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Import Namespace="System.Data" %>
+
+<html>
+<script language="C#" runat="server">
+
+    string SortField;
+
+    ICollection CreateDataSource() {
+        DataTable dt = new DataTable();
+        DataRow dr;
+
+        dt.Columns.Add(new DataColumn("IntegerValue", typeof(Int32)));
+        dt.Columns.Add(new DataColumn("StringValue", typeof(string)));
+        dt.Columns.Add(new DataColumn("DateTimeValue", typeof(DateTime)));
+        dt.Columns.Add(new DataColumn("BoolValue", typeof(bool)));
+        dt.Columns.Add(new DataColumn("CurrencyValue", typeof(double)));
+
+        for (int i = 0; i < 9; i++) {
+            dr = dt.NewRow();
+
+            dr[0] = 9-i;
+            dr[1] = "Item " + Int32.ToString(i);
+            dr[2] = new DateTime(2000,1,1);
+            dr[3] = (i % 2 != 0) ? true : false;
+            dr[4] = 1.23 * (i+1);
+
+            dt.Rows.Add(dr);
+        }
+
+        DataView dv = new DataView(dt);
+        dv.Sort = SortField;
+        return dv;
+    }
+
+    void Page_Load(Object sender, EventArgs e) {
+        if (!IsPostBack) {
+            if (SortField == "") {
+                SortField = "IntegerValue";
+            }    
+            BindGrid();
+        }    
+    }
+
+    protected void MyDataGrid_Sort(Object sender, DataGridSortCommandEventArgs e) {
+        SortField = (string)e.SortField;
+Response.Write(SortField);
+        BindGrid();
+    }
+
+    public void BindGrid() {
+        MyDataGrid.DataSource = CreateDataSource();
+        MyDataGrid.DataBind();
+    }
+
+
+</script>
+
+<body>
+
+    <h3><font face="Verdana">Custom Sorting in DataGrid</font></h3>
+
+    <form runat=server>
+
+      <ASP:DataGrid id="MyDataGrid" runat="server"
+        BorderColor="black"
+        BorderWidth="1"
+        CellPadding="3"
+        Font-Name="Verdana"
+        Font-Size="8pt"
+        HeaderStyle-BackColor="#cccccc"
+        HeaderStyle-ForeColor="black"
+        AutoGenerateColumns="false"
+        AllowSorting="true"
+        OnSortCommand="MyDataGrid_Sort"
+      >
+          <property name="Columns">
+            <!-- sortable -->
+            <asp:BoundColumn HeaderText="Sortable" DataField="IntegerValue" SortField="IntegerValue"/>
+            <!-- not sortable-->
+            <asp:BoundColumn HeaderText="Not Sortable" DataField="DateTimeValue" />
+            <asp:TemplateColumn
+                SortField="StringValue">
+                <template name="HeaderTemplate">
+                    Click to sort -->
+                    <asp:ImageButton id=SortButton1 runat="server"
+                        CommandName="sort" CommandArgument="StringValue"
+                        ImageUrl="/quickstart/aspplus/images/arrow1.gif"
+                        />
+                </template>
+                <template name="ItemTemplate">
+                    <asp:Label runat="server"
+                        Text='<%# DataBinder.Eval(Container, "DataItem.StringValue") %>' />
+                </template>
+            </asp:TemplateColumn>
+          </property>
+
+      </asp:DataGrid>
+
+  </form>
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

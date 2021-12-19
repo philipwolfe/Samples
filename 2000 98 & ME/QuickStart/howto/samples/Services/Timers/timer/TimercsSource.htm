@@ -1,0 +1,55 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Services/Timers/timer/timer.src&file=Timer.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVGltZXIuY3N4X194eF94eF94X194d0f8ec01" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">Timer.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../howto/samples/services/timers/timer/timercssource.htm'>Timer.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../howto/samples/services/timers/timer/vb/timervbsource.htm'>VB\Timer.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>using System;
+using System.Threading;
+using System.Timers;
+	
+public class WaitableTimerSample
+{
+    public static void Main(String[] args) 
+	{
+		System.Timers.Timer aTimer = new System.Timers.Timer();
+	
+		aTimer.Tick += new EventHandler(OnTimer);
+
+		aTimer.Interval = 1000;
+		aTimer.Enabled = true;
+		
+		Console.WriteLine("Press \'q\' to quit the sample");	
+		while(Console.Read()!='q');
+    }
+
+	public static void OnTimer(Object source, EventArgs e)
+	{
+		Console.WriteLine("Hello World!");
+	}
+}
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

@@ -1,0 +1,128 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/trace/trace2.src&file=VB/trace2.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvdHJhY2UyLmFzcFx4eF9feHhfeHhfeF9feA==25c0c03d" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/trace2.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../aspplus/samples/trace/trace2aspxsource.htm'>trace2.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../aspplus/samples/trace/vb/trace2aspxsource.htm'>VB/trace2.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Page Trace="true" TraceMode="SortByCategory" %>
+<%-- See also: SortByTime --%>
+
+<%@ Import NameSpace="System.Data" %>
+<%@ Import NameSpace="System.Data.SQL" %>
+
+
+<html>
+
+<script language="VB" runat="server">
+
+  Sub Page_Load(Sender As Object, E As EventArgs)
+
+    Trace.Warn("Custom Trace","Beginning User Code...")
+
+    If Not (IsPostBack)
+
+      Trace.Write("CustomTrace","PostBack=true")
+
+      Dim MyConnection As SQLConnection
+      Dim MyCommand As SQLDataSetCommand    
+
+      MyConnection = New SQLConnection("server=localhost;uid=sa;pwd=;database=grocertogo")
+      MyCommand = New SQLDataSetCommand("select distinct CategoryName from Categories", MyConnection)
+
+      Dim DS As New DataSet
+      MyCommand.FillDataSet(DS, "Categories")
+
+      If (Trace.IsEnabled)
+
+        Dim I As Integer
+        For I = 0 To DS.Tables("Categories").Rows.Count - 1
+
+          Trace.Write("ProductCategory",DS.Tables("Categories").Rows(I)(0).ToString())
+        Next
+      End If
+
+      Categories.DataSource = ds.Tables("Categories").DefaultView
+      Categories.DataBind
+    End If
+  End Sub
+
+  Sub Submit_Click(Sender As Object, E As EventArgs)
+
+    Trace.Write("CustomTrace","Entering Submit Handler...")
+
+    Dim MyConnection As SQLConnection
+    Dim MyCommand As SQLDataSetCommand
+
+    MyConnection = New SQLConnection("server=localhost;uid=sa;pwd=;database=grocertogo")
+    MyCommand = New SQLDataSetCommand("select ProductName, ImagePath, UnitPrice, c.CategoryId  from Products p, Categories c where c.CategoryName='" & Categories.SelectedItem.Value & "' and p.CategoryId = c.CategoryId", MyConnection)
+
+
+    Dim DS As New DataSet
+    MyCommand.FillDataSet(DS, "Products")
+
+    Products.DataSource = ds.Tables("Products").DefaultView
+    Products.DataBind()
+
+    Trace.Write("CustomTrace","Leaving Submit Handler...")
+  End Sub
+
+</script>
+
+<body style="font: 10pt verdana" bgcolor="ffffcc">
+
+  <form runat="server">
+
+  <h3>Writing Custom Trace Ouput to a Page</h3>
+
+  Select a Category: 
+
+  <ASP:DropDownList id="Categories" DataValueField="CategoryName" runat="server"/>
+
+  <input type="Submit" OnServerClick="Submit_Click" Value="Get Products" runat="server"/><p>
+
+  <ASP:DataList id="Products" ShowHeader=false ShowFooter=false RepeatDirection="horizontal" BorderWidth=0 runat="server">
+
+    <template name="itemtemplate">
+      <table>
+        <tr>
+          <td width="150" style="text-align:center; font-size:8pt; vertical-align:top; height:200">
+            <ASP:ImageButton borderwidth=6 bordercolor="#ffffcc" command="Select" ImageUrl='<%# DataBinder.Eval(Container.DataItem, "ImagePath") %>' runat="server"/>
+            <p>
+            <%# DataBinder.Eval(Container.DataItem, "ProductName") %> <br>
+            <%# DataBinder.Eval(Container.DataItem, "UnitPrice", "{0:C}").ToString() %>
+          </td>
+        </tr>
+      </table>
+    </template>
+                                             
+  </ASP:DataList>
+
+  </form> 
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

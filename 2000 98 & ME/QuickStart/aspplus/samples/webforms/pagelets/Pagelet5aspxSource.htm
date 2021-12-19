@@ -1,0 +1,65 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/pagelets/pagelet5.src&file=Pagelet5.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfUGFnZWxldDUuYXNwXHh4X194eF94eF94X194f54d8d51" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">Pagelet5.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/pagelets/pagelet5aspxsource.htm'>Pagelet5.htm</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/pagelets/pagelet5ascxsource.htm'>Pagelet5.ascx</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/pagelets/vb/pagelet5aspxsource.htm'>VB/Pagelet5.htm</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/pagelets/vb/pagelet5ascxsource.htm'>VB/Pagelet5.ascx</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/pagelets/js/pagelet5aspxsource.htm'>JS/Pagelet5.htm</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/pagelets/js/pagelet5ascxsource.htm'>JS/Pagelet5.ascx</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Register TagPrefix="Acme" TagName="Login" Src="pagelet5.ascx" %>
+
+<html>
+
+<script language="C#" runat="server">
+
+  public void Page_Load(Object sender, EventArgs E) {
+  
+    if ((Page.IsPostBack) && (Page.IsValid)) {
+        MyLabel.Text += "The UserId is " + MyLogin.UserId + "<br>";
+        MyLabel.Text += "The Password is " + MyLogin.Password + "<br>";
+    }    
+  }
+
+</script>
+
+<body style="font: 10pt verdana">
+
+  <h3>A Login User Control</h3>
+
+  <form runat="server">
+
+    <Acme:Login id="MyLogin" BackColor="beige" runat="server"/>
+
+  </form>
+
+  <asp:Label id="MyLabel" runat="server"/>
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

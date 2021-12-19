@@ -1,0 +1,103 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Xml/SaveXmlDocument/SaveXmlDocument.src&file=VB/SaveXmlDocument.vb" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvU2F2ZVhtbERvY3VtZW50LnZieF9feHhfeHhfeF9feA==7996fe11" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/SaveXmlDocument.vb</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../howto/samples/xml/savexmldocument/savexmldocumentcssource.htm'>SaveXmlDocument.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../howto/samples/xml/savexmldocument/vb/savexmldocumentvbsource.htm'>VB/SaveXmlDocument.vb</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>XML data: </b></td>
+        <td><a href='../../../../../howto/samples/xml/savexmldocument/booksxmlsource.htm'>books.xml</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>XML saved: </b></td>
+        <td><a href='../../../../../howto/samples/xml/savexmldocument/updatebooksxmlsource.htm'>updatebooks.xml</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>'Copyright (c) 2000, Microsoft Corporation. All Rights Reserved.
+
+Imports Microsoft.VisualBasic
+Imports System
+Imports System.IO
+Imports System.Xml
+
+namespace HowTo.Samples.XML
+    
+public class XmlDocumentSample
+
+    private const m_Document as String = "books.xml"
+    private const m_UpdatedDocument as String = "updatebooks.xml"
+
+    public shared sub Main()
+        Dim xmldocument as XmlDocumentSample= new XmlDocumentSample()
+    end sub   
+
+    public sub new ()
+        mybase.new
+        try                
+            ' Create an XmlDocument
+            dim xmldocument as XmlDocument = new XmlDocument()
+            xmldocument.Load (m_Document)
+            Console.WriteLine ("XmlDocument loaded with XML data successfully ...")
+            Console.WriteLine()
+
+            IncreasePrice(xmldocument.DocumentElement)
+
+            ' Write out data as XML
+            xmldocument.Save(m_UpdatedDocument)
+            Console.WriteLine()
+            Console.WriteLine("Updated prices saved in file {0}", m_UpdatedDocument)
+        
+        catch e as Exception        
+            Console.WriteLine ("Exception: {0}", e.ToString())
+        end try
+    end sub    
+
+    public sub IncreasePrice(node as XmlNode)
+           
+        if (node.Name = "price")
+        
+            node = node.FirstChild
+            dim price as Decimal
+            price = System.Decimal.Parse(node.Value)
+
+            ' Increase all the book prices by 2%
+            dim newprice as String
+            newprice = System.Decimal.Format(price*(new Decimal(1.02)),"#.00")
+            Console.WriteLine("Old Price = " & node.Value & Strings.chr(9) & "New price = " & newprice)
+            node.Value = newprice
+        end if
+                
+        node = node.FirstChild
+        while not (node = nothing)            
+            IncreasePrice(node)
+            node = node.NextSibling
+        end while            
+    
+    end sub    
+
+end Class
+end Namespace
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

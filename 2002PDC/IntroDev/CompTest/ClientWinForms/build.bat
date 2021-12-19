@@ -1,0 +1,1 @@
+vbc ClientWinForms.vb /reference:System.WinForms.dll /reference:..\Bin\CompCS.dll /reference:..\Bin\CompVB.dll /reference:..\Bin\CompVC.dll /out:..\bin\ClientWinForms.exe /t:exe

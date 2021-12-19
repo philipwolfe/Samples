@@ -1,0 +1,76 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/busobjs/HelloObj.src&file=VB/HelloObj.vb" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvSGVsbG9PYmoudmJ4X194eF94eF94X194ea90be60" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/HelloObj.vb</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/busobjs/helloobjaspxsource.htm'>HelloObj.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/busobjs/helloobjcssource.htm'>HelloObj.cs</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/busobjs/configwebsource.htm'>config.web</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/busobjs/makesamplebatsource.htm'>makesample.bat</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/busobjs/vb/helloobjaspxsource.htm'>VB/HelloObj.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/busobjs/vb/helloobjvbsource.htm'>VB/HelloObj.vb</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/busobjs/vb/configwebsource.htm'>VB/config.web</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/busobjs/vb/makesamplebatsource.htm'>VB/makesample.bat</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>Imports System
+Imports System.Text
+Imports Microsoft.VisualBasic
+
+Namespace HelloWorld
+
+  Public Class HelloObjVB 
+  
+    Private _name As String
+
+    Public Sub New()
+
+        MyBase.New()
+        _name = ""
+    End Sub
+
+    Public Property FirstName As String
+
+      Get 
+        return _name
+      End Get
+
+      Set
+        _name = Value
+      End Set
+    End Property
+
+    Public Function SayHello() As String
+
+      Dim SB As StringBuilder
+      SB = New StringBuilder("Hello ")
+
+      If Not (_name = "")
+         SB.Append(_name)
+      Else
+         SB.Append("World")
+      End If
+
+      SB.Append("!")
+      Return SB.ToString()
+    End Function
+
+  End Class
+
+End Namespace
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

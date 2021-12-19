@@ -1,0 +1,62 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Services/MessageQueue/sendobject/SendObject.src&file=Customer.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfQ3VzdG9tZXIuY3N4X194eF94eF94X194ba0d7128" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">Customer.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../howto/samples/services/messagequeue/sendobject/sendobjectcssource.htm'>SendObject.cs</a> &nbsp;&nbsp<a href='../../../../../howto/samples/services/messagequeue/sendobject/customercssource.htm'>Customer.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../howto/samples/services/messagequeue/sendobject/vb/sendobjectvbsource.htm'>VB\SendObject.vb</a> &nbsp;&nbsp<a href='../../../../../howto/samples/services/messagequeue/sendobject/vb/customervbsource.htm'>VB\Customer.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>using System;
+
+public class Customer
+{
+	protected string lastName;
+	protected string firstName;
+	
+	public string LastName{
+		get{
+			return this.lastName;
+		}
+		set{
+			this.lastName = value;
+		}
+	}
+
+	public string FirstName{
+		get{
+			return this.firstName;
+		}
+		set{
+			this.firstName = value;
+		}
+	}	
+
+	public string FullName{
+		get{
+			return (FirstName + LastName);
+		}
+	}
+}
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

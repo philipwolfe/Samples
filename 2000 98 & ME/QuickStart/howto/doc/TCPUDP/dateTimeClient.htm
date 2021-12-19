@@ -1,0 +1,154 @@
+
+
+<!--BEGIN HEADER-->
+<html>
+<head>
+<link rel="stylesheet" href="../../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+
+<table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+
+    <div style="padding:0,0,4,0"><b>Networking</b><br></div>
+    &nbsp; <a class="outer" href="../../../howto/doc/webrequests/clientget.htm">Make a GET request</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/webrequests/clientgetwithssl.htm">Make an SSL GET request</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/webrequests/clientgetwithntlm.htm">Make an NTLM GET request</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/webrequests/clientgetwithproxy.htm">Make a proxy GET request</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/webrequests/clientgetasync.htm">Make an async GET request</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/aspxnet/get.htm">Make a GET request in ASP.NET</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/aspxnet/getasync.htm">Async GET request in ASP.NET</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/webrequests/clientexception.htm">Handle WebExceptions</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/webrequests/clientpost.htm">Make a POST request</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/tcpudp/datetimeclient.htm">Write a TCPClient client</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/tcpudp/datetimeserver.htm">Write a TCPListener server</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/tcpudp/broadcastchatclient.htm">Write a UDPClient client</a><p>
+    <div style="padding:0,0,4,0"><a target="_top" style="color:darkred" href="../../../howto"><b>Back to Index</b></a><br></div>
+
+</div>
+
+</td>
+</tr>
+</table>
+
+
+
+
+
+
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<style>
+.mydd {  font: smaller verdana; }
+.code1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:blue;
+	}
+.codecomment1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:green;
+	}
+.issue {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background-color:RED;
+	color:WHITE;
+	font-weight:bold;
+	}
+
+
+body { font: smaller verdana }        
+
+</style>
+
+
+
+
+
+<h4>How Do I...Make a DateTime client with TCPClient?</h4>
+
+<div class="indent" style="width:660">
+
+<p>This sample illustrates using the TCPClient class to create a DateTime program.</p>
+
+<p>This application acts as a client for the standard Date and Time protocol. 
+This protocol works on port 13, and responds to any TCP connections to that 
+port with the current date and time.</p>
+
+<p>The application firsts creates a <B>TCPClient</B> object with the default 
+constructor. Next, the hostname that was specified at the command line is 
+resolved into an IP address with the statis class <B>DNS</B>. Next, the 
+<B>Connect</B> method is called and the TCPClient connects to the server on port 13.</p>
+
+<p>
+The <B>GetStream</B> method is next called and a <B>Stream</B> object is 
+returned that represents the data returned by the server. This data is read 
+from the <B>Stream</B> object with the <b>Read</b> method, and the byte array that 
+the <b>Read</b> method returns is turned into a string, and displayed.</p>
+
+</div>
+
+<h4>Example</h4>
+
+<span>
+  
+  
+
+        
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../../howto/samples/net/tcpudp/vb">
+	<img style="border-color:black" border=1 src="../../../images/console.gif"><br>
+	</a>
+	<div class="caption">DateTimeClient.exe</div><br>
+	
+	
+		[<a target="_blank" href="../../../howto/samples/net/tcpudp/vb">Run Sample</a>] | 
+		[<a target="_blank" href="../../../howto/samples/net/tcpudp/datetimeclientcssource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+
+<!--END FOOTER-->
+<p>
+<hr>
+<p>
+</div>
+</td>
+</tr>
+</table>
+</BODY>
+</html>
+<!--END FOOTER-->

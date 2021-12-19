@@ -1,0 +1,107 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/winforms/samples/Cs/Data/WebServiceBinding/WebServiceBinding.src&file=SimpleCustomersWebService.SDL" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfU2ltcGxlQ3VzdG9tZXJzV2ViU2VydmljZS5TREx4X194eF94eF94X194f1206514" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">SimpleCustomersWebService.SDL</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>Win Form Source: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/data/webservicebinding/webserviceclientcssource.htm'>WebServiceClient.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Northwind dataset: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/data/webservicebinding/customersdatasetcssource.htm'>CustomersDataSet.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Web Service: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/data/webservicebinding/simplecustomerswebserviceasmxsource.htm'>SimpleCustomersWebService.asmx</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Web Service definition: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/data/webservicebinding/simplecustomerswebservicesdlsource.htm'>SimpleCustomersWebService.SDL</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Client Proxy: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/data/webservicebinding/customerslistcssource.htm'>CustomersList.cs</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><?xml version="1.0"?>
+<serviceDescription xmlns:s0="http://tempuri.org/" name="CustomersList" targetNamespace="http://tempuri.org/" xmlns="urn:schemas-xmlsoap-org:sdl.2000-01-25">
+  <soap xmlns="urn:schemas-xmlsoap-org:soap-sdl-2000-01-25">
+    <service>
+      <addresses>
+        <address uri="http://localhost/QuickStart/winforms/samples/Cs/Data/WebServiceBinding/SimpleCustomersWebService.asmx"/>
+      </addresses>
+      <requestResponse name="GetCustomers" soapAction="http://tempuri.org/GetCustomers">
+        <request ref="s0:GetCustomers"/>
+        <response ref="s0:GetCustomersResult"/>
+      </requestResponse>
+    </service>
+  </soap>
+  <httppost xmlns="urn:schemas-xmlsoap-org:post-sdl-2000-01-25">
+    <service>
+      <requestResponse name="GetCustomers" href="http://localhost/QuickStart/winforms/samples/Cs/Data/WebServiceBinding/SimpleCustomersWebService.asmx/GetCustomers">
+        <request>
+          <form/>
+        </request>
+        <response>
+          <mimeXml ref="s0:DataSet"/>
+        </response>
+      </requestResponse>
+    </service>
+  </httppost>
+  <httpget xmlns="urn:schemas-xmlsoap-org:get-sdl-2000-01-25">
+    <service>
+      <requestResponse name="GetCustomers" href="http://localhost/QuickStart/winforms/samples/Cs/Data/WebServiceBinding/SimpleCustomersWebService.asmx/GetCustomers">
+        <request/>
+        <response>
+          <mimeXml ref="s0:DataSet"/>
+        </response>
+      </requestResponse>
+    </service>
+  </httpget>
+  <schema targetNamespace="http://tempuri.org/" attributeFormDefault="qualified" elementFormDefault="qualified" xmlns="http://www.w3.org/1999/XMLSchema">
+    <import namespace="http://www.w3.org/1999/XMLSchema"/>
+    <element name="GetCustomers">
+      <complexType/>
+    </element>
+    <element name="GetCustomersResult">
+      <complexType>
+        <all>
+          <element name="result" nullable="true">
+            <complexType>
+              <all>
+                <element ref="schema"/>
+                <any/>
+              </all>
+            </complexType>
+          </element>
+        </all>
+      </complexType>
+    </element>
+    <element name="DataSet" nullable="true">
+      <complexType>
+        <all>
+          <element ref="schema"/>
+          <any/>
+        </all>
+      </complexType>
+    </element>
+  </schema>
+</serviceDescription>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

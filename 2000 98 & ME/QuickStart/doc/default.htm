@@ -1,0 +1,116 @@
+<!--BEGIN HEADER-->
+<html>
+<head>
+<link rel="stylesheet" href="../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+  <table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+<!--
+
+            <div style="padding:0,0,0,0"><b><a class="outer" target="_top" href="../default.htm">Quick Start Home</a></b></div><br>
+
+            <div style="padding:0,0,0,0"><b><a class="outer" target="_top" href="../winforms/default.htm">Windows Forms Quick Start Tutorial</a></b></div><br>
+
+            <div style="padding:0,0,0,0"><b><a class="outer" target="_top" href="../aspplus/default.htm">ASP.NET QuickStart Tutorial</a></b></div><br>
+
+            <div style="padding:0,0,0,0"><b><a class="outer" target="_top" href="../adoplus/default.htm">ADO.NET QuickStart Tutorial</a></b></div><br>
+
+            <div style="padding:0,0,0,0"><b><a class="outer" target="_top" href="../howto/default.htm">How Do I...?</a></b></div><p>
+-->
+
+</div>
+
+</td>
+</tr>
+</table>
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<h4>Welcome to the Microsoft .Net Framework SDK QuickStart Tutorials</h4>
+
+The QuickStart Tutorials are the fastest way to understand what the .Net Framework technology offers leading-edge developers.  
+Inside you'll find information about the most compelling features of the .Net Framework technology, including how to put them immediately to work for you or your company. 
+To get started, follow the links below.
+
+<div class="indent">
+
+<p><span class="caption">The ASP.NET QuickStart</span><br> ASP.NET is a rich 
+programming framework for building web-based applications.  It offers 
+outstanding support for both developers and administrators, providing 
+improved ease-of-use, tool support, reliability, scalability, 
+administration and security.  The ASP.NET QuickStart walks through a series 
+of sample code and concepts to teach you how to make the most of this 
+powerful technology.  
+
+<div class="buffer-top"><a target="_top" href="../aspplus/default.htm">[ Start the ASP.NET QuickStart Tutorial ]</a></div>
+
+<p><span class="caption">The Windows Forms QuickStart</span><br> Windows Forms is 
+a rich programming framework for building Win32 client applications.  It 
+offers great support for Win32 developers, providing improved ease-of-use, 
+superb tool support, rock solid reliability, much lower deployment costs 
+and associated reductions in total cost of ownership.  The Windows Forms 
+QuickStart walks through a series of sample code and concepts to teach you 
+how to make the most of this powerful technology.  
+
+<div class="buffer-top"><a target="_top" href="../winforms/default.htm">[ Start the Windows Forms QuickStart Tutorial ]</a></div>
+
+<p><span class="caption">How Do I...?</span><br> The How Do I?  section 
+demonstrates some of the more common tasks that developers need to 
+accomplish, such as reading and parsing XML, performing data access, and 
+accessing services like Active Directory or Win32 APIs.  
+
+<div class="buffer-top"><a target="_top" href="../howto/default.htm">[ Start the How Do I...? Tutorial ]</a></div>
+
+</div>
+
+<h5>Printing the QuickStart Topics</h5>
+
+To print the QuickStart topics, set your browser to print in "Landscape" mode, then right-click the topic body and choose "Print".
+
+<h5>Hosting the QuickStart Tutorials on a Remote Server</h5>
+
+Since many of the samples are Windows Forms or console based, these tutorials are best experienced when installed to your
+local machine.  However, if you wish to host these samples from a server, you may do so by making the following 
+configuration settings in the <b>config.web</b> file at the /quickstart root directory:
+<p>
+<div class="code"><pre>
+&lt;appsettings&gt;
+    &lt;add key="RemoteHost" value="true" /&gt;
+&lt;/appsettings&gt;
+</pre></div>
+<p>
+This has the effect of downgrading samples which cannot be run from the Web to "View Source" only.
+<p>
+You will also need to edit the security settings for each virtual directory in the quickstart to grant access to 
+machines other than "localhost" (the local machine).  To do this:
+<p>
+
+<ul>
+<li>Start the Internet Services Manager by choosing Start->Run and typing "inetmgr".
+<li>Expand the "Default Web Site" item in the left-side tree.
+<li>Right-click the "quickstart" virtual directory, and choose "Properties".
+<li>Select the "Directory Security" tab and edit the "IP address and domain name restrictions."
+<li>Add the machines you wish to grant access, or grant access to all machines.
+</ul>
+
+<b>Note:</b>  By granting access to remote machines you may be compromising the security of your web server.  While every precaution
+has been taken to prevent malicious use of the .NET Framework in this release, the product is a Beta pre-release and cannot be
+considered "risk-free".
+
+
+
+
+
+
+<p>
+

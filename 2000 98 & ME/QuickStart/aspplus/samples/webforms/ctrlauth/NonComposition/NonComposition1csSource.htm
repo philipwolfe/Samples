@@ -1,0 +1,71 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlauth/NonComposition/NonComposition1.src&file=NonComposition1.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfTm9uQ29tcG9zaXRpb24xLmNzeF9feHhfeHhfeF9feA==fb2fef6c" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">NonComposition1.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/ctrlauth/noncomposition/noncomposition1aspxsource.htm'>NonComposition1.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/ctrlauth/noncomposition/noncomposition1cssource.htm'>NonComposition1.cs</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/ctrlauth/noncomposition/makesamplebatsource.htm'>makesample.bat</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/ctrlauth/noncomposition/vb/noncomposition1aspxsource.htm'>VB/NonComposition1.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/ctrlauth/noncomposition/vb/noncomposition1vbsource.htm'>VB/NonComposition1.vb</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/ctrlauth/noncomposition/vb/makesamplebatsource.htm'>VB/makesample.bat</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>using System;
+using System.Web;
+using System.Web.UI;
+using System.Collections;
+using System.Web.UI.WebControls;
+
+namespace NonCompositionSampleControls {
+
+    public class NonComposition1 : Control, IPostBackDataHandler {
+
+        private int _value = 0;
+
+        public int Value {
+
+           get {
+               return _value;
+           }
+           set {
+               _value = value;
+           }
+        }
+
+        public bool LoadPostData(String postDataKey, NameValueCollection values) {
+
+           _value = Int32.Parse(values[this.UniqueID]);
+           return false;
+        }
+
+        public void RaisePostDataChangedEvent() {
+
+           // Part of the IPostBackDataHandler contract.  Invoked if we ever returned true from the
+           // LoadPostData method (indicates that we want a change notification raised).  Since we
+           // always return false, this method is just a no-op.
+        }
+
+        protected override void Render(HtmlTextWriter output) {
+           output.Write("<h3>Value: <input name=" + this.UniqueID + " type=text value=" + this.Value + "> </h3>");
+        }
+    }    
+}
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

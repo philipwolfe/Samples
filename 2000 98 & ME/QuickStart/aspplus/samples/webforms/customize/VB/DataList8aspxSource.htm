@@ -1,0 +1,120 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/customize/datalist8.src&file=VB/DataList8.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvRGF0YUxpc3Q4LmFzcFx4eF9feHhfeHhfeF9feA==83867dc6" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/DataList8.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/customize/datalist8aspxsource.htm'>DataList8.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/customize/headerincsource.htm'>Header.inc</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/customize/footerincsource.htm'>Footer.inc</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/customize/vb/datalist8aspxsource.htm'>VB/DataList8.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/customize/vb/headerincsource.htm'>VB/Header.inc</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/customize/vb/footerincsource.htm'>VB/Footer.inc</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/customize/js/datalist8aspxsource.htm'>JS/DataList8.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/customize/js/headerincsource.htm'>JS/Header.inc</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/customize/js/footerincsource.htm'>JS/Footer.inc</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="System.Data.SQL" %>
+
+<html>
+
+<script language="VB" runat="server">
+
+    Sub Page_Load(Src As Object, E As EventArgs)
+    
+        If Not (Page.IsPostBack)
+        
+            Dim DS As DataSet
+            Dim MyConnection As SQLConnection
+            Dim MyCommand As SQLDataSetCommand
+
+            MyConnection = New SQLConnection("server=localhost;uid=sa;pwd=;database=pubs")
+            MyCommand = New SQLDataSetCommand("select * from Titles where type = 'business'", MyConnection)
+
+            DS = New DataSet()
+            MyCommand.FillDataSet(DS, "Titles")
+
+            MyDataList.DataSource = DS.Tables("Titles").DefaultView
+            MyDataList.DataBind()
+        End If
+    End Sub
+
+    Sub Submit_Click(Src As Object, E As EventArgs)
+    
+          For I=0 To MyDataList.Items.Count -1
+
+              Dim CurrentCheckBox As CheckBox
+              CurrentCheckBox = MyDataList.Items(I).FindControl("Save")          
+              Message.InnerHtml &= "Item(" & i & "): " & CurrentCheckBox.Checked.ToString() & "<br>"
+          Next
+    End Sub
+
+</script>
+
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0">
+
+  <form runat="server">
+
+  <!-- #include virtual="/quickstart/aspplus/samples/webforms/customize/header.inc" -->
+
+  <ASP:DataList id="MyDataList" RepeatColumns="2" runat="server">
+
+      <template name="itemtemplate">
+
+        <table cellpadding=10 style="font: 10pt verdana">
+          <tr>
+            <td width=1 bgcolor="BD8672"/>
+            <td valign="top">
+              <img align="top" src='<%# DataBinder.Eval(Container.DataItem, "title_id", "/quickstart/aspplus/images/title-{0}.gif") %>' >
+            </td>
+            <td valign="top">
+              <b>Title: </b><%# DataBinder.Eval(Container.DataItem, "title") %><br>
+              <b>Category: </b><%# DataBinder.Eval(Container.DataItem, "type") %><br>
+              <b>Publisher ID: </b><%# DataBinder.Eval(Container.DataItem, "pub_id") %><br>
+              <b>Price: </b><%# DataBinder.Eval(Container.DataItem, "price", "$ {0}") %>
+              <p>
+              <asp:CheckBox id="Save" runat="server"/> <b>Save to Favorites</b>
+            </td>
+          </tr>
+        </table>
+
+      </template>
+
+  </ASP:DataList>
+
+  <p>
+
+  <div style="padding:0,15,0,15">
+      <input type="submit" Value="Update Favorites" OnServerClick="Submit_Click" runat="server"/>
+  </div>
+
+  <p>
+ 
+  <!-- #include virtual="/quickstart/aspplus/samples/webforms/customize/footer.inc" -->
+
+  </form>
+
+  <div style="font: 10pt verdana" MaintainState="false" id="Message" runat="server"/>
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

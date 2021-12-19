@@ -1,0 +1,355 @@
+
+
+<!--BEGIN HEADER-->
+<html>
+<head>
+<link rel="stylesheet" href="../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+
+<table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+
+    <div style="padding:0,0,4,0"><b>Diagnostics</b><br></div>
+    &nbsp; <a class="outer" href="../../howto/doc/logwrite.htm">Write to an event log</a><br>
+    &nbsp; <a class="outer" href="../../howto/doc/loginfo.htm">Read from an event log</a><br>
+    &nbsp; <a class="outer" href="../../howto/doc/logmonitor.htm">Monitor an event log</a><br>
+    &nbsp; <a class="outer" href="../../howto/doc/pcwrite.htm">Write to a perf counter</a><br>
+    &nbsp; <a class="outer" href="../../howto/doc/pcread.htm">Read from a perf counter</a><br>
+    &nbsp; <a class="outer" href="../../howto/doc/pcdemo.htm">Count rate of change</a><br>
+    &nbsp; <a class="outer" href="../../howto/doc/trace.htm">Work with tracing</a><br>
+    &nbsp; <a class="outer" href="../../howto/doc/switches.htm">Use trace switches/listeners</a><br>
+    &nbsp; <a class="outer" href="../../howto/doc/tracedemo.htm">Instrument an application</a><br>
+    &nbsp; <a class="outer" href="../../howto/doc/processdemo.htm">Start and stop a process</a><br>
+    &nbsp; <a class="outer" href="../../howto/doc/prinfo.htm">Get process information</a><p>
+    <div style="padding:0,0,4,0"><a target="_top" style="color:darkred" href="../../howto"><b>Back to Index</b></a><br></div>
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<style>
+.mydd {  font: smaller verdana; }
+.code1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:blue;
+	}
+.codecomment1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:green;
+	}
+.issue {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background-color:RED;
+	color:WHITE;
+	font-weight:bold;
+	}
+
+
+body { font: smaller verdana }        
+
+</style>
+
+
+
+
+
+<h4>How Do I...Get information about processes?</h4>
+
+<p>Please note that this sample may fail on Win9x machines.
+
+<p>You can use the Process component to accomplish most process management 
+tasks quickly and easily. You can use this component to work with processes 
+on either local or remote computers. For example, you can query a process 
+for specific types of information, including the names of the modules it is 
+loaded into, the time it was started, the number of handles it is consuming, 
+and the set of its threads.
+
+<p>This sample illustrates how to get a simple information about a process. 
+It's a small console application that can be run from a command prompt. Run 
+the sample without any command line arguments and it will print its full 
+usage instructions.
+
+<p>For
+example, if you want to enumerate all processes on your machine, run:
+
+<div class="code"><pre>
+&gt; PrInfo.exe e 
+</pre></div>
+
+<p>If you want to
+show the most common information about a process, run the sample with the
+&quot;i&quot; option with a process id. Remember to substitute a
+real process id for &quot;125&quot;.
+
+<div class="code"><pre>
+&gt; PrInfo.exe i 125
+</pre></div>
+
+<p>In its simplest form, getting information about a process involves:
+
+<ol>
+
+<li>Instantiating a Process component and pointing it to a process running on your system:
+
+<p>
+<table cellpadding=0 cellspacing=0 width="95%">
+<tr>
+<td>
+
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl4" style="display:none">
+
+Process process = Process.GetProcessById(processid);
+</pre>
+<pre id="codectrl4" style="display:">
+
+Dim process As Process = Process.GetProcessById(processid)
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl4" onclick="doClick(0, 'ctrl4')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl4" onclick="doClick(1, 'ctrl4')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+
+</td>
+</tr>
+</table>
+<p>
+
+<li>Reading the desired property of the Process component, for example:
+
+<p>
+<table cellpadding=0 cellspacing=0 width="95%">
+<tr>
+<td>
+
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl6" style="display:none">
+
+Console.WriteLine(&quot;Priority: " + process.PriorityClass.Format());
+</pre>
+<pre id="codectrl6" style="display:">
+
+Console.WriteLine(&quot;Priority: " & process.PriorityClass.Format())
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl6" onclick="doClick(0, 'ctrl6')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl6" onclick="doClick(1, 'ctrl6')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+
+</td>
+</tr>
+</table>
+
+</ol>
+
+<h4>Example</h4>
+
+<span>
+  
+  
+
+        
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../howto/samples/services/process/prinfo/vb">
+	<img style="border-color:black" border=1 src="../../images/console.gif"><br>
+	</a>
+	<div class="caption">PrInfo.exe</div><br>
+	
+	
+		[<a target="_blank" href="../../howto/samples/services/process/prinfo/vb">Run Sample</a>] | 
+		[<a target="_blank" href="../../howto/samples/services/process/prinfo/prinfocssource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<!--END FOOTER-->
+<p>
+<hr>
+<p>
+</div>
+</td>
+</tr>
+</table>
+</BODY>
+</html>
+<!--END FOOTER-->

@@ -1,0 +1,68 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Services/MessageQueue/mqreceive/MQReceive.src&file=VB%5CMQReceive.vb" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkJcXE1RUmVjZWl2ZS52YnhfX3h4X3h4X3hfX3g=0a7f4e98" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB\MQReceive.vb</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../howto/samples/services/messagequeue/mqreceive/mqreceivecssource.htm'>MQReceive.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../howto/samples/services/messagequeue/mqreceive/vb/mqreceivevbsource.htm'>VB\MQReceive.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>Imports System
+Imports System.Messaging
+
+Class MQReceive
+    public Shared Sub Main()
+                Dim appName As String= Environment.GetCommandLineArgs()(0)
+                Dim queuePath As String= Environment.GetCommandLineArgs()(1)
+
+
+                if(Environment.GetCommandLineArgs().Length <> 2) then
+                        Console.WriteLine("Usage: " + appName +" <queue>")
+                        Exit Sub
+                end if
+
+                Dim mqPath As String = ".\" + queuePath
+
+                if(Not MessageQueue.Exists(mqPath)) then
+                        Console.WriteLine("The queue '" + mqPath + "' does not exist!")
+                        Exit Sub
+                end if
+
+                Dim mq As MessageQueue = new MessageQueue(mqPath)
+                Dim formatter As XmlMessageFormatter = CType(mq.Formatter,XmlMessageFormatter)
+                formatter.TargetTypeNames = new String(){"System.String"}
+
+                Try
+                        Dim m As Message = mq.Receive(new TimeSpan(0,0,3))
+                        Console.WriteLine("Message: " + CStr(m.Body))
+                Catch e As MessageQueueException
+                        Console.WriteLine("There are no messages in the queue")
+                        Exit Sub
+                Catch e As InvalidOperationException
+                        Console.WriteLine("The message removed from the queue is not a string")
+                        Exit Sub
+                End Try
+     End Sub
+End Class
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

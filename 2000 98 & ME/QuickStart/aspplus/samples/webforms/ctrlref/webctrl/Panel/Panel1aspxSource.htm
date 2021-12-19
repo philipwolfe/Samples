@@ -1,0 +1,126 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlref/webctrl/Panel/panel1.src&file=Panel1.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfUGFuZWwxLmFzcFx4eF9feHhfeHhfeF9feA==45522fb5" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">Panel1.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlref/webctrl/panel/panel1aspxsource.htm'>Panel1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlref/webctrl/panel/vb/panel1aspxsource.htm'>VB\Panel1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><html>
+<head>
+
+    <script language="C#" runat="server">
+
+        void Page_Load(Object sender, EventArgs e) {
+        
+            // Show/Hide Panel Contents
+        
+            if (Check1.Checked) {
+                Panel1.Visible=false;
+            }
+            else {
+                Panel1.Visible=true;
+            }
+
+            // Generate label controls
+            
+            int numlabels = int.FromString(DropDown1.SelectedItem.Value);
+            
+            for (int i=1; i<=numlabels; i++) {
+                Label l = new Label();
+                l.Text = "Label" + Int32.ToString(i);
+                l.ID = "Label" + Int32.ToString(i);
+                Panel1.Controls.Add(l);
+                Panel1.Controls.Add(new LiteralControl("<br>"));
+            }
+
+            // Generate textbox controls
+            
+            int numtexts = int.FromString(DropDown2.SelectedItem.Value);
+            
+            for (int i=1; i<=numtexts; i++) {
+                TextBox t = new TextBox();
+                t.Text = "TextBox" + Int32.ToString(i);
+                t.ID = "TextBox" + Int32.ToString(i);
+                Panel1.Controls.Add(t);
+                Panel1.Controls.Add(new LiteralControl("<br>"));
+            }
+        }
+
+    </script>
+
+</head>
+<body>
+
+    <h3><font face="Verdana">Panel Example</font></h3>
+
+    <form runat=server>
+
+        <asp:Panel id="Panel1" runat="server"
+            BackColor="gainsboro"
+            Height="200px"
+            Width="300px">
+
+            Panel1: Here is some static content...
+            <p>
+
+        </asp:Panel>
+
+        <p>
+        
+        Generate Labels:
+        <asp:DropDownList id=DropDown1 runat="server">
+            <asp:ListItem Value="0">0</asp:ListItem>
+            <asp:ListItem Value="1">1</asp:ListItem>
+            <asp:ListItem Value="2">2</asp:ListItem>
+            <asp:ListItem Value="3">3</asp:ListItem>
+            <asp:ListItem Value="4">4</asp:ListItem>
+        </asp:DropDownList>
+
+        <br>
+        
+        Generate TextBoxes:
+        <asp:DropDownList id=DropDown2 runat="server">
+            <asp:ListItem Value="0">0</asp:ListItem>
+            <asp:ListItem Value="1">1</asp:ListItem>
+            <asp:ListItem Value="2">2</asp:ListItem>
+            <asp:ListItem Value="3">3</asp:ListItem>
+            <asp:ListItem Value="4">4</asp:ListItem>
+        </asp:DropDownList>
+
+        <p>
+        <asp:CheckBox id="Check1" Text="Hide Panel" runat="server"/>
+            
+        <p>
+        <asp:Button Text="Refresh Panel" runat="server"/>
+
+    </font>
+    </form>
+
+</body>
+</html>
+
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

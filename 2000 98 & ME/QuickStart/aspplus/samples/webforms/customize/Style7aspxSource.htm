@@ -1,0 +1,100 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/customize/style7.src&file=Style7.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfU3R5bGU3LmFzcFx4eF9feHhfeHhfeF9feA==23ab3e14" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">Style7.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/customize/style7aspxsource.htm'>Style7.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/customize/vb/style7aspxsource.htm'>VB/Style7.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/customize/js/style7aspxsource.htm'>JS/Style7.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Page Language="C#" %>
+
+<html>
+<head>
+
+  <style>
+    .calstyle { position:absolute; left:25%; top:20% }
+  </style>
+
+</head>
+<body>
+
+  <form runat="server">
+
+      <h3><font face="verdana">Applying Styles to Web Controls</font></h3>
+
+      <p><font face="verdana"><h4>The CssClass Property</h4></font><p>
+
+      <ASP:Calendar CssClass="calstyle" runat="server"
+
+           BackColor="Beige" 
+           ForeColor="Brown"
+           BorderWidth="3"
+           BorderStyle="Solid"
+           BorderColor="Black"
+           Height="450"
+           Width="450"
+           Font-Size="12pt"
+           Font-Name="Tahoma,Arial"
+           Font-Underline="false"
+           CellSpacing=2
+           CellPadding=2 
+           ShowGridLines=true
+
+           TitleStyle-BorderColor="darkolivegreen"
+           TitleStyle-BorderWidth="3"
+           TitleStyle-BackColor="olivedrab"	
+           TitleStyle-Height="50px"
+
+           DayHeaderStyle-BorderColor="darkolivegreen"  
+           DayHeaderStyle-BorderWidth="3"
+           DayHeaderStyle-BackColor="olivedrab"
+           DayHeaderStyle-ForeColor="black"
+           DayHeaderStyle-Height="20px"  
+
+           DayStyle-Width="50px"
+           DayStyle-Height="50px"
+
+           TodayDayStyle-BorderWidth="3"
+
+           WeekEndDayStyle-BackColor="palegoldenrod"
+           WeekEndDayStyle-Width="50px"
+           WeekEndDayStyle-Height="50px"
+
+           SelectedDayStyle-BorderColor="firebrick"
+           SelectedDayStyle-BorderWidth="3"
+
+           OtherMonthDayStyle-Width="50px"
+           OtherMonthDayStyle-Height="50px"
+       />
+
+    </form>
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

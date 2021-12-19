@@ -1,0 +1,53 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/assemblies/SharedName/sharedname.src&file=makefile" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfbWFrZWZpbGV4X194eF94eF94X194453369c7" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">makefile</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../howto/samples/assemblies/sharedname/sharednamecssource.htm'>SharedName.cs</a> &nbsp;&nbsp<a href='../../../../howto/samples/assemblies/sharedname/makefilesource.htm'>makefile</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>!IFNDEF CORSDK
+#assumes directory of com20sdk\QuickStart\aspplus\samples\webforms\ctrlauth\simple
+CORSDK=C:\com20sdk
+!ENDIF
+
+#tell nmake where to find the master rules for building COM+ applications
+#assumes file is \com20sdk\QuickStart\master.mak
+!include ..\..\..\..\master.mak
+
+
+# Since we are a protocol of putting all the dlls in a bin dir
+# let's reset our global variable to point to the bin directory
+#_OUTDIR=..\..\..\..\bin
+
+#since we want the compiler to import from some dll's, let's specify it here
+_IMPORTS=/a.keyfile:Testkey.snk
+
+#our dependancy list
+#since the filename of the dll does not match filename for .cs
+#we must specify the command line for the compile
+
+
+SN:
+	SN -k Testkey.snk 
+
+all:  SN SharedName.dll
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

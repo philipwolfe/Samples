@@ -1,0 +1,82 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlauth/CustomParsing/CustomParse2.src&file=VB/CustomParse2.vb" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvQ3VzdG9tUGFyc2UyLnZieF9feHhfeHhfeF9feA==bffb2221" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/CustomParse2.vb</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlauth/customparsing/customparse2aspxsource.htm'>CustomParse2.htm</a> &nbsp;&nbsp<a href='../../../../../../aspplus/samples/webforms/ctrlauth/customparsing/customparse2cssource.htm'>CustomParse2.cs</a> &nbsp;&nbsp<a href='../../../../../../aspplus/samples/webforms/ctrlauth/customparsing/itemcssource.htm'>Item.cs</a> &nbsp;&nbsp<a href='../../../../../../aspplus/samples/webforms/ctrlauth/customparsing/makesamplebatsource.htm'>makesample.bat</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlauth/customparsing/vb/customparse2aspxsource.htm'>VB/CustomParse2.htm</a> &nbsp;&nbsp<a href='../../../../../../aspplus/samples/webforms/ctrlauth/customparsing/vb/customparse2vbsource.htm'>VB/CustomParse2.vb</a> &nbsp;&nbsp<a href='../../../../../../aspplus/samples/webforms/ctrlauth/customparsing/vb/itemvbsource.htm'>VB/Item.vb</a> &nbsp;&nbsp<a href='../../../../../../aspplus/samples/webforms/ctrlauth/customparsing/vb/makesamplebatsource.htm'>VB/makesample.bat</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>Imports System
+Imports System.Collections
+Imports System.Web
+Imports System.Web.UI
+
+Namespace CustomParsingControlSamples
+
+    Public Class CustomParse2ControlBuilderVB : Inherits ControlBuilder
+
+       Public Overrides Function GetChildControlType(TagName As String, Attributes As IDictionary) As Type
+
+          If TagName = "customitem"
+             Return GetType(CustomParsingControlSamples.ItemVB)
+          End If
+
+          Return Nothing
+       End Function
+    End Class
+
+    Public Class <ControlBuilderAttribute(GetType(CustomParse2ControlBuilderVB))> CustomParse2VB : Inherits Control 
+
+       Private _items As New ArrayList
+       Private _selectedIndex As Integer = 0
+
+       Public Property SelectedIndex As Integer 
+           Get 
+              Return _selectedIndex
+           End Get
+           Set
+              _selectedIndex = Value
+           End Set
+       End Property
+
+       Public Overrides Sub AddParsedSubObject(Obj As Object)
+
+           If (TypeOf Obj Is ItemVB)
+              _items.Add(Obj)
+           End If
+       End Sub
+
+       Protected Overrides Sub Render(Output As HtmlTextWriter)
+
+           If (SelectedIndex < _items.Count)
+              Dim SelectedItem As ItemVB = CType(_items(SelectedIndex), ItemVB)
+              Output.Write(SelectedItem.Message)
+           End If
+       End Sub
+
+    End Class    
+
+End Namespace
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

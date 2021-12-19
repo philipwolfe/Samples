@@ -1,0 +1,56 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Services/MessageQueue/formatters/Formatters.src&file=Order.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfT3JkZXIuY3N4X194eF94eF94X194e6bd550e" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">Order.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../howto/samples/services/messagequeue/formatters/formatterscssource.htm'>Formatters.cs</a> &nbsp;&nbsp<a href='../../../../../howto/samples/services/messagequeue/formatters/ordercssource.htm'>Order.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../howto/samples/services/messagequeue/formatters/vb/formattersvbsource.htm'>VB\Formatters.vb</a> &nbsp;&nbsp<a href='../../../../../howto/samples/services/messagequeue/formatters/vb/ordervbsource.htm'>VB\Order.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>using System;
+
+public class Order
+{
+	protected Int64 orderId;
+	protected string itemDescription;
+	
+	public Int64 OrderId{
+		get{
+			return this.orderId;
+		}
+		set{
+			this.orderId = value;
+		}
+	}
+
+	public string ItemDescription{
+		get{
+			return this.itemDescription;
+		}
+		set{
+			this.itemDescription= value;
+		}
+	}	
+}
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

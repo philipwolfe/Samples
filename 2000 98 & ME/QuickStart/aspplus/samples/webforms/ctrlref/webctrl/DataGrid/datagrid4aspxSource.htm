@@ -1,0 +1,170 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlref/webctrl/DataGrid/datagrid4.src&file=datagrid4.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfZGF0YWdyaWQ0LmFzcFx4eF9feHhfeHhfeF9feA==d43ffe99" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">datagrid4.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlref/webctrl/datagrid/datagrid4aspxsource.htm'>datagrid4.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlref/webctrl/datagrid/vb/datagrid4aspxsource.htm'>VB\datagrid4.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Import Namespace="System.Data" %>
+
+<html>
+<script language="C#" runat="server">
+
+    DataTable Cart;
+    DataView CartView;
+
+    ICollection CreateDataSource() {
+        DataTable dt = new DataTable();
+        DataRow dr;
+
+        dt.Columns.Add(new DataColumn("IntegerValue", typeof(Int32)));
+        dt.Columns.Add(new DataColumn("StringValue", typeof(string)));
+        dt.Columns.Add(new DataColumn("DateTimeValue", typeof(DateTime)));
+        dt.Columns.Add(new DataColumn("BoolValue", typeof(bool)));
+        dt.Columns.Add(new DataColumn("CurrencyValue", typeof(double)));
+
+        for (int i = 0; i < 9; i++) {
+            dr = dt.NewRow();
+
+            dr[0] = i;
+            dr[1] = "Item " + Int32.ToString(i);
+            dr[2] = DateTime.Now;
+            dr[3] = (i % 2 != 0) ? true : false;
+            dr[4] = 1.23 * (i+1);
+
+            dt.Rows.Add(dr);
+        }
+
+        DataView dv = new DataView(dt);
+        return dv;
+    }
+
+    void Page_Load(Object sender, EventArgs e) {
+    
+        if (Session["DG4_ShoppingCart"] == null) {
+            Cart = new DataTable();
+            Cart.Columns.Add(new DataColumn("Item", typeof(string)));
+            Cart.Columns.Add(new DataColumn("Price", typeof(string)));
+            Session["DG4_ShoppingCart"] = Cart;
+        }
+        else {
+            Cart = (DataTable)Session["DG4_ShoppingCart"];
+        }    
+        CartView = new DataView(Cart);
+        ShoppingCart.DataSource = CartView;
+        ShoppingCart.DataBind();
+
+        if (!IsPostBack) {
+            // need to load this data only once
+            MyDataGrid.DataSource= CreateDataSource();
+            MyDataGrid.DataBind();
+        }
+    }
+
+    void Grid_CartCommand(Object sender, DataGridCommandEventArgs e) {
+    
+        DataRow dr = Cart.NewRow();
+        
+        // e.Item is the row of the table where the command fired
+        // For bound columns the value is stored in the Text property of TableCell
+        TableCell itemCell = e.Item.Cells[2];
+        TableCell priceCell = e.Item.Cells[3];
+        string item = itemCell.Text;
+        string price = priceCell.Text;
+        
+        if (((LinkButton)e.CommandSource).CommandName == "AddToCart") {
+            dr[0] = item;
+            dr[1] = price;
+            Cart.Rows.Add(dr);
+        }
+        else {   //Remove from Cart
+        
+            CartView.RowFilter = "Item='"+item+"'";
+            if (CartView.Count > 0) {    
+                CartView.Delete(0);
+            }
+            CartView.RowFilter = "";
+        }
+        ShoppingCart.DataBind();
+
+    }
+
+
+</script>
+
+<body>
+
+    <h3><font face="Verdana">Using a ButtonColumn in DataGrid</font></h3>
+
+    <form runat=server>
+
+    <table cellpadding="5">
+    <tr valign="top"><td>
+
+    <b>Product List</b>
+    <ASP:DataGrid id="MyDataGrid" runat="server"
+        BorderColor="black"
+        BorderWidth="1"
+        CellPadding="3"
+        Font-Name="Verdana"
+        Font-Size="8pt"
+        HeaderStyle-BackColor="#aaaadd"
+        AutoGenerateColumns="false"
+        OnItemCommand="Grid_CartCommand"
+        >
+        <property name="Columns">
+            <asp:ButtonColumn HeaderText="Add to cart" Text="Add" CommandName="AddToCart" />
+            <asp:ButtonColumn HeaderText="Remove from cart" Text="Remove" CommandName="RemoveFromCart" />
+            <asp:BoundColumn HeaderText="Item" DataField="StringValue"/>
+            <!-- format Price as currency-->
+            <asp:BoundColumn HeaderText="Price" DataField="CurrencyValue" DataFormatString="{0:c}" ItemStyle-HorizontalAlign="right" />
+            <asp:BoundColumn HeaderText="Assembly required?" DataField="BoolValue"/>
+        </property>
+    </asp:DataGrid>
+
+    </td><td>
+
+    <b>Shopping Cart</b>
+    <ASP:DataGrid id="ShoppingCart" runat="server"
+        BorderColor="black"
+        BorderWidth="1"
+        GridLines="Both"
+        ShowFooter="false"
+        CellPadding="3"
+        CellSpacing="0"
+        Font-Name="Verdana"
+        Font-Size="8pt"
+        HeaderStyle-BackColor="#aaaadd"
+        />
+
+    </td></tr>
+    </table>
+
+  </form>
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

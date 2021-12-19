@@ -1,0 +1,279 @@
+<!--BEGIN HEADER-->
+
+
+
+<html>
+<head>
+<link rel="stylesheet" href="../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+  <table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+
+            <div style="padding:0,0,0,0"><a class=outer style="color:darkred" href="../../winforms/doc/default.htm"><b>Introduction</b></a><br></div>
+            <p>
+            <div style="padding:0,0,4,0"><b>Getting Started</b><br></div>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsgettingstarted.htm">What is Windows Forms?</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformssimplehelloworld.htm">Writing a Hello World Form</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsapplicationmodel.htm">Windows Forms Application Model</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsusingwindes.htm">Using the Windows Forms Designer</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsformlayout.htm">Dynamic Layout in Windows Forms</a><br>            
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsmenus.htm">Adding Menus to a Form</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsmdi.htm">Writing MDI Applications</a><p>
+
+            <div style="padding:0,0,4,0"><b>Building Applications</b><br></div>
+            &nbsp; <a class="outer" href="../../winforms/doc/dataaccessplaceholder.htm">Data Access Overview</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/webservicesplaceholder.htm">Web Services Overview</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsdata.htm">Databinding in Windows Forms</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsaxhosting.htm">Using ActiveX Controls</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsgdiplus.htm">Working with Graphics</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsprinting.htm">Working with Printing</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformscreatingcontrols.htm">Creating Controls</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsmsaa.htm">Accessibility</a><p>
+
+            <div style="padding:0,0,0,0"><a class=outer style="color:darkred" href="../../winforms/doc/winformssamples.htm"><b>Control Reference</b></a><br></div>
+            <p>
+            <div style="padding:0,0,0,0"><a target=_top class=outer style="color:darkred" href="../../howto/default.htm"><b>How Do I...?</b></a><br></div>
+            <p>
+            <div style="padding:0,0,0,0"><a class=outer style="color:darkred" href="../../winforms/doc/winformsrelateddocs.htm"><b>Related Documentation</b></a><br></div>
+            <p>
+            
+</div>
+
+</td>
+</tr>
+</table>
+
+
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<style>
+.mydd {  font: smaller verdana; }
+
+.code1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	font-family:"Courier New";
+	color:darkred; 
+	}
+.codecomment1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	font-family:"Courier New";
+	color:green;
+	}
+.issue {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background-color:RED;
+	color:WHITE;
+	font-weight:bold;
+	}
+
+
+body { font: smaller verdana }        
+
+</style>
+
+
+
+
+
+      <H4>Making Your Windows Forms Applications Accessible to People with
+      Disabilities</H4>
+      <P>MicrosoftB. Active AccessibilityB. (MSAA) is a technology that makes 
+      computer programs more accessible to people who use accessibility aids. 
+      For developers, it also can expand the capabilities of testing tools and 
+      other specialized utilities. Detailed information on MSAA can be found at
+      MSAA web 
+      site.</P>
+      <H5>What Does Active Accessibility Do?</H5>
+      <P>Active Accessibility provides a standard way for accessibility aids to 
+      get information about user interface elements, and for programs to expose 
+      that information to the aids. For example, Active Accessibility provides 
+      these individual pieces of information: 
+      <UL>
+        <LI>Type of object 
+        <LI>Name of object 
+        <LI>Location of object 
+        <LI>Current state of object </LI></UL>
+      <P>And, it provides: 
+      <UL>
+        <LI>Notification of changes in user interface via windows Events, and 
+        Navigation (spatial and logical) 
+        <LI>This standard helps program-developers and aid-developers alike 
+        ensure their products are compatible. </LI></UL>
+      <H5>How Does Win Form Help?</H5>
+      <P>MSAA defines an interface call IAccessible. This interface the 
+      mechanism through which information is provided to accessibility aids. 
+      WinForms implements this interface for all of its controls, and exposes a 
+      set of accessibility properties on each control that can simply and easily 
+      be set at design time or runtime. This makes it much easier to build 
+      accessible applications. The properties are: 
+      <UL>
+        <LI><B>AccessibleName: </B>The name of the control - for example 
+        "SaveButton" 
+        <LI><B>AccessibleDescription: </B>A description of the purpose of the control - 
+        for example "Press this button to save the customer" 
+        <LI><B>AccessibleRole: </B>The role of the control - for example 
+        AcessibleRoles.PushButton </LI></UL>
+      <P>Windows Forms also maps other properties to their appropriate IAccessible 
+      properties - for instance the HelpProvider property.</P>
+      <P>The following code shows how to set the AccessibleName and 
+      AccessibleDescription properties on a TextBox</P>
+      
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl6" style="display:none">
+
+textBox1.Location = new System.Drawing.Point(16, 24);
+textBox1.Text = "Hello Windows Forms World";
+textBox1.AccessibleName = "TextEntryField";
+textBox1.TabIndex = 0;
+textBox1.AccessibleDescription = "Please enter some text in the box";
+textBox1.Size = new System.Drawing.Size(360, 20);
+</pre>
+<pre id="codectrl6" style="display:">
+
+textBox1.Location = new System.Drawing.Point(16, 24)
+textBox1.Text = "Hello Windows Forms World"
+textBox1.AccessibleName = "TextEntryField"
+textBox1.TabIndex = 0
+textBox1.AccessibleDescription = "Please enter some text in the box"
+textBox1.Size = new System.Drawing.Size(360, 20)
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl6" onclick="doClick(0, 'ctrl6')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl6" onclick="doClick(1, 'ctrl6')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<p>To view and run this sample:
+<br><br>
+<span>
+    
+    
+    
+    
+    
+
+        
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../winforms/samples/vb/accessible">
+	<img style="border-color:black" border=1 src="../../winforms/images/wflink.jpg"><br>
+	</a>
+	<div class="caption">VB Accessible</div><br>
+	
+	
+		[<a target="_blank" href="../../winforms/samples/vb/accessible">Run Sample</a>] | 
+		[<a target="_blank" href="../../winforms/samples/vb/accessible/accessiblevbsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+    </span>
+
+<!--END FOOTER-->
+<p>
+<hr>
+<p>
+</div>
+</td>
+</tr>
+</table>
+</BODY>
+</html>
+<!--END FOOTER-->

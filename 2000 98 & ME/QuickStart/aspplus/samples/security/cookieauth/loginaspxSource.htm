@@ -1,0 +1,86 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/security/cookieauth.src&file=CookieAuth%5Clogin.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfQ29va2llQXV0aFxcbG9naW4uYXNwXHh4X194eF94eF94X194d00b9e7b" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">CookieAuth\login.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../aspplus/samples/security/cookieauth/defaultaspxsource.htm'>CookieAuth\default.htm</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/security/cookieauth/loginaspxsource.htm'>CookieAuth\login.htm</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/security/cookieauth/configwebsource.htm'>CookieAuth\config.web</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../aspplus/samples/security/vb/cookieauth/defaultaspxsource.htm'>VB\CookieAuth\default.htm</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/security/vb/cookieauth/loginaspxsource.htm'>VB\CookieAuth\login.htm</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/security/vb/cookieauth/configwebsource.htm'>VB\CookieAuth\config.web</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Import Namespace="System.Web.Security " %>
+
+<html>
+
+  <script language="C#" runat=server>
+  
+    void Login_Click(Object sender, EventArgs E) {
+    
+      // authenticate user: this samples accepts only one user with
+      // a name of jdoe@somewhere.com and a password of 'password'
+    	
+      if ((UserEmail.Value == "jdoe@somewhere.com") && (UserPass.Value == "password")) {
+        CookieAuthentication.RedirectFromLoginPage(UserEmail.Value, PersistCookie.Checked);
+      }
+      else {
+        Msg.Text = "Invalid Credentials: Please try again";
+      }
+    }
+
+  </script>
+
+  <body>
+    
+    <form runat=server>
+    
+      <h3><font face="Verdana">Login Page</font></h3>
+
+      <table>
+        <tr>
+          <td>Email:</td>
+          <td><input id="UserEmail" type="text" runat=server/></td>
+          <td><ASP:RequiredFieldValidator ControlToValidate="UserEmail" Display="Static" ErrorMessage="*" runat=server/></td>
+        </tr>
+        <tr>	
+          <td>Password:</td>
+          <td><input id="UserPass" type=password runat=server/></td>
+          <td><ASP:RequiredFieldValidator ControlToValidate="UserPass" Display="Static" ErrorMessage="*" runat=server/></td>
+        </tr>
+        <tr>
+          <td>Persistent Cookie:</td>
+          <td><ASP:CheckBox id=PersistCookie runat="server" /> </td>
+          <td></td>
+        </tr>
+      </table>
+      
+      <asp:button text="Login" OnClick="Login_Click" runat=server/>
+      
+      <p>
+      
+      <asp:Label id="Msg" ForeColor="red" Font-Name="Verdana" Font-Size="10" runat=server />
+
+    </form>
+  </body>
+
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

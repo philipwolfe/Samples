@@ -1,0 +1,45 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Win32Wrappers/Win32Call/win32call.src&file=VB%5CWin32Call.vb" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkJcXFdpbjMyQ2FsbC52YnhfX3h4X3h4X3hfX3g=57fac939" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB\Win32Call.vb</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../howto/samples/win32wrappers/win32call/win32callcssource.htm'>Win32Call.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../howto/samples/win32wrappers/win32call/vb/win32callvbsource.htm'>VB\Win32Call.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>Imports System
+Imports System.Runtime.InteropServices
+
+Namespace ClassLibrary1
+    Public Class Foo
+         Shared  Function <DllImport("user32.dll")> MessageBoxA  (ByVal h As Integer, ByVal m As String, ByVal c As String, ByVal type As Integer) As Integer
+         End Function
+
+        Public Shared Sub Main()
+            MessageBoxA(0, "Hello World2!", "Caption", 0)
+        End Sub
+    End Class
+End Namespace
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

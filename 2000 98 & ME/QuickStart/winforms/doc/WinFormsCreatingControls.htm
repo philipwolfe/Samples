@@ -1,0 +1,2786 @@
+<!--BEGIN HEADER-->
+
+
+
+<html>
+<head>
+<link rel="stylesheet" href="../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+  <table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+
+            <div style="padding:0,0,0,0"><a class=outer style="color:darkred" href="../../winforms/doc/default.htm"><b>Introduction</b></a><br></div>
+            <p>
+            <div style="padding:0,0,4,0"><b>Getting Started</b><br></div>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsgettingstarted.htm">What is Windows Forms?</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformssimplehelloworld.htm">Writing a Hello World Form</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsapplicationmodel.htm">Windows Forms Application Model</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsusingwindes.htm">Using the Windows Forms Designer</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsformlayout.htm">Dynamic Layout in Windows Forms</a><br>            
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsmenus.htm">Adding Menus to a Form</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsmdi.htm">Writing MDI Applications</a><p>
+
+            <div style="padding:0,0,4,0"><b>Building Applications</b><br></div>
+            &nbsp; <a class="outer" href="../../winforms/doc/dataaccessplaceholder.htm">Data Access Overview</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/webservicesplaceholder.htm">Web Services Overview</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsdata.htm">Databinding in Windows Forms</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsaxhosting.htm">Using ActiveX Controls</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsgdiplus.htm">Working with Graphics</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsprinting.htm">Working with Printing</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformscreatingcontrols.htm">Creating Controls</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsmsaa.htm">Accessibility</a><p>
+
+            <div style="padding:0,0,0,0"><a class=outer style="color:darkred" href="../../winforms/doc/winformssamples.htm"><b>Control Reference</b></a><br></div>
+            <p>
+            <div style="padding:0,0,0,0"><a target=_top class=outer style="color:darkred" href="../../howto/default.htm"><b>How Do I...?</b></a><br></div>
+            <p>
+            <div style="padding:0,0,0,0"><a class=outer style="color:darkred" href="../../winforms/doc/winformsrelateddocs.htm"><b>Related Documentation</b></a><br></div>
+            <p>
+            
+</div>
+
+</td>
+</tr>
+</table>
+
+
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<style>
+.mydd {  font: smaller verdana; }
+
+.code1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	font-family:"Courier New";
+	color:darkred; 
+	}
+.codecomment1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	font-family:"Courier New";
+	color:green;
+	}
+.issue {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background-color:RED;
+	color:WHITE;
+	font-weight:bold;
+	}
+
+
+body { font: smaller verdana }        
+
+</style>
+
+
+
+
+
+<h4>Creating Controls</h4>
+      
+<P>This topic demonstrates how you can create Windows Forms controls.  It 
+covers the basics of creating a control.  In addition, this topic will 
+also cover adding painting logic to a control, exposing properties and 
+events, using control licensing, and adding design-time behavior to your 
+control.  The following topic areas will be covered in this topic:</P> 
+
+<ul>
+    <li><a href="#Introduction">Introduction</a>
+    <li><a href="#Getting Started">Getting Started</a>
+    <li><a href="#Adding Properties, Events and MetaData">Adding Properties, Events and MetaData</a>
+    <li><a href="#Customising the property browser">Adding custom editors to the property browser</a>
+    <li><a href="#Extender Providers">Extender Providers</a>
+    <li><a href="#User Controls">User Controls</a>
+    <li><a href="#Licensing Controls">Licensing Controls</a>
+</ul>
+
+
+<a name="Introduction">
+
+<P><B>Note: </B>This topic is coverd in much more detial in the control 
+creation section of the Microsoft .NET Framework SDK documentation.</P> 
+      
+<P>There are two types of controls: 
+
+<UL> 
+        
+<LI><B>"Custom" Controls: </B>Controls that display UI by making calls to 
+a <b> Graphics</b> object in the paint event.  Custom controls typically 
+derive from <B>RichControl</B>.  A Chart control is an example of a custom 
+control.  There is limited design time support for creating custom 
+controls.  <BR><BR> 
+        
+<LI><B>"User" or Composite Controls: </B>Controls that are composed of 
+other controls.  User Controls derive from <B>UserControl</B>.  A control 
+that displays a customer address using TextBox controls is an example of a 
+User Control.  There is full design time support for creating user 
+controls using the WinDes application.  </LI>
+</UL> 
+      
+<P>The majority of the samples in this topic demonstrate building custom 
+controls,&nbsp; however the sections on exposing properties and events, 
+defining design-time behavior, and licensing apply to both custom and User 
+Controls.  </P> 
+      
+<a name="Getting Started">
+<h5>Getting Started</h5>
+
+<h6>Writing a simple control</h6>
+
+<P>The following example creates a simple control that displays the value 
+of its <b> Text</b> property by handling the <b>Paint</b> event.  In order 
+to create this control and handle the event,&nbsp; must create a class 
+that inherits from <b> RichControl</b> and create a method overrides the 
+<b> OnPaint</b> method:</P> 
+      
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl6" style="display:none">
+
+public class HelloWorldControl : RichControl {
+
+    protected override void OnPaint(PaintEventArgs e) {
+
+        RectangleF rect = new RectangleF(ClientRectangle.X, 
+                                         ClientRectangle.Y, 
+                                         ClientRectangle.Width,
+                                         ClientRectangle.Height)
+
+        //Paint the Text property on the control
+        e.Graphics.DrawString(this.Text, Font, new SolidBrush(ForeColor), rect);
+
+    }
+
+}
+</pre>
+<pre id="codectrl6" style="display:">
+
+public class HelloWorldControl: Inherits RichControl
+
+    Overrides Protected Sub OnPaint(e As PaintEventArgs)
+
+        Dim rect As RectangleF = new RectangleF(ClientRectangle.X, 
+                                                 ClientRectangle.Y, 
+                                                 ClientRectangle.Width,
+                                                 ClientRectangle.Height)
+
+        'Paint the Text property on the control
+        e.Graphics.DrawString(Me.Text, Font, new SolidBrush(ForeColor), rect)
+
+    End Sub
+
+End Class
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl6" onclick="doClick(0, 'ctrl6')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl6" onclick="doClick(1, 'ctrl6')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<p>To view and run this sample:
+<br><br>
+<span>
+    
+    
+    
+    
+    
+
+        
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../winforms/samples/vb/writingcontrols/helloworldcontrol">
+	<img style="border-color:black" border=1 src="../../winforms/images/wflink.jpg"><br>
+	</a>
+	<div class="caption">VB Hello World Control</div><br>
+	
+	
+		[<a target="_blank" href="../../winforms/samples/vb/writingcontrols/helloworldcontrol">Run Sample</a>] | 
+		[<a target="_blank" href="../../winforms/samples/vb/writingcontrols/helloworldcontrol/helloworldcontrolvbsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+    </span>
+
+<h6>Examining the design-time behavior of a control</h6>
+
+<P>You can test the design time behavior of a control in WinDes:</P>
+  <ol>
+  <LI>Start the WinDes application.
+  <LI>Add a new form by clicking <b>New VB</b> or <b>New C#</b> from the <b>File</b>
+    menu.&nbsp; 
+  <LI>Click <B>Add Library</B> on the Edit menu. 
+  <LI>Select the DLL containing the control you want to use.<br>
+    The control will appear at the bottom of the Toolbox. 
+  <LI>Select the control and add it to the form.<br>
+    You will see the control appear on the form 
+  <LI>If you are adding the control from the previous example you will
+    notice that even this very simple control has a full set of 
+  properties and a broad range of design time behavior. This default 
+  behavior is inherited from the <b>RichControl </b>class. </LI>
+  </ol>
+  <P><B>Note: </B>For a control to be displayed in the designer it must have a public 
+constructor that takes no parameters.</P>
+      
+<a name="Adding Properties, Events and MetaData">
+<h5>Adding Properties, Events and MetaData</h5>
+
+      <P>Now that we have a simple control created, we can add properties,
+      events, and metadata information to it. The following example: 
+      <UL>
+        <LI>Adds a property called <B>DrawMode</B> that is used to determine how 
+        the control paints. 
+        <LI>Adds an event that fires when the <B>DrawMode</B> property is 
+        changed. 
+        <LI>Adds "metadata" to the control to describe its design-time behavior. 
+        <LI>Overrides a property inherited from <b> RichControl</b> to hide it at 
+        design-time. </LI></UL>
+
+<h6>Adding a property</h6>
+
+<P>First, we need to create a simple enumeration called <b>DrawingMode</b>:</P>
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl10" style="display:none">
+
+public enum DrawingMode {
+    Happy = 0,
+    Sad = 1,
+    Angry = 2
+}
+</pre>
+<pre id="codectrl10" style="display:">
+
+Public Enum DrawingModeStyle
+    Happy = 0
+    Sad = 1
+    Angry = 2
+End Enum
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl10" onclick="doClick(0, 'ctrl10')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl10" onclick="doClick(1, 'ctrl10')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+      <P>Next we need to add a <b> DrawingMode</b> property to the control. The
+      following code adds this property to our simple control we created
+      previously:</P>
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl12" style="display:none">
+
+//DrawingMode - controls how the control paints
+
+public DrawingModeStyle DrawingMode {
+
+    get {
+        return myDrawingMode;
+    }
+  
+    set {
+        myDrawingMode=value;
+
+        //Set BackColor and ForeColor based on DrawingMode</span>
+        SetColors();
+
+        //Raise property changed event for DrawingMode</span>
+        RaisePropertyChangedEvent("DrawingMode");
+    }
+    
+}
+</pre>
+<pre id="codectrl12" style="display:">
+
+'DrawingMode - controls how the control paints
+
+Public Property DrawingMode As DrawingModeStyle
+
+    Get
+        Return myDrawingMode
+    End Get
+
+    Set
+        myDrawingMode=value
+
+        'Set BackColor and ForeColor based on DrawingMode
+        SetColors
+
+        ' Raise property changed event for DrawingMode
+        RaisePropertyChangedEvent("DrawingMode")
+    End Set
+
+End Property
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl12" onclick="doClick(0, 'ctrl12')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl12" onclick="doClick(1, 'ctrl12')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<P><B>Note</B> that the property <b> set</b> code includes a call to the 
+<B>RaisePropertyChangedEvent</B> method.  This method raises a property 
+change notification event.  It is important to raise the property change 
+notification event since the Windows Forms designer listens to this event.  It 
+listens to this event so that it knows when a property has changed.  Later 
+in the code our control will take advantage of this event.</P> 
+
+<P>The call to the <B>SetColors</B> method simply sets the BackColor and 
+ForeColor of the control based on the value of <B>DrawingMode</B>.  Add 
+the following code to the control:</P> 
+      
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl14" style="display:none">
+
+private void SetColors() {
+
+    switch (drawingMode) {
+
+       case DrawingMode.Happy:
+           base.BackColor = Color.Yellow;
+           base.ForeColor = Color.Green;
+           break;
+
+       case DrawingMode.Sad:
+           base.BackColor = Color.LightSlateGray;
+           base.ForeColor = Color.White;
+           break;
+
+      case DrawingMode.Angry:
+          base.BackColor = Color.Red;
+          base.ForeColor = Color.Teal;
+          break;
+
+       default:
+           base.BackColor = Color.Black;
+           base.ForeColor = Color.White;
+           
+   }
+
+}
+</pre>
+<pre id="codectrl14" style="display:">
+
+Private Sub SetColors()
+
+    Select Case myDrawingMode
+
+       Case DrawingModeStyle.Happy
+           MyBase.BackColor = Color.Yellow
+           MyBase.ForeColor = Color.Green
+
+
+       Case DrawingModeStyle.Sad
+           MyBase.BackColor = Color.LightSlateGray
+           MyBase.ForeColor = Color.White
+
+
+      Case DrawingModeStyle.Angry
+          MyBase.BackColor = Color.Red
+          MyBase.ForeColor = Color.Teal
+
+
+      Case Else
+           MyBase.BackColor = Color.Black
+           MyBase.ForeColor = Color.White
+
+   End Select
+
+End Sub
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl14" onclick="doClick(0, 'ctrl14')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl14" onclick="doClick(1, 'ctrl14')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<P>We can now use this information when the control paints its contents.  
+Add this code to the control class to override the <b>OnPaint</b> method 
+of <b>RichControl</b>:</P> 
+      
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl16" style="display:none">
+
+protected override void OnPaint(PaintEventArgs e) {
+
+    e.Graphics.FillRectangle(new SolidBrush(BackColor), ClientRectangle);
+
+    Size textSize = (Size) e.Graphics.MeasureString(Text, Font);
+
+    float xPos = (ClientRectangle.Width/2) - (textSize.Width/2);
+    float yPos = (ClientRectangle.Height/2) - (textSize.Height/2);
+
+    e.Graphics.DrawString(Text, Font, new SolidBrush(ForeColor), xPos, yPos);
+
+}
+</pre>
+<pre id="codectrl16" style="display:">
+
+Overrides Protected Sub OnPaint(e As PaintEventArgs)
+
+    e.Graphics.FillRectangle(new SolidBrush(BackColor), ClientRectangle)
+
+    Dim textSize As SizeF = e.Graphics.MeasureString(Me.Text, Font)
+
+    Dim xPos As Single = CSng((ClientRectangle.Width/2) - (textSize.Width/2))
+    Dim yPos As Single = CSng((ClientRectangle.Height/2) - (textSize.Height/2))
+
+    e.Graphics.DrawString(Me.Text, Font,new SolidBrush(ForeColor),xPos, yPos)
+
+End Sub
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl16" onclick="doClick(0, 'ctrl16')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl16" onclick="doClick(1, 'ctrl16')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<P><B>Note</B> in order to have the control automatically repaint when it 
+is resized we need to set the <b> ResizeRedraw</b> style bit when the 
+control is created:</P> 
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl18" style="display:none">
+
+public SimpleControl() :base() {
+
+    drawingMode = DrawingMode.Happy;
+    SetColors();
+    SetStyle(ControlStyles.ResizeRedraw, true);
+}
+</pre>
+<pre id="codectrl18" style="display:">
+
+Public Sub New()
+    MyBase.New
+    myDrawingMode = DrawingModeStyle.Happy
+    SetColors
+    SetStyle(ControlStyles.ResizeRedraw, True)
+End Sub
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl18" onclick="doClick(0, 'ctrl18')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl18" onclick="doClick(1, 'ctrl18')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+
+<h6>Adding an Event</h6>
+
+      <P>In this next step, we will add a simple event that is raised when the <b> DrawingMode</b>
+      property changes. 
+      There is already an event that is raised,&nbsp; the <b> PropertyChange</b> event, so why 
+      do we add our own event? The <b> PropertyChange</b> event is 
+      not exposed to control consumers by default,&nbsp; it is a hidden event used by 
+      the framework infrastructure.</P>
+      <P>Typically the first thing you do is to declare an <b> EventHandler</b> and
+      <b> EventArgs</b> 
+      class for your event. Because our event is simple we can use the standard 
+      EventHandler and EventArgs classes.</P>
+      
+      <P>With our EventHandler and EventArgs classes declared we now need to declare 
+      the event and add a method to raise it.  The method that is used to raise 
+      the event is typically called <B>On&lt;EventName&gt;</B>.  This method is 
+      protected as only developers deriving from the control will need to 
+      directly raise the event.  
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl20" style="display:none">
+
+public class SimpleControl : RichControl {
+
+    private DrawingMode drawingMode ;
+    private EventHandler onDrawingModeChanged; 
+    ....
+    
+    //DrawingModeChanged Event
+    //In C# Event declarations are very similar to property declarations
+    public event EventHandler DrawingModeChanged {
+        get {
+            return onDrawingModeChanged;
+        }
+        set {
+            onDrawingModeChanged = value;
+        }
+    }
+
+    protected virtual void OnDrawingModeChanged(EventArgs e) {
+        Invalidate();
+        if (onDrawingModeChanged != null) onDrawingModeChanged.Invoke(this, e);
+    }
+    ....
+}
+</pre>
+<pre id="codectrl20" style="display:">
+
+Public Class SimpleControl: Inherits RichControl
+
+    Private myDrawingMode As DrawingModeStyle
+    ....
+
+    'Declare the DrawingModeChanged Event
+    Public Event DrawingModeChanged(sender As Object, ev As EventArgs)
+
+    Overridable Protected Sub OnDrawingModeChanged(e As EventArgs) 
+        Invalidate
+        RaiseEvent DrawingModeChanged(Me, e)
+    End Sub
+    
+    ....
+    
+End Class
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl20" onclick="doClick(0, 'ctrl20')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl20" onclick="doClick(1, 'ctrl20')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<P>Having added the event, we now need to raise it.  We could go to the 
+<b> DrawingMode</b> property <b> set</b> statement and add a call to 
+<B>OnDrawingModeChanged</B>, however as this method already raises a 
+property change notification event, we can simply listen for that event to 
+fire.  Rather than adding an event-handling method we will override the 
+<b> OnPropertyChanged</b> method:</P> 
+      
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl22" style="display:none">
+
+....
+//Override OnPropertyChanged to raise the DrawingModeChanged event
+protected override void OnPropertyChanged(PropertyChangedEventArgs e) {
+    base.OnPropertyChanged(e);
+    string d = e.PropertyName;
+
+    if (d.Equals("DrawingMode")) {
+        OnDrawingModeChanged(EventArgs.Empty);
+    }
+    
+}
+</pre>
+<pre id="codectrl22" style="display:">
+
+....
+' Override OnPropertyChanged to raise the DrawingModeChanged event
+Overrides Protected Sub OnPropertyChanged(e As PropertyChangedEventArgs)
+    MyBase.OnPropertyChanged(e)
+    Dim d As string = e.PropertyName
+
+    If (d.Equals("DrawingMode")) Then
+        OnDrawingModeChanged(EventArgs.Empty)
+    End If
+
+End Sub
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl22" onclick="doClick(0, 'ctrl22')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl22" onclick="doClick(1, 'ctrl22')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<P>Everytime the property is changed, the control will re-draw and raise 
+the <b> DrawingModeChanged</b> event.  
+
+<h6>Using the control</h6>
+
+<P>Now we have written our control, and added some behavior to it we can 
+compile it into a DLL and use it in an application.  The&nbsp; new control 
+can be used&nbsp; like any other Windows Forms control.  The following example 
+demonstrates how to use our control in an application:</P> 
+      
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl24" style="display:none">
+
+....
+
+//Create the control and set its properties
+simpleControl1 = new SimpleControl();
+simpleControl1.Size = new System.Drawing.Size(304, 328);
+simpleControl1.TabIndex = 0;
+simpleControl1.Anchor = System.WinForms.AnchorStyles.All;
+simpleControl1.Text = "Windows Forms Mood Control";
+
+//Add an event handling method for the DrawingModeChanged event
+simpleControl1.DrawingModeChanged += new System.EventHandler(simpleControl1_DrawingModeChanged);
+
+....
+
+private void simpleControl1_DrawingModeChanged(object sender, System.EventArgs e) {
+    MessageBox.Show("DrawingMode changed");
+}
+</pre>
+<pre id="codectrl24" style="display:">
+
+....
+
+' Create the control and set its properties
+simpleControl1 = New SimpleControl()
+simpleControl1.Size = new System.Drawing.Size(304, 328)
+simpleControl1.TabIndex = 0
+simpleControl1.Anchor = System.WinForms.AnchorStyles.All
+simpleControl1.Text = "Windows Forms Mood Control"
+
+' Add an event handling method for the DrawingModeChanged event</span>
+AddHandler simpleControl1.DrawingModeChanged, AddressOf simpleControl1_DrawingModeChanged
+
+....
+
+Private Sub simpleControl1_DrawingModeChanged(sender As object, e As System.EventArgs)
+    MessageBox.Show("DrawingMode changed")
+End Sub
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl24" onclick="doClick(0, 'ctrl24')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl24" onclick="doClick(1, 'ctrl24')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+
+<h6>Adding design-time information for the control</h6>
+
+<P>Now that we have a working control we can augment it with design time 
+information that improves the usability of the control in the Form 
+Designer.  Design time information is recorded using 
+"meta-data" on the control binary.  This metadata is defined using a 
+series of attribute classes from the <B>System.ComponentModel</B> 
+namespace.  For example, the default event for our control is the <b> 
+DrawingModeChanged</b> event.  When the user double-clicks on the control 
+we want the form designer to add an event-handling method for our default 
+event.  You register the default event using the <B>DefaultEvent</B> class 
+attribute.  Similarly you can define the default property on a control 
+using the <B>DefaultProperty</B> class attribute.  This attribute 
+determines which property is given focus in the property browser by 
+default.  Class attributes are declared as part of the class declaration.  
+The following example demonstrates class attributes:</P> 
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl26" style="display:none">
+
+[
+DefaultProperty("DrawingMode"),
+DefaultEvent("DrawingModeChanged"),
+]
+public class SimpleControl : RichControl {
+    ...
+}
+</pre>
+<pre id="codectrl26" style="display:">
+
+Public Class _
+    &lt;DefaultProperty("DrawingMode"), DefaultEvent("DrawingModeChanged")&gt; _
+    SimpleControl
+        Inherits RichControl
+    ...
+End Class
+
+
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl26" onclick="doClick(0, 'ctrl26')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl26" onclick="doClick(1, 'ctrl26')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<P>The next step is to add more design time information for the <b> 
+DrawingMode</b> property:</P> 
+      
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl28" style="display:none">
+
+[
+    Category("Appearance"),
+    Description("Controls how the control paints"),
+    DefaultValue(DrawingMode.Happy),
+    Bindable(true),
+]
+public DrawingMode DrawingMode {
+
+    get {
+	  return drawingMode;
+	}
+	
+    set {
+        drawingMode=value;
+
+        //Set BackColor and ForeColor based on DrawingMode</span>
+        SetColors();
+
+        //Raise property changed event for DrawingMode</span>
+        RaisePropertyChangedEvent("DrawingMode");
+
+    }
+    
+}
+</pre>
+<pre id="codectrl28" style="display:">
+
+'DrawingMode - controls how the control paints
+Public Property _
+&lt;Category("Appearance"), _
+ Description("Controls how the control paints"), _
+ DefaultValue(DrawingModeStyle.Happy), _
+ Bindable(true)&gt; _
+DrawingMode As DrawingModeStyle
+
+    Get
+        return myDrawingMode
+    End Get
+
+    Set
+        myDrawingMode=value
+
+        'Set BackColor and ForeColor based on DrawingMode
+        SetColors
+
+        'Raise property changed event for DrawingMode
+        RaisePropertyChangedEvent("DrawingMode")
+
+    End Set
+
+End Property
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl28" onclick="doClick(0, 'ctrl28')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl28" onclick="doClick(1, 'ctrl28')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<p>The attributes that we assigned to the property are as follows:</p>
+<UL>
+  
+<LI>The <b>Category</b> attribute determines the category for the 
+property.  This is used when the property is displayed in Categorized view 
+in a Properties window.  </li> 
+    
+<LI>The <b>Description</b> attribute sets the short description that is displayed 
+at the bottom of the Properties window when the property is selected.  </LI>
+  
+<LI>The <b>DefaultValue</b> attribute is used by the designer to determine 
+whether a property value needs to be persisted.  </LI>
+  
+<LI>The <b>Bindable</b> attribute is used to determine whether this property is 
+displayed in the default data binding view.  </LI>
+</UL> 
+
+<P>We now need to add design time information for the <b> DrawingModeChanged</b>
+event:
+      
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl30" style="display:none">
+
+[Description("Raised when the DrawingMode changes")]
+public event EventHandler DrawingModeChanged {
+    get {
+        return onDrawingModeChanged;
+    }
+    set {
+        onDrawingModeChanged = value;
+    }
+}
+</pre>
+<pre id="codectrl30" style="display:">
+
+Public Event _
+    &lt;Description("Raised when the DrawingMode changes")&gt; _
+DrawingModeChanged(sender As Object, ev As EventArgs) 
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl30" onclick="doClick(0, 'ctrl30')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl30" onclick="doClick(1, 'ctrl30')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<P>In the last step we need to hide two properties.&nbsp; Because the <b> 
+DrawingMode</b> determines what background and foreground colors are used 
+to draw the control we don't want the user to be able to set the <b> 
+BackColor</b> and <b>ForeColor</b> properties.  We cannot remove the 
+properties because they are declared in the <b> RichControl</b> class, 
+however we can hide them so that they do not show up in the property 
+browser using the <B>Browsable</B> attribute:</P> 
+      
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl32" style="display:none">
+
+//Remove the BackColor property from the property browser</span>
+[Browsable(false)]
+public Color BackColor {
+    override get {
+      return base.BackColor;
+    }
+    
+    override set {
+      //No action
+    }
+}
+
+//Remove the ForeColor property from the property browser</span>
+[Browsable(false)]
+public Color ForeColor  {
+    override get {
+      return base.ForeColor;
+    }
+    
+    override set {
+      ' No action
+    }
+}
+</pre>
+<pre id="codectrl32" style="display:">
+
+'Remove the BackColor property from the property browser
+Overrides Public Property &lt;Browsable(false)&gt; BackColor As Color
+    Get
+        return MyBase.BackColor
+    End Get
+
+    Set
+        'No Action
+    End Set
+
+End Property
+
+'Remove the ForeColor property from the property browser
+Overrides Public Property &lt;Browsable(false)&gt; ForeColor As Color
+    Get
+        return MyBase.ForeColor
+    End Get
+
+    Set
+        'No Action
+    End Set
+
+End Property
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl32" onclick="doClick(0, 'ctrl32')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl32" onclick="doClick(1, 'ctrl32')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<h6>Examining the design-time behavior of a control</h6>
+
+<P>You can test the design-time behavior of this control using the WinDes
+application, following the same procedure that was used for the
+HelloWorldControl demonstrated previously in this topic. Some things that
+should be noted:</P>
+<UL>
+  <LI>The Properties window automatically understands how to edit the <b> 
+  DrawingMode</b> property. Iit understands how to use the enumeration we
+    defined for our property. 
+  <LI>The Properties window displays descriptions for the <b> DrawingMode</b> 
+  property and the <b> DrawingModeChanged</b> event. 
+  <LI>The <b>ForeColor</b> and <b> BackColor</b> properties are not
+    displayed in the Properties window. 
+  <LI>Double-clicking on the control creates an event-handling method for 
+  the <b> DrawingModeChanged</b> event. 
+  <LI>Changing the <b> DrawingMode</b> property causes the control to change 
+  immediately. 
+  <LI>Changing the <b> DrawingMode</b> property from &quot;Happy&quot; to
+    &quot;Sad&quot; causes the 
+  property to be highlighted to indicate that it has changed. Changing <b> 
+  DrawingMode</b> back to &quot;Happy&quot; causes the highlight to be removed. The
+    Properties window uses the default value (&quot;Happy&quot;) to determine whether the 
+  property has actually changed in value. </LI></UL>
+<P>To view and run this sample: <BR><BR>
+
+<span>
+    
+    
+    
+    
+    
+
+        
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../winforms/samples/vb/writingcontrols/simplecontrol">
+	<img style="border-color:black" border=1 src="../../winforms/images/wflink.jpg"><br>
+	</a>
+	<div class="caption">VB SimpleControl</div><br>
+	
+	
+		[<a target="_blank" href="../../winforms/samples/vb/writingcontrols/simplecontrol">Run Sample</a>] | 
+		[<a target="_blank" href="../../winforms/samples/vb/writingcontrols/simplecontrol/simplecontrolvbsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+    </span>
+
+<a name="Customising the property browser">
+<h5>Adding custom editors to the property browser</h5>
+
+<P>In the previous sample we added a property that uses an enumeration to 
+our control.  When we looked at this property at design time, the 
+<B>Properties window</B> recognized that the property used an enumeration 
+and automatically used an enumeration property editor.  But what does the 
+property browser do if it does not recognize the type of the property?  
+The .Net Framework Class Model includes a mechanism that allows a control author 
+to create an editor for a property and register that editor as the editor 
+for that type.  Again this is driven by meta data and attributes.  The 
+following sample explains how add a custom property editor to a 
+control.</P> 
+      
+<P>In this sample, we have written a <B>FlashTrackBar</B> control that is 
+like the Windows <b> TrackBar</b> control but "Flashier".  It uses a GDI+ 
+LinearGradientBrush to paint its contents.  The position of the 
+FlashTrackBar is determined by the <b> Value</b> property.  This property 
+has a custom property editor.  The following code demonstrates the 
+property declaration: </p>
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl36" style="display:none">
+
+[Category("Flash"),
+    Editor(typeof(FlashTrackBarValueEditor), typeof(UITypeEditor)),
+    DefaultValue(0)]
+public int Value {
+....
+}
+</pre>
+<pre id="codectrl36" style="display:">
+
+Public Property &lt;Category("Flash"), _
+     Editor(typeof(FlashTrackBarValueEditor), typeof(UITypeEditor)), _
+     DefaultValue(0)&gt; _
+Value As Integer
+    ....
+End Property
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl36" onclick="doClick(0, 'ctrl36')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl36" onclick="doClick(1, 'ctrl36')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<P>The Editor attribute informs that Windows Forms designer that the property 
+browser should use the class <B>FlashTrackBarValueEditor</B> as the custom 
+property editor for this property.</P> 
+      
+<P>The property editor is implemented using a FlashTrackBar.  The most 
+interesting methods in the FlashTrackBarValueEditor are:</P> 
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl38" style="display:none">
+
+public override UITypeEditorEditStyle GetEditStyle(ITypeDescriptorContext context) {
+    if (context != null && context.Instance != null) {
+        return UITypeEditorEditStyle.DropDown;
+    }
+    return base.GetEditStyle(context);
+}
+</pre>
+<pre id="codectrl38" style="display:">
+
+Overrides OverLoads Public Function GetEditStyle(context As ITypeDescriptorContext) _
+                                                     As UITypeEditorEditStyle
+    if (Not(context Is Nothing) AND Not(context.Instance Is Nothing)) Then
+        return UITypeEditorEditStyle.DropDown
+    End If
+    return MyBase.GetEditStyle(context)
+End Function
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl38" onclick="doClick(0, 'ctrl38')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl38" onclick="doClick(1, 'ctrl38')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<P>This method informs the property browser that the editor uses a 
+drop-down style UI.</P> 
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl40" style="display:none">
+
+public override object EditValue(ITypeDescriptorContext context, IServiceObjectProvider provider,
+                                               object value) {
+
+
+    if (context != null && context.Instance != null && provider != null) {
+
+        edSvc = (IWinFormsEditorService)provider.GetServiceObject(typeof(IWinFormsEditorService));
+
+        if (edSvc != null) {
+            FlashTrackBar trackBar = new FlashTrackBar();
+            trackBar.ValueChanged += new EventHandler(this.ValueChanged);
+            SetEditorProps((FlashTrackBar)context.Instance, trackBar);
+            
+            bool asInt = true;
+            
+            if (value is int) {
+                trackBar.Value = (int)value;
+            }
+            else if (value is byte) {
+                asInt = false;
+                trackBar.Value = (byte)value;
+            }
+            
+            edSvc.DropDownControl(trackBar);
+            
+            if (asInt) {
+                value = trackBar.Value;
+            }
+            else {
+                value = (byte)trackBar.Value;
+            }
+            
+        }
+        
+    }
+
+    return value;
+    
+}
+</pre>
+<pre id="codectrl40" style="display:">
+
+Overrides OverLoads Public Function EditValue(context As ITypeDescriptorContext, _
+         provider As IServiceObjectProvider, value As object) As Object
+
+    if (Not(context Is Nothing) AND Not(context.Instance Is Nothing) AND Not(provider Is Nothing)) Then
+
+        edSvc = CType(provider.GetServiceObject(GetType(IWinFormsEditorService)),IWinFormsEditorService)
+
+        if Not (edSvc Is Nothing) Then
+
+            Dim trackBar As FlashTrackBar = new FlashTrackBar()
+            AddHandler trackBar.ValueChanged, AddressOf Me.ValueChanged
+            SetEditorProps(CType(context.Instance,FlashTrackBar), trackBar)
+
+            Dim asInt As Boolean = true
+
+            if (TypeOf value Is Integer) Then
+                trackBar.Value = CInt(value)
+            else if (TypeOf value Is System.Byte) Then
+                asInt = false
+                trackBar.Value = CType(value, Byte)
+            End If
+
+            edSvc.DropDownControl(trackBar)
+
+            if (asInt) Then
+                value = trackBar.Value
+                
+            else
+                value = CType(trackBar.Value, Byte)
+            End If
+
+        End If
+
+    End If
+
+     return value
+
+ End Function
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl40" onclick="doClick(0, 'ctrl40')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl40" onclick="doClick(1, 'ctrl40')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<p><b>EditValue</b> implements the editor UI.
+
+<P><B>Note</B> FlashTrackBar also demonstrates the use of the 
+<B>ShouldPersist&lt;PropertyName&gt;</B> pattern.  The DefaultValue 
+attribute can only be used for simple types.  For complex types such as 
+Colors you use the <B>ShouldPersist&lt;PropertyName&gt;</B> pattern.  For 
+example:</P> 
+      
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl42" style="display:none">
+
+[Category("Flash")] public Color EndColor {
+
+}
+
+public bool ShouldPersistEndColor() {
+    return !(endColor == Color.LimeGreen);
+}
+</pre>
+<pre id="codectrl42" style="display:">
+
+ Public Property &lt;Category("Flash")&gt; EndColor As Color
+     ....
+ End Property
+
+Public Function ShouldPersistEndColor() As Boolean
+    return Not (myEndColor.Equals(Color.LimeGreen))
+End Function
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl42" onclick="doClick(0, 'ctrl42')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl42" onclick="doClick(1, 'ctrl42')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<P>In the code above, the <b>Color.LimeGreen</b> value is the default 
+value.  The designer calls the ShouldPersist method in order to determine 
+whether to save the value of the EndColor property.</P> 
+
+<P>To view and run this sample: <BR><BR> 
+
+<span>
+    
+    
+    
+    
+    
+
+        
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../winforms/samples/vb/writingcontrols/customuitypeeditor">
+	<img style="border-color:black" border=1 src="../../winforms/images/wflink.jpg"><br>
+	</a>
+	<div class="caption">VB CustomUITypeEditor</div><br>
+	
+	
+		[<a target="_blank" href="../../winforms/samples/vb/writingcontrols/customuitypeeditor">Run Sample</a>] | 
+		[<a target="_blank" href="../../winforms/samples/vb/writingcontrols/customuitypeeditor/flashtrackbarvbsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+    </span>
+
+<P>You should examine the behavior of this control in WinDes in order to 
+fully understand how the custom property editor works.</P> 
+      
+<a name="Extender Providers">
+<h5>Extender Providers</h5>
+
+<P>An Extender Provider is a component that provides properties to other 
+components.  For example the ToolTip control is implemented as an Extender 
+Provider.  When you add a ToolTip control to a Form, all other controls on 
+the form have a ToolTip property added to their properties list.</P> 
+      
+<P>The following sample demonstrates how to build an Extender Provider by 
+creating the HelpLabelControl.  The following code shows the 
+implementation of the CanExtend method and the HelpText property.  The 
+CanExtend method is used by the designer to determine whether to extend 
+this property to a given control.  The HelpLabelControl extends the 
+HelpText property for use with the controls on a form.  The help text for 
+a control is displayed in a panel when the control has focus.</P> 
+      
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 1;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:85%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="2">
+<pre id="codectrl46" style="display:">
+
+bool IExtenderProvider.CanExtend(object target) {
+    if (target is Control &&
+        !(target is HelpLabel)) {
+
+        return true;
+    }
+    return false;
+}
+
+[
+DefaultValue(""),
+ExtenderProperty(typeof(Control))
+]
+public string GetHelpText(Control control) {
+    string text = (string)helpTexts[control];
+    if (text == null) {
+        text = string.Empty;
+    }
+    return text;
+}
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="tab" id="tabctrl46" onclick="doClick(0, 'ctrl46')">
+          <b>C#
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<br><br>
+<span>
+    
+    
+    
+
+        
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../winforms/samples/cs/writingcontrols/helplabelcontrol">
+	<img style="border-color:black" border=1 src="../../winforms/images/wflink.jpg"><br>
+	</a>
+	<div class="caption">C# HelpLabel</div><br>
+	
+	
+		[<a target="_blank" href="../../winforms/samples/cs/writingcontrols/helplabelcontrol">Run Sample</a>] | 
+		[<a target="_blank" href="../../winforms/samples/cs/writingcontrols/helplabelcontrol/helplabelcssource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+    </span>
+
+<a name="User Controls">
+<h5>User Controls</h5>
+<p>This sample demonstrates how to build a User Control.</p>
+<br>
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl50" style="display:none">
+
+CustomerControl1.Anchor=System.WinForms.AnchorStyles.All;
+CustomerControl1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+CustomerControl1.Size = new System.Drawing.Size(400, 310);
+CustomerControl1.TabIndex = 0;
+</pre>
+<pre id="codectrl50" style="display:">
+
+CustomerControl1.Anchor=System.WinForms.AnchorStyles.All
+CustomerControl1.AutoScrollMinSize = new System.Drawing.Size(0, 0)
+CustomerControl1.Size = new System.Drawing.Size(400, 310)
+CustomerControl1.TabIndex = 0
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl50" onclick="doClick(0, 'ctrl50')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl50" onclick="doClick(1, 'ctrl50')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<br><br>
+<span>
+    
+    
+    
+    
+    
+
+        
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../winforms/samples/vb/writingcontrols/usercontrol">
+	<img style="border-color:black" border=1 src="../../winforms/images/wflink.jpg"><br>
+	</a>
+	<div class="caption">VB UserControl</div><br>
+	
+	
+		[<a target="_blank" href="../../winforms/samples/vb/writingcontrols/usercontrol">Run Sample</a>] | 
+		[<a target="_blank" href="../../winforms/samples/vb/writingcontrols/usercontrol/customercontrolvbsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+    </span>
+
+<a name="Licensing Controls">
+<h5>Licensing Controls</h5>
+
+<P>The following sample demonstrates how to build a control that uses the 
+default licensing provider.  The LicenseProvider attribute is used to 
+indicate to the License Manager that the class is using the 
+LicFileLicenseProvider.  The constructor for the control calls 
+LicenseManager.Validate to validate that the license is present:</P> 
+      
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 1;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:85%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="2">
+<pre id="codectrl54" style="display:">
+
+[LicenseProvider(typeof(LicFileLicenseProvider))]
+public class MyControl : RichControl {
+    private License license = null;
+
+    public MyControl () {
+        license = LicenseManager.Validate(typeof(MyControl), this);
+    }
+
+    public override void Dispose() {
+        if (license != null) {
+            license.Dispose();
+            license = null;
+        }
+    }
+
+    protected override void Finalize() {
+        Dispose();
+        base.Finalize();
+    }
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="tab" id="tabctrl54" onclick="doClick(0, 'ctrl54')">
+          <b>C#
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<P><B>Note:</B> You must dispose of the license when your control is 
+disposed.</P>
+
+<span>
+    
+    
+    
+    
+    
+
+        
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../winforms/samples/vb/writingcontrols/licensedcontrol">
+	<img style="border-color:black" border=1 src="../../winforms/images/wflink.jpg"><br>
+	</a>
+	<div class="caption">VB LicensedControl</div><br>
+	
+	
+		[<a target="_blank" href="../../winforms/samples/vb/writingcontrols/licensedcontrol">Run Sample</a>] | 
+		[<a target="_blank" href="../../winforms/samples/vb/writingcontrols/licensedcontrol/licensedcontrolvbsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+    </span>
+
+
+<!--END FOOTER-->
+<p>
+<hr>
+<p>
+</div>
+</td>
+</tr>
+</table>
+</BODY>
+</html>
+<!--END FOOTER-->

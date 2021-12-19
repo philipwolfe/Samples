@@ -1,0 +1,78 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/databind/databind2.src&file=databind2.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfZGF0YWJpbmQyLmFzcFx4eF9feHhfeHhfeF9feA==ab1293ee" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">databind2.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/databind/databind2aspxsource.htm'>databind2.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/databind/vb/databind2aspxsource.htm'>VB\databind2.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/databind/js/databind2aspxsource.htm'>JS\databind2.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><html>
+<head>
+    <script language="C#" runat="server">
+
+        void SubmitBtn_Click(Object sender, EventArgs e) {
+        
+          // Rather than explictly pull out the variable from the "StateList"
+          // and then manipulate a label control, just call "Page.DataBind".
+          // This will evaluate any <%# %> expressions within the page
+          
+          Page.DataBind();
+        }
+
+    </script>
+
+</head>
+<body>
+
+    <h3><font face="Verdana">DataBinding to a property of another server control</font></h3>
+
+    <form runat=server>
+
+        <asp:DropDownList id="StateList" runat="server">
+          <asp:ListItem>CA</asp:ListItem>
+          <asp:ListItem>IN</asp:ListItem>
+          <asp:ListItem>KS</asp:ListItem>
+          <asp:ListItem>MD</asp:ListItem>
+          <asp:ListItem>MI</asp:ListItem>
+          <asp:ListItem>OR</asp:ListItem>
+          <asp:ListItem>TN</asp:ListItem>
+          <asp:ListItem>UT</asp:ListItem>
+        </asp:DropDownList>
+        
+        <asp:button Text="Submit" OnClick="SubmitBtn_Click" runat=server/>
+        
+        <p>
+        
+        Selected State: <asp:label text='<%# StateList.SelectedItem.Text %>' runat=server/>
+        
+    </form>
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

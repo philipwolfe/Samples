@@ -1,0 +1,119 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlref/webctrl/DataGrid/datagrid3.src&file=VB%5Cdatagrid3.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkJcXGRhdGFncmlkMy5hc3BceHhfX3h4X3h4X3hfX3g=42e4fdfa" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB\datagrid3.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../../aspplus/samples/webforms/ctrlref/webctrl/datagrid/datagrid3aspxsource.htm'>datagrid3.htm</a> &nbsp;&nbsp<a href='../../../../../../../aspplus/samples/webforms/ctrlref/webctrl/datagrid/detailspageaspxsource.htm'>detailspage.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../../aspplus/samples/webforms/ctrlref/webctrl/datagrid/vb/datagrid3aspxsource.htm'>VB\datagrid3.htm</a> &nbsp;&nbsp<a href='../../../../../../../aspplus/samples/webforms/ctrlref/webctrl/datagrid/vb/detailspageaspxsource.htm'>VB\detailspage.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Import Namespace="System.Data" %>
+
+<html>
+<script language="VB" runat="server">
+
+    Function CreateDataSource() As ICollection
+        
+        Dim dt As DataTable
+        Dim dr As DataRow
+        Dim i As Integer
+
+        'create a DataTable
+        dt = New DataTable
+        dt.Columns.Add(New DataColumn("IntegerValue", GetType(Integer)))
+        dt.Columns.Add(New DataColumn("StringValue", GetType(String)))
+        dt.Columns.Add(New DataColumn("DateTimeValue", GetType(DateTime)))
+        dt.Columns.Add(New DataColumn("BoolValue", GetType(Boolean)))
+        dt.Columns.Add(new DataColumn("CurrencyValue", GetType(Double)))
+
+        'Make some rows and put some sample data in
+        For i = 1 To 9
+            dr = dt.NewRow()
+            dr(0) = i
+            dr(1) = "Item " + i.ToString()
+            dr(2) = DateTime.Now.ToShortTimeString
+            If (i Mod 2 <> 0) Then
+                dr(3) = True
+            Else
+                dr(3) = False
+            End If
+            dr(4) = 1.23 * (i+1)
+            'add the row to the datatable
+            dt.Rows.Add(dr)
+        Next
+
+        'return a DataView to the DataTable
+        CreateDataSource = New DataView(dt)
+        
+    End Function
+
+    Sub Page_Load(sender As Object, e As EventArgs) 
+        MyDataGrid.DataSource = CreateDataSource()
+        MyDataGrid.DataBind
+    End Sub
+
+</script>
+
+<body>
+
+    <h3><font face="Verdana">Using a HyperLinkColumn in DataGrid</font></h3>
+
+    <form runat=server>
+
+      <ASP:DataGrid id="MyDataGrid" runat="server"
+        BorderColor="black"
+        BorderWidth="1"
+        GridLines="Both"
+        CellPadding="3"
+        CellSpacing="0"
+        Font-Name="Verdana"
+        Font-Size="8pt"
+        HeaderStyle-BackColor="#aaaadd"
+        AutoGenerateColumns="false"
+      >
+          <property name="Columns">
+            <asp:HyperLinkColumn
+                HeaderText="Details"
+                DataNavigateUrlField="IntegerValue"
+                DataNavigateUrlFormatString="detailspage.htm?id={0}"
+                DataTextField="StringValue"
+                Target="_new"
+            />
+            <asp:BoundColumn HeaderText="Date/Time" DataField="DateTimeValue"/>
+            <asp:BoundColumn HeaderText="True/False" DataField="BoolValue"/>
+            <!-- format Price as currency-->
+            <asp:BoundColumn HeaderText="Price"
+                DataField="CurrencyValue"
+                DataFormatString="{0:c}"
+                ItemStyle-HorizontalAlign="right"
+                />
+          </property>
+
+      </asp:DataGrid>
+
+  </form>
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

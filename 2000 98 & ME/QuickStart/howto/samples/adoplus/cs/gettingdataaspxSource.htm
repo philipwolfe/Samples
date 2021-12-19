@@ -1,0 +1,67 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/adoplus/vb/gettingdata.src&file=..%5CCS%5Cgettingdata.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfLi5cXENTXFxnZXR0aW5nZGF0YS5hc3BceHhfX3h4X3h4X3hfX3g=6b67e2ad" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">..\CS\gettingdata.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../howto/samples/adoplus/vb/gettingdataaspxsource.htm'>gettingdata.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../howto/samples/adoplus/cs/gettingdataaspxsource.htm'>..\CS\gettingdata.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="System.Data.SQL" %>
+
+<html>
+<script language="C#" runat="server">
+
+    public DataSet dsCustomer; 
+ 
+
+    protected void Page_Load(Object Src, EventArgs E ) 
+    {
+        SQLConnection myConnection = new SQLConnection("server=localhost;uid=sa;pwd=;database=northwind");
+	SQLDataSetCommand CustomersDSCommand = new SQLDataSetCommand("select * from customers", myConnection);
+
+	dsCustomer = new DataSet();
+	
+	
+	CustomersDSCommand.FillDataSet(dsCustomer,"Customers");
+
+	foreach (DataRow Customer in dsCustomer.Tables["Customers"].Rows)
+	{	
+	Response.Write(Customer["CustomerId"].ToString() + "<BR>" );
+	}
+	
+    }
+
+</script>
+
+<body>
+
+
+
+
+</body>
+</html>
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

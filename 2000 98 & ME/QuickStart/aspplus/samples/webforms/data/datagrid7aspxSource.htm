@@ -1,0 +1,187 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/data/datagrid7.src&file=datagrid7.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfZGF0YWdyaWQ3LmFzcFx4eF9feHhfeHhfeF9feA==0e391a5a" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">datagrid7.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/data/datagrid7aspxsource.htm'>datagrid7.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/data/vb/datagrid7aspxsource.htm'>VB/datagrid7.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/data/js/datagrid7aspxsource.htm'>JS/datagrid7.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>
+<%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="System.Data.SQL" %>
+
+<html>
+
+<script language="C#" runat="server">
+
+    SQLConnection myConnection;
+
+    protected void Page_Load(Object Src, EventArgs E) 
+    {
+        myConnection = new SQLConnection("server=localhost;uid=sa;pwd=;database=pubs");
+
+        if (!IsPostBack)
+            BindGrid();
+    }
+
+    public void MyDataGrid_Edit(Object sender, DataGridCommandEventArgs E)
+    {
+        MyDataGrid.EditItemIndex = (int)E.Item.ItemIndex;
+        BindGrid();
+    }
+
+    public void MyDataGrid_Cancel(Object sender, DataGridCommandEventArgs E)
+    {
+        MyDataGrid.EditItemIndex = -1;
+        BindGrid();
+    }
+
+    public void MyDataGrid_Update(Object sender, DataGridCommandEventArgs E)
+    {
+        String updateCmd = "UPDATE Authors SET au_id = @Id, au_lname = @LName, au_fname = @FName, phone = @Phone, "
+             + "address = @Address, city = @City, state = @State, zip = @Zip, contract = @Contract where au_id = @Id";
+
+        SQLCommand myCommand = new SQLCommand(updateCmd, myConnection);
+
+        myCommand.Parameters.Add(new SQLParameter("@Id", SQLDataType.VarChar, 11));
+        myCommand.Parameters.Add(new SQLParameter("@LName", SQLDataType.VarChar, 40));
+        myCommand.Parameters.Add(new SQLParameter("@FName", SQLDataType.VarChar, 20));
+        myCommand.Parameters.Add(new SQLParameter("@Phone", SQLDataType.Char, 12));
+        myCommand.Parameters.Add(new SQLParameter("@Address", SQLDataType.VarChar, 40));
+        myCommand.Parameters.Add(new SQLParameter("@City", SQLDataType.VarChar, 20));
+        myCommand.Parameters.Add(new SQLParameter("@State", SQLDataType.Char, 2));
+        myCommand.Parameters.Add(new SQLParameter("@Zip", SQLDataType.Char, 5));
+        myCommand.Parameters.Add(new SQLParameter("@Contract", SQLDataType.VarChar,1));
+
+        myCommand.Parameters["@Id"].Value = MyDataGrid.DataKeys[(int)E.Item.ItemIndex];
+
+        String[] cols = {"@Id","@LName","@FName","@Phone","@Address","@City","@State","@Zip","@Contract"};
+
+        int numCols = E.Item.Cells.Count;
+        for (int i=2; i<numCols-1; i++) //skip first, second and last column
+        {
+            String colvalue =((TextBox)E.Item.Cells[i].Controls[0]).Text;
+
+            // check for null values in required fields
+            if (i<6 && colvalue == "") 
+            {
+                Message.InnerHtml = "ERROR: Null values not allowed for Author ID, Name or Phone";
+                Message.Style["color"] = "red";
+                return;
+            }
+
+            myCommand.Parameters[cols[i-1]].Value = colvalue;
+        }
+
+        //append last row, converting true/false values to 0/1
+        if (String.Compare(((TextBox)E.Item.Cells[numCols-1].Controls[0]).Text, "true", true)==0)
+                    myCommand.Parameters["@Contract"].Value =  "1"; 
+        else
+                    myCommand.Parameters["@Contract"].Value =  "0"; 
+
+        myCommand.ActiveConnection.Open();
+
+        try 
+        {
+            myCommand.ExecuteNonQuery();
+            Message.InnerHtml = "<b>Record Updated</b><br>" + updateCmd;
+            MyDataGrid.EditItemIndex = -1;
+        }
+        catch (SQLException e)
+        {
+            if (e.Number == 2627)
+                Message.InnerHtml = "ERROR: A record already exists with the same primary key";
+            else
+                Message.InnerHtml = "ERROR: Could not update record, please ensure the fields are correctly filled out";
+            Message.Style["color"] = "red";
+        }
+
+        myCommand.ActiveConnection.Close();
+
+        BindGrid();
+    }
+
+    public void BindGrid() 
+    {
+        SQLDataSetCommand myCommand = new SQLDataSetCommand("select * from Authors", myConnection);
+
+        DataSet ds = new DataSet();
+        myCommand.FillDataSet(ds, "Authors");
+
+        MyDataGrid.DataSource=ds.Tables["Authors"].DefaultView;
+        MyDataGrid.DataBind();
+    }
+
+</script>
+
+<body style="font: 10pt verdana">
+
+  <form runat="server">
+
+    <h3><font face="Verdana">Updating a Row of Data w/ Read-Only Column</font></h3>
+
+    <span id="Message" MaintainState="false" style="font: arial 11pt;" runat="server"/><p>
+
+    <ASP:DataGrid id="MyDataGrid" runat="server"
+      Width="800"
+      BackColor="#ccccff" 
+      BorderColor="black"
+      ShowFooter="false" 
+      CellPadding=3 
+      CellSpacing="0"
+      Font-Name="Verdana"
+      Font-Size="8pt"
+      HeaderStyle-BackColor="#aaaadd"
+      OnEditCommand="MyDataGrid_Edit"
+      OnCancelCommand="MyDataGrid_Cancel"
+      OnUpdateCommand="MyDataGrid_Update"
+      DataKeyField="au_id"
+      AutoGenerateColumns="false"
+    >
+
+      <property name="Columns">
+        <asp:EditCommandColumn EditText="Edit" CancelText="Cancel" UpdateText="Update" ItemStyle-Wrap="false"/>
+        <asp:BoundColumn HeaderText="au_id" SortField="au_id" ReadOnly="True" DataField="au_id" ItemStyle-Wrap="false"/>
+        <asp:BoundColumn HeaderText="au_lname" SortField="au_lname" DataField="au_lname"/>
+        <asp:BoundColumn HeaderText="au_fname" SortField="au_fname" DataField="au_fname"/>
+        <asp:BoundColumn HeaderText="phone" SortField="phone" DataField="phone"/>
+        <asp:BoundColumn HeaderText="address" SortField="address" DataField="address"/>
+        <asp:BoundColumn HeaderText="city" SortField="city" DataField="city"/>
+        <asp:BoundColumn HeaderText="state" SortField="state" DataField="state"/>
+        <asp:BoundColumn HeaderText="zip" SortField="zip" DataField="zip"/>
+        <asp:BoundColumn HeaderText="contract" SortField="contract" DataField="contract"/>
+      </property>
+
+    </ASP:DataGrid>
+
+  </form>
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

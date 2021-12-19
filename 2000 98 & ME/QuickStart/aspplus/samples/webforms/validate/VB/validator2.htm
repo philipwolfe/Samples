@@ -1,0 +1,147 @@
+
+
+<html>
+<head>
+
+    
+
+</head>
+<body>
+
+<h3><font face="Verdana">Client-Side RequiredFieldValidator Sample</font></h3>
+<p>
+
+
+<form name="ctrl2" method="post" action="validator2.htm" language="javascript" onsubmit="ValidatorOnSubmit();" id="ctrl2">
+<input type="hidden" name="__VIEWSTATE" value="YTB6LTE5NzQ4OTYzMjBfX194ed66183a" />
+           
+<script language="javascript" src="../../../../..//_aspx/1.0.2204/script/webuivalidation.js"></script>
+    
+
+
+    <table bgcolor="#eeeeee" cellpadding=10>
+    <tr valign="top">
+      <td colspan=3>
+        <span id="lblOutput" Name="lblOutput" style="color:Red;font-family:Verdana;font-size:10px;">Fill in the required fields below</span><br>
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan=3>
+      <font face=Verdana size=2><b>Credit Card Information</b></font>
+      </td>
+    </tr>
+    <tr>
+      <td align=right>
+        <font face=Verdana size=2>Card Type:</font>
+      </td>
+      <td>
+        <span onchange="ClientOnChange();"><span value="MasterCard"><input type="radio" id="RadioButtonList1_0" value="MasterCard" name="RadioButtonList1" /><label for="RadioButtonList1_0">MasterCard</label></span><br><span value="Visa"><input type="radio" id="RadioButtonList1_1" value="Visa" name="RadioButtonList1" /><label for="RadioButtonList1_1">Visa</label></span></span>
+      </td>
+      <td align=middle rowspan=1>
+        <span id="RequiredFieldValidator1" controltovalidate="RadioButtonList1" errormessage="*" evaluationfunction="RequiredFieldValidatorEvaluateIsValid" initialvalue="" style="color:Red;width:100%;visibility:hidden;">*</span>
+      </td>
+    </tr>
+    <tr>
+      <td align=right>
+        <font face=Verdana size=2>Card Number:</font>
+      </td>
+      <td>
+        <input name="TextBox1" type="text" id="TextBox1" onchange="ClientOnChange();" />
+      </td>
+      <td>
+        <span id="RequiredFieldValidator2" controltovalidate="TextBox1" errormessage="*" evaluationfunction="RequiredFieldValidatorEvaluateIsValid" initialvalue="" style="color:Red;width:100%;visibility:hidden;">*</span>
+
+      </td>
+    </tr>
+    <tr>
+      <td align=right>
+        <font face=Verdana size=2>Expiration Date:</font>
+      </td>
+      <td>
+        <select name="DropDownList1" id="DropDownList1" onchange="ClientOnChange();">
+    <option value=""></option>
+    <option value="06/00">06/00</option>
+    <option value="07/00">07/00</option>
+    <option value="08/00">08/00</option>
+    <option value="09/00">09/00</option>
+    <option value="10/00">10/00</option>
+    <option value="11/00">11/00</option>
+    <option value="01/01">01/01</option>
+    <option value="02/01">02/01</option>
+    <option value="03/01">03/01</option>
+    <option value="04/01">04/01</option>
+    <option value="05/01">05/01</option>
+    <option value="06/01">06/01</option>
+    <option value="07/01">07/01</option>
+    <option value="08/01">08/01</option>
+    <option value="09/01">09/01</option>
+    <option value="10/01">10/01</option>
+    <option value="11/01">11/01</option>
+    <option value="12/01">12/01</option>
+    
+</select>
+      </td>
+      <td>
+        <span id="RequiredFieldValidator3" controltovalidate="DropDownList1" errormessage="*" evaluationfunction="RequiredFieldValidatorEvaluateIsValid" initialvalue="" style="color:Red;width:100%;visibility:hidden;">*</span>
+      </td>
+      <td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <input type="submit" name="Button1" value="Validate" id="Button1" />
+      </td>
+      <td></td>
+    </tr>
+    </table>
+
+
+<script language="javascript">
+<!--
+    var Page_Validators =  new Array(document.all["RequiredFieldValidator1"], document.all["RequiredFieldValidator2"], document.all["RequiredFieldValidator3"]);
+// -->
+</script>
+
+    
+<script language="javascript">
+<!--
+var Page_ValidationErrorPrefix = "Validation script error: ";
+var Page_ValidationBadID = "Client ID is not unique: ";
+var Page_ValidationBadFunction = "Invalid ClientValidationFunction: ";
+var Page_ValidationActive = false;
+if (typeof(Page_ValidationVer) == "undefined")
+    alert("Warning! Unable to find script library 'WebUIValidation.js'.");
+else if (Page_ValidationVer != "112")
+    alert("Warning! This page is using the wrong version of 'WebUIValidation.js'. Page expects version '112'. Script library is '" + Page_ValidationVer + "'.");
+else
+    ValidatorOnLoad();
+
+function ValidatorOnSubmit() {
+    if (Page_ValidationActive) {
+        ValidatorCommonOnSubmit();
+    }
+}
+// -->
+</script>
+        
+    
+</form>
+
+<script language=javascript>
+
+    function ClientOnChange()
+    {
+       if (typeof(Page_Validators) == "undefined")
+          return;
+
+      // Update status interactively
+      var numbersValid = document.all["RequiredFieldValidator1"].IsValid && document.all["RequiredFieldValidator2"].IsValid && document.all["RequiredFieldValidator3"].IsValid;
+      document.all["lblOutput"].innerText = numbersValid ? "Page is Valid!" : "Some of the required fields are empty";
+    }
+
+</script>
+
+
+</body>
+</html>

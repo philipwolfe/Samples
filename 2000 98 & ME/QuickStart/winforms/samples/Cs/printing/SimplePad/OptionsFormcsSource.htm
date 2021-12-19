@@ -1,0 +1,115 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/winforms/samples/Cs/printing/SimplePad/simplepad.src&file=OptionsForm.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfT3B0aW9uc0Zvcm0uY3N4X194eF94eF94X19426338ccd" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">OptionsForm.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>Win Form Source: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/printing/simplepad/simplepadcssource.htm'>SimplePad.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Print Document Source: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/printing/simplepad/textprintdocumentcssource.htm '>TextPrintDocument.cs </a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Goto Form Source: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/printing/simplepad/gotoformcssource.htm'>GotoForm.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Options Source: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/printing/simplepad/optionsformcssource.htm'>OptionsForm.cs</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>//------------------------------------------------------------------------------
+/// <copyright from='1997' to='2001' company='Microsoft Corporation'>           
+///    Copyright (c) Microsoft Corporation. All Rights Reserved.                
+///       
+///    This source code is intended only as a supplement to Microsoft
+///    Development Tools and/or on-line documentation.  See these other
+///    materials for detailed information regarding Microsoft code samples.
+///
+/// </copyright>                                                                
+//------------------------------------------------------------------------------
+namespace Microsoft.Samples.WinForms.Cs.SimplePad {
+    using System;
+    using System.Drawing;
+    using System.Collections;
+    using System.ComponentModel;
+    using System.WinForms;
+
+
+    public class OptionsForm : Form {
+        private System.ComponentModel.Container components;
+        private Button okButton;
+        private PropertyGrid grid;
+        private object customizer;
+
+        public OptionsForm(object customizer) {
+            InitializeComponent();
+
+            this.customizer = customizer;
+            grid.SelectedObject = customizer;
+        }
+
+        public override void Dispose() {
+            base.Dispose();
+            components.Dispose();
+        }
+
+        private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
+            this.okButton = new Button();
+            this.grid = new PropertyGrid();
+
+            this.AutoScaleBaseSize = new Size(5, 13);
+            this.Text = "Notepad+ Options";
+            this.MaximizeBox = false;
+            this.StartPosition = FormStartPosition.CenterParent;
+            this.CancelButton = okButton;
+            this.Icon = null;
+            this.AcceptButton = okButton;
+            this.ControlBox = false;
+            this.MinimizeBox = false;
+            this.ClientSize = new Size(328, 325);
+
+            okButton.Location = new Point(232, 297);
+            okButton.DialogResult = DialogResult.OK;
+            okButton.FlatStyle = FlatStyle.Flat;
+            okButton.Size = new Size(75, 23);
+            okButton.TabIndex = 0;
+            okButton.Anchor = AnchorStyles.BottomRight;
+            okButton.Text = "OK";
+
+            grid.Location = new Point(8, 8);
+            grid.Text = "PropertyGrid";
+            grid.Size = new Size(312, 281);
+            grid.CommandsVisibleIfAvailable = true;
+            grid.ActiveDocument = null;
+            grid.TabIndex = 1;
+            grid.AutoScrollMinSize = new Size(0, 0);
+            grid.Anchor = AnchorStyles.All;
+            grid.ToolbarVisible = false;
+
+            this.Controls.Add(okButton);
+            this.Controls.Add(grid);
+        }
+
+    }
+}
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

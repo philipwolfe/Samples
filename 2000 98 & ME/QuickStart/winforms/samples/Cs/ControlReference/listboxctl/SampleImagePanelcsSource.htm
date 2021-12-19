@@ -1,0 +1,80 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/winforms/samples/Cs/ControlReference/listboxctl/listboxctl.src&file=SampleImagePanel.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfU2FtcGxlSW1hZ2VQYW5lbC5jc3hfX3h4X3h4X3hfX3g=795eb472" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">SampleImagePanel.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>Win Form Source: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/controlreference/listboxctl/listboxctlcssource.htm'>ListBoxCtl.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Control Source: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/controlreference/listboxctl/sampleimagepanelcssource.htm'>SampleImagePanel.cs</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>//------------------------------------------------------------------------------
+/// <copyright from='1997' to='2001' company='Microsoft Corporation'>           
+///    Copyright (c) Microsoft Corporation. All Rights Reserved.                
+///       
+///    This source code is intended only as a supplement to Microsoft
+///    Development Tools and/or on-line documentation.  See these other
+///    materials for detailed information regarding Microsoft code samples.
+///
+/// </copyright>                                                                
+//------------------------------------------------------------------------------
+namespace Microsoft.Samples.WinForms.Cs.ListBoxCtl {
+    using System;
+    using System.ComponentModel;
+    using System.Drawing;
+    using System.WinForms;
+
+    // <doc>
+    // <desc>
+    //     This simple control displays the images selected in the ListBox
+    // </desc>                                                            
+    // </doc>
+    //
+    public class SampleImagePanel : System.WinForms.Panel {
+        internal System.Drawing.Image[] myImages = new System.Drawing.Image[4];
+        private int imageCnt = 0;
+
+        public SampleImagePanel()
+            : base() {
+        }
+
+        public virtual void AddImage(Image img) {
+            if (imageCnt >= myImages.Length) {
+                return;
+            }
+            myImages[imageCnt++] = img;
+        }
+
+        public virtual void ClearImages() {
+            imageCnt = 0;
+        }
+
+        protected override void OnPaint(PaintEventArgs pe) {
+            base.OnPaint(pe);
+            for (int i=0; i<imageCnt; i++) {
+                pe.Graphics.DrawImage(myImages[i], new System.Drawing.Point(0, 30 * i + 5));
+            }
+        }
+    }
+}
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

@@ -1,0 +1,114 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/busobjs/ThreeTier.src&file=ThreeTier.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVGhyZWVUaWVyLmFzcFx4eF9feHhfeHhfeF9feA==4dc5e9a1" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">ThreeTier.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/busobjs/threetieraspxsource.htm'>ThreeTier.htm</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/busobjs/busobjcssource.htm'>BusObj.cs</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/busobjs/dataobjcssource.htm'>DataObj.cs</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/busobjs/makesamplebatsource.htm'>makesample.bat</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/busobjs/vb/threetieraspxsource.htm'>VB/ThreeTier.htm</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/busobjs/vb/busobjvbsource.htm'>VB/BusObj.vb</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/busobjs/vb/dataobjvbsource.htm'>VB/DataObj.vb</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/busobjs/vb/makesamplebatsource.htm'>VB/makesample.bat</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Page ClientTarget="DownLevel"%>
+<%@ Import Namespace="BusinessLayer" %>
+
+<html>
+
+<script language="C#" runat="server">
+
+  public void Page_Load(Object sender, EventArgs E)
+  {
+    if (!IsPostBack)
+    {
+      BusObj bus = new BusObj();
+      Categories.DataSource = bus.GetCategories();
+      Categories.DataBind();
+    }
+  }
+
+  public void Submit_Click(Object sender, EventArgs E)
+  {
+    if (Page.IsValid)
+    {
+      int id = 0;
+      if (CustomerId.Text != "")
+        id = Int32.Parse(CustomerId.Text);
+
+      BusObj bus = new BusObj();
+      Products.DataSource = bus.GetProductsForCategory(Categories.SelectedItem.Value,id);
+    }
+    Products.DataBind();
+  }
+
+</script>
+
+<body style="font: 10pt verdana" bgcolor="ffffcc">
+
+  <form runat="server">
+
+  <h3>A Simple Three-Tier Web Form</h3>
+
+  Select a Category: 
+
+  <ASP:DropDownList id="Categories" DataValueField="CategoryName" runat="server"/> &nbsp;
+
+  Preferred Customer ID:
+ 
+  <ASP:TextBox id="CustomerId" Width="35" runat="server"/> &nbsp;
+
+  <input type="Submit" OnServerClick="Submit_Click" Value="Get Products" runat="server"/>
+
+  &nbsp;&nbsp;
+
+  <asp:RegularExpressionValidator id="RegExValidator"
+    ControlToValidate="CustomerId"
+    ValidationExpression="[0-9]{2}"
+    Display="Dynamic"
+    Font-Name="verdana" Font-Size="10"
+    runat=server>
+   Customer ID must be two numeric digits
+  </asp:RegularExpressionValidator>
+
+  <p>
+
+  <ASP:DataList id="Products" ShowHeader=false ShowFooter=false RepeatColumns="2" RepeatDirection="horizontal" BorderWidth=0 runat="server">
+
+    <template name="itemtemplate">
+      <table>
+        <tr>
+          <td width="150" style="text-align:center; font-size:8pt; vertical-align:top; height:200">
+            <ASP:ImageButton borderwidth=6 bordercolor="#ffffcc" command="Select" ImageUrl='<%# DataBinder.Eval(Container.DataItem, "ImagePath") %>' runat="server"/>
+            <p>
+            <%# DataBinder.Eval(Container.DataItem, "ProductName") %> <br>
+            <%# DataBinder.Eval(Container.DataItem, "UnitPrice", "{0:C}").ToString() %>
+          </td>
+        </tr>
+      </table>
+    </template>
+                                             
+  </ASP:DataList>
+
+  </form> 
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

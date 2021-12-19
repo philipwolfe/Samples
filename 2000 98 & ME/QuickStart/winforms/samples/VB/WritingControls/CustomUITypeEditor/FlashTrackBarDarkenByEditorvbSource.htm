@@ -1,0 +1,72 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/winforms/samples/VB/WritingControls/CustomUITypeEditor/CustomUITypeEditor.src&file=FlashTrackBarDarkenByEditor.vb" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfRmxhc2hUcmFja0JhckRhcmtlbkJ5RWRpdG9yLnZieF9feHhfeHhfeF9feA==cce9cbd7" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">FlashTrackBarDarkenByEditor.vb</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>Control: </b></td>
+        <td><a href='../../../../../winforms/samples/vb/writingcontrols/customuitypeeditor/flashtrackbarvbsource.htm'>FlashTrackBar.vb</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Value Editor: </b></td>
+        <td><a href='../../../../../winforms/samples/vb/writingcontrols/customuitypeeditor/flashtrackbarvalueeditorvbsource.htm'>FlashTrackBarValueEditor.vb</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Value Editor: </b></td>
+        <td><a href='../../../../../winforms/samples/vb/writingcontrols/customuitypeeditor/flashtrackbardarkenbyeditorvbsource.htm'>FlashTrackBarDarkenByEditor.vb</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Host Application: </b></td>
+        <td><a href='../../../../../winforms/samples/vb/writingcontrols/customuitypeeditor/hostappvbsource.htm'>HostApp.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>'------------------------------------------------------------------------------
+'/ <copyright from='1997' to='2001' company='Microsoft Corporation'>           
+'/    Copyright (c) Microsoft Corporation. All Rights Reserved.                
+'/       
+'/    This source code is intended only as a supplement to Microsoft
+'/    Development Tools and/or on-line documentation.  See these other
+'/    materials for detailed information regarding Microsoft code samples.
+'/
+'/ </copyright>                                                                
+'------------------------------------------------------------------------------
+Imports System
+Imports System.ComponentModel
+Imports System.ComponentModel.Design
+Imports System.Drawing
+Imports System.Drawing.Drawing2D
+Imports System.Drawing.Design
+Imports System.WinForms
+Imports System.Diagnostics
+
+Namespace Microsoft.Samples.WinForms.VB.FlashTrackBar 
+
+   Public Class FlashTrackBarDarkenByEditor 
+        Inherits FlashTrackBarValueEditor 
+   
+       Overrides Protected Sub SetEditorProps(editingInstance As FlashTrackBar, editor As FlashTrackBar) 
+           MyBase.SetEditorProps(editingInstance, editor)
+           editor.Min = 0
+           editor.Max = System.Byte.MaxValue
+       End Sub
+   
+   End Class
+   
+end Namespace
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

@@ -1,0 +1,146 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Xml/StreamXmlDocument/StreamXmlDocument.src&file=VB/StreamXmlDocument.vb" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvU3RyZWFtWG1sRG9jdW1lbnQudmJ4X194eF94eF94X194348dead3" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/StreamXmlDocument.vb</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../howto/samples/xml/streamxmldocument/streamxmldocumentcssource.htm'>StreamXmlDocument.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../howto/samples/xml/streamxmldocument/vb/streamxmldocumentvbsource.htm'>VB/StreamXmlDocument.vb</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>XML data: </b></td>
+        <td><a href='../../../../../howto/samples/xml/streamxmldocument/booksxmlsource.htm'>books.xml</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>XML Stylesheet: </b></td>
+        <td><a href='../../../../../howto/samples/xml/streamxmldocument/identityxslsource.htm'>identity.xsl</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>'Copyright (c) 2000, Microsoft Corporation. All Rights Reserved.
+
+Imports Microsoft.VisualBasic
+Imports System
+Imports System.IO
+Imports System.Xml
+Imports System.Xml.Xsl
+
+namespace HowTo.Samples.XML
+
+public class XmlDocumentSample
+
+    private const m_Document as String = "books.xml"
+    private const m_Stylesheet as String = "identity.xsl"
+
+    public shared sub Main()
+        Dim xmldocument as XmlDocumentSample= new XmlDocumentSample()
+    end sub
+
+    public sub new ()
+        mybase.new
+
+        dim docreader as XmlReader = nothing 
+        try                        
+            ' Load the XML from file
+            Console.WriteLine ("Loading file {0} ...", m_Document)
+
+            ' Create an XmlDocument
+            dim xmldocument as XmlDataDocument = new XmlDataDocument()
+            xmldocument.Load (m_Document)
+
+            Console.WriteLine ("XmlDataDocument loaded with XML data successfully ...")
+
+            'The use of an XslTransform is a work-around for getting an XmlReader from XmlDataDocument
+            'until DataDocumentReader is implemented.
+            'dim docreader as DataDocumentReader = DataDocumentReader(xmldocument)
+
+            Console.WriteLine ("Reading XML ...")
+            Console.WriteLine()
+
+            dim xsltransform as XslTransform = new XslTransform()
+            xsltransform.Load(m_Stylesheet)
+            docreader = xsltransform.Transform(new DataDocumentNavigator(xmldocument), nothing)
+
+            FormatXml (docreader)
+        
+        catch e as Exception        
+            Console.WriteLine ("Exception: {0}", e.ToString())
+
+        finally
+            ' Close the reader
+            if not (docreader = nothing)
+                docreader.Close() 
+            end if
+
+        end try
+    end sub
+        
+    private sub FormatXml (reader as XmlReader)
+    
+        While reader.Read()
+        
+            Select (reader.NodeType)
+            
+            case XmlNodeType.ProcessingInstruction:
+                Format (reader, "ProcessingInstruction")
+
+            case XmlNodeType.DocumentType:
+                Format (reader, "DocumentType")
+
+            case XmlNodeType.Comment:
+                Format (reader, "Comment")
+
+            case XmlNodeType.Element:
+                Format (reader, "Element")
+                While reader.MoveToNextAttribute()                
+                    Format (reader, "Attribute")
+                end While
+
+            case XmlNodeType.Text:
+                Format (reader, "Text")
+
+            case XmlNodeType.Whitespace:
+                Format (reader, "Whitespace")
+
+            end Select
+            
+        end While    
+    end sub
+
+    private sub Format(byref reader as XmlReader, NodeType as String)
+    
+        ' Format the output
+        Console.Write(reader.Depth & " ")
+        Console.Write(reader.AttributeCount & " ")
+
+        Dim i as Integer
+        for i = 0 to reader.Depth
+            Console.Write(Strings.chr(9))
+        Next
+        
+        Console.Write(reader.Prefix & NodeType & "<" & reader.Name & ">" & reader.Value)
+        Console.WriteLine()
+    end sub    
+
+end Class
+end Namespace
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

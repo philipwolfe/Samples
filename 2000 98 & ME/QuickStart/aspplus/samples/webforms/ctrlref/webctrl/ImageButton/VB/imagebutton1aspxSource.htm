@@ -1,0 +1,60 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlref/webctrl/ImageButton/imagebutton1.src&file=VB%5Cimagebutton1.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkJcXGltYWdlYnV0dG9uMS5hc3BceHhfX3h4X3h4X3hfX3g=44b0db88" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB\imagebutton1.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../../aspplus/samples/webforms/ctrlref/webctrl/imagebutton/imagebutton1aspxsource.htm'>imagebutton1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../../aspplus/samples/webforms/ctrlref/webctrl/imagebutton/vb/imagebutton1aspxsource.htm'>VB\imagebutton1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><html>
+<head>
+    <script language="VB" runat="server">
+
+        Sub ImageButton1_OnClick(sender As Object, e As ImageClickEventArgs)
+            Label1.Text = "You clicked the image button"
+        End Sub
+
+    </script>
+
+</head>
+<body>
+
+    <h3><font face="Verdana">ImageButton Example</font></h3>
+
+    <form runat=server>
+
+        <asp:ImageButton id=Button1 ImageUrl="/quickstart/aspplus/images/mango.jpg" BorderWidth="2px" onclick="ImageButton1_OnClick" runat="server"/>
+        
+        &nbsp;&nbsp;
+
+        <asp:Label id=Label1 runat=server />
+        
+    </form>
+
+</body>
+</html>
+
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

@@ -1,0 +1,759 @@
+
+
+<!--BEGIN HEADER-->
+<html>
+<head>
+<link rel="stylesheet" href="../../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+  <table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+<!--
+		<div style="padding:0,0,4,0"><a class="outer" style="color:darkred" href="../../../howto/doc/xml/overviewofxml.htm"><b>Introduction</a></b></a><br></div>
+         <p>
+		<div style="padding:0,0,4,0"><b>XML Readers and Writers</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/readxmlfile.htm">Read XML from a file</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/readxmlstream.htm">Read XML from a stream</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/writexmlfile.htm">Write XML to a file</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/validationreadingxml.htm">Apply validation when reading XML</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML Document Object Model (DOM)</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/dominterfacexmldocument.htm">Load and use the XmlDocument (W3C DOM)</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savexmldocument.htm">Save XML with the XmlDocument (W3C DOM)</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>Using the XmlDataDocument</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/loadxmldocument.htm">Load and use the XmlDataDocument</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/streamanxmldocument.htm">Read XML from an XmlDataDocument</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML Navigation and Editing</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/navigatexmldocument.htm">Navigate XML with the XmlNavigator</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/editingxmldocument.htm">Edit XML with the XmlNavigator</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XPath and XSL Transformations</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/queryxmldocumentxpath.htm">Query XML with an XPath expression</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/transformxml.htm">Apply an XSL transformation to XML</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML and Relational Data</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/xmldataset.htm">Use XML and the DataSet class</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/datasetmapxsdschema.htm">Create DataSet mappings from an XSD schema</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/loaddatasetxmldata.htm">Load a DataSet with XML</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/datasetmapxmldata.htm">Infer DataSet mappings from XML</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savedatasetmapxsdschema.htm">Save DataSet mappings to an XSD schema file</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savedatasetxml.htm">Save a DataSet as XML</a><br>
+-->
+
+		<div style="padding:0,0,4,0"><b>XML Data</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/overviewofxml.htm">Overview of XML</a><p>
+
+		<div style="padding:0,0,4,0"><b>XML Readers and Writers</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/readxmlfile.htm">Read XML from a file</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/readxmlstream.htm">Read XML from a stream</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/writexmlfile.htm">Write XML to a file</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/validationreadingxml.htm">Apply validation to XML</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML Document Object Model</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/dominterfacexmldocument.htm">Load XML with XmlDocument</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savexmldocument.htm">Save XML with XmlDocument</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>Using the XmlDataDocument</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/loadxmldocument.htm">Load the XmlDataDocument</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/streamanxmldocument.htm">Read from XmlDataDocument</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML Navigation and Editing</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/navigatexmldocument.htm">Navigate with XmlNavigator</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/editingxmldocument.htm">Edit with XmlNavigator</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XPath and XSL Transformations</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/queryxmldocumentxpath.htm">Query XML with an XPath</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/transformxml.htm">Apply XSL transformations</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML and Relational Data</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/xmldataset.htm">Use XML and the DataSet</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/datasetmapxsdschema.htm">Create DataSet mappings</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/loaddatasetxmldata.htm">Load a DataSet with XML</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/datasetmapxmldata.htm">Infer DataSet mappings</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savedatasetmapxsdschema.htm">Save DataSet mappings</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savedatasetxml.htm">Save a DataSet as XML</a><p>
+
+    <div style="padding:0,0,4,0"><a target="_top" style="color:darkred" href="../../../howto"><b>Back to Index</b></a><br></div>
+
+
+</div>
+
+</td>
+</tr>
+</table>
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<style>
+.mydd {  font: smaller verdana; }
+.code1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:blue;
+	}
+.codecomment1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:green;
+	}
+.issue {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background-color:RED;
+	color:WHITE;
+	font-weight:bold;
+	}
+
+
+body { font: smaller verdana }        
+
+</style>
+
+
+
+
+
+<h4>How Do I...Save DataSet mappings to an XSD schema file?</h4>
+
+This sample illustrates how to save the internal DataSet mappings to an XSD schema file. In this sample the mappings are built by using the relational methods
+on the DataSet to create tables and columns and an XSD schema representation for these is then written out to a file.
+<p>
+
+
+<span>
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../../images/genicon.gif"><br>
+	</a>
+	<div class="caption">SaveDataSetMapXSDSchema.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../../howto/samples/xml/savedatasetmapxsdschema/savedatasetmapxsdschemacssource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<p>
+
+The DataSet and XmlDataDocument classes both represent an in-memory data cache. The XmlDataDocument provides XML navigational and editing methods whilst the DataSet
+provides relationally orientated navigational and editing methods. Here we are going to get the DataSet property from the XmlDataDocument, use it to build a set of
+tables and columns and then populate them. We can then write out the internally generated schema. The code illustrated below builds up two tables, one of people
+and the other of pets. An ID is used as a primary key onto the each of the tables and a relationship table is built between the people and their pets.
+<p>
+
+
+First we create an instance of an XmlDataDocument, and pass it's DataSet to the LoadDataSet() method.
+<p>
+
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl8" style="display:none">
+
+XmlDataDocument datadoc = new XmlDataDocument();
+LoadDataSet(datadoc.DataSet);
+</pre>
+<pre id="codectrl8" style="display:">
+
+Dim datadoc As XmlDataDocument = New XmlDataDocument()
+LoadDataSet(datadoc.DataSet)
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl8" onclick="doClick(0, 'ctrl8')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl8" onclick="doClick(1, 'ctrl8')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+
+<p>
+The LoadDataSet() method loads the dataset with data relationally.
+<p>
+
+
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl10" style="display:none">
+
+// Load a DataSet with relational data
+private void LoadDataSet(DataSet dataset) {
+
+    try {
+        Console.WriteLine("Loading the DataSet ...");
+
+        // Set DataSet name
+        dataset.DataSetName = "PersonPet";
+
+        // Create tables for people and pets
+        DataTable people = new DataTable("Person");
+        DataTable pets = new DataTable("Pet");
+
+        // Set up the columns in the Tables
+        DataColumn personname = new DataColumn ("Name", typeof(String));
+        DataColumn personAge = new DataColumn ("Age", typeof(Int32));
+
+        DataColumn petname = new DataColumn ("Name", typeof(String));
+        DataColumn pettype = new DataColumn ("Type", typeof(String));
+
+        // Add columns to person table
+        DataColumn id = people.Columns.Add("ID", typeof(Int32));
+        id.AutoIncrement = true;
+
+        people.PrimaryKey = new DataColumn[] {id};
+        people.Columns.Add (personname);
+        people.Columns.Add (personAge);
+
+        // Add columns to pet table
+        id = pets.Columns.Add("ID", typeof(Int32));
+        id.AutoIncrement = true;
+        pets.PrimaryKey = new DataColumn[] {id};
+        id.AutoIncrement = true;
+        DataColumn ownerid = pets.Columns.Add("OwnerID", typeof(Int32));
+        DataColumn[] foreignkey = new DataColumn[] {ownerid};
+        pets.Columns.Add (petname);
+        pets.Columns.Add (pettype);
+
+        // Add tables to the DataSet
+        dataset.Tables.Add (people);
+        dataset.Tables.Add (pets);
+
+        // Add people
+        DataRow mark = people.NewRow();
+        mark[personname] = "Mark";
+        mark[personAge] = 18;
+        people.Rows.Add(mark);
+
+        DataRow william = people.NewRow();
+        william[personname] = "William";
+        william[personAge] = 12;
+        people.Rows.Add(william);
+
+        DataRow james = people.NewRow();
+        james[personname] = "James";
+        james[personAge] = 7;
+        people.Rows.Add(james);
+
+        DataRow levi = people.NewRow();
+        levi[personname] = "Levi";
+        levi[personAge] = 4;
+        people.Rows.Add(levi);
+
+        // Add relationships
+        Console.WriteLine("Creating relationships between people and pets ...");
+        DataRelation personpetrel = new DataRelation ("PersonPet",people.PrimaryKey, foreignkey);
+        dataset.Relations.Add (personpetrel);
+
+        // Add pets
+        DataRow row = pets.NewRow();
+        row["OwnerID"] = mark["ID"];
+        row[petname] = "Frank";
+        row[pettype] = "cat";
+        pets.Rows.Add(row);
+
+        row = pets.NewRow();
+        row["OwnerID"] = william["ID"];
+        row[petname] = "Rex";
+        row[pettype] = "dog";
+        pets.Rows.Add(row);
+
+        row = pets.NewRow();
+        row["OwnerID"] = james["ID"];
+        row[petname] = "Cottontail";
+        row[pettype] = "rabbit";
+        pets.Rows.Add(row);
+
+        row = pets.NewRow();
+        row["OwnerID"] = levi["ID"];
+        row[petname] = "Sid";
+        row[pettype] = "snake";
+        pets.Rows.Add(row);
+
+        row = pets.NewRow();
+        row["OwnerID"] = levi["ID"];
+        row[petname] = "Tickles";
+        row[pettype] = "spider";
+        pets.Rows.Add(row);
+
+        row = pets.NewRow();
+        row["OwnerID"] = william["ID"];
+        row[petname] = "Tweetie";
+        row[pettype] = "canary";
+        pets.Rows.Add(row);
+                
+        // commit changes
+        dataset.AcceptChanges();
+    }
+    catch (Exception e) {
+        Console.WriteLine("Exception: ", e.ToString());
+    }
+}    
+</pre>
+<pre id="codectrl10" style="display:">
+
+' Load a DataSet with relational data
+private sub LoadDataSet(dataset As DataSet)
+    
+    Try
+        Console.WriteLine("Loading the DataSet ...")
+
+        ' Set DataSet name
+        dataset.DataSetName = "PersonPet"
+
+        ' Create tables for people and pets
+        Dim people As DataTable = new DataTable("Person")
+        Dim pets As DataTable = new DataTable("Pet")
+
+        ' Set up the columns in the Tables
+        Dim personname As DataColumn = new DataColumn ("Name", GetType (System.String))
+        Dim personAge As DataColumn = new DataColumn ("Age", GetType (System.Int32))
+
+        Dim petname As DataColumn = new DataColumn ("Name", GetType (System.String))
+        Dim pettype As DataColumn = new DataColumn ("Type", GetType (System.String))
+
+        ' Add columns to person table
+        Dim id As DataColumn = people.Columns.Add("ID", GetType (System.Int32))
+        id.AutoIncrement = true
+        Dim primarykey As DataColumn() = new DataColumn() {id}
+        people.PrimaryKey = primarykey
+        people.Columns.Add (personname)
+        people.Columns.Add (personAge)
+
+        ' Add columns to pet table
+        id = pets.Columns.Add("ID", GetType (System.Int32))
+        id.AutoIncrement = true
+        pets.PrimaryKey = new DataColumn() {id}
+        id.AutoIncrement = true
+        Dim ownerid As DataColumn = pets.Columns.Add("OwnerID", GetType (System.Int32))
+        Dim foreignkey As DataColumn() = new DataColumn() {ownerid}
+        pets.Columns.Add (petname)
+        pets.Columns.Add (pettype)
+
+        ' Add tables to the DataSet
+        dataset.Tables.Add (people)
+        dataset.Tables.Add (pets)
+
+        ' Add people
+        Dim mark As DataRow = people.NewRow()
+        mark(personname) = "Mark"
+        mark(personAge) = 18
+        people.Rows.Add(mark)
+
+        Dim william As DataRow = people.NewRow()
+        william(personname) = "William"
+        william(personAge) = 12
+        people.Rows.Add(william)
+
+        Dim james As DataRow = people.NewRow()
+        james(personname) = "James"
+        james(personAge) = 19
+        people.Rows.Add(james)
+
+        Dim levi As DataRow = people.NewRow()
+        levi(personname) = "Levi"
+        levi(personAge) = 4
+        people.Rows.Add(levi)
+
+        ' Add relationships
+        Console.WriteLine("Creating relationships between people and pets ...")
+        Dim personpetrel As DataRelation = new DataRelation ("PersonPet", primarykey, foreignkey, false)
+        dataset.Relations.Add (personpetrel)
+
+        ' Add pets
+        Dim row As DataRow = pets.NewRow()
+        row("OwnerID") = mark("ID")
+        row(petname) = "Frank"
+        row(pettype) = "cat"
+        pets.Rows.Add(row)
+
+        row = pets.NewRow()
+        row("OwnerID") = william("ID")
+        row(petname) = "Rex"
+        row(pettype) = "dog"
+        pets.Rows.Add(row)
+
+        row = pets.NewRow()
+        row("OwnerID") = james("ID")
+        row(petname) = "Cottontail"
+        row(pettype) = "rabbit"
+        pets.Rows.Add(row)
+
+        row = pets.NewRow()
+        row("OwnerID") = levi("ID")
+        row(petname) = "Sid"
+        row(pettype) = "snake"
+        pets.Rows.Add(row)
+
+        row = pets.NewRow()
+        row("OwnerID") = levi("ID")
+        row(petname) = "Tickles"
+        row(pettype) = "spider"
+        pets.Rows.Add(row)
+
+        row = pets.NewRow()
+        row("OwnerID") = william("ID")
+        row(petname) = "Tweetie"
+        row(pettype) = "canary"
+        pets.Rows.Add(row)
+
+       ' commit changes
+       dataset.AcceptChanges()
+     
+    Catch e As Exception        
+        Console.WriteLine ("Exception: {0}", e.ToString())
+    End Try
+End Sub 
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl10" onclick="doClick(0, 'ctrl10')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl10" onclick="doClick(1, 'ctrl10')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+
+
+
+<p>
+The DataSet <b>AcceptChanges</b> method commits all the changes that have been made to this DataSet since it was loaded or the last time AcceptChanges was called.
+All new and modified rows become unchanged, and deleted rows get removed. For more detail on the other DataSet relational methods see
+<A target=content href="../../../howto/doc/adoplus/adoplusoverview.htm">How do I...Get an Overview of ADO.NET?</A>
+
+<p>
+To save the schema to a file the DataSet <b>WriteXmlSchema</b> method is called passing a StreamWriter class that represents the destination file.
+<p>
+
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl12" style="display:none">
+
+StreamWriter writer = new StreamWriter(m_Schema);
+datadoc.DataSet.WriteXmlSchema(writer);
+writer.Close();
+</pre>
+<pre id="codectrl12" style="display:">
+
+Dim writer As StreamWriter = New StreamWriter(m_Schema)
+datadoc.DataSet.WriteXmlSchema(writer)
+writer.Close()
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl12" onclick="doClick(0, 'ctrl12')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl12" onclick="doClick(1, 'ctrl12')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+
+<p>
+The output from the DisplayTables() method for the tables built in the DataSet is shown below and the schema is written to the
+<a target="_blank" href="../../../util/srcctrlwin.htm?path=howto/samples/xml/savedatasetmapxsdschema/&file=personpet.xsd">PersonPet.xsd</a> file.
+<p>
+
+<div class="code"><pre>
+Loading the DataSet ...
+Creating relationships between people and pets ...
+
+DataSet:
+PersonPet contains ...
+No of Tables: 2  Table content ...
+
+TableName = Person
+---------
+Columns ...
+
+ID                    Name                  Age
+Number of rows = 4
+Rows ...
+
+0                     Mark                  18
+1                     William               12
+2                     James                 7
+3                     Levi                  4
+
+TableName = Pet
+---------
+Columns ...
+
+ID                    OwnerID               Name                  Type
+Number of rows = 6
+Rows ...
+
+0                     0                     Frank                 cat
+1                     1                     Rex                   dog
+2                     2                     Cottontail            rabbit
+3                     3                     Sid                   snake
+4                     3                     Tickles               spider
+5                     1                     Tweetie               canary
+
+PersonPet
+
+Name = Mark owns
+        Pet = Frank the cat
+
+Name = William owns
+        Pet = Rex the dog
+        Pet = Tweetie the canary
+
+Name = James owns
+        Pet = Cottontail the rabbit
+
+Name = Levi owns
+        Pet = Sid the snake
+        Pet = Tickles the spider
+
+Writing the schema to PersonPet.xsd ...
+</pre></div>
+
+<H4>Summary</H4>
+<OL>
+<LI>The WriteXmlSchema method saves the mappings for the internal structure of the relation data in the DataSet as an XSD Schema.
+<LI>The XmlDataDocument has a DataSet property that enables you to view and manage structured data relationally within an XML document.
+</LI></OL>
+
+<!--END FOOTER-->
+<p>
+<hr>
+<p>
+</div>
+</td>
+</tr>
+</table>
+</BODY>
+</html>
+<!--END FOOTER-->

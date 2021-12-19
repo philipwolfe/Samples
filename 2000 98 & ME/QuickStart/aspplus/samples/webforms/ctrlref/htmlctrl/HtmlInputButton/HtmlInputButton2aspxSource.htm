@@ -1,0 +1,68 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlref/htmlctrl/HtmlInputButton/HtmlInputButton2.src&file=HtmlInputButton2.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfSHRtbElucHV0QnV0dG9uMi5hc3BceHhfX3h4X3h4X3hfX3g=8ab2b181" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">HtmlInputButton2.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlref/htmlctrl/htmlinputbutton/htmlinputbutton2aspxsource.htm'>HtmlInputButton2.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlref/htmlctrl/htmlinputbutton/vb/htmlinputbutton2aspxsource.htm'>VB\HtmlInputButton2.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlref/htmlctrl/htmlinputbutton/js/htmlinputbutton2aspxsource.htm'>JS\HtmlInputButton2.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><html>
+<head>
+
+    <script language="C#" runat="server">
+
+       void Button1_Click(object Source, EventArgs e) {
+          Span1.InnerHtml="You clicked the button";
+       }
+
+    </script>
+
+</head>
+
+<body>
+
+    <h3><font face="Verdana">Button HtmlInputButton</font></h3>
+
+    <form runat=server>
+
+        <p>
+
+        <input type=button value="Button1" onServerClick="Button1_Click" runat="server">
+
+        &nbsp;&nbsp;
+
+        <span id=Span1 runat=server />
+
+    </form>
+
+</body>
+</html>
+
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

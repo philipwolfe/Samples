@@ -1,0 +1,97 @@
+
+<html>
+<head>
+<title>TOOLBAR</TITLE>
+
+    <script>
+
+        //Need to handle the contents page not loaded yet
+
+        function refreshContent() {
+            for (i=0; i<window.parent.frames.length; i++) {
+                if (window.parent.frames(i).document.title != "TOOLBAR") {
+                        if (window.parent.frames(i).document.readyState=="complete") {
+                             window.parent.frames(i).document.location.reload(true);
+                        }
+                }
+            }
+        }
+
+    </script>
+
+    
+
+    <link rel="stylesheet" href="../../include/qsstyle.css">
+
+</head>
+<body TOPMARGIN="0" LEFTMARGIN="0" MARGINWIDTH="0" MARGINHEIGHT="0" BGCOLOR="darkred">
+<!-- Start Toolbar-->
+
+<form name="ctrl2" method="POST" action="toolbar.htm" id="ctrl2">
+<input type="hidden" name="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" value="YTB6LTEzMDQxNzU5MDNfYTB6X2h6NXoyeF9hMHpfaHo1ejF4X2EwemEwemEwemh6U0lfYTV6NXoxeF94eF9feF94X194eF94eF94X1949ac87ab9" />
+
+<script language="javascript">
+<!--
+	function __doPostBack(eventTarget, eventArgument) {
+		var theform = document.ctrl2
+		theform.__EVENTTARGET.value = eventTarget
+		theform.__EVENTARGUMENT.value = eventArgument
+		theform.submit()
+	}
+// -->
+</script>
+
+
+<DIV ID="TBDownLevelDiv">
+<TABLE WIDTH='100%' CELLPADDING=0 CELLSPACING=0 BORDER=0 BGCOLOR='#ffffff'>
+<TR >
+	<TD VALIGN=TOP HEIGHT=60 WIDTH=250 ROWSPAN=2><img src="../../howto/images/howto.gif" width=230 height=60 alt="" border="0"></TD>
+	<TD VALIGN=TOP HEIGHT=20 ALIGN=RIGHT><IMG SRC='../../images/curve.gif' BORDER=0 WIDTH=18 HEIGHT=20></TD>
+	<TD BGCOLOR=#000000 HEIGHT=20 VALIGN=MIDDLE ALIGN=RIGHT NOWRAP COLSPAN=2>
+		<FONT COLOR='#ffffff' FACE='Verdana, Arial' SIZE=1>
+		<B>
+			&nbsp;&nbsp;Links to the Web: &nbsp; &nbsp; <A STYLE='color:#FFFFFF;text-decoration:none;font-size: x-small Verdana, Arial, Helvetica, sans-serif;' HREF='http://www.microsoft.com/support/' TARGET='_top'><FONT COLOR='#FFFFFF'>Support</FONT></A>&nbsp;&nbsp;<FONT COLOR='#FFFFFF'>|</FONT>
+			&nbsp;&nbsp;<A STYLE='color:#FFFFFF;text-decoration:none;font-size: x-small Verdana, Arial, Helvetica, sans-serif;' HREF='http://search.microsoft.com/' TARGET='_top'><FONT COLOR='#FFFFFF'>Search</FONT></A>&nbsp;&nbsp;<FONT COLOR='#FFFFFF'>|</FONT>
+			&nbsp;&nbsp;<A STYLE='color:#FFFFFF;text-decoration:none;font-size: x-small Verdana, Arial, Helvetica, sans-serif;' HREF='http://www.microsoft.com/' TARGET='_top'><FONT COLOR='#FFFFFF'>microsoft.com</FONT></A>&nbsp;&nbsp;
+		</B>
+		</FONT>
+	</TD>
+</TR>
+<TR>
+	<TD VALIGN=TOP HEIGHT=40 WIDTH=19>&nbsp</TD>
+	<TD VALIGN=TOP HEIGHT=40 ALIGN=RIGHT NOWRAP COLSPAN=2>
+    <A HREF="http://www.microsoft.com/" TARGET="_top"><IMG SRC='../../images/mslogo.gif' BORDER=0 WIDTH=112 HEIGHT=40></A></TD>
+</TR>
+<TR>
+	<!-- Start: Local menus -->
+	<TD BGCOLOR="darkred" HEIGHT=20 VALIGN=MIDDLE NOWRAP  COLSPAN=4>
+		<TABLE CELLPADDING=0 CELLSPACING=0 BORDER=0>
+		<TR>
+            <TD BGCOLOR="darkred" style="padding-top:2" nowrap><FONT COLOR='#ffffff' FACE='Verdana, Arial' SIZE=1><B>&nbsp;&nbsp; &nbsp;&nbsp;<A STYLE='color:#ffffff;text-decoration:none;font-size: x-small Verdana, Arial, Helvetica, sans-serif;font-weight:bold;' HREF='../../default.htm' TARGET='_top'><FONT COLOR='#ffffff'>Welcome</FONT></A>&nbsp;&nbsp;</B></FONT></TD>
+            <TD><FONT COLOR='#ffffff' FACE='Verdana, Arial' SIZE=1><B>|</B></FONT></TD>
+            <TD BGCOLOR="darkred" style="padding-top:2" nowrap><FONT COLOR='#fffff' FACE='Verdana, Arial' SIZE=1><B>&nbsp;&nbsp;<A STYLE='color:#ffffff;text-decoration:none;font-size: x-small Verdana, Arial, Helvetica, sans-serif;font-weight:bold;' HREF='../../aspplus/default.htm' TARGET='_top'><FONT COLOR='#ffffff'>ASP.NET</FONT></A>&nbsp;&nbsp;</B></FONT></TD>
+            <TD><FONT COLOR='#ffffff' FACE='Verdana, Arial' SIZE=1><B>|</B></FONT></TD>
+            <TD BGCOLOR="darkred" style="padding-top:2" nowrap><FONT COLOR='#fffff' FACE='Verdana, Arial' SIZE=1><B>&nbsp;&nbsp;<A STYLE='color:#ffffff;text-decoration:none;font-size: x-small Verdana, Arial, Helvetica, sans-serif;font-weight:bold;' HREF='../../winforms/default.htm' TARGET='_top'><FONT COLOR='#ffffff'>Windows Forms</FONT></A>&nbsp;&nbsp;</B></FONT></TD>
+            <TD><FONT COLOR='#ffffff' FACE='Verdana, Arial' SIZE=1><B>|</B></FONT></TD>
+            <TD BGCOLOR="darkred" style="padding-top:2" nowrap><FONT COLOR='#ffffff' FACE='Verdana, Arial' SIZE=1><B>&nbsp;&nbsp;<A STYLE='color:#ffffff;text-decoration:none;font-size: x-small Verdana, Arial, Helvetica, sans-serif;font-weight:bold;' HREF='../../howto/default.htm' TARGET='_top'><FONT COLOR='#ffffff'>How Do I...?</FONT></A>&nbsp;&nbsp;</B></FONT></TD>
+            <TD><FONT COLOR='#ffffff' FACE='Verdana, Arial' SIZE=1><B></B></FONT></TD>
+
+            
+</TR>
+</TABLE>
+</TD>
+<span id="Label1"></span>
+
+<!-- End: Local menus -->
+
+
+</TR>
+</TABLE>
+</DIV>
+<!-- End Toolbar-->
+
+</form>
+</body>
+</html>

@@ -1,0 +1,1076 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TerraServer</name>
+    </assembly>
+    <members>
+        <member name="T:TerraServer.AreaBoundingBox">
+            <summary>
+             The edges and center tiles of a tile "table".
+            </summary>
+        </member>
+        <member name="F:TerraServer.AreaBoundingBox.NorthWest">
+            <summary>
+            Meta-data describing the top-left-corner of the Tile table.
+            </summary>
+        </member>
+        <member name="F:TerraServer.AreaBoundingBox.NorthEast">
+            <summary>
+            Meta-data describing the top-right-corner of the Tile table.
+            </summary>
+        </member>
+        <member name="F:TerraServer.AreaBoundingBox.SouthWest">
+            <summary>
+            Meta-data describing the bottom-left-corner of the Tile table.
+            </summary>
+        </member>
+        <member name="F:TerraServer.AreaBoundingBox.SouthEast">
+            <summary>
+            Meta-data describing the bottom-right-corner of the Tile table.
+            </summary>
+        </member>
+        <member name="F:TerraServer.AreaBoundingBox.Center">
+            <summary>
+            Meta-data describing the center of the Tile table.
+            </summary>
+        </member>
+        <member name="F:TerraServer.AreaBoundingBox.NearestPlace">
+            <summary>
+            Text string identifying the nearest city/town to the longitude/latitude offset in the Center "tile".
+            </summary>
+        </member>
+        <member name="F:TerraServer.AreaBoundingBox.OverlappingThemeInfos">
+            <summary>
+            Array of other imagery data themes available over the longitude/latitude offset in the Center "tile".
+            </summary>
+        </member>
+        <member name="T:TerraServer.AreaCoordinate">
+            <summary>
+             A tile describing the corner or center of a "table" of tiles.  It is a sub-structure of the AreaBoundingBox structure. <see cref="T:TerraServer.AreaBoundingBox"/>
+            </summary>
+        </member>
+        <member name="F:TerraServer.AreaCoordinate.TileMeta">
+            <summary>
+            Meta-data describing the TerraServer Tile
+            </summary>
+        </member>
+        <member name="F:TerraServer.AreaCoordinate.Offset">
+            <summary>
+            Identifies the specific pixel of a longitude and latitude within "this" tile.  Use this information to "crop" a table of tiles into single well-known latitude and longitude range.
+            </summary>
+        </member>
+        <member name="T:TerraServer.Global">
+            <summary>
+            Summary description for Global.
+            </summary>
+        </member>
+        <member name="T:TerraServer.LonLatPtOffset">
+            <summary>
+             Location within a tile of a longitude and latitude
+            </summary>
+        </member>
+        <member name="F:TerraServer.LonLatPtOffset.Point">
+            <summary>
+            Longitude and Latitude on the ground of the specified pixel
+            </summary>
+        </member>
+        <member name="F:TerraServer.LonLatPtOffset.XOffset">
+            <summary>
+            Pixel offset within a TerraServer tile from the left edge of the Longitude and Latitude
+            </summary>
+        </member>
+        <member name="F:TerraServer.LonLatPtOffset.YOffset">
+            <summary>
+            Pixel offset within a TerraServer tile from the top edge of the Longitude and Latitude
+            </summary>
+        </member>
+        <member name="T:TerraServer.OverlappingRemoteLink">
+            <summary>
+             Link's to remote TerraServer web sites that overlap this point
+            </summary>
+        </member>
+        <member name="F:TerraServer.OverlappingRemoteLink.ThemeName">
+            <summary>
+            Textual representation of the data Theme at the remote site
+            </summary>
+        </member>
+        <member name="F:TerraServer.OverlappingRemoteLink.Capture">
+            <summary>
+            Time the photo was captured, or topo map was printed
+            </summary>
+        </member>
+        <member name="F:TerraServer.OverlappingRemoteLink.Url">
+            <summary>
+            Link (URL) to the remote web server
+            </summary>
+        </member>
+        <member name="T:TerraServer.OverlappingThemeInfo">
+            <summary>
+             The other Theme's at this web site that overlap another 
+            </summary>
+        </member>
+        <member name="F:TerraServer.OverlappingThemeInfo.LocalTheme">
+            <summary>
+            True if the data theme is stored within the local TerraServer database.  It
+            can be assumed that the Url field contains the same baseref.  False implies that the Url field
+            points to a remote web server in the "network" of cooperating TerraServers.
+            </summary>
+        </member>
+        <member name="F:TerraServer.OverlappingThemeInfo.Theme">
+            <summary>
+            An Enum that identifies the type of imagery.  <see cref="T:TerraServer.Theme"/>
+            </summary>
+        </member>
+        <member name="F:TerraServer.OverlappingThemeInfo.Point">
+            <summary>
+            Longitude and Latitude point described by this OverlappingThemeInfo structure. 
+            </summary>
+        </member>
+        <member name="F:TerraServer.OverlappingThemeInfo.ThemeName">
+            <summary>
+            Text description/name for the imagery data theme.  
+            </summary>
+        </member>
+        <member name="F:TerraServer.OverlappingThemeInfo.Capture">
+            <summary>
+            Date and time the imagery was captured or printed.
+            </summary>
+        </member>
+        <member name="F:TerraServer.OverlappingThemeInfo.ProjectionId">
+            <summary>
+            Enum that identifies the map projection of the data theme.  <see cref="T:TerraServer.ProjectionType"/>
+            </summary>
+        </member>
+        <member name="F:TerraServer.OverlappingThemeInfo.LoScale">
+            <summary>
+            Identifies the lowest image resolution scale value for the data theme maintained within the database.  <see cref="T:TerraServer.Scale"/>
+            </summary>
+        </member>
+        <member name="F:TerraServer.OverlappingThemeInfo.HiScale">
+            <summary>
+            Identifies the highest image resolution scale value for the data theme maintained within the database.  <see cref="T:TerraServer.Scale"/>
+            </summary>
+        </member>
+        <member name="F:TerraServer.OverlappingThemeInfo.Url">
+            <summary>
+            Identifies the baseref of the cooperating TerraServer web site.  Applicable only when LocalTheme is false.
+            </summary>
+        </member>
+        <member name="T:TerraServer.Place">
+            <summary>
+             Formal components of a named place
+            </summary>
+        </member>
+        <member name="F:TerraServer.Place.City">
+            <summary>
+            City or town's formal name
+            </summary>
+        </member>
+        <member name="F:TerraServer.Place.State">
+            <summary>
+            The formal name of the State or Province
+            </summary>
+        </member>
+        <member name="F:TerraServer.Place.Country">
+            <summary>
+            The formal name of the Country 
+            </summary>
+        </member>
+        <member name="T:TerraServer.PlaceFacts">
+            <summary>
+             Information regarding a formal place entry in the TerraServer gazetteer.
+            </summary>
+        </member>
+        <member name="F:TerraServer.PlaceFacts.Place">
+            <summary>
+            Formal place name
+            </summary>
+        </member>
+        <member name="F:TerraServer.PlaceFacts.Center">
+            <summary>
+            The longitude and latitude recognized as the place's "center point" aka "centroid"
+            </summary>
+        </member>
+        <member name="F:TerraServer.PlaceFacts.AvailableThemeMask">
+            <summary>
+            An enum/bit mask that identifies the available data themes in the TerraServer database for the named place's centroid.
+            </summary>
+        </member>
+        <member name="F:TerraServer.PlaceFacts.PlaceTypeId">
+            <summary>
+            An enum that identifies the type of named place, e.g. city, river, air/rail station, etc.
+            </summary>
+        </member>
+        <member name="F:TerraServer.PlaceFacts.Population">
+            <summary>
+            A rough estimate of the number of persons if this place represents a populated place.
+            </summary>
+        </member>
+        <member name="T:TerraServer.PlaceType">
+            <summary>
+             Type of named place maintained in the TerraServer gazetteer.
+            </summary>
+        </member>
+        <member name="F:TerraServer.PlaceType.UnknownPlaceType">
+            <summary>
+            Unknown place type
+            </summary>
+        </member>
+        <member name="F:TerraServer.PlaceType.AirRailStation">
+            <summary>
+            Named place is a Air or Railroad station
+            </summary>
+        </member>
+        <member name="F:TerraServer.PlaceType.BayGulf">
+            <summary>
+            Named place is a bay or gulf
+            </summary>
+        </member>
+        <member name="F:TerraServer.PlaceType.CapePeninsula">
+            <summary>
+            Named place is a cape or peninsula
+            </summary>
+        </member>
+        <member name="F:TerraServer.PlaceType.CityTown">
+            <summary>
+            Named place is a populated town, city or other muncipality
+            </summary>
+        </member>
+        <member name="F:TerraServer.PlaceType.HillMountain">
+            <summary>
+            Named place is a mountain or hill
+            </summary>
+        </member>
+        <member name="F:TerraServer.PlaceType.Island">
+            <summary>
+            Named place is an Island
+            </summary>
+        </member>
+        <member name="F:TerraServer.PlaceType.Lake">
+            <summary>
+            Named place is a Lake
+            </summary>
+        </member>
+        <member name="F:TerraServer.PlaceType.OtherLandFeature">
+            <summary>
+            Named place is a land feature other than town, city, municpality, island, cape or peninsula
+            </summary>
+        </member>
+        <member name="F:TerraServer.PlaceType.OtherWaterFeature">
+            <summary>
+            Named place is a water feature other than a River or Lake
+            </summary>
+        </member>
+        <member name="F:TerraServer.PlaceType.ParkBeach">
+            <summary>
+            Named place is a park or beach
+            </summary>
+        </member>
+        <member name="F:TerraServer.PlaceType.PointOfInterest">
+            <summary>
+            Named place is a general point of interest
+            </summary>
+        </member>
+        <member name="F:TerraServer.PlaceType.River">
+            <summary>
+            Named place is a River
+            </summary>
+        </member>
+        <member name="T:TerraServer.ProjectionType">
+            <summary>
+            Identifies the map projection of a data theme within TerraServer
+            </summary>
+        </member>
+        <member name="F:TerraServer.ProjectionType.Geographic">
+            <summary>
+            Geographic projection is based on longitude and latitude
+            </summary>
+        </member>
+        <member name="F:TerraServer.ProjectionType.UtmNad27">
+            <summary>
+            UtmNad27 projection is Universe Transverse Mercator projection using the 
+            North American Datum of 1927. 
+            </summary>
+        </member>
+        <member name="F:TerraServer.ProjectionType.UtmNad83">
+            <summary>
+            UtmNad83 projection is Universe Transverse Mercator projection using the 
+            North American Datum of 1983. 
+            </summary>
+        </member>
+        <member name="T:TerraServer.Scale">
+            <summary>
+             Identifies image resolution or ground area covered by each side of a pixel.
+            </summary>
+        </member>
+        <member name="F:TerraServer.Scale.Scale1mm">
+            <summary>
+            Image resolution of 1/1024th meter per pixel
+            </summary>
+        </member>
+        <member name="F:TerraServer.Scale.Scale2mm">
+            <summary>
+            Image resolution of 1/512th meter per pixel
+            </summary>
+        </member>
+        <member name="F:TerraServer.Scale.Scale4mm">
+            <summary>
+            Image resolution of 1/256th meter per pixel
+            </summary>
+        </member>
+        <member name="F:TerraServer.Scale.Scale8mm">
+            <summary>
+            Image resolution of 1/128th meter per pixel
+            </summary>
+        </member>
+        <member name="F:TerraServer.Scale.Scale16mm">
+            <summary>
+            Image resolution of 1/64th meter per pixel
+            </summary>
+        </member>
+        <member name="F:TerraServer.Scale.Scale32mm">
+            <summary>
+            Image resolution of 1/32nd meter per pixel
+            </summary>
+        </member>
+        <member name="F:TerraServer.Scale.Scale63mm">
+            <summary>
+            Image resolution of 1/16th meter per pixel
+            </summary>
+        </member>
+        <member name="F:TerraServer.Scale.Scale125mm">
+            <summary>
+            Image resolution of 1/8th meter per pixel
+            </summary>
+        </member>
+        <member name="F:TerraServer.Scale.Scale250mm">
+            <summary>
+            Image resolution of 1/4 meter per pixel
+            </summary>
+        </member>
+        <member name="F:TerraServer.Scale.Scale500mm">
+            <summary>
+            Image resolution of 1/2 meter per pixel
+            </summary>
+        </member>
+        <member name="F:TerraServer.Scale.Scale1m">
+            <summary>
+            Image resolution of 1 meter per pixel
+            </summary>
+        </member>
+        <member name="F:TerraServer.Scale.Scale2m">
+            <summary>
+            Image resolution of 2 meters per pixel
+            </summary>
+        </member>
+        <member name="F:TerraServer.Scale.Scale4m">
+            <summary>
+            Image resolution of 4 meters per pixel
+            </summary>
+        </member>
+        <member name="F:TerraServer.Scale.Scale8m">
+            <summary>
+            Image resolution of 8 meters per pixel
+            </summary>
+        </member>
+        <member name="F:TerraServer.Scale.Scale16m">
+            <summary>
+            Image resolution of 16 meters per pixel
+            </summary>
+        </member>
+        <member name="F:TerraServer.Scale.Scale32m">
+            <summary>
+            Image resolution of 32 meters per pixel
+            </summary>
+        </member>
+        <member name="F:TerraServer.Scale.Scale64m">
+            <summary>
+            Image resolution of 64 meters per pixel
+            </summary>
+        </member>
+        <member name="F:TerraServer.Scale.Scale128m">
+            <summary>
+            Image resolution of 128 meters per pixel
+            </summary>
+        </member>
+        <member name="F:TerraServer.Scale.Scale256m">
+            <summary>
+            Image resolution of 256 meters per pixel
+            </summary>
+        </member>
+        <member name="F:TerraServer.Scale.Scale512m">
+            <summary>
+            Image resolution of 512 meters per pixel
+            </summary>
+        </member>
+        <member name="F:TerraServer.Scale.Scale1km">
+            <summary>
+            Image resolution of 1 kilometer per pixel
+            </summary>
+        </member>
+        <member name="F:TerraServer.Scale.Scale2km">
+            <summary>
+            Image resolution of 2 kilometers per pixel
+            </summary>
+        </member>
+        <member name="F:TerraServer.Scale.Scale4km">
+            <summary>
+            Image resolution of 4 kilometers per pixel
+            </summary>
+        </member>
+        <member name="F:TerraServer.Scale.Scale8km">
+            <summary>
+            Image resolution of 8 kilometers per pixel
+            </summary>
+        </member>
+        <member name="F:TerraServer.Scale.Scale16km">
+            <summary>
+            Image resolution of 16 kilometers per pixel
+            </summary>
+        </member>
+        <member name="T:TerraServer.Service1">
+            <summary>
+            Summary description for Service1.
+            </summary>
+        </member>
+        <member name="M:TerraServer.Service1.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:TerraServer.Service1.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="T:TerraServer.TerraServerConnection">
+            <summary>
+            An internal class used to connect to the TerraServer database using a SqlConnection object.
+            TerraServer 
+            The actual connection returned/opened is dependent on the Theme and Scale of the data being accessed. 
+            Thus the TerraService class uses the TerraServerConnection class instead of a SqlConnection object directly.
+            </summary>
+        </member>
+        <member name="M:TerraServer.TerraServerConnection.#ctor">
+            <summary>
+            The parameterless/default constructor.
+            </summary>
+        </member>
+        <member name="M:TerraServer.TerraServerConnection.Open(TerraServer.Theme,GeoCoordinate.LonLatPt)">
+            <summary>
+            Connect to a TerraServer database by Theme and center Longitude and Latitude point.
+            </summary>
+            <param name="theme">Data theme of the data to query.</param>
+            <param name="point">The longitude and latitude point to query.</param>
+        </member>
+        <member name="M:TerraServer.TerraServerConnection.Open(TerraServer.Theme,System.Double)">
+            <summary>
+            Connect to a TerraServer database by Theme and Longitude only.
+            </summary>
+            <param name="theme">Data theme of the data to query.</param>
+            <param name="lon">The longitude line to query.</param>
+        </member>
+        <member name="M:TerraServer.TerraServerConnection.Open(TerraServer.Theme,System.Int32)">
+            <summary>
+            Connect to a TerraServer database by Theme and Scene only.
+            </summary>
+            <param name="theme">Data theme of the data to query.</param>
+            <param name="scene">Scene id of the data to query.</param>
+        </member>
+        <member name="M:TerraServer.TerraServerConnection.Open(System.Int32)">
+            <summary>
+            Connect to a TerraSErver database by partition identifier.
+            </summary>
+            <param name="partition">The integer identifier of the partition to connect to.</param>
+        </member>
+        <member name="M:TerraServer.TerraServerConnection.Close">
+            <summary>
+            Close the database connection
+            </summary>
+        </member>
+        <member name="P:TerraServer.TerraServerConnection.Connection">
+            <summary>
+            Connection property to retrieve the connection string to the TerraServer database
+            </summary>
+        </member>
+        <member name="T:TerraServer.TerraServerUtility">
+            <summary>
+            TerraServerUtility class.  Intended for internal use by the TerraServer and TerraConnection classes.
+            </summary>
+        </member>
+        <member name="M:TerraServer.TerraServerUtility.PrimaryPartition(System.Int32)">
+            <summary>
+            Obtain the connection string of the Primary database for the specified/requested partition.
+            </summary>
+            <param name="partition">Partition identifier of the primary database to connect to.</param>
+            <returns>Database connection string of the Primary partition.</returns>
+        </member>
+        <member name="M:TerraServer.TerraServerUtility.SecondaryPartition(System.Int32)">
+            <summary>
+            Obtains the connection string of the secondary database server for the specified partition id.
+            </summary>
+            <param name="partition">Partition identifier of the secondary database.</param>
+            <returns>Database connection string.</returns>
+        </member>
+        <member name="M:TerraServer.TerraServerUtility.ValidateTheme(TerraServer.Theme)">
+            <summary>
+            Verifies that the Theme enum value is correct.
+            </summary>
+            <param name="theme">Theme enum value to validate.</param>
+            <exception cref="T:System.ArgumentException">Is thrown if the theme enum does not identify a valid theme in the TerraServer database.</exception>
+        </member>
+        <member name="M:TerraServer.TerraServerUtility.ValidateScale(TerraServer.Theme,TerraServer.Scale)">
+            <summary>
+            Verifies that the scale exists in the TerraServer database for the specified theme.  Calls ValidateTheme() to verify the Theme.
+            </summary>
+            <param name="theme">Theme enum to validate.</param>
+            <param name="scale">Scale enum to validate.</param>
+            <exception cref="T:System.ArgumentException">Thrown if the specified Scale is not maintained for the specified Theme.</exception>
+        </member>
+        <member name="M:TerraServer.TerraServerUtility.ValidateScene(TerraServer.Theme,System.Int32)">
+            <summary>
+            Validates the scene for the specified theme.  First calls ValidateTheme() to verify the theme enum.
+            </summary>
+            <param name="theme"></param>
+            <param name="scene"></param>
+            <exception cref="T:System.ArgumentException">Is thrown if the Scene is not within range for the specified Theme.</exception>
+        </member>
+        <member name="M:TerraServer.TerraServerUtility.ValidateLonLatPt(GeoCoordinate.LonLatPt)">
+            <summary>
+            Verifies that the specified Longitude and Latitude value is within range -180.0,-90.0 : 180.0,90.0
+            </summary>
+            <param name="point">Longitude/Latitude value to check.</param>
+            <exception cref="T:System.ArgumentException">Thrown if longitude value is not between -180.0 and 180.0 and latitude is not between -90.0 and 90.0.</exception>
+        </member>
+        <member name="M:TerraServer.TerraServerUtility.PrimaryConnection(TerraServer.Theme,System.Int32)">
+            <summary>
+            Obtains the Primary Parition database connection string for the specified Theme and Scene value.
+            </summary>
+            <param name="theme">Data theme of the Partition to return</param>
+            <param name="scene">Scene from the Theme of the Partition to return.</param>
+            <returns>A Partition identifer</returns>
+        </member>
+        <member name="M:TerraServer.TerraServerUtility.SecondaryConnection(TerraServer.Theme,System.Int32)">
+            <summary>
+            Obtains the Secondary Parition database connection string for the specified Theme and Scene value.
+            </summary>
+            <param name="theme">The Data Theme to query.</param>
+            <param name="scene">The Scene within the Theme to query.</param>
+            <returns></returns>
+        </member>
+        <member name="M:TerraServer.TerraServerUtility.PrimaryConnection(System.Int32)">
+            <summary>
+            Obtain the Primary Parition's database connection string using the Parition identifier value.
+            </summary>
+            <param name="partition">Parition identifier</param>
+            <returns>Primary partition's database connection string</returns>
+        </member>
+        <member name="M:TerraServer.TerraServerUtility.SecondaryConnection(System.Int32)">
+            <summary>
+            Obtain the Secondary Partition's database connection string using the Parition identifier
+            </summary>
+            <param name="partition">Parition identifier</param>
+            <returns>Secondary Parition's database connection string.</returns>
+        </member>
+        <member name="M:TerraServer.TerraServerUtility.PrimaryConnection(TerraServer.Theme,System.Double)">
+            <summary>
+            Obtain the Primary Partition's database connection string using the Theme and Longitude only.
+            </summary>
+            <param name="theme">Data Theme to search for.</param>
+            <param name="lon">The longitude value of the data to search for.</param>
+            <returns></returns>
+        </member>
+        <member name="M:TerraServer.TerraServerUtility.SecondaryConnection(TerraServer.Theme,System.Double)">
+            <summary>
+            Obtain the Secondary Parition's database connection string given a theme and longitude value.
+            </summary>
+            <param name="theme">Data theme of the Partition</param>
+            <param name="lon">Longitude value.</param>
+            <returns>Database connection string of the Secondary Parition.</returns>
+        </member>
+        <member name="M:TerraServer.TerraServerUtility.PrimaryConnection(TerraServer.Theme,GeoCoordinate.LonLatPt)">
+            <summary>
+            Obtain the Primary Partition's database connection string given a theme and longitude/latitude point.
+            </summary>
+            <param name="theme">Data theme of the Partition to return.</param>
+            <param name="point">The longitude and latitude point.</param>
+            <returns>Primary Partition's database connection string.</returns>
+        </member>
+        <member name="M:TerraServer.TerraServerUtility.SecondaryConnection(TerraServer.Theme,GeoCoordinate.LonLatPt)">
+            <summary>
+            Obtain the Secondary Partition's database connection string given a theme and longitude/latitude point.
+            </summary>
+            <param name="theme">Data theme of the Partition to return.</param>
+            <param name="point">Longitude and latitude point.</param>
+            <returns></returns>
+        </member>
+        <member name="T:TerraServer.TerraService">
+            <summary>
+            TerraServer is a web service that provides a set of methods to query the TerraServer relational database
+            containing high resolution imagery and scanned maps of the earth.  To use the TerraService, it is 
+            important to have an understanding of how TerraServer stores imagery within the database.  There
+            are methods within the TerraServer that enable the web service user to (1) search the TerraServer
+            place name tables known as the "gazetteer", (2) identify the imagery "tiles" that cover a specified
+            geographic region on earth, and (3) perform several mapping conversion functions.
+            <para>
+            Conceptually, TerraServer stores 
+            a set of seamless scenes that are divided into a mosaic of regular size image "tiles".  Each image tile 
+            is a 200 by 200 pixel image compressed in the Jpeg or GIF format.  Five integer components form the 
+            unique identifier for any image tile in the TerraServer system--  Theme, Scale, X, Y, and Scene.
+            </para>
+            <para>
+            The Theme identifies the type of image and the data provider.  For example, Theme 1 is high resolution
+            grayscale aerial imagery provided by the US Geological Survey.  The imagery is known as "Digital Ortho
+            Quadrangles", a.k.a. "DOQ",  and is geo-rectified to the UTM Nad83 map projection standard.  For DOQ
+            imagery, a Scene id represents the 	UTM Zone number.  There are 60 UTM zones numbered 1 to 60 and 
+            each is 6 degrees wide.  Zone 1 starts at the International Date Line thru -174.   Zones 10 thru 19 
+            cover the continental United States.  Note, a Scene identifier is not guaranteed to the UTM Zone identifier.
+            The Scene identifier scheme is dependent on the projection type of a data theme.  For example, satellite 
+            imagery is generally not geo-rectified to a map projection.  Usually a Scene identifier for satellite
+            imagery represents a single photograph captured by the satellite.
+            </para><para>
+            The X and Y values identify the relative position of a tile within a scene.  X and Y values begin at
+            0 from the lower left hand corner of the scene, a.k.a. the southwest corner.  X values increment by 1 
+            moving left to right or west to east.  Y values increment by 1 moving bottom to top or south to north.
+            </para><para>
+            The Scale identifier describes the image resolution of each pixel in the image tile.  The resolution 
+            identifies the ground area covered by each "side" of a pixel.  For example, 1 meter resolution imagery
+            means each pixel "covers" 1 meter of ground on each "side" of the pixel.  2 meter resolution imagery 
+            covers 2 meters on each side of the pixel or 4 square meters.  Within TerraServer, imagery is stored at
+            regular 2x (2 times) intervals from 1 meter.  Usually there are 7 image resolutions stored for each
+            image theme.  For example, TerraServer stores 7 resolutions of DOQ imagery at 1, 2, 4, 8, 16, 32, and 64
+            meters per pixel.  For USGS Topographic map data, TerraServer stores 7 resolution at 2, 4, 8, 16, 32, 64,
+            and 128 meters per pixel.
+            </para><para>
+            From an image processing perspective, the multiple image resolution scales form an "image pyramid".  
+            1 meter resolution imagery is said a "higher resolution" than 2 meter resolution imagery.  Four 1 meter 
+            resolution tiles are used to create 1 tile at 2 meter resolution.  A 2 meter resolution tile at
+            5,6 (X=5,Y=6) is created from 1 meter tiles 10,12, 11,12, 10,13, and 11,13.  This simple 2x math at each 
+            level can be used to compute the "zoom in and out" addresses for any set of tiles.
+            </para><para>
+            The purpose of the TerraServer web service is to enable you the user to construct your own image scenes
+            from a subset of tiles that form a complete TerraServer image scene.  In your application, you must
+            decide what data theme/type your interested in, the size in pixels of the image you want to create, the
+            resolution of the image, and the location on the earth of the image.  The first task is to query the
+            TerraServer database to obtain the meta-data about the tiles that "cover" your specified region of 
+            interest.  There are two methods at your disposal -- GetAreaFromPoint and GetAreaFromRect -- which differ
+            only in how you specify your region of interest.  With GetAreaFromPoint, you specifiy the longitude and 
+            latitude of the center of the image you wish to create, and the size of the image in pixels.  With 
+            GetAreaFromRect, you specify the longitude and latitude of the top left and lower right corner points of 
+            the image you are trying to build and the image resolution that you are interested in.
+            </para>
+            <para>Both methods return tile meta-data for the four corner points and the center point.  GetAreaFromPoint
+            meta-data covers the corner points of the image area you are trying to build.  The pixel offset within the 
+            corner tiles identifies where you need to crop the edge tiles in order to build an image of the specified 
+            size.  The offset in the center tile identfies the pixel that contains the longitude and latitude you
+            specified in the calling parameter.  The GetAreaFromRect returns meta data for the tiles that cover
+            your geographic region of interest.  The meta-data for the corner tiles identify the tiles that cover the
+            corner point of your geographic area.  The offset in the NorthWest tile meta data identifies the pixel
+            containing the top-left corner point you specified in the calling parameter.  The SouthEast tile meta
+            data identifies the pixel that contains the lower-right corner point you specified.  The Center tile meta
+            data identifies the computed center longitude and latitude and the pixel it occurs in within the tile.
+            </para>
+            
+            </summary>
+        </member>
+        <member name="M:TerraServer.TerraService.#ctor">
+            <summary>
+            TerraService public constructor.
+            </summary>
+        </member>
+        <member name="M:TerraServer.TerraService.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:TerraServer.TerraService.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:TerraServer.TerraService.ConvertLonLatPtToNearestPlace(GeoCoordinate.LonLatPt)">
+            <summary>
+            The ConvertLonLatPtToNearestPlace method does a geo-spatial search of the TerraServer
+            Gazetteer to find the nearest populated place to the longitude and latitude specified.
+            The returned string contains the distance and direction to the named point unless you 
+            happen to specify a point "right over" the centroid for a named place.  Note, this method
+            calls the same database function as the TerraServer web application that emits a place name
+            above TerraServer image pages.
+            </summary>
+            <param name="point">The longitude and latitude to find the nearest location of.</param>
+        </member>
+        <member name="M:TerraServer.TerraService.ConvertLonLatPtToUtmPt(GeoCoordinate.LonLatPt)">
+            <summary>
+            ConvertLonLatPtToUtmPt method returns a UtmPt using the Nad83 Datum for the specified
+            longitude and latitude point. 
+            </summary>
+            <param name="point">The longitude and latitude of compute the Utm Point for.</param>
+            <returns>The UtmPt using the Nad83 Datum.</returns>
+        </member>
+        <member name="M:TerraServer.TerraService.ConvertUtmPtToLonLatPt(GeoCoordinate.UtmPt)">
+            <summary>
+            Computes the Longitude and Latitude from a UtmPt that is assumed to be in the Nad83 Datum.
+            </summary>
+            <param name="utm">The Utm value to compute a longitude and latitude for.</param>
+            <returns>The computed longitude and latitude.</returns>
+        </member>
+        <member name="M:TerraServer.TerraService.ConvertPlaceToLonLatPt(TerraServer.Place)">
+            <summary>
+            ConvertPlaceToLonLatPt searches the TerraServer Gazetteer for the specified place name and
+            returns the Longitude and Latitude.  If a place name is not found, then 0,0 is returned.
+            </summary>
+            <param name="place">The name of the place (name, state, country) to search for.</param>
+            <returns>A Longitude and Latitude value.</returns>
+        </member>
+        <member name="M:TerraServer.TerraService.CountPlacesInRect(GeoCoordinate.LonLatPt,GeoCoordinate.LonLatPt,TerraServer.PlaceType)">
+            <summary>
+            Counts the number of named places in the area bounded by parameters upperLeft and lowerright 
+            Longitude and Latitude values.  Pass a UnknownPlaceType enum value if you want to count 
+            places of any type.  Otherwise, pass a "known" place type enum value to count a specific type
+            of place in the bounding area.
+            </summary>
+            <param name="upperleft">Longitude and Latitude of the upper left corner point of the bounding area to search.</param>
+            <param name="lowerright">Longitude and Latitude of the lower right corner point of the bounding area to search.</param>
+            <param name="ptype">The type of place to count.  Pass UnkownPlaceType to count all place types in the bounding area.</param>
+            <returns>Count of the places matching the type in the bounding area.</returns>
+        </member>
+        <member name="M:TerraServer.TerraService.GetAreaFromPt(GeoCoordinate.LonLatPt,TerraServer.Theme,TerraServer.Scale,System.Int32,System.Int32)">
+            <summary>
+            GetAreaFromPt returns a Tile meta-data of the four corner tiles and the center tile which overlap
+            the image pixel area specified in a calling parameter.  Use GetAreaFromPt to determine the 
+            addresses of the image tiles to fetch from TerraServer when you wish to fill a pre-determined 
+            screen/image area and you want to keep a specific longitude and latitude centered in the window/image
+            area.
+            </summary>
+            <param name="center">The Longitude and Latitude that should be in the center of the image area.  Note,
+            the pixel offset to this point will be returned in the Center TileMeta structure of the returned AreaBoundingBox.</param>
+            <param name="theme">The enum of the data theme to search for at the center point.</param>
+            <param name="scale">The image resolution Scale enum of the imagery to search for.</param>
+            <param name="displayPixWidth">The width of the screen/image area that you will be filling with image tiles.</param>
+            <param name="displayPixHeight">The height of the screen/image area that you will be filling with image tiles.</param>
+            <returns>An AreaBoundingBox structure which is a container for TileMeta structures of the four corner tiles, the center tile, 
+            distance and direction to the closest named place to the center point.</returns>
+        </member>
+        <member name="M:TerraServer.TerraService.GetAreaFromRect(GeoCoordinate.LonLatPt,GeoCoordinate.LonLatPt,TerraServer.Theme,TerraServer.Scale)">
+            <summary>
+            GetAreaFromRect returns Tile meta-data for the geographic area specified in the upperLeft thru
+            lowerRight bounding area in the specified theme and scale.  The NorthWest TileMeta structure 
+            will identify the pixel offset to the upperLeft point.  THe SouthEast TileMeta structure 
+            will identify the pixel offset to the lowerRight point. 
+            </summary>
+            <param name="upperLeft">The top-left corner point defining the bounding area to search.</param>
+            <param name="lowerRight">The lower-right corner point defining the bounding area to search.</param>
+            <param name="theme">The data theme enum to search for.</param>
+            <param name="scale">The image resolution Scale to search for.</param>
+            <returns>An AreaBoundingBox structure which is a container for TileMeta structures of the four corner tiles, the center tile, 
+            distance and direction to the closest named place to the point halfway between the upperLeft and lowerRight points.</returns>
+        </member>
+        <member name="M:TerraServer.TerraService.GetAreaFromTileId(TerraServer.TileId,System.Int32,System.Int32)">
+            <summary>
+            GetAreaFromTileId is similar to the GetAreaFromPt method except that a Tile identifier (theme,
+            scale, x, y, and scene) is used as the center the area to return.
+            </summary>
+            <param name="id">The Tile identifier to locate.</param>
+            <param name="displayPixWidth">The pixel width of the display area you are trying to fill.</param>
+            <param name="displayPixHeight">The pixel height of the display area you are trying to fill.</param>
+        </member>
+        <member name="M:TerraServer.TerraService.GetLatLonMetrics(GeoCoordinate.LonLatPt)">
+            <summary>
+            GetLatLonMetrics is used to identify the data themes that are available in a geographic area.
+            This method is generally used to present a drop-down list of available data themes.  Note, 
+            this method is currently a placeholder and is not implemented.  Effectively, TerraServer only 
+            supports the USGS DOQ (aerial imagery) and DRG (topographic map) data over the United States.
+            </summary>
+        </member>
+        <member name="M:TerraServer.TerraService.GetPlaceFacts(TerraServer.Place)">
+            <summary>
+            GetPlaceFacts returns detailes of the first matching place. 
+            </summary>
+            <param name="place">The place name to search for (name, state, and country).</param>
+        </member>
+        <member name="M:TerraServer.TerraService.GetPlaceList(System.String,System.Int32,System.Boolean)">
+            <summary>
+            GetPlaceList searches the TerraServer Gazetteer for the name matching the string placeName.
+            The function emulates the Find functionality found the Microsoft TerraServer web slite.  The
+            placeName can contain any combination of place name, state, and country separated by commas.
+            The system will do a wildcard search on the placeName and find all matching places within the state 
+            and county if specified.  A maximum of MaxItems will be returned to the caller.
+            </summary>
+            <param name="placeName">A free formatted string containing the name, state, and country.</param>
+            <param name="MaxItems">The maximum number of matching places to return.</param>
+            <param name="imagePresence">A boolean value to restrict the search to places that overlap imagery (true) or all places. (false)</param>
+        </member>
+        <member name="M:TerraServer.TerraService.GetPlaceListInRect(GeoCoordinate.LonLatPt,GeoCoordinate.LonLatPt,TerraServer.PlaceType,System.Int32)">
+            <summary>
+            Similar to GetPlaceList but returns known places in a geographic region 
+            bounded by upperleft and lowerright longitude and latitude values. 
+            </summary>
+            <param name="upperleft">The top-left point of the bounding area to search.</param>
+            <param name="lowerright">The lower-right point of the bounding area to search.</param>
+            <param name="ptype">The PlaceType enum to search for.  Pass UnknownPlaceType to find places of all types.</param>
+            <param name="MaxItems">The maximum items to return in the list.</param>
+        </member>
+        <member name="M:TerraServer.TerraService.GetTheme(TerraServer.Theme)">
+            <summary>
+            Obtains the meta-data about a data Theme enum.
+            </summary>
+            <param name="theme">The data Theme to return meta-data about.</param>
+            <returns>A ThemeInfo structure containing the meta-data facts.</returns>
+        </member>
+        <member name="M:TerraServer.TerraService.GetTileMetaFromLonLatPt(GeoCoordinate.LonLatPt,TerraServer.Theme,TerraServer.Scale)">
+            <summary>
+            GetTileMetaFromLonLatPt returns the longitude and latitude corner points for
+            the tile in the specified Theme and Scale that overlaps the point longitude and latitude.
+            </summary>
+            <param name="point">The longitude and latitude point within the tile of interest.</param>
+            <param name="theme">The data Theme of the Tile to search for.</param>
+            <param name="scale">The image resolution Scale of the Tile to search for.</param>
+            <returns>A TileMeta structure of meta-data.</returns>
+        </member>
+        <member name="M:TerraServer.TerraService.GetTileMetaFromTileId(TerraServer.TileId)">
+            <summary>
+            GetTileMetaFromTileId returns the meta-data for a tile using the Tile's unique id as
+            the search criteria.
+            </summary>
+            <param name="id">The five part unique tile identifier (Theme, Scale, X, Y, and Scene).</param>
+            <returns>A TileMeta structure containing the tile's meta-data.</returns>
+        </member>
+        <member name="M:TerraServer.TerraService.GetTile(TerraServer.TileId)">
+            <summary>
+            GetTile returns a byte array containing the compressed pixels of the image tile.  The
+            format is either Jpeg or GIF.  TerraServer only returns GIF tiles for Scale2m, Scale8m,
+            and Scale32m Topographic map data.  All other tiles are Jpeg format.
+            </summary>
+            <param name="id">The five part unique tile identifier (Theme, Scale, X, Y, and Scene).</param>
+        </member>
+        <member name="T:TerraServer.Theme">
+            <summary>
+             Identifies the Type of image data and the provider
+            </summary>
+        </member>
+        <member name="F:TerraServer.Theme.Photo">
+            <summary>
+             USGS Digital Ortho Quadrangle (Aerial photograph)
+            </summary>
+        </member>
+        <member name="F:TerraServer.Theme.Topo">
+            <summary>
+             USGS Digital Raster Graphic (topographical map)
+            </summary>
+        </member>
+        <member name="F:TerraServer.Theme.Relief">
+            <summary>
+             Encarta Shaded relief map
+            </summary>
+        </member>
+        <member name="T:TerraServer.ThemeBoundingBox">
+            <summary>
+             The outside boundaries of a data Theme's scene.  More than one bounding box can exist per Theme.  
+             For example, USGS Aerial Photography has one ThemeBoundingBox per UTM Zone.
+            </summary>
+        </member>
+        <member name="F:TerraServer.ThemeBoundingBox.Theme">
+            <summary>
+            Enum that identifies the imagery type and provider.  <see cref="T:TerraServer.Theme"/>
+            </summary>
+        </member>
+        <member name="F:TerraServer.ThemeBoundingBox.ThemeName">
+            <summary>
+            Text string/name of the imagery type and provider.
+            </summary>
+        </member>
+        <member name="F:TerraServer.ThemeBoundingBox.Sparseness">
+            <summary>
+            An integer percentage value, e.g. 10%, 25%, 100%, etc., identifying the amount of coverage in the bounding area.
+            </summary>
+        </member>
+        <member name="F:TerraServer.ThemeBoundingBox.LoScale">
+            <summary>
+            The lowest image resolution maintained in the TerraServer database of this Theme and Bounding Area.  <see cref="T:TerraServer.Scale"/>
+            </summary>
+        </member>
+        <member name="F:TerraServer.ThemeBoundingBox.HiScale">
+            <summary>
+            The highest image resolution maintained in the TerraServer database of this Theme and Bounding Area.  <see cref="T:TerraServer.Scale"/>
+            </summary>
+        </member>
+        <member name="F:TerraServer.ThemeBoundingBox.ProjectionId">
+            <summary>
+            An enum identifying the map projection of the data theme.  <see cref="T:TerraServer.ProjectionType"/>
+            </summary>
+        </member>
+        <member name="F:TerraServer.ThemeBoundingBox.ProjectionName">
+            <summary>
+            Text string/description describing the map projection of the data theme.
+            </summary>
+        </member>
+        <member name="F:TerraServer.ThemeBoundingBox.WestLongitude">
+            <summary>
+            The west boundary's longitude value.
+            </summary>
+        </member>
+        <member name="F:TerraServer.ThemeBoundingBox.NorthLatitude">
+            <summary>
+            The north boundary's latitude value.
+            </summary>
+        </member>
+        <member name="F:TerraServer.ThemeBoundingBox.EastLongitude">
+            <summary>
+            The east boundary's longitude value.
+            </summary>
+        </member>
+        <member name="F:TerraServer.ThemeBoundingBox.SouthLatitude">
+            <summary>
+            The south boundary's latitude value.
+            </summary>
+        </member>
+        <member name="T:TerraServer.ThemeInfo">
+            <summary>
+             Formal description of a data theme
+            </summary>
+        </member>
+        <member name="F:TerraServer.ThemeInfo.Theme">
+            <summary>
+            Enum assigned to the data theme.  <see cref="T:TerraServer.Theme"/>
+            </summary>
+        </member>
+        <member name="F:TerraServer.ThemeInfo.Name">
+            <summary>
+            Formal text string to use when displaying the data theme
+            </summary>
+        </member>
+        <member name="F:TerraServer.ThemeInfo.Description">
+            <summary>
+            Longer text description of the data theme
+            </summary>
+        </member>
+        <member name="F:TerraServer.ThemeInfo.Supplier">
+            <summary>
+            Formal name of the organization or company providing the data.
+            </summary>
+        </member>
+        <member name="F:TerraServer.ThemeInfo.LoScale">
+            <summary>
+            The lowest resolution maintained in the TerraServer database for this data theme.
+            </summary>
+        </member>
+        <member name="F:TerraServer.ThemeInfo.HiScale">
+            <summary>
+            The highest resolution maintained in the TerraServer database for this data theme.
+            </summary>
+        </member>
+        <member name="F:TerraServer.ThemeInfo.ProjectionId">
+            <summary>
+            The enum identifying the map projection of the data theme.
+            </summary>
+        </member>
+        <member name="F:TerraServer.ThemeInfo.ProjectionName">
+            <summary>
+            A text description of the map projection of the data theme.
+            </summary>
+        </member>
+        <member name="F:TerraServer.ThemeInfo.CopyrightNotice">
+            <summary>
+            The copyright or courtesy notice to be displayed with the imagery as required by the Supplier.
+            </summary>
+        </member>
+        <member name="T:TerraServer.Themes">
+            <summary>
+             Bit mask identifying the data themes supported
+            </summary>
+        </member>
+        <member name="F:TerraServer.Themes.Photo">
+            <summary>
+             USGS Digital Ortho Quadrangle (Aerial photograph)
+            </summary>
+        </member>
+        <member name="F:TerraServer.Themes.Topo">
+            <summary>
+             USGS Digital Raster Graphic (topographical map)
+            </summary>
+        </member>
+        <member name="F:TerraServer.Themes.Relief">
+            <summary>
+             Shaded relief map
+            </summary>
+        </member>
+        <member name="T:TerraServer.TileId">
+            <summary>
+             Formal and unique address of an image tile within TerraServer
+            </summary>
+        </member>
+        <member name="F:TerraServer.TileId.Theme">
+            <summary>
+            The data theme of an image tile.  <see cref="T:TerraServer.Theme"/>
+            </summary>
+        </member>
+        <member name="F:TerraServer.TileId.Scale">
+            <summary>
+            The image resolution as measured by the ground area covered by a single pixel.  <see cref="T:TerraServer.Scale"/>
+            </summary>
+        </member>
+        <member name="F:TerraServer.TileId.Scene">
+            <summary>
+            The unique scene identifier for the theme.  If the data theme's map projection is UTM, then this will be the UTM Zone id.
+            </summary>
+        </member>
+        <member name="F:TerraServer.TileId.X">
+            <summary>
+             The tile's relative number position from the "left edge" of the scene.  The position begins with tile 0.
+            </summary>
+        </member>
+        <member name="F:TerraServer.TileId.Y">
+            <summary>
+             The tile's relative number position from the bottom-edge of the scene.  The bottom position begins with tile 0.
+            </summary>
+        </member>
+        <member name="T:TerraServer.TileMeta">
+            <summary>
+             Information about an individual tile in the database
+            </summary>
+        </member>
+        <member name="F:TerraServer.TileMeta.Id">
+            <summary>
+            The unique identifier for a tile within the TerraServer system.
+            </summary>
+        </member>
+        <member name="F:TerraServer.TileMeta.TileExists">
+            <summary>
+            A boolean flag indicating the presence of the tile in the TerraServer database.  True means the tile exists and can be retrieved.
+            False means the tile does not exist and cannot be retreived.
+            </summary>
+        </member>
+        <member name="F:TerraServer.TileMeta.NorthWest">
+            <summary>
+            The longitude and latitude value of pixel 0,0 within the tile (top left corner point).
+            </summary>
+        </member>
+        <member name="F:TerraServer.TileMeta.NorthEast">
+            <summary>
+            The longitude and latitude value of pixel 200,0 within the tile (top right corner point).
+            </summary>
+        </member>
+        <member name="F:TerraServer.TileMeta.SouthWest">
+            <summary>
+            The longitude and latitude value of pixel 0,200 within the tile (lower left corner point).
+            </summary>
+        </member>
+        <member name="F:TerraServer.TileMeta.SouthEast">
+            <summary>
+            The longitude and latitude value of pixel 200,200 within the tile (lower right corner point).
+            </summary>
+        </member>
+        <member name="F:TerraServer.TileMeta.Center">
+            <summary>
+            The longitude and latitude value of pixel 100,100 within the tile (center point).
+            </summary>
+        </member>
+        <member name="F:TerraServer.TileMeta.Capture">
+            <summary>
+            The capture or print date of the tile.
+            </summary>
+        </member>
+    </members>
+</doc>

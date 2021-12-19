@@ -1,0 +1,67 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Globalization/Encoding/encoding.src&file=VB/Encoding.vb" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvRW5jb2RpbmcudmJ4X194eF94eF94X194a21ad9c2" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/Encoding.vb</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../howto/samples/globalization/encoding/encodingcssource.htm'>Encoding.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../howto/samples/globalization/encoding/vb/encodingvbsource.htm'>VB/Encoding.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>Imports System
+Imports System.IO
+Imports System.Text
+ 
+Class CultureAndRegion
+ 
+Public shared Sub Main() 
+ 
+    ' Create a text file for this example
+    Console.WriteLine ("Creating text.txt")
+    Dim fs As FileStream
+    fs = new FileStream("text.txt", FileMode.OpenOrCreate)
+    
+    Console.WriteLine ("Writing UTF8")
+    Dim t As StreamWriter
+    t = new StreamWriter (fs, Encoding.UTF8)
+    t.Write("This is in UTF8")
+    t.Flush()
+    
+    Console.WriteLine ("Writing Unicode")
+    Dim t2 As StreamWriter
+    t2 = new StreamWriter (fs, Encoding.Unicode)
+    t2.Write("This is in Unicode")
+    t2.Flush()  
+ 
+    Console.WriteLine ("Writing Ascii")
+    Dim t3 as StreamWriter
+    t3 = new StreamWriter (fs, Encoding.ASCII)
+    t3.Write("This is in ASCII")
+    t3.Flush()
+    
+    fs.Close()
+End Sub
+    
+End Class
+ 
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

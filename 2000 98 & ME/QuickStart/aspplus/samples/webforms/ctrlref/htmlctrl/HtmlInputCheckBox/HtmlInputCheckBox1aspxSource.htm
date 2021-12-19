@@ -1,0 +1,74 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlref/htmlctrl/HtmlInputCheckBox/HtmlInputCheckBox1.src&file=HtmlInputCheckBox1.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfSHRtbElucHV0Q2hlY2tCb1x4MS5hc3BceHhfX3h4X3h4X3hfX3g=8fd2f729" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">HtmlInputCheckBox1.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlref/htmlctrl/htmlinputcheckbox/htmlinputcheckbox1aspxsource.htm'>HtmlInputCheckBox1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlref/htmlctrl/htmlinputcheckbox/vb/htmlinputcheckbox1aspxsource.htm'>VB\HtmlInputCheckBox1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlref/htmlctrl/htmlinputcheckbox/js/htmlinputcheckbox1aspxsource.htm'>JS\HtmlInputCheckBox1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><html>
+<head>
+
+    <script language="C#" runat="server">
+
+       void Button1_Click(object Source, EventArgs e) {
+
+          if (Check1.Checked == true) {
+             Span1.InnerHtml = "Check1 is checked!";
+          }
+          else {
+             Span1.InnerHtml = "Check1 is not checked!";
+          }
+       }
+
+    </script>
+
+</head>
+
+<body>
+
+    <h3><font face="Verdana">HtmlInputCheckBox Sample</font></h3>
+
+    <form runat=server>
+
+        <input id="Check1" type=checkbox runat="server"> CheckBox1 &nbsp;&nbsp;
+
+        <span id=Span1 style="color:red" runat=server />
+
+        <p>
+
+        <input type=button id="Button1" value="Enter" OnServerClick="Button1_Click" runat=server>
+
+    </form>
+
+</body>
+</html>
+
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

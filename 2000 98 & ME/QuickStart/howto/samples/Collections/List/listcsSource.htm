@@ -1,0 +1,53 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Collections/List/list.src&file=list.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfbGlzdC5jc3hfX3h4X3h4X3hfX3g=a749d907" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">list.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../howto/samples/collections/list/listcssource.htm'>list.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../howto/samples/collections/list/vb/listvbsource.htm'>VB\list.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>using System;
+using System.Collections;
+
+class listSample
+{
+    
+    public static void Main(String[] args)
+    {
+        ArrayList fruit = new ArrayList();
+        fruit.Add("Apple");
+        fruit.Add("Pear");
+        fruit.Add("Orange");
+        fruit.Add("Banana");
+        foreach (String item in fruit)
+        {
+            Console.WriteLine(item);
+        }
+        
+		Console.WriteLine ("\r\nPress Return to exit.");
+		Console.Read();
+    }
+}
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

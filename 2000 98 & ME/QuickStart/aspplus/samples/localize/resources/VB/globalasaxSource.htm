@@ -1,0 +1,63 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/localize/resources/global_asax.src&file=VB/global.asax" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvZ2xvYmFsLmFzYVx4eF9feHhfeHhfeF9feA==79df4799" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/global.asax</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/localize/resources/globalasaxsource.htm'>global.asax</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/localize/resources/vb/globalasaxsource.htm'>VB/global.asax</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@Import namespace="System.Globalization"%>
+<%@Import namespace="System.Resources"%>
+<%@Import namespace="System.Threading"%>
+
+
+
+<script runat="server" language="VB">
+
+Sub Application_OnStart() 
+    Application("RM") = new ResourceManager("articles", _
+					    Server.MapPath("resources") _
+					    + Environment.DirectorySeparatorChar, _
+					    null)
+End Sub
+
+
+
+Sub Application_BeginRequest(sender As Object, args As EventArgs)
+    ' For each request initialize the culture values with the 
+    ' user language as specified by the browser.
+    Try
+	Thread.CurrentThread.CurrentCulture = new CultureInfo(Request.UserLanguages(0))
+    Catch
+	' provide fallback for not supported languages.
+	Thread.CurrentThread.CurrentCulture = new CultureInfo("en-us")
+    End Try
+
+    
+    Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture
+End Sub
+
+</script>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

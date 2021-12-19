@@ -1,0 +1,113 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/busobjs/TwoTier.src&file=VB/DataObj.vb" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvRGF0YU9iai52YnhfX3h4X3h4X3hfX3g=626ad859" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/DataObj.vb</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/busobjs/twotieraspxsource.htm'>TwoTier.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/busobjs/dataobjcssource.htm'>DataObj.cs</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/busobjs/makesamplebatsource.htm'>makesample.bat</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/busobjs/vb/twotieraspxsource.htm'>VB/TwoTier.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/busobjs/vb/dataobjvbsource.htm'>VB/DataObj.vb</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/busobjs/vb/makesamplebatsource.htm'>VB/makesample.bat</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>Imports System
+Imports System.Data
+Imports System.Data.SQL
+
+Namespace DataLayer 
+
+  Public Class DataObjVB
+
+    Private _connStr As String
+
+    Public Overloads Sub New() 
+
+      MyBase.New()
+      _connStr = ""
+    End Sub
+
+    Public Overloads Sub New(ConnStr As String) 
+
+      MyBase.New()
+      _connStr = ConnStr
+    End Sub
+
+    Public Property ConnectionString As String
+
+      Get 
+        Return _connStr
+      End Get
+
+      Set
+        _connStr = Value
+      End Set
+    End Property
+
+    Public Function GetCategories() As DataView
+
+      Dim DS As DataSet
+      Dim MyConnection As SQLConnection
+      Dim MyCommand As SQLDataSetCommand
+
+      MyConnection = New SQLConnection(_connStr)
+      MyCommand = New SQLDataSetCommand("select distinct CategoryName from Categories", MyConnection)
+
+      DS = new DataSet()
+      MyCommand.FillDataSet(DS, "Categories")
+
+      Return DS.Tables("Categories").DefaultView
+    End Function
+
+    Public Function GetProductsForCategory(Category As String) As DataView
+
+      Dim DS As DataSet
+      Dim MyConnection As SQLConnection
+      Dim MyCommand As SQLDataSetCommand
+
+      MyConnection = New SQLConnection(_connStr)
+
+      MyCommand = New SQLDataSetCommand("select ProductName, ImagePath, UnitPrice, c.CategoryId  from Products p, Categories c where c.CategoryName='" & Category & "' and p.CategoryId = c.CategoryId", myConnection)
+
+      DS = new DataSet()
+      MyCommand.FillDataSet(DS, "Products")
+
+      Return DS.Tables("Products").DefaultView
+    End Function
+
+  End Class
+
+End Namespace
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>
+ame='" & Category & "' and p.CategoryId = c.CategoryId", myConnection)
+
+      DS = new DataSet()
+      MyCommand.FillDataSet(DS, "Products")
+
+      Return DS.Tables("Products").DefaultView
+    End Function
+
+  End Class
+
+End Namespace
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

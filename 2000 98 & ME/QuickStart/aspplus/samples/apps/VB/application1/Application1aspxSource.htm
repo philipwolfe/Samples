@@ -1,0 +1,62 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/apps/application1.src&file=VB/Application1/Application1.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvQXBwbGljYXRpb24xL0FwcGxpY2F0aW9uMS5hc3BceHhfX3h4X3h4X3hfX3g=d14b6887" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/Application1/Application1.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/apps/application1/globalasaxsource.htm'>Application1/Global.asax</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/apps/application1/application1aspxsource.htm'>Application1/Application1.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/apps/application1/errorpagehtmsource.htm'>Application1/ErrorPage.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/apps/application1/configwebsource.htm'>Application1/config.web</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/apps/vb/application1/globalasaxsource.htm'>VB/Application1/Global.asax</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/apps/vb/application1/application1aspxsource.htm'>VB/Application1/Application1.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/apps/vb/application1/errorpagehtmsource.htm'>VB/Application1/ErrorPage.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/apps/vb/application1/configwebsource.htm'>VB/Application1/config.web</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><html>
+
+  <script language="VB" runat="server">
+
+      Sub Page_Load(Sender As Object, E As EventArgs)
+         Response.Write("In Page.Load()...<br>")
+      End Sub
+
+      Sub Session_Click(Sender As Object, E As EventArgs)
+         Session.Abandon()
+         Response.Redirect("application1.htm")
+      End Sub
+
+      Sub Error_Click(Sender As Object, E As EventArgs)
+         throw New Exception()
+      End Sub
+
+  </script>
+
+  <body>
+
+    <form runat="server">
+      <input type="submit" Value="Refresh This Page" runat="server"/>
+      <input type="submit" OnServerClick="Session_Click" Value="End This Session" runat="server"/>
+      <input type="submit" OnServerClick="Error_Click" Value="Generate An Error" runat="server"/><p>
+      <hr>
+    </form>
+    
+  </body>
+
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

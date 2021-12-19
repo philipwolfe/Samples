@@ -1,0 +1,1371 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns:p="urn:schemas-microsoft-com:office:powerpoint"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 9">
+<meta name=Originator content="Microsoft Word 9">
+<link rel=File-List href="./readme_files/filelist.xml">
+<link rel=Edit-Time-Data href="./readme_files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>COM+ 2.0 Interoperability Sample</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Chris Waldron</o:Author>
+  <o:LastAuthor>Chris Waldron</o:LastAuthor>
+  <o:Revision>11</o:Revision>
+  <o:TotalTime>620</o:TotalTime>
+  <o:Created>2000-06-21T18:50:00Z</o:Created>
+  <o:LastSaved>2000-06-27T06:30:00Z</o:LastSaved>
+  <o:Pages>6</o:Pages>
+  <o:Words>1033</o:Words>
+  <o:Characters>5889</o:Characters>
+  <o:Lines>49</o:Lines>
+  <o:Paragraphs>11</o:Paragraphs>
+  <o:CharactersWithSpaces>7232</o:CharactersWithSpaces>
+  <o:Version>9.2720</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:View>Print</w:View>
+  <w:Zoom>BestFit</w:Zoom>
+ </w:WordDocument>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:553679495 -2147483648 8 0 66047 0;}
+@font-face
+	{font-family:Verdana;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:536871559 0 0 0 415 0;}
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Tahoma;
+	mso-fareast-font-family:"Times New Roman";}
+h1
+	{mso-style-parent:"";
+	mso-style-next:"Text\,t";
+	margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	line-height:24.0pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:22.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Verdana;
+	mso-bidi-font-family:Tahoma;
+	mso-font-kerning:12.0pt;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+h2
+	{mso-style-parent:"Heading 1";
+	mso-style-next:"Text\,t";
+	margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	line-height:24.0pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	font-size:22.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Verdana;
+	mso-bidi-font-family:Tahoma;
+	color:gray;
+	mso-font-kerning:12.0pt;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+h3
+	{mso-style-parent:"Heading 1";
+	mso-style-next:"Text\,t";
+	margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	line-height:24.0pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:3;
+	font-size:22.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Verdana;
+	mso-bidi-font-family:Tahoma;
+	color:silver;
+	mso-font-kerning:12.0pt;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+h4
+	{mso-style-parent:"Heading 1";
+	mso-style-next:"Text\,t";
+	margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	line-height:20.0pt;
+	mso-pagination:widow-orphan;
+	mso-outline-level:4;
+	font-size:18.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Verdana;
+	mso-bidi-font-family:Tahoma;
+	mso-font-kerning:12.0pt;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+h5
+	{mso-style-parent:"Heading 1";
+	mso-style-next:"Text\,t";
+	margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	line-height:16.0pt;
+	mso-pagination:widow-orphan;
+	mso-outline-level:5;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Verdana;
+	mso-bidi-font-family:Tahoma;
+	mso-font-kerning:12.0pt;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+h6
+	{mso-style-parent:"Heading 1";
+	mso-style-next:"Text\,t";
+	margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-outline-level:6;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-bidi-font-family:Tahoma;
+	mso-font-kerning:12.0pt;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.MsoBodyTextIndent, li.MsoBodyTextIndent, div.MsoBodyTextIndent
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:12.0pt;
+	margin-left:.25in;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:Tahoma;
+	font-weight:bold;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{margin-right:0in;
+	mso-margin-top-alt:auto;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Tahoma;
+	mso-fareast-font-family:"Times New Roman";}
+p.Text, li.Text, div.Text
+	{mso-style-name:"Text\,t";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.Figure, li.Figure, div.Figure
+	{mso-style-name:"Figure\,fig";
+	mso-style-parent:"Text\,t";
+	mso-style-next:"Text\,t";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:12.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.Code, li.Code, div.Code
+	{mso-style-name:"Code\,c";
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	line-height:15.0pt;
+	mso-pagination:widow-orphan;
+	tab-stops:.25in .5in .75in 1.0in 1.25in 1.5in 1.75in 2.0in 2.25in;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.Label, li.Label, div.Label
+	{mso-style-name:"Label\,l";
+	mso-style-parent:"Text\,t";
+	mso-style-next:"Text\,t";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:navy;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.NumberedList1, li.NumberedList1, div.NumberedList1
+	{mso-style-name:"Numbered List 1\,nl1";
+	mso-style-parent:"Text\,t";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.25in;
+	text-indent:-.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l1 level1 lfo2;
+	tab-stops:.25in list .5in;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.LabelSpecial, li.LabelSpecial, div.LabelSpecial
+	{mso-style-name:"Label Special\,ls";
+	mso-style-parent:"Text\,t";
+	mso-style-next:"Numbered List 1\,nl1";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:maroon;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.NumberedList2, li.NumberedList2, div.NumberedList2
+	{mso-style-name:"Numbered List 2\,nl2";
+	mso-style-parent:"Text\,t";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.5in;
+	text-indent:-.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l2 level1 lfo4;
+	tab-stops:.5in list .75in;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.Syntax, li.Syntax, div.Syntax
+	{mso-style-name:"Syntax\,s";
+	mso-style-parent:"Text\,t";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.TableSpacingAfter, li.TableSpacingAfter, div.TableSpacingAfter
+	{mso-style-name:"Table Spacing After\,tsa";
+	mso-style-parent:"Text\,t";
+	mso-style-next:"Text\,t";
+	margin:0in;
+	margin-bottom:.0001pt;
+	line-height:6.0pt;
+	mso-pagination:widow-orphan;
+	font-size:6.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:olive;}
+p.CodeinList2, li.CodeinList2, div.CodeinList2
+	{mso-style-name:"Code in List 2\,c2";
+	mso-style-parent:"Code\,c";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	line-height:15.0pt;
+	mso-pagination:widow-orphan;
+	tab-stops:.75in 1.0in 1.25in 1.5in 1.75in 2.0in 2.25in 2.5in 2.75in;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.TextinList2, li.TextinList2, div.TextinList2
+	{mso-style-name:"Text in List 2\,t2";
+	mso-style-parent:"Text\,t";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.5in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.FigureinList2, li.FigureinList2, div.FigureinList2
+	{mso-style-name:"Figure in List 2\,fig2";
+	mso-style-parent:"Figure\,fig";
+	mso-style-next:"Text in List 2\,t2";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:12.0pt;
+	margin-left:.5in;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.FigureEmbedded, li.FigureEmbedded, div.FigureEmbedded
+	{mso-style-name:"Figure Embedded\,fige";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:12.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:olive;}
+p.TextinList1, li.TextinList1, div.TextinList1
+	{mso-style-name:"Text in List 1\,t1";
+	mso-style-parent:"Text\,t";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.LabelinList1, li.LabelinList1, div.LabelinList1
+	{mso-style-name:"Label in List 1\,l1";
+	mso-style-parent:"Label\,l";
+	mso-style-next:"Text in List 1\,t1";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:navy;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.CodeinList1, li.CodeinList1, div.CodeinList1
+	{mso-style-name:"Code in List 1\,c1";
+	mso-style-parent:"Code\,c";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.25in;
+	margin-bottom:.0001pt;
+	line-height:15.0pt;
+	mso-pagination:widow-orphan;
+	tab-stops:.5in .75in 1.0in 1.25in 1.5in 1.75in 2.0in 2.25in 2.5in;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.FigureinList1, li.FigureinList1, div.FigureinList1
+	{mso-style-name:"Figure in List 1\,fig1";
+	mso-style-parent:"Figure\,fig";
+	mso-style-next:"Text in List 1\,t1";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:12.0pt;
+	margin-left:.25in;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.AlertText, li.AlertText, div.AlertText
+	{mso-style-name:"Alert Text\,at";
+	mso-style-parent:"";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.AlertTextinList1, li.AlertTextinList1, div.AlertTextinList1
+	{mso-style-name:"Alert Text in List 1\,at1";
+	mso-style-parent:"Alert Text\,at";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.5in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.AlertTextinList2, li.AlertTextinList2, div.AlertTextinList2
+	{mso-style-name:"Alert Text in List 2\,at2";
+	mso-style-parent:"Alert Text\,at";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.75in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.RevisionHistory, li.RevisionHistory, div.RevisionHistory
+	{mso-style-name:"Revision History\,rh";
+	mso-style-parent:"Text\,t";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:purple;
+	display:none;
+	mso-hide:all;}
+p.BulletedList1, li.BulletedList1, div.BulletedList1
+	{mso-style-name:"Bulleted List 1\,bl1";
+	mso-style-parent:"Text\,t";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.25in;
+	text-indent:-.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l8 level1 lfo6;
+	tab-stops:list .25in .5in;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.TextIndented, li.TextIndented, div.TextIndented
+	{mso-style-name:"Text Indented\,ti";
+	mso-style-parent:"Text\,t";
+	margin-top:0in;
+	margin-right:.25in;
+	margin-bottom:6.0pt;
+	margin-left:.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.BulletedList2, li.BulletedList2, div.BulletedList2
+	{mso-style-name:"Bulleted List 2\,bl2";
+	mso-style-parent:"Text\,t";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.5in;
+	text-indent:-.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l5 level1 lfo8;
+	tab-stops:list .5in;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.Definition, li.Definition, div.Definition
+	{mso-style-name:"Definition\,d";
+	mso-style-parent:"Text\,t";
+	mso-style-next:"Defined Term\,dt";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.25in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.DefinedTerm, li.DefinedTerm, div.DefinedTerm
+	{mso-style-name:"Defined Term\,dt";
+	mso-style-parent:"Text\,t";
+	mso-style-next:"Definition\,d";
+	margin:0in;
+	margin-bottom:.0001pt;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.GlueLinkText, li.GlueLinkText, div.GlueLinkText
+	{mso-style-name:"Glue Link Text\,glt";
+	mso-style-parent:"Text\,t";
+	mso-style-next:"Text\,t";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.IndexTag, li.IndexTag, div.IndexTag
+	{mso-style-name:"Index Tag\,it";
+	mso-style-parent:"Text\,t";
+	margin-top:0in;
+	margin-right:1.0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	background:#DDFFFF;
+	mso-shading:windowtext;
+	mso-pattern:gray-25 aqua;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	display:none;
+	mso-hide:all;}
+p.Copyright, li.Copyright, div.Copyright
+	{mso-style-name:"Copyright\,copy";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:olive;}
+p.PrintDivisionTitle, li.PrintDivisionTitle, div.PrintDivisionTitle
+	{mso-style-name:"Print Division Title\,pdt";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:olive;}
+p.PrintDivisionNumber, li.PrintDivisionNumber, div.PrintDivisionNumber
+	{mso-style-name:"Print Division Number\,pdn";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:olive;}
+p.PrintMSCorp, li.PrintMSCorp, div.PrintMSCorp
+	{mso-style-name:"Print MS Corp\,pms";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:olive;}
+p.LabelinList2, li.LabelinList2, div.LabelinList2
+	{mso-style-name:"Label in List 2\,l2";
+	mso-style-parent:"Label\,l";
+	mso-style-next:"Text in List 2\,t2";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.5in;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:navy;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.TableFootnote, li.TableFootnote, div.TableFootnote
+	{mso-style-name:"Table Footnote\,tf";
+	margin-right:0in;
+	mso-margin-top-alt:auto;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Tahoma;
+	mso-fareast-font-family:"Times New Roman";}
+p.TableFootnoteinList1, li.TableFootnoteinList1, div.TableFootnoteinList1
+	{mso-style-name:"Table Footnote in List 1\,tf1";
+	mso-style-parent:"Table Footnote\,tf";
+	mso-style-next:"Text in List 1\,t1";
+	margin-top:2.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.25in;
+	line-height:9.0pt;
+	mso-pagination:widow-orphan;
+	border:none;
+	mso-border-top-alt:solid windowtext .5pt;
+	padding:0in;
+	mso-padding-alt:1.0pt 0in 0in 0in;
+	font-size:8.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.TableFootnoteinList2, li.TableFootnoteinList2, div.TableFootnoteinList2
+	{mso-style-name:"Table Footnote in List 2\,tf2";
+	mso-style-parent:"Table Footnote\,tf";
+	mso-style-next:"Text in List 2\,t2";
+	margin-top:2.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.5in;
+	line-height:9.0pt;
+	mso-pagination:widow-orphan;
+	border:none;
+	mso-border-top-alt:solid windowtext .5pt;
+	padding:0in;
+	mso-padding-alt:1.0pt 0in 0in 0in;
+	font-size:8.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.h4, li.h4, div.h4
+	{mso-style-name:h4;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:12.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:Tahoma;}
+span.LinkText
+	{mso-style-name:"Link Text\,lt";
+	color:blue;
+	text-decoration:underline;
+	text-underline:double;}
+span.LinkID
+	{mso-style-name:"Link ID\,lid";
+	color:red;
+	display:none;
+	mso-hide:all;}
+span.Bold
+	{mso-style-name:"Bold\,b";
+	font-weight:bold;}
+span.BoldItalic
+	{mso-style-name:"Bold Italic\,bi";
+	font-weight:bold;
+	font-style:italic;}
+span.Italic
+	{mso-style-name:"Italic\,i";
+	font-style:italic;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+@list l0
+	{mso-list-id:140198700;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1743530668 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l0:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l1
+	{mso-list-id:356852170;
+	mso-list-template-ids:-516918242;}
+@list l2
+	{mso-list-id:358627395;
+	mso-list-template-ids:759335382;}
+@list l3
+	{mso-list-id:467281849;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1389775872 854327556 1026309256 -1359574590 1117712888 1287159878 1995765350 1424930378 -678791962 362807472;}
+@list l3:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l4
+	{mso-list-id:580259121;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1793800018 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l4:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l5
+	{mso-list-id:671183883;
+	mso-list-template-ids:858027426;}
+@list l6
+	{mso-list-id:778597668;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-2045731704 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l6:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l7
+	{mso-list-id:826822687;
+	mso-list-type:hybrid;
+	mso-list-template-ids:44435670 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l7:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l8
+	{mso-list-id:876819360;
+	mso-list-template-ids:1791795658;}
+@list l9
+	{mso-list-id:1229458127;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1403595914 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l9:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l10
+	{mso-list-id:1772584628;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1050582334 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l10:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l11
+	{mso-list-id:1888253115;
+	mso-list-type:hybrid;
+	mso-list-template-ids:32395650 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l11:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+<!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="1029"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=EN-US link=blue vlink=purple style='tab-interval:.25in'>
+
+<div class=Section1>
+
+<h2 style='line-height:24.0pt;mso-line-height-rule:exactly'><span
+style='font-family:Tahoma'>COM+ Services Sample </span></h2>
+
+<p class=MsoNormal><span style='font-family:Verdana'>This document contains the
+release information for the COM+ Services Sample.<span style="mso-spacerun:
+yes">  </span>You will find the following sections below: <o:p></o:p></span></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l3 level1 lfo11;tab-stops:list .5in'><span style='font-family:
+     Verdana'><a href="#_Sample_Overview">Sample Overview</a></span> <span
+     style='font-family:Verdana'><o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l3 level1 lfo11;tab-stops:list .5in'><a name=version></a><a
+     href="#_Location_of_Sample"><span style='mso-bookmark:version'><span
+     style='font-family:Verdana'>Location of the Sample</span></span><span
+     style='mso-bookmark:version'></span></a><span style='mso-bookmark:version'>
+     </span><span style='mso-bookmark:version'><span style='font-family:Verdana'><o:p></o:p></span></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l3 level1 lfo11;tab-stops:list .5in'><span style='mso-bookmark:
+     version'></span><a href="#Requirements"><span style='mso-bookmark:version'><span
+     style='font-family:Verdana'>Requirements</span></span><span
+     style='mso-bookmark:version'></span></a><span style='mso-bookmark:version'><span
+     style='font-family:Verdana'><o:p></o:p></span></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l3 level1 lfo11;tab-stops:list .5in'><span style='mso-bookmark:
+     version'></span><a href="#Build"><span style='mso-bookmark:version'><span
+     style='font-family:Verdana'>Build the Sample</span></span><span
+     style='mso-bookmark:version'></span></a><a name="_What_this_sample"></a><span
+     style='mso-bookmark:version'></span></li>
+</ul>
+
+<h4><span style='mso-bookmark:version'><a name="_What_this_sample_1"></a><a
+name="_Sample_Overview"></a>Sample Overview</span></h4>
+
+<p class=Text><span style='mso-bookmark:version'>This sample demonstrates the
+integration between the Web Services Platform and COM+ 1.0 Services.</span></p>
+
+<p class=Text><span style='mso-bookmark:version'>COM+ Services is a Microsoft
+technology that allows the development of highly scalable, multi-tier
+distributed applications.<span style="mso-spacerun: yes">  </span>Successful
+commercial Web sites are experiencing ten-fold and even one hundred-fold
+increase in order volume as more and more business moves to the Internet. It is
+clear that scalable software systems that remain ready to serve at any time and
+never fails is a requirement.</span></p>
+
+<p class=Text><span style='mso-bookmark:version'>This sample demonstrates that
+your existing technology investment is protected whilst allowing you to move
+your software forward to take advantage of the innovations in the Web Services
+Platform.</span></p>
+
+<p class=Text><span style='mso-bookmark:version'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=Text><span style='mso-bookmark:version'><!--[if gte vml 1]><v:shapetype
+ id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t"
+ path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="_x0000_i1026" type="#_x0000_t75" style='width:433.5pt;
+ height:216.75pt'>
+ <v:imagedata src="./readme_files/image001.png" o:title="ComponentServices1"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=578 height=289
+src="./readme_files/image002.jpg" v:shapes="_x0000_i1026"><![endif]></span></p>
+
+<p class=Text><span style='mso-bookmark:version'>The Bank Sample demonstrates a
+simple business problem of performing database operations and preserving the
+integrity of the database through distributed transactions. </span></p>
+
+<p class=Text><span style='mso-bookmark:version'>The Bank App Client uses the
+MoveMoney component to transfer money between two accounts and uses two Account
+components to perform the transfer. The SQL Server database holds the account
+rows and also keeps track of receipts. The Account components perform the
+actual work of updating the database table. MoveMoney and Account are marked to
+require a transaction. When MoveMoney is created a transaction is started by
+COM+ Services. When the Account components are create ,this transaction is
+flowed to them, so that when the transfer is completed and MoveMoney returns,
+the transaction is commited and the database table reflects the transfer.</span></p>
+
+<p class=Text><span style='mso-bookmark:version'>The components are provides in
+multiple languages:</span></p>
+
+<p class=Text style='margin-left:.5in;text-indent:-.25in;mso-list:l9 level1 lfo13;
+tab-stops:list .5in'><span style='mso-bookmark:version'><![if !supportLists]><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>Bank App client is written in VB6</span></p>
+
+<p class=Text style='margin-left:.5in;text-indent:-.25in;mso-list:l9 level1 lfo13;
+tab-stops:list .5in'><span style='mso-bookmark:version'><![if !supportLists]><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>MoveMoney is provide multiple languages: VB6, VB7 and
+CSharp</span></p>
+
+<p class=Text style='margin-left:.5in;text-indent:-.25in;mso-list:l9 level1 lfo13;
+tab-stops:list .5in'><span style='mso-bookmark:version'><![if !supportLists]><span
+style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>Account is also provide multiple languages: VB6, VB7
+and CSharp</span></p>
+
+<p class=Text><span style='mso-bookmark:version'>The components written in VB7
+and CSharp demonstrate that an existing component can be replaced without
+amending the client application at all, by performing the same tasks using the
+same interfaces.</span></p>
+
+<h4><span style='mso-bookmark:version'><a name="_Getting_Started"></a><a
+name="_Location_of_Sample"></a>Location of the Sample</span></h4>
+
+<p class=MsoNormal style='margin-bottom:12.0pt'><span style='mso-bookmark:version'><span
+style='font-family:Verdana'>This sample is contained in the ComServices
+subdirectory<o:p></o:p></span></span></p>
+
+<h4><span style='mso-bookmark:version'><a name=Requirements>Requirements</a></span></h4>
+
+<p class=Text><span style='mso-bookmark:version'><span style='mso-bookmark:
+Requirements'>Windows 2000 Professional or Server</span></span></p>
+
+<p class=Text><span style='mso-bookmark:version'><span style='mso-bookmark:
+Requirements'>SQL Server 7.0 or later</span></span></p>
+
+<p class=Text><span style='mso-bookmark:version'><span style='mso-bookmark:
+Requirements'>Visual Basic 6.0 with Service pack 3.0 installed</span></span></p>
+
+<p class=Text><span style='mso-bookmark:version'><span style='mso-bookmark:
+Requirements'>NGWS SDK</span></span></p>
+
+<h4><span style='mso-bookmark:version'><span style='mso-bookmark:Requirements'>Preparing
+the Environment</span></span></h4>
+
+<span style='mso-bookmark:Requirements'></span><span style='mso-bookmark:version'></span>
+
+<p class=MsoNormal style='margin-bottom:12.0pt'><a name="_Building_the_Sample"></a><span
+style='font-family:Verdana'>The environment needs to be prepared in order for
+the demo sample to run.<o:p></o:p></span></p>
+
+<h5>Database</h5>
+
+<p class=MsoNormal style='margin-bottom:12.0pt'><span style='font-family:Verdana'>You
+must create a SQL server database called “bank”. Use the SQL Server Enterprise
+Manager to create the database. Here are detailed steps:<o:p></o:p></span></p>
+
+<ul style='margin-top:0in' type=disc>
+ <li class=MsoNormal style='margin-bottom:12.0pt;mso-list:l11 level1 lfo16;
+     tab-stops:list .5in'><span style='font-family:Verdana'>Start -&gt;
+     Programs -&gt; Microsoft SQL Server 7.0 -&gt; Enterprise Manager<o:p></o:p></span></li>
+ <li class=MsoNormal style='margin-bottom:12.0pt;mso-list:l11 level1 lfo16;
+     tab-stops:list .5in'><span style='font-family:Verdana'>Open Microsoft SQL
+     Servers<o:p></o:p></span></li>
+ <li class=MsoNormal style='margin-bottom:12.0pt;mso-list:l11 level1 lfo16;
+     tab-stops:list .5in'><span style='font-family:Verdana'>Open SQL Server
+     Group<o:p></o:p></span></li>
+ <li class=MsoNormal style='margin-bottom:12.0pt;mso-list:l11 level1 lfo16;
+     tab-stops:list .5in'><span style='font-family:Verdana'>Open your Server<o:p></o:p></span></li>
+ <li class=MsoNormal style='margin-bottom:12.0pt;mso-list:l11 level1 lfo16;
+     tab-stops:list .5in'><span style='font-family:Verdana'>Right Click on
+     Databases and click “New Database . . .”<o:p></o:p></span></li>
+ <li class=MsoNormal style='margin-bottom:12.0pt;mso-list:l11 level1 lfo16;
+     tab-stops:list .5in'><span style='font-family:Verdana'>Enter “Bank” for
+     the database name <o:p></o:p></span></li>
+ <li class=MsoNormal style='margin-bottom:12.0pt;mso-list:l11 level1 lfo16;
+     tab-stops:list .5in'><span style='font-family:Verdana'>Click OK<o:p></o:p></span></li>
+</ul>
+
+<p class=MsoNormal style='margin-bottom:12.0pt'><span style='font-family:Verdana'>The
+SQL Server Database should have been created.<o:p></o:p></span></p>
+
+<h5>File DSN<span style='font-size:10.0pt'><o:p></o:p></span></h5>
+
+<p class=MsoNormal style='margin-bottom:12.0pt'><span style='font-family:Verdana'>You
+must create a File DSN “BankSample” that points to the “bank” SQL Server Database.
+The File DSN “BankSample” is use by the sample components to update account
+balances and keep track of receipt numbers. Here are detailed steps:<o:p></o:p></span></p>
+
+<ul style='margin-top:0in' type=disc>
+ <li class=MsoNormal style='margin-bottom:12.0pt;mso-list:l4 level1 lfo19;
+     tab-stops:list .5in'><span style='font-family:Verdana'>Select Start -&gt;
+     Settings -&gt; Control Panel -&gt; Administrative Tools -&gt; Data Sources
+     (ODBC)<o:p></o:p></span></li>
+ <li class=MsoNormal style='margin-bottom:12.0pt;mso-list:l4 level1 lfo19;
+     tab-stops:list .5in'><span style='font-family:Verdana'>Click on the “File
+     DSN” tab<o:p></o:p></span></li>
+ <li class=MsoNormal style='margin-bottom:12.0pt;mso-list:l4 level1 lfo19;
+     tab-stops:list .5in'><span style='font-family:Verdana'>Click the Add
+     button<o:p></o:p></span></li>
+ <li class=MsoNormal style='margin-bottom:12.0pt;mso-list:l4 level1 lfo19;
+     tab-stops:list .5in'><span style='font-family:Verdana'>Select SQL Server
+     from the list of drivers and Click Next<o:p></o:p></span></li>
+ <li class=MsoNormal style='margin-bottom:12.0pt;mso-list:l4 level1 lfo19;
+     tab-stops:list .5in'><span style='font-family:Verdana'>Type in the name of
+     the Data Source “BankSample” and Click Next<o:p></o:p></span></li>
+</ul>
+
+<p class=NumberedList2 style='margin-bottom:12.0pt;line-height:normal;
+mso-list:l4 level1 lfo19;tab-stops:list .5in'><![if !supportLists]><span
+style='font-family:Symbol;mso-bidi-font-family:Tahoma'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]><span style='mso-bidi-font-family:Tahoma'>Click Finish<o:p></o:p></span></p>
+
+<ul style='margin-top:0in' type=disc>
+ <li class=MsoNormal style='margin-bottom:12.0pt;mso-list:l4 level1 lfo19;
+     tab-stops:list .5in'><span style='font-family:Verdana'>Enter “BankSample”
+     in the Description EditBox<o:p></o:p></span></li>
+ <li class=MsoNormal style='margin-bottom:12.0pt;mso-list:l4 level1 lfo19;
+     tab-stops:list .5in'><span style='font-family:Verdana'>Enter the name of
+     the machine that has the Bank database or select from the drop down list.
+     Click Next<o:p></o:p></span></li>
+ <li class=MsoNormal style='margin-bottom:12.0pt;mso-list:l4 level1 lfo19;
+     tab-stops:list .5in'><span style='font-family:Verdana'>Leave
+     authentication to the default “With Windows NT authentication using the
+     network login ID”. Click Next.<o:p></o:p></span></li>
+ <li class=MsoNormal style='margin-bottom:12.0pt;mso-list:l4 level1 lfo19;
+     tab-stops:list .5in'><span style='font-family:Verdana'>Change the default
+     database to “Bank”. Click Next<o:p></o:p></span></li>
+ <li class=MsoNormal style='margin-bottom:12.0pt;mso-list:l4 level1 lfo19;
+     tab-stops:list .5in'><span style='font-family:Verdana'>Click Finish.<o:p></o:p></span></li>
+ <li class=MsoNormal style='margin-bottom:12.0pt;mso-list:l4 level1 lfo19;
+     tab-stops:list .5in'><span style='font-family:Verdana'>Click Test Data
+     Source<o:p></o:p></span></li>
+ <li class=MsoNormal style='margin-bottom:12.0pt;mso-list:l4 level1 lfo19;
+     tab-stops:list .5in'><span style='font-family:Verdana'>Click OK <o:p></o:p></span></li>
+ <li class=MsoNormal style='margin-bottom:12.0pt;mso-list:l4 level1 lfo19;
+     tab-stops:list .5in'><span style='font-family:Verdana'>Click OK<o:p></o:p></span></li>
+ <li class=MsoNormal style='margin-bottom:12.0pt;mso-list:l4 level1 lfo19;
+     tab-stops:list .5in'><span style='font-family:Verdana'>Click OK<o:p></o:p></span></li>
+</ul>
+
+<p class=MsoNormal style='margin-bottom:12.0pt'><span style='font-family:Verdana'>The
+File DSN “BankSample” should have been created.<o:p></o:p></span></p>
+
+<h4>Building the VB6 MoveMoney and Account Components</h4>
+
+<p class=MsoNormal style='margin-bottom:12.0pt'><span style='font-family:Verdana'>First
+build the VB6 MoveMoney and Account components. Here are detailed steps:<o:p></o:p></span></p>
+
+<ul style='margin-top:0in' type=disc>
+ <li class=MsoNormal style='margin-bottom:12.0pt;mso-list:l0 level1 lfo23;
+     tab-stops:list .5in'><span style='font-family:Verdana'>Using Windows
+     explorer locate the Visual Basic Project VB6Bank and double click it.<o:p></o:p></span></li>
+ <li class=MsoNormal style='margin-bottom:12.0pt;mso-list:l0 level1 lfo23;
+     tab-stops:list .5in'><span style='font-family:Verdana'>You should now be
+     in the Visual Basic 6.0 development environment select File -&gt; Make
+     vbacct.dll<o:p></o:p></span></li>
+ <li class=MsoNormal style='margin-bottom:12.0pt;mso-list:l0 level1 lfo23;
+     tab-stops:list .5in'><span style='font-family:Verdana'>Select Ok to make
+     the dll.<o:p></o:p></span></li>
+ <li class=MsoNormal style='margin-bottom:12.0pt;mso-list:l0 level1 lfo23;
+     tab-stops:list .5in'><span style='font-family:Verdana'>You may need to
+     select Yes to overwrite the existing vbacct.dll<o:p></o:p></span></li>
+ <li class=MsoNormal style='margin-bottom:12.0pt;mso-list:l0 level1 lfo23;
+     tab-stops:list .5in'><span style='font-family:Verdana'>Exit Visual Basic.<o:p></o:p></span></li>
+</ul>
+
+<p class=MsoNormal style='margin-bottom:12.0pt'><span style='font-family:Verdana'>The
+VB6 MoveMoney and Account components should have been created in the vbacct.dll<o:p></o:p></span></p>
+
+<h5>Creating the COM+ 1.0 Application and adding the COM components (VB6) to it<span
+style='font-size:10.0pt'><o:p></o:p></span></h5>
+
+<p class=MsoNormal style='margin-bottom:12.0pt'><span style='font-family:Verdana'>The
+MoveMoney and Account components in the various languages need to be hosted in
+a COM+ 1.0 Application. The installSamplebank.vbs creates the “BankApp” COM+
+1.0 Application and adds the VB6 components to it. It also configures the VB6
+components with the appropriate service requirements e.g. Requires
+Transactions. The installSampleBank.vbs can be found in the BankAdmin
+directory, which is a subdirectory of the ComServices directory. <o:p></o:p></span></p>
+
+<p class=Text style='margin-left:.5in;text-indent:-.25in;mso-list:l7 level1 lfo25;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>Open a command prompt </p>
+
+<p class=Text style='margin-left:.5in;text-indent:-.25in;mso-list:l7 level1 lfo25;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>Navigate to the ComServices directory. </p>
+
+<p class=Text style='margin-left:.5in;text-indent:-.25in;mso-list:l7 level1 lfo25;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>Change to the BankAdmin directory</p>
+
+<p class=Text style='margin-left:.5in;text-indent:-.25in;mso-list:l7 level1 lfo25;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>Run the command: installSamplebank.Vbs</p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt'><span style='font-family:Verdana'>Once
+the script is completed you should see a Message Box displaying “Done
+installing Sample Bank”. Click OK.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt'><span style='font-family:Verdana'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<h4><a name=Build>Build the VB7 and C# Components</a></h4>
+
+<p class=MsoNormal style='margin-bottom:12.0pt'><span style='font-family:Verdana'>The
+VB7 and C# Components need to be built and added to the COM+ 1.0 “BankApp”
+Application. Here are detailed instructions:<o:p></o:p></span></p>
+
+<p class=Text style='margin-left:.5in;text-indent:-.25in;mso-list:l7 level1 lfo25;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>Open a command prompt </p>
+
+<p class=Text style='margin-left:.5in;text-indent:-.25in;mso-list:l7 level1 lfo25;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>Navigate to the ComServices directory. </p>
+
+<ul style='margin-top:0in' type=disc>
+ <li class=MsoNormal style='margin-bottom:12.0pt;mso-list:l6 level1 lfo28;
+     tab-stops:list .5in'><span style='font-family:Verdana'>Run the command:
+     nmake -a –fmakefile<o:p></o:p></span></li>
+</ul>
+
+<p class=Text style='margin-bottom:12.0pt;line-height:normal'><span
+style='mso-bidi-font-family:Tahoma'>The VB7 and CSharp components should have
+been build and added to the COM+ 1.0 “BankApp” Application.<o:p></o:p></span></p>
+
+<h4>Build and Start the VB6 Bank App Client</h4>
+
+<p class=MsoNormal style='margin-bottom:12.0pt'><span style='font-family:Verdana'>To
+build the legacy client:<o:p></o:p></span></p>
+
+<ul style='margin-top:0in' type=disc>
+ <li class=MsoNormal style='margin-bottom:12.0pt;mso-list:l6 level1 lfo28;
+     tab-stops:list .5in'><span style='font-family:Verdana'>Using Windows
+     explorer locate and then double click on
+     Samples\ComServices\vb6bankClient\vbbank.vbp<o:p></o:p></span></li>
+ <li class=MsoNormal style='margin-bottom:12.0pt;mso-list:l6 level1 lfo28;
+     tab-stops:list .5in'><span style='font-family:Verdana'>Use Run -&gt; Start
+     with full compile to execute the app<o:p></o:p></span></li>
+</ul>
+
+<p class=Text>The Bank App Client should be running.</p>
+
+<h4>Run the Bank App Client Sample</h4>
+
+<p class=Text>The step above “Build and Start the VB6 Bank App Client” should
+have started the Bank App Client. Below are a number of scenarios to try out.</p>
+
+<h5>Credit Transaction – Account</h5>
+
+<p class=Text>In this Scenario we credit account number 1 with $1.</p>
+
+<p class=Text style='margin-left:.5in;text-indent:-.25in;mso-list:l10 level1 lfo31;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>Set the Account number to 1</p>
+
+<p class=Text style='margin-left:.5in;text-indent:-.25in;mso-list:l10 level1 lfo31;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>Set Amount to 1</p>
+
+<p class=Text style='margin-left:.5in;text-indent:-.25in;mso-list:l10 level1 lfo31;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>Set Transaction type to “Credit”</p>
+
+<p class=Text style='margin-left:.5in;text-indent:-.25in;mso-list:l10 level1 lfo31;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>Set Component to Account</p>
+
+<p class=Text style='margin-left:.5in;text-indent:-.25in;mso-list:l10 level1 lfo31;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>Set Language to VB6</p>
+
+<p class=Text style='margin-left:.5in;text-indent:-.25in;mso-list:l10 level1 lfo31;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>Click Submit</p>
+
+<p class=Text>The result box should state that a credit has been applied to
+account 1 and should display the new balance.</p>
+
+<h5>Try the Credit operation in VB7</h5>
+
+<p class=Text style='margin-left:.5in;text-indent:-.25in;mso-list:l10 level1 lfo31;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>Set Language to VB7</p>
+
+<p class=Text style='margin-left:.5in;text-indent:-.25in;mso-list:l10 level1 lfo31;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>Click Submit</p>
+
+<h5>Try the Credit operation in C#</h5>
+
+<p class=Text style='margin-left:.5in;text-indent:-.25in;mso-list:l10 level1 lfo31;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>Set Language to C#</p>
+
+<p class=Text style='margin-left:.5in;text-indent:-.25in;mso-list:l10 level1 lfo31;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>Click Submit</p>
+
+<h5>Transfer Transaction – Money</h5>
+
+<p class=Text>In this Scenario we transfer $5 from account number 1 to account
+number 2.</p>
+
+<p class=Text style='margin-left:.5in;text-indent:-.25in;mso-list:l10 level1 lfo31;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>Set Component to MoveMoney</p>
+
+<p class=Text style='margin-left:.5in;text-indent:-.25in;mso-list:l10 level1 lfo31;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>Set Transaction type to “Transfer”</p>
+
+<p class=Text style='margin-left:.5in;text-indent:-.25in;mso-list:l10 level1 lfo31;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>Set the Account number to 1</p>
+
+<p class=Text style='margin-left:.5in;text-indent:-.25in;mso-list:l10 level1 lfo31;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>Set the Transfer to Account to 2</p>
+
+<p class=Text style='margin-left:.5in;text-indent:-.25in;mso-list:l10 level1 lfo31;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>Set Amount to 5</p>
+
+<p class=Text style='margin-left:.5in;text-indent:-.25in;mso-list:l10 level1 lfo31;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>Set Language to VB6</p>
+
+<p class=Text style='margin-left:.5in;text-indent:-.25in;mso-list:l10 level1 lfo31;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>Click Submit</p>
+
+<p class=Text>The result box should state that a credit has been applied to
+account 2 and should display the new balance for account 2. It should also show
+that a debit has been applied to account 1 and should display the new balance
+for account1</p>
+
+<h5>Try the Transfer operation in VB7</h5>
+
+<p class=Text style='margin-left:.5in;text-indent:-.25in;mso-list:l10 level1 lfo31;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>Set Language to VB7</p>
+
+<p class=Text style='margin-left:.5in;text-indent:-.25in;mso-list:l10 level1 lfo31;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>Click Submit</p>
+
+<h5>Try the Transfer operation in C#</h5>
+
+<p class=Text style='margin-left:.5in;text-indent:-.25in;mso-list:l10 level1 lfo31;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>Set Language to C#</p>
+
+<p class=Text style='margin-left:.5in;text-indent:-.25in;mso-list:l10 level1 lfo31;
+tab-stops:list .5in'><![if !supportLists]><span style='font-family:Symbol'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><![endif]>Click Submit</p>
+
+<p class=Text><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=Text>&lt;end&gt;</p>
+
+</div>
+
+</body>
+
+</html>

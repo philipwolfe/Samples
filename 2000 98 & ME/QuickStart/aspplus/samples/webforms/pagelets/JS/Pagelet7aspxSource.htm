@@ -1,0 +1,70 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/pagelets/pagelet7.src&file=JS/Pagelet7.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfSlMvUGFnZWxldDcuYXNwXHh4X194eF94eF94X194ed35bb23" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">JS/Pagelet7.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/pagelets/pagelet7aspxsource.htm'>Pagelet7.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/pagelets/pagelet7ascxsource.htm'>Pagelet7.ascx</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/pagelets/vb/pagelet7aspxsource.htm'>VB/Pagelet7.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/pagelets/vb/pagelet7ascxsource.htm'>VB/Pagelet7.ascx</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/pagelets/js/pagelet7aspxsource.htm'>JS/Pagelet7.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/pagelets/js/pagelet7ascxsource.htm'>JS/Pagelet7.ascx</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Register TagPrefix="Acme" TagName="BookList" Src="pagelet7.ascx" %>
+
+<html>
+
+    <script language="JScript" runat="server">
+
+        function Page_Load(sender : Object, E : EventArgs) : void {
+      
+            Page.Controls.Add(new HtmlGenericControl("hr"));
+
+            var c1 : UserControl = LoadControl("pagelet7.ascx");
+            (pagelet7_ascx(c1)).Category = "business";
+            Page.Controls.Add(c1);
+
+            Page.Controls.Add(new HtmlGenericControl("hr"));
+
+            var c2 : UserControl = LoadControl("pagelet7.ascx");
+            (pagelet7_ascx(c2)).Category = "trad_cook";
+            Page.Controls.Add(c2);
+
+            Page.Controls.Add(new HtmlGenericControl("hr"));
+
+            var c3 : UserControl = LoadControl("pagelet7.ascx");
+            (pagelet7_ascx(c3)).Category = "mod_cook";
+            Page.Controls.Add(c3);
+        }
+
+    </script>
+
+<body style="font: 10pt verdana">
+
+  <h3>Creating Pagelets Programmatically</h3>
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

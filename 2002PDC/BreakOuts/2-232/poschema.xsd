@@ -1,0 +1,99 @@
+<!--
+  [XDR-XDS] This schema automatically updated from an IE5-compatible XDR schema to W3C
+  XML Schema.
+-->
+<schema xmlns="http://www.w3.org/1999/XMLSchema" version="1.0">
+	<annotation>
+		<documentation>Schema name: poSample.biz</documentation>
+	</annotation>
+	<element name="PO">
+		<complexType content="elementOnly">
+			<sequence>
+				<element ref="POHeader"/>
+				<element ref="Contact"/>
+				<element ref="POShipTo"/>
+				<element ref="POBillTo"/>
+				<element ref="POLines"/>
+			</sequence>
+			<any namespace="##other"/>
+		</complexType>
+	</element>
+	<element name="POHeader">
+		<complexType content="empty">
+			<any namespace="##other"/>
+			<attribute name="refPromise" use="required" type="string"/>
+			<attribute name="description" use="required" type="string"/>
+			<attribute name="paymentType" use="required" type="string"/>
+			<attribute name="shipType" use="required" type="string"/>
+			<attribute name="fromCust" use="required" type="string"/>
+			<attribute name="poNumber" use="required" type="string"/>
+		</complexType>
+	</element>
+	<element name="Contact">
+		<complexType content="empty">
+			<any namespace="##other"/>
+			<attribute name="contactName" use="required" type="string"/>
+			<attribute name="contactEmail" use="required" type="string"/>
+			<attribute name="contactPhone" use="required" type="string"/>
+		</complexType>
+	</element>
+	<element name="POShipTo">
+		<complexType content="empty">
+			<any namespace="##other"/>
+			<attribute name="city" use="required" type="string"/>
+			<attribute name="attn" use="required" type="string"/>
+			<attribute name="country" use="required" type="string"/>
+			<attribute name="stateProvince" use="required" type="string"/>
+			<attribute name="street4" use="required" type="string"/>
+			<attribute name="street3" use="required" type="string"/>
+			<attribute name="street2" use="required" type="string"/>
+			<attribute name="street1" use="required" type="string"/>
+			<attribute name="postalCode" use="required" type="string"/>
+		</complexType>
+	</element>
+	<element name="POBillTo">
+		<complexType content="empty">
+			<any namespace="##other"/>
+			<attribute name="city" use="required" type="string"/>
+			<attribute name="attn" use="required" type="string"/>
+			<attribute name="country" use="required" type="string"/>
+			<attribute name="stateProvince" use="required" type="string"/>
+			<attribute name="street4" use="required" type="string"/>
+			<attribute name="street3" use="required" type="string"/>
+			<attribute name="street2" use="required" type="string"/>
+			<attribute name="street1" use="required" type="string"/>
+			<attribute name="postalCode" use="required" type="string"/>
+		</complexType>
+	</element>
+	<element name="POLines">
+		<complexType content="elementOnly">
+			<sequence>
+				<element ref="Item" minOccurs="1" maxOccurs="*"/>
+			</sequence>
+			<any namespace="##other"/>
+			<attribute name="startAt" use="required" type="integer"/>
+			<attribute name="count" use="required" type="integer"/>
+		</complexType>
+	</element>
+	<element name="Item">
+		<complexType content="empty">
+			<any namespace="##other"/>
+			<attribute name="uom" use="required">
+				<simpleType base="NMTOKEN"><enumeration value="PC"/>
+					<enumeration value="UNIT"/>
+				</simpleType>
+			</attribute>
+			<attribute name="unitPrice" use="required" type="float"/>
+			<attribute name="qty" use="required" type="integer"/>
+			<attribute name="partno" use="required" type="string"/>
+			<attribute name="needAfter" use="required" type="date"/>
+			<attribute name="discount" use="required" type="float"/>
+			<attribute name="line" use="required" type="integer"/>
+			<attribute name="needBefore" use="required" type="date"/>
+		</complexType>
+	</element>
+	<!-- XDR datatype derivations -->
+	<simpleType name="date" base="timeInstant">
+		<pattern value="\d*-\d\d-\d\d"/>
+	</simpleType>
+</schema>

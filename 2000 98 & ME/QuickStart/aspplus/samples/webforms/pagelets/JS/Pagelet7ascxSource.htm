@@ -1,0 +1,83 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/pagelets/pagelet7.src&file=JS/Pagelet7.ascx" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfSlMvUGFnZWxldDcuYXNjXHh4X194eF94eF94X194b72749fe" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">JS/Pagelet7.ascx</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/pagelets/pagelet7aspxsource.htm'>Pagelet7.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/pagelets/pagelet7ascxsource.htm'>Pagelet7.ascx</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/pagelets/vb/pagelet7aspxsource.htm'>VB/Pagelet7.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/pagelets/vb/pagelet7ascxsource.htm'>VB/Pagelet7.ascx</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/pagelets/js/pagelet7aspxsource.htm'>JS/Pagelet7.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/pagelets/js/pagelet7ascxsource.htm'>JS/Pagelet7.ascx</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="System.Data.SQL" %>
+
+<script language="JScript" runat="server">
+
+    private var _category : String = "";
+
+    public function get Category() : String  {
+        return _category;
+    }
+
+    public function set Category(value : String) {
+          _category = value;
+          var myConnection : SQLConnection = new SQLConnection("server=localhost;uid=sa;pwd=;database=pubs");
+          var myCommand : SQLDataSetCommand = new SQLDataSetCommand("select * from Titles where type='" + _category + "'", myConnection);
+
+          var ds : DataSet = new DataSet();
+          myCommand.FillDataSet(ds, "Titles");
+
+          MyDataList.DataSource = ds.Tables.Item("Titles").DefaultView;
+          MyDataList.DataBind();        
+    }
+
+</script>
+
+<span style="font: 12pt verdana">Category: <%=Category%></span>
+
+<ASP:DataList id="MyDataList" BorderWidth="0" RepeatColumns="2" runat="server">
+
+    <template name="itemtemplate">
+
+      <table cellpadding=10 style="font: 10pt verdana">
+        <tr>
+          <td valign="top">
+            <img align="top" src='<%# DataBinder.Eval(Container.DataItem, "title_id", "/quickstart/aspplus/images/title-{0}.gif") %>' >
+          </td>
+          <td valign="top">
+            <b>Title: </b><%# DataBinder.Eval(Container.DataItem, "title") %><br>
+            <b>Category: </b><%# DataBinder.Eval(Container.DataItem, "type") %><br>
+            <b>Publisher ID: </b><%# DataBinder.Eval(Container.DataItem, "pub_id") %><br>
+            <b>Price: </b><%# DataBinder.Eval(Container.DataItem, "price", "$ {0}") %>
+          </td>
+        </tr>
+      </table>
+
+    </template>
+
+</ASP:DataList>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

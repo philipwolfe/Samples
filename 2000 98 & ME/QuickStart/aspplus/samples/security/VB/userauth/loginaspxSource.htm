@@ -1,0 +1,81 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/security/userauth.src&file=VB%5CUserAuth%5Clogin.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkJcXFVzZXJBdXRoXFxsb2dpbi5hc3BceHhfX3h4X3h4X3hfX3g=ed5caf4a" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB\UserAuth\login.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/security/userauth/defaultaspxsource.htm'>UserAuth\default.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/security/userauth/loginaspxsource.htm'>UserAuth\login.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/security/userauth/configwebsource.htm'>UserAuth\config.web</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/security/vb/userauth/defaultaspxsource.htm'>VB\UserAuth\default.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/security/vb/userauth/loginaspxsource.htm'>VB\UserAuth\login.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/security/vb/userauth/configwebsource.htm'>VB\UserAuth\config.web</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Import Namespace="System.Web.Security " %>
+
+<html>
+
+  <script language="VB" runat=server>
+
+    Sub Login_Click(Src As Object, E As EventArgs)
+        If (UserEmail.Value = "jdoe@somewhere.com" Or UserEmail.Value = "mary@somewhere.com") And UserPass.Value = "password"
+            CookieAuthentication.RedirectFromLoginPage(UserEmail.Value, PersistCookie.Checked)
+        Else
+            Msg.Text = "Invalid Credentials: Please try again"
+        End If
+    End Sub
+
+  </script>
+
+  <body>
+    
+    <form runat=server>
+    
+      <h3><font face="Verdana">Login Page</font></h3>
+
+      <table>
+        <tr>
+          <td>Email:</td>
+          <td><input id="UserEmail" type="text" runat=server/></td>
+          <td><ASP:RequiredFieldValidator ControlToValidate="UserEmail" Display="Static" ErrorMessage="*" runat=server/></td>
+        </tr>
+        <tr>	
+          <td>Password:</td>
+          <td><input id="UserPass" type=password runat=server/></td>
+          <td><ASP:RequiredFieldValidator ControlToValidate="UserPass" Display="Static" ErrorMessage="*" runat=server/></td>
+        </tr>
+        <tr>
+          <td>Persistent Cookie:</td>
+          <td><ASP:CheckBox id=PersistCookie runat="server" /> </td>
+          <td></td>
+        </tr>
+      </table>
+      
+      <asp:button text="Login" OnClick="Login_Click" runat=server/>
+      
+      <p>
+      
+      <asp:Label id="Msg" ForeColor="red" Font-Name="Verdana" Font-Size="10" runat=server />
+
+    </form>
+  </body>
+
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

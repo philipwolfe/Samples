@@ -1,0 +1,56 @@
+<HTML>
+<HEAD>
+<!--<LINK REL="Configuration" HREF="http://localhost/karimira/rothira.cfg" /> -->
+<META NAME="GENERATOR" Content="Microsoft Visual Studio 6.0">
+<TITLE></TITLE>
+</HEAD>
+<BODY>
+<SCRIPT LANGUAGE=javascript>
+<!--
+function btnNext_Click()
+{
+	var agi = txtAGI.value;
+	oAnalyzer.AGI = agi;
+	
+	var name = txtName.value;
+	oAnalyzer.Name = name;
+	
+	if (radio[0].checked)
+	{
+		oAnalyzer.FilingStatus = 0;
+	} 
+	else if (radio[1].checked)
+	{
+		oAnalyzer.FilingStatus = 1;
+	} 
+	else
+	{
+		oAnalyzer.FilingStatus = 2;
+	}
+
+	window.navigate("results.htm");
+	
+}
+//-->
+</SCRIPT>
+
+<OBJECT 
+classid=http:analyzer.dll#Samples.Assemblies.Download.Analyzer.CRothAnalyzer 
+id=oAnalyzer></OBJECT>
+
+<P align=center><FONT color=darkblue size=6>Roth IRA 
+Eligibility Calculator</FONT></P>
+<P>This site helps you determine whether you are eligible to contribute to a 
+Roth IRA or convert a traditional IRA to a Roth for the current tax year.</P>
+<P><STRONG>Name:&nbsp; </STRONG><INPUT id=txtName name=txtName></P>
+<P><STRONG>Filing Status:</STRONG>
+<INPUT type=radio name="radio" CHECKED>Married Filing Jointly
+<INPUT type=radio name="radio">Married Filing Separately
+<INPUT type=radio name="radio">Single</P>
+<P><STRONG>Adjusted Gross Income:&nbsp; </STRONG><INPUT id=txtAGI name=txtAGI></P>
+<P><INPUT id=btnNext name=btnNext type=button value="Next >>" onclick=btnNext_Click()></P>
+<P>         
+  &nbsp;</P>
+
+</BODY>
+</HTML>

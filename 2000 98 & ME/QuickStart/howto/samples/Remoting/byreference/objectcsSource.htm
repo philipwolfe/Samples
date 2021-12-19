@@ -1,0 +1,58 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Remoting/byreference/server.src&file=object.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfb2JqZWN0LmNzeF9feHhfeHhfeF9feA==06f2214f" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">object.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../howto/samples/remoting/byreference/objectcssource.htm'>object.cs</a> &nbsp;&nbsp<a href='../../../../howto/samples/remoting/byreference/servercssource.htm'>server.cs</a> &nbsp;&nbsp<a href='../../../../howto/samples/remoting/byreference/sharecssource.htm'>share.cs</a> &nbsp;&nbsp<a href='../../../../howto/samples/remoting/byreference/clientcssource.htm'>client.cs</a> &nbsp;&nbsp<a href='../../../../howto/samples/remoting/byreference/makefilesource.htm'>makefile</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../howto/samples/remoting/byreference/vb/servervbsource.htm'>VB/server.vb</a> &nbsp;&nbsp<a href='../../../../howto/samples/remoting/byreference/vb/objectvbsource.htm'>VB/object.vb</a> &nbsp;&nbsp<a href='../../../../howto/samples/remoting/byreference/vb/sharevbsource.htm'>VB/share.vb</a> &nbsp;&nbsp<a href='../../../../howto/samples/remoting/byreference/vb/clientvbsource.htm'>VB/client.vb</a> &nbsp;&nbsp<a href='../../../../howto/samples/remoting/byreference/vb/makefilesource.htm'>VB/makefile</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>using System;
+using System.Runtime.Remoting;
+using System.Runtime.Remoting.Channels.TCP;
+
+namespace RemotingSamples {
+  public class HelloServer : MarshalByRefObject {
+
+    public HelloServer()
+    {
+      Console.WriteLine("HelloServer activated");
+    }
+
+
+    ~HelloServer()
+    {
+      Console.WriteLine("Object Destroyed");
+    }
+
+
+    public String HelloMethod(String name,ForwardMe obj)
+    {
+      obj.CallMe("Regards from the server");
+      Console.WriteLine("Hello.HelloMethod : {0}", name);
+      return "Hi there " + name;
+    }
+  }
+}
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

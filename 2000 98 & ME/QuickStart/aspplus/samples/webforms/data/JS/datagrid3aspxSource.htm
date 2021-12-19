@@ -1,0 +1,108 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/data/datagrid3.src&file=JS/datagrid3.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfSlMvZGF0YWdyaWQzLmFzcFx4eF9feHhfeHhfeF9feA==3a1e6417" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">JS/datagrid3.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/data/datagrid3aspxsource.htm'>datagrid3.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/data/vb/datagrid3aspxsource.htm'>VB/datagrid3.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/data/js/datagrid3aspxsource.htm'>JS/datagrid3.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>
+<%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="System.Data.SQL" %>
+
+<html>
+<script language="JScript" runat="server">
+
+    var myConnection : SQLConnection;
+
+    protected function Page_Load(Src : Object, E : EventArgs) : void 
+    {
+        myConnection = new SQLConnection("server=localhost;uid=sa;pwd=;database=pubs");
+        
+        if (!IsPostBack) 
+        {
+            var myCommand : SQLDataSetCommand = new SQLDataSetCommand("select distinct State from Authors", myConnection);
+
+            var ds : DataSet = new DataSet();
+            myCommand.FillDataSet(ds, "States");
+
+            MySelect.DataSource= ds.Tables("States").DefaultView;
+            MySelect.DataBind();
+        }
+    }
+
+    public function GetAuthors_Click(sender : Object, E : EventArgs) : void 
+    {
+        var selectCmd : String = "select * from Authors where state = @State";
+
+        var myConnection : SQLConnection = new SQLConnection("server=localhost;uid=sa;pwd=;database=pubs");
+        var myCommand : SQLDataSetCommand = new SQLDataSetCommand(selectCmd, myConnection);
+
+        myCommand.SelectCommand.Parameters.Add(new SQLParameter("@State", SQLDataType.VarChar, 2));
+        myCommand.SelectCommand.Parameters("@State").Value = MySelect.Value;
+
+        var ds : DataSet = new DataSet();
+        myCommand.FillDataSet(ds, "Authors");
+
+        MyDataGrid.DataSource= ds.Tables("Authors").DefaultView;
+        MyDataGrid.DataBind();
+    }
+
+</script>
+
+<body style="font: 10pt verdana">
+
+  <form runat="server">
+
+    <h3><font face="Verdana">Dynamic Parameterized Select to a DataGrid Control</font></h3>
+
+    Select a State: 
+
+    <select id="MySelect" DataTextField="State" runat="server"/>
+
+    <input type="submit" OnServerClick="GetAuthors_Click" Value="Get Authors" runat="server"/><p>
+
+    <ASP:DataGrid id="MyDataGrid" runat="server"
+      Width="700"
+      BackColor="#ccccff" 
+      BorderColor="black"
+      ShowFooter="false" 
+      CellPadding=3 
+      CellSpacing="0"
+      Font-Name="Verdana"
+      Font-Size="8pt"
+      HeaderStyle-BackColor="#aaaadd"
+      MaintainState="false"
+    />
+
+  </form>
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

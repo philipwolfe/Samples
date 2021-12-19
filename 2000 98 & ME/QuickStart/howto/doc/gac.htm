@@ -1,0 +1,140 @@
+
+
+<!--BEGIN HEADER-->
+<html>
+<head>
+<link rel="stylesheet" href="../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+
+
+
+
+
+
+<table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+
+		<div style="padding:0,0,4,0"><b>Assemblies</b><br></div>
+		&nbsp; <a class="outer" href="../../howto/doc/sharedname.htm">Use shared names</a><br>
+		&nbsp; <a class="outer" href="../../howto/doc/gac.htm">Install to the global cache</a><br>
+		&nbsp; <a class="outer" href="../../howto/doc/searchpath.htm">Change the search path</a><br>
+		&nbsp; <a class="outer" href="../../howto/doc/version.htm">Use version policy</a><p>
+
+		<div style="padding:0,0,4,0"><a target="_top" style="color:darkred" href="../../howto"><b>Back to Index</b></a><br></div>
+
+</div>
+
+</td>
+</tr>
+</table>
+
+
+
+
+
+
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<style>
+.mydd {  font: smaller verdana; }
+.code1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:blue;
+	}
+.codecomment1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:green;
+	}
+.issue {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background-color:RED;
+	color:WHITE;
+	font-weight:bold;
+	}
+
+
+body { font: smaller verdana }        
+
+</style>
+
+
+
+
+
+<h4>How Do I...install an assembly into the global assembly cache?</h4>
+
+  The global assembly cache is a machine wide store used to 
+hold assemblies that are meant to be shared by several applications on 
+the machine.&nbsp; When the Common Language Runtime releases its final version, assemblies will be installed in the cache using 
+a new version of the Windows Installer.&nbsp; For this pre-release, a utility included with this SDK named SN can be used for this purpose.&nbsp; 
+There is also a 
+Windows shell extension that allows you to look at the contents of the 
+assembly cache.&nbsp; To&nbsp;see what's in your cache, just navigate to &lt;%windir%&gt;\assembly.&nbsp;&nbsp;</P>
+<P>All assemblies in the cache must have a shared name.&nbsp; The makefile 
+included with this sample builds an assembly with a shared 
+name and installs it into the assembly cache.</P>
+
+<h4>Example</h4>
+
+<span>
+  
+
+        
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../howto/samples/assemblies/gac">
+	<img style="border-color:black" border=1 src="../../images/console.gif"><br>
+	</a>
+	<div class="caption">Install gac.dll</div><br>
+	
+	
+		[<a target="_blank" href="../../howto/samples/assemblies/gac">Run Sample</a>] | 
+		[<a target="_blank" href="../../howto/samples/assemblies/gac/gaccssource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<!--END FOOTER-->
+<p>
+<hr>
+<p>
+</div>
+</td>
+</tr>
+</table>
+</BODY>
+</html>
+<!--END FOOTER-->

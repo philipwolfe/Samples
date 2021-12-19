@@ -1,0 +1,543 @@
+
+
+<!--BEGIN HEADER-->
+<html>
+<head>
+<link rel="stylesheet" href="../../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+  <table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+<!--
+		<div style="padding:0,0,4,0"><a class="outer" style="color:darkred" href="../../../howto/doc/xml/overviewofxml.htm"><b>Introduction</a></b></a><br></div>
+         <p>
+		<div style="padding:0,0,4,0"><b>XML Readers and Writers</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/readxmlfile.htm">Read XML from a file</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/readxmlstream.htm">Read XML from a stream</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/writexmlfile.htm">Write XML to a file</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/validationreadingxml.htm">Apply validation when reading XML</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML Document Object Model (DOM)</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/dominterfacexmldocument.htm">Load and use the XmlDocument (W3C DOM)</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savexmldocument.htm">Save XML with the XmlDocument (W3C DOM)</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>Using the XmlDataDocument</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/loadxmldocument.htm">Load and use the XmlDataDocument</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/streamanxmldocument.htm">Read XML from an XmlDataDocument</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML Navigation and Editing</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/navigatexmldocument.htm">Navigate XML with the XmlNavigator</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/editingxmldocument.htm">Edit XML with the XmlNavigator</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XPath and XSL Transformations</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/queryxmldocumentxpath.htm">Query XML with an XPath expression</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/transformxml.htm">Apply an XSL transformation to XML</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML and Relational Data</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/xmldataset.htm">Use XML and the DataSet class</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/datasetmapxsdschema.htm">Create DataSet mappings from an XSD schema</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/loaddatasetxmldata.htm">Load a DataSet with XML</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/datasetmapxmldata.htm">Infer DataSet mappings from XML</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savedatasetmapxsdschema.htm">Save DataSet mappings to an XSD schema file</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savedatasetxml.htm">Save a DataSet as XML</a><br>
+-->
+
+		<div style="padding:0,0,4,0"><b>XML Data</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/overviewofxml.htm">Overview of XML</a><p>
+
+		<div style="padding:0,0,4,0"><b>XML Readers and Writers</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/readxmlfile.htm">Read XML from a file</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/readxmlstream.htm">Read XML from a stream</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/writexmlfile.htm">Write XML to a file</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/validationreadingxml.htm">Apply validation to XML</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML Document Object Model</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/dominterfacexmldocument.htm">Load XML with XmlDocument</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savexmldocument.htm">Save XML with XmlDocument</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>Using the XmlDataDocument</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/loadxmldocument.htm">Load the XmlDataDocument</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/streamanxmldocument.htm">Read from XmlDataDocument</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML Navigation and Editing</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/navigatexmldocument.htm">Navigate with XmlNavigator</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/editingxmldocument.htm">Edit with XmlNavigator</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XPath and XSL Transformations</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/queryxmldocumentxpath.htm">Query XML with an XPath</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/transformxml.htm">Apply XSL transformations</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML and Relational Data</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/xmldataset.htm">Use XML and the DataSet</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/datasetmapxsdschema.htm">Create DataSet mappings</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/loaddatasetxmldata.htm">Load a DataSet with XML</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/datasetmapxmldata.htm">Infer DataSet mappings</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savedatasetmapxsdschema.htm">Save DataSet mappings</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savedatasetxml.htm">Save a DataSet as XML</a><p>
+
+    <div style="padding:0,0,4,0"><a target="_top" style="color:darkred" href="../../../howto"><b>Back to Index</b></a><br></div>
+
+
+</div>
+
+</td>
+</tr>
+</table>
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<style>
+.mydd {  font: smaller verdana; }
+.code1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:blue;
+	}
+.codecomment1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:green;
+	}
+.issue {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background-color:RED;
+	color:WHITE;
+	font-weight:bold;
+	}
+
+
+body { font: smaller verdana }        
+
+</style>
+
+
+
+
+
+<h4>How Do I...Apply an XSL Transformation to XML?</h4>
+
+This sample illustrates how to apply an XSL transformation to an XML document using the XslTransform class.
+The eXtensible Stylesheet Language is an XML based language designed to transform one XML document into another XML document or an XML document into any other
+structured document. This class implements the <A><A href="http://www.w3.org/TR/xslt">W3C XSL 
+Transformations (XSLT) </A></A>specification. Also see the <A href="http://www.w3.org/TR/xsl/">W3C Extensible Stylesheet Language (XSL)</A></A>
+<p>
+
+<span>
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../../images/genicon.gif"><br>
+	</a>
+	<div class="caption">TransformXML.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../../howto/samples/xml/transformxml/transformxmlcssource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<p>
+XSL is a transformation language based upon XPath
+(see <a href="../../../howto/doc/xml/queryxmldocumentxpath.htm">How Do I...Query XML with an XPath expression?</a>) to perform queries
+on an XML document in order to specify a particular part of the document. XSL is required as, although XML documents are structured, there are many times when people
+require that structure to be in a different format. To do this we use an XSLT processor and an XSL style sheet that tells us how to do the transformation. The style sheet
+is made up of templates that specify how each node of the source XML document should appear in the destination XML document. Thus the XSLT processor holds three trees,
+one for the source XML, one for the destination structure and a third for the style sheet. Two common applications of XSL are transforming one XML document into 
+another XML document or the transformation of XML in HTML for display purposes.
+
+<p>
+The diagram below illustrates the transformation process, taking in an XML document, applying the stylesheets on the XML nodes and generating another 
+document of the desired format.
+
+<p>
+<img border="0" class="indent" src="XSL.gif" width="569" height="359">
+<p>
+
+In this sample we are going to transform one XML document into another XML document. First we load the XML document we are going to perform the transform on
+into an XmlDocument. Then we create a DocumentNavigator to get an XmlNavigator that is capable of navigating the XML document.
+The XslTransform object is then loaded with the style sheet using the <b>Load</b> method. The transformation is initiated by calling the <b>Transform</b>
+method passing in the XmlNavigator and returning an XmlReader, that is the result of the transformation. This is shown in the code below.
+<p>
+
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl8" style="display:none">
+
+public void ReadTransform() {
+
+    try {
+        XmlDocument xmldocument = new XmlDocument();
+        xmldocument.Load (m_Document);
+        DocumentNavigator navigator = new DocumentNavigator(xmldocument);
+
+        XslTransform   xsltransform = new XslTransform();
+        xsltransform.Load(m_Stylesheet);
+        XmlReader reader = xsltransform.Transform(navigator, null);
+
+        FormatXml(reader);
+    }
+    catch (Exception e) {
+        Console.WriteLine ("Exception: {0}", e.ToString());
+    }
+
+}
+</pre>
+<pre id="codectrl8" style="display:">
+
+Public Sub ReadTransform()
+    
+    Try        
+        Dim xmldocument as XmlDocument = new XmlDocument()
+        xmldocument.Load (m_Document)
+        Dim navigator as DocumentNavigator = new DocumentNavigator(xmldocument)
+
+        Dim xsltransform as XslTransform = new XslTransform()
+        xsltransform.Load(m_Stylesheet)
+        Dim reader as XmlReader = xsltransform.Transform(navigator, nothing)
+
+        FormatXml(reader)
+        
+     Catch e As Exception        
+        Console.WriteLine ("Exception: {0}", e.ToString())
+     End Try
+
+End Sub
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl8" onclick="doClick(0, 'ctrl8')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl8" onclick="doClick(1, 'ctrl8')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+
+<p>
+The XslTransform loads the XSLT stylesheet using an XmlReader and transforms the input data using an XmlNavigator.
+<p>
+
+
+In this sample the style sheet 
+<a target="_blank" href="../../../util/srcctrlwin.htm?path=howto/samples/xml/transformxml/&file=books.xsl">books.xsl</a>
+consists of templates that get all the books in the bookstore element and then for each book element get the values for the ISBN attribute and the price element.
+There is also a template that tells the XSL processor to start processing from the root ("/") node. The output from applying this style sheet is shown.
+
+
+<div class="code"><pre>
+Read XML data file, transform and format display ...
+
+ProcessingInstruction&lt;xml&gt;version="1.0" encoding="UTF-8"
+Element&lt;root&gt;
+        Element&lt;bookstore&gt;
+                Element&lt;book&gt;
+                        Attribute&lt;ISBN&gt;1-861003-11-0
+                        Element&lt;price&gt;
+                                Text&lt;&gt;8.99
+                Element&lt;book&gt;
+                        Attribute&lt;ISBN&gt;0-201-63361-2
+                        Element&lt;price&gt;
+                                Text&lt;&gt;11.99
+                Element&lt;book&gt;
+                        Attribute&lt;ISBN&gt;1-861001-57-6
+                        Element&lt;price&gt;
+                                Text&lt;&gt;9.99                                                             
+</pre></div>
+
+<p>
+As well as returning an XmlReader from the transformation, an XmlWriter can be supplied to the <b>Transform</b> method that enables the XML to be written to
+a file or stream. The code sample below illustrates this, writing to a file called transform.xml, and then reading this to the console.
+<p>
+
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl10" style="display:none">
+
+public void ReadTransformWrite() {
+
+    StreamReader stream = null;
+
+    try {
+        XmlDocument xmldocument = new XmlDocument();
+        xmldocument.Load (m_Document);
+        DocumentNavigator navigator = new DocumentNavigator(xmldocument);
+
+        XslTransform xsltransform = new XslTransform();
+        XmlTextWriter writer = new XmlTextWriter("transform.xml", null);
+
+        xsltransform.Load(m_Stylesheet);
+        xsltransform.Transform(navigator, null, writer);
+
+        stream = new StreamReader ("transform.xml");
+        Console.Write(stream.ReadToEnd());
+    }
+    catch (Exception e) {
+        Console.WriteLine ("Exception: {0}", e.ToString());
+    }
+    finally {
+        if (stream != null)
+            stream.Close();
+
+    }
+}
+</pre>
+<pre id="codectrl10" style="display:">
+
+Public Sub ReadTransformWrite()
+    
+    Dim stream as StreamReader = nothing
+
+    Try        
+        Dim xmldocument as XmlDocument = new XmlDocument()
+        xmldocument.Load (m_Document)
+        Dim navigator as DocumentNavigator = new DocumentNavigator(xmldocument)
+
+        Dim xsltransform as XslTransform = new XslTransform()
+        Dim writer as XmlTextWriter = new XmlTextWriter("transform.xml", nothing)
+
+        xsltransform.Load(m_Stylesheet)
+        xsltransform.Transform(navigator, nothing, writer)
+
+        stream = new StreamReader ("transform.xml")
+        Console.Write(stream.ReadToend())
+
+    Catch e As Exception        
+        Console.WriteLine ("Exception: {0}", e.ToString())
+
+    Finally
+        If Not (stream = Nothing)
+            stream.Close()        
+        End If
+    End Try
+End Sub
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl10" onclick="doClick(0, 'ctrl10')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl10" onclick="doClick(1, 'ctrl10')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+
+<p>
+
+The output from applying the same style sheet 
+<a target="_blank" href="../../../util/srcctrlwin.htm?path=howto/samples/xml/transformxml/&file=books.xsl">books.xsl</a> is shown below.
+<p>
+
+<div class="code"><pre>
+Read XML data file, transform and write ...
+
+&lt;?xml version="1.0"?&gt;&lt;root&gt;&lt;bookstore&gt;&lt;book ISBN="1-861003-11-0"&gt;&lt;price&gt;8.99&lt;/price&gt;
+                        &lt;/book&gt;&lt;book ISBN="0-201-63361-2"&gt;&lt;price&gt;11.99&lt;/price&gt;
+                        &lt;/book&gt;&lt;book ISBN="1-861001-57-6"&gt;&lt;price&gt;9.99&lt;/price&gt;
+                        &lt;/book&gt;&lt;/bookstore&gt;&lt;/root&gt;
+</pre></div>
+
+<H4>Summary</H4>
+<OL>
+<LI>XSLT is a language for transforming XML documents into other XML documents using XPath as the query language.
+<LI>The XslTransform class Load method is used to load a stylesheet.	
+<LI>The XslTransform class Transform method uses an XmlNavigator and either returns an XmlReader or writes the transformation into a supplied XmlWriter or stream.
+<LI>XSL style sheets are combined to produce the required structure output format (e.g. XML or HTML).
+<LI>XSLT engines do not manipulate documents, they manipulate structure.
+</LI></OL>
+
+<!--END FOOTER-->
+<p>
+<hr>
+<p>
+</div>
+</td>
+</tr>
+</table>
+</BODY>
+</html>
+<!--END FOOTER-->
+
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

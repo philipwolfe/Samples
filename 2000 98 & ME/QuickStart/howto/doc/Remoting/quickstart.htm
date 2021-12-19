@@ -1,0 +1,346 @@
+
+<!--BEGIN HEADER-->
+<html>
+<head>
+<link rel="stylesheet" href="../../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+
+<table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+
+    <div style="padding:0,0,4,0"><b>Remoting</b><br></div>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/mainfeatures.htm">Remoting Overview</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/nutshell.htm">How Remoting Works</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/quickstart.htm">Remoting Samples</a><p>
+    <div style="padding:0,0,4,0"><b>The Basics</b><br></div>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/firstserver.htm">Create a Remote Server</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/firstclient.htm">Create a Client of the Server</a><p>
+    <div style="padding:0,0,4,0"><b>Samples</b><br></div>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/singleton.htm">Create a Singleton Object</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/byreference.htm">Pass Objects By Reference</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/byvalue.htm">Pass Objects By Value</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/interface.htm">Compile Against an Interface</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/async.htm">Make an Asynchronous Call</a><p>
+    <div style="padding:0,0,4,0"><a target="_top" style="color:darkred" href="../../../howto"><b>Back to Index</b></a><br></div>
+
+</div>
+
+</td>
+</tr>
+</table>
+
+
+
+
+
+
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<style>
+.mydd {  font: smaller verdana; }
+.code1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:blue;
+	}
+.codecomment1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:green;
+	}
+.issue {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background-color:RED;
+	color:WHITE;
+	font-weight:bold;
+	}
+
+
+body { font: smaller verdana }        
+
+</style>
+
+
+
+
+
+<h4>How to Use the Remoting Samples</h4>
+
+The next few sections contain a number of sample programs that demonstrate
+the most important features of the .NET remoting framework.  We kept the
+examples as concise as possible and in many cases omitted error handling
+and user interfaces in favor of simplicity.  The examples are presented in
+a specific sequence, each one building on the concepts illustrated in the
+previous one (where applicable).  Each example consists of at least two
+executables called <b>server.exe</b> and <b>client.exe</b>.  Some examples
+contain more than one client that works with the same server. <br><br>
+
+One of the key differences between this and other remoting frameworks are
+the way in which client references to remote objects are resolved at
+compile time.  The 3 different ways of doing this are:<p>
+
+<ul>
+
+<li>Compile the server object and specify the EXE or DLL as a reference to
+the compiler when compiling the client.  This is useful when both the
+client and server components are developed at the same site.<p>
+
+
+<li>Derive the server object from an interface class and compile the client
+with the interface.  Useful when the client and server components are not
+developed at the same site.  The interface(s) can be compiled to a DLL and
+shipped to the client sites as and when necessary.  Changes to published
+interface should be avoided as far as possible.  Refer to the COM
+guidelines in this regard.<p>
+
+
+<li>Use the SUDS tool to extract the required metadata from a running
+server object.  Useful when client and server components are developed at
+different sites and no interface classes are available.  Simply point the
+SUDS tool at a remote URI and generate the required metadata as source or
+a DLL.  It is important to note that the SUDS tool only extracts metadata,
+it will not generate the source for the remote object.<p>
+
+</ul>
+
+The majority of the samples presented in this Quickstart compile the
+server to an executable and specifies this as a reference when compiling
+the client.  In cases where a common class is referenced by both the client
+and the server, we added the common class to a DLL.  The sample installation
+program will automatically build all the samples on the CD using the MAKEFILES
+provided.  Building these samples without MAKEFILES are really easy, the server is
+compiled as follows to produce the file <b>server.exe</b>.
+
+<p>
+
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl4" style="display:none">
+
+csc /debug /t:library /r:System.Runtime.Remoting.dll object.cs
+csc /debug /r:Object.dll /r:System.Runtime.Remoting.dll server.cs
+</pre>
+<pre id="codectrl4" style="display:">
+
+vbc /debug /t:library /r:System.Runtime.Remoting.dll object.vb
+vbc /debug /r:Object.dll /r:System.Runtime.Remoting.dll server.vb
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl4" onclick="doClick(0, 'ctrl4')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl4" onclick="doClick(1, 'ctrl4')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+
+<p>
+The client should be compiled after the
+server since it references the server executable.  This is done as follows 
+to produce the file <b>client.exe</b><p>
+<p>
+
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl6" style="display:none">
+
+csc /debug /t:library /r:System.Runtime.Remoting.dll object.cs
+csc /debug /r:System.Runtime.Remoting.dll /r:object.dll client.cs
+</pre>
+<pre id="codectrl6" style="display:">
+
+vbc /debug /t:library /r:System.Runtime.Remoting.dll object.vb
+vbc /debug /r:Object.dll /r:System.Runtime.Remoting.dll client.vb
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl6" onclick="doClick(0, 'ctrl6')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl6" onclick="doClick(1, 'ctrl6')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+<p>
+
+<span class="subhead">How to run the samples</span><p>
+
+Open two command windows and find the Samples\Quickstart\Remoting
+directory.  Each sample has its own directory.  Start the server
+in one command window and run the client in the other.  Please ensure
+that the server app is closed down before moving on to the next sample.
+This step is important since most of the servers use TCP port 8085
+and any attempt to run more than one server at a time will generate
+an error.<p>
+
+<span class="subhead">Getting more information</span><p>
+The samples that ship with the .NET SDK contain more remoting examples 
+that demonstrate additional features not covered in this Quickstart.
+
+<!--END FOOTER-->
+<p>
+<hr>
+<p>
+</div>
+</td>
+</tr>
+</table>
+</BODY>
+</html>
+<!--END FOOTER-->

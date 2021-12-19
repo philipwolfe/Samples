@@ -1,0 +1,201 @@
+
+
+<html>
+
+
+<body>
+
+    <h3><font face="Verdana">Using a Template Column in DataGrid</font></h3>
+
+    <form name="ctrl2" method="post" action="datagrid5.htm" id="ctrl2">
+<input type="hidden" name="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTk2MzI5MzIwN19hMHpfaHo1ejJ4X2Ewel9oejV6M3hfYTB6YTB6YTB6aHo0X2x6eF81XzV6MHhfNl81ejB4eF9feF9fX19fX19fX2EwemEwemh6MF9JdGVtXzFfSXRlbV8yX0l0ZW1fM181MHpGYWxzZXh4X19fX3hfYTB6aHowX1ByaWNlXzFfUHJpY2VfMl9QcmljZV8zXzUwekZhbHNleHhfX19feF94X3hfX3hfNXoxeF9hMHphMHphMHpoejRfbHp4XzVfNXo5eF82XzV6OXh4X194X19fX19fX19fX3hfaHo1ejB4X2Ewel9oejV6OXhfYTB6X2h6NXozeF9hMHpfaHo1ejF4X2EwemEwemh6OF81MHpGYWxzZXh4X194X194eF94XzV6MnhfYTB6YTB6aHo3XyQxMS4wN3hfX3hfX3hfNXoxeF9hMHphMHpoejdfSXRlbSA4eF9feF9feHhfeF81ejh4X2Ewel9oejV6M3hfYTB6X2h6NXoxeF9hMHphMHpoejhfNTB6VHJ1ZXh4X194X194eF94XzV6MnhfYTB6YTB6aHo3XyQ5Ljg0eF9feF9feF81ejF4X2EwemEwemh6N19JdGVtIDd4X194X194eF94XzV6N3hfYTB6X2h6NXozeF9hMHpfaHo1ejF4X2EwemEwemh6OF81MHpGYWxzZXh4X194X194eF94XzV6MnhfYTB6YTB6aHo3XyQ4LjYxeF9feF9feF81ejF4X2EwemEwemh6N19JdGVtIDZ4X194X194eF94XzV6NnhfYTB6X2h6NXozeF9hMHpfaHo1ejF4X2EwemEwemh6OF81MHpUcnVleHhfX3hfX3h4X3hfNXoyeF9hMHphMHpoejdfJDcuMzh4X194X194XzV6MXhfYTB6YTB6aHo3X0l0ZW0gNXhfX3hfX3h4X3hfNXo1eF9hMHpfaHo1ejN4X2Ewel9oejV6MXhfYTB6YTB6aHo4XzUwekZhbHNleHhfX3hfX3h4X3hfNXoyeF9hMHphMHpoejdfJDYuMTV4X194X194XzV6MXhfYTB6YTB6aHo3X0l0ZW0gNHhfX3hfX3h4X3hfNXo0eF9hMHpfaHo1ejN4X2Ewel9oejV6MXhfYTB6YTB6aHo4XzUwelRydWV4eF9feF9feHhfeF81ejJ4X2EwemEwemh6N18kNC45MnhfX3hfX3hfNXoxeF9hMHphMHpoejdfSXRlbSAzeF9feF9feHhfeF81ejN4X2Ewel9oejV6M3hfYTB6X2h6NXoxeF9hMHphMHpoejhfNTB6RmFsc2V4eF9feF9feHhfeF81ejJ4X2EwemEwemh6N18kMy42OXhfX3hfX3hfNXoxeF9hMHphMHpoejdfSXRlbSAyeF9feF9feHhfeF81ejJ4X2Ewel9oejV6M3hfYTB6X2h6NXoxeF9hMHphMHpoejhfNTB6VHJ1ZXh4X194X194eF94XzV6MnhfYTB6YTB6aHo3XyQyLjQ2eF9feF9feF81ejF4X2EwemEwemh6N19JdGVtIDF4X194X194eF94XzV6MXhfYTB6X2h6NXozeF9hMHpfaHo1ejF4X2EwemEwemh6OF81MHpGYWxzZXh4X194X194eF94XzV6MnhfYTB6YTB6aHo3XyQxLjIzeF9feF9feF81ejF4X2EwemEwemh6N19JdGVtIDB4X194X194eF94eF94eF94eF94eF94X194XHQ1MF9TeXN0ZW0uQm9vbGVhblxuMF9IZWFkZXJUZVx4dF8xX1NvcnRGaWVsZF8yX0RhdGFGaWVsZF8zX1JlYWRPbmx5XzRfRGF0YUtleXNfNV9JdGVtQ291bnRfNl9EYXRhU291cmNlSXRlbUNvdW50XzdfVGVceHRfOF9DaGVja2Vk363f80a4" />
+
+<script language="javascript">
+<!--
+	function __doPostBack(eventTarget, eventArgument) {
+		var theform = document.ctrl2
+		theform.__EVENTTARGET.value = eventTarget
+		theform.__EVENTARGUMENT.value = eventArgument
+		theform.submit()
+	}
+// -->
+</script>
+
+
+    <table cellpadding="5">
+    <tr valign="top">
+    <td>
+
+    <b>Product List</b>
+    <table cellspacing="0" cellpadding="3" rules="all" bordercolor="Black" border="1">
+    <tr bgcolor="#AAAADD">
+        <td><font face="Verdana" size="1">
+            Add/Remove
+        </font></td><td><font face="Verdana" size="1">
+            Item
+        </font></td><td><font face="Verdana" size="1">
+            Price
+        </font></td><td><font face="Verdana" size="1">
+            Assembly required?
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            
+                    <a id="MyDataGrid_ctrl2_AddButton" href="javascript:__doPostBack('MyDataGrid:ctrl2:AddButton','')"><font color="Blue">Add</font></a>&nbsp;
+                    <a id="MyDataGrid_ctrl2_RemoveButton" href="javascript:__doPostBack('MyDataGrid:ctrl2:RemoveButton','')"><font color="Blue">Remove</font></a>
+                
+        </font></td><td><font face="Verdana" size="1">
+            Item 0
+        </font></td><td align="Right"><font face="Verdana" size="1">
+            $1.23
+        </font></td><td><font face="Verdana" size="1">
+            
+                    <input disabled="true" type="checkbox" id="MyDataGrid_ctrl2_Chk1" name="MyDataGrid:ctrl2:Chk1" />
+                
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            
+                    <a id="MyDataGrid_ctrl3_AddButton" href="javascript:__doPostBack('MyDataGrid:ctrl3:AddButton','')"><font color="Blue">Add</font></a>&nbsp;
+                    <a id="MyDataGrid_ctrl3_RemoveButton" href="javascript:__doPostBack('MyDataGrid:ctrl3:RemoveButton','')"><font color="Blue">Remove</font></a>
+                
+        </font></td><td><font face="Verdana" size="1">
+            Item 1
+        </font></td><td align="Right"><font face="Verdana" size="1">
+            $2.46
+        </font></td><td><font face="Verdana" size="1">
+            
+                    <input disabled="true" type="checkbox" id="MyDataGrid_ctrl3_Chk1" checked="true" name="MyDataGrid:ctrl3:Chk1" />
+                
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            
+                    <a id="MyDataGrid_ctrl4_AddButton" href="javascript:__doPostBack('MyDataGrid:ctrl4:AddButton','')"><font color="Blue">Add</font></a>&nbsp;
+                    <a id="MyDataGrid_ctrl4_RemoveButton" href="javascript:__doPostBack('MyDataGrid:ctrl4:RemoveButton','')"><font color="Blue">Remove</font></a>
+                
+        </font></td><td><font face="Verdana" size="1">
+            Item 2
+        </font></td><td align="Right"><font face="Verdana" size="1">
+            $3.69
+        </font></td><td><font face="Verdana" size="1">
+            
+                    <input disabled="true" type="checkbox" id="MyDataGrid_ctrl4_Chk1" name="MyDataGrid:ctrl4:Chk1" />
+                
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            
+                    <a id="MyDataGrid_ctrl5_AddButton" href="javascript:__doPostBack('MyDataGrid:ctrl5:AddButton','')"><font color="Blue">Add</font></a>&nbsp;
+                    <a id="MyDataGrid_ctrl5_RemoveButton" href="javascript:__doPostBack('MyDataGrid:ctrl5:RemoveButton','')"><font color="Blue">Remove</font></a>
+                
+        </font></td><td><font face="Verdana" size="1">
+            Item 3
+        </font></td><td align="Right"><font face="Verdana" size="1">
+            $4.92
+        </font></td><td><font face="Verdana" size="1">
+            
+                    <input disabled="true" type="checkbox" id="MyDataGrid_ctrl5_Chk1" checked="true" name="MyDataGrid:ctrl5:Chk1" />
+                
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            
+                    <a id="MyDataGrid_ctrl6_AddButton" href="javascript:__doPostBack('MyDataGrid:ctrl6:AddButton','')"><font color="Blue">Add</font></a>&nbsp;
+                    <a id="MyDataGrid_ctrl6_RemoveButton" href="javascript:__doPostBack('MyDataGrid:ctrl6:RemoveButton','')"><font color="Blue">Remove</font></a>
+                
+        </font></td><td><font face="Verdana" size="1">
+            Item 4
+        </font></td><td align="Right"><font face="Verdana" size="1">
+            $6.15
+        </font></td><td><font face="Verdana" size="1">
+            
+                    <input disabled="true" type="checkbox" id="MyDataGrid_ctrl6_Chk1" name="MyDataGrid:ctrl6:Chk1" />
+                
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            
+                    <a id="MyDataGrid_ctrl7_AddButton" href="javascript:__doPostBack('MyDataGrid:ctrl7:AddButton','')"><font color="Blue">Add</font></a>&nbsp;
+                    <a id="MyDataGrid_ctrl7_RemoveButton" href="javascript:__doPostBack('MyDataGrid:ctrl7:RemoveButton','')"><font color="Blue">Remove</font></a>
+                
+        </font></td><td><font face="Verdana" size="1">
+            Item 5
+        </font></td><td align="Right"><font face="Verdana" size="1">
+            $7.38
+        </font></td><td><font face="Verdana" size="1">
+            
+                    <input disabled="true" type="checkbox" id="MyDataGrid_ctrl7_Chk1" checked="true" name="MyDataGrid:ctrl7:Chk1" />
+                
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            
+                    <a id="MyDataGrid_ctrl8_AddButton" href="javascript:__doPostBack('MyDataGrid:ctrl8:AddButton','')"><font color="Blue">Add</font></a>&nbsp;
+                    <a id="MyDataGrid_ctrl8_RemoveButton" href="javascript:__doPostBack('MyDataGrid:ctrl8:RemoveButton','')"><font color="Blue">Remove</font></a>
+                
+        </font></td><td><font face="Verdana" size="1">
+            Item 6
+        </font></td><td align="Right"><font face="Verdana" size="1">
+            $8.61
+        </font></td><td><font face="Verdana" size="1">
+            
+                    <input disabled="true" type="checkbox" id="MyDataGrid_ctrl8_Chk1" name="MyDataGrid:ctrl8:Chk1" />
+                
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            
+                    <a id="MyDataGrid_ctrl9_AddButton" href="javascript:__doPostBack('MyDataGrid:ctrl9:AddButton','')"><font color="Blue">Add</font></a>&nbsp;
+                    <a id="MyDataGrid_ctrl9_RemoveButton" href="javascript:__doPostBack('MyDataGrid:ctrl9:RemoveButton','')"><font color="Blue">Remove</font></a>
+                
+        </font></td><td><font face="Verdana" size="1">
+            Item 7
+        </font></td><td align="Right"><font face="Verdana" size="1">
+            $9.84
+        </font></td><td><font face="Verdana" size="1">
+            
+                    <input disabled="true" type="checkbox" id="MyDataGrid_ctrl9_Chk1" checked="true" name="MyDataGrid:ctrl9:Chk1" />
+                
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            
+                    <a id="MyDataGrid_ctrl10_AddButton" href="javascript:__doPostBack('MyDataGrid:ctrl10:AddButton','')"><font color="Blue">Add</font></a>&nbsp;
+                    <a id="MyDataGrid_ctrl10_RemoveButton" href="javascript:__doPostBack('MyDataGrid:ctrl10:RemoveButton','')"><font color="Blue">Remove</font></a>
+                
+        </font></td><td><font face="Verdana" size="1">
+            Item 8
+        </font></td><td align="Right"><font face="Verdana" size="1">
+            $11.07
+        </font></td><td><font face="Verdana" size="1">
+            
+                    <input disabled="true" type="checkbox" id="MyDataGrid_ctrl10_Chk1" name="MyDataGrid:ctrl10:Chk1" />
+                
+        </font></td>
+    </tr>
+</table>
+
+    </td><td>
+
+    <b>Shopping Cart</b>
+    <table cellspacing="0" cellpadding="3" rules="all" bordercolor="Black" border="1">
+    <tr bgcolor="#AAAADD">
+        <td><font face="Verdana" size="1">
+            Item
+        </font></td><td><font face="Verdana" size="1">
+            Price
+        </font></td>
+    </tr>
+</table>
+
+    </td>
+    </tr>
+    </table>
+
+  </form>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Remoting/singleton/server.src&file=makefile" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfbWFrZWZpbGV4X194eF94eF94X194453369c7" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">makefile</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../howto/samples/remoting/singleton/objectcssource.htm'>object.cs</a> &nbsp;&nbsp<a href='../../../../howto/samples/remoting/singleton/servercssource.htm'>server.cs</a> &nbsp;&nbsp<a href='../../../../howto/samples/remoting/singleton/clientcssource.htm'>client.cs</a> &nbsp;&nbsp<a href='../../../../howto/samples/remoting/singleton/makefilesource.htm'>makefile</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../howto/samples/remoting/singleton/vb/objectvbsource.htm'>VB/object.vb</a> &nbsp;&nbsp<a href='../../../../howto/samples/remoting/singleton/vb/servervbsource.htm'>VB/server.vb</a> &nbsp;&nbsp<a href='../../../../howto/samples/remoting/singleton/vb/clientvbsource.htm'>VB/client.vb</a> &nbsp;&nbsp<a href='../../../../howto/samples/remoting/singleton/vb/makefilesource.htm'>VB/makefile</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>!include ..\..\..\..\master.mak
+
+all: object.dll server.exe client.exe
+
+object.dll: object.cs
+	$(_CS) $(_CS_DLL_FLAGS) /debug+ /r:System.Runtime.Remoting.dll object.cs
+
+server.exe: server.cs object.dll
+	$(_CS) /debug+ /r:object.dll /r:System.Runtime.Remoting.dll server.cs
+
+client.exe: client.cs object.dll
+	$(_CS) /debug+ /r:object.dll /r:System.Runtime.Remoting.dll client.cs
+
+
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

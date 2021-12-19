@@ -1,0 +1,61 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlauth/Composition/Composition1.src&file=Composition1.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfQ29tcG9zaXRpb24xLmNzeF9feHhfeHhfeF9feA==17e6adf9" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">Composition1.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/ctrlauth/composition/composition1aspxsource.htm'>Composition1.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/ctrlauth/composition/composition1cssource.htm'>Composition1.cs</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/ctrlauth/composition/makesamplebatsource.htm'>makesample.bat</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/ctrlauth/composition/vb/composition1aspxsource.htm'>VB/Composition1.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/ctrlauth/composition/vb/composition1vbsource.htm'>VB/Composition1.vb</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/ctrlauth/composition/vb/makesamplebatsource.htm'>VB/makesample.bat</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>using System;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace CompositionSampleControls {
+
+    public class Composition1 : Control, INamingContainer {
+
+        public int Value {
+           get {
+               return Int32.Parse(((TextBox)Controls[1]).Text);
+           }
+           set {
+               ((TextBox)Controls[1]).Text = value.ToString();
+           }
+        }
+
+        protected override void CreateChildControls() {
+
+            this.Controls.Add(new LiteralControl("<h3>Value: "));
+
+            TextBox box = new TextBox();
+            box.Text = "0";
+            this.Controls.Add(box);
+
+            this.Controls.Add(new LiteralControl("</h3>"));
+        }
+    }    
+}
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

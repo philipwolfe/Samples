@@ -1,0 +1,174 @@
+
+
+<html>
+
+
+<body>
+
+    <h3><font face="Verdana">Using a ButtonColumn in DataGrid</font></h3>
+
+    <form name="ctrl2" method="post" action="datagrid4.htm" id="ctrl2">
+<input type="hidden" name="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" value="YTB6Njg5OTQzOTM2X2Ewel9oejV6MnhfYTB6X2h6NXozeF9hMHphMHphMHpoejRfbHp4XzVfNXoweF82XzV6MHh4X194X19fX19fX19fYTB6YTB6aHowX0l0ZW1fMV9JdGVtXzJfSXRlbV8zXzUwekZhbHNleHhfX19feF9hMHpoejBfUHJpY2VfMV9QcmljZV8yX1ByaWNlXzNfNTB6RmFsc2V4eF9fX194X3hfeF9feF81ejF4X2EwemEwemEwemh6NF9senhfNV81ejl4XzZfNXo5eHhfX3hfX19fX19fX19feF9oejV6MHhfYTB6X2h6NXo5eF9hMHpfaHo1ejR4X2EwemEwemh6N19GYWxzZXhfX3hfX3hfNXozeF9hMHphMHpoejdfJDExLjA3eF9feF9feF81ejJ4X2EwemEwemh6N19JdGVtIDh4X194X194eF94XzV6OHhfYTB6X2h6NXo0eF9hMHphMHpoejdfVHJ1ZXhfX3hfX3hfNXozeF9hMHphMHpoejdfJDkuODR4X194X194XzV6MnhfYTB6YTB6aHo3X0l0ZW0gN3hfX3hfX3h4X3hfNXo3eF9hMHpfaHo1ejR4X2EwemEwemh6N19GYWxzZXhfX3hfX3hfNXozeF9hMHphMHpoejdfJDguNjF4X194X194XzV6MnhfYTB6YTB6aHo3X0l0ZW0gNnhfX3hfX3h4X3hfNXo2eF9hMHpfaHo1ejR4X2EwemEwemh6N19UcnVleF9feF9feF81ejN4X2EwemEwemh6N18kNy4zOHhfX3hfX3hfNXoyeF9hMHphMHpoejdfSXRlbSA1eF9feF9feHhfeF81ejV4X2Ewel9oejV6NHhfYTB6YTB6aHo3X0ZhbHNleF9feF9feF81ejN4X2EwemEwemh6N18kNi4xNXhfX3hfX3hfNXoyeF9hMHphMHpoejdfSXRlbSA0eF9feF9feHhfeF81ejR4X2Ewel9oejV6NHhfYTB6YTB6aHo3X1RydWV4X194X194XzV6M3hfYTB6YTB6aHo3XyQ0LjkyeF9feF9feF81ejJ4X2EwemEwemh6N19JdGVtIDN4X194X194eF94XzV6M3hfYTB6X2h6NXo0eF9hMHphMHpoejdfRmFsc2V4X194X194XzV6M3hfYTB6YTB6aHo3XyQzLjY5eF9feF9feF81ejJ4X2EwemEwemh6N19JdGVtIDJ4X194X194eF94XzV6MnhfYTB6X2h6NXo0eF9hMHphMHpoejdfVHJ1ZXhfX3hfX3hfNXozeF9hMHphMHpoejdfJDIuNDZ4X194X194XzV6MnhfYTB6YTB6aHo3X0l0ZW0gMXhfX3hfX3h4X3hfNXoxeF9hMHpfaHo1ejR4X2EwemEwemh6N19GYWxzZXhfX3hfX3hfNXozeF9hMHphMHpoejdfJDEuMjN4X194X194XzV6MnhfYTB6YTB6aHo3X0l0ZW0gMHhfX3hfX3h4X3h4X3h4X3h4X3h4X3hfX3hcdDUwX1N5c3RlbS5Cb29sZWFuXG4wX0hlYWRlclRlXHh0XzFfU29ydEZpZWxkXzJfRGF0YUZpZWxkXzNfUmVhZE9ubHlfNF9EYXRhS2V5c181X0l0ZW1Db3VudF82X0RhdGFTb3VyY2VJdGVtQ291bnRfN19UZVx4dA==b12a5168" />
+
+<script language="javascript">
+<!--
+	function __doPostBack(eventTarget, eventArgument) {
+		var theform = document.ctrl2
+		theform.__EVENTTARGET.value = eventTarget
+		theform.__EVENTARGUMENT.value = eventArgument
+		theform.submit()
+	}
+// -->
+</script>
+
+
+    <table cellpadding="5">
+    <tr valign="top"><td>
+
+    <b>Product List</b>
+    <table cellspacing="0" cellpadding="3" rules="all" bordercolor="Black" border="1">
+    <tr bgcolor="#AAAADD">
+        <td><font face="Verdana" size="1">
+            Add to cart
+        </font></td><td><font face="Verdana" size="1">
+            Remove from cart
+        </font></td><td><font face="Verdana" size="1">
+            Item
+        </font></td><td><font face="Verdana" size="1">
+            Price
+        </font></td><td><font face="Verdana" size="1">
+            Assembly required?
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            <a id="MyDataGrid_ctrl2_Column0Control" href="javascript:__doPostBack('MyDataGrid:ctrl2:Column0Control','')">Add</a>
+        </font></td><td><font face="Verdana" size="1">
+            <a id="MyDataGrid_ctrl2_Column1Control" href="javascript:__doPostBack('MyDataGrid:ctrl2:Column1Control','')">Remove</a>
+        </font></td><td><font face="Verdana" size="1">
+            Item 0
+        </font></td><td align="Right"><font face="Verdana" size="1">
+            $1.23
+        </font></td><td><font face="Verdana" size="1">
+            False
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            <a id="MyDataGrid_ctrl3_Column0Control" href="javascript:__doPostBack('MyDataGrid:ctrl3:Column0Control','')">Add</a>
+        </font></td><td><font face="Verdana" size="1">
+            <a id="MyDataGrid_ctrl3_Column1Control" href="javascript:__doPostBack('MyDataGrid:ctrl3:Column1Control','')">Remove</a>
+        </font></td><td><font face="Verdana" size="1">
+            Item 1
+        </font></td><td align="Right"><font face="Verdana" size="1">
+            $2.46
+        </font></td><td><font face="Verdana" size="1">
+            True
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            <a id="MyDataGrid_ctrl4_Column0Control" href="javascript:__doPostBack('MyDataGrid:ctrl4:Column0Control','')">Add</a>
+        </font></td><td><font face="Verdana" size="1">
+            <a id="MyDataGrid_ctrl4_Column1Control" href="javascript:__doPostBack('MyDataGrid:ctrl4:Column1Control','')">Remove</a>
+        </font></td><td><font face="Verdana" size="1">
+            Item 2
+        </font></td><td align="Right"><font face="Verdana" size="1">
+            $3.69
+        </font></td><td><font face="Verdana" size="1">
+            False
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            <a id="MyDataGrid_ctrl5_Column0Control" href="javascript:__doPostBack('MyDataGrid:ctrl5:Column0Control','')">Add</a>
+        </font></td><td><font face="Verdana" size="1">
+            <a id="MyDataGrid_ctrl5_Column1Control" href="javascript:__doPostBack('MyDataGrid:ctrl5:Column1Control','')">Remove</a>
+        </font></td><td><font face="Verdana" size="1">
+            Item 3
+        </font></td><td align="Right"><font face="Verdana" size="1">
+            $4.92
+        </font></td><td><font face="Verdana" size="1">
+            True
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            <a id="MyDataGrid_ctrl6_Column0Control" href="javascript:__doPostBack('MyDataGrid:ctrl6:Column0Control','')">Add</a>
+        </font></td><td><font face="Verdana" size="1">
+            <a id="MyDataGrid_ctrl6_Column1Control" href="javascript:__doPostBack('MyDataGrid:ctrl6:Column1Control','')">Remove</a>
+        </font></td><td><font face="Verdana" size="1">
+            Item 4
+        </font></td><td align="Right"><font face="Verdana" size="1">
+            $6.15
+        </font></td><td><font face="Verdana" size="1">
+            False
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            <a id="MyDataGrid_ctrl7_Column0Control" href="javascript:__doPostBack('MyDataGrid:ctrl7:Column0Control','')">Add</a>
+        </font></td><td><font face="Verdana" size="1">
+            <a id="MyDataGrid_ctrl7_Column1Control" href="javascript:__doPostBack('MyDataGrid:ctrl7:Column1Control','')">Remove</a>
+        </font></td><td><font face="Verdana" size="1">
+            Item 5
+        </font></td><td align="Right"><font face="Verdana" size="1">
+            $7.38
+        </font></td><td><font face="Verdana" size="1">
+            True
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            <a id="MyDataGrid_ctrl8_Column0Control" href="javascript:__doPostBack('MyDataGrid:ctrl8:Column0Control','')">Add</a>
+        </font></td><td><font face="Verdana" size="1">
+            <a id="MyDataGrid_ctrl8_Column1Control" href="javascript:__doPostBack('MyDataGrid:ctrl8:Column1Control','')">Remove</a>
+        </font></td><td><font face="Verdana" size="1">
+            Item 6
+        </font></td><td align="Right"><font face="Verdana" size="1">
+            $8.61
+        </font></td><td><font face="Verdana" size="1">
+            False
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            <a id="MyDataGrid_ctrl9_Column0Control" href="javascript:__doPostBack('MyDataGrid:ctrl9:Column0Control','')">Add</a>
+        </font></td><td><font face="Verdana" size="1">
+            <a id="MyDataGrid_ctrl9_Column1Control" href="javascript:__doPostBack('MyDataGrid:ctrl9:Column1Control','')">Remove</a>
+        </font></td><td><font face="Verdana" size="1">
+            Item 7
+        </font></td><td align="Right"><font face="Verdana" size="1">
+            $9.84
+        </font></td><td><font face="Verdana" size="1">
+            True
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            <a id="MyDataGrid_ctrl10_Column0Control" href="javascript:__doPostBack('MyDataGrid:ctrl10:Column0Control','')">Add</a>
+        </font></td><td><font face="Verdana" size="1">
+            <a id="MyDataGrid_ctrl10_Column1Control" href="javascript:__doPostBack('MyDataGrid:ctrl10:Column1Control','')">Remove</a>
+        </font></td><td><font face="Verdana" size="1">
+            Item 8
+        </font></td><td align="Right"><font face="Verdana" size="1">
+            $11.07
+        </font></td><td><font face="Verdana" size="1">
+            False
+        </font></td>
+    </tr>
+</table>
+
+    </td><td>
+
+    <b>Shopping Cart</b>
+    <table cellspacing="0" cellpadding="3" rules="all" bordercolor="Black" border="1">
+    <tr bgcolor="#AAAADD">
+        <td><font face="Verdana" size="1">
+            Item
+        </font></td><td><font face="Verdana" size="1">
+            Price
+        </font></td>
+    </tr>
+</table>
+
+    </td></tr>
+    </table>
+
+  </form>
+
+</body>
+</html>

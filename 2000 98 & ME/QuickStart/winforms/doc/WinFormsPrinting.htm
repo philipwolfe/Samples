@@ -1,0 +1,1174 @@
+<!--BEGIN HEADER-->
+
+
+
+<html>
+<head>
+<link rel="stylesheet" href="../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+  <table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+
+            <div style="padding:0,0,0,0"><a class=outer style="color:darkred" href="../../winforms/doc/default.htm"><b>Introduction</b></a><br></div>
+            <p>
+            <div style="padding:0,0,4,0"><b>Getting Started</b><br></div>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsgettingstarted.htm">What is Windows Forms?</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformssimplehelloworld.htm">Writing a Hello World Form</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsapplicationmodel.htm">Windows Forms Application Model</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsusingwindes.htm">Using the Windows Forms Designer</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsformlayout.htm">Dynamic Layout in Windows Forms</a><br>            
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsmenus.htm">Adding Menus to a Form</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsmdi.htm">Writing MDI Applications</a><p>
+
+            <div style="padding:0,0,4,0"><b>Building Applications</b><br></div>
+            &nbsp; <a class="outer" href="../../winforms/doc/dataaccessplaceholder.htm">Data Access Overview</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/webservicesplaceholder.htm">Web Services Overview</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsdata.htm">Databinding in Windows Forms</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsaxhosting.htm">Using ActiveX Controls</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsgdiplus.htm">Working with Graphics</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsprinting.htm">Working with Printing</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformscreatingcontrols.htm">Creating Controls</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsmsaa.htm">Accessibility</a><p>
+
+            <div style="padding:0,0,0,0"><a class=outer style="color:darkred" href="../../winforms/doc/winformssamples.htm"><b>Control Reference</b></a><br></div>
+            <p>
+            <div style="padding:0,0,0,0"><a target=_top class=outer style="color:darkred" href="../../howto/default.htm"><b>How Do I...?</b></a><br></div>
+            <p>
+            <div style="padding:0,0,0,0"><a class=outer style="color:darkred" href="../../winforms/doc/winformsrelateddocs.htm"><b>Related Documentation</b></a><br></div>
+            <p>
+            
+</div>
+
+</td>
+</tr>
+</table>
+
+
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<style>
+.mydd {  font: smaller verdana; }
+
+.code1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	font-family:"Courier New";
+	color:darkred; 
+	}
+.codecomment1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	font-family:"Courier New";
+	color:green;
+	}
+.issue {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background-color:RED;
+	color:WHITE;
+	font-weight:bold;
+	}
+
+
+body { font: smaller verdana }        
+
+</style>
+
+
+
+
+
+
+<h4>Printing in Windows Forms</h4>
+
+<h5>Important Printing classes:</h5>
+
+<table class=mydd border=0 cellpadding=5>
+ <tr>
+  <td valign=top><strong>PrintDocument</strong></td>
+  <td>
+        <p>PrintDocument is used to send output to a printer. You instantiate a PrintDocument, set some
+        properties describing what to print, then call the Print method. The PrintDocument raises a 
+        PrintPage event for each page to be printed. You add your printing logic to an event handler for
+        this event.</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top><strong>PrinterSettings</strong></td>
+  <td>
+        <p>Information about how a document should be printed, including which printer to print it on.</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top><strong>PageSettings</strong></td>
+  <td valign=top>
+        <p>Information about how a page should be printed.</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top><strong>PrintPageEventArgs</strong></td>
+  <td valign=top>
+  <p>The data for the PrintPage event on PrintDocument. It
+  provides a clipping rectangle and a Graphics object for the printing surface.</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top>
+  <strong>PrintEventArgs</strong></td>
+  <td valign=top>
+  <p>The data for the BeginPrint and EndPrint events on
+  PrintDocument. Allows the print job to be cancelled.</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top><strong>PrintDialog</strong></td>
+  <td valign=top>
+  <p>Printer selection dialog. Wraps the Win32 <i>PrintDlg</i> API</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top><strong>PageSetupDialog</strong></td>
+  <td valign=top>
+  <p>Page properties dialog. Wraps the Win32 <i>PageSetupDlg</i> API</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top><strong>PrintPreviewControl</strong></td>
+  <td valign=top>
+  <p>A control that displays a PrintDocument. Allows the
+  creation of a print preview dialog.</p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top><strong>PrintPreviewDialog</strong></td>
+  <td valign=top>
+  <p>A dialog that displays a PrintDocument using the <i>PrintPreviewControl</i></p>
+  </td>
+ </tr>
+ <tr>
+  <td valign=top><strong>PrintController</strong></td>
+  <td valign=top>
+  <p>A PrintController is the &quot;engine&quot; that controls how a PrintDocument is printed. <i>PrintDocument.Print</i>
+  uses a print control to render the document.</p>
+  
+  <p>The framework provides 2 print controllers:</p>
+  <ul>
+  <li><i>DefaultPrintController</i> renders to a printer</li>
+  <li><i>PreviewPrintController</i> renders to the print preview control</li>
+  </ul>
+  <p>Typically you will never have implement a PrintController. You would only
+  implement a PrintController if you want to render to a different surface.</p>
+  </td>
+ </tr>
+</table>
+
+<h5>Building an application that prints</h5>
+<p>The easiest way to understand how the printing classes fit
+together is to work through a simple example: printing the contents of a text
+file to a printer</p>
+
+<h6>Step 1: Print Logic</h6>
+<p>The first thing you need to do is to write your printing
+logic. You do this by handling events on a PrintDocument. When the PrintDocument.Print() method is called 
+the following events are fired:
+
+<ul>
+<li>BeginPrint</li>
+<li>PagePrint (one or more)</li>
+<li>EndPrint</li>
+</ul>
+
+<p>The PagePrint event arguments type (PagePrintEventArgs) has a HasMorePages property. If this is set to true when your
+event handler returns, PrintDocument set up a new page and raises the PagePrint event again. 
+<p>Therefore the logic in your PagePrint event handler is basically the following:
+<ul>
+<li>Print the contents of the page using the information in the event arguments. The event 
+arguments contain the Graphics for the printer, the PageSettings for that page,
+the bounds of the page and the bounds of the margins.
+<li>Determine whether there are more pages to print                            
+<li>If there are set HasMorePages to true 
+<li>If there aren't set HasMorePages to false
+</ul>
+<p>In the simplest case you can create a PrintDocument and handle the PagePrint event as part
+of the Form that contains the print request:</p>
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl6" style="display:none">
+
+//Example Form that Prints</span>
+  public class PrintCtl : Form {
+
+      Private string[] printBuffer ;
+      Private Font printFont;
+      Private int startLine;
+
+      //Event fired when the user presses the print button</span>
+      private void print_Click(object sender, EventArgs e) {
+
+          fileToPrint = new StreamReader ("PrintMe.Txt");
+          try {
+              printFont = new Font("Arial", 10);
+              PrintDocument pd = new PrintDocument(); //Assumes the default printer</span>
+              pd.AddOnPrintPage(new PrintPageEventHandler(this.pd_PrintPage));
+              pd.Print();
+          } finally {
+              fileToPrint.Close() ;
+          }
+
+      }
+
+      //Event fired for each page to print</span>
+      private void pd_PrintPage(object sender, PrintPageEventArgs ev) {
+         float lpp = 0 ;
+         float yPos =  0 ;
+         int count = 0 ;
+         float leftMargin = ev.MarginBounds.Left;
+         float topMargin = ev.MarginBounds.Top;
+         String line=null;
+
+         //Work out the number of lines per page </span>
+         //Use the MarginBounds on the event to do this</span>
+         lpp = ev.MarginBounds.Height  / printFont.GetHeight(ev.Graphics) ;</span>
+
+         //Now iterate over the file printing out each line </span>
+         //NOTE WELL: This assumes that a single line is not wider than the page width </span>
+         //Check count first so that we don't read line that we won't print </span>
+         while (count < lpp && ((line=streamToPrint.ReadLine()) != null)) {
+             yPos = topMargin + (count * printFont.GetHeight(ev.Graphics));
+
+             //NOTE WELL: In the PDC Release you must pass a StringFormat to DrawString or the
+             //Print Preview control will not work.
+             ev.Graphics.DrawString (line, printFont, Brushes.Black, leftMargin, yPos, new StringFormat());
+
+             count++;
+         }
+
+         //If we have more lines then print another page </span>
+         if (line != null)
+             ev.HasMorePages = true ;
+         else
+             ev.HasMorePages = false ;
+      }
+
+      ....
+  }
+</pre>
+<pre id="codectrl6" style="display:">
+
+Public Class PrintingExample1
+    Inherits System.WinForms.Form
+
+    ....
+
+    private printFont As Font
+    private streamToPrint As StreamReader
+
+    Public Sub New ()
+        MyBase.New
+        InitializeComponent()
+    End Sub
+
+    'Event fired when the user presses the print button
+    Private Sub printButton_Click(sender As object, e As System.EventArgs)
+
+        Try
+            streamToPrint = new StreamReader ("PrintMe.Txt")
+            Try
+                printFont = new Font("Arial", 10)
+                Dim pd as PrintDocument = new PrintDocument() 'Assumes the default printer
+                pd.AddOnPrintPage(AddressOf Me.pd_PrintPage)
+                pd.Print()
+            Finally
+                streamToPrint.Close()
+            End Try
+
+        Catch ex As Exception
+            MessageBox.Show("An error occurred printing the file - " + ex.Message)
+        End Try
+
+    End Sub
+
+    'Event fired for each page to print
+    Private Sub pd_PrintPage(sender As object, ev As System.Drawing.Printing.PrintPageEventArgs)
+
+        Dim lpp As Single = 0
+        Dim yPos As Single =  0
+        Dim count As Integer = 0
+        Dim leftMargin As Single = ev.MarginBounds.Left
+        Dim topMargin As Single = ev.MarginBounds.Top
+        Dim line as String
+
+        'Work out the number of lines per page
+        'Use the MarginBounds on the event to do this
+        lpp = ev.MarginBounds.Height  / printFont.GetHeight(ev.Graphics)
+
+        'Now iterate over the file printing out each line
+        'NOTE WELL: This assumes that a single line is not wider than the page width
+        'Check count first so that we don't read line that we won't print
+        line=streamToPrint.ReadLine()
+        while (count < lpp AND line <> Nothing)
+
+            yPos = topMargin + (count * printFont.GetHeight(ev.Graphics))
+
+            'NOTE WELL: In the PDC Release you must pass a StringFormat to DrawString or the
+            'Print Preview control will not work.
+            ev.Graphics.DrawString (line, printFont, Brushes.Black, leftMargin, yPos, new StringFormat())
+
+            count = count + 1
+
+            if (count < lpp) then
+                line=streamToPrint.ReadLine()
+            end if
+
+        End While
+
+        'If we have more lines then print another page
+        If (line <> Nothing) Then
+            ev.HasMorePages = True
+        Else
+            ev.HasMorePages = False
+        End If
+
+    End Sub
+
+    ....
+
+End Class
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl6" onclick="doClick(0, 'ctrl6')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl6" onclick="doClick(1, 'ctrl6')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+
+<p>To view and run this sample:
+<br><br>
+<span>
+    
+    
+    
+    
+    
+
+        
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../winforms/samples/vb/printing/example1">
+	<img style="border-color:black" border=1 src="../../winforms/images/wflink.jpg"><br>
+	</a>
+	<div class="caption">VB Simple Printing Example1</div><br>
+	
+	
+		[<a target="_blank" href="../../winforms/samples/vb/printing/example1">Run Sample</a>] | 
+		[<a target="_blank" href="../../winforms/samples/vb/printing/example1/printingexample1vbsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+    </span>
+<br>
+
+<h6>Step 2: Defining your own Print Document</h6>
+
+<p >For a more complex print job or a print logic that you wish to reuse across multiple forms you
+would derive a new class from <i>PrintDocument</i> and encapsulate your printing logic in that.
+In this case you handle the PrintPage event by overriding the "OnPrintPage" method rather than using an
+event handler.</p>
+<br>
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 1;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:85%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="2">
+<pre id="codectrl10" style="display:">
+
+public class TextFilePrintDocument : PrintDocument {
+
+    private Font printFont           = null ;
+    private StreamReader streamToPrint = null ;
+
+    public TextFilePrintDocument(StreamReader streamToPrint) : base ()  {
+        this.streamToPrint = streamToPrint ;
+    }
+
+    //Override OnBeginPrint to set up the font we are going to use</span>
+    protected override void OnBeginPrint(PrintEventArgs ev) {
+        base.OnBeginPrint(ev) ;
+        printFont = new Font("Arial", 10);
+    }
+
+    //Override the OnPrintPage to provide the printing logic for the document</span>
+    protected override void OnPrintPage(PrintPageEventArgs ev) {
+
+        base.OnPrintPage(ev) ;
+
+        float lpp = 0 ;
+        float yPos =  0 ;
+        int count = 0 ;
+        float leftMargin = ev.MarginBounds.Left;
+        float topMargin = ev.MarginBounds.Top;
+        String line=null;
+
+        //Work out the number of lines per page </span>
+        //Use the MarginBounds on the event to do this </span>
+        lpp = ev.MarginBounds.Height  / printFont.GetHeight(ev.Graphics) ;
+
+        //Now iterate over the file printing out each line</span>
+        //NOTE WELL: This assumes that a single line is not wider than the page width</span>
+        //Check count first so that we don't read line that we won't print</span>
+        while (count < lpp && ((line=streamToPrint.ReadLine()) != null)) {
+            yPos = topMargin + (count * printFont.GetHeight(ev.Graphics));
+
+            //NOTE WELL: In the PDC Release you must pass a StringFormat to DrawString or the
+            //Print Preview control will not work.
+            ev.Graphics.DrawString (line, printFont, Brushes.Black, leftMargin, yPos, new StringFormat());
+
+            count++;
+        }
+
+        //If we have more lines then print another page</span>
+        if (line != null)
+            ev.HasMorePages = true ;
+        else
+            ev.HasMorePages = false ;
+    }
+
+}
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="tab" id="tabctrl10" onclick="doClick(0, 'ctrl10')">
+          <b>C#
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+
+<p>To view and run this sample:
+<br><br>
+<span>
+    
+    
+    
+    
+    
+
+        
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../winforms/samples/vb/printing/example2">
+	<img style="border-color:black" border=1 src="../../winforms/images/wflink.jpg"><br>
+	</a>
+	<div class="caption">VB Simple Printing Example2</div><br>
+	
+	
+		[<a target="_blank" href="../../winforms/samples/vb/printing/example2">Run Sample</a>] | 
+		[<a target="_blank" href="../../winforms/samples/vb/printing/example2/textfileprintdocumentvbsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+    </span>
+<br>
+
+<h6>Step 3: Letting the user choose which printer to use</h6>
+
+<p>Now you have your print logic working the next step is to allow the user to choose a printer using the 
+Windows Print Dialog. To do this you create a PrintDocument and pass it to the PrintDialog:
+</p>
+<br>
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 1;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:85%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="2">
+<pre id="codectrl14" style="display:">
+
+//Event fired when the user presses the print button</span>
+private void printButton_Click(object sender, EventArgs e) {
+    StreamReader streamToPrint = new StreamReader ("PrintMe.Txt");
+    try {
+        TextFilePrintDocument pd = new TextFilePrintDocument(streamToPrint); //Assumes the default printer</span>
+
+        PrintDialog dlg = new PrintDialog() ;
+        dlg.Document = pd;
+        DialogResult result = dlg.ShowDialog();
+
+        if (result == DialogResult.OK) {
+            pd.Print();
+        }
+
+    } finally {
+        streamToPrint.Close() ;
+    }
+}
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="tab" id="tabctrl14" onclick="doClick(0, 'ctrl14')">
+          <b>C#
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+
+<p>To view and run this sample:
+<br><br>
+<span>
+    
+    
+    
+    
+    
+
+        
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../winforms/samples/vb/printing/example3">
+	<img style="border-color:black" border=1 src="../../winforms/images/wflink.jpg"><br>
+	</a>
+	<div class="caption">VB Simple Printing Example3</div><br>
+	
+	
+		[<a target="_blank" href="../../winforms/samples/vb/printing/example3">Run Sample</a>] | 
+		[<a target="_blank" href="../../winforms/samples/vb/printing/example3/textfileprintdocumentvbsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+    </span>
+<br>
+
+<h6>Step 4: Letting the user choose page settings</h6>
+
+<p>Once the user can choose a printer and print their document you may want to let them choose 
+page settings such as the orientation of the paper or the margins to use. To do this you create
+a PageSettings instance and pass it to the PageSetupDialog:
+</p>
+<br>
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 1;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:85%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="2">
+<pre id="codectrl18" style="display:">
+
+//Event fired when the user presses the page setup button</span>
+private void pageSetupButton_Click(object sender, EventArgs e) {
+
+    PageSetupDialog psDlg = new PageSetupDialog() ;
+
+    if (storedPageSettings == null) {
+        storedPageSettings =  new PageSettings();
+    }
+
+    psDlg.PageSettings = storedPageSettings ;
+    psDlg.ShowDialog();
+}
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="tab" id="tabctrl18" onclick="doClick(0, 'ctrl18')">
+          <b>C#
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<p>You can then use this custom PageSettings instance when the user prints the document:</p>
+<br>
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 1;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:85%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="2">
+<pre id="codectrl20" style="display:">
+
+//Event fired when the user presses the print button</span>
+private void printButton_Click(object sender, EventArgs e) {
+    StreamReader streamToPrint = new StreamReader ("PrintMe.Txt");
+    try {
+        TextFilePrintDocument pd = new TextFilePrintDocument(streamToPrint);
+
+        if (storedPageSettings != null) {
+            pd.DefaultPageSettings = storedPageSettings ;
+        }
+
+        PrintDialog dlg = new PrintDialog() ;
+        dlg.Document = pd;
+        DialogResult result = dlg.ShowDialog();
+
+        if (result == DialogResult.OK) {
+            pd.Print();
+        }
+
+    } finally {
+        streamToPrint.Close() ;
+    }
+}
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="tab" id="tabctrl20" onclick="doClick(0, 'ctrl20')">
+          <b>C#
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+
+<p>To view and run this sample:
+<br><br>
+<span>
+    
+    
+    
+    
+    
+
+        
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../winforms/samples/vb/printing/example4">
+	<img style="border-color:black" border=1 src="../../winforms/images/wflink.jpg"><br>
+	</a>
+	<div class="caption">VB Simple Printing Example4</div><br>
+	
+	
+		[<a target="_blank" href="../../winforms/samples/vb/printing/example4">Run Sample</a>] | 
+		[<a target="_blank" href="../../winforms/samples/vb/printing/example4/textfileprintdocumentvbsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+    </span>
+<br>
+
+
+<h6>Step 5: Displaying a Print Preview Window</h6>
+
+<p>The print preview window allows a user to preview their document before printing it. You can add 
+a print preview window to your application by creating a PrintDocument and passing it to the Print
+Preview Dialog:
+</p>
+<br>
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 1;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:85%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="2">
+<pre id="codectrl24" style="display:">
+
+//Event fired when the user presses the print preview button</span>
+private void printPreviewButton_Click(object sender, EventArgs e) {
+
+    StreamReader streamToPrint = new StreamReader ("PrintMe.Txt");
+    try {
+        TextFilePrintDocument pd = new TextFilePrintDocument(streamToPrint);
+
+        if (storedPageSettings != null) {
+            pd.DefaultPageSettings = storedPageSettings ;
+        }
+
+        PrintPreviewDialog dlg = new PrintPreviewDialog() ;
+        dlg.Document = pd;
+        dlg.ShowDialog();
+
+    } finally {
+        streamToPrint.Close() ;
+    }
+}
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="tab" id="tabctrl24" onclick="doClick(0, 'ctrl24')">
+          <b>C#
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<p>To view and run this sample:
+<br><br>
+<span>
+    
+    
+    
+    
+    
+
+        
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../winforms/samples/vb/printing/example5">
+	<img style="border-color:black" border=1 src="../../winforms/images/wflink.jpg"><br>
+	</a>
+	<div class="caption">VB Simple Printing Example5</div><br>
+	
+	
+		[<a target="_blank" href="../../winforms/samples/vb/printing/example5">Run Sample</a>] | 
+		[<a target="_blank" href="../../winforms/samples/vb/printing/example5/textfileprintdocumentvbsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+    </span>
+<br>
+
+<h5>Putting it all together</h5>
+
+<p>The Windows Forms samples include a sample called <I>SimplePad</I> that shows how to build a simple 
+text editor that prints the file being edited.</p>
+<br>
+<span>
+    
+    
+    
+
+        
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../winforms/samples/cs/printing/simplepad">
+	<img style="border-color:black" border=1 src="../../winforms/images/wflink.jpg"><br>
+	</a>
+	<div class="caption">C# SimplePad</div><br>
+	
+	
+		[<a target="_blank" href="../../winforms/samples/cs/printing/simplepad">Run Sample</a>] | 
+		[<a target="_blank" href="../../winforms/samples/cs/printing/simplepad/simplepadcssource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+    </span>
+
+
+
+<!--END FOOTER-->
+<p>
+<hr>
+<p>
+</div>
+</td>
+</tr>
+</table>
+</BODY>
+</html>
+<!--END FOOTER-->

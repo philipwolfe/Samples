@@ -1,0 +1,187 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlref/webctrl/DataGrid/datagrid5.src&file=VB%5Cdatagrid5.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkJcXGRhdGFncmlkNS5hc3BceHhfX3h4X3h4X3hfX3g=29dc2ff3" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB\datagrid5.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../../aspplus/samples/webforms/ctrlref/webctrl/datagrid/datagrid5aspxsource.htm'>datagrid5.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../../aspplus/samples/webforms/ctrlref/webctrl/datagrid/vb/datagrid5aspxsource.htm'>VB\datagrid5.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Import Namespace="System.Data" %>
+
+<html>
+<script language="VB" runat="server">
+
+    Dim Cart As DataTable
+    Dim CartView As DataView   
+
+    Function CreateDataSource() As ICollection
+        
+        Dim dt As DataTable
+        Dim dr As DataRow
+        Dim i As Integer
+
+        'create a DataTable
+        dt = New DataTable
+        dt.Columns.Add(New DataColumn("IntegerValue", GetType(Integer)))
+        dt.Columns.Add(New DataColumn("StringValue", GetType(String)))
+        dt.Columns.Add(New DataColumn("DateTimeValue", GetType(DateTime)))
+        dt.Columns.Add(New DataColumn("BoolValue", GetType(Boolean)))
+        dt.Columns.Add(new DataColumn("CurrencyValue", GetType(Double)))
+
+        'Make some rows and put some sample data in
+        For i = 1 To 9
+            dr = dt.NewRow()
+            dr(0) = i
+            dr(1) = "Item " & i.ToString()
+            dr(2) = DateTime.Now.ToShortTimeString
+            If (i Mod 2 <> 0) Then
+                dr(3) = True
+            Else
+                dr(3) = False
+            End If
+            dr(4) = 1.23 * (i + 1)
+            'add the row to the datatable
+            dt.Rows.Add(dr)
+        Next
+
+        'return a DataView to the DataTable
+        CreateDataSource = New DataView(dt)
+        
+    End Function
+
+    Sub Page_Load(sender As Object, e As EventArgs) 
+        
+        If Session("DG5VB_ShoppingCart") = Nothing Then
+            Cart = New DataTable()
+            Cart.Columns.Add(new DataColumn("Item", GetType(string)))
+            Cart.Columns.Add(new DataColumn("Price", GetType(string)))
+            Session("DG5VB_ShoppingCart") = Cart
+        Else
+            Cart = Session("DG5VB_ShoppingCart")
+        End If  
+        CartView = New DataView(Cart)
+        ShoppingCart.DataSource = CartView
+        CartView.Sort="Item"
+        ShoppingCart.DataBind
+
+        MyDataGrid.DataSource = CreateDataSource()
+        MyDataGrid.DataBind
+    End Sub
+
+    Sub Grid_CartCommand(sender As Object, e As DataGridCommandEventArgs) 
+    
+        Dim dr As DataRow = Cart.NewRow()
+        
+        ' e.Item is the row of the table where the command fired
+        ' For bound columns the value is stored in the Text property of TableCell
+        Dim itemCell As TableCell = e.Item.Cells(1)
+        Dim priceCell As TableCell = e.Item.Cells(2)
+        Dim item As String = itemCell.Text
+        Dim price As String = priceCell.Text
+        
+        If e.CommandSource.CommandName = "AddToCart" Then
+            dr(0) = item
+            dr(1) = price
+            Cart.Rows.Add(dr)
+        Else   'Remove from Cart
+        
+            CartView.RowFilter = "Item='" & item & "'"
+            If CartView.Count > 0 Then
+                CartView.Delete(0)
+            End If
+            CartView.RowFilter = ""
+        End If
+        ShoppingCart.DataBind()
+
+    End Sub
+
+
+</script>
+
+<body>
+
+    <h3><font face="Verdana">Using a Template Column in DataGrid</font></h3>
+
+    <form runat=server>
+
+    <table cellpadding="5">
+    <tr valign="top">
+    <td>
+
+    <b>Product List</b>
+    <asp:DataGrid id="MyDataGrid" runat="server"
+        BorderColor="black"
+        BorderWidth="1"
+        GridLines="Both"
+        CellPadding="3"
+        CellSpacing="0"
+        Font-Name="Verdana"
+        Font-Size="8pt"
+        HeaderStyle-BackColor="#aaaadd"
+        AutoGenerateColumns="false"
+        OnItemCommand="Grid_CartCommand"
+        >
+        <property name="Columns">
+            <asp:TemplateColumn HeaderText="Add/Remove">
+                <template name="ItemTemplate">
+                    <asp:LinkButton ID=AddButton Text="Add" CommandName="AddToCart" ForeColor="blue" runat="server" />&nbsp;
+                    <asp:LinkButton ID=RemoveButton Text="Remove" CommandName="RemoveFromCart" ForeColor="blue" runat="server" />
+                </template>
+            </asp:TemplateColumn>
+            
+            <asp:BoundColumn HeaderText="Item" DataField="StringValue"/>
+            
+            <!-- format Price as currency-->
+            <asp:BoundColumn HeaderText="Price" DataField="CurrencyValue" DataFormatString="{0:c}" ItemStyle-HorizontalAlign="right" />
+            
+            <asp:TemplateColumn HeaderText="Assembly required?">
+                <template name="ItemTemplate">
+                    <asp:CheckBox ID=Chk1 Checked='<%# DataBinder.Eval(Container.DataItem, "BoolValue") %>' Enabled="false" runat="server" />
+                </template>
+            </asp:TemplateColumn>
+        </property>
+    </asp:DataGrid>
+
+    </td><td>
+
+    <b>Shopping Cart</b>
+    <asp:DataGrid id="ShoppingCart" runat="server"
+        BorderColor="black"
+        BorderWidth="1"
+        CellPadding="3"
+        Font-Name="Verdana"
+        Font-Size="8pt"
+        HeaderStyle-BackColor="#aaaadd"
+        />
+
+    </td>
+    </tr>
+    </table>
+
+  </form>
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

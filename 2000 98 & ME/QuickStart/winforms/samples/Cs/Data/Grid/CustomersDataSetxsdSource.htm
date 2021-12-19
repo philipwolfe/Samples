@@ -1,0 +1,106 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/winforms/samples/Cs/Data/Grid/Grid.src&file=CustomersDataSet.xsd" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfQ3VzdG9tZXJzRGF0YVNldC5ceHNkeF9feHhfeHhfeF9feA==fa40b147" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">CustomersDataSet.xsd</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>Win Form Source: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/data/grid/gridcssource.htm'>Grid.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Northwind dataset schema: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/data/grid/customersdatasetxsdsource.htm'>CustomersDataSet.xsd</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Northwind dataset: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/data/grid/customersdatasetcssource.htm'>CustomersDataSet.cs</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><schema id="CustomersDataSet" targetNamespace="" xmlns="http://www.w3.org/1999/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <element name="Customers">
+    <complexType content="elementOnly">
+      <all>
+        <element name="CustomerID" type="string"/>
+        <element name="CompanyName" type="string"/>
+        <element name="ContactName" minOccurs="0" type="string"/>
+        <element name="ContactTitle" minOccurs="0" type="string"/>
+        <element name="Address" minOccurs="0" type="string"/>
+        <element name="City" minOccurs="0" type="string"/>
+        <element name="Region" minOccurs="0" type="string"/>
+        <element name="PostalCode" minOccurs="0" type="string"/>
+        <element name="Country" minOccurs="0" type="string"/>
+        <element name="Phone" minOccurs="0" type="string"/>
+        <element name="Fax" minOccurs="0" type="string"/>
+      </all>
+    </complexType>
+    <key name="Constraint1" msdata:PrimaryKey="True">
+      <selector>.</selector>
+      <field>CustomerID</field>
+    </key>
+  </element>
+  <element name="Orders">
+    <complexType content="elementOnly">
+      <all>
+        <element name="OrderID" msdata:AutoIncrement="True" type="int"/>
+        <element name="CustomerID" minOccurs="0" type="string"/>
+        <element name="EmployeeID" minOccurs="0" type="int"/>
+        <element name="OrderDate" minOccurs="0" type="timeInstant"/>
+        <element name="RequiredDate" minOccurs="0" type="timeInstant"/>
+        <element name="ShippedDate" minOccurs="0" type="timeInstant"/>
+        <element name="ShipVia" minOccurs="0" type="int"/>
+        <element name="Freight" minOccurs="0" type="decimal"/>
+        <element name="ShipName" minOccurs="0" type="string"/>
+        <element name="ShipAddress" minOccurs="0" type="string"/>
+        <element name="ShipCity" minOccurs="0" type="string"/>
+        <element name="ShipRegion" minOccurs="0" type="string"/>
+        <element name="ShipPostalCode" minOccurs="0" type="string"/>
+        <element name="ShipCountry" minOccurs="0" type="string"/>
+      </all>
+    </complexType>
+    <key name="Orders_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="True">
+      <selector>.</selector>
+      <field>OrderID</field>
+    </key>
+    <keyref name="CustomersOrders" refer="Constraint1">
+      <selector>.</selector>
+      <field>CustomerID</field>
+    </keyref>
+  </element>
+  <element name="Order_x0020_Details">
+    <complexType content="elementOnly">
+      <all>
+        <element name="OrderID" type="int"/>
+        <element name="ProductID" type="int"/>
+        <element name="UnitPrice" type="decimal"/>
+        <element name="Quantity" type="short"/>
+        <element name="Discount" type="float"/>
+      </all>
+    </complexType>
+    <key name="Order Details_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="True">
+      <selector>.</selector>
+      <field>OrderID</field>
+      <field>ProductID</field>
+    </key>
+    <keyref name="OrdersOrder Details" refer="Orders_Constraint1">
+      <selector>.</selector>
+      <field>OrderID</field>
+    </keyref>
+  </element>
+</schema>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

@@ -1,0 +1,543 @@
+
+<!--BEGIN HEADER-->
+<html>
+<head>
+<link rel="stylesheet" href="../../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+
+<table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+
+    <div style="padding:0,0,4,0"><b>Remoting</b><br></div>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/mainfeatures.htm">Remoting Overview</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/nutshell.htm">How Remoting Works</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/quickstart.htm">Remoting Samples</a><p>
+    <div style="padding:0,0,4,0"><b>The Basics</b><br></div>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/firstserver.htm">Create a Remote Server</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/firstclient.htm">Create a Client of the Server</a><p>
+    <div style="padding:0,0,4,0"><b>Samples</b><br></div>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/singleton.htm">Create a Singleton Object</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/byreference.htm">Pass Objects By Reference</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/byvalue.htm">Pass Objects By Value</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/interface.htm">Compile Against an Interface</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/async.htm">Make an Asynchronous Call</a><p>
+    <div style="padding:0,0,4,0"><a target="_top" style="color:darkred" href="../../../howto"><b>Back to Index</b></a><br></div>
+
+</div>
+
+</td>
+</tr>
+</table>
+
+
+
+
+
+
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<style>
+.mydd {  font: smaller verdana; }
+.code1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:blue;
+	}
+.codecomment1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:green;
+	}
+.issue {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background-color:RED;
+	color:WHITE;
+	font-weight:bold;
+	}
+
+
+body { font: smaller verdana }        
+
+</style>
+
+
+
+
+
+<h4>How Do I...Make an Asynchronous Call to a Remote Object?</h4>
+
+All the examples we had up to now made synchronous calls to the remote 
+object.  This strategy might not always be desirable since the remote 
+object might have to perform a number of time consuming tasks and it is 
+not advisable to block the client while call is in progress.  In this 
+example we demonstrate how to make asynchronous calls.<p>
+
+Lets reuse the server from the hello sample and modify the client to make 
+asynchronous rather than synchronous calls.  Here's the new client code.  
+
+<p>
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 1;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:85%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="2">
+<pre id="codectrl4" style="display:">
+
+using System;
+using System.Threading;
+using System.Runtime.Remoting;
+using System.Runtime.Remoting.Channels.TCP;
+
+namespace RemotingSamples {
+  public class Client {
+
+    public static ManualResetEvent e;
+    public delegate String MyDelegate(String name);
+
+    public static int Main(string [] args)
+    {
+      e = new ManualResetEvent(false);
+
+      TCPChannel chan = new TCPChannel();
+      ChannelServices.RegisterChannel(chan);
+      HelloServer obj = (HelloServer)Activator.GetObject(
+        typeof(RemotingSamples.HelloServer), 
+	"tcp://localhost:8085/SayHello");
+      if (obj == null) System.Console.WriteLine("Could not locate server");
+      else {
+        AsyncCallback cb = new AsyncCallback(Client.MyCallBack);
+        MyDelegate d = new MyDelegate(obj.HelloMethod);
+        IAsyncResult ar = d.BeginInvoke("Caveman", cb, null);
+      }
+
+      e.WaitOne();
+      return 0;
+    }
+
+
+    public static void MyCallBack(IAsyncResult ar)
+    {
+      MyDelegate d  = (MyDelegate)ar.AsyncObject;
+      Console.WriteLine(d.EndInvoke(ar));
+      e.Set();
+    }
+  }
+}
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="tab" id="tabctrl4" onclick="doClick(0, 'ctrl4')">
+          <b>C#
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+<p>
+
+
+We use an <b>Event</b> object to prevent the client application from returning 
+from <b>Main</b> while the acync call is pending.  We reset the <b>Event</b> object 
+to false on the first line in Main and wait for starte of the object to change 
+before we leave <b>Main.</b>
+
+The async programming pattern in the .NET framework requires a <b>delegate</b> to 
+represent the callback function.  We need to declare the delegate we require before it 
+can be used.  Delegates are somewhat similar to function pointers on classes 
+in C++ and we have to declare a delegate with the same calling parameters as 
+well as result type of the as the method the delegate represents.  
+Since we need to define a delegate for the <b>HelloMethod</b> we wish to 
+call, we declare the delegate as follows
+
+<p>
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 1;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:85%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="2">
+<pre id="codectrl6" style="display:">
+
+public delegate String MyDelegate(String name);
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="tab" id="tabctrl6" onclick="doClick(0, 'ctrl6')">
+          <b>C#
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+<p>
+
+The call accepts a string as argument and returns a string as the result.  
+The compiler automatically generates the class <b>MyDelegate</b> when it 
+encounters the declaration and adds a <b>BeginInvoke</b> and <b>EndInvoke</b> method to 
+the delegate that maps to native calls somewhere in the CLR.  
+
+The next thing we have to do to make an asynchronous call is to create the 
+callback function that receives the result from the call.  
+
+<p>
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 1;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:85%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="2">
+<pre id="codectrl8" style="display:">
+
+public static void MyCallBack(IAsyncResult ar)
+{
+  MyDelegate d  = (MyDelegate)ar.AsyncObject;
+  Console.WriteLine(d.EndInvoke(ar));
+  e.Set();
+}
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="tab" id="tabctrl8" onclick="doClick(0, 'ctrl8')">
+          <b>C#
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+<p>
+
+Notice how the callback declares an object of type <b>IAsyncResult</b> as the 
+parameter of the callback function.  Once the call completes, the 
+framework ensures that the result of the call is placed inside 
+the result object and the callback is then invoked back 
+to the client, forwarding the result object to it.  To retrieve 
+the result of the call, we simply extract the delegate 
+form the <b>AsyncResult</b> and call <b>EndInvoke.</b>
+
+
+In this example, we call the <b>HelloMethod</b> on the remote object as follows
+
+<p>
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 1;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:85%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="2">
+<pre id="codectrl10" style="display:">
+
+AsyncCallback cb = new AsyncCallback(Client.MyCallBack);
+MyDelegate d = new MyDelegate(obj.HelloMethod);
+IAsyncResult ar = d.BeginInvoke("Caveman", cb, null);
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="tab" id="tabctrl10" onclick="doClick(0, 'ctrl10')">
+          <b>C#
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+<p>
+
+
+We create a delegate for the callback method and one for the remote 
+method.  Now we call the method by calling <b>BeginInvoke</b> on the delegate, 
+and simply wait for the result to return from the server.<p>
+
+<span>
+
+
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../../howto/samples/remoting/async/vb">
+	<img style="border-color:black" border=1 src="../../../images/genicon.gif"><br>
+	</a>
+	<div class="caption">Acync calls</div><br>
+	
+	
+		[<a target="_blank" href="../../../howto/samples/remoting/async/vb">Run Sample</a>] | 
+		[<a target="_blank" href="../../../howto/samples/remoting/async/servercssource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+</span>
+<p>
+
+<!--END FOOTER-->
+<p>
+<hr>
+<p>
+</div>
+</td>
+</tr>
+</table>
+</BODY>
+</html>
+<!--END FOOTER-->

@@ -1,0 +1,221 @@
+<?xml version="1.0" ?> 
+ <serviceDescription xmlns:s0="http://tempuri.org/main.xsd" xmlns:s1="" name="DataTypes" targetNamespace="" xmlns="urn:schemas-xmlsoap-org:sdl.2000-01-25">
+ <soap xmlns="urn:schemas-xmlsoap-org:soap-sdl-2000-01-25">
+ <service>
+ <addresses>
+  <address uri="http://localhost/quickstart/aspplus/samples/services/DataTypes/vb/DataTypes.asmx" /> 
+  </addresses>
+ <requestResponse name="SayHello" soapAction="http://tempuri.org/SayHello">
+  <request ref="s0:SayHello" /> 
+  <response ref="s0:SayHelloResult" /> 
+  </requestResponse>
+ <requestResponse name="SayHelloName" soapAction="http://tempuri.org/SayHelloName">
+  <request ref="s0:SayHelloName" /> 
+  <response ref="s0:SayHelloNameResult" /> 
+  </requestResponse>
+ <requestResponse name="GetIntArray" soapAction="http://tempuri.org/GetIntArray">
+  <request ref="s0:GetIntArray" /> 
+  <response ref="s0:GetIntArrayResult" /> 
+  </requestResponse>
+ <requestResponse name="GetMode" soapAction="http://tempuri.org/GetMode">
+  <request ref="s0:GetMode" /> 
+  <response ref="s0:GetModeResult" /> 
+  </requestResponse>
+ <requestResponse name="GetOrder" soapAction="http://tempuri.org/GetOrder">
+  <request ref="s0:GetOrder" /> 
+  <response ref="s0:GetOrderResult" /> 
+  </requestResponse>
+ <requestResponse name="GetOrders" soapAction="http://tempuri.org/GetOrders">
+  <request ref="s0:GetOrders" /> 
+  <response ref="s0:GetOrdersResult" /> 
+  </requestResponse>
+  </service>
+  </soap>
+ <httppost xmlns="urn:schemas-xmlsoap-org:post-sdl-2000-01-25">
+ <service>
+ <requestResponse name="SayHello" href="http://localhost/quickstart/aspplus/samples/services/DataTypes/vb/DataTypes.asmx/SayHello">
+ <request>
+  <form /> 
+  </request>
+ <response>
+  <mimeXml ref="s1:string" /> 
+  </response>
+  </requestResponse>
+ <requestResponse name="SayHelloName" href="http://localhost/quickstart/aspplus/samples/services/DataTypes/vb/DataTypes.asmx/SayHelloName">
+ <request>
+ <form>
+  <input name="Name" /> 
+  </form>
+  </request>
+ <response>
+  <mimeXml ref="s1:string" /> 
+  </response>
+  </requestResponse>
+ <requestResponse name="GetIntArray" href="http://localhost/quickstart/aspplus/samples/services/DataTypes/vb/DataTypes.asmx/GetIntArray">
+ <request>
+  <form /> 
+  </request>
+ <response>
+  <mimeXml ref="s1:ArrayOfInt" /> 
+  </response>
+  </requestResponse>
+ <requestResponse name="GetMode" href="http://localhost/quickstart/aspplus/samples/services/DataTypes/vb/DataTypes.asmx/GetMode">
+ <request>
+  <form /> 
+  </request>
+ <response>
+  <mimeXml ref="s1:Mode" /> 
+  </response>
+  </requestResponse>
+ <requestResponse name="GetOrder" href="http://localhost/quickstart/aspplus/samples/services/DataTypes/vb/DataTypes.asmx/GetOrder">
+ <request>
+  <form /> 
+  </request>
+ <response>
+  <mimeXml ref="s1:Order" /> 
+  </response>
+  </requestResponse>
+ <requestResponse name="GetOrders" href="http://localhost/quickstart/aspplus/samples/services/DataTypes/vb/DataTypes.asmx/GetOrders">
+ <request>
+  <form /> 
+  </request>
+ <response>
+  <mimeXml ref="s1:ArrayOfOrder" /> 
+  </response>
+  </requestResponse>
+  </service>
+  </httppost>
+ <httpget xmlns="urn:schemas-xmlsoap-org:get-sdl-2000-01-25">
+ <service>
+ <requestResponse name="SayHello" href="http://localhost/quickstart/aspplus/samples/services/DataTypes/vb/DataTypes.asmx/SayHello">
+  <request /> 
+ <response>
+  <mimeXml ref="s1:string" /> 
+  </response>
+  </requestResponse>
+ <requestResponse name="SayHelloName" href="http://localhost/quickstart/aspplus/samples/services/DataTypes/vb/DataTypes.asmx/SayHelloName">
+ <request>
+  <param name="Name" /> 
+  </request>
+ <response>
+  <mimeXml ref="s1:string" /> 
+  </response>
+  </requestResponse>
+ <requestResponse name="GetIntArray" href="http://localhost/quickstart/aspplus/samples/services/DataTypes/vb/DataTypes.asmx/GetIntArray">
+  <request /> 
+ <response>
+  <mimeXml ref="s1:ArrayOfInt" /> 
+  </response>
+  </requestResponse>
+ <requestResponse name="GetMode" href="http://localhost/quickstart/aspplus/samples/services/DataTypes/vb/DataTypes.asmx/GetMode">
+  <request /> 
+ <response>
+  <mimeXml ref="s1:Mode" /> 
+  </response>
+  </requestResponse>
+ <requestResponse name="GetOrder" href="http://localhost/quickstart/aspplus/samples/services/DataTypes/vb/DataTypes.asmx/GetOrder">
+  <request /> 
+ <response>
+  <mimeXml ref="s1:Order" /> 
+  </response>
+  </requestResponse>
+ <requestResponse name="GetOrders" href="http://localhost/quickstart/aspplus/samples/services/DataTypes/vb/DataTypes.asmx/GetOrders">
+  <request /> 
+ <response>
+  <mimeXml ref="s1:ArrayOfOrder" /> 
+  </response>
+  </requestResponse>
+  </service>
+  </httpget>
+ <schema targetNamespace="http://tempuri.org/main.xsd" xmlns="http://www.w3.org/1999/XMLSchema">
+ <element name="SayHello">
+  <complexType /> 
+  </element>
+ <element name="SayHelloResult">
+ <complexType>
+  <element name="result" type="string" nullable="true" /> 
+  </complexType>
+  </element>
+ <element name="SayHelloName">
+ <complexType>
+  <element name="Name" type="string" nullable="true" /> 
+  </complexType>
+  </element>
+ <element name="SayHelloNameResult">
+ <complexType>
+  <element name="result" type="string" nullable="true" /> 
+  </complexType>
+  </element>
+ <element name="GetIntArray">
+  <complexType /> 
+  </element>
+ <element name="GetIntArrayResult">
+ <complexType>
+ <element name="result" nullable="true">
+ <complexType>
+  <element name="int" type="int" minOccurs="0" maxOccurs="*" /> 
+  </complexType>
+  </element>
+  </complexType>
+  </element>
+ <element name="GetMode">
+  <complexType /> 
+  </element>
+ <element name="GetModeResult">
+ <complexType>
+  <element name="result" type="s0:Mode" /> 
+  </complexType>
+  </element>
+ <simpleType name="Mode" base="string">
+  <enumeration value="EOn" /> 
+  <enumeration value="EOff" /> 
+  </simpleType>
+ <element name="GetOrder">
+  <complexType /> 
+  </element>
+ <element name="GetOrderResult">
+ <complexType>
+  <element name="result" type="s0:Order" nullable="true" /> 
+  </complexType>
+  </element>
+ <complexType name="Order">
+  <element name="OrderID" type="int" /> 
+  <element name="Price" type="double" /> 
+  </complexType>
+ <element name="GetOrders">
+  <complexType /> 
+  </element>
+ <element name="GetOrdersResult">
+ <complexType>
+ <element name="result" nullable="true">
+ <complexType>
+  <element name="Order" type="s0:Order" nullable="true" minOccurs="0" maxOccurs="*" /> 
+  </complexType>
+  </element>
+  </complexType>
+  </element>
+  </schema>
+ <schema targetNamespace="" xmlns="http://www.w3.org/1999/XMLSchema">
+  <element name="string" type="string" nullable="true" /> 
+ <element name="ArrayOfInt" nullable="true">
+ <complexType>
+  <element name="int" type="int" minOccurs="0" maxOccurs="*" /> 
+  </complexType>
+  </element>
+  <element name="Mode" type="s1:Mode" /> 
+  <simpleType name="Mode" base="string">
+  <enumeration value="EOn" /> 
+  <enumeration value="EOff" /> 
+  </simpleType>
+  <element name="Order" type="s1:Order" nullable="true" /> 
+ <complexType name="Order">
+  <element name="OrderID" type="int" /> 
+  <element name="Price" type="double" /> 
+  </complexType>
+ <element name="ArrayOfOrder" nullable="true">
+ <complexType>
+  <element name="Order" type="s1:Order" nullable="true" minOccurs="0" maxOccurs="*" /> 
+  </complexType>
+  </element>
+  </schema>
+  </serviceDescription>

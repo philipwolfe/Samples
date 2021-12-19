@@ -1,0 +1,53 @@
+<html>
+
+<head>
+    
+</head>
+
+<body>
+
+    <h3><font face="Verdana">HtmlButton Sample</font></h3>
+
+    <form name="ctrl2" method="post" action="HtmlButton1.htm" id="ctrl2">
+<input type="hidden" name="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTUyMDQwNDYyNF9fX3g=64a8dbea" />
+
+<script language="javascript">
+<!--
+	function __doPostBack(eventTarget, eventArgument) {
+		var theform = document.ctrl2
+		theform.__EVENTTARGET.value = eventTarget
+		theform.__EVENTARGUMENT.value = eventArgument
+		theform.submit()
+	}
+// -->
+</script>
+
+    <font face="Verdana" size="-1">
+
+        <p>
+        <button id="Button1" style="font: 8pt verdana;background-color:lightgreen;border-color:black;height=30;width:100" onclick="javascript:__doPostBack('Button1','')">
+            <img src="../../../../../../aspplus/images/right4.gif"> Click me!
+        </button>
+
+        &nbsp;With embedded &lt;img&gt; tag
+        <p>
+
+        <button id="Button2" style="font: 8pt verdana;background-color:lightgreen;border-color:black;height=30;width:100" onmouseover="this.style.backgroundColor='yellow'" onmouseout="this.style.backgroundColor='lightgreen'" onclick="javascript:__doPostBack('Button2','')">
+
+            Click me too!
+        </button>
+
+        &nbsp;With rollover effect
+
+        <p>
+
+        <span id="Span1"></span>
+
+    </font>
+    </form>
+
+</body>
+</html>
+

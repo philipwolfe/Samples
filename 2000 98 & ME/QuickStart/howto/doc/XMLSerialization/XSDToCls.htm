@@ -1,0 +1,254 @@
+
+
+<!--BEGIN HEADER-->
+<html>
+<head>
+<link rel="stylesheet" href="../../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+
+<table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+
+    <div style="padding:0,0,4,0"><b>XML Serialization</b><br></div>
+    &nbsp; <a class="outer" href="../../../howto/doc/xmlserialization/xsdfromcls.htm">XSD schema from a class</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/xmlserialization/xsdtocls.htm">Class from an XSD schema</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/xmlserialization/rwobjfromxml.htm">Read and Write Objs as XML</a><p>
+    <div style="padding:0,0,4,0"><a target="_top" style="color:darkred" href="../../../howto"><b>Back to Index</b></a><br></div>
+
+</div>
+
+</td>
+</tr>
+</table>
+
+
+
+
+
+
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<style>
+.mydd {  font: smaller verdana; }
+.code1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:blue;
+	}
+.codecomment1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:green;
+	}
+.issue {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background-color:RED;
+	color:WHITE;
+	font-weight:bold;
+	}
+
+
+body { font: smaller verdana }        
+
+</style>
+
+
+
+
+
+<h4>How do I create classes from an XSD schema?</h4>
+
+This topic will describe how to create classes that can be used to read and write XML that is defined by an XML Schema Description (XSD) file. Once you understand how to generate the classes for your XSD schema, you should read the <a href="RWObjFromXML.htm">"How Do I Read and Write Objects From XML?"</a> topic to find out how to actually load XML into them, and save XML from them.
+
+<ol>
+<li> Locate an XSD file.  In this example, we will use a purchase order schema, as follows: <p>
+
+        
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../../howto/samples/xmlserialization/purchaseorderxsdsource.htm">
+	<img style="border-color:black" border=1 src="../../../images/genicon.gif"><br>
+	</a>
+	<div class="caption">PurchaseOrder.XSD</div><br>
+	[<a target="_blank" href="../../../howto/samples/xmlserialization/purchaseorderxsdsource.htm">View Source</a>]
+	</div>
+
+
+
+<p>
+<li> Use the xsd.exe tool in the SDK to generate source code for the classes you want. Do this by specifying the name of the XSD file as an argument to the executable. The example below creates classes in C# using the purchaseorder.xsd schema and puts them in the XmlSerializationHowTo namespace:
+
+<div class="code"><pre>
+xsd.exe -c -l:c# -n:XmlSerializationHowTo purchaseorder.xsd
+</pre></div>
+
+<li> The tool uses the xsd file to create a set of classes that can read XML files that use the schema you specified. Here is the code that gets created for the above schema:<p>
+
+
+<span>
+  
+  
+
+        
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../../howto/samples/xmlserialization/cs/purchaseordercssource.htm">
+	<img style="border-color:black" border=1 src="../../../images/genicon.gif"><br>
+	</a>
+	<div class="caption">PurchaseOrder.vb</div><br>
+	[<a target="_blank" href="../../../howto/samples/xmlserialization/cs/purchaseordercssource.htm">View Source</a>]
+	</div>
+
+
+  </span>
+
+
+</ol>
+
+In the code you will notice additional "Custom Metadata Attributes" above the field declarations. These are used to guide the Xml Serializer classes in properly reading and writing the XML.  They are basically "hints" to the parser.  For example, the Items field has a custom attribute applied to it to tell the serializer to that the Items field should contain an array of item objects which get created from the xml being loaded.<p>
+
+
+
+<p>
+<table cellpadding=0 cellspacing=0 width="95%">
+<tr>
+<td>
+
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl8" style="display:none">
+
+[XmlArray("items"), XmlArrayItem("item")]
+public Item[] Items;
+</pre>
+<pre id="codectrl8" style="display:">
+
+To be ported
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl8" onclick="doClick(0, 'ctrl8')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl8" onclick="doClick(1, 'ctrl8')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+
+</td>
+</tr>
+</table>
+<p>
+
+
+<p>
+For detailed information on these attributes, see the reference documentation in the SDK help.  They are located in the System.Xml.Serialization namespace. <p>
+Now that you understand how to generate the classes for your XSD schema, you should read the <a href="RWObjFromXML.htm">"How Do I Read and Write Objects From XML?"</a> topic to find out how to actually load XML into them, and save XML from them.
+
+<!--END FOOTER-->
+<p>
+<hr>
+<p>
+</div>
+</td>
+</tr>
+</table>
+</BODY>
+</html>
+<!--END FOOTER-->

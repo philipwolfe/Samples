@@ -1,0 +1,120 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/services/DataService/DataServiceClient.src&file=VB/DataService.sdl" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvRGF0YVNlcnZpY2Uuc2RseF9feHhfeHhfeF9feA==c836e5d2" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/DataService.sdl</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/services/dataservice/dataserviceclientaspxsource.htm'>DataServiceClient.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/services/dataservice/dataservicesdlsource.htm'>DataService.sdl</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/services/dataservice/dataservicecssource.htm'>DataService.cs</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/services/dataservice/makeservicebatsource.htm'>makeservice.bat</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/services/dataservice/vb/dataserviceclientaspxsource.htm'>VB/DataServiceClient.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/services/dataservice/vb/dataservicesdlsource.htm'>VB/DataService.sdl</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/services/dataservice/vb/dataservicevbsource.htm'>VB/DataService.vb</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/services/dataservice/vb/makeservicebatsource.htm'>VB/makeservice.bat</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><?xml version="1.0"?>
+<serviceDescription xmlns:s0="http://tempuri.org/" name="DataService" targetNamespace="http://tempuri.org/" xmlns="urn:schemas-xmlsoap-org:sdl.2000-01-25">
+  <soap xmlns="urn:schemas-xmlsoap-org:soap-sdl-2000-01-25">
+    <service>
+      <addresses>
+        <address uri="http://localhost/QuickStart/aspplus/samples/services/DataService/VB/DataService.asmx"/>
+      </addresses>
+      <requestResponse name="GetTitleAuthors" soapAction="http://tempuri.org/GetTitleAuthors">
+        <request ref="s0:GetTitleAuthors"/>
+        <response ref="s0:GetTitleAuthorsResult"/>
+      </requestResponse>
+      <requestResponse name="PutTitleAuthors" soapAction="http://tempuri.org/PutTitleAuthors">
+        <request ref="s0:PutTitleAuthors"/>
+        <response ref="s0:PutTitleAuthorsResult"/>
+      </requestResponse>
+    </service>
+  </soap>
+  <httppost xmlns="urn:schemas-xmlsoap-org:post-sdl-2000-01-25">
+    <service>
+      <requestResponse name="GetTitleAuthors" href="http://localhost/QuickStart/aspplus/samples/services/DataService/VB/DataService.asmx/GetTitleAuthors">
+        <request>
+          <form/>
+        </request>
+        <response>
+          <mimeXml ref="s0:DataSet"/>
+        </response>
+      </requestResponse>
+    </service>
+  </httppost>
+  <httpget xmlns="urn:schemas-xmlsoap-org:get-sdl-2000-01-25">
+    <service>
+      <requestResponse name="GetTitleAuthors" href="http://localhost/QuickStart/aspplus/samples/services/DataService/VB/DataService.asmx/GetTitleAuthors">
+        <request/>
+        <response>
+          <mimeXml ref="s0:DataSet"/>
+        </response>
+      </requestResponse>
+    </service>
+  </httpget>
+  <schema targetNamespace="http://tempuri.org/" attributeFormDefault="qualified" elementFormDefault="qualified" xmlns="http://www.w3.org/1999/XMLSchema">
+    <import namespace="http://www.w3.org/1999/XMLSchema"/>
+    <element name="GetTitleAuthors">
+      <complexType/>
+    </element>
+    <element name="GetTitleAuthorsResult">
+      <complexType>
+        <all>
+          <element name="result" nullable="true">
+            <complexType>
+              <all>
+                <element ref="schema"/>
+                <any/>
+              </all>
+            </complexType>
+          </element>
+        </all>
+      </complexType>
+    </element>
+    <element name="DataSet" nullable="true">
+      <complexType>
+        <all>
+          <element ref="schema"/>
+          <any/>
+        </all>
+      </complexType>
+    </element>
+    <element name="PutTitleAuthors">
+      <complexType>
+        <all>
+          <element name="DS" nullable="true">
+            <complexType>
+              <all>
+                <element ref="schema"/>
+                <any/>
+              </all>
+            </complexType>
+          </element>
+        </all>
+      </complexType>
+    </element>
+    <element name="PutTitleAuthorsResult">
+      <complexType>
+        <all>
+          <element name="result" type="int"/>
+        </all>
+      </complexType>
+    </element>
+  </schema>
+</serviceDescription>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

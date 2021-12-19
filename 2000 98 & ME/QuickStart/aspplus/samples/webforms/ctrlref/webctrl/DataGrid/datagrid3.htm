@@ -1,0 +1,121 @@
+
+
+<html>
+
+
+<body>
+
+    <h3><font face="Verdana">Using a HyperLinkColumn in DataGrid</font></h3>
+
+    <form name="ctrl2" method="post" action="datagrid3.htm" id="ctrl2">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTM0NzQ1MDUwNF9hMHpfaHo1ejJ4X2Ewel9oejV6MXhfYTB6YTB6YTB6aHpEYXRhS2V5c19senhfSXRlbUNvdW50XzV6OXhfRGF0YVNvdXJjZUl0ZW1Db3VudF81ejl4eF9feF9fX19fX19fX194X2h6NXoweF9hMHpfaHo1ejl4X2Ewel9oejV6M3hfYTB6YTB6aHowXyQxMS4wN3hfX3hfX3hfNXoyeF9hMHphMHpoejBfRmFsc2V4X194X194XzV6MXhfYTB6YTB6aHowXzIwMDAtMTAtMjVUMTY6NDc6NDR4X194X194XzV6MHhfYTB6X2h6NXoweF9hMHphMHpoejFfZGV0YWlsc3BhZ2UuYXNwXHg/aWQ9OF8wX0l0ZW0gOHhfX3hfX3h4X3h4X3hfNXo4eF9hMHpfaHo1ejN4X2EwemEwemh6MF8kOS44NHhfX3hfX3hfNXoyeF9hMHphMHpoejBfVHJ1ZXhfX3hfX3hfNXoxeF9hMHphMHpoejBfMjAwMC0xMC0yNVQxNjo0Nzo0NHhfX3hfX3hfNXoweF9hMHpfaHo1ejB4X2EwemEwemh6MV9kZXRhaWxzcGFnZS5hc3BceD9pZD03XzBfSXRlbSA3eF9feF9feHhfeHhfeF81ejd4X2Ewel9oejV6M3hfYTB6YTB6aHowXyQ4LjYxeF9feF9feF81ejJ4X2EwemEwemh6MF9GYWxzZXhfX3hfX3hfNXoxeF9hMHphMHpoejBfMjAwMC0xMC0yNVQxNjo0Nzo0NHhfX3hfX3hfNXoweF9hMHpfaHo1ejB4X2EwemEwemh6MV9kZXRhaWxzcGFnZS5hc3BceD9pZD02XzBfSXRlbSA2eF9feF9feHhfeHhfeF81ejZ4X2Ewel9oejV6M3hfYTB6YTB6aHowXyQ3LjM4eF9feF9feF81ejJ4X2EwemEwemh6MF9UcnVleF9feF9feF81ejF4X2EwemEwemh6MF8yMDAwLTEwLTI1VDE2OjQ3OjQ0eF9feF9feF81ejB4X2Ewel9oejV6MHhfYTB6YTB6aHoxX2RldGFpbHNwYWdlLmFzcFx4P2lkPTVfMF9JdGVtIDV4X194X194eF94eF94XzV6NXhfYTB6X2h6NXozeF9hMHphMHpoejBfJDYuMTV4X194X194XzV6MnhfYTB6YTB6aHowX0ZhbHNleF9feF9feF81ejF4X2EwemEwemh6MF8yMDAwLTEwLTI1VDE2OjQ3OjQ0eF9feF9feF81ejB4X2Ewel9oejV6MHhfYTB6YTB6aHoxX2RldGFpbHNwYWdlLmFzcFx4P2lkPTRfMF9JdGVtIDR4X194X194eF94eF94XzV6NHhfYTB6X2h6NXozeF9hMHphMHpoejBfJDQuOTJ4X194X194XzV6MnhfYTB6YTB6aHowX1RydWV4X194X194XzV6MXhfYTB6YTB6aHowXzIwMDAtMTAtMjVUMTY6NDc6NDR4X194X194XzV6MHhfYTB6X2h6NXoweF9hMHphMHpoejFfZGV0YWlsc3BhZ2UuYXNwXHg/aWQ9M18wX0l0ZW0gM3hfX3hfX3h4X3h4X3hfNXozeF9hMHpfaHo1ejN4X2EwemEwemh6MF8kMy42OXhfX3hfX3hfNXoyeF9hMHphMHpoejBfRmFsc2V4X194X194XzV6MXhfYTB6YTB6aHowXzIwMDAtMTAtMjVUMTY6NDc6NDR4X194X194XzV6MHhfYTB6X2h6NXoweF9hMHphMHpoejFfZGV0YWlsc3BhZ2UuYXNwXHg/aWQ9Ml8wX0l0ZW0gMnhfX3hfX3h4X3h4X3hfNXoyeF9hMHpfaHo1ejN4X2EwemEwemh6MF8kMi40NnhfX3hfX3hfNXoyeF9hMHphMHpoejBfVHJ1ZXhfX3hfX3hfNXoxeF9hMHphMHpoejBfMjAwMC0xMC0yNVQxNjo0Nzo0NHhfX3hfX3hfNXoweF9hMHpfaHo1ejB4X2EwemEwemh6MV9kZXRhaWxzcGFnZS5hc3BceD9pZD0xXzBfSXRlbSAxeF9feF9feHhfeHhfeF81ejF4X2Ewel9oejV6M3hfYTB6YTB6aHowXyQxLjIzeF9feF9feF81ejJ4X2EwemEwemh6MF9GYWxzZXhfX3hfX3hfNXoxeF9hMHphMHpoejBfMjAwMC0xMC0yNVQxNjo0Nzo0NHhfX3hfX3hfNXoweF9hMHpfaHo1ejB4X2EwemEwemh6MV9kZXRhaWxzcGFnZS5hc3BceD9pZD0wXzBfSXRlbSAweF9feF9feHhfeHhfeHhfeHhfeHhfeHhfeF9feFxuMF9UZVx4dF8xX05hdmlnYXRlVXJsaaa1c00a" />
+
+
+      <table cellspacing="0" cellpadding="3" rules="all" bordercolor="Black" border="1">
+    <tr bgcolor="#AAAADD">
+        <td><font face="Verdana" size="1">
+            Details
+        </font></td><td><font face="Verdana" size="1">
+            Date/Time
+        </font></td><td><font face="Verdana" size="1">
+            True/False
+        </font></td><td><font face="Verdana" size="1">
+            Price
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            <a id="MyDataGrid_ctrl2_Column0Control" href="detailspage.htm?id=0" target="_new">Item 0</a>
+        </font></td><td><font face="Verdana" size="1">
+            2000-10-25T16:47:44
+        </font></td><td><font face="Verdana" size="1">
+            False
+        </font></td><td align="Right"><font face="Verdana" size="1">
+            $1.23
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            <a id="MyDataGrid_ctrl3_Column0Control" href="detailspage.htm?id=1" target="_new">Item 1</a>
+        </font></td><td><font face="Verdana" size="1">
+            2000-10-25T16:47:44
+        </font></td><td><font face="Verdana" size="1">
+            True
+        </font></td><td align="Right"><font face="Verdana" size="1">
+            $2.46
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            <a id="MyDataGrid_ctrl4_Column0Control" href="detailspage.htm?id=2" target="_new">Item 2</a>
+        </font></td><td><font face="Verdana" size="1">
+            2000-10-25T16:47:44
+        </font></td><td><font face="Verdana" size="1">
+            False
+        </font></td><td align="Right"><font face="Verdana" size="1">
+            $3.69
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            <a id="MyDataGrid_ctrl5_Column0Control" href="detailspage.htm?id=3" target="_new">Item 3</a>
+        </font></td><td><font face="Verdana" size="1">
+            2000-10-25T16:47:44
+        </font></td><td><font face="Verdana" size="1">
+            True
+        </font></td><td align="Right"><font face="Verdana" size="1">
+            $4.92
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            <a id="MyDataGrid_ctrl6_Column0Control" href="detailspage.htm?id=4" target="_new">Item 4</a>
+        </font></td><td><font face="Verdana" size="1">
+            2000-10-25T16:47:44
+        </font></td><td><font face="Verdana" size="1">
+            False
+        </font></td><td align="Right"><font face="Verdana" size="1">
+            $6.15
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            <a id="MyDataGrid_ctrl7_Column0Control" href="detailspage.htm?id=5" target="_new">Item 5</a>
+        </font></td><td><font face="Verdana" size="1">
+            2000-10-25T16:47:44
+        </font></td><td><font face="Verdana" size="1">
+            True
+        </font></td><td align="Right"><font face="Verdana" size="1">
+            $7.38
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            <a id="MyDataGrid_ctrl8_Column0Control" href="detailspage.htm?id=6" target="_new">Item 6</a>
+        </font></td><td><font face="Verdana" size="1">
+            2000-10-25T16:47:44
+        </font></td><td><font face="Verdana" size="1">
+            False
+        </font></td><td align="Right"><font face="Verdana" size="1">
+            $8.61
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            <a id="MyDataGrid_ctrl9_Column0Control" href="detailspage.htm?id=7" target="_new">Item 7</a>
+        </font></td><td><font face="Verdana" size="1">
+            2000-10-25T16:47:44
+        </font></td><td><font face="Verdana" size="1">
+            True
+        </font></td><td align="Right"><font face="Verdana" size="1">
+            $9.84
+        </font></td>
+    </tr><tr>
+        <td><font face="Verdana" size="1">
+            <a id="MyDataGrid_ctrl10_Column0Control" href="detailspage.htm?id=8" target="_new">Item 8</a>
+        </font></td><td><font face="Verdana" size="1">
+            2000-10-25T16:47:44
+        </font></td><td><font face="Verdana" size="1">
+            False
+        </font></td><td align="Right"><font face="Verdana" size="1">
+            $11.07
+        </font></td>
+    </tr>
+</table>
+
+  </form>
+
+</body>
+</html>

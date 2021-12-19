@@ -1,0 +1,61 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Remoting/byvalue/server.src&file=VB%5Cclient.vb" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkJcXGNsaWVudC52YnhfX3h4X3h4X3hfX3g=8acaab08" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB\client.vb</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../howto/samples/remoting/byvalue/objectcssource.htm'>object.cs</a> &nbsp;&nbsp<a href='../../../../../howto/samples/remoting/byvalue/servercssource.htm'>server.cs</a> &nbsp;&nbsp<a href='../../../../../howto/samples/remoting/byvalue/sharecssource.htm'>share.cs</a> &nbsp;&nbsp<a href='../../../../../howto/samples/remoting/byvalue/clientcssource.htm'>client.cs</a> &nbsp;&nbsp<a href='../../../../../howto/samples/remoting/byvalue/makefilesource.htm'>makefile</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../howto/samples/remoting/byvalue/vb/objectvbsource.htm'>VB\object.vb</a> &nbsp;&nbsp<a href='../../../../../howto/samples/remoting/byvalue/vb/servervbsource.htm'>VB\server.vb</a> &nbsp;&nbsp<a href='../../../../../howto/samples/remoting/byvalue/vb/sharevbsource.htm'>VB\share.vb</a> &nbsp;&nbsp<a href='../../../../../howto/samples/remoting/byvalue/vb/clientvbsource.htm'>VB\client.vb</a> &nbsp;&nbsp<a href='../../../../../howto/samples/remoting/byvalue/vb/makefilesource.htm'>VB\makefile</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>imports System
+imports System.Runtime.Remoting
+imports System.Runtime.Remoting.Channels.TCP
+
+namespace RemotingSamples
+
+  public class Client
+  
+    shared sub main
+      dim chan as TCPChannel 
+      chan = new TCPChannel()
+      ChannelServices.RegisterChannel(chan)
+      dim param as ForwardMe 
+      param = new ForwardMe()
+      dim obj as HelloServer 
+      obj = ctype(Activator.GetObject(Type.GetType("RemotingSamples.HelloServer"), "tcp://localhost:8085/SayHello"),HelloServer)
+      if obj is nothing 
+          System.Console.WriteLine("Could not locate server")
+        else
+          Console.WriteLine("The value is " + Int32.ToString(param.getValue()))
+          dim after as ForwardMe 
+	  after = obj.HelloMethod(param)
+          Console.WriteLine("The value after the call is " + Int32.ToString(after.getValue()))
+      end if  
+      
+    end sub
+    
+  end class
+  
+end namespace
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

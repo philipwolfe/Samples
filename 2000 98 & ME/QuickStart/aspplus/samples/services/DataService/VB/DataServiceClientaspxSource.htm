@@ -1,0 +1,99 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/services/DataService/DataServiceClient.src&file=VB/DataServiceClient.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvRGF0YVNlcnZpY2VDbGllbnQuYXNwXHh4X194eF94eF94X19436a0254d" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/DataServiceClient.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/services/dataservice/dataserviceclientaspxsource.htm'>DataServiceClient.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/services/dataservice/dataservicesdlsource.htm'>DataService.sdl</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/services/dataservice/dataservicecssource.htm'>DataService.cs</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/services/dataservice/makeservicebatsource.htm'>makeservice.bat</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/services/dataservice/vb/dataserviceclientaspxsource.htm'>VB/DataServiceClient.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/services/dataservice/vb/dataservicesdlsource.htm'>VB/DataService.sdl</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/services/dataservice/vb/dataservicevbsource.htm'>VB/DataService.vb</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/services/dataservice/vb/makeservicebatsource.htm'>VB/makeservice.bat</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Import Namespace="DataServices" %>
+<%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="System.Data.SQL" %>
+
+<html>
+<script language="VB" runat="server">
+
+    Protected Sub Page_Load(Src As Object, E As EventArgs) 
+
+        Dim D As DataService = New DataService()
+        Dim MyData As DataSet = D.GetTitleAuthors()
+
+        Authors_DataGrid.DataSource=MyData.Tables("Authors").DefaultView
+        Authors_DataGrid.DataBind()
+
+        Message.InnerHtml = "The number of rows is: " & MyData.Tables("Authors").Rows.Count.ToString()
+
+    End Sub
+
+    Protected Sub Submit_DataSet(Src As Object, E As EventArgs)
+
+        Dim D As DataService = New DataService()
+        Dim MyData As DataSet = D.GetTitleAuthors()
+
+        'Remove three rows from the Authors table
+        MyData.Tables("Authors").Rows.Remove(0)
+        MyData.Tables("Authors").Rows.Remove(1)
+        MyData.Tables("Authors").Rows.Remove(2)
+
+        Dim RowCount As Integer = D.PutTitleAuthors(MyData)
+
+        Authors_DataGrid.DataSource=MyData.Tables("Authors").DefaultView
+        Authors_DataGrid.DataBind()
+
+        Message.InnerHtml = "The modified number of rows is: " & RowCount.ToString()
+    End Sub
+
+</script>
+
+<body style="font: 10pt verdana">
+
+  <h4>Using Data Access with Web Services</h4>
+
+  <form runat="server">
+
+      <input type="submit" OnServerclick="Submit_DataSet" value="Remove three rows from the  DataSet" runat="server"/>
+      <p>
+      <span id="Message" runat="server"/>
+
+      <p>
+ 
+      <ASP:DataGrid id="Authors_DataGrid" runat="server"
+        Width="700"
+        BackColor="#ccccff" 
+        BorderColor="black"
+        ShowFooter="false" 
+        CellPadding=3 
+        CellSpacing="0"
+        Font-Name="Verdana"
+        Font-Size="8pt"
+        HeaderStyle-BackColor="#aaaadd"
+        MaintainState="false"
+      />
+
+    </form>
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

@@ -1,0 +1,63 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Services/EventLog/logwrite/logwrite.src&file=LogWrite.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfTG9nV3JpdGUuY3N4X194eF94eF94X194b938ec0e" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">LogWrite.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../howto/samples/services/eventlog/logwrite/logwritecssource.htm'>LogWrite.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../howto/samples/services/eventlog/logwrite/vb/logwritevbsource.htm'>VB\LogWrite.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>using System;
+using System.Diagnostics;
+
+public class WriteLog {
+    public static void Main(String[] args) {
+        string appName = Environment.GetCommandLineArgs()[0];
+
+        if ( args.Length != 3 ) {
+            Console.WriteLine("Usage: " + appName +" <log> <message> <source>");
+            return;
+        }
+
+        string log = args[0];
+        string source = args[2];
+
+        if ( !EventLog.SourceExists(source) ) {
+            EventLog.CreateEventSource(source,log);
+        }
+
+        EventLog aLog = new EventLog();
+        aLog.Source = source;
+
+        if ( aLog.Log.ToUpper() != log.ToUpper() ) {
+            Console.WriteLine("Some other application is using the source!");
+            return;
+        }
+
+        aLog.WriteEntry(args[1],EventLogEntryType.Information);
+        Console.WriteLine("Entry written successfuly!");
+    }
+}
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

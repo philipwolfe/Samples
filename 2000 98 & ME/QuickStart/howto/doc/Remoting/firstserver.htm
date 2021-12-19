@@ -1,0 +1,373 @@
+
+<!--BEGIN HEADER-->
+<html>
+<head>
+<link rel="stylesheet" href="../../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+
+<table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+
+    <div style="padding:0,0,4,0"><b>Remoting</b><br></div>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/mainfeatures.htm">Remoting Overview</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/nutshell.htm">How Remoting Works</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/quickstart.htm">Remoting Samples</a><p>
+    <div style="padding:0,0,4,0"><b>The Basics</b><br></div>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/firstserver.htm">Create a Remote Server</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/firstclient.htm">Create a Client of the Server</a><p>
+    <div style="padding:0,0,4,0"><b>Samples</b><br></div>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/singleton.htm">Create a Singleton Object</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/byreference.htm">Pass Objects By Reference</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/byvalue.htm">Pass Objects By Value</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/interface.htm">Compile Against an Interface</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/remoting/async.htm">Make an Asynchronous Call</a><p>
+    <div style="padding:0,0,4,0"><a target="_top" style="color:darkred" href="../../../howto"><b>Back to Index</b></a><br></div>
+
+</div>
+
+</td>
+</tr>
+</table>
+
+
+
+
+
+
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<style>
+.mydd {  font: smaller verdana; }
+.code1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:blue;
+	}
+.codecomment1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:green;
+	}
+.issue {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background-color:RED;
+	color:WHITE;
+	font-weight:bold;
+	}
+
+
+body { font: smaller verdana }        
+
+</style>
+
+
+
+
+
+<h4>How Do I...Create a Remote Server?</h4>
+
+Lets create the remoting version of a Hello World server.  When a client
+calls the <b>HelloMethod</b> on the <b>HelloServer</b> class, the server object appends
+the string passed from the client to <em>"Hi There"</em> and returns the resulting
+string back to the client.  Here's the code.
+
+<p>
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 1;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:85%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="2">
+<pre id="codectrl4" style="display:">
+
+using System;
+using System.Runtime.Remoting;
+using System.Runtime.Remoting.Channels.TCP;
+
+namespace RemotingSamples {
+
+    public class HelloServer : MarshalByRefObject {
+
+        public static int Main(string [] args) {
+
+            TCPChannel chan = new TCPChannel(8085);
+            ChannelServices.RegisterChannel(chan);
+            RemotingServices.RegisterWellKnownType(
+                "server", 
+            	"RemotingSamples.HelloServer", 
+            	"SayHello", 
+            	WellKnownObjectMode.SingleCall);
+            System.Console.WriteLine("Hit <enter> to exit...");
+            System.Console.ReadLine();
+            return 0;
+        }
+
+        public HelloServer() {
+            Console.WriteLine("HelloServer activated");
+        }
+
+        ~HelloServer() {
+            Console.WriteLine("Object Destroyed");
+        }
+
+        public String HelloMethod(String name) {
+            Console.WriteLine("Hello.HelloMethod : {0}", name);
+            return "Hi there " + name;
+        }
+    }
+}
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="tab" id="tabctrl4" onclick="doClick(0, 'ctrl4')">
+          <b>C#
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+<p>
+
+The class <b>HelloServer</b> is derived from <b>MarshalByRefObject</b> to make it
+remotable.  When the server is started, we create and register a TCP
+channel that will listen for clients to connect on port 8085.  We also 
+register the remote object with the remoting framework by calling
+<b>RegisterWellKnownType</b>.  The parameters for this call are as follows:<p>
+
+<ol>
+<li>The name of the assembly that contains the object being registered.
+Since our object is contained in a executable, we provide the name of the
+executable here.  Both <b>server</b> and <b>server.exe</b> will work since the normal
+rules of locating an assembly applies.<p>
+
+<li>The next parameter is the full type name of the object being
+registered, in this case <b>"RemotingSamples.HelloServer"</b>.  We need to
+specify both the name of the namespace as well as the classname here.  If
+we don't use namespaces, we simply pass the classname.<p>
+
+<li>Then we provide the name of the endpoint where the object will be
+published.  Clients need to know this name in order to connect to the
+object.  Any string will do and for this example we use <b>"SayHello"</b>.  
+It is also possible to connect to remote objects via ASP.NET and if this is a
+requirement, the name of the endpoint should be <b>namespace/class.soap</b>.  
+For this example, the endpoint will be <b>RemotingSamples/HelloServer.soap</b>.<p>
+
+<li>The final parameter specifies the object mode which can be <b>SingleCall</b>
+or <b>Singleton</b>.  For this example, we specify <b>SingleCall</b>.  The 
+object mode specifies the lifetime of the object when it is activated 
+on the server. In the case of <b>SingleCall</b> objects, a new instance of 
+the class will be created for each call made form a client, even if the 
+same client calls the same method more than once.  <b>Singleton</b> objects 
+on the other hand, are created once only and all clients communicate 
+with the same object.
+</ol>
+
+We can now compile this example as follows and execute it.
+
+<p>
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 1;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:85%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="2">
+<pre id="codectrl6" style="display:">
+
+csc /debug+ /t:library /r:System.Runtime.Remoting.dll object.cs
+csc /debug+ /r:object.dll /r:System.Runtime.Remoting.dll server.cs
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="tab" id="tabctrl6" onclick="doClick(0, 'ctrl6')">
+          <b>C#
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+<p>
+
+When you start the server, the object will be instantiated as part of the
+registration process so the framework can extract the relevant metadata
+from the object.  After registration, this object gets destroyed and
+the framework starts listening for clients to connect on the registered
+channels.</p>
+
+<span>
+
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../../howto/samples/remoting/hello/vb">
+	<img style="border-color:black" border=1 src="../../../images/genicon.gif"><br>
+	</a>
+	<div class="caption">Hello Server Sample</div><br>
+	
+	
+		[<a target="_blank" href="../../../howto/samples/remoting/hello/vb">Run Sample</a>] | 
+		[<a target="_blank" href="../../../howto/samples/remoting/hello/objectcssource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+</span>
+<p>
+
+
+<!--END FOOTER-->
+<p>
+<hr>
+<p>
+</div>
+</td>
+</tr>
+</table>
+</BODY>
+</html>
+<!--END FOOTER-->

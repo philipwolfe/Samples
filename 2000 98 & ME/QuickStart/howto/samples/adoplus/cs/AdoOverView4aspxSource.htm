@@ -1,0 +1,99 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/adoplus/vb/adooverview4.src&file=..%5CCS%5CAdoOverView4.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfLi5cXENTXFxBZG9PdmVyVmlldzQuYXNwXHh4X194eF94eF94X194d4f29411" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">..\CS\AdoOverView4.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../howto/samples/adoplus/vb/adooverview4aspxsource.htm'>AdoOverView4.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../howto/samples/adoplus/cs/adooverview4aspxsource.htm'>..\CS\AdoOverView4.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><html>
+<%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="System.Data.SQL" %>
+<head>
+<script language="C#" runat="server">
+
+  public DataSet myDataSet;
+  public string Message;
+  protected void Page_Load(Object Src, EventArgs E)
+  {
+    SQLConnection myConnection = new SQLConnection("server=localhost;uid=sa;pwd=;database=northwind");
+    SQLDataSetCommand CustomersDSCommand = new SQLDataSetCommand("select * from customers", myConnection);
+    SQLDataSetCommand OrdersDSCommand = new SQLDataSetCommand("select * from orders", myConnection);
+    Cleanup(myConnection); // restore database to near it's original condifition so sample will work correctly.
+
+    try
+    {
+      myDataSet = new DataSet();
+      DataRow myCustomer;
+      
+      CustomersDSCommand.FillDataSet(myDataSet,"Customers");
+      Response.Write("Loaded data from Customers table into dataset.<BR>"); 
+
+      OrdersDSCommand.FillDataSet(myDataSet,"Orders");
+      Response.Write("Loaded data from Orders  table into dataset.<BR>"); 
+
+      //ADD RELATION
+      myDataSet.Relations.Add("CustOrders",myDataSet.Tables["Customers"].Columns["CustomerId"],myDataSet.Tables["Orders"].Columns["CustomerId"]);
+      
+      // EDIT
+      myDataSet.Tables["Customers"].Rows[0]["ContactName"]="Peach";
+      
+      // ADD
+      myCustomer = myDataSet.Tables["Customers"].NewRow();
+      myCustomer["CustomerId"] ="NewID";
+      myCustomer["ContactName"] = "New Name";
+      myCustomer["CompanyName"] = "New Company Name";
+      myDataSet.Tables["Customers"].Rows.Add(myCustomer);
+      Response.Write("Inserted new row into Customers.<BR>");
+
+      //Update Database with DatasetCommand
+      CustomersDSCommand.Update(myDataSet, "Customers");
+      Response.Write("Sent Update to database.<BR>");
+      
+      Message = "DataSet processing has completed successfully!";
+    }
+    catch(Exception e)
+    {
+      Message = e.ToString();
+    }
+  }
+
+  protected void Cleanup(SQLConnection myConnection)
+  {
+    myConnection.Open();
+    SQLCommand myCommand = new SQLCommand("DELETE FROM Customers WHERE CustomerId = 'NewID'", myConnection);
+    myCommand.ExecuteNonQuery();
+    myConnection.Close();
+  }
+
+</script>
+</head>
+<body>
+
+<% Response.Write(Message); %>
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

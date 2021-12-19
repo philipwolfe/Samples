@@ -1,0 +1,77 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Services/ServiceApplication/simpleservice/simpleservice.src&file=VB%5CSimpleService.vb" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkJcXFNpbXBsZVNlcnZpY2UudmJ4X194eF94eF94X19447e429cc" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB\SimpleService.vb</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../howto/samples/services/serviceapplication/simpleservice/simpleservicecssource.htm'>SimpleService.cs</a> &nbsp;&nbsp<a href='../../../../../../howto/samples/services/serviceapplication/simpleservice/projectinstallercssource.htm'>ProjectInstaller.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../howto/samples/services/serviceapplication/simpleservice/vb/simpleservicevbsource.htm'>VB\SimpleService.vb</a> &nbsp;&nbsp<a href='../../../../../../howto/samples/services/serviceapplication/simpleservice/vb/projectinstallervbsource.htm'>VB\ProjectInstaller.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>Imports System
+Imports System.ServiceProcess
+Imports System.Diagnostics
+Imports System.Timers
+
+public class SimpleService: inherits ServiceBase
+        protected timer As Timer
+    
+        public shared sub Main()
+                ServiceBase.Run(new SimpleService())
+        end sub
+    
+	public sub New()
+                MyBase.New()
+		CanPauseAndContinue = true
+                ServiceName = "Hello-World Service"
+                
+                timer = new Timer()
+                timer.Interval = 1000
+                AddHandler timer.Tick, AddressOf OnTimer
+	end sub
+
+	protected overrides Sub OnStart(args() As String)
+    		EventLog.WriteEntry("Hello-World Service started")
+                timer.Enabled = true
+	end sub
+ 
+	protected overrides sub OnStop()
+		EventLog.WriteEntry("Hello-World Service stopped")
+                timer.Enabled = false
+	end sub
+
+	protected overrides sub OnPause()
+    		EventLog.WriteEntry("Hello-World Service paused")
+                timer.Enabled = false
+	end sub
+
+	protected overrides sub OnContinue()
+    		EventLog.WriteEntry("Hello-World Service continued")
+                timer.Enabled = true
+	end sub
+    
+        protected sub OnTimer(source as object, e As EventArgs)
+		EventLog.WriteEntry("Hello World!")
+	end sub
+end class
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

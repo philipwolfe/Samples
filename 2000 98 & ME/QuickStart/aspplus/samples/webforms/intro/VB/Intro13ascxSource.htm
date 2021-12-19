@@ -1,0 +1,77 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/intro/intro13.src&file=VB/Intro13.ascx" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvSW50cm8xMy5hc2NceHhfX3h4X3h4X3hfX3g=13b93729" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/Intro13.ascx</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/intro/intro13aspxsource.htm'>Intro13.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/intro/intro13ascxsource.htm'>Intro13.ascx</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/intro/vb/intro13aspxsource.htm'>VB/Intro13.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/intro/vb/intro13ascxsource.htm'>VB/Intro13.ascx</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/intro/js/intro13aspxsource.htm'>JS/Intro13.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/intro/js/intro13ascxsource.htm'>JS/Intro13.ascx</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Ads File: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/intro/adsxmlsource.htm'>ads.xml</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Import Namespace="WebMarket" %>
+
+<script language="VB" runat=server>
+
+   Private Sub SubmitBtn_Click(Sender As Object, E As EventArgs)
+       Dim Inventory  As InventoryDB
+       Inventory = New InventoryDB()
+       MyList.DataSource = Inventory.GetProducts(Category.SelectedItem.Value)
+       MyList.DataBind()
+   End Sub
+
+</script>
+
+<h3> Name: <asp:textbox id="Name" runat="server"/>
+
+Category:  <asp:dropdownlist id="Category" runat=server>
+              <asp:listitem >Milk</asp:listitem>
+              <asp:listitem >Cereal</asp:listitem>
+              <asp:listitem >Soda</asp:listitem>
+           </asp:dropdownlist>
+
+<asp:button type=submit text="Lookup" OnClick="SubmitBtn_Click" runat="server"/>
+
+<p>
+
+<asp:datalist id="MyList" repeatdirection="horizontal" repeatcolumns="2" borderwidth="0" runat="server">
+
+  <template name="itemtemplate">
+
+      <center>
+         <img src='<%# DataBinder.Eval(Container.DataItem, "ImageUrl") %>'><br>
+         <%# DataBinder.Eval(Container.DataItem, "Description") %> <br>
+         <%# DataBinder.Eval(Container.DataItem, "Price", "{0:C}") %> <br>
+      </center>        
+
+  </template>
+
+</asp:datalist>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

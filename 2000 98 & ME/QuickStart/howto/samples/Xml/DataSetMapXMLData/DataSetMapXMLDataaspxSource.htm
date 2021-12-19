@@ -1,0 +1,137 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Xml/DataSetMapXMLData/DataSetMapXMLData.src&file=DataSetMapXMLData.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfRGF0YVNldE1hcFhNTERhdGEuYXNwXHh4X194eF94eF94X194802ccfff" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">DataSetMapXMLData.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../howto/samples/xml/datasetmapxmldata/datasetmapxmldatacssource.htm'>DataSetMapXMLData.cs</a> &nbsp;&nbsp<a href='../../../../howto/samples/xml/datasetmapxmldata/datasetmapxmldataaspxsource.htm'>DataSetMapXMLData.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../howto/samples/xml/datasetmapxmldata/vb/datasetmapxmldatavbsource.htm'>VB/DataSetMapXMLData.vb</a> &nbsp;&nbsp<a href='../../../../howto/samples/xml/datasetmapxmldata/vb/datasetmapxmldataaspxsource.htm'>VB/DataSetMapXMLData.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>XML Data: </b></td>
+        <td><a href='../../../../howto/samples/xml/datasetmapxmldata/booksxmlsource.htm'>books.xml</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Import Namespace="System" %>
+<%@ Import Namespace="System.IO" %>
+<%@ Import Namespace="System.Data" %>
+<%@ Assembly Name="System.Xml" %>
+<%@ Import Namespace="System.Xml" %>
+
+<script language="C#" runat=server>
+public class LoadDataSetXMLDataSample	
+{
+	private string m_Document = "";
+	private DataSet dataset;
+	StringWriter writer;
+	
+	public string Start(String args)
+	{
+		m_Document = args;
+		StringWriter writer = new StringWriter();
+		Console.SetOut(writer);
+
+        try
+        {
+            Console.WriteLine("Creating an XmlDataDocument ...");
+            XmlDataDocument datadoc = new XmlDataDocument();
+
+            // Infer the DataSet schema from the XML data and load the XML Data
+            datadoc.DataSet.ReadXml(new StreamReader(m_Document));
+
+            DisplayTables(datadoc.DataSet);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine ("Exception: {0}", e.ToString());
+        }
+
+		return writer.ToString();
+	}
+
+    // Displays the contents of the DataSet tables
+    private void DisplayTables(DataSet dataset)
+    {
+        // Navigate Dataset
+        Console.WriteLine("Content of Tables ...\r\n");
+
+        foreach(DataTable table in dataset.Tables)
+        {
+            Console.WriteLine("TableName = " + table.TableName);
+            Console.WriteLine ("{0}", "---------");
+            Console.WriteLine("Columns ...\r\n");
+
+            foreach(DataColumn column in table.Columns)
+            {
+                Console.Write("{0,-22}",column.ColumnName);
+            }
+            Console.WriteLine("");
+            Console.WriteLine("\r\nNumber of rows = {0}", table.Rows.All.Length);
+            Console.WriteLine("Rows ...\r\n");
+
+            foreach(DataRow row in table.Rows)
+            {
+                foreach(Object value in row.ItemArray)
+                {
+                    Console.Write("{0,-22}",value.ToString());
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+        }
+    }
+} 
+</script>
+<html>
+<head>
+      	<link rel="stylesheet" href="intro.css">
+</head>
+<body style="background-color:f6e4c6">
+
+       	<form action="DataSetMapXMLData.htm" method="post" runat="server">
+       	<font>Schema file: </font> 
+        <a href="../../../../howto/samples/xml/datasetmapxmldata/books.xml">books.xml</a>
+	<center>
+		&nbsp;&nbsp;&nbsp;&nbsp;<asp:button type=submit text="Run" OnClick="SubmitBtn_Click" runat="server"/></br>
+       	</form>
+	</center>
+	<p>
+
+	<table align="center">
+	<tr><th><span>Output from infering schema and creating tables...</span></th></tr>
+	<tr><th><span></span></th></tr>
+	<tr><td><h4><xmp id="output" runat="server"/></h4></td></tr>
+	</table>
+
+</body>
+</html>
+
+<script language="C#" runat=server>
+
+private void SubmitBtn_Click(Object sender, EventArgs e)
+{		
+	LoadDataSetXMLDataSample myLoadDataSetXMLDataSample= new LoadDataSetXMLDataSample();
+	output.InnerHtml = myLoadDataSetXMLDataSample.Start(Server.MapPath("books.xml"));
+}
+</script>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

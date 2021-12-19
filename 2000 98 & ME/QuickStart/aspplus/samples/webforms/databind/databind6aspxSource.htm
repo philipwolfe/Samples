@@ -1,0 +1,94 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/databind/databind6.src&file=databind6.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfZGF0YWJpbmQ2LmFzcFx4eF9feHhfeHhfeF9feA==dded1c65" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">databind6.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/databind/databind6aspxsource.htm'>databind6.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/databind/vb/databind6aspxsource.htm'>VB\databind6.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/databind/js/databind6aspxsource.htm'>JS\databind6.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><html>
+<head>
+
+    <script language="C#" runat="server">
+
+        void Page_Load(Object Src, EventArgs E) {
+
+            if (!Page.IsPostBack) {
+
+               ArrayList values = new ArrayList();
+
+               values.Add (0);
+               values.Add (1);
+               values.Add (2);
+               values.Add (3);
+               values.Add (4);
+               values.Add (5);
+               values.Add (6);
+
+               DataList1.DataSource = values;
+               DataList1.DataBind();
+            }
+        }
+
+        String EvenOrOdd(int number) {
+            if ((number % 2) == 0)
+              return "Even";
+            else
+              return "Odd";
+        }
+
+    </script>
+
+</head>
+<body>
+
+    <h3><font face="Verdana">Databinding to Methods and Expressions</font></h3>
+
+    <form runat=server>
+
+      <asp:DataList id="DataList1" runat="server"
+        BorderColor="black"
+        BorderWidth="1"
+        GridLines="Both"
+        CellPadding="3"
+        CellSpacing="0"
+        >
+
+        <template name="ItemTemplate">
+          Number Value: <%# Container.DataItem %> 
+          Even/Odd: <%# EvenOrOdd((int) Container.DataItem) %>  
+        </template>
+
+      </asp:datalist>
+
+    </form>
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

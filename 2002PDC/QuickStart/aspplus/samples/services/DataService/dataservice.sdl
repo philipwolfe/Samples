@@ -1,0 +1,80 @@
+<?xml version="1.0" ?> 
+ <serviceDescription xmlns:s0="http://tempuri.org/main.xsd" xmlns:s1="" name="DataService" targetNamespace="" xmlns="urn:schemas-xmlsoap-org:sdl.2000-01-25">
+ <soap xmlns="urn:schemas-xmlsoap-org:soap-sdl-2000-01-25">
+ <service>
+ <addresses>
+  <address uri="http://localhost/quickstart/aspplus/samples/services/DataService/DataService.asmx" /> 
+  </addresses>
+ <requestResponse name="GetTitleAuthors" soapAction="http://tempuri.org/GetTitleAuthors">
+  <request ref="s0:GetTitleAuthors" /> 
+  <response ref="s0:GetTitleAuthorsResult" /> 
+  </requestResponse>
+ <requestResponse name="PutTitleAuthors" soapAction="http://tempuri.org/PutTitleAuthors">
+  <request ref="s0:PutTitleAuthors" /> 
+  <response ref="s0:PutTitleAuthorsResult" /> 
+  </requestResponse>
+  </service>
+  </soap>
+ <httppost xmlns="urn:schemas-xmlsoap-org:post-sdl-2000-01-25">
+ <service>
+ <requestResponse name="GetTitleAuthors" href="http://localhost/quickstart/aspplus/samples/services/DataService/DataService.asmx/GetTitleAuthors">
+ <request>
+  <form /> 
+  </request>
+ <response>
+  <mimeXml ref="s1:DataSet" /> 
+  </response>
+  </requestResponse>
+  </service>
+  </httppost>
+ <httpget xmlns="urn:schemas-xmlsoap-org:get-sdl-2000-01-25">
+ <service>
+ <requestResponse name="GetTitleAuthors" href="http://localhost/quickstart/aspplus/samples/services/DataService/DataService.asmx/GetTitleAuthors">
+  <request /> 
+ <response>
+  <mimeXml ref="s1:DataSet" /> 
+  </response>
+  </requestResponse>
+  </service>
+  </httpget>
+ <schema targetNamespace="http://tempuri.org/main.xsd" xmlns="http://www.w3.org/1999/XMLSchema">
+  <import namespace="http://www.w3.org/1999/XMLSchema" /> 
+ <element name="GetTitleAuthors">
+  <complexType /> 
+  </element>
+ <element name="GetTitleAuthorsResult">
+ <complexType>
+ <element name="result" nullable="true">
+ <complexType>
+  <element ref="schema" /> 
+  <any /> 
+  </complexType>
+  </element>
+  </complexType>
+  </element>
+ <element name="PutTitleAuthors">
+ <complexType>
+ <element name="ds" nullable="true">
+ <complexType>
+  <element ref="schema" /> 
+  <any /> 
+  </complexType>
+  </element>
+  </complexType>
+  </element>
+ <element name="PutTitleAuthorsResult">
+ <complexType>
+  <element name="result" type="int" /> 
+  </complexType>
+  </element>
+  </schema>
+ <schema targetNamespace="" xmlns="http://www.w3.org/1999/XMLSchema">
+  <import namespace="http://www.w3.org/1999/XMLSchema" /> 
+ <element name="DataSet" nullable="true">
+ <complexType>
+  <element ref="schema" /> 
+  <any /> 
+  </complexType>
+  </element>
+  </schema>
+  </serviceDescription>

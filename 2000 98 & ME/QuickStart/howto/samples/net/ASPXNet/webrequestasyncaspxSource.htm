@@ -1,0 +1,80 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/net/ASPXNet/webrequestasync.src&file=webrequestasync.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfd2VicmVxdWVzdGFzeW5jLmFzcFx4eF9feHhfeHhfeF9feA==91e6db12" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">webrequestasync.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>Source: </b></td>
+        <td><a href='../../../../howto/samples/net/aspxnet/webrequestasyncaspxsource.htm'>webrequestasync.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Page language="C#" %>
+<%@ Import Namespace="System.Net" %>
+<%@ Import Namespace="System.Threading" %>
+<%@ Import Namespace="System.IO" %>
+<%@ Assembly Name="System.Net" %>
+
+<html>
+<head>
+
+<SCRIPT runat="server">
+	void btnSubmit_Click(Object sender, EventArgs e) {
+
+		const int MAX = 20;
+
+		URI HttpSite = new URI(txtURI.Text);
+		HttpWebRequest wreq = (HttpWebRequest) WebRequestFactory.Create(HttpSite);
+		IAsyncResult r = wreq.BeginGetResponse(new AsyncCallback(RespCallback), null);
+		Thread.Sleep(3000);
+	}
+
+	private void RespCallback(IAsyncResult ar)
+	{
+		HttpWebRequest req = (HttpWebRequest) ar.AsyncObject;
+		HttpWebResponse resp = (HttpWebResponse) req.EndGetResponse(ar);
+
+		int BytesRead = 0;
+		char[] Buffer = new char[512];
+
+		StreamReader Reader = new StreamReader(resp.GetResponseStream(), System.Text.Encoding.UTF8);
+		StringWriter Writer = new StringWriter();
+
+		BytesRead = Reader.Read(Buffer, 0, 512);
+		while (BytesRead != 0 ) {
+			Writer.Write(Buffer, 0, 512);
+			BytesRead = Reader.Read(Buffer, 0, 512);
+		}
+		txtHTML.InnerHtml = Writer.ToString();
+	}
+</SCRIPT>
+</head>
+
+<body>
+
+	<form method="post" action="Webrequest.htm" runat="server">
+		Please enter a URI -
+		<asp:TextBox runat=server ID="txtURI"></asp:TextBox>
+		<asp:Button runat=server Text="Submit" ID="btnSubmit" onclick="btnSubmit_Click"></asp:button>
+		<br><br>
+		<TextArea runat=server ID="txtHTML" Rows="30" Cols="80" MaintainState="false" Wrap="True"></TextArea>
+	</form>
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

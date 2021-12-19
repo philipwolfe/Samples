@@ -1,0 +1,114 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/apps/pagestate1.src&file=Address.ascx" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfQWRkcmVzcy5hc2NceHhfX3h4X3h4X3hfX3g=f8e0a2d7" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">Address.ascx</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../aspplus/samples/apps/pagestate1aspxsource.htm'>PageState1.htm</a> &nbsp;&nbsp<a href='../../../aspplus/samples/apps/addressascxsource.htm'>Address.ascx</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../aspplus/samples/apps/vb/pagestate1aspxsource.htm'>VB/PageState1.htm</a> &nbsp;&nbsp<a href='../../../aspplus/samples/apps/vb/addressascxsource.htm'>VB/Address.ascx</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>
+<script language="C#" runat="server">
+
+  public String Caption = "Address";
+  public bool ShowCaption = true;
+
+  public String Address {
+    get {
+      return TxtAddress.Value;
+    }
+    set {
+      TxtAddress.Value = value;
+    }
+  }
+
+  public String City {
+    get {
+      return TxtCity.Value;
+    }
+    set {
+      TxtCity.Value = value;
+    }
+  }
+
+  public String State {
+    get {
+      return TxtState.Value;
+    }
+    set {
+      TxtState.Value = value;
+    }
+  }
+
+  public String Zip {
+    get {
+      return TxtZip.Value;
+    }
+    set {
+      TxtZip.Value = value;
+    }
+  }
+
+</script>
+
+<span ></span>
+<p>
+<table style="font: 10pt verdana">
+<% if (ShowCaption) { %>
+  <tr>
+    <td colspan="6" style="padding-bottom:10">
+      <b><%=Caption%></b>
+    </td>
+  </tr>
+<% } %>
+  <tr>
+    <td>
+      Address: 
+    </td>
+    <td colspan="5">
+      <input id="TxtAddress" size="50" type="text" runat="server">
+    </td>
+  </tr>
+  <tr>
+    <td>
+      City: 
+    </td>
+    <td>
+      <input id="TxtCity" type="text" runat="server">
+    </td>
+    <td>
+      State: 
+    </td>
+    <td>
+      <input id="TxtState" size="2" type="text" runat="server">
+    </td>
+    <td>
+      Zip: 
+    </td>
+    <td>
+      <input id="TxtZip" size="5" type="text" runat="server">
+    </td>
+  </tr>
+</table>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

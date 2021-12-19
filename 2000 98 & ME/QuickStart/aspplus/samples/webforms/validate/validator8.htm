@@ -1,0 +1,46 @@
+<html>
+<head>
+    
+
+</head>
+<body>
+
+<h3><font face="Verdana">CustomValidator Example</font></h3>
+<p>
+
+<form name="ctrl2" method="post" action="validator8.htm" id="ctrl2">
+<input type="hidden" name="__VIEWSTATE" value="YTB6NzgyNTQ2NDIyX19feA==83b52067" />
+
+
+    <span id="lblOutput"><font face="Verdana" size="2">Enter an even number:</font></span><br>
+
+    <p>
+
+    <input name="Text1" type="text" id="Text1" />
+    
+    
+
+    &nbsp;
+
+    <p>
+
+    <input type="submit" name="ctrl9" value="Validate" />
+
+    <script language="javascript">
+
+       function ClientValidate(source, value)
+       {
+          // even number?
+          if (value%2 == 0)
+            return true;
+          else
+            return false;
+       }
+
+    </script>
+
+</form>
+
+
+</body>
+</html>

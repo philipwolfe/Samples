@@ -1,0 +1,53 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlauth/CustomParsing/CustomParse1.src&file=CustomParse1.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfQ3VzdG9tUGFyc2UxLmFzcFx4eF9feHhfeHhfeF9feA==f5dec047" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">CustomParse1.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/ctrlauth/customparsing/customparse1aspxsource.htm'>CustomParse1.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/ctrlauth/customparsing/customparse1cssource.htm'>CustomParse1.cs</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/ctrlauth/customparsing/itemcssource.htm'>Item.cs</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/ctrlauth/customparsing/makesamplebatsource.htm'>makesample.bat</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/ctrlauth/customparsing/vb/customparse1aspxsource.htm'>VB/CustomParse1.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/ctrlauth/customparsing/vb/customparse1vbsource.htm'>VB/CustomParse1.vb</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/ctrlauth/customparsing/vb/itemvbsource.htm'>VB/Item.vb</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/ctrlauth/customparsing/vb/makesamplebatsource.htm'>VB/makesample.bat</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Register TagPrefix="CustomParsingControlSamples" Namespace="CustomParsingControlSamples" %>
+
+<html>
+
+   <body>
+
+      <form method="POST" runat=server>
+
+          <CustomParsingControlSamples:CustomParse1 SelectedIndex="2" runat=server>
+
+             <CustomParsingControlSamples:Item Message="One" runat=server/>
+             <CustomParsingControlSamples:Item Message="Two" runat=server/>
+             <CustomParsingControlSamples:Item Message="Three" runat=server/>
+             <CustomParsingControlSamples:Item Message="Four" runat=server/>
+
+          </CustomParsingControlSamples:CustomParse1>
+
+      </form>
+
+   </body>
+
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

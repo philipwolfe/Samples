@@ -1,0 +1,75 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Services/Timers/scheduledemo/scheduledemo.src&file=VB%5CScheduleDemo.vb" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkJcXFNjaGVkdWxlRGVtby52YnhfX3h4X3h4X3hfX3g=5bc88832" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB\ScheduleDemo.vb</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../howto/samples/services/timers/scheduledemo/scheduledemocssource.htm'>ScheduleDemo.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../howto/samples/services/timers/scheduledemo/vb/scheduledemovbsource.htm'>VB\ScheduleDemo.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>' Every Wednesday from 7:00am till 6:00pm prints "Hello World" every 5 seconds
+
+Imports System
+Imports System.Diagnostics
+Imports System.Threading
+Imports System.Timers
+
+Namespace ScheduleDemo
+
+    Module ScheduleDemo
+
+        Public Sub Main()
+            Dim aSchedule As Schedule
+            aSchedule = New Schedule
+                    
+            AddHandler aSchedule.EventOccurred, AddressOf OnScheduledEvent
+                        
+            Dim days As WeeklyPattern
+            days = New WeeklyPattern(DaysOfWeek.Wednesday, 1)
+            days.StartTime = New TimeSpan(7, 0, 0)
+            days.EndTime = New TimeSpan(18, 0, 0)
+            days.Interval = New TimeSpan(0, 0, 5)
+	    days.ValidFrom = new DateTime(1900,1,1)
+    
+            aSchedule.RecurrencePatterns.Add(days)
+            
+            aSchedule.Enabled = False
+            Console.WriteLine("Move the system clock to a Wednesday between 7:00am and 6:00pm and press 'r'") 
+            While (Console.Read() <> 114)
+            End While
+            aSchedule.Enabled = True
+				
+            Console.WriteLine("Press 'q' to quit the sample")
+            While (Console.Read() <> 113)
+            End While
+        End Sub
+
+        Public Sub OnScheduledEvent(ByVal source As Object, ByVal e As OccurredEventArgs)
+            Console.WriteLine("Hello World!")
+        End Sub
+
+    End Module
+
+End Namespace
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

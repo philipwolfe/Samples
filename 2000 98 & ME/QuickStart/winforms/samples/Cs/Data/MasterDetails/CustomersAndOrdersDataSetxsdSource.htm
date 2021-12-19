@@ -1,0 +1,94 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/winforms/samples/Cs/Data/MasterDetails/MasterDetails.src&file=CustomersAndOrdersDataSet.xsd" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfQ3VzdG9tZXJzQW5kT3JkZXJzRGF0YVNldC5ceHNkeF9feHhfeHhfeF9feA==5bdfbaab" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">CustomersAndOrdersDataSet.xsd</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>Form: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/data/masterdetails/customersformcssource.htm'>CustomersForm.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>DataSet: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/data/masterdetails/customersandordersdatasetcssource.htm'>CustomersAndOrdersDataSet.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Schema: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/data/masterdetails/customersandordersdatasetxsdsource.htm'>CustomersAndOrdersDataSet.xsd</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>WebService: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/data/masterdetails/customersandorderswebserviceasmxsource.htm'>CustomersAndOrdersWebService.asmx</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>WebServiceDefinition: </b></td>
+        <td><a href='../../../../../winforms/samples/cs/data/masterdetails/customersandorderswebservicesdlsource.htm'>CustomersAndOrdersWebService.SDL</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><schema id="CustomersAndOrdersDataSet" targetNamespace="" xmlns="http://www.w3.org/1999/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <element name="Customers">
+    <complexType content="elementOnly">
+      <all>
+        <element name="CustomerID" type="string"/>
+        <element name="CompanyName" type="string"/>
+        <element name="ContactName" minOccurs="0" type="string"/>
+        <element name="ContactTitle" minOccurs="0" type="string"/>
+        <element name="Address" minOccurs="0" type="string"/>
+        <element name="City" minOccurs="0" type="string"/>
+        <element name="Region" minOccurs="0" type="string"/>
+        <element name="PostalCode" minOccurs="0" type="string"/>
+        <element name="Country" minOccurs="0" type="string"/>
+        <element name="Phone" minOccurs="0" type="string"/>
+        <element name="Fax" minOccurs="0" type="string"/>
+      </all>
+    </complexType>
+    <key name="Constraint1" msdata:PrimaryKey="True">
+      <selector>.</selector>
+      <field>CustomerID</field>
+    </key>
+  </element>
+  <element name="Orders">
+    <complexType content="elementOnly">
+      <all>
+        <element name="OrderID" msdata:AutoIncrement="True" type="int"/>
+        <element name="CustomerID" minOccurs="0" type="string"/>
+        <element name="EmployeeID" minOccurs="0" type="int"/>
+        <element name="OrderDate" minOccurs="0" type="timeInstant"/>
+        <element name="RequiredDate" minOccurs="0" type="timeInstant"/>
+        <element name="ShippedDate" minOccurs="0" type="timeInstant"/>
+        <element name="ShipVia" minOccurs="0" type="int"/>
+        <element name="Freight" minOccurs="0" type="decimal"/>
+        <element name="ShipName" minOccurs="0" type="string"/>
+        <element name="ShipAddress" minOccurs="0" type="string"/>
+        <element name="ShipCity" minOccurs="0" type="string"/>
+        <element name="ShipRegion" minOccurs="0" type="string"/>
+        <element name="ShipPostalCode" minOccurs="0" type="string"/>
+        <element name="ShipCountry" minOccurs="0" type="string"/>
+      </all>
+    </complexType>
+    <key name="Orders_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="True">
+      <selector>.</selector>
+      <field>OrderID</field>
+    </key>
+    <keyref name="CustomersOrders" refer="Constraint1">
+      <selector>.</selector>
+      <field>CustomerID</field>
+    </keyref>
+  </element>
+</schema>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

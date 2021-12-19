@@ -1,0 +1,75 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/controls/controls6.src&file=controls_navigationtarget.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfY29udHJvbHNcX25hdmlnYXRpb250YXJnZXQuYXNwXHh4X194eF94eF94X194d3558f2b" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">controls_navigationtarget.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/controls/controls6aspxsource.htm'>controls6.htm</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/controls/controls_navigationtargetaspxsource.htm'>controls_navigationtarget.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/controls/vb/controls6aspxsource.htm'>VB/controls6.htm</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/controls/vb/controls_navigationtargetaspxsource.htm'>VB/controls_navigationtarget.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/controls/js/controls6aspxsource.htm'>JS/controls6.htm</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/controls/js/controls_navigationtargetaspxsource.htm'>JS/controls_navigationtarget.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><html>
+
+    <script language="C#" runat="server">
+
+        void Page_Load(Object Sender, EventArgs e) {
+
+           if (!Page.IsPostBack) {
+              NameLabel.Text = Request.Params["Name"];         
+           }
+        }
+
+    </script>
+
+    <body>
+
+       <h3><font face="Verdana">Handling Page Navigation</font></h3>
+
+       <p>
+
+       This sample demonstrates how to receive a navigation request from another
+       page, and extract the querystring argument within the Page_Load event.  
+
+       <p>
+
+       <hr>
+
+      
+       <form action="controls_NavigationTarget.htm" runat=server>
+
+          <font face="Verdana"> 
+
+             Hi <asp:label id="NameLabel" runat=server/>!
+
+          </font>
+
+       </form>
+
+    </body>
+
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

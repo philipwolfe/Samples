@@ -1,0 +1,210 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Xml/LoadDataSetXMLData/LoadDataSetXMLData.src&file=VB/LoadDataSetXMLData.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvTG9hZERhdGFTZXRYTUxEYXRhLmFzcFx4eF9feHhfeHhfeF9feA==c8908e2c" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/LoadDataSetXMLData.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../howto/samples/xml/loaddatasetxmldata/loaddatasetxmldatacssource.htm'>LoadDataSetXMLData.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../howto/samples/xml/loaddatasetxmldata/vb/loaddatasetxmldatavbsource.htm'>VB/LoadDataSetXMLData.vb</a> &nbsp;&nbsp<a href='../../../../../howto/samples/xml/loaddatasetxmldata/vb/loaddatasetxmldataaspxsource.htm'>VB/LoadDataSetXMLData.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>XML schema: </b></td>
+        <td><a href='../../../../../howto/samples/xml/loaddatasetxmldata/booksxsdsource.htm'>books.xsd</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>XML data: </b></td>
+        <td><a href='../../../../../howto/samples/xml/loaddatasetxmldata/booksxmlsource.htm'>books.xml</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Import Namespace="System" %>
+<%@ Import Namespace="System.IO" %>
+<%@ Import Namespace="System.Data" %>
+<%@ Assembly Name="System.Xml" %>
+<%@ Import Namespace="System.Xml" %>
+
+<script language="VB" runat="server">
+Public Class LoadDataSetXMLDataSample	
+
+	Private m_Document As String = ""
+	Private m_Schema As String = ""
+	Private m_datadoc As XmlDataDocument
+	
+	Public Function Start(args As String()) As String
+	
+		Dim writer As StringWriter
+		
+		m_Document = args(0)
+		m_Schema = args(1)
+		writer = new StringWriter()
+		Console.SetOut(writer)
+
+		Try
+		
+			Console.WriteLine("Creating an XmlDataDocument ...")
+			m_datadoc = new XmlDataDocument()
+			ParseSchema(m_Schema)
+			DisplayTableStructure()
+
+            m_datadoc.Load(m_Document)
+
+            DisplayTables(m_datadoc.DataSet)
+		
+		Catch e As Exception
+		
+			Console.WriteLine ("Exception: {0}", e.ToString())
+		End Try
+
+		Return(writer.ToString())
+		
+	End Function
+
+    ' Loads a specified schema into the DataSet
+    Public Sub ParseSchema(schema As String)
+    
+        Dim streamreader_schema As StreamReader = Nothing
+
+        Try 
+            Console.WriteLine("Reading Schema file ...")
+            streamreader_schema = new StreamReader(schema)
+            m_datadoc.DataSet.ReadXmlSchema(streamreader_schema)
+
+        Catch e As Exception
+            Console.WriteLine ("Exception: {0}", e.ToString())
+
+        Finally 
+            If streamreader_schema <> Nothing Then streamreader_schema.Close()
+
+        End Try
+        
+    End Sub    
+
+	' Displays the DataSet tables structure
+	Private Sub DisplayTableStructure()
+	
+		Dim i As Integer
+		Dim j As Integer
+		
+		Console.WriteLine(ControlChars.CrLf & "Table structure " & ControlChars.CrLf)
+		Console.WriteLine("Tables count=" + m_datadoc.DataSet.Tables.Count.ToString())
+		
+		For i=0 To m_datadoc.DataSet.Tables.Count-1
+
+			Console.WriteLine(ControlChars.Tab & "TableName='" + m_datadoc.DataSet.Tables(i).TableName + "'.")
+			Console.WriteLine(ControlChars.Tab & "Columns count=" + m_datadoc.DataSet.Tables(i).Columns.Count.ToString())
+
+			For j = 0 To m_datadoc.DataSet.Tables(i).Columns.Count-1
+
+				Console.WriteLine(ControlChars.Tab & ControlChars.Tab & "ColumnName='" + m_datadoc.DataSet.Tables(i).Columns(j).ColumnName + "', type = " + m_datadoc.DataSet.Tables(i).Columns(j).DataType.ToString())
+			
+			Next
+		
+		Next
+		
+	End Sub
+
+	' Displays the contents of the DataSet tables
+	Private Sub DisplayTables(dataset As DataSet)
+	
+		Dim table As DataTable
+		Dim column As DataColumn
+		Dim row As DataRow
+		Dim value As Object
+		
+		' Navigate Dataset
+		Console.WriteLine("Content of Tables ..." & ControlChars.CrLf)
+
+		For Each table In dataset.Tables
+		
+			Console.WriteLine("TableName = " + table.TableName)
+			Console.WriteLine("Columns ..." & ControlChars.CrLf)
+
+			For Each column In table.Columns
+			
+				Console.Write("{0,-22}",column.ColumnName)
+			
+			Next
+			
+            Console.WriteLine("")
+            Console.WriteLine(ControlChars.CrLf & "Number of rows = {0}", table.Rows.All.Length)
+			Console.WriteLine("Rows ..." & ControlChars.CrLf)
+
+			For Each row In table.Rows
+			
+				For Each value In row.ItemArray
+				
+                    Console.Write("{0,-22}",value.ToString())
+				
+				Next
+				
+				Console.WriteLine()
+			
+			Next
+			
+			Console.WriteLine()
+		
+		Next
+	
+	End Sub
+	
+End Class
+
+</script>
+<html>
+<head>
+      	<link rel="stylesheet" href="intro.css">
+</head>
+<body style="background-color:f6e4c6">
+
+       	<form action="LoadDataSetXMLData.htm" method="post" runat="server">
+       	<font>Input file: </font> 
+        <a href="../../../../../howto/samples/xml/loaddatasetxmldata/books.xml">books.xml</a>
+       	&nbsp&nbsp<font>Schema file: </font> 
+        <a href="../../../../../howto/samples/xml/loaddatasetxmldata/books.xsd">books.xsd</a>
+	<center>
+		&nbsp&nbsp&nbsp&nbsp<asp:button type=submit text="Run" OnClick="SubmitBtn_Click" runat="server"/></br>
+       	</form>
+	</center>
+	<p>
+
+	<table align="center">
+	<tr><th><span>Output from loading XML data with schema...</span></th></tr>
+	<tr><th><span></span></th></tr>
+	<tr><td><h4><xmp id="output" runat="server"/></h4></td></tr>
+	</table>
+
+</body>
+</html>
+
+<script language="VB" runat="server">
+
+Private Sub SubmitBtn_Click(sender As Object, e As EventArgs)
+
+	Dim args As String() = {Server.MapPath("books.xml"), Server.MapPath("books.xsd")}
+	Dim myLoadDataSetXMLDataSample As LoadDataSetXMLDataSample
+	
+	myLoadDataSetXMLDataSample= new LoadDataSetXMLDataSample()
+	output.InnerHtml = myLoadDataSetXMLDataSample.Start(args)
+	
+End Sub
+</script>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

@@ -1,0 +1,64 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/assemblies/version/version.src&file=math.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfbWF0aC5jc3hfX3h4X3h4X3hfX3g=ae351752" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">math.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../howto/samples/assemblies/version/mathcssource.htm'>math.cs</a> &nbsp;&nbsp<a href='../../../../howto/samples/assemblies/version/mathcfgsource.htm'>math.cfg</a> &nbsp;&nbsp<a href='../../../../howto/samples/assemblies/version/makefilesource.htm'>makefile</a> &nbsp;&nbsp<a href='../../../../howto/samples/assemblies/version/parser/parsercssource.htm'>parser/parser.cs</a> &nbsp;&nbsp<a href='../../../../howto/samples/assemblies/version/parser/makefilesource.htm'>parser/makefile</a> &nbsp;&nbsp<a href='../../../../howto/samples/assemblies/version/calcrv5/calcrcssource.htm'>calcrv5/calcr.cs</a> &nbsp;&nbsp<a href='../../../../howto/samples/assemblies/version/calcrv5/makefilesource.htm'>calcrv5/makefile</a> &nbsp;&nbsp<a href='../../../../howto/samples/assemblies/version/calcrv6/calcrcssource.htm'>calcrv6/calcr.cs</a> &nbsp;&nbsp<a href='../../../../howto/samples/assemblies/version/calcrv6/makefilesource.htm'>calcrv6/makefile</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>//==========================================================================
+//  File:		math.cs
+//
+//--------------------------------------------------------------------------
+//  This file is part of the Microsoft .Net Framework SDK Samples.
+//
+//  Copyright (C) 2000 Microsoft Corporation.  All rights reserved.
+//==========================================================================
+using System;
+using Samples.Math.Calculator;
+using Samples.Math.Parser;
+
+public class Math 
+{
+
+	public static void Main(string[] args)
+	{
+
+		while (true)
+		{
+			Console.WriteLine("Enter Formula: (or q to quit)");
+			String formula = Console.ReadLine();
+
+			if (formula == "q") break;
+
+			// parse the formula and get the arguments
+			Parser p = new Parser();
+			Arguments a = p.Parse(formula);
+
+			// do the calc and print the results
+			Calc c = new Calc();
+			Console.WriteLine(c.GetResult(a.Arg1.ToInt32(), a.Op, a.Arg2.ToInt32()));
+		}
+
+	}
+
+}
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

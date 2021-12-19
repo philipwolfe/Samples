@@ -1,0 +1,81 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/XMLSerialization/PurchaseOrderXsd.src&file=PurchaseOrder.XSD" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfUHVyY2hhc2VPcmRlci5YU0R4X194eF94eF94X1940445b75d" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">PurchaseOrder.XSD</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>XSD Source: </b></td>
+        <td><a href='../../../howto/samples/xmlserialization/purchaseorderxsdsource.htm'>PurchaseOrder.XSD</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><schema xmlns="http://www.w3.org/1999/XMLSchema"
+        xmlns:po="http://electrocommerce.org/po"
+        targetNamespace="http://electrocommerce.org/po">
+
+<element name="purchaseOrder" type="po:PurchaseOrder"/>
+
+ <element name="comment" type="string"/>
+
+ <complexType name='Item'>
+    <all>
+      <element name="productName" type="string"/>
+      <element name="quantity">
+       <simpleType base="positive-integer">
+        <maxExclusive value="100"/>
+       </simpleType>
+      </element>
+      <element name="price"    type="decimal"/>
+      <element ref="po:comment"   minOccurs="0"/>
+      <element name="shipDate" type="date" minOccurs='0'/>
+    </all>
+    <attribute name="partNum" type="po:Sku"/>
+ </complexType>
+
+ <complexType name="PurchaseOrder">
+  <all>
+    <element name="shipTo" type="po:Address"/>
+    <element name="billTo" type="po:Address"/>
+    <element ref="po:comment" minOccurs="0"/>
+    <element name="items">
+     <complexType>
+          <element name="item" minOccurs="0" maxOccurs="*" type='po:Item'/>
+     </complexType>
+    </element>
+  </all>
+  <attribute name="orderDate" type="date"/>
+ </complexType>
+
+ <complexType name="Address">
+  <all>
+    <element name="name"   type="string"/>
+    <element name="street" type="string"/>
+    <element name="city"   type="string"/>
+    <element name="state"  type="string"/>
+    <element name="zip"    type="decimal"/>
+  </all>
+  <attribute name="country" type="NMTOKEN" fixed="US"/>
+ </complexType>
+
+
+<simpleType name="Sku" base="string">
+  <pattern value="/d{3}-[A-Z]{2}"/>
+ </simpleType>
+
+</schema>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

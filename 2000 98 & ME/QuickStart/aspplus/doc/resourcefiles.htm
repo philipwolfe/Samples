@@ -1,0 +1,790 @@
+
+
+<!--BEGIN HEADER-->
+<html>
+<head>
+<link rel="stylesheet" href="../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+  <table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+
+            <div style="padding:0,0,4,0"><b>Getting Started</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/quickstart.htm">Introduction</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/whatisaspx.htm">What is ASP.NET?</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/langsupport.htm">Language Support</a><p>
+
+            <div style="padding:0,0,4,0"><b>ASP.NET Web Forms</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webformsintro.htm">Introducing Web Forms</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webserverctrls.htm">Working with Server Controls</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webtemplates.htm">Applying Styles to Controls</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webvalidation.htm">Server Control Form Validation</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webpagelets.htm">Web Forms User Controls</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webdatabinding.htm">Databinding Server Controls</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webdataaccess.htm">Server-Side Data Access</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webdatalist.htm">Data Access and Customization</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/businessobjs.htm">Working with Business Objects</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webctrlauthoring.htm">Authoring Custom Controls</a><br>
+<!--            &nbsp; <a class="outer" href="../../aspplus/doc/webformsandvs7.htm">Visual Studio 7.0 & Web Forms</a><br> -->
+            &nbsp; <a class="outer" href="../../aspplus/doc/webcontrolsref.htm">Web Forms Controls Reference</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webformssyntaxref.htm">Web Forms Syntax Reference</a><p>
+
+            <div style="padding:0,0,4,0"><b>ASP.NET Web Services</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webservicesintro.htm">Introducing Web Services</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/writingservices.htm">Writing a Simple Web Service</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/webservicetypes.htm">Web Service Type Marshalling</a><br>
+<!--            &nbsp; <a class="outer" href="../../aspplus/doc/discoverservices.htm">Making Services Discoverable</a><br> -->
+            &nbsp; <a class="outer" href="../../aspplus/doc/servicesanddata.htm">Using Data in Web Services</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/servicesandobjs.htm">Using Objects and Intrinsics</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/htmlscraping.htm">HTML Pattern Matching</a><p>
+
+            <div style="padding:0,0,4,0"><b>ASP.NET Web Applications</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/applications.htm">Application Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/globalasax.htm">Using the Global.asax File</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/stateoverview.htm">Managing Application State</a><br>
+<!--            &nbsp; <a class="outer" href="../../aspplus/doc/httpmodules.htm">Handling HttpModule Events</a><br> -->
+            &nbsp; <a class="outer" href="../../aspplus/doc/httphandlers.htm">HttpHandlers and Factories</a><p>
+
+<!--
+            <div style="padding:0,0,4,0"><b>State Management</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/stateoverview.htm">State Management Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/pageviewstate.htm">Using Page-local View State</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/sessionappstate.htm">Session and Application State</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/usingcookies.htm">Using Client-side Cookies</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/choosingstate.htm">Choosing a Strategy</a><p>
+-->
+            <div style="padding:0,0,4,0"><b>Cache Services</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/cachingoverview.htm">Caching Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/outputcaching.htm">Page Output Caching</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/datacaching.htm">Page Data Caching</a><p>
+
+            <div style="padding:0,0,4,0"><b>Configuration</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/configoverview.htm">Configuration Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/configformat.htm">Configuration File Format</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/configretrieve.htm">Retrieving Configuration</a><p>
+
+            <div style="padding:0,0,4,0"><b>Deployment</b><br></div>
+<!--            &nbsp; <a class="outer" href="../../aspplus/doc/adminoverview.htm">Administration Overview</a><br> -->
+            &nbsp; <a class="outer" href="../../aspplus/doc/deployment.htm">Deploying ASP.NET Applications</a><p>
+
+            <div style="padding:0,0,4,0"><b>Security</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/securityoverview.htm">Security Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/authandauth.htm">Authentication & Authorization</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/windowsauth.htm">Windows-based Authentication</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/formsauth.htm">Forms-based Authentication</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/authorization.htm">Authorizing Users and Roles</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/impersonation.htm">User Account Impersonation</a><p>
+
+            <div style="padding:0,0,4,0"><b>Localization</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/internationalization.htm">Internationalization Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/cultureencoding.htm">Setting Culture and Encoding</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/localizingapps.htm">Localizing ASP.NET Applications</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/resourcefiles.htm">Working with Resource Files</a><p>
+
+            <div style="padding:0,0,4,0"><b>Tracing</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/tracingoverview.htm">Tracing Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/tracelogpage.htm">Trace Logging to Page Output</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/tracelogapp.htm">Application-level Trace Logging</a><p>
+
+            <div style="padding:0,0,4,0"><b>Debugging</b><br></div>
+<!--
+            &nbsp; <a class="outer" href="../../aspplus/doc/debuggingoverview.htm">Debugging Overview</a><br>
+-->
+            &nbsp; <a class="outer" href="../../aspplus/doc/debugcomsdk.htm">The SDK Debugger</a><p>
+<!--
+            &nbsp; <a class="outer" href="../../aspplus/doc/debugvisualstudio.htm">The Visual Studio 7 Debugger</a><p>
+-->
+
+<!--
+            <div style="padding:0,0,4,0"><b>Performance</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/perfoverview.htm">Performance Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/perfcounters.htm">Using Performance Counters</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/perftuning.htm">Performance Tuning Tips</a><p>
+
+            <div style="padding:0,0,4,0"><b>ASP to ASP.NET Migration</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/migrationoverview.htm">Migration Overview</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/syntaxandsemantics.htm">Syntax and Semantics</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/languagecompat.htm">Language Compatibility</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/cominterop.htm">COM Interoperability</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/mtstransactions.htm">MTS Transactions</a><p>
+-->
+            <div style="padding:0,0,4,0"><b>Sample Applications</b><br></div>
+            &nbsp; <a class="outer" href="../../aspplus/doc/portalapp.htm">A Personalized Portal</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/ecommerceapp.htm">An E-Commerce Storefront</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/classbrowser.htm">A Class Browser Application</a><br>
+            &nbsp; <a class="outer" href="../../aspplus/doc/ibuyspy.htm">IBuySpy.com</a><p>
+
+</div>
+
+</td>
+</tr>
+</table>
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<h4>Working with Resource Files</h4>
+
+
+<div class="indent" style="font-family:Verdana; font-size:8pt;">
+<b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b>
+<a class="toc2" href="#create">Creating Resources</a><br>
+<b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b>
+<a class="toc2" href="#useresource">Using Resources on a Page</a><br>
+<b> <img align="middle" src="../../images/bullet.gif">&nbsp;&nbsp;</b>
+<a class="toc2" href="#satellite">Using Satellite Assemblies for Controls</a><br>
+</div>
+<p>
+<hr>
+
+
+
+<!--BEGIN SECTION-->
+<a name="create">
+<span class="subhead">Creating Resources</span>
+<p>
+
+Resource management, a feature of the base class libraries, can be used to extract
+localizable elements from source code and to store them with a string key as
+resources. At runtime an instance of the <b>ResourceManager</b> class can be used to resolve
+the key to the original resource or a localized version. Resources can be stored as
+independent ("loose") files or as a part of an assembly.
+<p>
+ASP.NET pages can utilize resource files, whereas compiled code-behind controls can, in
+addition, utilize resources embedded or linked into their assembly.
+<p>
+
+Resources can be created using the <b>ResourceWriter</b> class programmatically or by the tool 
+resgen.exe . The resgen tool uses a simple key=value format as input (note: resgen
+will be updated to support more formats):
+<div class="code"><xmp>
+;
+; Lines beginning with a semicolon can be used for comments. 
+;
+
+[strings]
+greeting=Welcome !
+more=Read more ...
+...
+</xmp></div>
+
+<b>ResourceWriter</b> and <b>ResGen</b> create a .resources file, which can be used as is or as part
+of an assembly. To include a .resources file in an assembly, use the related compiler
+switch or the al.exe tool. Assemblies containing only localized resources and no code 
+are called satellite assemblies.
+
+
+
+<!--BEGIN SECTION-->
+<br>
+<a name="useresource">
+<br>
+<span class="subhead">Using Resources on a Page</span>
+<p>
+
+The following sample implements only one .htm page, which is localized 
+for each request. The supported languages are English, German and Japanese.
+The language is determined by examining the <b>Content-Language</b> field  
+of the HTTP header in the global.asax file. The contents of the
+field are accessible through the <b>UserLanguages</b> collection:
+<p>
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 3;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:55%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="4">
+<pre id="codectrl5" style="display:none">
+
+Thread.CurrentThread.CurrentCulture = new CultureInfo(Request.UserLanguages[0]);
+</pre>
+<pre id="codectrl5" style="display:">
+
+Thread.CurrentThread.CurrentCulture = New CultureInfo(Request.UserLanguages(0))
+</pre>
+<pre id="codectrl5" style="display:none">
+
+Thread.CurrentThread.CurrentCulture = new CultureInfo(Request.UserLanguages[0]);
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl5" onclick="doClick(0, 'ctrl5')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl5" onclick="doClick(1, 'ctrl5')">
+          <b>VB
+        </td>
+        <td class="backtab" id="tabctrl5" onclick="doClick(2, 'ctrl5')">
+          <b>JScript
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+To change the initial language setting you can use differently localized clients or
+change the language setting on your browser. For Internet Explorer 5.x, for
+example, select Tools -> Internet Options from the menu and click the "Languages..."
+button at the bottom. In the following dialog you can add additional languages and
+define their priority. For simplicity the sample always chooses the first entry.
+<p>
+After the page is loaded the first time, the user can select another culture in the 
+drop-down list control MyUICulture. If a valid culture is selected, this value
+will override the setting acquired from <b>UserLanguages</b>:
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 3;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:55%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="4">
+<pre id="codectrl7" style="display:none">
+
+String SelectedCulture = MyUICulture.SelectedItem.Text;
+if(! SelectedCulture.StartsWith("Choose")) {
+  // If another culture was selected, use that instead.
+  Thread.CurrentThread.CurrentCulture = new CultureInfo(SelectedCulture);
+  Thread.CurrentThread.CurrentUICulture = new CultureInfo(SelectedCulture);
+}
+</pre>
+<pre id="codectrl7" style="display:">
+
+Dim SelectedCulture As String = MyUICulture.SelectedItem.Text
+If Not(SelectedCulture.StartsWith("Choose")) Then
+  ' If another culture was selected, use that instead.
+  Thread.CurrentThread.CurrentCulture = New CultureInfo(SelectedCulture)
+  Thread.CurrentThread.CurrentUICulture = New CultureInfo(SelectedCulture)
+End If
+</pre>
+<pre id="codectrl7" style="display:none">
+
+var SelectedCulture:String = MyUICulture.SelectedItem.Text;
+if(! SelectedCulture.StartsWith("Choose")) {
+  // If another culture was selected, use that instead.
+  Thread.CurrentThread.CurrentCulture = new CultureInfo(SelectedCulture);
+  Thread.CurrentThread.CurrentUICulture = new CultureInfo(SelectedCulture);
+}
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl7" onclick="doClick(0, 'ctrl7')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl7" onclick="doClick(1, 'ctrl7')">
+          <b>VB
+        </td>
+        <td class="backtab" id="tabctrl7" onclick="doClick(2, 'ctrl7')">
+          <b>JScript
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<p>
+Also, in the global.asax file, a <b>ResourceManager</b> instance with application scope
+is initialized. This way, resources are only loaded once per application. Because
+resources are readonly, no lock contention should occur.
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 3;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:55%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="4">
+<pre id="codectrl9" style="display:none">
+
+public void Application_OnStart() {
+    Application["RM"] = new ResourceManager("articles", 
+                Server.MapPath("resources") + Environment.DirectorySeparatorChar, 
+                null);
+}
+</pre>
+<pre id="codectrl9" style="display:">
+
+Public Sub Application_OnStart() 
+    Application("RM") = New ResourceManager("articles", _
+                Server.MapPath("resources") + Environment.DirectorySeparatorChar, _
+                Null)
+End Sub
+</pre>
+<pre id="codectrl9" style="display:none">
+
+public function Application_OnStart() : void {
+    Application["RM"] = new ResourceManager("articles", 
+                Server.MapPath("resources") + Environment.DirectorySeparatorChar, 
+                null);
+}
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl9" onclick="doClick(0, 'ctrl9')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl9" onclick="doClick(1, 'ctrl9')">
+          <b>VB
+        </td>
+        <td class="backtab" id="tabctrl9" onclick="doClick(2, 'ctrl9')">
+          <b>JScript
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<p>
+
+The resource manager then can easily be used on the page. The greeting string is
+simply localized by:
+<div class="code"><pre>
+&lt;%=rm.GetString("greeting")%&gt;
+</pre></div>
+
+<table><tr>
+<td>
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/samples/localize/resources/globalasaxsource.htm">
+	<img style="border-color:black" border=1 src="../../images/genicon.gif"><br>
+	</a>
+	<div class="caption">global.asax</div><br>
+	[<a target="_blank" href="../../aspplus/samples/localize/resources/globalasaxsource.htm">View Source</a>]
+	</div>
+
+
+</td>
+<td>
+<span>
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/resources1.gif"><br>
+	</a>
+	<div class="caption">news.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/localize/resources/newsaspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+</td>
+</tr></table>
+
+<!--BEGIN SECTION-->
+<br>
+<a name="satellite">
+<br>
+<span class="subhead">Using Satellite Assemblies for Controls</span>
+<p>
+
+Compiled code-behind controls can also use satellite assemblies to supply
+localized content. From a deployment perspective this is an especially good
+thing, because satellite assemblies can be version-independent from the code.
+As a result, support for additional languages can be provided just by copying
+the module of the satellite to the server, and no code change is required.<p>
+
+The following sample contains the "LocalizedButton" control in the 
+assembly "LocalizedControls" (module LocalizedControls.dll). On the page
+showcontrols.htm the compiled control is registered and used later on:
+
+<div class="code"><pre>
+&lt;%@Register TagPrefix="Loc" namespace="LocalizedControls" %&gt;
+...
+&lt;Loc:LocalizedButton runat="server" Text="ok" /&gt;
+</pre></div>
+
+<p>
+The LocalizedButton control stores a <b>ResourceManager</b> instance, which is
+shared by all instances of LocalizedButton. Whenever a control is 
+rendered, the value of the Text property is replaced with the localized
+version:
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 3;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:55%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="4">
+<pre id="codectrl15" style="display:none">
+
+_rm = new ResourceManager("LocalizedStrings",
+                          Assembly.GetExecutingAssembly(),
+                          null,
+                          true );
+...
+override protected void Render(HtmlTextWriter writer) {
+    Text = ResourceFactory.RManager.GetString(Text);
+    base.Render(writer);
+}
+</pre>
+<pre id="codectrl15" style="display:">
+
+_rm = New ResourceManager("LocalizedStrings", _
+                          Assembly.GetExecutingAssembly(), _
+                          Null, _
+                          True )
+...
+Overrides Protected Sub Render (writer As HtmlTextWriter) 
+    Text = ResourceFactory.RManager.GetString(Text)
+    base.Render(writer)
+End Sub
+</pre>
+<pre id="codectrl15" style="display:none">
+
+_rm = new ResourceManager("LocalizedStrings",
+                          Assembly.GetExecutingAssembly(),
+                          null,
+                          true );
+...
+override protected function Render(writer:HtmlTextWriter) : void {
+    Text = ResourceFactory.RManager.GetString(Text);
+    base.Render(writer);
+}
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl15" onclick="doClick(0, 'ctrl15')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl15" onclick="doClick(1, 'ctrl15')">
+          <b>VB
+        </td>
+        <td class="backtab" id="tabctrl15" onclick="doClick(2, 'ctrl15')">
+          <b>JScript
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+The <b>ResourceManager</b> instance is responsible to resolve the key to a
+localized resource. If a satellite assembly with the correct culture
+is not available and no related culture is found, the neutral resource 
+of the main assembly is used ("en-us" <nobr>-></nobr> "en" <nobr>-></nobr>
+neutral). Support for another language is simply granted by copying the
+module file for the new satellite assembly in place.
+<p>
+
+<table><tr>
+<td>
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/samples/localize/resources/controls/localizedbuttonscssource.htm">
+	<img style="border-color:black" border=1 src="../../images/genicon.gif"><br>
+	</a>
+	<div class="caption">Localized Controls</div><br>
+	[<a target="_blank" href="../../aspplus/samples/localize/resources/controls/localizedbuttonscssource.htm">View Source</a>]
+	</div>
+
+
+</td>
+<td>
+<span>
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../aspplus/images/resources2.gif"><br>
+	</a>
+	<div class="caption">Using Localized Controls</div><br>
+	
+	
+		[<a target="_blank" href="../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../aspplus/samples/localize/resources/showcontrolsaspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+</td>
+</tr></table>
+
+<p>
+
+
+<h4>Section Summary</h4>
+<ol>
+<li>ASP.NET pages can utilize the resource classes to isolate localizable content
+in resources, which are selected at runtime.
+<li>Compiled controls can contain resources of their own and will select the
+right localized content depending on the UICulture of the hosting page.
+</ol>
+
+
+<!--END FOOTER-->
+<p>
+<hr>
+<p>
+</div>
+</td>
+</tr>
+</table>
+</BODY>
+</html>
+<!--END FOOTER-->

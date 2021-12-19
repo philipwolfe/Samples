@@ -1,0 +1,60 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/XMLSerialization/PurchaseOrderXml.src&file=PurchaseOrder.XML" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfUHVyY2hhc2VPcmRlci5YTUx4X194eF94eF94X1943a26ee73" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">PurchaseOrder.XML</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>XSD Source: </b></td>
+        <td><a href='../../../howto/samples/xmlserialization/purchaseorderxmlsource.htm'>PurchaseOrder.XML</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><?xml version="1.0"?>
+<purchaseOrder orderDate="1999-10-20" xmlns="http://electrocommerce.org/po">
+    <shipTo country="US">
+        <name>Alice Smith</name>
+        <street>123 Maple Street</street>
+        <city>Mill Valley</city>
+        <state>CA</state>
+        <zip>90952</zip>
+    </shipTo>
+    <billTo country="US">
+        <name>Robert Smith</name>
+        <street>8 Oak Avenue</street>
+        <city>Old Town</city>
+        <state>PA</state>
+        <zip>95819</zip>
+    </billTo>
+    <comment>Hurry, my lawn is going wild!</comment>
+    <items>
+        <item partNum="872-AA">
+            <productName>Lawnmower</productName>
+            <quantity>1</quantity>
+            <price>148.95</price>
+            <comment>Confirm this is electric</comment>
+        </item>
+        <item partNum="926-AA">
+            <productName>Baby Monitor</productName>
+            <quantity>1</quantity>
+            <price>39.98</price>
+            <shipDate>1999-05-21</shipDate>
+        </item>
+    </items>
+</purchaseOrder>
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

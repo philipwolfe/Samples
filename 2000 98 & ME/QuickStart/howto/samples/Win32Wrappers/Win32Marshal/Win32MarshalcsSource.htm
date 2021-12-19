@@ -1,0 +1,72 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Win32Wrappers/Win32Marshal/Win32Marshal.src&file=Win32Marshal.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfV2luMzJNYXJzaGFsLmNzeF9feHhfeHhfeF9feA==ba11af5b" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">Win32Marshal.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>Console Source: </b></td>
+        <td><a href='../../../../howto/samples/win32wrappers/win32marshal/win32marshalcssource.htm'>Win32Marshal.cs</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>using System;
+using System.Runtime.InteropServices;
+
+[structlayout(LayoutKind.Sequential)]
+public class LOGFONT { 
+    public const int LF_FACESIZE = 32;
+    public int lfHeight; 
+    public int lfWidth; 
+    public int lfEscapement; 
+    public int lfOrientation; 
+    public int lfWeight; 
+    public byte lfItalic; 
+    public byte lfUnderline; 
+    public byte lfStrikeOut; 
+    public byte lfCharSet; 
+    public byte lfOutPrecision; 
+    public byte lfClipPrecision; 
+    public byte lfQuality; 
+    public byte lfPitchAndFamily;
+    [marshal(UnmanagedType.ByValTStr, Size=LF_FACESIZE)]
+		public string lfFaceName; 
+}
+
+
+class C
+{
+	[dllimport("gdi32.dll", CharSet=CharSet.Auto)]
+	public static extern int CreateFontIndirect(
+			[in, marshal(UnmanagedType.LPStruct)]
+			LOGFONT lplf   // characteristics
+			);
+
+	public static void Main() {
+		LOGFONT lf = new LOGFONT();
+		lf.lfHeight = 9;
+		lf.lfFaceName = "Arial";
+		int i = CreateFontIndirect(lf);
+		Console.WriteLine("Font Created, handle = {0}", int.Format(i, "X"));
+		
+		Console.WriteLine ("\r\nPress Return to exit.");
+		Console.Read();
+	}
+}
+
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

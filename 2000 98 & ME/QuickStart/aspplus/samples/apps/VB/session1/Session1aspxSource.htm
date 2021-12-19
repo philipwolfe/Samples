@@ -1,0 +1,71 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/apps/session1.src&file=VB/Session1/Session1.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvU2Vzc2lvbjEvU2Vzc2lvbjEuYXNwXHh4X194eF94eF94X194612c8e53" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/Session1/Session1.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/apps/session1/globalasaxsource.htm'>Session1/Global.asax</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/apps/session1/session1aspxsource.htm'>Session1/Session1.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/apps/session1/customizeaspxsource.htm'>Session1/Customize.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/apps/vb/session1/globalasaxsource.htm'>VB/Session1/Global.asax</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/apps/vb/session1/session1aspxsource.htm'>VB/Session1/Session1.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/apps/vb/session1/customizeaspxsource.htm'>VB/Session1/Customize.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>
+<html>
+
+  <script language="VB" runat="server">
+
+      Function GetStyle(Key As String) As String
+        Return Session(Key).ToString()
+      End Function
+
+  </script>
+
+  <style>
+
+    body {
+      font: <%=GetStyle("FontSize")%> <%=GetStyle("FontName")%>;
+      background-color: <%=GetStyle("BackColor")%>;
+    }
+
+    a { color: <%=GetStyle("LinkColor")%> }
+
+  </style>
+
+  <body style="color:<%=GetStyle("ForeColor")%>">
+
+    <h3><font face="Verdana">Storing Volatile Data in Session State</font></h3>
+
+    <b><a href="customize.htm">Customize This Page</a></b><p>
+
+    Imagine some content here ...<br>
+    Imagine some content here ...<br>
+    Imagine some content here ...<br>
+    Imagine some content here ...<br>
+    Imagine some content here ...<br>
+    Imagine some content here ...<br>
+    Imagine some content here ...<br>
+    Imagine some content here ...<br>
+
+  </body>
+  
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

@@ -1,0 +1,327 @@
+
+
+<!--BEGIN HEADER-->
+<html>
+<head>
+<link rel="stylesheet" href="../../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+
+<table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+
+    <div style="padding:0,0,4,0"><b>Data and ADO.NET</b><br></div>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/adoplusoverview.htm">Overview of ADO.NET</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/executecommand.htm">Execute a Command</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/outparams.htm">Stored proc out params</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/getdatafromdb.htm">Retrieve from a Database</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/updatedatafromdb.htm">Update Data in a Database</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/readandwritexml.htm">Read and Write XML</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/databasetrans.htm">Use Database Transactions</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/handleerrors.htm">Handling Errors</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/relationaldata.htm">Work with Relational Data</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/typeddata.htm">Work with typed Data</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/filterdata.htm">Filter Data</a><p>
+    <div style="padding:0,0,4,0"><a target="_top" style="color:darkred" href="../../../howto"><b>Back to Index</b></a><br></div>
+
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<style>
+.mydd {  font: smaller verdana; }
+.code1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:blue;
+	}
+.codecomment1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:green;
+	}
+.issue {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background-color:RED;
+	color:WHITE;
+	font-weight:bold;
+	}
+
+
+body { font: smaller verdana }        
+
+</style>
+
+
+
+
+
+<h4>ADO.NET: Working with Typed Data</h4>
+
+ADO classic code provides late-bound access to values within its 
+recordset through weakly typed variables. ADO.NET code provides the ability 
+to access the data held in the DataSet through a "strongly typed" 
+metaphor. This means you can access tables and columns that are part of 
+the DataSet with user-friendly names and strongly typed variables. 
+Therefore, rather then writing the ADO classic code:
+<p>
+
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl4" style="display:none">
+
+AdoRecordset.Find("Customerid = 'ALFKI'");
+AdoRecordSet.Fields["FirstName"].Value  = "Bob";
+</pre>
+<pre id="codectrl4" style="display:">
+
+AdoRecordset.Find("Customerid = 'ALFKI'")
+AdoRecordSet.Fields("FirstName").Value  = "Bob"
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl4" onclick="doClick(0, 'ctrl4')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl4" onclick="doClick(1, 'ctrl4')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+
+<p>
+with a strongly typed DataSet you write the ADO.NET code:</p>
+<p>
+
+
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl6" style="display:none">
+
+CustomerDataSet.Customers["ALFKI"].CustomerName = "Bob";
+</pre>
+<pre id="codectrl6" style="display:">
+
+CustomerDataSet.Customers("ALFKI").CustomerName = "Bob"
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl6" onclick="doClick(0, 'ctrl6')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl6" onclick="doClick(1, 'ctrl6')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+
+
+<p>Additionally, the strongly typed DataSet provides access to row values 
+as the correct, strongly typed, value. In using ADO, variant types are used 
+when assigning and retrieving data. If the value that you assigned was of 
+the wrong type, ADO would give you a run-time error. With ADO.NET, if the 
+value is of type integer, and you attempt to assign a string, you will get 
+a compile-time error.</p>
+
+<p>Given an XML schema that complies with the XSD standard, you can 
+generate a strongly typed DataSet using the XSD.exe tool provided with this 
+SDK. The syntax for generating a DataSet using this tool is:</p>
+
+<div class="code"><pre>
+xsd.exe /d /l:C# {XSDSchemaFileName.xsd}
+</pre></div>
+
+<p> The /d directive directs the tool to generate a DataSet; the /l: directive 
+specifies the language to use -- either "C#" or "VB."</p>
+
+<p>The example below uses a strongly typed DataSet called "customerDataSet" to 
+load a list of customers from the Northwind database. Once the data is loaded 
+using the <b>FillDataSet</b> method, the code loops through each customer in the 
+"customers" table using the typed customerRow object. Note the direct access to 
+the "customerid" field, as opposed to accessing it through the <b>Fields</b> collection.</p>
+
+<p>
+
+<span>
+  
+  
+
+    
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../../images/genicon.gif"><br>
+	</a>
+	<div class="caption">TypedData.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../../howto/samples/adoplus/cs/typeddataaspxsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<p>

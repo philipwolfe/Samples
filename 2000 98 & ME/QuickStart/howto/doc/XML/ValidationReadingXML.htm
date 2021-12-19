@@ -1,0 +1,539 @@
+
+
+<!--BEGIN HEADER-->
+<html>
+<head>
+<link rel="stylesheet" href="../../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+  <table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+<!--
+		<div style="padding:0,0,4,0"><a class="outer" style="color:darkred" href="../../../howto/doc/xml/overviewofxml.htm"><b>Introduction</a></b></a><br></div>
+         <p>
+		<div style="padding:0,0,4,0"><b>XML Readers and Writers</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/readxmlfile.htm">Read XML from a file</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/readxmlstream.htm">Read XML from a stream</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/writexmlfile.htm">Write XML to a file</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/validationreadingxml.htm">Apply validation when reading XML</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML Document Object Model (DOM)</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/dominterfacexmldocument.htm">Load and use the XmlDocument (W3C DOM)</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savexmldocument.htm">Save XML with the XmlDocument (W3C DOM)</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>Using the XmlDataDocument</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/loadxmldocument.htm">Load and use the XmlDataDocument</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/streamanxmldocument.htm">Read XML from an XmlDataDocument</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML Navigation and Editing</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/navigatexmldocument.htm">Navigate XML with the XmlNavigator</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/editingxmldocument.htm">Edit XML with the XmlNavigator</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XPath and XSL Transformations</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/queryxmldocumentxpath.htm">Query XML with an XPath expression</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/transformxml.htm">Apply an XSL transformation to XML</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML and Relational Data</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/xmldataset.htm">Use XML and the DataSet class</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/datasetmapxsdschema.htm">Create DataSet mappings from an XSD schema</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/loaddatasetxmldata.htm">Load a DataSet with XML</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/datasetmapxmldata.htm">Infer DataSet mappings from XML</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savedatasetmapxsdschema.htm">Save DataSet mappings to an XSD schema file</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savedatasetxml.htm">Save a DataSet as XML</a><br>
+-->
+
+		<div style="padding:0,0,4,0"><b>XML Data</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/overviewofxml.htm">Overview of XML</a><p>
+
+		<div style="padding:0,0,4,0"><b>XML Readers and Writers</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/readxmlfile.htm">Read XML from a file</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/readxmlstream.htm">Read XML from a stream</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/writexmlfile.htm">Write XML to a file</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/validationreadingxml.htm">Apply validation to XML</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML Document Object Model</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/dominterfacexmldocument.htm">Load XML with XmlDocument</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savexmldocument.htm">Save XML with XmlDocument</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>Using the XmlDataDocument</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/loadxmldocument.htm">Load the XmlDataDocument</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/streamanxmldocument.htm">Read from XmlDataDocument</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML Navigation and Editing</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/navigatexmldocument.htm">Navigate with XmlNavigator</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/editingxmldocument.htm">Edit with XmlNavigator</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XPath and XSL Transformations</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/queryxmldocumentxpath.htm">Query XML with an XPath</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/transformxml.htm">Apply XSL transformations</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML and Relational Data</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/xmldataset.htm">Use XML and the DataSet</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/datasetmapxsdschema.htm">Create DataSet mappings</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/loaddatasetxmldata.htm">Load a DataSet with XML</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/datasetmapxmldata.htm">Infer DataSet mappings</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savedatasetmapxsdschema.htm">Save DataSet mappings</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savedatasetxml.htm">Save a DataSet as XML</a><p>
+
+    <div style="padding:0,0,4,0"><a target="_top" style="color:darkred" href="../../../howto"><b>Back to Index</b></a><br></div>
+
+
+</div>
+
+</td>
+</tr>
+</table>
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<style>
+.mydd {  font: smaller verdana; }
+.code1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:blue;
+	}
+.codecomment1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:green;
+	}
+.issue {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background-color:RED;
+	color:WHITE;
+	font-weight:bold;
+	}
+
+
+body { font: smaller verdana }        
+
+</style>
+
+
+
+
+
+<h4>How Do I...Apply validation when reading XML?</h4>
+
+This sample illustrates how to apply validation when reading XML data using the XMLTextReader class. Validation is the process of enforcing rules on the XML
+content either via a Document Type Definition (DTD) or a schema. At it's simplest, a schema is an XML representation of a DTD, but can also infer relationships 
+within the XML data.
+<p>
+This sample follows on from the <a href="../../../howto/doc/xml/readxmlfile.htm">How do I...Read XML from a file?</a> topic.
+<p>
+
+
+
+<span>
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../../images/genicon.gif"><br>
+	</a>
+	<div class="caption">ValidationReadingXML.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../../howto/samples/xml/validationreadingxml/validationreadingxmlcssource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+
+<p>
+In this sample we are going to apply validation when reading and parsing XML data using sample files which pass and fail.
+The XmlTextReader can provide either DTD or XDR parse time validation. The <b>Validation</b> property can be used to request a particular validation option.
+XDR is the Microsoft XML-Data Schema (which is a pre-cursor to the W3C XML schema) and is called the reduced set of XML Schema (also referred to as
+XML-Data Reduced). This is described at <A target=_top href="http://www.ltg.ed.ac.uk/~ht/XMLData-Reduced.htm">XML-Data Reduced</A>.
+The table below shows the types of validation which can be set.
+<p>
+
+<DIV class=indent>
+<TABLE class=table2 
+width="509">
+<TBODY>
+<TR>
+	<TH width="179">Auto</TH>
+	<TH width="308">This is the default.</TH>
+</TR>
+  <tr>
+    <td width="179" height="17"><font size="1">Auto</font></td>
+    <td width="308" height="17"><font size="1">This is the default.</font></td>
+  </tr>
+  <tr>
+    <td width="179" height="19"><font size="1">None</font></td>
+    <td width="308" height="19"><font size="1">No parse time validation.</font></td>
+  </tr>
+  <tr>
+    <td width="179" height="19"><font size="1">DTD</font></td>
+    <td width="308" height="19"><font size="1">Whether to validate according to a DTD.</font></td>
+  </tr>
+  <tr>
+    <td width="179" height="19"><font size="1">Schema</font></td>
+    <td width="509" height="19"><font size="1">Whether to validate according to an XDR schema.</font></td>
+  </tr>
+  </TBODY></TABLE></DIV>
+
+<p>
+
+
+The Auto mode does the following:
+<UL>
+<LI>If there is no DTD or schema then it will parse the XML without validation. 
+<LI>If there is a DTD defined in a &lt;!DOCTYPE ...&gt; declaration then it will load the DTD and process the DTD declarations.
+<LI>If there is no &lt;!DOCTYPE ...&gt; declaration but XDR schemas are specified (using the "x-schema:" prefix), then it loads and process those schemas. </LI>
+</UL>
+
+In the sample code 
+<a href="../../../howto/samples/xml/validationreadingxml/validationreadingxmlcssource.htm">View Source</a>
+four files are validated. The first BooksDTD.xml validates against the books.dtd, the second BooksDTDFail.xml fails validation against the books.dtd,
+the third BooksSchema.xml validates against the schema.xml file and the fourth BooksFailSchema.xml fails validation against the schema.xml.
+Schema.xml is an XDR schema. To set the required type of validation, the <b>Validation</b> property is set either with the value of <b>DTD</b>
+or <b>Schema</b> as illustrated below.
+<p>
+
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl8" style="display:none">
+
+XmlTextReader m_reader = new XmlTextReader (m_Document1);
+m_reader.Validation = Validation.Schema;
+m_reader.Validation = Validation.DTD;
+</pre>
+<pre id="codectrl8" style="display:">
+
+Dim m_reader As XmlTextReader = New XmlTextReader (m_Document1)
+m_reader.Validation = Validation.Schema
+m_reader.Validation = Validation.DTD
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl8" onclick="doClick(0, 'ctrl8')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl8" onclick="doClick(1, 'ctrl8')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+
+<p>
+Errors in validation result in the <b>ValidationEventHandle</b> method being called. This property is set with a <b>ValidationEventHandler</b> class before reading the
+XML document. If this is not provided then no validation errors are returned and parsing only stops if an XML well-formedness error occurs. However, if no
+ValidationEventHandler is provided you get default attributes and entities without having to deal with validation errors. The sample source code illustrates this.
+<p>
+
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl10" style="display:none">
+
+private void Validate() {
+
+    try {
+        // Set the validation event handler
+        m_reader.ValidationEventHandler += new ValidationEventHandler (this.ValidationEventHandle);
+
+
+        // Read XML data
+        while (m_reader.Read()) {
+        }
+
+        String s;
+        if (m_success==true)
+            s = "successful";
+        else 
+            s = "failed";
+
+
+        Console.WriteLine ("Validation finished. Validation {0}", s);
+    }
+    catch (XmlException e) {
+        Console.WriteLine ("XmlException: " + e.ToString());
+    }
+    catch (Exception e) {
+        Console.WriteLine ("Exception: " + e.ToString());
+    }
+}
+
+public void ValidationEventHandle (object sender, ValidationEventArgs args) {
+
+    m_success = false;
+    Console.Write("\r\n\tValidation error: " + args.Message);
+
+    if (m_reader.LineNumber > 0) {
+        Console.WriteLine("Line: "+ m_reader.LineNumber + " Position: " + m_reader.LinePos);
+    }
+}
+</pre>
+<pre id="codectrl10" style="display:">
+
+Private Sub Validate()
+
+    Try        
+        ' Set the validation event handler
+        Dim valdel as ValidationEventHandler = new ValidationEventHandler(addressof ValidationEventHandle)
+        AddHandler m_reader.ValidationEventHandler, valdel
+
+        ' Read XML data
+        while m_reader.Read()
+        End While
+
+        Dim s as String
+        If (m_success = true)
+            s = "successful"
+        Else
+            s = "failed"
+        End If
+
+        Console.WriteLine ("Validation finished. Validation {0}", s)
+        
+    Catch e As XmlException
+        Console.WriteLine ("XmlException: {0} ", e.ToString())                        
+
+    Catch e As Exception
+        Console.WriteLine ("Exception: {0} ", e.ToString())                        
+    End Try
+End Sub        
+
+public sub ValidationEventHandle (errorid As Object, args As ValidationEventArgs)
+
+    m_success = false
+    Console.Write(Strings.chr(9) & "Validation error: " & args.Message)
+
+    If (m_reader.LineNumber > 0)        
+        Console.WriteLine("Line: " & m_reader.LineNumber & " Position: " & m_reader.LinePos)
+    End If
+End Sub
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl10" onclick="doClick(0, 'ctrl10')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl10" onclick="doClick(1, 'ctrl10')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+<p>
+
+In this code sample, the class m_success variable indicates the validation state. The parser does not stop for any kind of validation error and only stops if
+there is a well-formedness error during the read. This feature enables you find all the validation errors in one pass without having to continously re-parse
+the XML.
+<p>
+
+The output from the sample is shown below, illustrating DTD and XDR schema successful and failed validations. If you examine the files you can 
+determine the validation failures. e.g. The first book in the booksDTDFail.xml file does not have a title, which is required.
+<p>
+
+<div class="code">
+<pre>
+Validating XML file booksDTD.xml with DTD file books.dtd ...
+Validation finished. Validation successful
+
+Validation XML file booksDTDFail.xml with DTD file books.dtd ...
+
+        Validation error: Invalid content. Expecting 'title'.Line: 6 Position: 12
+
+        Validation error: Content is incomplete.Line: 12 Position: 2
+
+        Validation error: Content is incomplete.Line: 12 Position: 2
+Validation finished. Validation failed
+
+Validation XML file booksSchema.xml with schema file schema.xml ...
+Validation finished. Validation successful
+
+Validation XML file booksSchemaFail.xml with schema file schema.xml ...
+
+        Validation error: Missing required attribute 'genre'.Line: 4 Position: 4
+
+        Validation error: Invalid content. Expecting 'title'.Line: 4 Position: 12
+
+        Validation error: Content is incomplete.Line: 4 Position: 4
+
+        Validation error: Content is incomplete.Line: 4 Position: 4
+Validation finished. Validation failed
+</pre>
+</div>
+
+<H4>Summary</H4>
+<OL>
+<LI>Validation can either be against a DTD or an XDR schema, the type required being set by the Validation property.
+<LI>Validation is performed during the read and parsing operations.
+<LI>The ValidationEventHandle property must be set with a ValidationEventHandler class to receive notification of validation errors.
+<LI>Validation errors do not stop parsing. Parsing only stops if there is a well-formedness error. This enables all errors to be discovered in a single pass.
+</LI></OL>
+
+<!--END FOOTER-->
+<p>
+<hr>
+<p>
+</div>
+</td>
+</tr>
+</table>
+</BODY>
+</html>
+<!--END FOOTER-->

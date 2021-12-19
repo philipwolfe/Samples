@@ -1,0 +1,129 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlref/webctrl/Button/button2.src&file=VB%5Cbutton2.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkJcXGJ1dHRvbjIuYXNwXHh4X194eF94eF94X194bef6dd1e" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB\button2.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../../aspplus/samples/webforms/ctrlref/webctrl/button/button2aspxsource.htm'>button2.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../../aspplus/samples/webforms/ctrlref/webctrl/button/vb/button2aspxsource.htm'>VB\button2.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><html>
+<head>
+    <script language="VB" runat="server">
+
+        Sub Page_Load(sender As Object, e As EventArgs) 
+        
+            if Not IsPostBack Then
+                dim values as ArrayList
+                values = new ArrayList()
+
+                values.Add(new PositionData("Microsoft", "Msft", "150 shares"))
+                values.Add(new PositionData("Intel", "Intc", "25 shares"))
+                values.Add(new PositionData("Dell", "Dell", "115 shares"))
+
+                repeater1.DataSource = values
+                repeater1.DataBind
+            End If
+            
+        End Sub
+
+        Sub Repeater1_ItemCommand(sender As Object, e As RepeaterCommandEventArgs)
+                         
+            lblResult.Text = "<u>Command</u> is: <b>" & e.CommandName & "</b>, <u>CommandArgument</u> is: <b>" & e.CommandArgument & "</b>"
+        
+        End Sub
+
+        class PositionData
+
+            Dim m_name As String
+            Dim m_ticker As String
+            Dim m_shares As String
+
+            Public Sub New(name As String, ticker As String, shares As String)
+                MyBase.New
+                m_name = name
+                m_ticker = ticker
+                m_shares = shares
+            End Sub
+
+            ReadOnly Property Name As String
+              Get 
+                Return m_name
+              End Get
+            End Property
+            
+            ReadOnly Property Ticker As String
+              Get 
+                Return m_ticker
+              End Get
+            End Property
+            
+            ReadOnly Property Shares As String
+              Get 
+                Return m_shares
+              End Get
+            End Property
+            
+        End Class
+        
+    </script>
+
+</head>
+<body>
+
+    <h3><font face="Verdana">Bubbling Button Clicks Within a List</font></h3>
+    <p></p>
+
+    <form runat=server>
+      <font face="Verdana" size="-1">
+        
+        <asp:Repeater id=repeater1 onitemcommand="Repeater1_ItemCommand" runat="server">
+
+            <template name="ItemTemplate">
+                <asp:Button id=btnBuy Text="Buy" CommandName="buy" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "Ticker") %>' runat="server" />
+                    
+                &nbsp;&nbsp;
+
+                <asp:Button id=btnSell Text="Sell" CommandName="sell" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "Shares") %>' runat="server" />
+                
+                &nbsp;&nbsp;
+
+                <asp:Label id=lblCompany Text='<%# DataBinder.Eval(Container.DataItem, "Name") %>' Font-Bold="true" runat=server />
+
+                <p>
+
+            </template>
+            
+        </asp:Repeater>
+               
+        <asp:Label id=lblResult runat="server" />
+        
+      </font>
+    </form>
+
+</body>
+</html>
+
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

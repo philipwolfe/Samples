@@ -1,0 +1,169 @@
+
+
+<!--BEGIN HEADER-->
+<html>
+<head>
+<link rel="stylesheet" href="../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+
+<table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+
+    <div style="padding:0,0,4,0"><b>Diagnostics</b><br></div>
+    &nbsp; <a class="outer" href="../../howto/doc/logwrite.htm">Write to an event log</a><br>
+    &nbsp; <a class="outer" href="../../howto/doc/loginfo.htm">Read from an event log</a><br>
+    &nbsp; <a class="outer" href="../../howto/doc/logmonitor.htm">Monitor an event log</a><br>
+    &nbsp; <a class="outer" href="../../howto/doc/pcwrite.htm">Write to a perf counter</a><br>
+    &nbsp; <a class="outer" href="../../howto/doc/pcread.htm">Read from a perf counter</a><br>
+    &nbsp; <a class="outer" href="../../howto/doc/pcdemo.htm">Count rate of change</a><br>
+    &nbsp; <a class="outer" href="../../howto/doc/trace.htm">Work with tracing</a><br>
+    &nbsp; <a class="outer" href="../../howto/doc/switches.htm">Use trace switches/listeners</a><br>
+    &nbsp; <a class="outer" href="../../howto/doc/tracedemo.htm">Instrument an application</a><br>
+    &nbsp; <a class="outer" href="../../howto/doc/processdemo.htm">Start and stop a process</a><br>
+    &nbsp; <a class="outer" href="../../howto/doc/prinfo.htm">Get process information</a><p>
+    <div style="padding:0,0,4,0"><a target="_top" style="color:darkred" href="../../howto"><b>Back to Index</b></a><br></div>
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<style>
+.mydd {  font: smaller verdana; }
+.code1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:blue;
+	}
+.codecomment1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:green;
+	}
+.issue {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background-color:RED;
+	color:WHITE;
+	font-weight:bold;
+	}
+
+
+body { font: smaller verdana }        
+
+</style>
+
+
+
+
+
+<h4>How Do I...Use tracing switches and listeners?</h4>
+
+Trace instrumentation allows developers and administrators
+to monitor the health of applications running in real-life settings (as opposed to
+running in a debugger). Sometimes using a debugger can hide bugs and
+obscure some performance and threading problems. Tracing is a very important
+monitoring and debugging tool for distributed, multi-tier applications. Such
+applications often contain problems that can only be observed when the application is
+under a heavy load and the inherent randomness of a real-life environment.
+
+<p>This sample illustrates the basics of using the Trace and
+Boolean switches. A switch provides an efficient mechanism for
+enabling/disabling code paths at runtime using external settings. Run
+it and take a look at the source code. You will see how easy it is to add
+simple tracing to your applications.&nbsp;You can then go to the registry and 
+modify the settings of the switches and then run the sample again. You will
+possibly get a completely different output.
+
+<p>Set DWORD value of the following key to 0 (false) or 1 (true):
+
+<div class="code"><pre>
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\COMPlus\Switches\ABooleanSwitch
+</pre></div>
+
+<p>Set DWORD value of the following key to 0 (off), 1 (error), 2 (warning), 
+3 (info), or 4 (verbose):
+
+<div class="code"><pre>
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\COMPlus\Switches\ATraceSwitch
+</pre></div>
+
+<p>For more information about switches and registry, please refer to the documentation
+for details on changing switch settings.
+
+<p>You have to compile your instrumented applications with
+TRACE or DEBUG compiler directives enabled. Otherwise all calls to Trace or
+Debug (respectively) are ignored during compilation.&nbsp;
+
+<p>Before running the application, open a command line window
+and run DbMon.exe. You will be able to see any Debug and Trace messages coming
+from any application running on your system.
+
+<p>
+<b>Note: </b> The Debug Monitor utility (DBMon.exe) is available from the Windows Platform SDK on the <a target="_blank" href="http://msdn.microsoft.com">Microsoft Developer Network</a> website.
+
+<h4>Example</h4>
+
+<span>
+  
+  
+
+        
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../howto/samples/services/tracing/switches/vb">
+	<img style="border-color:black" border=1 src="../../images/console.gif"><br>
+	</a>
+	<div class="caption">Switches.exe</div><br>
+	
+	
+		[<a target="_blank" href="../../howto/samples/services/tracing/switches/vb">Run Sample</a>] | 
+		[<a target="_blank" href="../../howto/samples/services/tracing/switches/switchescssource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<!--END FOOTER-->
+<p>
+<hr>
+<p>
+</div>
+</td>
+</tr>
+</table>
+</BODY>
+</html>
+<!--END FOOTER-->

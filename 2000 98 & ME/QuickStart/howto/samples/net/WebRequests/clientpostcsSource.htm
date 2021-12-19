@@ -1,0 +1,91 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/net/WebRequests/clientpost.src&file=clientpost.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfY2xpZW50cG9zdC5jc3hfX3h4X3h4X3hfX3g=c47e35f8" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">clientpost.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../howto/samples/net/webrequests/clientpostcssource.htm'>clientpost.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../howto/samples/net/webrequests/vb/clientpostvbsource.htm'>VB/clientpost.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>
+using System;
+using System.Net;
+using System.IO;
+
+class ClientPOST {
+    public static void Main(string[] args) {
+
+        if (args.Length < 1) {
+            showusage();     
+            return;
+        }   
+
+        getPage(args[0], "s1=food&s2=bart");        
+
+        return;
+    }
+
+    public static void showusage() {
+        Console.WriteLine("Attempts to POST into to a URL");
+        Console.WriteLine("\r\nUsage:");
+        Console.WriteLine("\r\nClientPOST URL");
+        Console.WriteLine("\r\nExamples:");
+        Console.WriteLine("\r\nClientPOST http://www.microsoft.com");
+    }
+    
+    public static void getPage(String url, String payload) {
+        WebRequest req = WebRequestFactory.Create(url);
+		req.Method = "POST";                            
+        req.ContentType = "application/x-www-form-urlencoded";
+        byte[] SomeBytes = null;
+        if (payload != null) {
+        	SomeBytes = System.Text.Encoding.ASCII.GetBytes(payload);
+        	req.ContentLength = SomeBytes.Length;
+            Stream newStream = req.GetRequestStream();                                
+        	newStream.Write(SomeBytes, 0, SomeBytes.Length);
+        	newStream.Close();
+        }
+        else
+        {
+        	req.ContentLength = 0;
+        }
+		WebResponse result = req.GetResponse();
+        Stream ReceiveStream = result.GetResponseStream();                
+        Console.Write("\nResponse stream received, Status code: " + result.Status);
+
+      	Byte[] read = new Byte[512];
+      	int bytes = ReceiveStream.Read(read, 0, 512);
+
+      	Console.WriteLine("\r\nHTML...\r\n");
+      
+      	while (bytes > 0) 
+      	{
+          	Console.Write(System.Text.Encoding.ASCII.GetString(read, 0, bytes));
+         		bytes = ReceiveStream.Read(read, 0, 512);
+      	}
+
+      	Console.WriteLine("");
+    }    
+};
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

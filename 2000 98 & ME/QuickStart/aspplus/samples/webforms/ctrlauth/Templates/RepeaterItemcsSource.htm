@@ -1,0 +1,61 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlauth/Templates/Repeater2.src&file=RepeaterItem.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfUmVwZWF0ZXJJdGVtLmNzeF9feHhfeHhfeF9feA==40301116" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">RepeaterItem.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/ctrlauth/templates/repeater2aspxsource.htm'>Repeater2.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/ctrlauth/templates/repeater2cssource.htm'>Repeater2.cs</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/ctrlauth/templates/repeateritemcssource.htm'>RepeaterItem.cs</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/ctrlauth/templates/repeateritemcollectioncssource.htm'>RepeaterItemCollection.cs</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/ctrlauth/templates/makesamplebatsource.htm'>makesample.bat</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/ctrlauth/templates/vb/repeater2aspxsource.htm'>VB/Repeater2.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/ctrlauth/templates/vb/repeater2vbsource.htm'>VB/Repeater2.vb</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/ctrlauth/templates/vb/repeateritemvbsource.htm'>VB/RepeaterItem.vb</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/ctrlauth/templates/vb/repeateritemcollectionvbsource.htm'>VB/RepeaterItemCollection.vb</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/webforms/ctrlauth/templates/vb/makesamplebatsource.htm'>VB/makesample.bat</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>using System;
+using System.Collections;
+using System.Web;
+using System.Web.UI;
+
+namespace TemplateControlSamples {
+
+    public class RepeaterItem : Control, INamingContainer {
+
+        private int itemIndex;
+        private object dataItem;
+
+        public RepeaterItem(int itemIndex, object dataItem) {
+            this.itemIndex = itemIndex;
+            this.dataItem = dataItem;
+        }
+
+        public object DataItem {
+            get {
+                return dataItem;
+            }
+        }
+
+        public int ItemIndex {
+            get {
+                return itemIndex;
+            }
+        }
+    }
+}
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

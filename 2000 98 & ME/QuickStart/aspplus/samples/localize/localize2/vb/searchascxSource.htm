@@ -1,0 +1,72 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/localize/resources/news.src&file=../localize2/VB/search.ascx" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfLi4vbG9jYWxpXHplMi9WQi9zZWFyY2guYXNjXHh4X194eF94eF94X194febb228e" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">../localize2/VB/search.ascx</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/localize/resources/newsaspxsource.htm'>news.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/localize/localize2/searchascxsource.htm'>../localize2/search.ascx</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/localize/localize2/flagascxsource.htm'>../localize2/flag.ascx</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/localize/resources/news_vbaspxsource.htm'>news_vb.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/localize/localize2/vb/searchascxsource.htm'>../localize2/VB/search.ascx</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/localize/localize2/vb/flagascxsource.htm'>../localize2/VB/flag.ascx</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@Import Namespace="System.Globalization" %>
+
+<script runat="server" language="VB">
+    
+Sub Page_PreRender(sender As Object, E As EventArgs) 
+    LocalizeSearchText()
+End Sub
+
+Sub SearchButton_Clicked(sender As Object, e As EventArgs) 
+    If(Page.IsPostBack And SearchText.Text.Length > 0) Then
+	Page.Response.Redirect("http://search.msn.com/results.asp?q=" & Server.UrlEncode(SearchText.Text) )
+    Else
+	LocalizeSearchText()
+    End If
+End Sub
+
+Sub LocalizeSearchText() 
+    Select Case System.String.Intern(CultureInfo.CurrentUICulture.Name) 
+    Case "en-US"
+	SearchText.Text = "Clinton"
+	SearchButton.Text = "Search"
+    Case "de"
+	SearchText.Text = "SchrC6der"
+	SearchButton.Text = "Suchen"
+    Case "ja"
+	SearchText.Text = "f#."
+	SearchButton.Text = "f$g4""
+    Case Else
+        SearchButton.Text = "Search"
+    End Select
+End Sub
+
+</script>
+
+
+
+<asp:Panel runat="server" BackColor="Wheat">
+	<asp:TextBox runat="server" id="SearchText" Columns="30" />
+	<asp:Button runat="server" id="SearchButton" Text="Search" OnClick="SearchButton_Clicked"/>
+</asp:Panel>
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

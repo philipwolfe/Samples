@@ -1,0 +1,147 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Xml/DataSetMapXSDSchema/DataSetMapXSDSchema.src&file=VB/DataSetMapXSDSchema.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvRGF0YVNldE1hcFhTRFNjaGVtYS5hc3BceHhfX3h4X3h4X3hfX3g=6378dcae" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/DataSetMapXSDSchema.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../howto/samples/xml/datasetmapxsdschema/datasetmapxsdschemacssource.htm'>DataSetMapXSDSchema.cs</a> &nbsp;&nbsp<a href='../../../../../howto/samples/xml/datasetmapxsdschema/datasetmapxsdschemaaspxsource.htm'>DataSetMapXSDSchema.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../howto/samples/xml/datasetmapxsdschema/vb/datasetmapxsdschemavbsource.htm'>VB/DataSetMapXSDSchema.vb</a> &nbsp;&nbsp<a href='../../../../../howto/samples/xml/datasetmapxsdschema/vb/datasetmapxsdschemaaspxsource.htm'>VB/DataSetMapXSDSchema.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>XML schema: </b></td>
+        <td><a href='../../../../../howto/samples/xml/datasetmapxsdschema/booksxsdsource.htm'>books.xsd</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Import Namespace="System" %>
+<%@ Import Namespace="System.IO" %>
+<%@ Assembly Name="System.Xml" %>
+<%@ Import Namespace="System.Xml" %>
+
+<script language="VB" runat=server>
+Public Class DataSetMapXSDSchemaSample	
+
+	Private m_Schema As String = ""
+    Private m_datadoc As XmlDataDocument
+	Private writer As StringWriter
+	
+	Public Function Start(args As String) As String
+	
+		m_Schema = args
+		writer = new StringWriter()
+		Console.SetOut(writer)
+
+        Try
+            Console.WriteLine("Creating a DataSet ...")
+            m_datadoc = new XmlDataDocument()
+            ParseSchema(m_Schema)
+            DisplayTableStructure()
+
+        Catch e As Exception
+            Console.WriteLine ("Exception: {0}", e.ToString())
+
+		End Try
+		
+		Return(writer.ToString())
+	
+	End Function
+
+	' Loads a specified schema into the DataSet
+    Public Sub ParseSchema(schema As String)
+    
+        Dim streamreader_schema As StreamReader = Nothing
+
+        Try 
+            Console.WriteLine("Reading Schema file ...")
+            streamreader_schema = new StreamReader(schema)
+            m_datadoc.DataSet.ReadXmlSchema(streamreader_schema)
+
+        Catch e As Exception
+            Console.WriteLine ("Exception: {0}", e.ToString())
+
+        Finally 
+            If streamreader_schema <> Nothing Then streamreader_schema.Close()
+
+		End Try
+		
+    End Sub    
+
+    ' Displays the DataSet tables structure
+    Private Sub DisplayTableStructure()
+
+		Dim I As Integer
+		Dim J As Integer
+		
+        Console.WriteLine(ControlChars.CrLf & "Table structure " & ControlChars.CrLf)
+        Console.WriteLine("Tables count=" + m_datadoc.DataSet.Tables.Count.ToString())
+        For I=0 To m_datadoc.DataSet.Tables.Count-1
+
+            Console.WriteLine(ControlChars.Tab & "TableName='" + m_datadoc.DataSet.Tables(i).TableName + "'.")
+            Console.WriteLine(ControlChars.Tab & "tColumns count=" + m_datadoc.DataSet.Tables(i).Columns.Count.ToString())
+
+            For J=0 To m_datadoc.DataSet.Tables(i).Columns.Count-1
+                Console.WriteLine(ControlChars.Tab & ControlChars.Tab & "ColumnName='" + m_datadoc.DataSet.Tables(i).Columns(j).ColumnName + "', type = " + m_datadoc.DataSet.Tables(i).Columns(j).DataType.ToString())
+            Next
+            
+        Next
+    
+    End Sub
+    
+End Class 
+</script>
+<html>
+<head>
+      	<link rel="stylesheet" href="intro.css">
+</head>
+<body style="background-color:f6e4c6">
+
+       	<form action="DataSetMapXSDSchema.htm" method="post" runat="server">
+       	<font>Schema file: </font> 
+        <a href="../../../../../howto/samples/xml/datasetmapxsdschema/books.xsd">books.xsd</a>
+	<center>
+		&nbsp;&nbsp;&nbsp;&nbsp;<asp:button type=submit text="Run" OnClick="SubmitBtn_Click" runat="server"/></br>
+       	</form>
+	</center>
+	<p>
+
+	<table align="center">
+	<tr><th><span>Output from creating tables from schema...</span></th></tr>
+	<tr><th><span></span></th></tr>
+	<tr><td><h4><xmp id="output" runat="server"/></h4></td></tr>
+	</table>
+
+</body>
+</html>
+
+<script language="VB" runat=server>
+
+Private Sub SubmitBtn_Click(sender As Object, e As EventArgs)
+
+	Dim myDataSetMapXSDSchemaSample As DataSetMapXSDSchemaSample
+	
+	myDataSetMapXSDSchemaSample= new DataSetMapXSDSchemaSample()
+	output.InnerHtml = myDataSetMapXSDSchemaSample.Start(Server.MapPath("books.xsd"))
+
+End Sub
+
+</script>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

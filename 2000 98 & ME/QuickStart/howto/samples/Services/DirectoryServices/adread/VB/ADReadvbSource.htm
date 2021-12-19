@@ -1,0 +1,61 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Services/DirectoryServices/adread/adread.src&file=VB%5CADRead.vb" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkJcXEFEUmVhZC52YnhfX3h4X3h4X3hfX3g=b3d2fcd9" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB\ADRead.vb</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../howto/samples/services/directoryservices/adread/adreadcssource.htm'>ADRead.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../howto/samples/services/directoryservices/adread/vb/adreadvbsource.htm'>VB\ADRead.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>imports System
+imports System.DirectoryServices
+        
+public class ADRead
+        public shared sub Main()
+        if(Environment.GetCommandLineArgs().Length<>2)
+                Console.WriteLine("Usage: " & Environment.GetCommandLineArgs()(0) & " <ad_path>")
+                exit sub
+        end if
+
+        Dim objDirEnt As DirectoryEntry = new DirectoryEntry(Environment.GetCommandLineArgs(1))
+        Console.WriteLine("Name            = " & objDirEnt.Name)
+        Console.WriteLine("Path            = " & objDirEnt.Path)
+        Console.WriteLine("SchemaClassName = " & objDirEnt.SchemaClassName)
+        Console.WriteLine("")
+        Console.WriteLine("Properties:")
+
+        Dim tab As string = "    "
+        Dim objP as DirectoryEntryProperty
+        Dim objValue as object
+
+        for each objP in objDirEnt.Properties
+            Console.Write(tab & objP.Name & " = ")
+            Console.WriteLine("")
+            for each objValue in objP.Values
+                    Console.WriteLine(tab & tab & objValue.ToString())
+            next objValue
+        next objP
+    end sub             
+end class
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

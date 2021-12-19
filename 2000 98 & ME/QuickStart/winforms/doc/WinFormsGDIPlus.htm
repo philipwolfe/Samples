@@ -1,0 +1,2510 @@
+<!--BEGIN HEADER-->
+
+
+
+<html>
+<head>
+<link rel="stylesheet" href="../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+  <table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+
+            <div style="padding:0,0,0,0"><a class=outer style="color:darkred" href="../../winforms/doc/default.htm"><b>Introduction</b></a><br></div>
+            <p>
+            <div style="padding:0,0,4,0"><b>Getting Started</b><br></div>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsgettingstarted.htm">What is Windows Forms?</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformssimplehelloworld.htm">Writing a Hello World Form</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsapplicationmodel.htm">Windows Forms Application Model</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsusingwindes.htm">Using the Windows Forms Designer</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsformlayout.htm">Dynamic Layout in Windows Forms</a><br>            
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsmenus.htm">Adding Menus to a Form</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsmdi.htm">Writing MDI Applications</a><p>
+
+            <div style="padding:0,0,4,0"><b>Building Applications</b><br></div>
+            &nbsp; <a class="outer" href="../../winforms/doc/dataaccessplaceholder.htm">Data Access Overview</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/webservicesplaceholder.htm">Web Services Overview</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsdata.htm">Databinding in Windows Forms</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsaxhosting.htm">Using ActiveX Controls</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsgdiplus.htm">Working with Graphics</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsprinting.htm">Working with Printing</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformscreatingcontrols.htm">Creating Controls</a><br>
+            &nbsp; <a class="outer" href="../../winforms/doc/winformsmsaa.htm">Accessibility</a><p>
+
+            <div style="padding:0,0,0,0"><a class=outer style="color:darkred" href="../../winforms/doc/winformssamples.htm"><b>Control Reference</b></a><br></div>
+            <p>
+            <div style="padding:0,0,0,0"><a target=_top class=outer style="color:darkred" href="../../howto/default.htm"><b>How Do I...?</b></a><br></div>
+            <p>
+            <div style="padding:0,0,0,0"><a class=outer style="color:darkred" href="../../winforms/doc/winformsrelateddocs.htm"><b>Related Documentation</b></a><br></div>
+            <p>
+            
+</div>
+
+</td>
+</tr>
+</table>
+
+
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<style>
+.mydd {  font: smaller verdana; }
+
+.code1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	font-family:"Courier New";
+	color:darkred; 
+	}
+.codecomment1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	font-family:"Courier New";
+	color:green;
+	}
+.issue {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background-color:RED;
+	color:WHITE;
+	font-weight:bold;
+	}
+
+
+body { font: smaller verdana }        
+
+</style>
+
+
+
+
+
+<h4>Graphics and Windows Forms</h4>
+
+<ul>
+    <li><a href="#Introduction">Introduction to GDI+</a>
+    <li><a href="#Differences between GDI and GDI+">Differences between GDI and GDI+</a>
+    <li><a href="#GDI+ Namespaces">GDI+ Namespaces</a>
+    <li><a href="#Creating a Graphics Object">Creating a Graphics Object</a>
+    <li><a href="#Alpha Blending">Alpha Blending</a>
+    <li><a href="#Using Brushes">Using Brushes</a>
+    <li><a href="#Using Pens">Using Pens</a>
+    <li><a href="#Drawing Text">Drawing Text</a>
+    <li><a href="#Using Images">Using Images</a>
+    <li><a href="#Other information">Other information</a>
+</ul>
+
+
+<a name="Introduction"/>
+<h5>Introduction to GDI+</h5>
+<p>The Common Language Runtime takes advantage of an advanced version of the Windows graphics device interface (GDI) 
+called GDI+. GDI+ is designed to be high performance and easy to use. It supports 2D graphics,
+typography and imaging.
+<p><b>New 2D features include:</b></p>
+<ul>
+<li>Alpha blending support for all graphics primitives</li>
+<li>Anti-aliasing</li>
+<li>Gradient and texture fills</li>
+<li>Wide lines</li>
+<li>Cardinal splines</li>
+<li>Scalable regions</li>
+<li>Floating point coordinates</li>
+<li>Compound lines</li>
+<li>Inset pen</li>
+<li>High quality filtering and scaling</li>
+<li>Numerous line styles and end-cap options</li>
+</ul>
+<p><b>Image support includes</b></p>
+<ul>
+<li>Native support for image file formats JPEG, PNG, GIF, BMP, TIFF, EXIF, ICON</li>
+<li>Common interfaces for encoding and decoding arbitrary raster image formats</li>
+<li>Extensible architecture for dynamically adding new image file formats</li>
+<li>Native image processing support for common point operations such as 
+Brightness/contrast, color balance, blur, dissolve. Support for common transforms
+Rotate, crop and so on</li>
+</ul>
+<p><b>Color management</b></p>
+<p>Support for sRGB, ICM2, and sRGB64.
+<p><b>Typographic Support includes:</b></p>
+<ul>
+<li>Native ClearType support</li>
+<li>Texture and gradient filled text</li>
+<li>Fully Unicode enabled on all platforms</li>
+<li>Support for all Windows 2000 scripts</li>
+<li>Updated to Unicode 3.0 standards </li>
+<li>Text line services support for better text readability</li>
+</ul>
+<p>GDI+ can be used both Windows Forms and Web Forms - for instance a Web Forms control might dynamcially 
+generate a JPEG using GDI+ based on user input and reference it from a web page.</p>
+<p>This section focuses on Windows Forms
+
+
+<a name="Differences between GDI and GDI+"/>
+<h5>Differences between GDI and GDI+</h5>
+<p>The aim of this section is to help you understand the basics of using GDI+. Before we move on it is 
+worth pointing out the single biggest difference between GDI and GDI+. GDI has a stateful programming
+model. This means that you set properties on the drawing surface such as foreground color and background 
+color and then draw on it. So for instance to draw a string of black text the code would look 
+something like:</p>
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl6" style="display:none">
+
+Graphics g ;
+g.ForeColor = Color.WHITE;
+g.BackColor = Color.BLACK;
+g.Font = new Font("Times New Roman", 26);
+g.DrawString("Hello, World", 0, 0);
+</pre>
+<pre id="codectrl6" style="display:">
+
+Dim g as Graphics
+g.ForeColor = Color.WHITE
+g.BackColor = Color.BLACK
+g.Font = new Font("Times New Roman", 26)
+g.DrawString("Hello, World", 0, 0)
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl6" onclick="doClick(0, 'ctrl6')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl6" onclick="doClick(1, 'ctrl6')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<p>GDI+ has a stateless programming model. This means that you always pass the properties to be used
+as part of the drawing command. so that the code above translates to:</p>
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl8" style="display:none">
+
+Graphics g ;
+Color foreColor = Color.WHITE;
+Color backColor = Color.BLACK;
+Font font = new Font("Times New Roman", 26);
+g.FillRectangle(new SolidBrush(backColor), ClientRectangle);
+g.DrawString("Hello World", font, new SolidBrush(foreColor), 15, 15);
+</pre>
+<pre id="codectrl8" style="display:">
+
+Dim g as Graphics
+g.ForeColor = Color.WHITE
+g.BackColor = Color.BLACK
+g.Font = new Font("Times New Roman", 26)
+g.DrawString("Hello, World", 0, 0)
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl8" onclick="doClick(0, 'ctrl8')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl8" onclick="doClick(1, 'ctrl8')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+
+<a name="GDI+ Namespaces"/>
+<h5>GDI+ Namespaces</h5>
+
+<p>The GDI+ classes reside in the <b>System.Drawing</b>, 
+<b>System.Drawing.Drawing2D</b>, <b>System.Drawing.Imaging</b>, and 
+<b>System.Drawing.Text</b> namespaces.  The namespaces are contained in 
+the Assembly <b>System.Drawing.DLL</b>.  
+
+
+<a name="Creating a Graphics Object"/>
+<h5>Creating a Graphics Object</h5>
+<p>A GDI+ drawing surface is represented by the Graphics class. In order to use GDI+ you first 
+need a reference to a graphics object. Typically you get a 
+reference to a graphics object in the paint event of a control or form or in the page print 
+event of a <a href=WinFormsPrinting.htm>PrintDocument</a>. 
+<p>You can handle the paint event either by creating an event handler for that event:</p>
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 1;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:85%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="2">
+<pre id="codectrl10" style="display:">
+
+public class GdiPlusDemo : Form {
+
+   public GdiPlusDemo () {
+        //Hook the paint event of the form
+        this.Paint += new PaintEventHandler(form1_Paint);
+    }
+
+    private void form1_Paint(object sender, PaintEventArgs pe) {
+        Graphics g = pe.Graphics;
+
+        //Simply fill a rectangle with red
+        g.FillRectangle(new SolidBrush(Color.Red), 40, 40, 140, 140);
+    }
+}
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="tab" id="tabctrl10" onclick="doClick(0, 'ctrl10')">
+          <b>C#
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<p>Or, more typically by subclassing and overriding the OnPaint method:</p>
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 1;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:85%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="2">
+<pre id="codectrl12" style="display:">
+
+public class GdiPlusDemo : Form {
+
+   public GdiPlusDemo () {
+   }
+
+   protected override void OnPaint(PaintEventArgs pe) {
+        Graphics g = pe.Graphics;
+        g.FillRectangle(new SolidBrush(Color.Red), 40, 40, 140, 140);
+    }
+}
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="tab" id="tabctrl12" onclick="doClick(0, 'ctrl12')">
+          <b>C#
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+<p>You can also create a <b>Graphics</b> object instance from any subclass of Image:</p>
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 1;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:85%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="2">
+<pre id="codectrl14" style="display:">
+
+Bitmap newBitmap = new Bitmap(600,400,PixelFormat.Format32bppARGB);
+Graphics g = Graphics.FromImage(newBitmap);
+g.FillRectangle(new SolidBrush(Color.Red), 40, 40, 140, 140);
+newBitmap.Save("c:\\temp\\TestImage.jpg", ImageFormat.JPEG) ;
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="tab" id="tabctrl14" onclick="doClick(0, 'ctrl14')">
+          <b>C#
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+    
+<p>After creating a <b>Graphics</b> object, you can use it draw lines, fill shapes, draw text 
+and so on. The major objects that you use in association with the Graphics object are:
+
+<table class=mydd border=0 cellpadding=5>
+    <tr>
+        <td valign=top><strong>Brush</strong></td>
+        <td>
+            <p>Used to fill enclosed surfaces with patterns,colors, or bitmaps.</p>
+        </td>
+    </tr>
+    <tr>
+        <td valign=top><strong>Pen</strong></td>
+        <td><p>Used to draw lines and polygons, including rectangles, arcs, and pies</p></td>
+    </tr>
+    <tr>
+        <td valign=top><strong>Font</strong></td>
+        <td><p>Used to describe the font to be used to render text</p></td>
+    </tr>
+    <tr>
+        <td valign=top><strong>Color</strong></td>
+        <td><p>Used to describe the color used to render a particular object. In GDI+ color can be alpha blended</p></td>
+    </tr>
+</table>
+
+
+<a name="Alpha Blending"/>
+<h5>Alpha Blending</h5>
+Colors can be alpha blended making it is easy to create effects based on overlays of colors. 
+For instance the following paints a red rectangle overlayed with a yellow rectangle without 
+obscuring the unerlying red rectangle:</p>
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl16" style="display:none">
+
+Graphics g = pe.Graphics;
+g.FillRectangle(new SolidBrush(Color.Red), 600, 350, 100, 100);
+g.FillRectangle(new SolidBrush(Color.FromARGB(180, Color.Yellow)), 650, 400, 100, 100);
+</pre>
+<pre id="codectrl16" style="display:">
+
+Dim g As Graphics = pe.Graphics
+g.FillRectangle(new SolidBrush(Color.Red), 600, 350, 100, 100)
+g.FillRectangle(new SolidBrush(Color.FromARGB(180, Color.Yellow)), 650, 400, 100, 100)
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl16" onclick="doClick(0, 'ctrl16')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl16" onclick="doClick(1, 'ctrl16')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+
+<a name="Using Brushes"/>
+<h5>Using Brushes</h5>
+You use a brush to fill the interior of shapes and paths. For instance to create a red rectangle:</p>
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl18" style="display:none">
+
+Graphics g = pe.Graphics;
+g.FillRectangle(new SolidBrush(Color.Red), 600, 350, 100, 100);
+</pre>
+<pre id="codectrl18" style="display:">
+
+Dim g As Graphics = pe.Graphics
+g.FillRectangle(new SolidBrush(Color.Red), 600, 350, 100, 100)
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl18" onclick="doClick(0, 'ctrl18')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl18" onclick="doClick(1, 'ctrl18')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+<p>Brushes can either be solid, hatched, textured, or gradiated. 
+A hatched brush is simply a brush that paints using a pattern:</p>
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl20" style="display:none">
+
+Graphics g = pe.Graphics;
+HatchBrush hb = new HatchBrush(HatchStyle.ForwardDiagonal, Color.Green, Color.FromARGB(100, Color.Yellow));
+g.FillEllipse(hb, 250, 10, 100, 100);
+</pre>
+<pre id="codectrl20" style="display:">
+
+Dim g As Graphics = pe.Graphics
+HatchBrush hb = new HatchBrush(HatchStyle.ForwardDiagonal, Color.Green, Color.FromARGB(100, Color.Yellow))
+g.FillEllipse(hb, 250, 10, 100, 100)
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl20" onclick="doClick(0, 'ctrl20')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl20" onclick="doClick(1, 'ctrl20')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+<p>A textured brush uses a bitmap to paint. For instance the following code uses a texture 
+brush to paint the background of a form and then applies a white "wash" over it to tone 
+down the colors in the bitmap:</p>
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl22" style="display:none">
+
+Graphics g = pe.Graphics;
+Image colorbars = new Bitmap("colorbars.jpg");
+Brush backgroundBrush = new TextureBrush(colorbars);
+g.FillRectangle(backgroundBrush, ClientRectangle);
+g.FillRectangle(new SolidBrush(Color.FromARGB(180, Color.White)), ClientRectangle);
+</pre>
+<pre id="codectrl22" style="display:">
+
+Dim g As Graphics = pe.Graphics
+Dim colorbars As Image = new Bitmap("colorbars.jpg")
+Dim backgroundBrush As Brush = new TextureBrush(colorbars)
+g.FillRectangle(backgroundBrush, ClientRectangle)
+g.FillRectangle(new SolidBrush(Color.FromARGB(180, Color.White)), ClientRectangle)
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl22" onclick="doClick(0, 'ctrl22')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl22" onclick="doClick(1, 'ctrl22')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+<p>A  LinearGradient brush uses two colors to paint. It fills the given shape gradually changing 
+one color into the other according to the attributes set on the brush. For instance the following
+fill:</p>
+<br><img src=LinearGradient.jpg><br>
+<p>was created with this code:</p>
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl24" style="display:none">
+
+Rectangle r = new Rectangle(500, 300, 100, 100);
+LinearGradientBrush lb = new LinearGradientBrush(r, Color.Red, Color.Yellow,
+                                            LinearGradientMode.BackwardDiagonal);
+e.Graphics.FillRectangle(lb, r);
+</pre>
+<pre id="codectrl24" style="display:">
+
+Dim r As Rectangle = new Rectangle(500, 300, 100, 100);
+Dim lb As LinearGradientBrush = new LinearGradientBrush(r, Color.Red, Color.Yellow, _
+                                                       LinearGradientMode.BackwardDiagonal);
+e.Graphics.FillRectangle(lb, r);
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl24" onclick="doClick(0, 'ctrl24')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl24" onclick="doClick(1, 'ctrl24')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<p>A PathGradient brush allows the creation of much more complex effects. For instance this shape:
+<br><img src=PathGradient.jpg><br>
+was created with this code:</p>
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 1;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:85%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="2">
+<pre id="codectrl26" style="display:">
+
+protected override void OnPaint(PaintEventArgs e) {
+    e.Graphics.RenderingHint = RenderingHint.AntiAliased;
+    e.Graphics.FillRectangle(backgroundBrush, ClientRectangle);
+    e.Graphics.FillRectangle(new SolidBrush(Color.FromARGB(180, Color.White)), ClientRectangle);
+
+    GraphicsPath path = new GraphicsPath(new Point[] {
+        new Point(40, 140),
+        new Point(275, 200),
+        new Point(105, 225),
+        new Point(190, 300),
+        new Point(50, 350),
+        new Point(20, 180),
+        }, new byte[] {
+            (byte)PathPointType.Start,
+            (byte)PathPointType.Bezier,
+            (byte)PathPointType.Bezier,
+            (byte)PathPointType.Bezier,
+            (byte)PathPointType.Line,
+            (byte)PathPointType.Line,
+            });
+
+    PathGradientBrush pgb = new PathGradientBrush(path);
+    pgb.SurroundColors = new Color[] {
+        Color.Green,
+        Color.Yellow,
+        Color.Red,
+        Color.Blue,
+        Color.Orange,
+        Color.White,
+    };
+
+    e.Graphics.FillPath(pgb, path);
+}
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="tab" id="tabctrl26" onclick="doClick(0, 'ctrl26')">
+          <b>C#
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<br><br>
+<span>
+    
+    
+    
+    
+    
+
+        
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../winforms/samples/vb/gdiplus/brushes">
+	<img style="border-color:black" border=1 src="../../winforms/images/wflink.jpg"><br>
+	</a>
+	<div class="caption">VB Brush Sample</div><br>
+	
+	
+		[<a target="_blank" href="../../winforms/samples/vb/gdiplus/brushes">Run Sample</a>] | 
+		[<a target="_blank" href="../../winforms/samples/vb/gdiplus/brushes/gdipbrushesvbsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+    </span>
+
+
+<a name="Using Pens">
+<h5>Using Pens</h5>
+
+<p>You use a pen to draw lines and curves.  You can set properties such as 
+PenType, DashStyle, Width, Color, and EndCap to control how a Pen draws.
+<p>The following code draws a curve:</p>
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 1;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:85%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="2">
+<pre id="codectrl30" style="display:">
+
+Graphics g;
+//Create a pen 20 pixels wide that is and purple and partially transparent </span>
+Pen penExample = new Pen(Color.FromARGB(150, Color.Purple), 20);
+//Make it a dashed pen</span>
+Pen penExample.DashStyle = DashStyle.Dash;
+//Make the ends round</span>
+Pen penExample.StartCap = LineCap.Round;
+Pen penExample.EndCap = LineCap.Round;
+
+//Now draw a curve using the pen </span>
+g.DrawCurve(penExample, new Point[] {
+            new Point(200, 140),
+            new Point(700, 240),
+            new Point(500, 340),
+            new Point(140, 140),
+            new Point(40, 340),
+});
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="tab" id="tabctrl30" onclick="doClick(0, 'ctrl30')">
+          <b>C#
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<p>It is also possible to use a texture to as the fill for a pen by using a textured brush:</p>
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 1;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:85%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="2">
+<pre id="codectrl32" style="display:">
+
+Graphics g;
+Brush textureBrush = new TextureBrush(new Bitmap("Boiling Point.jpg"));
+Pen penExample = new Pen(textureBrush, 25);
+penExample.DashStyle = DashStyle.DashDotDot;
+penExample.StartCap = LineCap.Triangle;
+penExample.EndCap = LineCap.Round;
+g.DrawLine(penExample, 10,450,550,400);
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="tab" id="tabctrl32" onclick="doClick(0, 'ctrl32')">
+          <b>C#
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+<br><br>
+<span>
+    
+    
+    
+    
+    
+
+        
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../winforms/samples/vb/gdiplus/pens">
+	<img style="border-color:black" border=1 src="../../winforms/images/wflink.jpg"><br>
+	</a>
+	<div class="caption">VB Pen Sample</div><br>
+	
+	
+		[<a target="_blank" href="../../winforms/samples/vb/gdiplus/pens">Run Sample</a>] | 
+		[<a target="_blank" href="../../winforms/samples/vb/gdiplus/pens/gdippensvbsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+    </span>
+
+
+<a name="Drawing Text">
+<h5>Drawing Text</h5>
+<p>The Graphics object DrawString methods renders the text to the drawing surface. You pass the font 
+and color to be used to the DrawString method. For instance the following code displays the 
+text &quot;Hello World&quot; using the form's font and a black brush:</p>
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 1;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:85%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="2">
+<pre id="codectrl36" style="display:">
+
+protected override void OnPaint(PaintEventArgs e) {
+    Graphics g = e.Graphics;
+    e.Graphics.FillRectangle(new SolidBrush(Color.White), ClientRectangle);
+    g.DrawString("Hello World", this.Font, new SolidBrush(Color.Black), 10,10);
+}
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="tab" id="tabctrl36" onclick="doClick(0, 'ctrl36')">
+          <b>C#
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<p>Because DrawString takes a brush it is possible to render text using any brush including a
+texture brush. For instance the following code renders the text using a marbled effect with a 
+background shadow:</p>
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 1;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:85%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="2">
+<pre id="codectrl38" style="display:">
+
+protected override void OnPaint(PaintEventArgs e) {
+    TextureBrush titleBrush = new TextureBrush(new Bitmap("marble.jpg"));
+    TextureBrush backgroundBrush = new TextureBrush(new Bitmap("colorbars.jpg"));
+    SolidBrush titleShadowBrush = new SolidBrush(Color.FromARGB(70, Color.Black));
+    Font titleFont = new Font("Lucida Sans Unicode", 60);
+    string titleText = "Graphics  Samples";
+
+    e.Graphics.RenderingHint = RenderingHint.AntiAliased;
+    e.Graphics.FillRectangle(backgroundBrush, ClientRectangle);
+    e.Graphics.FillRectangle(new SolidBrush(Color.FromARGB(180, Color.White)), ClientRectangle);
+
+    e.Graphics.DrawString(titleText, titleFont, titleShadowBrush, 15, 15);
+    e.Graphics.DrawString(titleText, titleFont, titleBrush, 10, 10);
+
+}
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="tab" id="tabctrl38" onclick="doClick(0, 'ctrl38')">
+          <b>C#
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<p>If you supply DrawString with a Rectangle the text will be wrapped to fit in the rectangle:</p>
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 1;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:85%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="2">
+<pre id="codectrl40" style="display:">
+
+protected override void OnPaint(PaintEventArgs e) {
+    e.Graphics.RenderingHint = RenderingHint.AntiAliased;
+    e.Graphics.FillRectangle(new SolidBrush(Color.White), ClientRectangle);
+
+    Font textFont = new Font("Lucida Sans Unicode", 12);
+    RectangleF rectangle = new RectangleF(100, 100, 250, 350);
+    e.Graphics.FillRectangle(new SolidBrush(Color.Gainsboro), rectangle);
+    string flowedText="I went down to St. James Infirmary,\nSaw my baby there,\n"
+        + "Set down on a long white table,\nSo sweet, so cold, so fair.\nLet her go, "
+        + "let her go, God bless her,\nWherever she may be,\nShe can look this wide "
+        + "world over,\nShe'll never find a sweet man like me.\nWhen I die, want you "
+        + "to dress me in straight-lace shoes,\nBox back coat and a stetson hat,\n"
+        + "Put a 20 dollar gold piece on my watch chain,\n"
+        + "So the boys'll know that I died standing up.";
+    e.Graphics.DrawString(flowedText, textFont, new SolidBrush(Color.Blue), rectangle);
+}
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="tab" id="tabctrl40" onclick="doClick(0, 'ctrl40')">
+          <b>C#
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<p>If can control how the text is drawn using the StringFormat object. For instance if you 
+want to draw text centered in a particular area:</p>
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 1;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:85%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="2">
+<pre id="codectrl42" style="display:">
+
+protected override void OnPaint(PaintEventArgs e) {
+    e.Graphics.RenderingHint = RenderingHint.AntiAliased;
+    e.Graphics.FillRectangle(new SolidBrush(Color.White), ClientRectangle);
+
+    Font textFont = new Font("Lucida Sans Unicode", 8);
+    RectangleF rectangle = new RectangleF(100, 100, 250, 350);
+    e.Graphics.FillRectangle(new SolidBrush(Color.Gainsboro), rectangle);
+    StringFormat format = new StringFormat();
+    format.Alignment=StringAlignment.Center;
+    string flowedText="I went down to St. James Infirmary,\nSaw my baby there,\nSet down on a "
+        + "long white table,\nSo sweet, so cold, so fair.\nLet her go, let her go, God bless her,\n"
+        + "Wherever she may be,\nShe can look this wide world over,\nShe'll never find a sweet man "
+        + "like me.\nWhen I die, want you to dress me in straight-lace shoes,\nBox back coat and a "
+        + "stetson hat,\nPut a 20 dollar gold piece on my watch chain,\n"
+        + "So the boys'll know that I died standing up.";
+    e.Graphics.DrawString(flowedText, textFont, new SolidBrush(Color.Blue), rectangle,format);
+}
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="tab" id="tabctrl42" onclick="doClick(0, 'ctrl42')">
+          <b>C#
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<p>If you want to find out how long a string will be when its drawn, you can use MeasureString. 
+For instance to center a string on a form:</p>
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 1;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:85%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="2">
+<pre id="codectrl44" style="display:">
+
+protected override void OnPaint(PaintEventArgs e) {
+    e.Graphics.RenderingHint = RenderingHint.AntiAliased;
+    e.Graphics.FillRectangle(new SolidBrush(Color.White), ClientRectangle);
+
+    string textToDraw="Hello Symetrical World";
+
+    Font textFont = new Font("Lucida Sans Unicode", 8);
+    float windowCenter=this.DisplayRectangle.Width/2;
+    SizeF stringSize=e.Graphics.MeasureString(textToDraw, textFont);
+    float startPos=windowCenter-(stringSize.Width/2);
+
+    e.Graphics.DrawString(textToDraw, textFont, new SolidBrush(Color.Blue), startPos, 40);
+}
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="tab" id="tabctrl44" onclick="doClick(0, 'ctrl44')">
+          <b>C#
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+<p>MeasureString can also be used to determine how many lines and characters will be rendered. For
+instance, taking the flowed text example above we can determine how many lines and characters
+will be rendered</p>
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 1;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:85%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="2">
+<pre id="codectrl46" style="display:">
+
+protected override void OnPaint(PaintEventArgs e) {
+    e.Graphics.RenderingHint = RenderingHint.AntiAliased;
+    e.Graphics.FillRectangle(new SolidBrush(Color.White), ClientRectangle);
+
+    Font textFont = new Font("Lucida Sans Unicode", 12);
+    RectangleF rectangle = new RectangleF(100, 100, 250, 350);
+    int lines;
+    int characters;
+    string flowedText="I went down to St. James Infirmary,\nSaw my baby there,\nSet down on a "
+        + "long white table,\nSo sweet, so cold, so fair.\nLet her go, let her go, God bless her,\n"
+        + "Wherever she may be,\nShe can look this wide world over,\nShe'll never find a sweet man "
+        + "like me.\nWhen I die, want you to dress me in straight-lace shoes,\nBox back coat and a "
+        + "stetson hat,\nPut a 20 dollar gold piece on my watch chain,\n"
+        + "So the boys'll know that I died standing up.";
+    string whatRenderedText;
+
+    e.Graphics.FillRectangle(new SolidBrush(Color.Gainsboro), rectangle);
+
+    e.Graphics.MeasureString(flowedText, textFont, rectangle.Size,
+                    new StringFormat(), out characters, out lines);
+    whatRenderedText="We printed " + characters + " characters and " + lines + " lines";
+
+    e.Graphics.DrawString(flowedText, textFont, new SolidBrush(Color.Blue), rectangle);
+
+    e.Graphics.DrawString(whatRenderedText, this.Font, new SolidBrush(Color.Black), 10,10);
+}
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="tab" id="tabctrl46" onclick="doClick(0, 'ctrl46')">
+          <b>C#
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+<p>GDI+ has full unicode support. This means that it is possible to render text in any 
+language. For instance the following code draws a string in Japanese - note you will 
+have to have the Japanese language pack installed:</p>
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 1;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:85%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="2">
+<pre id="codectrl48" style="display:">
+
+protected override void OnPaint(PaintEventArgs e) {
+    e.Graphics.RenderingHint = RenderingHint.AntiAliased;
+    e.Graphics.FillRectangle(new SolidBrush(Color.White), ClientRectangle);
+
+    try {
+        Font japaneseFont = new Font("MS Mincho", 32);
+        string japaneseText = new string(new char[] {(char)31169, (char)12398, (char)21517,
+                    (char)21069, (char)12399, (char)12463, (char)12522, (char)12473,
+                    (char)12391, (char)12377, (char)12290});
+        e.Graphics.DrawString(japaneseText, japaneseFont, new SolidBrush(Color.Blue), 20, 40);
+    } catch (Exception ex) {
+         MessageBox.Show("You need to install the Japanese language pack to run this sample");
+         Application.Exit();
+    }
+}
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="tab" id="tabctrl48" onclick="doClick(0, 'ctrl48')">
+          <b>C#
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<br>
+<span>
+    
+    
+    
+    
+    
+
+        
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../winforms/samples/vb/gdiplus/text">
+	<img style="border-color:black" border=1 src="../../winforms/images/wflink.jpg"><br>
+	</a>
+	<div class="caption">VB Text Sample</div><br>
+	
+	
+		[<a target="_blank" href="../../winforms/samples/vb/gdiplus/text">Run Sample</a>] | 
+		[<a target="_blank" href="../../winforms/samples/vb/gdiplus/text/gdiptextvbsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+    </span>
+
+
+<a name="Using images">
+<h5>Using images</h5>
+<p>GDI+ has full support for a range of image formats including JPEG, PNG, GIF, BMP, TIFF, EXIF, ICON</p>
+<p>Rendering an image is straight forward. For instance the following renders a jpeg:</p>
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 1;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:85%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="2">
+<pre id="codectrl52" style="display:">
+
+protected override void OnPaint(PaintEventArgs e) {
+    e.Graphics.FillRectangle(new SolidBrush(Color.White), ClientRectangle);
+    e.Graphics.DrawImage(new Bitmap("sample.jpg"), 29, 20, 283, 212);
+}
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="tab" id="tabctrl52" onclick="doClick(0, 'ctrl52')">
+          <b>C#
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<p>Using a a bitmap as a rendering surface is also straightforward. The following code renders 
+some text and lines to a bitmap  and then saves the bitmap to disk as a PNG file:</p>
+
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 1;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:85%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="2">
+<pre id="codectrl54" style="display:">
+
+Bitmap newBitmap = new Bitmap(800,600,PixelFormat.Format32bppARGB);
+Graphics g = Graphics.FromImage(newBitmap);
+g.FillRectangle(new SolidBrush(Color.White), new Rectangle(0,0,800,600));
+
+Font textFont = new Font("Lucida Sans Unicode", 12);
+RectangleF rectangle = new RectangleF(100, 100, 250, 350);
+int lines;
+int characters;
+string flowedText="I went down to St. James Infirmary,\nSaw my baby there,\nSet down on a long "
+    + "white table,\nSo sweet, so cold, so fair.\nLet her go, let her go, God bless her,\n"
+    + "Wherever she may be,\nShe can look this wide world over,\nShe'll never find a sweet man "
+    + "like me.\nWhen I die, want you to dress me in straight-lace shoes,\nBox back coat and a "
+    + "stetson hat,\nPut a 20 dollar gold piece on my watch chain,\n"
+    + "So the boys'll know that I died standing up.";
+
+g.FillRectangle(new SolidBrush(Color.Gainsboro), rectangle);
+g.DrawString(flowedText, textFont, new SolidBrush(Color.Blue), rectangle);
+Pen penExample = new Pen(Color.FromARGB(150, Color.Purple), 20);
+penExample.DashStyle = DashStyle.Dash;
+penExample.StartCap = LineCap.Round;
+penExample.EndCap = LineCap.Round;
+g.DrawCurve(penExample, new Point[] {
+            new Point(200, 140),
+            new Point(700, 240),
+            new Point(500, 340),
+            new Point(140, 140),
+            new Point(40, 340),
+});
+
+newBitmap.Save("TestImage.png", ImageFormat.PNG) ;
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="tab" id="tabctrl54" onclick="doClick(0, 'ctrl54')">
+          <b>C#
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+<br><br>
+
+<span>
+    
+    
+    
+    
+    
+
+        
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../winforms/samples/vb/gdiplus/images">
+	<img style="border-color:black" border=1 src="../../winforms/images/wflink.jpg"><br>
+	</a>
+	<div class="caption">VB Image Sample</div><br>
+	
+	
+		[<a target="_blank" href="../../winforms/samples/vb/gdiplus/images">Run Sample</a>] | 
+		[<a target="_blank" href="../../winforms/samples/vb/gdiplus/images/gdipimagesvbsource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+    </span>
+
+
+<a name="Other information">
+<h5>Other information</h5>
+<h6>Standard Pens and Brushes</h6>
+<p>The Pen and Brush classes include a set of standard solid pens and brushes for all the
+known colors.
+<h6>Anti-aliasing</h6>
+Setting Graphics.SmoothingMode to SmoothingMode.AntiAlias will result in sharper text and graphics.
+<h6>Scope of the graphics object</h6>
+The graphics object that is contained in the arguments to the paint event (PaintEventArgs) 
+is disposed upon return from the paint event handler and so you should not keep a reference
+to this Graphics object that has scope outside the paint event. Attempting to use this 
+Graphics object other than in the paint event will have unpredictable results.
+<h6>Handling resize</h6>
+<p>By default the paint event is not fired when a control or form is resized. If you 
+wish to have the paint event fire when a form is resized you will need to set the 
+control style appropriately:</p>
+<p>
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 1;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:85%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="2">
+<pre id="codectrl58" style="display:">
+
+public MyForm() {
+    SetStyle(ControlStyles.ResizeRedraw,true);
+}
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="tab" id="tabctrl58" onclick="doClick(0, 'ctrl58')">
+          <b>C#
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+<p>
+
+
+<!--END FOOTER-->
+<p>
+<hr>
+<p>
+</div>
+</td>
+</tr>
+</table>
+</BODY>
+</html>
+<!--END FOOTER-->

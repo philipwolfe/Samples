@@ -1,0 +1,80 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/winforms/samples/VB/WritingControls/LicensedControl/LicensedControl.src&file=LicensedControl.vb" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfTGljZW5zZWRDb250cm9sLnZieF9feHhfeHhfeF9feA==5de00f4e" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">LicensedControl.vb</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>Control: </b></td>
+        <td><a href='../../../../../winforms/samples/vb/writingcontrols/licensedcontrol/licensedcontrolvbsource.htm'>LicensedControl.vb</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Lic File: </b></td>
+        <td><a href='../../../../../winforms/samples/vb/writingcontrols/licensedcontrol/microsoftsampleswinformsvblicensedcontrollicensedcontrollicsource.htm'>Microsoft.Samples.WinForms.VB.LicensedControl.LicensedControl.LIC</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Host Application: </b></td>
+        <td><a href='../../../../../winforms/samples/vb/writingcontrols/licensedcontrol/hostappvbsource.htm'>HostApp.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>' ------------------------------------------------------------------------------
+' <copyright from='1997' to='2001' company='Microsoft Corporation'>           
+'     Copyright (c) Microsoft Corporation. All Rights Reserved.                
+'        
+'     This source code is intended only as a supplement to Microsoft
+'     Development Tools and/or on-line documentation.  See these other
+'     materials for detailed information regarding Microsoft code samples.
+' 
+' </copyright>                                                                
+' ------------------------------------------------------------------------------
+
+imports System
+imports System.WinForms
+imports System.Drawing
+imports System.ComponentModel
+
+
+namespace Microsoft.Samples.WinForms.VB.LicensedControl
+
+    
+    public class <LicenseProviderAttribute(GetType(LicFileLicenseProvider))> LicensedControl
+	inherits RichControl
+
+        private license As License = nothing
+
+        public sub New()
+            MyBase.New
+
+            license = LicenseManager.Validate(GetType(LicensedControl), Me)
+        end sub
+
+        overrides public sub Dispose()
+            if license <> nothing
+                license.Dispose()
+                license = nothing
+            end if
+        end sub
+
+        overrides protected sub OnPaint(e As PaintEventArgs)
+            ' Paint the Text property on the control
+             e.Graphics.DrawString(Me.Text, Font, new SolidBrush(ForeColor), ClientRectangle.x, ClientRectangle.y)
+        end sub
+    end class	' LicensedControl
+
+end namespace	' Microsoft.Samples.WinForms.VB.LicensedControl
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

@@ -1,0 +1,796 @@
+
+
+<!--BEGIN HEADER-->
+<html>
+<head>
+<link rel="stylesheet" href="../../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+  <table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+<!--
+		<div style="padding:0,0,4,0"><a class="outer" style="color:darkred" href="../../../howto/doc/xml/overviewofxml.htm"><b>Introduction</a></b></a><br></div>
+         <p>
+		<div style="padding:0,0,4,0"><b>XML Readers and Writers</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/readxmlfile.htm">Read XML from a file</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/readxmlstream.htm">Read XML from a stream</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/writexmlfile.htm">Write XML to a file</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/validationreadingxml.htm">Apply validation when reading XML</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML Document Object Model (DOM)</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/dominterfacexmldocument.htm">Load and use the XmlDocument (W3C DOM)</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savexmldocument.htm">Save XML with the XmlDocument (W3C DOM)</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>Using the XmlDataDocument</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/loadxmldocument.htm">Load and use the XmlDataDocument</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/streamanxmldocument.htm">Read XML from an XmlDataDocument</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML Navigation and Editing</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/navigatexmldocument.htm">Navigate XML with the XmlNavigator</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/editingxmldocument.htm">Edit XML with the XmlNavigator</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XPath and XSL Transformations</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/queryxmldocumentxpath.htm">Query XML with an XPath expression</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/transformxml.htm">Apply an XSL transformation to XML</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML and Relational Data</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/xmldataset.htm">Use XML and the DataSet class</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/datasetmapxsdschema.htm">Create DataSet mappings from an XSD schema</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/loaddatasetxmldata.htm">Load a DataSet with XML</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/datasetmapxmldata.htm">Infer DataSet mappings from XML</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savedatasetmapxsdschema.htm">Save DataSet mappings to an XSD schema file</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savedatasetxml.htm">Save a DataSet as XML</a><br>
+-->
+
+		<div style="padding:0,0,4,0"><b>XML Data</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/overviewofxml.htm">Overview of XML</a><p>
+
+		<div style="padding:0,0,4,0"><b>XML Readers and Writers</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/readxmlfile.htm">Read XML from a file</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/readxmlstream.htm">Read XML from a stream</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/writexmlfile.htm">Write XML to a file</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/validationreadingxml.htm">Apply validation to XML</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML Document Object Model</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/dominterfacexmldocument.htm">Load XML with XmlDocument</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savexmldocument.htm">Save XML with XmlDocument</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>Using the XmlDataDocument</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/loadxmldocument.htm">Load the XmlDataDocument</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/streamanxmldocument.htm">Read from XmlDataDocument</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML Navigation and Editing</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/navigatexmldocument.htm">Navigate with XmlNavigator</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/editingxmldocument.htm">Edit with XmlNavigator</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XPath and XSL Transformations</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/queryxmldocumentxpath.htm">Query XML with an XPath</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/transformxml.htm">Apply XSL transformations</a><br>
+		<p>
+		<div style="padding:0,0,4,0"><b>XML and Relational Data</b><br></div>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/xmldataset.htm">Use XML and the DataSet</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/datasetmapxsdschema.htm">Create DataSet mappings</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/loaddatasetxmldata.htm">Load a DataSet with XML</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/datasetmapxmldata.htm">Infer DataSet mappings</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savedatasetmapxsdschema.htm">Save DataSet mappings</a><br>
+		&nbsp; <a class="outer" href="../../../howto/doc/xml/savedatasetxml.htm">Save a DataSet as XML</a><p>
+
+    <div style="padding:0,0,4,0"><a target="_top" style="color:darkred" href="../../../howto"><b>Back to Index</b></a><br></div>
+
+
+</div>
+
+</td>
+</tr>
+</table>
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<style>
+.mydd {  font: smaller verdana; }
+.code1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:blue;
+	}
+.codecomment1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:green;
+	}
+.issue {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background-color:RED;
+	color:WHITE;
+	font-weight:bold;
+	}
+
+
+body { font: smaller verdana }        
+
+</style>
+
+
+
+
+ 
+<h4>How Do I...Load and use the XmlDocument (W3C DOM)?</h4>
+
+This sample illustrates the classes which implement the
+<A href="http://www.w3.org/TR/REC-DOM-Level-1/level-one-core.html">W3C Document object Model (DOM) level 1 Core</A></A> and the
+<A href="http://www.w3.org/TR/DOM-Level-2/core.html">Core DOM Level 2</A></A>. The DOM is an in-memory (cache) tree representation of an XML document and
+enables the navigation and editing of this document.
+
+<p>
+
+<span>
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../../images/genicon.gif"><br>
+	</a>
+	<div class="caption">DOMInterfaceXmlDocument.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../../howto/samples/xml/dominterfacexmldocument/dominterfacexmldocumentcssource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<p>
+There are a number of classes implemented as part of the W3C DOM. Of these the <b>XmlNode</b> provides methods and properties to manipulate a node. Many of the other W3C classes
+are specializations of the XmlNode class. The <b>XmlDocument</b> class represents the XML document and has a <b>Load</b> method to load the document from a file,
+stream or an XmlReader. The list of classes is given in the table below.
+<p>
+
+<DIV class=indent>
+<TABLE class=table2 
+width="350">
+<TBODY>
+<TR>
+<TH>Class</TH>
+<TH>Derived from</TH>
+</TR>
+  <tr>
+    <td width="179" height="19"><font size="1">XmlNode</font></td>
+    <td width="308" height="19"><font size="1">implements ICloneable, IEnumerable</font></td>
+  </tr>
+  <tr>
+    <td width="179" height="19"><font size="1">XmlDocument</font></td>
+    <td width="308" height="19"><font size="1">XmlNode</font></td>
+  </tr>
+  <tr>
+    <td width="179" height="19"><font size="1">XmlElement</font></td>
+    <td width="308" height="19"><font size="1">XmlNode</font></td>
+  </tr>
+  <tr>
+    <td width="179" height="19"><font size="1">XmlAttribute</font></td>
+    <td width="308" height="19"><font size="1">XmlNode</font></td>
+  </tr>
+  <tr>
+    <td width="179" height="19"><font size="1">XmlCharacterData</font></td>
+    <td width="308" height="19"><font size="1">XmlNode</font></td>
+  </tr>
+  <tr>
+    <td width="179" height="19"><font size="1">XmlText</font></td>
+    <td width="308" height="19"><font size="1">XmlCharacterData</font></td>
+  </tr>
+  <tr>
+    <td width="179" height="19"><font size="1">XmlComment</font></td>
+    <td width="308" height="19"><font size="1">XmlCharacterData</font></td>
+  </tr>
+  <tr>
+    <td width="179" height="19"><font size="1">XmlCDataSection</font></td>
+    <td width="308" height="19"><font size="1">XmlCharacterData</font></td>
+  </tr>
+  <tr>
+    <td width="179" height="19"><font size="1">XmlWhitespace</font></td>
+    <td width="308" height="19"><font size="1">XmlCharacterData</font></td>
+  </tr>
+  <tr>
+    <td width="179" height="19"><font size="1">XmlSignificantWhitespace</font></td>
+    <td width="308" height="19"><font size="1">XmlCharacterData</font></td>
+  </tr>
+  <tr>
+    <td width="179" height="19"><font size="1">XmlProcessingInstruction</font></td>
+    <td width="308" height="19"><font size="1">XmlNode</font></td>
+  </tr>
+  <tr>
+    <td width="179" height="19"><font size="1">XmlNodeList</font></td>
+    <td width="308" height="19"><font size="1">implements IEnumerable</font></td>
+  </tr>
+  <tr>
+    <td width="179" height="19"><font size="1">XmlNamedNodeMap</font></td>
+    <td width="308" height="19"><font size="1">implements IEnumerable</font></td>
+  </tr>
+  <tr>
+    <td width="179" height="19"><font size="1">XmlAttributeCollection</font></td>
+    <td width="308" height="19"><font size="1">XmlNamedNodeMap</font></td>
+  </tr>
+  <tr>
+    <td width="179" height="19"><font size="1">XmlDocumentFragment</font></td>
+    <td width="308" height="19"><font size="1">XmlNode</font></td>
+  </tr>
+  <tr>
+    <td width="179" height="19"><font size="1">XmlDocumentType</font></td>
+    <td width="308" height="19"><font size="1">XmlNode</font></td>
+  </tr>
+  <tr>
+    <td width="179" height="19"><font size="1">XmlEntityReference</font></td>
+    <td width="308" height="19"><font size="1">XmlNode</font></td>
+  </tr>
+  <tr>
+    <td width="179" height="19"><font size="1">XmlEntity</font></td>
+    <td width="308" height="19"><font size="1">XmlNode</font></td>
+  </tr>
+  <tr>
+    <td width="179" height="19"><font size="1">XmlNotation</font></td>
+    <td width="308" height="19"><font size="1">XmlNode</font></td>
+  </tr>
+  <tr>
+    <td width="179" height="19"><font size="1">XmlImplementation</font></td>
+    <td width="308" height="19"><font size="1">Object</font></td>
+  </tr>
+  <tr>
+    <td width="179" height="19"><font size="1">XmlNodeChangedEventArgs</font></td>
+    <td width="308" height="19"><font size="1">EventArgs</font></td>
+  </tr>
+  </TBODY></TABLE></DIV>
+ 
+<p>
+The code illustrated below shows an XmlDocument being loaded from an XmlTextReader, and the contents of the document are then displayed.
+<p>
+
+
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl8" style="display:none">
+
+XmlTextReader reader = null;
+
+try {
+
+    // Load the XML from file
+    Console.WriteLine ("Reading file {0} ...", m_Document);
+    reader = new XmlTextReader (m_Document);
+
+    Console.WriteLine ("File {0} read sucessfully ...", m_Document);
+
+    // Create an XmlDocument from the XmlTextReader
+    XmlDocument xmldocument = new XmlDocument();
+    xmldocument.Load (reader);
+    Console.WriteLine ("XmlDocument loaded with XML data successfully ...");
+
+    // Process the supplied XML file
+    Console.WriteLine ("Processing ...");
+    Console.WriteLine ();
+
+    // Start from the document Element
+    DisplayTree(xmldocument.DocumentElement);
+}
+catch (Exception e) {
+    Console.WriteLine ("Exception: {0}", e.ToString());
+}
+finally {
+    if (reader != null)
+        reader.Close();
+
+}
+</pre>
+<pre id="codectrl8" style="display:">
+
+Dim reader As XmlTextReader = Nothing
+
+Try
+        
+    ' Load the XML from file
+    Console.WriteLine ("Reading file {0} ...", m_Document)
+    reader = New XmlTextReader (m_Document)
+    reader.WhitespaceHandling = WhitespaceHandling.None
+    Console.WriteLine ("File {0} read sucessfully ...", m_Document)
+
+    ' Create an XmlDocument from the XmlTextReader
+    Dim xmldocument As XmlDocument = new XmlDocument()
+    xmldocument.Load (reader)
+    Console.WriteLine ("XmlDocument loaded with XML data successfully ...")
+
+   ' Process the supplied XML file
+    Console.WriteLine ("Processing ...")
+    Console.WriteLine ()
+
+    ' Start from the document Element
+    DisplayTree(xmldocument.DocumentElement)
+        
+Catch e As Exception
+    Console.WriteLine ("Exception:" & e.ToString())
+
+Finally
+    If Not (reader = Nothing)
+        reader.Close()
+    End If
+End Try
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl8" onclick="doClick(0, 'ctrl8')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl8" onclick="doClick(1, 'ctrl8')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+<p>
+
+
+To navigate the document, the DisplayTree method recursively iterates over the XmlDocument using the <b>HasChildNodes</b> and <b>FirstChild</b> properties
+to move down the tree.
+The <b>NextSibling</b> property moves to the node immediately next to the current node, returning null if there is no node to move to.
+<p>
+
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl10" style="display:none">
+
+public void DisplayTree(XmlNode node) {       
+
+    if (node != null)
+        Format (node);
+
+    if (node.HasChildNodes) {
+
+        node = node.FirstChild;
+        while (node != null) {
+            DisplayTree(node);
+            node = node.NextSibling;
+        }
+    }
+}
+</pre>
+<pre id="codectrl10" style="display:">
+
+Public Sub DisplayTree(node As XmlNode)
+
+    If Not IsNothing(node) Then
+        Format (node)
+
+    If (node.HasChildNodes)
+
+        node = node.FirstChild
+        While Not IsNothing(node)
+            DisplayTree(node)
+            node = node.NextSibling
+        End While
+    End If
+End Sub
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl10" onclick="doClick(0, 'ctrl10')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl10" onclick="doClick(1, 'ctrl10')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+
+<p>
+The <b>Name</b> property gives the name of the node, and the <b>Value</b> property its value depending on the type. 
+The table below shows the value returned for a given node type.
+
+<p>
+<DIV class=indent>
+<TABLE class=table2  
+width="350">
+<TBODY>
+<TR>
+<TH>Type</TH>
+<TH>Value</TH>
+</TR>
+  <tr>
+    <td width="179" height="19"><font size="1">Attribute</font></td>
+    <td width="308" height="19"><font size="1">Value of attribute</font></td>
+  </tr>
+  <tr>
+    <td width="179" height="19"><font size="1">CDATA</font></td>
+    <td width="308" height="19"><font size="1">Content of the CDATA Section</font></td>
+  </tr>
+  <tr>
+    <td width="179" height="19"><font size="1">Comment</font></td>
+    <td width="308" height="19"><font size="1">Content of the comment</font></td>
+  </tr>
+  <tr>
+    <td width="179" height="19"><font size="1">Document</font></td>
+    <td width="308" height="19"><font size="1">null</font></td>
+  </tr>
+  <tr>
+    <td width="179" height="19"><font size="1">DocumentFragment</font></td>
+    <td width="308" height="19"><font size="1">null</font></td>
+  </tr>
+  <tr>
+    <td width="179" height="19"><font size="1">DocumentType</font></td>
+    <td width="308" height="19"><font size="1">null</font></td>
+  </tr>
+  <tr>
+    <td width="179" height="19"><font size="1">Element</font></td>
+    <td width="308" height="19"><font size="1">null</font></td>
+  </tr>
+  <tr>
+    <td width="179" height="19"><font size="1">Entity</font></td>
+    <td width="308" height="19"><font size="1">null</font></td>
+  </tr>
+  <tr>
+    <td width="179" height="19"><font size="1">EntityReference</font></td>
+    <td width="308" height="19"><font size="1">null</font></td>
+  </tr>
+  <tr>
+    <td width="179" height="19"><font size="1">Notation</font></td>
+    <td width="308" height="19"><font size="1">null</font></td>
+  </tr>
+  <tr>
+    <td width="179" height="19"><font size="1">ProcessingInstruction</font></td>
+    <td width="308" height="19">	<font size="1">Entire content excluding the target</font></td>
+  </tr>
+  <tr>
+    <td width="179" height="19"><font size="1">Text</font></td>
+    <td width="308" height="19"><font size="1">Content of the text node</font></td>
+  </tr>
+  </TBODY></TABLE></DIV>
+  
+<p>
+The Format method, shown below, displays the details of the current node using the Name and Value properties. For <b>XmlElement</b> node types the <b>Attributes</b>
+property provides a list of attributes as a <b>XmlNamedNodeMap</b> class. This class contains <b>GetNamedItem</b> to retrieve an XmlNode specified by name and 
+<b>SetNamedItem</b> to add an XmlNode using it's Name property. It also implements IEnumerable in order to support the 'foreach' statement.
+<p>
+
+
+
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl12" style="display:none">
+
+// Format the output
+private void Format (XmlNode node) {
+
+    if (!node.HasChildNodes) {
+        Console.Write("\t" + node.Name + "<" + node.Value + ">\r\n");
+    }
+    else {
+        Console.Write(node.Name);
+        if(XmlNodeType.Element == node.NodeType) {
+            XmlNamedNodeMap map = node.Attributes;
+
+            foreach (XmlNode attrnode in map)
+                Console.Write(" " + attrnode.Name + "<" + attrnode.Value  + "> ");
+
+        }
+        Console.WriteLine();
+    }
+}
+</pre>
+<pre id="codectrl12" style="display:">
+
+// Format the output
+Private Sub Format (Node As XmlNode)
+
+    If Not (node.HasChildNodes)
+        Console.WriteLine( Strings.chr(9) & node.Name & "<" & node.Value & ">")
+
+    Else 
+        Console.Write(node.Name)
+        If (XmlNodeType.Element = node.NodeType)
+            XmlNamedNodeMap map = node.Attributes
+            Dim attrnode As XmlNode
+            For Each attrnode in map
+                 Console.Write(" " & Ctype(attrnode,XmlNode).Name _ 
+                                   & "<" & Ctype(attrnode,XmlNode).Value & "> " )
+        End If
+        Console.WriteLine()
+    End If
+End Sub
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl12" onclick="doClick(0, 'ctrl12')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl12" onclick="doClick(1, 'ctrl12')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+	
+
+<p>
+
+
+
+
+The XmlNode class also has a <b>NodeType</b> property. See <A target=content href="ReadXMLFile.htm">How Do I...Read XML from a file?</A> for a table of
+the different node types. The output from running this sample is shown below.
+
+
+<div class="code">
+<pre>
+Reading file books.xml ...
+File books.xml read sucessfully ...
+XmlDocument loaded with XML data successfully ...
+Processing ...
+
+bookstore
+book genre&ltautobiography&gt;  publicationdate&lt1981&gt;  ISBN&lt1-861003-11-0&gt;
+title
+        #text&ltThe Autobiography of Benjamin Franklin&gt;
+author
+first-name
+        #text&ltBenjamin&gt;
+last-name
+        #text&ltFranklin&gt;
+price
+        #text&lt8.99&gt;
+book genre&ltnovel&gt;  publicationdate&lt1967&gt;  ISBN&lt0-201-63361-2&gt;
+title
+        #text&ltThe Confidence Man&gt;
+author
+first-name
+        #text&ltHerman&gt;
+last-name
+        #text&ltMelville&gt;
+price
+        #text&lt11.99&gt;
+book genre&ltphilosophy&gt;  publicationdate&lt1991&gt;  ISBN&lt1-861001-57-6&gt;
+title
+        #text&ltThe Gorgias&gt;
+author
+name
+        #text&ltPlato&gt;
+price
+        #text&lt9.99&gt;
+</pre></div>
+                                           
+<H4>Summary</H4>
+<OL>
+<LI>The XmlDocument, XmlNode and other classes implement the <A href="http://www.w3.org/TR/REC-DOM-Level-1/level-one-core.html">W3C Document object Model level 1 Core</A></A>
+and the <A href="http://www.w3.org/TR/DOM-Level-2/core.html">Core DOM Level 2</A></A> specifications.
+<LI>The XmlDocument is an in-memory (cache) tree representation of an XML document.
+<LI>There are different node types specializing from XmlNode to enable you to manipulate the XML document.
+<LI>You can get faster, non-cached, forward only stream access to XML using the XmlTextReader and XmlTextWriter classes.
+</LI></OL>
+
+<!--END FOOTER-->
+<p>
+<hr>
+<p>
+</div>
+</td>
+</tr>
+</table>
+</BODY>
+</html>
+<!--END FOOTER-->

@@ -1,0 +1,59 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Services/MessageQueue/formatters/Formatters.src&file=Formatters.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfRm9ybWF0dGVycy5jc3hfX3h4X3h4X3hfX3g=e2f3de39" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">Formatters.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../howto/samples/services/messagequeue/formatters/formatterscssource.htm'>Formatters.cs</a> &nbsp;&nbsp<a href='../../../../../howto/samples/services/messagequeue/formatters/ordercssource.htm'>Order.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../howto/samples/services/messagequeue/formatters/vb/formattersvbsource.htm'>VB\Formatters.vb</a> &nbsp;&nbsp<a href='../../../../../howto/samples/services/messagequeue/formatters/vb/ordervbsource.htm'>VB\Order.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>using System;
+using System.Messaging;
+
+public class Formatters {
+    public static void Main(String[] args) 
+    {
+        string mqPath = ".\\FormattersSample";
+
+        if ( !MessageQueue.Exists(mqPath) ) {
+            MessageQueue.Create(mqPath);
+        }
+
+        MessageQueue mq = new MessageQueue(mqPath);
+
+        Order order = new Order();
+        order.OrderId = 102;
+        order.ItemDescription = "MS Visual Studio 7";
+
+        mq.Formatter = new XmlMessageFormatter();  
+        mq.Send(order);
+
+        mq.Formatter = new BinaryMessageFormatter();        
+        mq.Send(order);
+
+        mq.Formatter = new ActiveXMessageFormatter();     
+        mq.Send(10); 
+    }
+}
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

@@ -1,0 +1,70 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/adoplus/vb/typeddata.src&file=TypedData.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVHlwZWREYXRhLmFzcFx4eF9feHhfeHhfeF9feA==b344c852" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">TypedData.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../howto/samples/adoplus/vb/typeddataaspxsource.htm'>TypedData.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../howto/samples/adoplus/cs/typeddataaspxsource.htm'>..\CS\TypedData.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>
+<%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="System.Data.SQL" %>
+<%@ Import Namespace="customerDataSet" %>
+
+<html>
+
+<script language="VB" runat="server">
+
+    Sub Page_Load(Src as Object, E As EventArgs) 
+
+        Dim myCustDS As New custDS()
+        Dim myDSCommand As SQLDataSetCommand = New SQLDataSetCommand("Select * from customers", "server=localhost;uid=sa;pwd=;database=northwind")
+        myDSCommand.FillDataSet(myCustDS, "Customers")
+
+        Response.Write("<TABLE>")
+        Response.Write("<TR>")
+        Response.Write("CustomerID")
+        Response.Write("</TR>")
+        Response.Write("<TR>")
+
+        Dim myCustomer as DataRow
+        For Each myCustomer in myCustDS.Tables(0).Rows
+            Response.Write("<P>" + myCustomer(0).ToString() + "</P>")
+        Next
+        Response.Write("</TR>")
+        Response.Write("</TABLE>")
+    End Sub
+
+</script>
+
+
+
+ 
+
+ 
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>
+</span>
+
+    </form>

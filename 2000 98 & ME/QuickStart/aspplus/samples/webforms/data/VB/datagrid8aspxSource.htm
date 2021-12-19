@@ -1,0 +1,285 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/data/datagrid8.src&file=VB/datagrid8.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvZGF0YWdyaWQ4LmFzcFx4eF9feHhfeHhfeF9feA==436a23ff" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/datagrid8.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/data/datagrid8aspxsource.htm'>datagrid8.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/data/vb/datagrid8aspxsource.htm'>VB/datagrid8.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/data/js/datagrid8aspxsource.htm'>JS/datagrid8.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>
+<%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="System.Data.SQL" %>
+
+<html>
+
+<script language="VB" runat="server">
+
+    Dim MyConnection As SQLConnection
+    Public StateIndex As Hashtable
+
+    Sub Page_Load(Src As Object, E As EventArgs) 
+
+        MyConnection = New SQLConnection("server=localhost;uid=sa;pwd=;database=pubs")
+
+        If Not (IsPostBack)
+            BindGrid()
+        End If
+
+        StateIndex = New Hashtable()
+        StateIndex("CA") = 0
+        StateIndex("IN") = 1
+        StateIndex("KS") = 2
+        StateIndex("MD") = 3
+        StateIndex("MI") = 4
+        StateIndex("OR") = 5
+        StateIndex("TN") = 6
+        StateIndex("UT") = 7
+    End Sub
+
+    Public Function GetStateIndex(StateName As String) As Integer
+
+        If StateIndex(stateName) <> Nothing
+            Return CInt(StateIndex(stateName))
+        Else 
+            Return 0
+        End If
+    End Function
+
+    Sub MyDataGrid_Edit(Sender As Object, E As DataGridCommandEventArgs)
+
+        MyDataGrid.EditItemIndex = CInt(E.Item.ItemIndex)
+        BindGrid()
+    End Sub
+
+    Sub MyDataGrid_Cancel(Sender As Object, E As DataGridCommandEventArgs)
+
+        MyDataGrid.EditItemIndex = -1
+        BindGrid()
+    End Sub
+
+    Sub MyDataGrid_Update(Sender As Object, E As DataGridCommandEventArgs)
+
+        Dim DS As DataSet
+        Dim MyCommand As SQLCommand
+
+        Dim UpdateCmd As String = "UPDATE Authors SET au_id = @Id, au_lname = @LName, au_fname = @FName, phone = " _
+             & " @Phone, address = @Address, city = @City, state = @State, zip = @Zip, contract = @Contract where au_id = @Id"
+
+        MyCommand = New SQLCommand(UpdateCmd, MyConnection)
+
+        MyCommand.Parameters.Add(New SQLParameter("@Id", SQLDataType.VarChar, 11))
+        MyCommand.Parameters.Add(New SQLParameter("@LName", SQLDataType.VarChar, 40))
+        MyCommand.Parameters.Add(New SQLParameter("@FName", SQLDataType.VarChar, 20))
+        MyCommand.Parameters.Add(New SQLParameter("@Phone", SQLDataType.Char, 12))
+        MyCommand.Parameters.Add(New SQLParameter("@Address", SQLDataType.VarChar, 40))
+        MyCommand.Parameters.Add(New SQLParameter("@City", SQLDataType.VarChar, 20))
+        MyCommand.Parameters.Add(New SQLParameter("@State", SQLDataType.Char, 2))
+        MyCommand.Parameters.Add(New SQLParameter("@Zip", SQLDataType.Char, 5))
+        MyCommand.Parameters.Add(New SQLParameter("@Contract", SQLDataType.VarChar,1))
+
+        MyCommand.Parameters("@Id").Value = MyDataGrid.DataKeys(CInt(E.Item.ItemIndex))
+
+        Dim Cols As String() = {"LName","FName","Phone","Address","City","Zip"}
+
+        Dim I As Integer
+        For I = 0 To 5
+
+            Dim CurrentTextBox As TextBox
+            CurrentTextBox = E.Item.FindControl("edit_" & Cols(I))
+            Dim ColValue As String = CurrentTextBox.Text
+
+            ' Check for null values in required fields
+            If I<3 And ColValue = ""
+
+                Message.InnerHtml = "ERROR: Null values not allowed for Name or Phone"
+                Message.Style("color") = "red"
+                Return
+            End If
+
+            MyCommand.Parameters("@" & Cols(I)).Value = ColValue
+        Next
+
+        Dim StateDropDownList As DropDownList
+        StateDropDownList = E.Item.FindControl("edit_State")
+        MyCommand.Parameters("@State").Value = StateDropDownList.SelectedItem.ToString()
+
+        Dim ContractCheckBox As CheckBox
+        ContractCheckBox = E.Item.FindControl("edit_Contract")
+
+        If ContractCheckBox.Checked = true
+            MyCommand.Parameters("@Contract").Value = "1"
+        Else
+            MyCommand.Parameters("@Contract").Value = "0"
+        End If
+
+        MyCommand.ActiveConnection.Open()
+
+        Try 
+            MyCommand.ExecuteNonQuery()
+            Message.InnerHtml = "<b>Record Updated</b><br>" & UpdateCmd
+            MyDataGrid.EditItemIndex = -1
+        Catch Exp As SQLException
+            If Exp.Number = 2627
+                Message.InnerHtml = "ERROR: A record already exists with the same primary key"
+            Else
+                Message.InnerHtml = "ERROR: Could not update record, please ensure the fields are correctly filled out"
+            End If
+            Message.Style("color") = "red"
+        End Try
+
+        MyCommand.ActiveConnection.Close()
+
+        BindGrid()
+    End Sub
+
+    Sub BindGrid() 
+
+        Dim DS As DataSet
+        Dim MyCommand As SQLDataSetCommand
+        MyCommand = new SQLDataSetCommand("select * from Authors", MyConnection)
+
+        DS = new DataSet()
+        MyCommand.FillDataSet(DS, "Authors")
+
+        MyDataGrid.DataSource=DS.Tables("Authors").DefaultView
+        MyDataGrid.DataBind()
+    End Sub
+
+</script>
+
+<body style="font: 10pt verdana">
+
+  <form runat="server">
+
+    <h3><font face="Verdana">Updating a Row of Data w/ Templated Column</font></h3>
+
+    <span id="Message" MaintainState="false" style="font: arial 11pt;" runat="server"/><p>
+
+    <ASP:DataGrid id="MyDataGrid" runat="server"
+      Width="800"
+      BackColor="#ccccff" 
+      BorderColor="black"
+      ShowFooter="false" 
+      CellPadding=3 
+      CellSpacing="0"
+      Font-Name="Verdana"
+      Font-Size="8pt"
+      HeaderStyle-BackColor="#aaaadd"
+      OnEditCommand="MyDataGrid_Edit"
+      OnCancelCommand="MyDataGrid_Cancel"
+      OnUpdateCommand="MyDataGrid_Update"
+      DataKeyField="au_id"
+      AutoGenerateColumns="false"
+    >
+
+      <property name="Columns">
+        <asp:EditCommandColumn EditText="Edit" CancelText="Cancel" UpdateText="Update"  ItemStyle-Wrap="false"/>
+        <asp:BoundColumn HeaderText="au_id" SortField="au_id" ReadOnly="True" DataField="au_id" ItemStyle-Wrap="false"/>
+        <asp:TemplateColumn HeaderText="au_lname" SortField="au_lname">
+          <template name="ItemTemplate">
+            <asp:Label runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "au_lname") %>'/>
+          </template>
+          <template name="EditItemTemplate">
+            <asp:TextBox runat="server" id="edit_LName" Text='<%# DataBinder.Eval(Container.DataItem, "au_lname") %>'/>
+          </template>
+        </asp:TemplateColumn>
+        <asp:TemplateColumn HeaderText="au_fname" SortField="au_fname">
+          <template name="ItemTemplate">
+            <asp:Label runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "au_fname") %>'/>
+          </template>
+          <template name="EditItemTemplate">
+            <asp:TextBox runat="server" id="edit_FName" Text='<%# DataBinder.Eval(Container.DataItem, "au_fname") %>'/>
+          </template>
+        </asp:TemplateColumn>
+        <asp:TemplateColumn HeaderText="phone" SortField="phone">
+          <template name="ItemTemplate">
+            <asp:Label runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "phone") %>'/>
+          </template>
+          <template name="EditItemTemplate">
+            <asp:TextBox runat="server" id="edit_Phone" Text='<%# DataBinder.Eval(Container.DataItem, "phone") %>'/>
+          </template>
+        </asp:TemplateColumn>
+        <asp:TemplateColumn HeaderText="address" SortField="address">
+          <template name="ItemTemplate">
+            <asp:Label runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "address") %>'/>
+          </template>
+          <template name="EditItemTemplate">
+            <asp:TextBox runat="server" id="edit_Address" Text='<%# DataBinder.Eval(Container.DataItem, "address") %>'/>
+          </template>
+        </asp:TemplateColumn>
+        <asp:TemplateColumn HeaderText="city" SortField="city">
+          <template name="ItemTemplate">
+            <asp:Label runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "city") %>'/>
+          </template>
+          <template name="EditItemTemplate">
+            <asp:TextBox runat="server" id="edit_City" Text='<%# DataBinder.Eval(Container.DataItem, "city") %>'/>
+          </template>
+        </asp:TemplateColumn>
+        <asp:TemplateColumn HeaderText="state" SortField="state">
+          <template name="ItemTemplate">
+            <asp:Label runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "state") %>'/>
+          </template>
+          <template name="EditItemTemplate">
+            <asp:DropDownList runat="server" SelectedIndex='<%# GetStateIndex(Container.DataItem("state")) %>' id="edit_State">
+                  <asp:ListItem>CA</asp:ListItem>
+                  <asp:ListItem>IN</asp:ListItem>  
+                  <asp:ListItem>KS</asp:ListItem>  
+                  <asp:ListItem>MD</asp:ListItem>  
+                  <asp:ListItem>MI</asp:ListItem>  
+                  <asp:ListItem>OR</asp:ListItem> 
+                  <asp:ListItem>TN</asp:ListItem>  
+                  <asp:ListItem>UT</asp:ListItem>  
+            </asp:DropDownList>
+          </template>
+        </asp:TemplateColumn>
+        <asp:TemplateColumn HeaderText="zip" SortField="zip">
+          <template name="ItemTemplate">
+            <asp:Label runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "zip") %>'/>
+          </template>
+          <template name="EditItemTemplate">
+            <asp:TextBox runat="server" id="edit_Zip" Text='<%# DataBinder.Eval(Container.DataItem, "zip") %>'/>
+          </template>
+        </asp:TemplateColumn>
+        <asp:TemplateColumn HeaderText="contract" SortField="contract">
+          <template name="ItemTemplate">
+            <asp:Label runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "contract", "{0}") %>'/>
+          </template>
+          <template name="EditItemTemplate">
+            <asp:CheckBox runat="server" id="edit_Contract" Checked='<%# DataBinder.Eval(Container.DataItem, "contract") %>'/>
+          </template>
+        </asp:TemplateColumn>
+      </property>
+
+    </ASP:DataGrid>
+
+  </form>
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

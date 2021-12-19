@@ -1,0 +1,87 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/controls/controls5.src&file=controls5.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfY29udHJvbHM1LmFzcFx4eF9feHhfeHhfeF9feA==f3499fd7" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">controls5.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/controls/controls5aspxsource.htm'>controls5.htm</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/controls/controls_navigationtargetaspxsource.htm'>controls_navigationtarget.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/controls/vb/controls5aspxsource.htm'>VB/controls5.htm</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/controls/vb/controls_navigationtargetaspxsource.htm'>VB/controls_navigationtarget.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../aspplus/samples/webforms/controls/js/controls5aspxsource.htm'>JS/controls5.htm</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/webforms/controls/js/controls_navigationtargetaspxsource.htm'>JS/controls_navigationtarget.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><html>
+
+    <script language="C#" runat="server">
+
+        void Page_Load(Object Src, EventArgs E) {
+
+           Random randomGenerator = new Random(DateTime.Now.Millisecond);
+
+           int randomNum = randomGenerator.Next(0, 3);
+
+           switch(randomNum) {
+
+              case 0:
+                Name.Text = "Scott";
+                break;
+
+              case 1:
+                Name.Text = "Fred";
+                break;
+
+              case 2:
+                Name.Text = "Adam";
+                break;
+           }
+
+           AnchorLink.NavigateUrl = "controls_navigationtarget.htm?name=" + Name.Text;
+        }
+
+    </script>
+
+    <body>
+
+       <h3><font face="Verdana">Performing Page Navigation (Scenario 1)</font></h3>
+
+       <p>
+
+       This sample demonstrates how to generate a HTML Anchor tag that will cause the client to 
+       navigate to a new page when he/she clicks it within the browser.
+
+       <p>
+
+       <hr>
+
+       <p>
+
+       <asp:hyperlink id="AnchorLink" font-size=24 runat=server>
+          Hi <asp:label id="Name" runat=server/> please click this link!
+       </asp:hyperlink>
+
+    </body>
+
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

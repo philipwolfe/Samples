@@ -1,0 +1,171 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Xml/DOMInterfaceXmlDocument/DOMInterfaceXmlDocument.src&file=VB/DOMInterfaceXmlDocument.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvRE9NSW50ZXJmYWNlWG1sRG9jdW1lbnQuYXNwXHh4X194eF94eF94X1947ba9208a" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/DOMInterfaceXmlDocument.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../howto/samples/xml/dominterfacexmldocument/dominterfacexmldocumentcssource.htm'>DOMInterfaceXmlDocument.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../howto/samples/xml/dominterfacexmldocument/vb/dominterfacexmldocumentvbsource.htm'>VB/DOMInterfaceXmlDocument.vb</a> &nbsp;&nbsp<a href='../../../../../howto/samples/xml/dominterfacexmldocument/vb/dominterfacexmldocumentaspxsource.htm'>VB/DOMInterfaceXmlDocument.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>XML data: </b></td>
+        <td><a href='../../../../../howto/samples/xml/dominterfacexmldocument/booksxmlsource.htm'>books.xml</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Import Namespace="System" %>
+<%@ Import Namespace="System.IO" %>
+<%@ Assembly Name="System.Xml" %>
+<%@ Import Namespace="System.Xml" %>
+
+<script language="VB" runat=server>
+Public Class XmlDocumentSample
+
+	Private m_Document As String = ""
+	Private writer As StringWriter
+	
+	Public Function Start(args As String) As String
+	
+		Dim reader As XmlTextReader
+		Dim writer As StringWriter
+		Dim xmldocument As XmlDocument
+		
+		m_Document = args
+		writer = new StringWriter()
+		
+		Console.SetOut(writer)    
+
+        Try
+            ' Load the XML from file
+            Console.WriteLine ("Reading file {0} ...", m_Document)
+            reader = New XmlTextReader(m_Document)
+			reader.WhitespaceHandling = WhitespaceHandling.None
+            Console.WriteLine ("File {0} read sucessfully ...", m_Document)
+
+            ' Create an XmlDocument from the XmlTextReader
+            xmldocument = new XmlDocument()
+            xmldocument.Load (reader)
+            Console.WriteLine ("XmlDocument loaded with XML data successfully ...")
+
+            ' Process the supplied XML file
+            Console.WriteLine ("Processing ...")
+            Console.WriteLine ()
+
+            ' Start from the document Element
+            DisplayTree(xmldocument.DocumentElement)
+        
+        Catch e As Exception
+            Console.WriteLine ("Exception: {0}", e.ToString())
+
+        Finally
+            If reader <> Nothing Then reader.Close()
+            
+        End Try
+
+		Return(writer.ToString())
+	
+	End Function
+	
+    Public Sub DisplayTree(node As XmlNode)
+    
+        If node <> Nothing Then Format (node)
+
+        If node.HasChildNodes Then
+        
+            node = node.FirstChild
+            Do While (node <> Nothing)
+            
+                DisplayTree(node)
+                node = node.NextSibling
+            
+            Loop
+
+        End If
+        
+    End Sub
+
+    ' Format the output
+    Private Sub Format (node As XmlNode)
+    
+		Dim attrnode As XmlNode
+		Dim map As XmlNamedNodeMap
+		
+        If Not(node.HasChildNodes)
+        
+            Console.WriteLine(ControlChars.Tab + node.Name + "<" + node.Value + ">")
+        
+        Else
+        
+            Console.Write(node.Name)
+            If XmlNodeType.Element = node.NodeType Then
+            
+				map = node.Attributes
+                For Each attrnode In map
+                    Console.Write(" " + attrnode.Name + "<" + attrnode.Value + "> ")
+				Next
+				
+            End If
+            Console.WriteLine()
+            
+        End If
+        
+    End Sub
+    
+End Class
+ 
+</script>
+<html>
+<head>
+      	<link rel="stylesheet" href="intro.css">
+</head>
+<body style="background-color:f6e4c6">
+
+       	<form action="DOMInterfaceXmlDocument.htm" method="post" runat="server">
+       	<font>Input file: </font> 
+        <a href="../../../../../howto/samples/xml/dominterfacexmldocument/books.xml">books.xml</a>
+	<center>
+		&nbsp;&nbsp;&nbsp;&nbsp;<asp:button type=submit text="Run" OnClick="SubmitBtn_Click" runat="server"/></br>
+       	</form>
+	</center>
+	<p>
+
+	<table align="center">
+	<tr><th>Output from reading the file...</th><tr>
+	<tr><th><span></span></th></tr>
+	<tr><td><h4><xmp id="output" runat="server"/></h4></td></tr>
+	</table>
+
+</body>
+</html>
+
+<script language="VB" runat=server>
+
+	private Sub SubmitBtn_Click(sender As Object, e As EventArgs)
+	
+		Dim Sample As XmlDocumentSample
+		
+		Sample = new XmlDocumentSample()
+		output.InnerHtml = Sample.Start(Server.MapPath("books.xml"))
+		
+	End Sub 
+</script>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

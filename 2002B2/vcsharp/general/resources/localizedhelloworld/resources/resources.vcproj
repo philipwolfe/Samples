@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<VisualStudioProject
+	ProjectType="Visual C++"
+	Version="7.00"
+	Name="Resources"
+	Keyword="makefile">
+	<Platforms>
+		<Platform
+			Name="Win32"/>
+	</Platforms>
+	<Configurations>
+		<Configuration
+			Name="Release|Win32"
+			OutputDirectory="Release"
+			IntermediateDirectory="Release"
+			ConfigurationType="10"
+			CharacterSet="1"
+			DeleteExtensionsOnClean="*.resx;$(TargetName)">
+			<Tool
+				Name="VCCustomBuildTool"
+				Description="Compile Resources"/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+		</Configuration>
+	</Configurations>
+	<Files>
+		<Filter
+			Name="Resource Files"
+			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;txt"
+			ParseFiles="FALSE">
+			<File
+				RelativePath="MyResources.en-US.Txt">
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Compiling Resources"
+						CommandLine="resgen.exe &quot;$(InputPath)&quot;
+"
+						Outputs="$(InputName).resources"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="MyResources.ko-KR.Txt">
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Compiling Resources"
+						CommandLine="resgen.exe &quot;$(InputPath)&quot;
+"
+						Outputs="$(InputName).resources"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="MyResources.Txt">
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Compiling Resources"
+						CommandLine="resgen.exe &quot;$(InputPath)&quot;
+resgen.exe &quot;$(InputPath)&quot; $(InputName).en.resources
+"
+						Outputs="$(InputName).resources"/>
+				</FileConfiguration>
+			</File>
+		</Filter>
+	</Files>
+	<Globals>
+	</Globals>
+</VisualStudioProject>

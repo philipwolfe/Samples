@@ -1,0 +1,125 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/data/datagrid10.src&file=VB/datagrid10.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvZGF0YWdyaWQxMC5hc3BceHhfX3h4X3h4X3hfX3g=014379f6" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/datagrid10.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/data/datagrid10aspxsource.htm'>datagrid10.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/data/vb/datagrid10aspxsource.htm'>VB/datagrid10.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/data/js/datagrid10aspxsource.htm'>JS/datagrid10.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>
+<%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="System.Data.SQL" %>
+
+<html>
+
+<script language="VB" runat="server">
+
+    Dim MyConnection As SQLConnection
+
+    Sub Page_Load(Src As Object, E As EventArgs) 
+
+        MyConnection = New SQLConnection("server=localhost;uid=sa;pwd=;database=pubs")
+
+        If Not (IsPostBack)
+            BindGrid()
+        End If
+    End Sub
+
+    Sub MyDataGrid_Delete(Sender As Object, E As DataGridCommandEventArgs)
+
+        Dim MyCommand As SQLCommand
+        Dim DeleteCmd As String = "DELETE from Authors where au_id = @Id"
+
+        MyCommand = New SQLCommand(DeleteCmd, MyConnection)
+        MyCommand.Parameters.Add(New SQLParameter("@Id", SQLDataType.VarChar, 11))
+        MyCommand.Parameters("@Id").Value = MyDataGrid.DataKeys(CInt(E.Item.ItemIndex))
+
+        MyCommand.ActiveConnection.Open()
+
+        Try
+            MyCommand.ExecuteNonQuery()
+            Message.InnerHtml = "<b>Record Deleted</b><br>" & DeleteCmd
+        Catch Exp As SQLException
+            Message.InnerHtml = "ERROR: Could not delete record"
+            Message.Style("color") = "red"
+        End Try
+
+        MyCommand.ActiveConnection.Close()
+
+        BindGrid()
+    End Sub
+
+    Sub BindGrid() 
+
+        Dim DS As DataSet
+        Dim MyCommand As SQLDataSetCommand
+        MyCommand = New SQLDataSetCommand("select * from Authors", MyConnection)
+
+        DS = new DataSet()
+        MyCommand.FillDataSet(DS, "Authors")
+
+        MyDataGrid.DataSource=DS.Tables("Authors").DefaultView
+        MyDataGrid.DataBind()
+    End Sub
+
+</script>
+
+<body style="font: 10pt verdana">
+
+  <form runat="server">
+
+    <h3><font face="Verdana">Deleting a Row of Data</font></h3>
+
+    <span id="Message" MaintainState="false" style="font: arial 11pt;" runat="server"/><p>
+
+    <ASP:DataGrid id="MyDataGrid" runat="server"
+      Width="800"
+      BackColor="#ccccff" 
+      BorderColor="black"
+      ShowFooter="false" 
+      CellPadding=3 
+      CellSpacing="0"
+      Font-Name="Verdana"
+      Font-Size="8pt"
+      HeaderStyle-BackColor="#aaaadd"
+      DataKeyField="au_id"
+      OnDeleteCommand="MyDataGrid_Delete"
+    >
+
+      <property name="Columns">
+         <asp:ButtonColumn Text="Delete Author" CommandName="Delete"/>
+      </property>
+
+    </ASP:DataGrid>
+
+  </form>
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

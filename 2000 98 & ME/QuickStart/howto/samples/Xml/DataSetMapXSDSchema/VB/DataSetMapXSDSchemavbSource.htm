@@ -1,0 +1,112 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Xml/DataSetMapXSDSchema/DataSetMapXSDSchema.src&file=VB/DataSetMapXSDSchema.vb" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvRGF0YVNldE1hcFhTRFNjaGVtYS52YnhfX3h4X3h4X3hfX3g=01bcdabf" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/DataSetMapXSDSchema.vb</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../howto/samples/xml/datasetmapxsdschema/datasetmapxsdschemacssource.htm'>DataSetMapXSDSchema.cs</a> &nbsp;&nbsp<a href='../../../../../howto/samples/xml/datasetmapxsdschema/datasetmapxsdschemaaspxsource.htm'>DataSetMapXSDSchema.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../howto/samples/xml/datasetmapxsdschema/vb/datasetmapxsdschemavbsource.htm'>VB/DataSetMapXSDSchema.vb</a> &nbsp;&nbsp<a href='../../../../../howto/samples/xml/datasetmapxsdschema/vb/datasetmapxsdschemaaspxsource.htm'>VB/DataSetMapXSDSchema.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>XML schema: </b></td>
+        <td><a href='../../../../../howto/samples/xml/datasetmapxsdschema/booksxsdsource.htm'>books.xsd</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>' Copyright (c) 2000, Microsoft Corporation. All Rights Reserved.
+
+Imports Microsoft.VisualBasic
+Imports System
+Imports System.IO
+Imports System.Xml
+
+namespace HowTo.Samples.XML
+
+public class DataSetMapXSDSchemaSample
+
+    private const m_Schema as String = "books.xsd"
+    private m_datadoc as System.Data.DataSet
+
+    public sub New()
+
+    MyBase.New
+    try
+        m_datadoc = new System.Data.DataSet    
+        Console.WriteLine("Creating an XmlDataDocument ...")
+        ParseSchema(m_Schema)
+        DisplayTableStructure()
+
+        catch e as exception
+            Console.WriteLine ("Exception: " & e.ToString())
+        end try
+    end sub
+
+    shared sub Main()
+        dim args as String()
+        dim xmltransform as DataSetMapXSDSchemaSample
+        xmltransform = new DataSetMapXSDSchemaSample()
+    end sub
+
+    ' Loads a specified schema into the DataSet
+    public sub ParseSchema(schema as string)
+
+        dim streamreader_schema as StreamReader = nothing
+        try 
+            streamreader_schema = new StreamReader(schema)
+            Console.WriteLine("Reading Schema file ...")
+            m_datadoc.ReadXmlSchema(streamreader_schema)
+
+        catch e as exception
+            Console.WriteLine ("Exception: " & e.ToString())
+
+        finally
+            if not (streamreader_schema = nothing)
+                streamreader_schema.Close()
+            end if
+
+        end try
+    end sub
+
+    ' Displays the DataSet tables structure
+    private sub DisplayTableStructure()
+
+        Console.WriteLine()
+        Console.WriteLine("Table structure")
+        Console.WriteLine()
+        Console.WriteLine("Tables count=" & m_datadoc.Tables.Count.ToString())
+
+        Dim i,j as integer
+
+            for i = 0 to (m_datadoc.Tables.Count - 1)
+                Console.WriteLine("TableName='" & m_datadoc.Tables(i).TableName & "'.")
+                Console.WriteLine("Columns count=" & m_datadoc.Tables(i).Columns.Count.ToString())
+
+                for j = 0 to (m_datadoc.Tables(i).Columns.Count - 1)
+                    Console.WriteLine(Strings.chr(9) & "ColumnName='" & m_datadoc.Tables(i).Columns(j).ColumnName & "', type = " & m_datadoc.Tables(i).Columns(j).DataType.ToString())
+            next
+            Console.WriteLine()
+        next
+    end sub
+
+end class
+end namespace
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

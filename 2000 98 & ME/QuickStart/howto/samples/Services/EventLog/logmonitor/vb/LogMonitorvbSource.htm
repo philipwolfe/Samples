@@ -1,0 +1,88 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Services/EventLog/logmonitor/logmonitor.src&file=VB%5CLogMonitor.vb" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkJcXExvZ01vbml0b3IudmJ4X194eF94eF94X194a6093185" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB\LogMonitor.vb</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../howto/samples/services/eventlog/logmonitor/logmonitorcssource.htm'>LogMonitor.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../howto/samples/services/eventlog/logmonitor/vb/logmonitorvbsource.htm'>VB\LogMonitor.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>Imports System
+Imports System.Environment
+Imports System.Diagnostics
+Imports System.Threading
+
+Namespace LogMonitor
+
+    Module LogMonitor
+
+        Public Sub Main()
+
+            Dim args As String()
+            Dim appName As String
+            args = Environment.GetCommandLineArgs()
+            appName = args(0)
+
+            If (args.Length <> 2 And args.Length <> 3) Then
+                Console.WriteLine("Usage: " + appName + " <log> [<machine>]")
+                Exit Sub
+            End If
+
+            Dim log As String
+            Dim machine As String
+            log = args(1)
+
+            If (args.Length = 3) Then
+                machine = args(2)
+            Else
+                machine = "." ' local machine
+            End If
+
+            If (Not EventLog.Exists(log, machine)) Then
+                Console.WriteLine("The log does not exist!")
+                Exit Sub
+            End If
+
+            Dim aLog As EventLog
+            aLog = New EventLog
+            aLog.Log = log
+            aLog.MachineName = machine
+		
+            AddHandler aLog.EntryWritten, AddressOf OnEntryWritten
+            aLog.Monitoring = True
+        
+            Console.WriteLine("Press 'q' to quit the sample")
+            While (Console.Read() <> 113)
+                Thread.Sleep(500)
+            End While
+        End Sub
+
+        Sub OnEntryWritten(ByVal source As Object, ByVal e As EventLogEvent)
+            Console.WriteLine("Written: " + e.Entry.Message)
+        End Sub
+
+    End Module
+
+End Namespace
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

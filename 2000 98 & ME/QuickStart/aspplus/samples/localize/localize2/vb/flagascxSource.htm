@@ -1,0 +1,46 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/localize/resources/news.src&file=../localize2/VB/flag.ascx" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfLi4vbG9jYWxpXHplMi9WQi9mbGFnLmFzY1x4eF9feHhfeHhfeF9feA==a50fe9ab" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">../localize2/VB/flag.ascx</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/localize/resources/newsaspxsource.htm'>news.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/localize/localize2/searchascxsource.htm'>../localize2/search.ascx</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/localize/localize2/flagascxsource.htm'>../localize2/flag.ascx</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/localize/resources/news_vbaspxsource.htm'>news_vb.htm</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/localize/localize2/vb/searchascxsource.htm'>../localize2/VB/search.ascx</a> &nbsp;&nbsp<a href='../../../../../aspplus/samples/localize/localize2/vb/flagascxsource.htm'>../localize2/VB/flag.ascx</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>
+<%@Import Namespace="System.Globalization"%>
+
+<script runat="Server" Language="VB">
+    
+Overrides Protected Sub Render(writer As HtmlTextWriter) 
+    FlagImage.Src = "../../flags/" & CultureInfo.CurrentCulture.Name & ".jpg"
+    FlagImage.Alt = CultureInfo.CurrentCulture.NativeName
+    MyBase.Render(writer)
+End Sub
+
+</script>
+
+
+<img runat="server" id="FlagImage" /> 
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

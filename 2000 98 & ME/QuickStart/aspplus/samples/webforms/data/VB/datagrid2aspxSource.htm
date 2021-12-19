@@ -1,0 +1,103 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/data/datagrid2.src&file=VB/datagrid2.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvZGF0YWdyaWQyLmFzcFx4eF9feHhfeHhfeF9feA==3a703df2" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/datagrid2.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/data/datagrid2aspxsource.htm'>datagrid2.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/data/vb/datagrid2aspxsource.htm'>VB/datagrid2.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/data/js/datagrid2aspxsource.htm'>JS/datagrid2.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>
+<%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="System.Data.SQL" %>
+
+<html>
+<script language="VB" runat="server">
+
+    Sub GetAuthors_Click(Sender As Object, E As EventArgs) 
+
+        Dim DS As DataSet
+        Dim MyConnection As SQLConnection
+        Dim MyCommand As SQLDataSetCommand
+
+        Dim SelectCommand As String = "select * from Authors where state = @State"
+
+        MyConnection = New SQLConnection("server=localhost;uid=sa;pwd=;database=pubs")
+        MyCommand = New SQLDataSetCommand(SelectCommand, MyConnection)
+
+        MyCommand.SelectCommand.Parameters.Add(New SQLParameter("@State", SQLDataType.VarChar, 2))
+        MyCommand.SelectCommand.Parameters("@State").Value = MySelect.Value
+
+        DS = new DataSet()
+        MyCommand.FillDataSet(DS, "Authors")
+
+        MyDataGrid.DataSource=DS.Tables("Authors").DefaultView
+        MyDataGrid.DataBind()
+    End Sub
+
+</script>
+
+<body style="font: 10pt verdana">
+
+  <form runat="server">
+
+    <h3><font face="Verdana">Parameterized Select to a DataGrid Control</font></h3>
+
+    Select a State: 
+
+    <select id="MySelect" runat="server">
+      <option>CA</option>
+      <option>IN</option>  
+      <option>KS</option>  
+      <option>MD</option>  
+      <option>MI</option>  
+      <option>OR</option> 
+      <option>TN</option>  
+      <option>UT</option>  
+    </select>
+
+    <input type="submit" OnServerClick="GetAuthors_Click" Value="Get Authors" runat="server"/><p>
+
+    <ASP:DataGrid id="MyDataGrid" runat="server"
+      Width="700"
+      BackColor="#ccccff" 
+      BorderColor="black"
+      ShowFooter="false" 
+      CellPadding=3 
+      CellSpacing="0"
+      Font-Name="Verdana"
+      Font-Size="8pt"
+      HeaderStyle-BackColor="#aaaadd"
+      MaintainState="false"
+    />
+
+  </form>
+
+</body>
+</html>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

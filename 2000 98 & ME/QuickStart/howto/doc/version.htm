@@ -1,0 +1,155 @@
+
+
+<!--BEGIN HEADER-->
+<html>
+<head>
+<link rel="stylesheet" href="../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+
+
+
+
+
+
+<table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+
+		<div style="padding:0,0,4,0"><b>Assemblies</b><br></div>
+		&nbsp; <a class="outer" href="../../howto/doc/sharedname.htm">Use shared names</a><br>
+		&nbsp; <a class="outer" href="../../howto/doc/gac.htm">Install to the global cache</a><br>
+		&nbsp; <a class="outer" href="../../howto/doc/searchpath.htm">Change the search path</a><br>
+		&nbsp; <a class="outer" href="../../howto/doc/version.htm">Use version policy</a><p>
+
+		<div style="padding:0,0,4,0"><a target="_top" style="color:darkred" href="../../howto"><b>Back to Index</b></a><br></div>
+
+</div>
+
+</td>
+</tr>
+</table>
+
+
+
+
+
+
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<style>
+.mydd {  font: smaller verdana; }
+.code1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:blue;
+	}
+.codecomment1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:green;
+	}
+.issue {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background-color:RED;
+	color:WHITE;
+	font-weight:bold;
+	}
+
+
+body { font: smaller verdana }        
+
+</style>
+
+
+
+
+
+<h4>How Do I...change which version of an assembly I bind to?</h4>
+
+This sample demonstrates how to use an application configuration file to bind to a
+specific version of a dependent assembly.&nbsp;
+By default, the version of a dependent assembly that will be loaded at runtime is the version 
+specified in your assembly manifest (subject to automatic QFE policy).&nbsp; If 
+you'd like to run with a different version, you specify&nbsp; "Binding 
+Policy" in your application configuration file.&nbsp; For an executable, the 
+configuration file resides in the same directory as the exe and has the 
+same name (minus ".exe") with a ".cfg" extension.&nbsp; For this sample the executable is 
+called math.exe and the configuration file is called math.cfg.&nbsp; The relevent poriton 
+of the cfg file looks like this: </P>
+
+<div class="code"><pre>
+<div class="code"><pre>
+&lt;BindingPolicy&gt;
+&lt;BindingRedir Name="Calcr"
+                 Originator="32ab4ba45e0a69a1"
+                 Version="5.0.0.0" VersionNew="6.0.0.0"
+                 UseLatestBuildRevision="yes"/&gt;
+&lt;/BindingPolicy&gt;
+</pre></div>
+</pre></div>
+           
+The "BindingRedir" attribute of the "BindingPolicy" tag specifies that all references to 
+version 5 of Calcr within this application should use version 
+6 instead.  Note that version policy applies only to assemblies with shared names.</P>
+
+<h4>Example</h4>
+
+<span>
+  
+
+        
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../howto/samples/assemblies/version">
+	<img style="border-color:black" border=1 src="../../images/console.gif"><br>
+	</a>
+	<div class="caption">Math.exe</div><br>
+	
+	
+		[<a target="_blank" href="../../howto/samples/assemblies/version">Run Sample</a>] | 
+		[<a target="_blank" href="../../howto/samples/assemblies/version/mathcssource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<!--END FOOTER-->
+<p>
+<hr>
+<p>
+</div>
+</td>
+</tr>
+</table>
+</BODY>
+</html>
+<!--END FOOTER-->

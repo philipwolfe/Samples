@@ -1,0 +1,87 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Xml/ValidationReadingXML/ValidationReadingXML.src&file=booksDTD.xml" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfYm9va3NEVEQuXHhtbHhfX3h4X3h4X3hfX3g=99393daf" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">booksDTD.xml</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../howto/samples/xml/validationreadingxml/validationreadingxmlcssource.htm'>ValidationReadingXML.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../howto/samples/xml/validationreadingxml/vb/validationreadingxmlvbsource.htm'>VB/ValidationReadingXML.vb</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>XML Data: </b></td>
+        <td><a href='../../../../howto/samples/xml/validationreadingxml/booksxmlsource.htm '>books.xml </a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>XML document that validates against the books.dtd: </b></td>
+        <td><a href='../../../../howto/samples/xml/validationreadingxml/booksdtdxmlsource.htm'>booksDTD.xml</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>DTD for booksDTD.xml: </b></td>
+        <td><a href='../../../../howto/samples/xml/validationreadingxml/booksdtdsource.htm'>books.dtd</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>XML document that fails validation against the books.dtd: </b></td>
+        <td><a href='../../../../howto/samples/xml/validationreadingxml/booksdtdfailxmlsource.htm'>booksDTDFail.xml</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>XML document that validates against the schema.xml: </b></td>
+        <td><a href='../../../../howto/samples/xml/validationreadingxml/booksschemaxmlsource.htm'>booksSchema.xml</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>Schema for booksSchema.xml: </b></td>
+        <td><a href='../../../../howto/samples/xml/validationreadingxml/schemaxmlsource.htm'>schema.xml</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>XML document that fails validation against the schema.xml: </b></td>
+        <td><a href='../../../../howto/samples/xml/validationreadingxml/booksschemafailxmlsource.htm'>booksSchemaFail.xml</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><?xml version='1.0'?>
+<!DOCTYPE bookstore SYSTEM "books.dtd">
+<!-- This file represents a fragment of a book store inventory database -->
+<bookstore>
+  <book genre="autobiography">
+    <title>The Autobiography of Benjamin Franklin</title>
+    <author>
+      <first-name>Benjamin</first-name>
+      <last-name>Franklin</last-name>
+    </author>
+    <price>8.99</price>
+  </book>
+  <book genre="novel">
+    <title>The Confidence Man</title>
+    <author>
+      <first-name>Herman</first-name>
+      <last-name>Melville</last-name>
+    </author>
+    <price>11.99</price>
+  </book>
+  <book genre="philosophy">
+    <title>The Gorgias</title>
+    <author>
+      <name>Plato</name>
+    </author>
+    <price>9.99</price>
+  </book>
+</bookstore>
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

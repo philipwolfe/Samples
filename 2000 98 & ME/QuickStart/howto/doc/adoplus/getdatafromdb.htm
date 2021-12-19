@@ -1,0 +1,450 @@
+
+
+<!--BEGIN HEADER-->
+<html>
+<head>
+<link rel="stylesheet" href="../../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+
+<table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+
+    <div style="padding:0,0,4,0"><b>Data and ADO.NET</b><br></div>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/adoplusoverview.htm">Overview of ADO.NET</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/executecommand.htm">Execute a Command</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/outparams.htm">Stored proc out params</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/getdatafromdb.htm">Retrieve from a Database</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/updatedatafromdb.htm">Update Data in a Database</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/readandwritexml.htm">Read and Write XML</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/databasetrans.htm">Use Database Transactions</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/handleerrors.htm">Handling Errors</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/relationaldata.htm">Work with Relational Data</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/typeddata.htm">Work with typed Data</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/filterdata.htm">Filter Data</a><p>
+    <div style="padding:0,0,4,0"><a target="_top" style="color:darkred" href="../../../howto"><b>Back to Index</b></a><br></div>
+
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<style>
+.mydd {  font: smaller verdana; }
+.code1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:blue;
+	}
+.codecomment1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:green;
+	}
+.issue {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background-color:RED;
+	color:WHITE;
+	font-weight:bold;
+	}
+
+
+body { font: smaller verdana }        
+
+</style>
+
+
+
+
+
+<h4>ADO.NET: Get Data from a Database</h4>
+
+Getting data from a database is easy, and working with data is easier than before. This 
+section describes how to use a SQLDataSetCommand to get data from a database into a DataSet.
+
+<p>
+The most important concept to remember is that the DataSet is a data structure separate 
+and distinct from a data store. Although in this example we get data from a database, it 
+doesn't matter where the data comes from; the DataSet will always present a consistent 
+programming model. It is a simple collection of data with relational database 
+characteristics. There is no Load, Open or Execute on a DataSet because it doesn't know 
+where it gets its data from.
+
+<p>
+You can add data to the DataSet using the Add method (see 
+<a href="UpdateDataFromDB.htm">Updating Data in a Database</a>) for more details, or 
+directly push data in with the intrinsic XML methods (see 
+<a href="readandwritexml.htm">Reading and Writing XML Data</a>); SQLDataSetCommand is 
+yet another tool: it can also push data back into the database. Here we focus on getting 
+data out.
+
+<p>
+First we construct a SQLDataSetCommand. This is done in the same way a SQLCommand is 
+constructed. 
+
+<p>
+
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl4" style="display:none">
+
+String selectCommand = "select * from customers";
+SQLDataSetCommand CustomersDSCommand = new SQLDataSetCommand(selectCommand, myConnection);
+</pre>
+<pre id="codectrl4" style="display:">
+
+Dim selectCommand As String = "select * from customers"
+Dim CustomersDSCommand As SQLDataSetCommand = New SQLDataSetCommand(selectCommand, myConnection)
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl4" onclick="doClick(0, 'ctrl4')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl4" onclick="doClick(1, 'ctrl4')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+
+<p>
+A SQLDataSetCommand is much like a SQLCommand with a few specific differences. Most 
+significant are the FillDataset and Update methods. The FillDataset method populates a 
+DataSet. The Update method takes changes from a DataSet and pushes them back into the 
+database. This is accomplished by placing four commands on the CommandSet (thus, the set 
+of commands). These commands are: SelectCommand, UpdateCommand, InsertCommand and 
+DeleteCommand.  These commands can be constructed for you at run-time (you need only set 
+the SelectCommand and the others will be set on demand). You can easily take more control 
+of these.  For example, if you use different stored procedures for Insert, Update, Delete, 
+and so on you can establish this pattern in your SQLDataSetCommand. 
+
+<p>
+<b>NOTE:</b> Visual Studio adds great value to establishing typed SQLDatasetCommands and 
+DataSets, and eventually creates Stored Procedures for you. Explore this feature by using 
+the Component designer and Database Objects.
+
+<p>
+Once your SQLDataSetCommand is established you can pass it a DataSet to populate:
+
+<p>
+
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl6" style="display:none">
+
+dsCustomer = new DataSet();
+CustomersDSCommand.FillDataSet(dsCustomer,"Customers");
+</pre>
+<pre id="codectrl6" style="display:">
+
+dsCustomer = New DataSet()
+CustomersDSCommand.FillDataSet(dsCustomer,"Customers")
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl6" onclick="doClick(0, 'ctrl6')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl6" onclick="doClick(1, 'ctrl6')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+
+<p>
+The DataSet now holds the results of your query. In fact, the DataSet can hold 
+results from multiple queries and even relate them (see 
+<a href="relationaldata.htm">Relational Data</a>). Because it holds multiple 
+results, the DataSet contains a collection of tables. Notice that the FillDataSet 
+method has "Customers" as the second argument. This is the name of the table to 
+fill in the DataSet. If that table does not exist, it is created for you.
+
+<p>
+Because the data is stored in a collection of rows in the table, you can easily 
+use a <b>foreach</b> statement to iterate through the rows:
+
+<p>
+
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl8" style="display:none">
+
+foreach( DataRow Customer in dsCustomer.Tables["Customers"].Rows) {
+    Response.Write(Customer["CustomerId"].ToString());
+}
+</pre>
+<pre id="codectrl8" style="display:">
+
+For Each Customer In dsCustomer.Tables("Customers").Rows
+    Response.Write(Customer("CustomerId").ToString())
+Next
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl8" onclick="doClick(0, 'ctrl8')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl8" onclick="doClick(1, 'ctrl8')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+
+
+<p>
+In fact, you can use <b>foreach</b> over the columns as well. Below is an example 
+placing together all of the code in this document. To learn how to update this 
+data back into the database see <a href="updatedatafromdb.htm">Updating Data 
+in a Database</a>.
+
+<p>
+
+<span>
+  
+  
+
+
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../../images/genicon.gif"><br>
+	</a>
+	<div class="caption">GettingData.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../../howto/samples/adoplus/vb/gettingdataaspxsource.htm">View VB Source</a>] | [<a target="_blank" href="../../../howto/samples/adoplus/cs/gettingdataaspxsource.htm">View C# Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<p>
+Note: Anytime a SQLDatasetCommand, SQLConnection or SQLCommand is referenced, 
+the same API is generated on the corresponding ADO versions that work through OLEDB.
+<p>

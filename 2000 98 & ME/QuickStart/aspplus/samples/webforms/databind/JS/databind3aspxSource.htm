@@ -1,0 +1,84 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/databind/databind3.src&file=JS%5Cdatabind3.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfSlNcXGRhdGFiaW5kMy5hc3BceHhfX3h4X3h4X3hfX3g=4d83381a" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">JS\databind3.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/databind/databind3aspxsource.htm'>databind3.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/databind/vb/databind3aspxsource.htm'>VB\databind3.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../../aspplus/samples/webforms/databind/js/databind3aspxsource.htm'>JS\databind3.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><html>
+<head>
+
+    <script language="JScript" runat="server">
+
+        function Page_Load(Sender : Object, E : EventArgs) : void {
+
+            if (!Page.IsPostBack) {
+
+               var values : ArrayList = new ArrayList();
+
+               values.Add ("IN");
+               values.Add ("KS");
+               values.Add ("MD");
+               values.Add ("MI");
+               values.Add ("OR");
+               values.Add ("TN");
+
+               DropDown1.DataSource = values;
+               DropDown1.DataBind();
+            }
+        }
+
+        function SubmitBtn_Click(sender : Object, e : EventArgs) : void {
+           Label1.Text = "You chose: " + DropDown1.SelectedItem.Text;
+        }
+
+    </script>
+
+</head>
+<body>
+
+    <h3><font face="Verdana">DataBinding DropDownList</font></h3>
+
+    <form runat=server>
+    
+        <asp:DropDownList id="DropDown1" runat="server" />
+
+        <asp:button Text="Submit" OnClick="SubmitBtn_Click" runat=server/>
+
+        <p>
+        
+        <asp:Label id=Label1 font-name="Verdana" font-size="10pt" runat="server" />
+
+    </form>
+
+</body>
+</html>
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

@@ -1,0 +1,171 @@
+
+
+<!--BEGIN HEADER-->
+<html>
+<head>
+<link rel="stylesheet" href="../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+
+
+
+
+
+
+<table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+
+		<div style="padding:0,0,4,0"><b>Assemblies</b><br></div>
+		&nbsp; <a class="outer" href="../../howto/doc/sharedname.htm">Use shared names</a><br>
+		&nbsp; <a class="outer" href="../../howto/doc/gac.htm">Install to the global cache</a><br>
+		&nbsp; <a class="outer" href="../../howto/doc/searchpath.htm">Change the search path</a><br>
+		&nbsp; <a class="outer" href="../../howto/doc/version.htm">Use version policy</a><p>
+
+		<div style="padding:0,0,4,0"><a target="_top" style="color:darkred" href="../../howto"><b>Back to Index</b></a><br></div>
+
+</div>
+
+</td>
+</tr>
+</table>
+
+
+
+
+
+
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<style>
+.mydd {  font: smaller verdana; }
+.code1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:blue;
+	}
+.codecomment1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:green;
+	}
+.issue {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background-color:RED;
+	color:WHITE;
+	font-weight:bold;
+	}
+
+
+body { font: smaller verdana }        
+
+</style>
+
+
+
+
+
+<h4>How Do I...create an assembly with a shared name?</h4>
+
+
+<P>Shared names are used to provide name uniqueness and to prevent name spoofing 
+in the Common Language Runtime.&nbsp; If you are deploying an assembly that will be shared among many 
+applications on the same machine, it must have a shared name.&nbsp; Even if you 
+will only use the assembly within your application, you may want to give it a 
+shared name as well.&nbsp; In this way you can ensure that the assembly you 
+shipped as part of your app is in fact the exact one that gets loaded, i.e 
+someone didn't substitute a similar assembly, either maliciously or by accident, 
+for yours.</P>
+<P>The first step in building an assembly with a shared name is to get a 
+key-pair. Depending on your scenario you may have a secured key pair that is 
+used throughout your organization, or you may use a test or temporary key pair. 
+Details on these options and Shared names in general are available in the Shared 
+Name Spec in the .Net Framework SDK. </P>
+<P>This sample uses a test key in a file called TestKey.snk. TestKey.snk was 
+generated with the SN utility that ships in the SDK: </P>
+
+<div class="code"><pre>
+sn -k Testkey.snk 
+</pre></div>
+
+<P>After you've obtained a key pair you need to add the proper switches so the 
+compiler emits the assembly with a strong name. These switches vary by compiler. 
+For this sample, the C# compiler is used with the /a.keyfile switch: </P>
+
+<div class="code"><pre>
+csc /dll /a.keyfile:Testkey.snk sharedname.cs
+</pre></div>
+
+<P>There are also options available to do a "partial sign", meaning that the 
+space for the signature is reserved in the PE file, but the signing itself is 
+not done until a later step. This approach is typically used if you don't have 
+access to the private key you'll need to generate the shared name. More details 
+on how these options work can be found in the Shared Name Spec. </P>
+<P>The makefile included with this sample runs SN to generate a key pair, 
+builds a shared named assembly with C#, then dumps the metadata and displays it 
+in a file.&nbsp; By looking at the "Originator" field in the output file, you 
+can see the public key used to generate the shared name.&nbsp; The signature 
+blob itself is stored elsewhere in the PE file.</P>
+                     
+
+<h4>Example</h4>
+
+<span>
+  
+
+        
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../howto/samples/assemblies/sharedname">
+	<img style="border-color:black" border=1 src="../../images/console.gif"><br>
+	</a>
+	<div class="caption">Shared Names</div><br>
+	
+	
+		[<a target="_blank" href="../../howto/samples/assemblies/sharedname">Run Sample</a>] | 
+		[<a target="_blank" href="../../howto/samples/assemblies/sharedname/sharednamecssource.htm">View Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+
+<!--END FOOTER-->
+<p>
+<hr>
+<p>
+</div>
+</td>
+</tr>
+</table>
+</BODY>
+</html>
+<!--END FOOTER-->

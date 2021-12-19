@@ -1,0 +1,102 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/services/DataTypes/DataTypesClient.src&file=DataTypesClient.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfRGF0YVR5cGVzQ2xpZW50LmFzcFx4eF9feHhfeHhfeF9feA==edaa7376" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">DataTypesClient.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../aspplus/samples/services/datatypes/datatypesclientaspxsource.htm'>DataTypesClient.htm</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/services/datatypes/datatypessdlsource.htm'>DataTypes.sdl</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/services/datatypes/datatypescssource.htm'>DataTypes.cs</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/services/datatypes/makeservicebatsource.htm'>makeservice.bat</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../aspplus/samples/services/datatypes/vb/datatypesclientaspxsource.htm'>VB/DataTypesClient.htm</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/services/datatypes/vb/datatypessdlsource.htm'>VB/DataTypes.sdl</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/services/datatypes/vb/datatypesvbsource.htm'>VB/DataTypes.vb</a> &nbsp;&nbsp<a href='../../../../aspplus/samples/services/datatypes/vb/makeservicebatsource.htm'>VB/makeservice.bat</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><%@ Import Namespace="DataTypesService" %>
+
+<html>
+<style>
+
+  div 
+  { 
+    font: 8pt verdana;
+    background-color:cccccc;
+    border-color:black;
+    border-width:1;
+    border-style:solid;
+    padding:10,10,10,10; 
+  }
+
+</style>
+
+<script language="C#" runat="server">
+
+  public void Page_Load(Object sender, EventArgs E)
+  {
+    	DataTypes  d = new DataTypes ();
+	Message1.InnerHtml = d.SayHello();
+	Message1.InnerHtml = Message1.InnerHtml + d.SayHelloName("Bob");
+	
+	Message3.InnerHtml = Message3.InnerHtml + d.GetMode();
+	
+	int[] myIntArray = d.GetIntArray();
+	String myString = "Contents of the Array:<BR>";
+	for( int i=0; i<myIntArray.Length; i++)
+	{
+		myString = myString + myIntArray[i] + "<BR>";
+	}
+	Message2.InnerHtml = Message2.InnerHtml + myString;
+	
+	Order myOrder =  d.GetOrder();
+	Message4.InnerHtml = Message4.InnerHtml + "<BR>OrderID: " + myOrder.OrderID;
+	Message4.InnerHtml = Message4.InnerHtml + "<BR>Price: " + myOrder.Price;
+
+	Order[] myOrders = d.GetOrders();
+	Message5.InnerHtml = Message5.InnerHtml + "<BR>OrderID: " + myOrders[0].OrderID;
+	Message5.InnerHtml = Message5.InnerHtml + "<BR>Price: " + myOrders[0].Price;
+	
+  }
+
+</script>
+
+<body style="font: 10pt verdana">
+<H4>Using DataTypes with Web Services</H4>
+
+  <h5>Methods that return a Primitive (String): </h5>
+  <div id="Message1" runat="server"/>
+
+  <h5>Methods that return an Array of Primitives (Integers): </h5>
+  <div id="Message2" runat="server"/>
+
+  <h5>Method that returns an Enum: </h5>
+  <div id="Message3" runat="server"/>
+  
+  <h5>Method that returns a Class/Struct: </h5>
+  <div id="Message4" runat="server"/>
+
+  <h5>Method that returns an array of Classes/Structs: </h5>
+  <div id="Message5" runat="server"/>
+
+
+
+</body>
+</html>
+
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

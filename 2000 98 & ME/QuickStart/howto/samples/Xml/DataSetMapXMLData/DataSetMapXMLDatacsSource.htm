@@ -1,0 +1,105 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/Xml/DataSetMapXMLData/DataSetMapXMLData.src&file=DataSetMapXMLData.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfRGF0YVNldE1hcFhNTERhdGEuY3N4X194eF94eF94X194cbc3911b" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">DataSetMapXMLData.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../howto/samples/xml/datasetmapxmldata/datasetmapxmldatacssource.htm'>DataSetMapXMLData.cs</a> &nbsp;&nbsp<a href='../../../../howto/samples/xml/datasetmapxmldata/datasetmapxmldataaspxsource.htm'>DataSetMapXMLData.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../howto/samples/xml/datasetmapxmldata/vb/datasetmapxmldatavbsource.htm'>VB/DataSetMapXMLData.vb</a> &nbsp;&nbsp<a href='../../../../howto/samples/xml/datasetmapxmldata/vb/datasetmapxmldataaspxsource.htm'>VB/DataSetMapXMLData.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>XML Data: </b></td>
+        <td><a href='../../../../howto/samples/xml/datasetmapxmldata/booksxmlsource.htm'>books.xml</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>/* Copyright (c) 2000, Microsoft Corporation. All Rights Reserved.*/
+
+namespace HowTo.Samples.XML.DataSet
+{
+
+using System;
+using System.IO;
+using System.Data;
+using System.Xml;
+
+public class DataSetMapXMLDataSample
+{
+    private const String m_Document = "books.xml";
+
+    public DataSetMapXMLDataSample()
+    {        
+        try
+        {
+            Console.WriteLine("Creating an XmlDataDocument ...");
+            XmlDataDocument datadoc = new XmlDataDocument();
+
+            // Infer the DataSet schema from the XML data and load the XML Data
+            datadoc.DataSet.ReadXml(new StreamReader(m_Document));
+
+            DisplayTables(datadoc.DataSet);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine ("Exception: {0}", e.ToString());
+        }
+    }
+
+    public static void Main()
+    {
+        DataSetMapXMLDataSample xmltransform = new DataSetMapXMLDataSample();
+    }
+
+    // Displays the contents of the DataSet tables
+    private void DisplayTables(DataSet dataset)
+    {
+        // Navigate Dataset
+        Console.WriteLine("Content of Tables ...\r\n");
+
+        foreach(DataTable table in dataset.Tables)
+        {
+            Console.WriteLine("TableName = " + table.TableName);
+            Console.WriteLine ("{0}", "---------");
+            Console.WriteLine("Columns ...\r\n");
+
+            foreach(DataColumn column in table.Columns)
+            {
+                Console.Write("{0,-22}",column.ColumnName);
+            }
+            Console.WriteLine();
+            Console.WriteLine("\r\nNumber of rows = {0}", table.Rows.All.Length);
+            Console.WriteLine("Rows ...\r\n");
+
+            foreach(DataRow row in table.Rows)
+            {
+                foreach(Object value in row.ItemArray)
+                {
+                    Console.Write("{0,-22}",value.ToString());
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+        }
+    }
+} // End class DataSetMapXMLDataSample
+} // End namespace HowTo.Samples.XML.DataSet
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

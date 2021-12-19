@@ -1,0 +1,102 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/net/WebRequests/clientpost.src&file=VB/clientpost.vb" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvY2xpZW50cG9zdC52YnhfX3h4X3h4X3hfX3g=15819765" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/clientpost.vb</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../howto/samples/net/webrequests/clientpostcssource.htm'>clientpost.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../howto/samples/net/webrequests/vb/clientpostvbsource.htm'>VB/clientpost.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>Imports System
+Imports System.Net
+Imports System.IO
+
+Namespace Client
+  Public class ClientPOST         
+    Public Shared Sub  Main()
+      Dim args As String ()
+
+   		args = Environment.GetCommandLineArgs()
+
+    	If (args.Length < 2)
+        showusage()
+        return
+			End If
+
+      getPage(args(1), "sl=foo&s2=bar")
+      return
+      
+    End Sub
+
+	public Shared Sub showusage()
+		Console.WriteLine("Attempts to POST to a URL")
+        Console.WriteLine("Usage:")
+        Console.WriteLine("ClientPOST URL")
+        Console.WriteLine("Examples:")
+        Console.WriteLine("ClientPOST http://www.nba.com")
+	End Sub
+
+	public Shared Sub getPage(url As String, payload as String)
+
+		Dim req As WebRequest		
+		Dim RequestStream As Stream
+		req = WebRequestFactory.Create(url)
+		req.Method = "POST"
+		req.ContentType = "application/x-www-form-urlencoded"
+		Dim SomeBytes() as Byte
+		if payload <> Nothing
+			SomeBytes = System.Text.Encoding.ASCII.GetBytes(payload)
+			req.ContentLength = SomeBytes.Length
+			RequestStream = req.GetRequestStream()
+			RequestStream.Write(SomeBytes, 0, SomeBytes.Length)
+			RequestStream.Close()
+		Else
+			req.ContentLength = 0
+		End if
+
+		Dim result As WebResponse
+		Dim ReceiveStream As Stream
+		result = req.GetResponse()		
+        ReceiveStream = result.GetResponseStream()                
+        Console.WriteLine("Response stream received, Status code: " & result.Status)
+        
+			Dim read(512) As Byte
+        	Dim bytes As Integer
+        	bytes = ReceiveStream.Read(read, 0, 512)
+        	Console.WriteLine("HTML...")
+        
+        	Do while (bytes > 0) 
+        	
+            	Console.Write(System.Text.Encoding.ASCII.GetString(read, 0, bytes))
+           		bytes = ReceiveStream.Read(read, 0, 512)
+        	Loop
+
+        	Console.WriteLine("")
+
+	End Sub
+
+    End Class
+End Namespace
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

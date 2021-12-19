@@ -1,0 +1,73 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlref/htmlctrl/HtmlTextArea/HtmlTextArea1.src&file=VB%5CHtmlTextArea1.htm" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkJcXEh0bWxUZVx4dEFyZWExLmFzcFx4eF9feHhfeHhfeF9feA==9047b711" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB\HtmlTextArea1.htm</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../../aspplus/samples/webforms/ctrlref/htmlctrl/htmltextarea/htmltextarea1aspxsource.htm'>HtmlTextArea1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../../aspplus/samples/webforms/ctrlref/htmlctrl/htmltextarea/vb/htmltextarea1aspxsource.htm'>VB\HtmlTextArea1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>JScript Source: </b></td>
+        <td><a href='../../../../../../../aspplus/samples/webforms/ctrlref/htmlctrl/htmltextarea/js/htmltextarea1aspxsource.htm'>JS\HtmlTextArea1.htm</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp><html>
+<head>
+
+    <script language="VB" runat="server">
+
+       Sub SubmitBtn_Click(sender As Object, e As EventArgs) 
+            Span1.InnerHtml = "You wrote: <br>" & TextArea1.Value
+       End Sub
+
+    </script>
+
+</head>
+<body>
+
+    <h3><font face="Verdana">HtmlTextArea Example</font></h3>
+
+    <form runat=server>
+
+      <font face="Verdana" size="-1">
+
+        What do you like best about ASP.NET?: <br>
+
+        <textarea id="TextArea1" cols=40 rows=4 runat=server />
+
+        <input type=submit value="Submit" OnServerClick="SubmitBtn_Click" runat=server>
+
+        <p>
+
+        <span id="Span1" runat="server" />
+
+      </font>
+
+    </form>
+
+</body>
+</html>
+
+
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

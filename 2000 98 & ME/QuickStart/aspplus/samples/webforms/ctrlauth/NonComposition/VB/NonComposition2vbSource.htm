@@ -1,0 +1,89 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/aspplus/samples/webforms/ctrlauth/NonComposition/NonComposition2.src&file=VB/NonComposition2.vb" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfVkIvTm9uQ29tcG9zaXRpb24yLnZieF9feHhfeHhfeF9feA==d295994b" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">VB/NonComposition2.vb</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlauth/noncomposition/noncomposition2aspxsource.htm'>NonComposition2.htm</a> &nbsp;&nbsp<a href='../../../../../../aspplus/samples/webforms/ctrlauth/noncomposition/noncomposition2cssource.htm'>NonComposition2.cs</a> &nbsp;&nbsp<a href='../../../../../../aspplus/samples/webforms/ctrlauth/noncomposition/makesamplebatsource.htm'>makesample.bat</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Source: </b></td>
+        <td><a href='../../../../../../aspplus/samples/webforms/ctrlauth/noncomposition/vb/noncomposition2aspxsource.htm'>VB/NonComposition2.htm</a> &nbsp;&nbsp<a href='../../../../../../aspplus/samples/webforms/ctrlauth/noncomposition/vb/noncomposition2vbsource.htm'>VB/NonComposition2.vb</a> &nbsp;&nbsp<a href='../../../../../../aspplus/samples/webforms/ctrlauth/noncomposition/vb/makesamplebatsource.htm'>VB/makesample.bat</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>Imports System
+Imports System.Web
+Imports System.Web.UI
+Imports System.Collections
+Imports System.Web.UI.WebControls
+
+Namespace NonCompositionSampleControls
+
+    Public Class NonComposition2VB : Inherits Control : Implements IPostBackDataHandler : Implements IPostBackEventHandler
+
+        Private _value As Integer = 0
+
+        public Property Value As Integer
+
+           Get
+               Return _value
+           End Get
+           Set 
+               _value = Value
+           End Set
+
+        End Property
+
+        Public Function LoadPostData(PostDataKey As String, Values As NameValueCollection) As Boolean Implements IPostBackDataHandler.LoadPostData
+
+           _value = Int32.Parse(values(Me.UniqueID))
+           Return false
+        End Function
+
+        Public Sub RaisePostDataChangedEvent() Implements IPostBackDataHandler.RaisePostDataChangedEvent
+
+           ' Part of the IPostBackDataHandler contract.  Invoked if we ever returned true from the
+           ' LoadPostData method (indicates that we want a change notification raised).  Since we
+           ' always return false, this method is just a no-op.
+        End Sub
+
+        Public Sub RaisePostBackEvent(EventArgument As String) Implements IPostBackEventHandler.RaisePostBackEvent
+           
+           If (eventArgument = "Add")
+              Me.Value = Me.Value + 1
+           Else
+              Me.Value = Me.Value - 1
+           End If
+        End Sub
+
+        Protected Overrides Overloads Sub OnPreRender(E As EventArgs)
+           Page.RegisterPostBackScript()
+        End Sub
+
+        Protected Overrides Sub Render(Output As HtmlTextWriter)
+           Output.Write("<h3>Value: <input name=" & Me.UniqueID & " type=text value=" & Me.Value & "> </h3>")
+           Output.Write("<input type=button value=Add OnClick=""jscript:" & Page.GetPostBackEventReference(Me, "Add") & """> |")
+           Output.Write("<input type=button value=Subtract OnClick=""jscript:" & Page.GetPostBackEventReference(Me, "Subtract") & """>")
+        End Sub    
+
+    End Class
+
+End Namespace
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>

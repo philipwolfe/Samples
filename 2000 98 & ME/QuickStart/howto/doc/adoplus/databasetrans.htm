@@ -1,0 +1,284 @@
+
+
+<!--BEGIN HEADER-->
+<html>
+<head>
+<link rel="stylesheet" href="../../../include/qsstyle.css">
+</head>
+<body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" >
+
+<table class="outer" cellpadding=0 cellspacing=0>
+<tr>
+<td class="toc" valign="top" width="210">
+
+<table>
+<tr>
+<td nowrap style="padding-right:15">
+
+<div class="toc" style="font-size:8pt;color:darkred;">
+
+    <div style="padding:0,0,4,0"><b>Data and ADO.NET</b><br></div>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/adoplusoverview.htm">Overview of ADO.NET</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/executecommand.htm">Execute a Command</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/outparams.htm">Stored proc out params</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/getdatafromdb.htm">Retrieve from a Database</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/updatedatafromdb.htm">Update Data in a Database</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/readandwritexml.htm">Read and Write XML</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/databasetrans.htm">Use Database Transactions</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/handleerrors.htm">Handling Errors</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/relationaldata.htm">Work with Relational Data</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/typeddata.htm">Work with typed Data</a><br>
+    &nbsp; <a class="outer" href="../../../howto/doc/adoplus/filterdata.htm">Filter Data</a><p>
+    <div style="padding:0,0,4,0"><a target="_top" style="color:darkred" href="../../../howto"><b>Back to Index</b></a><br></div>
+
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</td>
+<td valign="top">
+<div class="body">
+<!--END HEADER-->
+
+<style>
+.mydd {  font: smaller verdana; }
+.code1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:blue;
+	}
+.codecomment1 {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background:#DFDFDF;
+	font-family:"Courier New";
+	color:green;
+	}
+.issue {
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	background-color:RED;
+	color:WHITE;
+	font-weight:bold;
+	}
+
+
+body { font: smaller verdana }        
+
+</style>
+
+
+
+
+
+<h4>ADO.NET: Using Database Transactions</h4>
+
+Database transactions are used to control data commitment to databases.  For example, in 
+standard account procedures, it is necessary to debit one account and credit another at 
+the same time.  Since computers fault on occasion (power outages, network outages, etc.) 
+there would be a potential for one record to be updated/added, but not the other. To 
+avoid these situations we use transactions.  Transactions in ADO.NET are, just as in ADO, 
+handled at the database level:  your database must support transactions.
+
+<p>There are three basic commands for transactions: begin, commit and rollback.  Begin 
+marks the beginning of a transaction.  Anything done between the begin and the next 
+command (either rollback or commit) is considered part of the transaction.  Consider the 
+following code:</p>
+
+
+
+  <script language="JavaScript">
+    function doClick(index, id) {
+        var numTabs = 2;
+        document.all("tab" + id, index).className = "tab";
+        for (var i=1; i < numTabs; i++) {
+            document.all("tab" + id, (index + i) % numTabs).className = "backtab";
+        }
+        document.all("code" + id, index).style.display = "";
+        for (var j=1; j < numTabs; j++) {
+          document.all("code" + id, (index + j) % numTabs).style.display = "none";
+        }
+    }
+  </script>
+  <style>
+    td.code {
+      padding:0,10,0,10;
+      border-style:solid;
+      border-width:1;
+      border-bottom:0;
+      border-top:0;
+      border-right:0;
+      border-color:cccccc;
+      background-color:ffffee
+    }
+    td.tab {
+      text-align:center;
+      font:8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:eeeeee
+    }
+    td.backtab {
+      text-align:center;
+      font: 8pt verdana;
+      width:15%;
+      padding:3,3,3,3;
+      border-style:solid;
+      border-width:1;
+      border-right:0;
+      border-color:black;
+      background-color:cccccc
+    }
+    td.space {
+      width:70%;
+      font: 8pt verdana;
+      padding:0,0,0,0;
+      border-style:solid;
+      border-bottom:0;
+      border-right:0;
+      border-width:1;
+      border-color:cccccc;
+      border-left-color:black;
+      background-color:white
+    }
+  </style>
+    <table cellpadding=0 cellspacing=0 width="95%">
+      <tr>
+        <td class="code" colspan="3">
+<pre id="codectrl4" style="display:none">
+
+String insertCommand = "Insert into Region (RegionID, RegionDescription) "
+                     + "VALUES (100, 'Description')";
+SQLCommand myCommand = new SQLCommand(insertCommand, myConnection);
+try {
+    myConnection.Open();
+    myConnection.BeginTransaction();
+    myCommand.ExecuteNonQuery();
+    myCommand.CommandText = "Insert into Region (RegionID, RegionDescription) "
+                          + "VALUES (101, 'Description')";
+    myCommand.ExecuteNonQuery();
+    myConnection.CommitTransaction();
+    Response.Write("Both Records written to database");
+}
+catch(Exception e) {
+    myConnection.RollbackTransaction();
+    Response.Write(e.ToString());
+    String rollBackMsg = "Neither record written to database.  This will happen if you "
+                       + "executed this page more than once.  Executing the page more "
+                       + "than once exibits the Rollback behavior."
+    Response.Write(rollBackMsg);
+}
+finally {
+    myConnection.Close();
+}
+</pre>
+<pre id="codectrl4" style="display:">
+
+Dim insertCommand As String = "Insert into Region (RegionID, RegionDescription) " _
+                            & "VALUES (100, 'Description')"
+Dim myCommand As SQLCommand = New SQLCommand(insertCommand, myConnection)
+Try
+    myConnection.Open()
+    myConnection.BeginTransaction()
+    myCommand.ExecuteNonQuery()
+    myCommand.CommandText = "Insert into Region (RegionID, RegionDescription) " _
+                          & "VALUES (101, 'Description')"
+    myCommand.ExecuteNonQuery()
+    myConnection.CommitTransaction()
+    Response.Write("Both Records written to database")
+
+Catch (e As Exception)
+    myConnection.RollbackTransaction()
+    Response.Write(e.ToString())
+    Dim rollBackMsg As String = "Neither record written to database.  This will happen if you " _
+                              & "executed this page more than once.  Executing the page more " _
+                              & "than once exibits the Rollback behavior."
+    Response.Write(rollBackMsg)
+
+Finally
+    myConnection.Close()
+End Try
+</pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="backtab" id="tabctrl4" onclick="doClick(0, 'ctrl4')">
+          <b>C#
+        </td>
+        <td class="tab" id="tabctrl4" onclick="doClick(1, 'ctrl4')">
+          <b>VB
+        </td>
+        <td class="space">&nbsp;</td>
+      </tr>
+    </table>
+
+
+
+<p>The example shows that if either of the inserts fail, both are rolled back to their original states. If 
+each succeeds, then the transaction is committed.</p>
+
+<p>Just as in classic ADO, you can control transactions through the connection object. In fact, when you 
+are using the ADOConnection it is using the same underlying OLEDB transaction model.  Thus, if you were 
+able to do transactions against your database with ADO classic, you can still do them with ADO.NET. Below is 
+sample code using the SQLConnection and SQLCommand to insert two records into "Region" table. If 
+either of them fail, then the changes are rolled back.</p>
+
+<p>The DataSet object also has a commit model (AcceptChanges,RejectChanges) but it does 
+not affect the database.  This commit model is for the cache of data in the DataSet alone.
+To submit the Data from the DataSet into the database, use the Update method on the SQLDataSetCommand.</p>
+
+
+<span>
+  
+  
+
+      
+
+<div class="indent">
+
+
+
+	<a target="_blank" href="../../../aspplus/nowin9x.htm">
+	<img style="border-color:black" border=1 src="../../../images/genicon.gif"><br>
+	</a>
+	<div class="caption">DBTransactionsWithACommand.htm</div><br>
+	
+	
+		[<a target="_blank" href="../../../aspplus/nowin9x.htm">Run Sample</a>] | 
+		[<a target="_blank" href="../../../howto/samples/adoplus/vb/dbtransactionswithacommandaspxsource.htm">View VB Source</a>] | [<a target="_blank" href="../../../howto/samples/adoplus/cs/dbtransactionswithacommandaspxsource.htm">View C# Source</a>]
+	
+	
+	</div>
+
+
+  </span>
+
+<!--END FOOTER-->
+<p>
+<hr>
+<p>
+</div>
+</td>
+</tr>
+</table>
+</BODY>
+</html>
+<!--END FOOTER-->

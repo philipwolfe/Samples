@@ -1,0 +1,66 @@
+
+
+
+
+    <link rel="stylesheet" href="../../../../util/style.css">
+
+    <form name="Form" method="post" action="srcview.htm?path=/QuickStart/howto/samples/net/TCPUDP/datetimeserver.src&file=dateTimeServer.cs" id="Form">
+<input type="hidden" name="__VIEWSTATE" value="YTB6MTQ3MzAyNjM4MF9hMHpfaHo1ejN4X2Ewel9oejV6MHhfYTB6aHppbm5lcmh0bWxfZGF0ZVRpbWVTZXJ2ZXIuY3N4X194eF94eF94X19496ecde80" />
+
+
+        <div class="SampleHeader" style="width:100%">
+            <div class="SampleTitle">
+                <span id="Title">dateTimeServer.cs</span>
+            </div>
+            <table id="SourceTable" style="font: 8pt Verdana">
+    <tr>
+        <td style="padding-right:10;"><b>C# Console Source: </b></td>
+        <td><a href='../../../../howto/samples/net/tcpudp/datetimeservercssource.htm'>dateTimeServer.cs</a> &nbsp;&nbsp</td>
+    </tr>
+    <tr>
+        <td style="padding-right:10;"><b>VB Console Source: </b></td>
+        <td><a href='../../../../howto/samples/net/tcpudp/vb/datetimeservervbsource.htm'>VB/dateTimeServer.vb</a> &nbsp;&nbsp</td>
+    </tr>
+</table>
+
+        </div>
+
+        <xmp>using System;
+using System.Net;
+using System.Net.Sockets;
+using System.Text;
+
+class Server {
+	public static void Main() {
+		DateTime now;	 
+		String strDateLine; 	
+		Encoding ASCII = Encoding.ASCII;
+
+		TCPListener tcpl = new TCPListener(13); // listen on port 13
+
+		tcpl.Start();
+		
+		Console.WriteLine("Waiting for clients to connect");
+		Console.WriteLine("Press Ctrl+c to Quit...");
+
+		while (true)
+		{
+			// Accept will block until someone connects
+			Socket s = tcpl.Accept();
+
+			// Get the current date and time then concatenate it
+			// into a string
+			now = DateTime.Now;
+			strDateLine = now.ToShortDateString() + " " + now.ToLongTimeString();
+
+			// Convert the string to a Byte Array and send it
+			Byte[] byteDateLine = ASCII.GetBytes(strDateLine.ToCharArray());
+			s.Send(byteDateLine, byteDateLine.Length, 0);
+			Console.WriteLine("Sent " + strDateLine);
+		}
+	}
+}
+</xmp>
+        <span id="ErrorMessage" style="color:red"></span>
+
+    </form>
